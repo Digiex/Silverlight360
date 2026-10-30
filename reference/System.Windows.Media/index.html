@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://digiex.github.io/Silverlight360/reference/System.Windows.Media/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>System.Windows.Media - Silverlight360</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "System.Windows.Media";
+        var mkdocs_page_input_path = "reference\\System.Windows.Media.md";
+        var mkdocs_page_url = "/Silverlight360/reference/System.Windows.Media/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/powershell.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/csharp.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/xml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Silverlight360
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../getting-started/">Getting started</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../project-setup/">Projects and Visual Studio</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../app-model/">App model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../input-and-focus/">Input and focus</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../controls/">Xbox controls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../networking/">Networking</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../storage/">Storage</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../media/">Media</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../gamer-services/">Gamer services</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../native-code/">Native code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../testing/">Testing in xenia</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../samples/">Samples</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../xenia-status/">Status under xenia</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../runtime-inventory/">Runtime inventory</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">API reference</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../MS.Internal/">MS.Internal</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Controls.Primitives/">Microsoft.Xbox.Controls.Primitives</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Controls/">Microsoft.Xbox.Controls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Core/">Microsoft.Xbox.Core</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Input/">Microsoft.Xbox.Input</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Media.Mpeg/">Microsoft.Xbox.Media.Mpeg</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Media/">Microsoft.Xbox.Media</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Net/">Microsoft.Xbox.Net</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Security.XAuth/">Microsoft.Xbox.Security.XAuth</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Services/">Microsoft.Xbox.Services</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Transitions/">Microsoft.Xbox.Transitions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox/">Microsoft.Xbox</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xna.Framework.GamerServices.ContentRating.Level/">Microsoft.Xna.Framework.GamerServices.ContentRating.Level</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xna.Framework.GamerServices.ContentRating.System/">Microsoft.Xna.Framework.GamerServices.ContentRating.System</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xna.Framework.GamerServices.ContentRating/">Microsoft.Xna.Framework.GamerServices.ContentRating</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xna.Framework.GamerServices/">Microsoft.Xna.Framework.GamerServices</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xna.Framework.Storage/">Microsoft.Xna.Framework.Storage</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Reflection.ReflectionPermissionFrame/">System.Reflection.ReflectionPermissionFrame</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Reflection/">System.Reflection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Windows.Controls/">System.Windows.Controls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Windows.Input/">System.Windows.Input</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">System.Windows.Media</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#contentidentifiertype">ContentIdentifierType</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#drmsetupdecryptorcompletedeventargs">DrmSetupDecryptorCompletedEventArgs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#engagecgmsacompletedeventargs">EngageCgmsaCompletedEventArgs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#engagehdcpcompletedeventargs">EngageHdcpCompletedEventArgs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#engageoutputprotectioncompletedeventargs">EngageOutputProtectionCompletedEventArgs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#mediacommand">MediaCommand</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#mediacommandeventargs">MediaCommandEventArgs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#mediacommandeventhandler">MediaCommandEventHandler</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#prndexception">PRNDException</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#prndreceiver">PRNDReceiver</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#prndreceiveracquirelicensecompletedeventargs">PRNDReceiverAcquireLicenseCompletedEventArgs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#prndreceiveropencompletedeventargs">PRNDReceiverOpenCompletedEventArgs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#prndreceiverperformhandshakecompletedeventargs">PRNDReceiverPerformHandshakeCompletedEventArgs</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Windows/">System.Windows</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Silverlight360</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">API reference</li>
+      <li class="breadcrumb-item active">System.Windows.Media</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/Digiex/Silverlight360/edit/master/docs/reference/System.Windows.Media.md">Edit on Digiex/Silverlight360</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="systemwindowsmedia">System.Windows.Media<a class="headerlink" href="#systemwindowsmedia" title="Permanent link">&para;</a></h1>
+<p>Assembly: <code>System.Windows.dll</code></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Summary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#contentidentifiertype"><code>ContentIdentifierType</code></a></td>
+<td>Specifies how the content identifier passed to <a href="./#prndreceiver"><code>PRNDReceiver.AcquireLicenseAsync</code></a> is interpreted.</td>
+</tr>
+<tr>
+<td><a href="#drmsetupdecryptorcompletedeventargs"><code>DrmSetupDecryptorCompletedEventArgs</code></a></td>
+<td>Provides data for the <code>MediaStreamSource.DrmSetupDecryptorCompleted</code> event.</td>
+</tr>
+<tr>
+<td><a href="#engagecgmsacompletedeventargs"><code>EngageCgmsaCompletedEventArgs</code></a></td>
+<td>Provides data for the <code>VideoOutputConnector.EngageCgmsaCompleted</code> event.</td>
+</tr>
+<tr>
+<td><a href="#engagehdcpcompletedeventargs"><code>EngageHdcpCompletedEventArgs</code></a></td>
+<td>Provides data for the <code>VideoOutputConnector.EngageHdcpCompleted</code> event.</td>
+</tr>
+<tr>
+<td><a href="#engageoutputprotectioncompletedeventargs"><code>EngageOutputProtectionCompletedEventArgs</code></a></td>
+<td>Base class for the data of the output-protection completion events of <code>VideoOutputConnector</code>.</td>
+</tr>
+<tr>
+<td><a href="#mediacommand"><code>MediaCommand</code></a></td>
+<td>Identifies a media transport or navigation command, such as those sent by a media remote.</td>
+</tr>
+<tr>
+<td><a href="#mediacommandeventargs"><code>MediaCommandEventArgs</code></a></td>
+<td>Provides data for the <code>UIElement.MediaCommand</code> event.</td>
+</tr>
+<tr>
+<td><a href="#mediacommandeventhandler"><code>MediaCommandEventHandler</code></a></td>
+<td>Represents the method that handles the <code>UIElement.MediaCommand</code> event.</td>
+</tr>
+<tr>
+<td><a href="#prndexception"><code>PRNDException</code></a></td>
+<td>The exception reported when a PlayReady-ND receiver operation fails.</td>
+</tr>
+<tr>
+<td><a href="#prndreceiver"><code>PRNDReceiver</code></a></td>
+<td>A PlayReady-ND (network device) receiver: obtains licenses for protected content from a PlayReady-ND transmitter on the local network.</td>
+</tr>
+<tr>
+<td><a href="#prndreceiveracquirelicensecompletedeventargs"><code>PRNDReceiverAcquireLicenseCompletedEventArgs</code></a></td>
+<td>Provides data for the <a href="./#prndreceiver"><code>PRNDReceiver.PRNDReceiverAcquireLicenseCompleted</code></a> event.</td>
+</tr>
+<tr>
+<td><a href="#prndreceiveropencompletedeventargs"><code>PRNDReceiverOpenCompletedEventArgs</code></a></td>
+<td>Provides data for the <a href="./#prndreceiver"><code>PRNDReceiver.PRNDReceiverOpenCompleted</code></a> event.</td>
+</tr>
+<tr>
+<td><a href="#prndreceiverperformhandshakecompletedeventargs"><code>PRNDReceiverPerformHandshakeCompletedEventArgs</code></a></td>
+<td>Provides data for the <a href="./#prndreceiver"><code>PRNDReceiver.PRNDReceiverPerformHandshakeCompleted</code></a> event.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="contentidentifiertype">ContentIdentifierType<a class="headerlink" href="#contentidentifiertype" title="Permanent link">&para;</a></h2>
+<p><code>enum System.Windows.Media.ContentIdentifierType</code></p>
+<p>Specifies how the content identifier passed to <a href="./#prndreceiver"><code>PRNDReceiver.AcquireLicenseAsync</code></a> is interpreted.</p>
+<p><strong>Values</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Custom</code></td>
+<td>The identifier is a custom value understood by the transmitter.</td>
+</tr>
+<tr>
+<td><code>KeyId</code></td>
+<td>The identifier is the content key ID.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="drmsetupdecryptorcompletedeventargs">DrmSetupDecryptorCompletedEventArgs<a class="headerlink" href="#drmsetupdecryptorcompletedeventargs" title="Permanent link">&para;</a></h2>
+<p><code>class System.Windows.Media.DrmSetupDecryptorCompletedEventArgs</code></p>
+<p>Provides data for the <code>MediaStreamSource.DrmSetupDecryptorCompleted</code> event.</p>
+<p>Check <code>AsyncCompletedEventArgs.Error</code> first; it holds a DRM exception when setup failed. <code>AsyncCompletedEventArgs.Cancelled</code> is true when the operation was aborted.</p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Guid KeyID { get; }</code></td>
+<td>Gets the key ID of the decryptor that was set up.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="engagecgmsacompletedeventargs">EngageCgmsaCompletedEventArgs<a class="headerlink" href="#engagecgmsacompletedeventargs" title="Permanent link">&para;</a></h2>
+<p><code>class System.Windows.Media.EngageCgmsaCompletedEventArgs</code></p>
+<p>Provides data for the <code>VideoOutputConnector.EngageCgmsaCompleted</code> event.</p>
+<p><strong>Constructors</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>EngageCgmsaCompletedEventArgs(System.Exception error, System.Boolean cancelled, System.Object userState)</code></td>
+<td>Initializes a new instance of the <a href="./#engagecgmsacompletedeventargs"><code>EngageCgmsaCompletedEventArgs</code></a> class.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="engagehdcpcompletedeventargs">EngageHdcpCompletedEventArgs<a class="headerlink" href="#engagehdcpcompletedeventargs" title="Permanent link">&para;</a></h2>
+<p><code>class System.Windows.Media.EngageHdcpCompletedEventArgs</code></p>
+<p>Provides data for the <code>VideoOutputConnector.EngageHdcpCompleted</code> event.</p>
+<h2 id="engageoutputprotectioncompletedeventargs">EngageOutputProtectionCompletedEventArgs<a class="headerlink" href="#engageoutputprotectioncompletedeventargs" title="Permanent link">&para;</a></h2>
+<p><code>class System.Windows.Media.EngageOutputProtectionCompletedEventArgs</code></p>
+<p>Base class for the data of the output-protection completion events of <code>VideoOutputConnector</code>.</p>
+<p><strong>Constructors</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>EngageOutputProtectionCompletedEventArgs(System.Exception error, System.Boolean cancelled, System.Object userState)</code></td>
+<td>Initializes a new instance of the <a href="./#engageoutputprotectioncompletedeventargs"><code>EngageOutputProtectionCompletedEventArgs</code></a> class.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="mediacommand">MediaCommand<a class="headerlink" href="#mediacommand" title="Permanent link">&para;</a></h2>
+<p><code>enum System.Windows.Media.MediaCommand</code></p>
+<p>Identifies a media transport or navigation command, such as those sent by a media remote.</p>
+<p><strong>Values</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ChannelDown</code></td>
+<td>The Channel Down key.</td>
+</tr>
+<tr>
+<td><code>ChannelUp</code></td>
+<td>The Channel Up key.</td>
+</tr>
+<tr>
+<td><code>DecreaseVolume</code></td>
+<td>The Volume Down key.</td>
+</tr>
+<tr>
+<td><code>Display</code></td>
+<td>The Display key, typically used to show or hide on-screen playback information.</td>
+</tr>
+<tr>
+<td><code>FastForward</code></td>
+<td>Fast forward.</td>
+</tr>
+<tr>
+<td><code>Guide</code></td>
+<td>The Guide key of a media remote.</td>
+</tr>
+<tr>
+<td><code>IncreaseVolume</code></td>
+<td>The Volume Up key.</td>
+</tr>
+<tr>
+<td><code>Info</code></td>
+<td>The Info key, typically used to show details about the current item.</td>
+</tr>
+<tr>
+<td><code>Menu</code></td>
+<td>The Menu key, typically used to open a menu or options for the current content.</td>
+</tr>
+<tr>
+<td><code>MuteVolume</code></td>
+<td>The Mute key.</td>
+</tr>
+<tr>
+<td><code>NextTrack</code></td>
+<td>Skip to the next track, chapter or item.</td>
+</tr>
+<tr>
+<td><code>Pause</code></td>
+<td>Pause playback.</td>
+</tr>
+<tr>
+<td><code>Play</code></td>
+<td>Start or resume playback.</td>
+</tr>
+<tr>
+<td><code>PreviousTrack</code></td>
+<td>Go back to the previous track, chapter or item.</td>
+</tr>
+<tr>
+<td><code>Record</code></td>
+<td>The Record key.</td>
+</tr>
+<tr>
+<td><code>Rewind</code></td>
+<td>Rewind.</td>
+</tr>
+<tr>
+<td><code>Stop</code></td>
+<td>Stop playback.</td>
+</tr>
+<tr>
+<td><code>TV</code></td>
+<td>The TV key of a media remote.</td>
+</tr>
+<tr>
+<td><code>Title</code></td>
+<td>The Title key, typically used to go to the title or top menu of the content.</td>
+</tr>
+<tr>
+<td><code>TogglePlayPause</code></td>
+<td>Toggle between playing and paused (a single Play/Pause key). A focused <code>Button</code> also treats this command as a press.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="mediacommandeventargs">MediaCommandEventArgs<a class="headerlink" href="#mediacommandeventargs" title="Permanent link">&para;</a></h2>
+<p><code>class System.Windows.Media.MediaCommandEventArgs</code></p>
+<p>Provides data for the <code>UIElement.MediaCommand</code> event.</p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Boolean Handled { get; set; }</code></td>
+<td>Gets or sets a value that marks the routed event as handled.</td>
+</tr>
+<tr>
+<td><code>System.Windows.Media.MediaCommand MediaCommand { get; set; }</code></td>
+<td>Gets or sets the command that arrived.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="mediacommandeventhandler">MediaCommandEventHandler<a class="headerlink" href="#mediacommandeventhandler" title="Permanent link">&para;</a></h2>
+<p><code>delegate System.Void System.Windows.Media.MediaCommandEventHandler(System.Object, System.Windows.Media.MediaCommandEventArgs)</code></p>
+<p>Represents the method that handles the <code>UIElement.MediaCommand</code> event.</p>
+<h2 id="prndexception">PRNDException<a class="headerlink" href="#prndexception" title="Permanent link">&para;</a></h2>
+<p><code>class System.Windows.Media.PRNDException</code></p>
+<p>The exception reported when a PlayReady-ND receiver operation fails.</p>
+<p>Delivered through <code>AsyncCompletedEventArgs.Error</code> of the <a href="./#prndreceiver"><code>PRNDReceiver</code></a> completion events.</p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Int32 RawErrorCode { get; }</code></td>
+<td>Gets the native error code (HRESULT) of the failure.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="prndreceiver">PRNDReceiver<a class="headerlink" href="#prndreceiver" title="Permanent link">&para;</a></h2>
+<p><code>class System.Windows.Media.PRNDReceiver</code></p>
+<p>A PlayReady-ND (network device) receiver: obtains licenses for protected content from a PlayReady-ND transmitter on the local network.</p>
+<p>Call <a href="./#prndreceiver"><code>PRNDReceiver.OpenAsync</code></a>, then <a href="./#prndreceiver"><code>PRNDReceiver.PerformHandshakeAsync</code></a>, then <a href="./#prndreceiver"><code>PRNDReceiver.AcquireLicenseAsync</code></a> for each item; wait for each step's completion event before the next. Pass <a href="./#prndreceiver"><code>PRNDReceiver.SessionId</code></a> to the media pipeline with <code>MediaSourceAttributesKeys.PRNDSessionID</code>.</p>
+<p>Exceptions thrown by your event handlers are swallowed.</p>
+<p><strong>Constructors</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PRNDReceiver()</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Byte[] SessionId { get; }</code></td>
+<td>Gets the identifier of the receiver's current session.</td>
+</tr>
+<tr>
+<td><code>System.Int32 HandshakeAlertInterval { get; set; }</code></td>
+<td>Gets or sets how long after a successful handshake <a href="./#prndreceiver"><code>PRNDReceiver.PRNDReceiverHandshakeAlert</code></a> is raised, in minutes. Set it before the handshake; the timer is started when the handshake completes.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Void AcquireLicenseAsync(System.Windows.Media.ContentIdentifierType contentIdentifierType, System.Byte[] contentIdentifier, System.Byte[] customDataTypeId, System.Byte[] customData)</code></td>
+<td>Starts acquiring a license for one content item from the transmitter. Completion is reported by <a href="./#prndreceiver"><code>PRNDReceiver.PRNDReceiverAcquireLicenseCompleted</code></a>.</td>
+</tr>
+<tr>
+<td><code>System.Void Close()</code></td>
+<td>Closes the receiver and cancels any pending handshake alert. The receiver can then be opened again.</td>
+</tr>
+<tr>
+<td><code>System.Void OpenAsync(System.Uri transmitterUri)</code></td>
+<td>Starts connecting to a PlayReady-ND transmitter. Completion is reported by <a href="./#prndreceiver"><code>PRNDReceiver.PRNDReceiverOpenCompleted</code></a>.</td>
+</tr>
+<tr>
+<td><code>System.Void PerformHandshakeAsync(System.Byte[] customDataTypeId, System.Byte[] customData)</code></td>
+<td>Starts the registration handshake with the transmitter, optionally sending custom data. Completion is reported by <a href="./#prndreceiver"><code>PRNDReceiver.PRNDReceiverPerformHandshakeCompleted</code></a>. The handshake may be repeated on an open receiver.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Events</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>event System.EventHandler PRNDReceiverHandshakeAlert</code></td>
+<td>Occurs once, <a href="./#prndreceiver"><code>PRNDReceiver.HandshakeAlertInterval</code></a> minutes after a successful handshake, to signal that the handshake (proximity check) should be repeated. Raised on the UI thread by a dispatcher timer. The event arguments are null. <a href="./#prndreceiver"><code>PRNDReceiver.Close</code></a> cancels the pending alert.</td>
+</tr>
+<tr>
+<td><code>event System.EventHandler&lt;System.Windows.Media.PRNDReceiverAcquireLicenseCompletedEventArgs&gt; PRNDReceiverAcquireLicenseCompleted</code></td>
+<td>Occurs when <a href="./#prndreceiver"><code>PRNDReceiver.AcquireLicenseAsync</code></a> finishes.</td>
+</tr>
+<tr>
+<td><code>event System.EventHandler&lt;System.Windows.Media.PRNDReceiverOpenCompletedEventArgs&gt; PRNDReceiverOpenCompleted</code></td>
+<td>Occurs when <a href="./#prndreceiver"><code>PRNDReceiver.OpenAsync</code></a> finishes. If <code>AsyncCompletedEventArgs.Error</code> is null the receiver is open and ready for a handshake; otherwise it holds a <a href="./#prndexception"><code>PRNDException</code></a>.</td>
+</tr>
+<tr>
+<td><code>event System.EventHandler&lt;System.Windows.Media.PRNDReceiverPerformHandshakeCompletedEventArgs&gt; PRNDReceiverPerformHandshakeCompleted</code></td>
+<td>Occurs when <a href="./#prndreceiver"><code>PRNDReceiver.PerformHandshakeAsync</code></a> finishes. On success the receiver can acquire licenses, and the timer for <a href="./#prndreceiver"><code>PRNDReceiver.PRNDReceiverHandshakeAlert</code></a> starts.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Fields</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>const System.Int32 IdByteCount</code></td>
+<td>The length, in bytes, of session IDs and custom data type IDs (16). This field is constant.</td>
+</tr>
+<tr>
+<td><code>const System.Int32 MaxHandshakeAlertInterval</code></td>
+<td>The largest value accepted by <a href="./#prndreceiver"><code>PRNDReceiver.HandshakeAlertInterval</code></a>: 2880 minutes (48 hours). This field is constant.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="prndreceiveracquirelicensecompletedeventargs">PRNDReceiverAcquireLicenseCompletedEventArgs<a class="headerlink" href="#prndreceiveracquirelicensecompletedeventargs" title="Permanent link">&para;</a></h2>
+<p><code>class System.Windows.Media.PRNDReceiverAcquireLicenseCompletedEventArgs</code></p>
+<p>Provides data for the <a href="./#prndreceiver"><code>PRNDReceiver.PRNDReceiverAcquireLicenseCompleted</code></a> event.</p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Byte[] CustomData { get; }</code></td>
+<td>Gets the custom data the transmitter returned with the license.</td>
+</tr>
+<tr>
+<td><code>System.Byte[] CustomDataTypeId { get; }</code></td>
+<td>Gets the type ID of the custom data the transmitter returned with the license.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="prndreceiveropencompletedeventargs">PRNDReceiverOpenCompletedEventArgs<a class="headerlink" href="#prndreceiveropencompletedeventargs" title="Permanent link">&para;</a></h2>
+<p><code>class System.Windows.Media.PRNDReceiverOpenCompletedEventArgs</code></p>
+<p>Provides data for the <a href="./#prndreceiver"><code>PRNDReceiver.PRNDReceiverOpenCompleted</code></a> event.</p>
+<h2 id="prndreceiverperformhandshakecompletedeventargs">PRNDReceiverPerformHandshakeCompletedEventArgs<a class="headerlink" href="#prndreceiverperformhandshakecompletedeventargs" title="Permanent link">&para;</a></h2>
+<p><code>class System.Windows.Media.PRNDReceiverPerformHandshakeCompletedEventArgs</code></p>
+<p>Provides data for the <a href="./#prndreceiver"><code>PRNDReceiver.PRNDReceiverPerformHandshakeCompleted</code></a> event.</p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Byte[] CustomData { get; }</code></td>
+<td>Gets the custom data the transmitter returned with the handshake.</td>
+</tr>
+<tr>
+<td><code>System.Byte[] CustomDataTypeId { get; }</code></td>
+<td>Gets the type ID of the custom data the transmitter returned with the handshake.</td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../System.Windows.Input/" class="btn btn-neutral float-left" title="System.Windows.Input"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../System.Windows/" class="btn btn-neutral float-right" title="System.Windows">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>Silverlight360 is licensed under the PolyForm Noncommercial License 1.0.0 with an additional condition. Xbox, Xbox 360 and Silverlight are trademarks of Microsoft.</p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/Digiex/Silverlight360" class="fa fa-code-fork" style="color: #fcfcfc"> Digiex/Silverlight360</a>
+        </span>
+    
+    
+      <span><a href="../System.Windows.Input/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../System.Windows/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

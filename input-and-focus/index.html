@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://digiex.github.io/Silverlight360/input-and-focus/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Input and focus - Silverlight360</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Input and focus";
+        var mkdocs_page_input_path = "input-and-focus.md";
+        var mkdocs_page_url = "/Silverlight360/input-and-focus/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/powershell.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/csharp.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/xml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Silverlight360
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../getting-started/">Getting started</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../project-setup/">Projects and Visual Studio</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../app-model/">App model</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Input and focus</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#controller-events">Controller events</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#focus">Focus</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#what-the-runtime-does-on-its-own">What the runtime does on its own</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#moving-focus-yourself">Moving focus yourself</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#showing-focus">Showing focus</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#the-legend">The Legend</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#media-remotes">Media remotes</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#kinect-and-speech">Kinect and speech</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../controls/">Xbox controls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../networking/">Networking</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../storage/">Storage</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../media/">Media</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../gamer-services/">Gamer services</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../native-code/">Native code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../testing/">Testing in xenia</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../samples/">Samples</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../xenia-status/">Status under xenia</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../runtime-inventory/">Runtime inventory</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">API reference</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/MS.Internal/">MS.Internal</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Controls.Primitives/">Microsoft.Xbox.Controls.Primitives</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Controls/">Microsoft.Xbox.Controls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Core/">Microsoft.Xbox.Core</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Input/">Microsoft.Xbox.Input</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Media.Mpeg/">Microsoft.Xbox.Media.Mpeg</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Media/">Microsoft.Xbox.Media</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Net/">Microsoft.Xbox.Net</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Security.XAuth/">Microsoft.Xbox.Security.XAuth</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Services/">Microsoft.Xbox.Services</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Transitions/">Microsoft.Xbox.Transitions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox/">Microsoft.Xbox</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xna.Framework.GamerServices.ContentRating.Level/">Microsoft.Xna.Framework.GamerServices.ContentRating.Level</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xna.Framework.GamerServices.ContentRating.System/">Microsoft.Xna.Framework.GamerServices.ContentRating.System</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xna.Framework.GamerServices.ContentRating/">Microsoft.Xna.Framework.GamerServices.ContentRating</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xna.Framework.GamerServices/">Microsoft.Xna.Framework.GamerServices</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xna.Framework.Storage/">Microsoft.Xna.Framework.Storage</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/System.Reflection.ReflectionPermissionFrame/">System.Reflection.ReflectionPermissionFrame</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/System.Reflection/">System.Reflection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/System.Windows.Controls/">System.Windows.Controls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/System.Windows.Input/">System.Windows.Input</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/System.Windows.Media/">System.Windows.Media</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/System.Windows/">System.Windows</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Silverlight360</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Guides</li>
+      <li class="breadcrumb-item active">Input and focus</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/Digiex/Silverlight360/edit/master/docs/input-and-focus.md">Edit on Digiex/Silverlight360</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="input-and-focus">Input and focus<a class="headerlink" href="#input-and-focus" title="Permanent link">&para;</a></h1>
+<h2 id="controller-events">Controller events<a class="headerlink" href="#controller-events" title="Permanent link">&para;</a></h2>
+<p>The Xbox runtime adds controller events to every <code>UIElement</code> (<code>System.Windows</code>, namespace <code>System.Windows.Input</code>):</p>
+<table>
+<thead>
+<tr>
+<th>Event</th>
+<th>Arguments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GamePadButtonDown</code>, <code>GamePadButtonUp</code></td>
+<td><code>GamePadButtonEventArgs.Button</code>: A, B, X, Y, the D-pad directions, the shoulders, Start, Back, and the stick clicks.</td>
+</tr>
+<tr>
+<td><code>GamePadThumbStickMoved</code></td>
+<td><code>Side</code> (left or right), <code>XPosition</code> and <code>YPosition</code>. Each runs from -1 to 1; Y is positive up.</td>
+</tr>
+<tr>
+<td><code>GamePadTriggerMoved</code></td>
+<td><code>Side</code>, <code>Position</code> from 0 (released) to 1 (fully pulled).</td>
+</tr>
+<tr>
+<td><code>MediaCommand</code></td>
+<td><code>MediaCommandEventArgs.MediaCommand</code>: play, pause, fast forward and the rest, from a media remote.</td>
+</tr>
+</tbody>
+</table>
+<p>They are <strong>routed events</strong>: raised on the element with focus, then bubbling up through its parents, like <code>KeyDown</code>. Set <code>e.Handled = true</code> to stop one. The guide button never reaches apps.</p>
+<pre><code class="language-csharp">GamePadButtonDown += delegate(object sender, GamePadButtonEventArgs e)
+{
+    if (e.Button == GamePadButton.Y)
+    {
+        ShowDetails();
+        e.Handled = true;
+    }
+};
+</code></pre>
+<p><code>GamePadButtonDownEvent</code> and <code>GamePadButtonUpEvent</code> are also exposed as <code>RoutedEvent</code>s, for <code>AddHandler(..., handledEventsToo: true)</code>. The stick and trigger events aren't.</p>
+<p><code>samples\ui\GamepadInput</code> shows every event live.</p>
+<h2 id="focus">Focus<a class="headerlink" href="#focus" title="Permanent link">&para;</a></h2>
+<p><strong>With nothing focused, no element gets controller input.</strong> A <code>UserControl</code> isn't focusable by default, so either set <code>IsTabStop = true</code> on it and call <code>Focus()</code>, or focus a control, in <code>Loaded</code> or <code>OnNavigatedTo</code>:</p>
+<pre><code class="language-csharp">Loaded += delegate { FirstTile.Focus(); };
+</code></pre>
+<p>After a navigation, focus from <code>Dispatcher.BeginInvoke</code> so the page is in the tree first.</p>
+<h3 id="what-the-runtime-does-on-its-own">What the runtime does on its own<a class="headerlink" href="#what-the-runtime-does-on-its-own" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>A clicks the focused <code>Button</code>.</strong> Start and the remote's play/pause command do too, and the event is marked handled. <code>Click</code> arguments are an <code>InputModalityRoutedEventArgs</code>; its <code>InputModality</code> says whether the click came from the controller, voice, a Kinect gesture, a remote, the keyboard or the mouse.</li>
+<li><strong>The D-pad doesn't move focus between plain controls.</strong> In testing, pressing the D-pad over a <code>Grid</code> of <code>Button</code>s left focus where it was.</li>
+<li><strong><code>PivotItem</code> does move focus.</strong> With <code>AutoGridNav</code> (on by default), a <code>PivotItem</code> moves focus through the <code>Grid</code> it contains with the D-pad, and the <code>Pivot</code> changes items with the shoulder buttons. <code>ContinuousList</code> pages with the shoulder buttons and D-pad. See <a href="../controls/">Xbox controls</a>.</li>
+</ul>
+<h3 id="moving-focus-yourself">Moving focus yourself<a class="headerlink" href="#moving-focus-yourself" title="Permanent link">&para;</a></h3>
+<p>For layouts outside a <code>Pivot</code>, the samples include <code>samples\Common\DirectionalFocus.cs</code>. Turn it on for a panel and the D-pad and left stick move focus to the nearest focusable control in that direction:</p>
+<pre><code class="language-xml">&lt;UserControl xmlns:sdk=&quot;clr-namespace:XboxSdk.Samples&quot; ...&gt;
+  &lt;Grid sdk:DirectionalFocus.IsEnabled=&quot;True&quot;&gt;
+    ...buttons...
+  &lt;/Grid&gt;
+&lt;/UserControl&gt;
+</code></pre>
+<p>It considers every visible, enabled control with <code>IsTabStop</code> set among the panel's descendants. It picks the closest one in the pressed direction, preferring ones lined up with the current control. Disabled controls and <code>IsTabStop="False"</code> ones are skipped. Add the file to your project with <code>&lt;Compile Include="...\Common\DirectionalFocus.cs" /&gt;</code>. <code>samples\ui\FocusNavigation</code> shows it on a grid with a wide tile, a disabled one and one that isn't a tab stop.</p>
+<h3 id="showing-focus">Showing focus<a class="headerlink" href="#showing-focus" title="Permanent link">&para;</a></h3>
+<p>TV users only know where they are from the focus visual, so make it obvious: a filled background, a frame, a slight zoom. Every sample's <code>Button</code> template has a <code>FocusStates</code> group with a green fill or frame in <code>Focused</code>.</p>
+<h2 id="the-legend">The Legend<a class="headerlink" href="#the-legend" title="Permanent link">&para;</a></h2>
+<p><code>Legend</code> (<code>Microsoft.Xbox.Controls</code>) shows what A, B, X and Y do. It reads attached properties from the focused element, or its nearest ancestor that has them:</p>
+<pre><code class="language-xml">&lt;Button Content=&quot;Watch list&quot;
+        xbox:Legend.AButtonText=&quot;open&quot; xbox:Legend.XButtonText=&quot;clear list&quot; /&gt;
+...
+&lt;xbox:Legend HorizontalAlignment=&quot;Right&quot; VerticalAlignment=&quot;Bottom&quot; /&gt;
+</code></pre>
+<p>The attached properties can only be set on a <code>Button</code>, <code>Pivot</code>, <code>ContinuousList</code>, <code>XboxApplicationFrame</code>, <code>Rune</code> or <code>NuiScrollViewer</code>. Setting them on anything else throws. The Legend hides itself while the user is using Kinect gestures.</p>
+<h2 id="media-remotes">Media remotes<a class="headerlink" href="#media-remotes" title="Permanent link">&para;</a></h2>
+<p>A media remote's buttons arrive as <code>MediaCommand</code> events on the focused element. <code>MediaTransport</code> handles them itself. For your own player, handle <code>UIElement.MediaCommand</code> and switch on <code>e.MediaCommand</code>.</p>
+<h2 id="kinect-and-speech">Kinect and speech<a class="headerlink" href="#kinect-and-speech" title="Permanent link">&para;</a></h2>
+<p>Kinect gestures drive a hand cursor that arrives as mouse events: hovering a <code>Button</code> focuses it, and holding the hover clicks it. Speech commands (<code>VuiBar</code>, <code>VuiCommand</code>, <code>VuiGrammar</code>) need a Kinect sensor. Neither has been tested; xenia has no Kinect.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../app-model/" class="btn btn-neutral float-left" title="App model"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../controls/" class="btn btn-neutral float-right" title="Xbox controls">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>Silverlight360 is licensed under the PolyForm Noncommercial License 1.0.0 with an additional condition. Xbox, Xbox 360 and Silverlight are trademarks of Microsoft.</p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/Digiex/Silverlight360" class="fa fa-code-fork" style="color: #fcfcfc"> Digiex/Silverlight360</a>
+        </span>
+    
+    
+      <span><a href="../app-model/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../controls/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

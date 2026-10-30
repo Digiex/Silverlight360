@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://digiex.github.io/Silverlight360/reference/Microsoft.Xna.Framework.GamerServices/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Microsoft.Xna.Framework.GamerServices - Silverlight360</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Microsoft.Xna.Framework.GamerServices";
+        var mkdocs_page_input_path = "reference\\Microsoft.Xna.Framework.GamerServices.md";
+        var mkdocs_page_url = "/Silverlight360/reference/Microsoft.Xna.Framework.GamerServices/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/powershell.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/csharp.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/xml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Silverlight360
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../getting-started/">Getting started</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../project-setup/">Projects and Visual Studio</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../app-model/">App model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../input-and-focus/">Input and focus</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../controls/">Xbox controls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../networking/">Networking</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../storage/">Storage</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../media/">Media</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../gamer-services/">Gamer services</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../native-code/">Native code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../testing/">Testing in xenia</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../samples/">Samples</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../xenia-status/">Status under xenia</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../runtime-inventory/">Runtime inventory</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">API reference</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../MS.Internal/">MS.Internal</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Controls.Primitives/">Microsoft.Xbox.Controls.Primitives</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Controls/">Microsoft.Xbox.Controls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Core/">Microsoft.Xbox.Core</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Input/">Microsoft.Xbox.Input</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Media.Mpeg/">Microsoft.Xbox.Media.Mpeg</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Media/">Microsoft.Xbox.Media</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Net/">Microsoft.Xbox.Net</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Security.XAuth/">Microsoft.Xbox.Security.XAuth</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Services/">Microsoft.Xbox.Services</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Transitions/">Microsoft.Xbox.Transitions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox/">Microsoft.Xbox</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xna.Framework.GamerServices.ContentRating.Level/">Microsoft.Xna.Framework.GamerServices.ContentRating.Level</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xna.Framework.GamerServices.ContentRating.System/">Microsoft.Xna.Framework.GamerServices.ContentRating.System</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xna.Framework.GamerServices.ContentRating/">Microsoft.Xna.Framework.GamerServices.ContentRating</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Microsoft.Xna.Framework.GamerServices</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#agegroup">AgeGroup</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#contentaccessconfirmationcompletedeventargs">ContentAccessConfirmationCompletedEventArgs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#contentaccesstype">ContentAccessType</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#contentrating">ContentRating</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#getsocialcapabilitiescompletedeventargs">GetSocialCapabilitiesCompletedEventArgs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#getsocialnetworktokencompletedeventargs">GetSocialNetworkTokenCompletedEventArgs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#messagebox">MessageBox</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#messageboxcompletedeventargs">MessageBoxCompletedEventArgs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#nuicontrollerrequiredcompletedeventargs">NuiControllerRequiredCompletedEventArgs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#nuiguide">NuiGuide</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#nuihardwarerequiredcompletedeventargs">NuiHardwareRequiredCompletedEventArgs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#showgetsocialnetworktokencompletedeventargs">ShowGetSocialNetworkTokenCompletedEventArgs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#showparentcontrolpasscodecompletedeventargs">ShowParentControlPasscodeCompletedEventArgs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#socialnetworkimagepost">SocialNetworkImagePost</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#socialnetworklinkpost">SocialNetworkLinkPost</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#socialnetworkpostcompletedeventargs">SocialNetworkPostCompletedEventArgs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#softwarekeyboardinput">SoftwareKeyboardInput</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#softwarekeyboardinputcompletedeventargs">SoftwareKeyboardInputCompletedEventArgs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#stringchecker">StringChecker</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#videosharing">VideoSharing</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#videosharingconfirmationcompletedeventargs">VideoSharingConfirmationCompletedEventArgs</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xna.Framework.Storage/">Microsoft.Xna.Framework.Storage</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Reflection.ReflectionPermissionFrame/">System.Reflection.ReflectionPermissionFrame</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Reflection/">System.Reflection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Windows.Controls/">System.Windows.Controls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Windows.Input/">System.Windows.Input</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Windows.Media/">System.Windows.Media</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Windows/">System.Windows</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Silverlight360</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">API reference</li>
+      <li class="breadcrumb-item active">Microsoft.Xna.Framework.GamerServices</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/Digiex/Silverlight360/edit/master/docs/reference/Microsoft.Xna.Framework.GamerServices.md">Edit on Digiex/Silverlight360</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="microsoftxnaframeworkgamerservices">Microsoft.Xna.Framework.GamerServices<a class="headerlink" href="#microsoftxnaframeworkgamerservices" title="Permanent link">&para;</a></h1>
+<p>Assembly: <code>Microsoft.Xbox.Services.dll</code></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Summary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#agegroup"><code>AgeGroup</code></a></td>
+<td>Specifies the age group of a gamer profile.</td>
+</tr>
+<tr>
+<td><a href="#contentaccessconfirmationcompletedeventargs"><code>ContentAccessConfirmationCompletedEventArgs</code></a></td>
+<td>Provides data for the <a href="./#contentrating"><code>ContentRating.AccessConfirmationCompleted</code></a> event.</td>
+</tr>
+<tr>
+<td><a href="#contentaccesstype"><code>ContentAccessType</code></a></td>
+<td>Specifies how content will be used when checking parental-control access with <a href="./#contentrating"><code>ContentRating.CanAccessAsync</code></a>.</td>
+</tr>
+<tr>
+<td><a href="#contentrating"><code>ContentRating</code></a></td>
+<td>Represents a content rating (content type, rating system and level) and checks it against the parental-control settings of signed-in gamers.</td>
+</tr>
+<tr>
+<td><a href="#getsocialcapabilitiescompletedeventargs"><code>GetSocialCapabilitiesCompletedEventArgs</code></a></td>
+<td>Provides data for the <code>SignedInGamer.GetSocialCapabilitiesCompleted</code> event.</td>
+</tr>
+<tr>
+<td><a href="#getsocialnetworktokencompletedeventargs"><code>GetSocialNetworkTokenCompletedEventArgs</code></a></td>
+<td>Provides data for the <code>SignedInGamer.GetSocialNetworkTokenCompleted</code> event.</td>
+</tr>
+<tr>
+<td><a href="#messagebox"><code>MessageBox</code></a></td>
+<td>Displays a system message box with up to three buttons and reports the user's choice through an event.</td>
+</tr>
+<tr>
+<td><a href="#messageboxcompletedeventargs"><code>MessageBoxCompletedEventArgs</code></a></td>
+<td>Provides data for the <a href="./#messagebox"><code>MessageBox.Completed</code></a> event.</td>
+</tr>
+<tr>
+<td><a href="#nuicontrollerrequiredcompletedeventargs"><code>NuiControllerRequiredCompletedEventArgs</code></a></td>
+<td>Provides data for the <a href="./#nuiguide"><code>NuiGuide.ShowControllerRequiredCompleted</code></a> event.</td>
+</tr>
+<tr>
+<td><a href="#nuiguide"><code>NuiGuide</code></a></td>
+<td>Provides static methods that display the Kinect (NUI) versions of system Guide screens.</td>
+</tr>
+<tr>
+<td><a href="#nuihardwarerequiredcompletedeventargs"><code>NuiHardwareRequiredCompletedEventArgs</code></a></td>
+<td>Provides data for the <a href="./#nuiguide"><code>NuiGuide.ShowHardwareRequiredCompleted</code></a> event.</td>
+</tr>
+<tr>
+<td><a href="#showgetsocialnetworktokencompletedeventargs"><code>ShowGetSocialNetworkTokenCompletedEventArgs</code></a></td>
+<td>Provides data for the <code>SignedInGamer.ShowGetSocialNetworkTokenCompleted</code> event.</td>
+</tr>
+<tr>
+<td><a href="#showparentcontrolpasscodecompletedeventargs"><code>ShowParentControlPasscodeCompletedEventArgs</code></a></td>
+<td>Provides data for the <code>SignedInGamer.ShowParentControlPasscodeCompleted</code> event.</td>
+</tr>
+<tr>
+<td><a href="#socialnetworkimagepost"><code>SocialNetworkImagePost</code></a></td>
+<td>Posts an image, with a title, caption and description, to the gamer's linked social network account through system UI.</td>
+</tr>
+<tr>
+<td><a href="#socialnetworklinkpost"><code>SocialNetworkLinkPost</code></a></td>
+<td>Posts a link, with a title and picture, to the gamer's linked social network account through system UI.</td>
+</tr>
+<tr>
+<td><a href="#socialnetworkpostcompletedeventargs"><code>SocialNetworkPostCompletedEventArgs</code></a></td>
+<td>Provides data for the Completed events of <a href="./#socialnetworkimagepost"><code>SocialNetworkImagePost</code></a> and <a href="./#socialnetworklinkpost"><code>SocialNetworkLinkPost</code></a>.</td>
+</tr>
+<tr>
+<td><a href="#softwarekeyboardinput"><code>SoftwareKeyboardInput</code></a></td>
+<td>Displays the system on-screen keyboard to collect a line of text from the user.</td>
+</tr>
+<tr>
+<td><a href="#softwarekeyboardinputcompletedeventargs"><code>SoftwareKeyboardInputCompletedEventArgs</code></a></td>
+<td>Provides data for the <a href="./#softwarekeyboardinput"><code>SoftwareKeyboardInput.Completed</code></a> event.</td>
+</tr>
+<tr>
+<td><a href="#stringchecker"><code>StringChecker</code></a></td>
+<td>Submits user-entered strings to the Xbox LIVE string verification service.</td>
+</tr>
+<tr>
+<td><a href="#videosharing"><code>VideoSharing</code></a></td>
+<td>Provides static methods that ask the system to confirm video sharing for a gamer.</td>
+</tr>
+<tr>
+<td><a href="#videosharingconfirmationcompletedeventargs"><code>VideoSharingConfirmationCompletedEventArgs</code></a></td>
+<td>Provides data for the <a href="./#videosharing"><code>VideoSharing.ConfirmationCompleted</code></a> event.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="agegroup">AgeGroup<a class="headerlink" href="#agegroup" title="Permanent link">&para;</a></h2>
+<p><code>enum Microsoft.Xna.Framework.GamerServices.AgeGroup</code></p>
+<p>Specifies the age group of a gamer profile.</p>
+<p><strong>Values</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Adult</code></td>
+<td>The profile belongs to an adult.</td>
+</tr>
+<tr>
+<td><code>Child</code></td>
+<td>The profile belongs to a child.</td>
+</tr>
+<tr>
+<td><code>Teen</code></td>
+<td>The profile belongs to a teenager.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="contentaccessconfirmationcompletedeventargs">ContentAccessConfirmationCompletedEventArgs<a class="headerlink" href="#contentaccessconfirmationcompletedeventargs" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xna.Framework.GamerServices.ContentAccessConfirmationCompletedEventArgs</code></p>
+<p>Provides data for the <a href="./#contentrating"><code>ContentRating.AccessConfirmationCompleted</code></a> event.</p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Boolean Result { get; }</code></td>
+<td>Gets whether access to the content was granted.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="contentaccesstype">ContentAccessType<a class="headerlink" href="#contentaccesstype" title="Permanent link">&para;</a></h2>
+<p><code>enum Microsoft.Xna.Framework.GamerServices.ContentAccessType</code></p>
+<p>Specifies how content will be used when checking parental-control access with <a href="./#contentrating"><code>ContentRating.CanAccessAsync</code></a>.</p>
+<p><strong>Values</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Play</code></td>
+<td>The content will be played in full.</td>
+</tr>
+<tr>
+<td><code>Preview</code></td>
+<td>Only a preview (for example a trailer or clip) of the content will be shown.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="contentrating">ContentRating<a class="headerlink" href="#contentrating" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xna.Framework.GamerServices.ContentRating</code></p>
+<p>Represents a content rating (content type, rating system and level) and checks it against the parental-control settings of signed-in gamers.</p>
+<p>Build a rating from the constants in the nested <a href="../Microsoft.Xna.Framework.GamerServices.ContentRating/#type"><code>Type</code></a>, <a href="../Microsoft.Xna.Framework.GamerServices.ContentRating/#system"><code>System</code></a> and <a href="../Microsoft.Xna.Framework.GamerServices.ContentRating/#level"><code>Level</code></a> classes, then call CanAccess or CanAccessAsync before playing rated video. Use <a href="./#contentrating"><code>ContentRating.Unrated</code></a> for content without a rating.</p>
+<p><strong>Constructors</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ContentRating(System.Int32 ratingType, System.Int32 ratingSystem, System.Int32 ratingLevel)</code></td>
+<td>Initializes a new rating from a content type, rating system and rating level.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Int32 RatingLevel { get; }</code></td>
+<td>Gets the rating level within the rating system.</td>
+</tr>
+<tr>
+<td><code>System.Int32 RatingSystem { get; }</code></td>
+<td>Gets the rating system (country or board) of the rating.</td>
+</tr>
+<tr>
+<td><code>System.Int32 RatingType { get; }</code></td>
+<td>Gets the content type of the rating.</td>
+</tr>
+<tr>
+<td><code>System.Object Tag { get; set; }</code></td>
+<td>Gets or sets an application-defined object associated with the rating.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>static System.Boolean CanAccess(System.Collections.Generic.IEnumerable&lt;Microsoft.Xna.Framework.GamerServices.SignedInGamer&gt; gamers, Microsoft.Xna.Framework.GamerServices.ContentRating contentRating)</code></td>
+<td>Checks immediately whether the specified gamers may access content with a given rating under their parental-control settings.</td>
+</tr>
+<tr>
+<td><code>static System.Void CanAccessAsync(System.Collections.Generic.IEnumerable&lt;Microsoft.Xna.Framework.GamerServices.SignedInGamer&gt; gamers, Microsoft.Xna.Framework.GamerServices.ContentAccessType accessType, Microsoft.Xna.Framework.GamerServices.ContentRating contentRating, System.Object state)</code></td>
+<td>Starts an asynchronous parental-control check of whether the specified gamers may access content with a given rating. The result is reported through <a href="./#contentrating"><code>ContentRating.AccessConfirmationCompleted</code></a>. Unlike CanAccess, this goes through the system's confirmation path, which can involve system UI. Throws <code>ArgumentNullException</code> if <code>gamers</code> is null.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Events</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>event System.EventHandler&lt;Microsoft.Xna.Framework.GamerServices.ContentAccessConfirmationCompletedEventArgs&gt; AccessConfirmationCompleted</code></td>
+<td>Occurs when a <a href="./#contentrating"><code>ContentRating.CanAccessAsync</code></a> check completes. This is a static event; the sender is null. Raised on a background thread.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Fields</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>static Microsoft.Xna.Framework.GamerServices.ContentRating Unrated</code></td>
+<td>A shared rating that represents unrated content. Its type is <a href="../Microsoft.Xna.Framework.GamerServices.ContentRating/#type"><code>Type.Unrated</code></a>, its system is 0 and its level is 255. Do not modify its Tag, because the instance is shared.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="getsocialcapabilitiescompletedeventargs">GetSocialCapabilitiesCompletedEventArgs<a class="headerlink" href="#getsocialcapabilitiescompletedeventargs" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xna.Framework.GamerServices.GetSocialCapabilitiesCompletedEventArgs</code></p>
+<p>Provides data for the <code>SignedInGamer.GetSocialCapabilitiesCompleted</code> event.</p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Boolean CanPostImages { get; }</code></td>
+<td>Gets whether image posts to a social network are available.</td>
+</tr>
+<tr>
+<td><code>System.Boolean CanPostLinks { get; }</code></td>
+<td>Gets whether link posts to a social network are available.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="getsocialnetworktokencompletedeventargs">GetSocialNetworkTokenCompletedEventArgs<a class="headerlink" href="#getsocialnetworktokencompletedeventargs" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xna.Framework.GamerServices.GetSocialNetworkTokenCompletedEventArgs</code></p>
+<p>Provides data for the <code>SignedInGamer.GetSocialNetworkTokenCompleted</code> event.</p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.String UserToken { get; }</code></td>
+<td>Gets the social network access token returned for the gamer.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="messagebox">MessageBox<a class="headerlink" href="#messagebox" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xna.Framework.GamerServices.MessageBox</code></p>
+<p>Displays a system message box with up to three buttons and reports the user's choice through an event.</p>
+<p>Set <a href="./#messagebox"><code>MessageBox.Title</code></a>, <a href="./#messagebox"><code>MessageBox.Text</code></a> and <a href="./#messagebox"><code>MessageBox.Buttons</code></a>, subscribe to <a href="./#messagebox"><code>MessageBox.Completed</code></a>, and call one of the OpenAsync overloads. Gamer services must be initialized (XboxApplicationFrame does this). Only one system UI can be shown at a time; opening a message box while another is visible throws <code>GuideAlreadyVisibleException</code>.</p>
+<p><strong>Constructors</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MessageBox()</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Microsoft.Xna.Framework.GamerServices.MessageBoxIcon Icon { get; set; }</code></td>
+<td>Gets or sets the icon displayed in the message box.</td>
+</tr>
+<tr>
+<td><code>System.Collections.Generic.IEnumerable&lt;System.String&gt; Buttons { get; set; }</code></td>
+<td>Gets or sets the button labels.</td>
+</tr>
+<tr>
+<td><code>System.Int32 FocusButton { get; set; }</code></td>
+<td>Gets or sets the index of the button that has focus when the message box opens.</td>
+</tr>
+<tr>
+<td><code>System.String Text { get; set; }</code></td>
+<td>Gets or sets the message text.</td>
+</tr>
+<tr>
+<td><code>System.String Title { get; set; }</code></td>
+<td>Gets or sets the message box title.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Void OpenAsync(Microsoft.Xna.Framework.PlayerIndex playerIndex, System.Object userState)</code></td>
+<td>Opens the message box for the specified player. Throws <code>ArgumentException</code> if the title, text or buttons are not valid, and <code>GuideAlreadyVisibleException</code> if other system UI is already displayed.</td>
+</tr>
+<tr>
+<td><code>System.Void OpenAsync(System.Int32 trackingId, Microsoft.Xna.Framework.PlayerIndex playerIndex, System.Object userState)</code></td>
+<td>Opens the Kinect-enabled version of the message box for a tracked user and the specified player.</td>
+</tr>
+<tr>
+<td><code>System.Void OpenAsync(System.Int32 trackingId, System.Object userState)</code></td>
+<td>Opens the Kinect-enabled version of the message box for a tracked user, allowing any player to respond.</td>
+</tr>
+<tr>
+<td><code>System.Void OpenAsync(System.Object userState)</code></td>
+<td>Opens the message box so that any player can respond to it.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Events</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>event System.EventHandler&lt;Microsoft.Xna.Framework.GamerServices.MessageBoxCompletedEventArgs&gt; Completed</code></td>
+<td>Occurs when the message box closes. This event is raised on a background thread, not the UI thread. Use the Dispatcher to update the user interface from the handler.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="messageboxcompletedeventargs">MessageBoxCompletedEventArgs<a class="headerlink" href="#messageboxcompletedeventargs" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xna.Framework.GamerServices.MessageBoxCompletedEventArgs</code></p>
+<p>Provides data for the <a href="./#messagebox"><code>MessageBox.Completed</code></a> event.</p>
+<p>If the user dismissed the message box without choosing a button, Cancelled is true and <a href="./#messageboxcompletedeventargs"><code>MessageBoxCompletedEventArgs.Result</code></a> is null.</p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Nullable&lt;System.Int32&gt; Result { get; }</code></td>
+<td>Gets the zero-based index of the button the user chose.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="nuicontrollerrequiredcompletedeventargs">NuiControllerRequiredCompletedEventArgs<a class="headerlink" href="#nuicontrollerrequiredcompletedeventargs" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xna.Framework.GamerServices.NuiControllerRequiredCompletedEventArgs</code></p>
+<p>Provides data for the <a href="./#nuiguide"><code>NuiGuide.ShowControllerRequiredCompleted</code></a> event.</p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Boolean Result { get; }</code></td>
+<td>Gets whether the controller-required screen completed with a selection.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="nuiguide">NuiGuide<a class="headerlink" href="#nuiguide" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xna.Framework.GamerServices.NuiGuide</code></p>
+<p>Provides static methods that display the Kinect (NUI) versions of system Guide screens.</p>
+<p>Gamer services must be initialized. Completion events on this class are static and are raised on a background thread. Only one system UI can be shown at a time.</p>
+<p><strong>Methods</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>static System.Void Show(System.Int32 trackingId)</code></td>
+<td>Opens the Kinect Guide for a tracked user.</td>
+</tr>
+<tr>
+<td><code>static System.Void ShowControllerRequiredAsync(Microsoft.Xna.Framework.PlayerIndex playerIndex, System.Int32 trackingId, System.Object userState)</code></td>
+<td>Opens the controller-required screen for a tracked Kinect user and a specific player.</td>
+</tr>
+<tr>
+<td><code>static System.Void ShowControllerRequiredAsync(System.Int32 trackingId, System.Object userState)</code></td>
+<td>Opens the system screen telling a Kinect user that a controller is required for the next step.</td>
+</tr>
+<tr>
+<td><code>static System.Void ShowHardwareRequiredAsync()</code></td>
+<td>Opens the system screen telling the user that a Kinect sensor is required, without a state object.</td>
+</tr>
+<tr>
+<td><code>static System.Void ShowHardwareRequiredAsync(System.Object userState)</code></td>
+<td>Opens the system screen telling the user that a Kinect sensor is required.</td>
+</tr>
+<tr>
+<td><code>static System.Void ShowTroubleShooting()</code></td>
+<td>Opens the system Kinect troubleshooting screen.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Events</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>event System.EventHandler&lt;Microsoft.Xna.Framework.GamerServices.NuiControllerRequiredCompletedEventArgs&gt; ShowControllerRequiredCompleted</code></td>
+<td>Occurs when a screen opened by ShowControllerRequiredAsync closes. The sender is null. Raised on a background thread.</td>
+</tr>
+<tr>
+<td><code>event System.EventHandler&lt;Microsoft.Xna.Framework.GamerServices.NuiHardwareRequiredCompletedEventArgs&gt; ShowHardwareRequiredCompleted</code></td>
+<td>Occurs when a screen opened by ShowHardwareRequiredAsync closes. The sender is null. Raised on a background thread.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="nuihardwarerequiredcompletedeventargs">NuiHardwareRequiredCompletedEventArgs<a class="headerlink" href="#nuihardwarerequiredcompletedeventargs" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xna.Framework.GamerServices.NuiHardwareRequiredCompletedEventArgs</code></p>
+<p>Provides data for the <a href="./#nuiguide"><code>NuiGuide.ShowHardwareRequiredCompleted</code></a> event.</p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Boolean Result { get; }</code></td>
+<td>Gets the outcome reported by the Kinect-required screen.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="showgetsocialnetworktokencompletedeventargs">ShowGetSocialNetworkTokenCompletedEventArgs<a class="headerlink" href="#showgetsocialnetworktokencompletedeventargs" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xna.Framework.GamerServices.ShowGetSocialNetworkTokenCompletedEventArgs</code></p>
+<p>Provides data for the <code>SignedInGamer.ShowGetSocialNetworkTokenCompleted</code> event.</p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.String UserToken { get; }</code></td>
+<td>Gets the social network access token returned for the gamer.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="showparentcontrolpasscodecompletedeventargs">ShowParentControlPasscodeCompletedEventArgs<a class="headerlink" href="#showparentcontrolpasscodecompletedeventargs" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xna.Framework.GamerServices.ShowParentControlPasscodeCompletedEventArgs</code></p>
+<p>Provides data for the <code>SignedInGamer.ShowParentControlPasscodeCompleted</code> event.</p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Boolean PassCodeEntered { get; }</code></td>
+<td>Gets whether the correct parental-control passcode was entered.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="socialnetworkimagepost">SocialNetworkImagePost<a class="headerlink" href="#socialnetworkimagepost" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xna.Framework.GamerServices.SocialNetworkImagePost</code></p>
+<p>Posts an image, with a title, caption and description, to the gamer's linked social network account through system UI.</p>
+<p>Set all properties and call [[M:Microsoft.Xna.Framework.GamerServices.SocialNetworkImagePost.SetPreviewImageData(System.Int32,System.Int32,System.Int32[])]] before calling PostAsync; missing values cause <code>ArgumentException</code> or <code>ArgumentNullException</code>. Use <code>SignedInGamer.GetSocialCapabilitiesAsync</code> to check that image posts are available. The gamer needs the social network privilege.</p>
+<p><strong>Constructors</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SocialNetworkImagePost()</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.IO.Stream FullSizedImage { get; set; }</code></td>
+<td>Gets or sets a stream containing the full-size image to post. The setter reads the whole stream immediately and then closes it, so do not reuse the stream afterwards.</td>
+</tr>
+<tr>
+<td><code>System.String ImageCaption { get; set; }</code></td>
+<td>Gets or sets the caption shown with the image.</td>
+</tr>
+<tr>
+<td><code>System.String ImageDescription { get; set; }</code></td>
+<td>Gets or sets the description shown with the image.</td>
+</tr>
+<tr>
+<td><code>System.String Title { get; set; }</code></td>
+<td>Gets or sets the title of the post.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Void PostAsync(Microsoft.Xna.Framework.GamerServices.SignedInGamer gamer)</code></td>
+<td>Shows the posting UI for the specified gamer.</td>
+</tr>
+<tr>
+<td><code>System.Void PostAsync(Microsoft.Xna.Framework.GamerServices.SignedInGamer gamer, System.Int32 trackingId)</code></td>
+<td>Shows the Kinect-enabled posting UI for the specified gamer.</td>
+</tr>
+<tr>
+<td><code>System.Void PostAsync(Microsoft.Xna.Framework.GamerServices.SignedInGamer gamer, System.Int32 trackingId, System.Object userState)</code></td>
+<td>Shows the Kinect-enabled posting UI for the specified gamer and associates a state object with the operation.</td>
+</tr>
+<tr>
+<td><code>System.Void PostAsync(Microsoft.Xna.Framework.GamerServices.SignedInGamer gamer, System.Object userState)</code></td>
+<td>Shows the posting UI for the specified gamer and associates a state object with the operation.</td>
+</tr>
+<tr>
+<td><code>System.Void SetPreviewImageData(System.Int32 width, System.Int32 height, System.Int32[] data)</code></td>
+<td>Sets the small preview image shown in the posting UI.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Events</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>event System.EventHandler&lt;Microsoft.Xna.Framework.GamerServices.SocialNetworkPostCompletedEventArgs&gt; Completed</code></td>
+<td>Occurs when the post operation completes. Raised on a background thread.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="socialnetworklinkpost">SocialNetworkLinkPost<a class="headerlink" href="#socialnetworklinkpost" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xna.Framework.GamerServices.SocialNetworkLinkPost</code></p>
+<p>Posts a link, with a title and picture, to the gamer's linked social network account through system UI.</p>
+<p>Set all properties and call [[M:Microsoft.Xna.Framework.GamerServices.SocialNetworkLinkPost.SetPreviewImageData(System.Int32,System.Int32,System.Int32[])]] before calling PostAsync; missing values cause <code>ArgumentException</code> or <code>ArgumentNullException</code>. Use <code>SignedInGamer.GetSocialCapabilitiesAsync</code> to check that link posts are available. The gamer needs the social network privilege.</p>
+<p><strong>Constructors</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SocialNetworkLinkPost()</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.String PictureCaption { get; set; }</code></td>
+<td>Gets or sets the caption of the picture shown with the link.</td>
+</tr>
+<tr>
+<td><code>System.String PictureDescription { get; set; }</code></td>
+<td>Gets or sets the description of the picture shown with the link.</td>
+</tr>
+<tr>
+<td><code>System.String Title { get; set; }</code></td>
+<td>Gets or sets the title of the link.</td>
+</tr>
+<tr>
+<td><code>System.Uri PictureUri { get; set; }</code></td>
+<td>Gets or sets the address of the picture shown with the link.</td>
+</tr>
+<tr>
+<td><code>System.Uri TitleUri { get; set; }</code></td>
+<td>Gets or sets the address the link points to.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Void PostAsync(Microsoft.Xna.Framework.GamerServices.SignedInGamer gamer)</code></td>
+<td>Shows the posting UI for the specified gamer.</td>
+</tr>
+<tr>
+<td><code>System.Void PostAsync(Microsoft.Xna.Framework.GamerServices.SignedInGamer gamer, System.Int32 trackingId)</code></td>
+<td>Shows the Kinect-enabled posting UI for the specified gamer.</td>
+</tr>
+<tr>
+<td><code>System.Void PostAsync(Microsoft.Xna.Framework.GamerServices.SignedInGamer gamer, System.Int32 trackingId, System.Object userState)</code></td>
+<td>Shows the Kinect-enabled posting UI for the specified gamer and associates a state object with the operation.</td>
+</tr>
+<tr>
+<td><code>System.Void PostAsync(Microsoft.Xna.Framework.GamerServices.SignedInGamer gamer, System.Object userState)</code></td>
+<td>Shows the posting UI for the specified gamer and associates a state object with the operation.</td>
+</tr>
+<tr>
+<td><code>System.Void SetPreviewImageData(System.Int32 width, System.Int32 height, System.Int32[] data)</code></td>
+<td>Sets the small preview image shown in the posting UI.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Events</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>event System.EventHandler&lt;Microsoft.Xna.Framework.GamerServices.SocialNetworkPostCompletedEventArgs&gt; Completed</code></td>
+<td>Occurs when the post operation completes. Raised on a background thread.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="socialnetworkpostcompletedeventargs">SocialNetworkPostCompletedEventArgs<a class="headerlink" href="#socialnetworkpostcompletedeventargs" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xna.Framework.GamerServices.SocialNetworkPostCompletedEventArgs</code></p>
+<p>Provides data for the Completed events of <a href="./#socialnetworkimagepost"><code>SocialNetworkImagePost</code></a> and <a href="./#socialnetworklinkpost"><code>SocialNetworkLinkPost</code></a>.</p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Boolean Result { get; }</code></td>
+<td>Gets whether the item was posted.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="softwarekeyboardinput">SoftwareKeyboardInput<a class="headerlink" href="#softwarekeyboardinput" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xna.Framework.GamerServices.SoftwareKeyboardInput</code></p>
+<p>Displays the system on-screen keyboard to collect a line of text from the user.</p>
+<p>Set the text properties, subscribe to <a href="./#softwarekeyboardinput"><code>SoftwareKeyboardInput.Completed</code></a>, then call OpenAsync. Gamer services must be initialized. Opening the keyboard while other system UI is visible throws <code>GuideAlreadyVisibleException</code>.</p>
+<p><strong>Constructors</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SoftwareKeyboardInput()</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Boolean UsePasswordMode { get; set; }</code></td>
+<td>Gets or sets whether the entered characters are masked, as for a password.</td>
+</tr>
+<tr>
+<td><code>System.String DefaultText { get; set; }</code></td>
+<td>Gets or sets the text initially shown in the input field.</td>
+</tr>
+<tr>
+<td><code>System.String Description { get; set; }</code></td>
+<td>Gets or sets the descriptive text that tells the user what to enter.</td>
+</tr>
+<tr>
+<td><code>System.String Title { get; set; }</code></td>
+<td>Gets or sets the title shown at the top of the keyboard screen.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Void OpenAsync(Microsoft.Xna.Framework.PlayerIndex playerIndex)</code></td>
+<td>Opens the on-screen keyboard for the specified player. Throws <code>ArgumentException</code> if any of the text properties is 256 characters or longer.</td>
+</tr>
+<tr>
+<td><code>System.Void OpenAsync(Microsoft.Xna.Framework.PlayerIndex playerIndex, System.Object userState)</code></td>
+<td>Opens the on-screen keyboard for the specified player and associates a state object with the operation.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Events</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>event System.EventHandler&lt;Microsoft.Xna.Framework.GamerServices.SoftwareKeyboardInputCompletedEventArgs&gt; Completed</code></td>
+<td>Occurs when the user accepts or cancels the keyboard. This event is raised on a background thread, not the UI thread. Use the Dispatcher to update the user interface from the handler.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="softwarekeyboardinputcompletedeventargs">SoftwareKeyboardInputCompletedEventArgs<a class="headerlink" href="#softwarekeyboardinputcompletedeventargs" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xna.Framework.GamerServices.SoftwareKeyboardInputCompletedEventArgs</code></p>
+<p>Provides data for the <a href="./#softwarekeyboardinput"><code>SoftwareKeyboardInput.Completed</code></a> event.</p>
+<p>If the user cancelled the keyboard, Cancelled is true and <a href="./#softwarekeyboardinputcompletedeventargs"><code>SoftwareKeyboardInputCompletedEventArgs.Result</code></a> is null.</p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.String Result { get; }</code></td>
+<td>Gets the text the user entered.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="stringchecker">StringChecker<a class="headerlink" href="#stringchecker" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xna.Framework.GamerServices.StringChecker</code></p>
+<p>Submits user-entered strings to the Xbox LIVE string verification service.</p>
+<p>Each request accepts 1 to 10 strings, each non-empty and shorter than 256 characters. The service returns one Boolean result per string. Test with known acceptable and unacceptable strings to confirm which value indicates a rejected string before relying on it. The synchronous methods block until the service responds; prefer the Begin/End methods on the UI thread.</p>
+<p><strong>Methods</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>static System.Boolean CheckString(System.String value)</code></td>
+<td>Checks a single string with the verification service and waits for the result.</td>
+</tr>
+<tr>
+<td><code>static System.Boolean EndCheckString(System.IAsyncResult result)</code></td>
+<td>Ends an asynchronous single-string check.</td>
+</tr>
+<tr>
+<td><code>static System.Boolean[] CheckStrings(System.Collections.Generic.IEnumerable&lt;System.String&gt; strings)</code></td>
+<td>Checks up to ten strings with the verification service and waits for the results.</td>
+</tr>
+<tr>
+<td><code>static System.Boolean[] EndCheckStrings(System.IAsyncResult result)</code></td>
+<td>Ends an asynchronous multi-string check.</td>
+</tr>
+<tr>
+<td><code>static System.IAsyncResult BeginCheckString(System.String value, System.AsyncCallback callback, System.Object asyncState)</code></td>
+<td>Begins an asynchronous check of a single string.</td>
+</tr>
+<tr>
+<td><code>static System.IAsyncResult BeginCheckStrings(System.Collections.Generic.IEnumerable&lt;System.String&gt; strings, System.AsyncCallback callback, System.Object asyncState)</code></td>
+<td>Begins an asynchronous check of up to ten strings.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="videosharing">VideoSharing<a class="headerlink" href="#videosharing" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xna.Framework.GamerServices.VideoSharing</code></p>
+<p>Provides static methods that ask the system to confirm video sharing for a gamer.</p>
+<p>Results are reported through the static <a href="./#videosharing"><code>VideoSharing.ConfirmationCompleted</code></a> event.</p>
+<p><strong>Methods</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>static System.Void ConfirmAsync(Microsoft.Xna.Framework.GamerServices.SignedInGamer gamer)</code></td>
+<td>Starts the video sharing confirmation for the specified gamer.</td>
+</tr>
+<tr>
+<td><code>static System.Void ConfirmAsync(Microsoft.Xna.Framework.GamerServices.SignedInGamer gamer, System.Int32 trackingId)</code></td>
+<td>Starts the Kinect-enabled video sharing confirmation for the specified gamer.</td>
+</tr>
+<tr>
+<td><code>static System.Void ConfirmAsync(Microsoft.Xna.Framework.GamerServices.SignedInGamer gamer, System.Int32 trackingId, System.Object userState)</code></td>
+<td>Starts the Kinect-enabled video sharing confirmation for the specified gamer and associates a state object with the operation.</td>
+</tr>
+<tr>
+<td><code>static System.Void ConfirmAsync(Microsoft.Xna.Framework.GamerServices.SignedInGamer gamer, System.Object userState)</code></td>
+<td>Starts the video sharing confirmation for the specified gamer and associates a state object with the operation.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Events</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>event System.EventHandler&lt;Microsoft.Xna.Framework.GamerServices.VideoSharingConfirmationCompletedEventArgs&gt; ConfirmationCompleted</code></td>
+<td>Occurs when a video sharing confirmation completes. The sender is null. Raised on a background thread.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="videosharingconfirmationcompletedeventargs">VideoSharingConfirmationCompletedEventArgs<a class="headerlink" href="#videosharingconfirmationcompletedeventargs" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xna.Framework.GamerServices.VideoSharingConfirmationCompletedEventArgs</code></p>
+<p>Provides data for the <a href="./#videosharing"><code>VideoSharing.ConfirmationCompleted</code></a> event.</p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Boolean IsConfirmed { get; }</code></td>
+<td>Gets whether the user confirmed video sharing.</td>
+</tr>
+<tr>
+<td><code>System.Boolean IsEnabled { get; }</code></td>
+<td>Gets whether video sharing is enabled for the gamer.</td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../Microsoft.Xna.Framework.GamerServices.ContentRating/" class="btn btn-neutral float-left" title="Microsoft.Xna.Framework.GamerServices.ContentRating"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Microsoft.Xna.Framework.Storage/" class="btn btn-neutral float-right" title="Microsoft.Xna.Framework.Storage">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>Silverlight360 is licensed under the PolyForm Noncommercial License 1.0.0 with an additional condition. Xbox, Xbox 360 and Silverlight are trademarks of Microsoft.</p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/Digiex/Silverlight360" class="fa fa-code-fork" style="color: #fcfcfc"> Digiex/Silverlight360</a>
+        </span>
+    
+    
+      <span><a href="../Microsoft.Xna.Framework.GamerServices.ContentRating/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../Microsoft.Xna.Framework.Storage/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

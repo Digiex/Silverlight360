@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://digiex.github.io/Silverlight360/reference/Microsoft.Xbox.Media.Mpeg/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Microsoft.Xbox.Media.Mpeg - Silverlight360</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Microsoft.Xbox.Media.Mpeg";
+        var mkdocs_page_input_path = "reference\\Microsoft.Xbox.Media.Mpeg.md";
+        var mkdocs_page_url = "/Silverlight360/reference/Microsoft.Xbox.Media.Mpeg/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/powershell.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/csharp.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/xml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Silverlight360
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../getting-started/">Getting started</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../project-setup/">Projects and Visual Studio</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../app-model/">App model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../input-and-focus/">Input and focus</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../controls/">Xbox controls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../networking/">Networking</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../storage/">Storage</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../media/">Media</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../gamer-services/">Gamer services</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../native-code/">Native code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../testing/">Testing in xenia</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../samples/">Samples</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../xenia-status/">Status under xenia</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../runtime-inventory/">Runtime inventory</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">API reference</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../MS.Internal/">MS.Internal</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Controls.Primitives/">Microsoft.Xbox.Controls.Primitives</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Controls/">Microsoft.Xbox.Controls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Core/">Microsoft.Xbox.Core</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Input/">Microsoft.Xbox.Input</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Microsoft.Xbox.Media.Mpeg</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#mpegaudiostreamkey">MpegAudioStreamKey</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#mpegcontainertype">MpegContainerType</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#mpegdemultiplexer">MpegDemultiplexer</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#mpegelementarystreamtype">MpegElementaryStreamType</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#mpegframetype">MpegFrameType</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#mpegsampleproperty">MpegSampleProperty</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#mpegstreamsample">MpegStreamSample</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#mpegstreamsnotinitializedexception">MpegStreamsNotInitializedException</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#mpegstreamtype">MpegStreamType</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#mpegvideostreamkey">MpegVideoStreamKey</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Media/">Microsoft.Xbox.Media</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Net/">Microsoft.Xbox.Net</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Security.XAuth/">Microsoft.Xbox.Security.XAuth</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Services/">Microsoft.Xbox.Services</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Transitions/">Microsoft.Xbox.Transitions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox/">Microsoft.Xbox</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xna.Framework.GamerServices.ContentRating.Level/">Microsoft.Xna.Framework.GamerServices.ContentRating.Level</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xna.Framework.GamerServices.ContentRating.System/">Microsoft.Xna.Framework.GamerServices.ContentRating.System</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xna.Framework.GamerServices.ContentRating/">Microsoft.Xna.Framework.GamerServices.ContentRating</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xna.Framework.GamerServices/">Microsoft.Xna.Framework.GamerServices</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xna.Framework.Storage/">Microsoft.Xna.Framework.Storage</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Reflection.ReflectionPermissionFrame/">System.Reflection.ReflectionPermissionFrame</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Reflection/">System.Reflection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Windows.Controls/">System.Windows.Controls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Windows.Input/">System.Windows.Input</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Windows.Media/">System.Windows.Media</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Windows/">System.Windows</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Silverlight360</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">API reference</li>
+      <li class="breadcrumb-item active">Microsoft.Xbox.Media.Mpeg</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/Digiex/Silverlight360/edit/master/docs/reference/Microsoft.Xbox.Media.Mpeg.md">Edit on Digiex/Silverlight360</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="microsoftxboxmediampeg">Microsoft.Xbox.Media.Mpeg<a class="headerlink" href="#microsoftxboxmediampeg" title="Permanent link">&para;</a></h1>
+<p>Assembly: <code>Microsoft.Xbox.dll</code></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Summary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#mpegaudiostreamkey"><code>MpegAudioStreamKey</code></a></td>
+<td>Keys of the dictionary returned by <a href="./#mpegdemultiplexer"><code>MpegDemultiplexer.GetAudioStreamProperties</code></a>.</td>
+</tr>
+<tr>
+<td><a href="#mpegcontainertype"><code>MpegContainerType</code></a></td>
+<td>MPEG-2 system container formats.</td>
+</tr>
+<tr>
+<td><a href="#mpegdemultiplexer"><code>MpegDemultiplexer</code></a></td>
+<td>Splits an MPEG-2 transport stream into its elementary audio, video and caption streams using the console's native demultiplexer. Typically used inside a custom <code>MediaStreamSource</code> to play transport-stream content.</td>
+</tr>
+<tr>
+<td><a href="#mpegelementarystreamtype"><code>MpegElementaryStreamType</code></a></td>
+<td>The coding of an elementary stream. Most values equal the MPEG-2 transport-stream <code>stream_type</code> code.</td>
+</tr>
+<tr>
+<td><a href="#mpegframetype"><code>MpegFrameType</code></a></td>
+<td>How a video sample depends on other frames.</td>
+</tr>
+<tr>
+<td><a href="#mpegsampleproperty"><code>MpegSampleProperty</code></a></td>
+<td>Flags attached to a demultiplexed sample.</td>
+</tr>
+<tr>
+<td><a href="#mpegstreamsample"><code>MpegStreamSample</code></a></td>
+<td>One demultiplexed elementary-stream sample (an access unit) with its timing information.</td>
+</tr>
+<tr>
+<td><a href="#mpegstreamsnotinitializedexception"><code>MpegStreamsNotInitializedException</code></a></td>
+<td>The exception thrown when an <a href="./#mpegdemultiplexer"><code>MpegDemultiplexer</code></a> method needs the stream layout before enough input has been processed. Keep calling <a href="./#mpegdemultiplexer"><code>MpegDemultiplexer.ProcessInput</code></a> and retry.</td>
+</tr>
+<tr>
+<td><a href="#mpegstreamtype"><code>MpegStreamType</code></a></td>
+<td>Kinds of elementary streams, used to look up stream IDs with <a href="./#mpegdemultiplexer"><code>MpegDemultiplexer.GetStreamIdAtIndex</code></a>.</td>
+</tr>
+<tr>
+<td><a href="#mpegvideostreamkey"><code>MpegVideoStreamKey</code></a></td>
+<td>Keys of the dictionary returned by <a href="./#mpegdemultiplexer"><code>MpegDemultiplexer.GetVideoStreamProperties</code></a>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="mpegaudiostreamkey">MpegAudioStreamKey<a class="headerlink" href="#mpegaudiostreamkey" title="Permanent link">&para;</a></h2>
+<p><code>enum Microsoft.Xbox.Media.Mpeg.MpegAudioStreamKey</code></p>
+<p>Keys of the dictionary returned by <a href="./#mpegdemultiplexer"><code>MpegDemultiplexer.GetAudioStreamProperties</code></a>.</p>
+<p><strong>Values</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AudioProfile</code></td>
+<td>The codec profile, as a decimal number.</td>
+</tr>
+<tr>
+<td><code>Channels</code></td>
+<td>The number of audio channels.</td>
+</tr>
+<tr>
+<td><code>ChannelsMask</code></td>
+<td>The speaker-position mask for the channels, as a decimal number.</td>
+</tr>
+<tr>
+<td><code>CodecPrivateData</code></td>
+<td>Codec initialization data (up to 128 bytes) as an uppercase hexadecimal string, suitable for the <code>CodecPrivateData</code> media attribute of a <code>MediaStreamSource</code>.</td>
+</tr>
+<tr>
+<td><code>Frequency</code></td>
+<td>The sampling rate, in Hz.</td>
+</tr>
+<tr>
+<td><code>Language</code></td>
+<td>The language code declared for the stream.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="mpegcontainertype">MpegContainerType<a class="headerlink" href="#mpegcontainertype" title="Permanent link">&para;</a></h2>
+<p><code>enum Microsoft.Xbox.Media.Mpeg.MpegContainerType</code></p>
+<p>MPEG-2 system container formats.</p>
+<p><strong>Values</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Program</code></td>
+<td>MPEG-2 program stream. Not supported; the <a href="./#mpegdemultiplexer"><code>MpegDemultiplexer</code></a> constructor throws <code>NotImplementedException</code>.</td>
+</tr>
+<tr>
+<td><code>Transport</code></td>
+<td>MPEG-2 transport stream (188-byte packets). This is the only supported format.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="mpegdemultiplexer">MpegDemultiplexer<a class="headerlink" href="#mpegdemultiplexer" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.Media.Mpeg.MpegDemultiplexer</code></p>
+<p>Splits an MPEG-2 transport stream into its elementary audio, video and caption streams using the console's native demultiplexer. Typically used inside a custom <code>MediaStreamSource</code> to play transport-stream content.</p>
+<p>Feed raw transport-stream bytes with <a href="./#mpegdemultiplexer"><code>MpegDemultiplexer.ProcessInput</code></a>. Once <a href="./#mpegdemultiplexer"><code>MpegDemultiplexer.HasStreamProperties</code></a> returns <code>true</code>, find streams with <a href="./#mpegdemultiplexer"><code>MpegDemultiplexer.GetStreamIdAtIndex</code></a>, enable them with <a href="./#mpegdemultiplexer"><code>MpegDemultiplexer.SelectStream</code></a>, read their formats, and pull samples with <a href="./#mpegdemultiplexer"><code>MpegDemultiplexer.ProduceOutputForStream</code></a>.</p>
+<p>Only <a href="./#mpegcontainertype"><code>MpegContainerType.Transport</code></a> is supported. Dispose the demultiplexer to release the native instance; calls after disposal throw <code>InvalidOperationException</code>.</p>
+<p><strong>Constructors</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MpegDemultiplexer()</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>MpegDemultiplexer(Microsoft.Xbox.Media.Mpeg.MpegContainerType streamType)</code></td>
+<td>Creates a demultiplexer for the specified container format.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Microsoft.Xbox.Media.Mpeg.MpegStreamSample ProduceOutputForStream(System.Int32 streamId)</code></td>
+<td>Retrieves the next complete sample for an elementary stream.</td>
+</tr>
+<tr>
+<td><code>System.Boolean HasStreamProperties()</code></td>
+<td>Gets whether enough input has been processed for the stream layout and formats to be known.</td>
+</tr>
+<tr>
+<td><code>System.Collections.Generic.Dictionary&lt;Microsoft.Xbox.Media.Mpeg.MpegAudioStreamKey,System.String&gt; GetAudioStreamProperties(System.Int32 streamIndex)</code></td>
+<td>Gets the format of an audio stream.</td>
+</tr>
+<tr>
+<td><code>System.Collections.Generic.Dictionary&lt;Microsoft.Xbox.Media.Mpeg.MpegVideoStreamKey,System.String&gt; GetVideoStreamProperties(System.Int32 streamIndex)</code></td>
+<td>Gets the format of a video stream.</td>
+</tr>
+<tr>
+<td><code>System.Int32 GetProgramIdForStreamId(System.Int32 id)</code></td>
+<td>Gets the transport-stream packet identifier (PID) for a stream ID.</td>
+</tr>
+<tr>
+<td><code>System.Int32 GetStreamIdAtIndex(Microsoft.Xbox.Media.Mpeg.MpegStreamType streamType, System.Int32 index)</code></td>
+<td>Gets the ID of the n-th elementary stream of a given kind.</td>
+</tr>
+<tr>
+<td><code>System.Int32 GetStreamIdForProgramId(System.Int32 programId)</code></td>
+<td>Gets the stream ID for a transport-stream packet identifier (PID).</td>
+</tr>
+<tr>
+<td><code>System.Void Dispose()</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>System.Void Finalize()</code></td>
+<td>Releases the native demultiplexer if <a href="./#mpegdemultiplexer"><code>MpegDemultiplexer.Dispose</code></a> was not called.</td>
+</tr>
+<tr>
+<td><code>System.Void Flush()</code></td>
+<td>Discards all buffered input and pending samples, for example when playback stops or the source changes.</td>
+</tr>
+<tr>
+<td><code>System.Void PrepareForSeek(System.Int64 seekToTime)</code></td>
+<td>Prepares the demultiplexer to receive data from a new position in the stream. Call it before feeding input from the seek target.</td>
+</tr>
+<tr>
+<td><code>System.Void ProcessInput(System.Byte[] data, System.Int32 dataLength)</code></td>
+<td>Passes a block of raw container data to the demultiplexer.</td>
+</tr>
+<tr>
+<td><code>System.Void SelectStream(System.Int32 id, System.Boolean enableStream)</code></td>
+<td>Enables or disables output for an elementary stream. Only enabled streams produce samples.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="mpegelementarystreamtype">MpegElementaryStreamType<a class="headerlink" href="#mpegelementarystreamtype" title="Permanent link">&para;</a></h2>
+<p><code>enum Microsoft.Xbox.Media.Mpeg.MpegElementaryStreamType</code></p>
+<p>The coding of an elementary stream. Most values equal the MPEG-2 transport-stream <code>stream_type</code> code.</p>
+<p><strong>Values</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AdvancedAudioCoding</code></td>
+<td>AAC audio with ADTS framing, stream type 15.</td>
+</tr>
+<tr>
+<td><code>AdvancedVideoCodingH264</code></td>
+<td>H.264/AVC video, stream type 27.</td>
+</tr>
+<tr>
+<td><code>Audio11172</code></td>
+<td>MPEG-1 audio (ISO/IEC 11172-3), stream type 3.</td>
+</tr>
+<tr>
+<td><code>Audio13818Part3</code></td>
+<td>MPEG-2 audio (ISO/IEC 13818-3), stream type 4.</td>
+</tr>
+<tr>
+<td><code>AudioAC3</code></td>
+<td>Dolby Digital (AC-3) audio, code 129.</td>
+</tr>
+<tr>
+<td><code>AudioDts</code></td>
+<td>DTS audio, code 133.</td>
+</tr>
+<tr>
+<td><code>AudioEnhancedAC3</code></td>
+<td>Dolby Digital Plus (E-AC-3) audio, code 135.</td>
+</tr>
+<tr>
+<td><code>AudioPulseCodeModulation</code></td>
+<td>LPCM audio, code 131.</td>
+</tr>
+<tr>
+<td><code>AudioVC9</code></td>
+<td>Audio stream with private code 136.</td>
+</tr>
+<tr>
+<td><code>AudioWma</code></td>
+<td>Windows Media Audio, code 230.</td>
+</tr>
+<tr>
+<td><code>AudioWmaPro</code></td>
+<td>Windows Media Audio Professional, code 231.</td>
+</tr>
+<tr>
+<td><code>AudioWmaWithHeader</code></td>
+<td>Windows Media Audio with an embedded format header, code 255.</td>
+</tr>
+<tr>
+<td><code>Auxiliary</code></td>
+<td>MPEG-2 auxiliary data, stream type 14.</td>
+</tr>
+<tr>
+<td><code>ClosedCaption</code></td>
+<td>Closed-caption data, code 134.</td>
+</tr>
+<tr>
+<td><code>DigitalStorageMedia</code></td>
+<td>DSM-CC data, stream type 8.</td>
+</tr>
+<tr>
+<td><code>DigitalStorageMediaTypeA</code></td>
+<td>DSM-CC type A (multiprotocol encapsulation), stream type 10.</td>
+</tr>
+<tr>
+<td><code>DigitalStorageMediaTypeB</code></td>
+<td>DSM-CC type B (U-N messages), stream type 11.</td>
+</tr>
+<tr>
+<td><code>DigitalStorageMediaTypeC</code></td>
+<td>DSM-CC type C (stream descriptors), stream type 12.</td>
+</tr>
+<tr>
+<td><code>DigitalStorageMediaTypeD</code></td>
+<td>DSM-CC type D (sections), stream type 13.</td>
+</tr>
+<tr>
+<td><code>DistributionFormatExchangeProfile</code></td>
+<td>DFXP (TTML) timed-text data.</td>
+</tr>
+<tr>
+<td><code>EntitlementControlMessage</code></td>
+<td>Conditional-access entitlement control messages (ECM); not a media stream.</td>
+</tr>
+<tr>
+<td><code>HighEfficiencyAdvancedAudioCoding</code></td>
+<td>HE-AAC (MPEG-4 audio with LATM framing), stream type 17.</td>
+</tr>
+<tr>
+<td><code>None</code></td>
+<td>No stream type, or not known.</td>
+</tr>
+<tr>
+<td><code>PacketizedElementaryStreamPrivate</code></td>
+<td>Private data carried in PES packets, stream type 6.</td>
+</tr>
+<tr>
+<td><code>Video</code></td>
+<td>MPEG-1 video (ISO/IEC 11172-2), stream type 1.</td>
+</tr>
+<tr>
+<td><code>Video13522Part5</code></td>
+<td>MHEG data (ISO/IEC 13522-5), stream type 7.</td>
+</tr>
+<tr>
+<td><code>VideoConstrained</code></td>
+<td>MPEG-2 video (ISO/IEC 13818-2), stream type 2.</td>
+</tr>
+<tr>
+<td><code>VideoMpg2High</code></td>
+<td>MPEG-2 video (private code 128). Reported as <code>"MPG2"</code> by <a href="./#mpegdemultiplexer"><code>MpegDemultiplexer.GetVideoStreamProperties</code></a>.</td>
+</tr>
+<tr>
+<td><code>VideoVC1</code></td>
+<td>VC-1 video, code 234.</td>
+</tr>
+<tr>
+<td><code>WindowsMediaVideo9</code></td>
+<td>Windows Media Video 9, code 235.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="mpegframetype">MpegFrameType<a class="headerlink" href="#mpegframetype" title="Permanent link">&para;</a></h2>
+<p><code>enum Microsoft.Xbox.Media.Mpeg.MpegFrameType</code></p>
+<p>How a video sample depends on other frames.</p>
+<p><strong>Values</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Depend</code></td>
+<td>A predicted frame (P-frame) that depends on an earlier frame.</td>
+</tr>
+<tr>
+<td><code>DependAndDepend</code></td>
+<td>A bidirectionally predicted frame (B-frame) that depends on earlier and later frames.</td>
+</tr>
+<tr>
+<td><code>NoDepend</code></td>
+<td>An intra-coded frame (I-frame) that does not depend on other frames; a valid seek or start point.</td>
+</tr>
+<tr>
+<td><code>Unknown</code></td>
+<td>The frame type is not known (for example, for audio samples).</td>
+</tr>
+</tbody>
+</table>
+<h2 id="mpegsampleproperty">MpegSampleProperty<a class="headerlink" href="#mpegsampleproperty" title="Permanent link">&para;</a></h2>
+<p><code>enum Microsoft.Xbox.Media.Mpeg.MpegSampleProperty</code></p>
+<p>Flags attached to a demultiplexed sample.</p>
+<p><strong>Values</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Discontinuity</code></td>
+<td>The sample follows a break in the stream (for example, after a seek or lost data); timestamps may jump.</td>
+</tr>
+<tr>
+<td><code>None</code></td>
+<td>No special condition.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="mpegstreamsample">MpegStreamSample<a class="headerlink" href="#mpegstreamsample" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.Media.Mpeg.MpegStreamSample</code></p>
+<p>One demultiplexed elementary-stream sample (an access unit) with its timing information.</p>
+<p><strong>Constructors</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MpegStreamSample()</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Microsoft.Xbox.Media.Mpeg.MpegElementaryStreamType ElementaryStreamType { get; }</code></td>
+<td>Gets the coding of the stream the sample came from.</td>
+</tr>
+<tr>
+<td><code>Microsoft.Xbox.Media.Mpeg.MpegFrameType FrameType { get; }</code></td>
+<td>Gets how the sample depends on other frames. Use it to find key frames.</td>
+</tr>
+<tr>
+<td><code>Microsoft.Xbox.Media.Mpeg.MpegSampleProperty SampleAttributes { get; }</code></td>
+<td>Gets flags for the sample, such as a discontinuity.</td>
+</tr>
+<tr>
+<td><code>System.Int32 SampleDataSize { get; }</code></td>
+<td>Gets the number of bytes of sample data.</td>
+</tr>
+<tr>
+<td><code>System.Int32 SampleDuration { get; }</code></td>
+<td>Gets the duration of the sample, as reported by the native demultiplexer.</td>
+</tr>
+<tr>
+<td><code>System.Int64 PresentationTime { get; }</code></td>
+<td>Gets the presentation timestamp (PTS) of the sample, as reported by the native demultiplexer.</td>
+</tr>
+<tr>
+<td><code>System.Int64 StreamTime { get; }</code></td>
+<td>Gets the decoding timestamp (DTS) of the sample, as reported by the native demultiplexer.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Byte[] GetBuffer()</code></td>
+<td>Gets the sample data.</td>
+</tr>
+<tr>
+<td><code>System.Void Dispose()</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="mpegstreamsnotinitializedexception">MpegStreamsNotInitializedException<a class="headerlink" href="#mpegstreamsnotinitializedexception" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.Media.Mpeg.MpegStreamsNotInitializedException</code></p>
+<p>The exception thrown when an <a href="./#mpegdemultiplexer"><code>MpegDemultiplexer</code></a> method needs the stream layout before enough input has been processed. Keep calling <a href="./#mpegdemultiplexer"><code>MpegDemultiplexer.ProcessInput</code></a> and retry.</p>
+<p><strong>Constructors</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MpegStreamsNotInitializedException()</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>MpegStreamsNotInitializedException(System.String message)</code></td>
+<td>Initializes a new instance with the specified error message.</td>
+</tr>
+<tr>
+<td><code>MpegStreamsNotInitializedException(System.String message, System.Exception innerException)</code></td>
+<td>Initializes a new instance with the specified error message and inner exception.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="mpegstreamtype">MpegStreamType<a class="headerlink" href="#mpegstreamtype" title="Permanent link">&para;</a></h2>
+<p><code>enum Microsoft.Xbox.Media.Mpeg.MpegStreamType</code></p>
+<p>Kinds of elementary streams, used to look up stream IDs with <a href="./#mpegdemultiplexer"><code>MpegDemultiplexer.GetStreamIdAtIndex</code></a>.</p>
+<p><strong>Values</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Audio</code></td>
+<td>An audio stream.</td>
+</tr>
+<tr>
+<td><code>ClosedCaption</code></td>
+<td>A closed-caption stream.</td>
+</tr>
+<tr>
+<td><code>PlayReadyProtected</code></td>
+<td>A stream protected with PlayReady encryption.</td>
+</tr>
+<tr>
+<td><code>Unknown</code></td>
+<td>Any other or unrecognized stream.</td>
+</tr>
+<tr>
+<td><code>Video</code></td>
+<td>A video stream.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="mpegvideostreamkey">MpegVideoStreamKey<a class="headerlink" href="#mpegvideostreamkey" title="Permanent link">&para;</a></h2>
+<p><code>enum Microsoft.Xbox.Media.Mpeg.MpegVideoStreamKey</code></p>
+<p>Keys of the dictionary returned by <a href="./#mpegdemultiplexer"><code>MpegDemultiplexer.GetVideoStreamProperties</code></a>.</p>
+<p><strong>Values</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Codec</code></td>
+<td>The codec: <code>"H264"</code> or <code>"MPG2"</code>.</td>
+</tr>
+<tr>
+<td><code>Height</code></td>
+<td>The frame height, in pixels.</td>
+</tr>
+<tr>
+<td><code>Width</code></td>
+<td>The frame width, in pixels.</td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../Microsoft.Xbox.Input/" class="btn btn-neutral float-left" title="Microsoft.Xbox.Input"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Microsoft.Xbox.Media/" class="btn btn-neutral float-right" title="Microsoft.Xbox.Media">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>Silverlight360 is licensed under the PolyForm Noncommercial License 1.0.0 with an additional condition. Xbox, Xbox 360 and Silverlight are trademarks of Microsoft.</p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/Digiex/Silverlight360" class="fa fa-code-fork" style="color: #fcfcfc"> Digiex/Silverlight360</a>
+        </span>
+    
+    
+      <span><a href="../Microsoft.Xbox.Input/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../Microsoft.Xbox.Media/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

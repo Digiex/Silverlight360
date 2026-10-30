@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://digiex.github.io/Silverlight360/samples/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Samples - Silverlight360</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Samples";
+        var mkdocs_page_input_path = "samples.md";
+        var mkdocs_page_url = "/Silverlight360/samples/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/powershell.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/csharp.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/xml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Silverlight360
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../getting-started/">Getting started</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../project-setup/">Projects and Visual Studio</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../app-model/">App model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../input-and-focus/">Input and focus</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../controls/">Xbox controls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../networking/">Networking</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../storage/">Storage</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../media/">Media</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../gamer-services/">Gamer services</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../native-code/">Native code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../testing/">Testing in xenia</a>
+                  </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Samples</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#ui-samples">UI samples</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#application-samples">Application samples</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#earlier-samples">Earlier samples</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#screenshots">Screenshots</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../xenia-status/">Status under xenia</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../runtime-inventory/">Runtime inventory</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">API reference</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/MS.Internal/">MS.Internal</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Controls.Primitives/">Microsoft.Xbox.Controls.Primitives</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Controls/">Microsoft.Xbox.Controls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Core/">Microsoft.Xbox.Core</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Input/">Microsoft.Xbox.Input</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Media.Mpeg/">Microsoft.Xbox.Media.Mpeg</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Media/">Microsoft.Xbox.Media</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Net/">Microsoft.Xbox.Net</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Security.XAuth/">Microsoft.Xbox.Security.XAuth</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Services/">Microsoft.Xbox.Services</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Transitions/">Microsoft.Xbox.Transitions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox/">Microsoft.Xbox</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xna.Framework.GamerServices.ContentRating.Level/">Microsoft.Xna.Framework.GamerServices.ContentRating.Level</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xna.Framework.GamerServices.ContentRating.System/">Microsoft.Xna.Framework.GamerServices.ContentRating.System</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xna.Framework.GamerServices.ContentRating/">Microsoft.Xna.Framework.GamerServices.ContentRating</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xna.Framework.GamerServices/">Microsoft.Xna.Framework.GamerServices</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xna.Framework.Storage/">Microsoft.Xna.Framework.Storage</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/System.Reflection.ReflectionPermissionFrame/">System.Reflection.ReflectionPermissionFrame</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/System.Reflection/">System.Reflection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/System.Windows.Controls/">System.Windows.Controls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/System.Windows.Input/">System.Windows.Input</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/System.Windows.Media/">System.Windows.Media</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/System.Windows/">System.Windows</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Silverlight360</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Samples</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/Digiex/Silverlight360/edit/master/docs/samples.md">Edit on Digiex/Silverlight360</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="samples">Samples<a class="headerlink" href="#samples" title="Permanent link">&para;</a></h1>
+<p>Build any sample with <code>tools\Build-XboxApp.ps1 -Project &lt;csproj&gt;</code> and run its <code>bin\Release\xbox\default.xex</code> in xenia. Code shared by several samples is in <code>samples\Common</code>: <code>ServerClient</code> (HTTP), <code>DirectionalFocus</code> (D-pad focus movement) and <code>DebugLog</code> (debug output to xenia's log; see <a href="../testing/#debug-output">Testing</a>).</p>
+<h2 id="ui-samples">UI samples<a class="headerlink" href="#ui-samples" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Sample</th>
+<th>Shows</th>
+<th>Tested in xenia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/Digiex/Silverlight360/tree/master/samples/ui/GamepadInput">ui\GamepadInput</a></td>
+<td>Every controller event live: button down/up, both sticks, both triggers, how bubbling and <code>Handled</code> work, <code>Application.Shutdown</code> on Back+Start.</td>
+<td>Y, X, D-pad, RB, left stick and left trigger events shown live.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Digiex/Silverlight360/tree/master/samples/ui/FocusNavigation">ui\FocusNavigation</a></td>
+<td>Focus on a grid of tiles: a focused-state template, A clicking the focused <code>Button</code>, D-pad and stick movement with <code>DirectionalFocus</code>, disabled and non-tab-stop controls skipped, unused buttons bubbling to the page.</td>
+<td>D-pad and stick moved focus across the grid, including onto the wide tile; A clicked.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Digiex/Silverlight360/tree/master/samples/ui/XboxControls">ui\XboxControls</a></td>
+<td><code>Pivot</code> sections switched with LB/RB and built-in grid navigation, a <code>Rune</code> for text entry, a <code>Legend</code> following the focused control.</td>
+<td>Focus moved by the PivotItem; RB switched sections; the Rune typed "bc"; the Legend changed with focus.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Digiex/Silverlight360/tree/master/samples/ui/PageNavigation">ui\PageNavigation</a></td>
+<td><code>XboxApplicationFrame</code> with <code>XboxApplicationPage</code>s, query-string parameters, staggered transitions, B for back, going back to the first page.</td>
+<td>Opened a page, went one deeper, B went back; four pages deep, "Back to the start" unwound to the home page and the home buttons still opened pages.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="application-samples">Application samples<a class="headerlink" href="#application-samples" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Sample</th>
+<th>Shows</th>
+<th>Tested in xenia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/Digiex/Silverlight360/tree/master/samples/apps/CatalogBrowser">apps\CatalogBrowser</a></td>
+<td>A streaming-style catalog: an XML catalog from a server, a <code>Pivot</code> per category built in code, posters cached on the cache drive, a detail page, favourites saved in a storage container (Y toggles them), the signed-in gamertag, a <code>Legend</code>. Needs the test server.</td>
+<td>Catalog and posters loaded; gamertag shown; Y added a favourite and the detail page saw it; posters came from the cache drive on later loads; B went back; RB switched categories.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Digiex/Silverlight360/tree/master/samples/apps/MediaPlayer">apps\MediaPlayer</a></td>
+<td>A media list and a player page with <code>MediaTransport</code> around a <code>MediaElement</code>: <code>MediaAssetId</code>, focus, the <code>Back</code> event, stopping on leaving, state changes and failures logged with <code>DebugLog</code>. Lists files packaged in its <code>Media</code> folder (played from a URI relative to the XAP) and files from the test server's <code>samples\TestServer\media</code>.</td>
+<td>List, player page, transport bar and back work; WMA plays from the package and the server. With the codec loader and the console's codec module (see <a href="../media/">Media</a>), packaged WMV and MP3 play too; MP4 plays with a garbled picture.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="earlier-samples">Earlier samples<a class="headerlink" href="#earlier-samples" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Sample</th>
+<th>Shows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/Digiex/Silverlight360/tree/master/samples/HelloXbox">HelloXbox</a></td>
+<td>The smallest app: XAML, A on the controller, HTTP GET and POST to the test server, a <code>DebugLog</code> line at startup.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Digiex/Silverlight360/tree/master/samples/NativeProbe">NativeProbe</a></td>
+<td><code>DllImport</code> into xam and the kernel by ordinal.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Digiex/Silverlight360/tree/master/samples/PlatformCalls">PlatformCalls</a></td>
+<td>A storage container, the cache drive and <code>MediaTransport</code> commands, each reporting OK or the error. Written to test the xenia fixes for them.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="screenshots">Screenshots<a class="headerlink" href="#screenshots" title="Permanent link">&para;</a></h2>
+<p>All taken in xenia-edge.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="HelloXbox" src="../images/samples/hello-xbox.png" /></td>
+<td><img alt="GamepadInput" src="../images/samples/gamepad-input.png" /></td>
+</tr>
+<tr>
+<td><strong>HelloXbox</strong></td>
+<td><strong>GamepadInput</strong></td>
+</tr>
+<tr>
+<td><img alt="FocusNavigation" src="../images/samples/focus-navigation.png" /></td>
+<td><img alt="XboxControls" src="../images/samples/xbox-controls.png" /></td>
+</tr>
+<tr>
+<td><strong>FocusNavigation</strong></td>
+<td><strong>XboxControls</strong></td>
+</tr>
+<tr>
+<td><img alt="PageNavigation" src="../images/samples/page-navigation.png" /></td>
+<td><img alt="CatalogBrowser" src="../images/samples/catalog-browser.png" /></td>
+</tr>
+<tr>
+<td><strong>PageNavigation</strong></td>
+<td><strong>CatalogBrowser</strong></td>
+</tr>
+<tr>
+<td><img alt="MediaPlayer list" src="../images/samples/media-player-list.png" /></td>
+<td><img alt="MediaPlayer playing a WMV" src="../images/samples/media-player.png" /></td>
+</tr>
+<tr>
+<td><strong>MediaPlayer</strong>, the list</td>
+<td><strong>MediaPlayer</strong>, a WMV playing</td>
+</tr>
+<tr>
+<td><img alt="PlatformCalls" src="../images/samples/platform-calls.png" /></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>PlatformCalls</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../testing/" class="btn btn-neutral float-left" title="Testing in xenia"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../xenia-status/" class="btn btn-neutral float-right" title="Status under xenia">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>Silverlight360 is licensed under the PolyForm Noncommercial License 1.0.0 with an additional condition. Xbox, Xbox 360 and Silverlight are trademarks of Microsoft.</p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/Digiex/Silverlight360" class="fa fa-code-fork" style="color: #fcfcfc"> Digiex/Silverlight360</a>
+        </span>
+    
+    
+      <span><a href="../testing/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../xenia-status/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

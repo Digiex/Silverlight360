@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://digiex.github.io/Silverlight360/gamer-services/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Gamer services - Silverlight360</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Gamer services";
+        var mkdocs_page_input_path = "gamer-services.md";
+        var mkdocs_page_url = "/Silverlight360/gamer-services/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/powershell.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/csharp.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/xml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Silverlight360
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../getting-started/">Getting started</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../project-setup/">Projects and Visual Studio</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../app-model/">App model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../input-and-focus/">Input and focus</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../controls/">Xbox controls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../networking/">Networking</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../storage/">Storage</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../media/">Media</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Gamer services</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#starting-it">Starting it</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#the-signed-in-gamer">The signed-in gamer</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#system-screens">System screens</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#threading-and-async-calls">Threading and async calls</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#what-needs-xbox-live">What needs Xbox LIVE</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#parental-controls">Parental controls</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../native-code/">Native code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../testing/">Testing in xenia</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../samples/">Samples</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../xenia-status/">Status under xenia</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../runtime-inventory/">Runtime inventory</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">API reference</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/MS.Internal/">MS.Internal</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Controls.Primitives/">Microsoft.Xbox.Controls.Primitives</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Controls/">Microsoft.Xbox.Controls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Core/">Microsoft.Xbox.Core</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Input/">Microsoft.Xbox.Input</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Media.Mpeg/">Microsoft.Xbox.Media.Mpeg</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Media/">Microsoft.Xbox.Media</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Net/">Microsoft.Xbox.Net</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Security.XAuth/">Microsoft.Xbox.Security.XAuth</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Services/">Microsoft.Xbox.Services</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Transitions/">Microsoft.Xbox.Transitions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox/">Microsoft.Xbox</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xna.Framework.GamerServices.ContentRating.Level/">Microsoft.Xna.Framework.GamerServices.ContentRating.Level</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xna.Framework.GamerServices.ContentRating.System/">Microsoft.Xna.Framework.GamerServices.ContentRating.System</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xna.Framework.GamerServices.ContentRating/">Microsoft.Xna.Framework.GamerServices.ContentRating</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xna.Framework.GamerServices/">Microsoft.Xna.Framework.GamerServices</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xna.Framework.Storage/">Microsoft.Xna.Framework.Storage</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/System.Reflection.ReflectionPermissionFrame/">System.Reflection.ReflectionPermissionFrame</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/System.Reflection/">System.Reflection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/System.Windows.Controls/">System.Windows.Controls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/System.Windows.Input/">System.Windows.Input</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/System.Windows.Media/">System.Windows.Media</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/System.Windows/">System.Windows</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Silverlight360</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Guides</li>
+      <li class="breadcrumb-item active">Gamer services</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/Digiex/Silverlight360/edit/master/docs/gamer-services.md">Edit on Digiex/Silverlight360</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="gamer-services">Gamer services<a class="headerlink" href="#gamer-services" title="Permanent link">&para;</a></h1>
+<p><code>Microsoft.Xbox.Services</code> is the platform's build of XNA gamer services (<code>Microsoft.Xna.Framework.GamerServices</code>), with Xbox additions for Kinect versions of the system screens, social networks, presence and parental ratings.</p>
+<h2 id="starting-it">Starting it<a class="headerlink" href="#starting-it" title="Permanent link">&para;</a></h2>
+<p>GamerServices has to be initialized, then pumped regularly. <code>XboxApplicationFrame</code> does both; without it, see <a href="../app-model/#xboxapplicationframe">App model</a>. Sign-in changes, <code>SignedIn</code> and <code>SignedOut</code>, and <code>Guide.IsVisible</code> only update while it's pumped, and presence changes are only sent then.</p>
+<h2 id="the-signed-in-gamer">The signed-in gamer<a class="headerlink" href="#the-signed-in-gamer" title="Permanent link">&para;</a></h2>
+<pre><code class="language-csharp">SignedInGamer gamer = Gamer.SignedInGamers.Count &gt; 0 ? Gamer.SignedInGamers[0] : null;
+GamerText.Text = gamer != null ? &quot;Signed in as &quot; + gamer.Gamertag : &quot;Not signed in&quot;;
+</code></pre>
+<p><code>samples\apps\CatalogBrowser</code> shows the gamertag. Under xenia it's the emulator's profile name.</p>
+<h2 id="system-screens">System screens<a class="headerlink" href="#system-screens" title="Permanent link">&para;</a></h2>
+<p>The XNA <code>Guide</code> methods, plus <code>SignedInGamer.ShowFriends</code>, <code>ShowGamerCard</code>, <code>ShowComposeMessage</code>, <code>ShowParty</code> and others, open the console's own screens. A few points:</p>
+<ul>
+<li><strong>One at a time:</strong> only one system screen can be open; opening another throws <code>GuideAlreadyVisibleException</code>.</li>
+<li><strong>Kinect versions:</strong> overloads that take a <code>trackingId</code> show the Kinect version of the screen for that tracked user. <code>NuiGuide</code> has the Kinect-required, controller-required and troubleshooting screens.</li>
+<li><strong>Text limits:</strong> message boxes take 1 to 3 buttons, and titles, text and keyboard fields must be under 256 characters.</li>
+</ul>
+<p>Under xenia, most of these screens aren't implemented: the calls return without showing anything.</p>
+<h2 id="threading-and-async-calls">Threading and async calls<a class="headerlink" href="#threading-and-async-calls" title="Permanent link">&para;</a></h2>
+<p>Completion callbacks of the <code>Begin...</code>/<code>End...</code> methods and of the <code>...Async</code> events run on thread-pool threads, so use <code>Dispatcher.BeginInvoke</code> for UI. Many of the events are static and pass <code>sender</code> as null; use the <code>userState</code> argument to tell your requests apart.</p>
+<h2 id="what-needs-xbox-live">What needs Xbox LIVE<a class="headerlink" href="#what-needs-xbox-live" title="Permanent link">&para;</a></h2>
+<p>Marketplace, purchase receipts, social network tokens and XAuth tokens need an Xbox LIVE sign-in, which isn't available, so they fail. Missing sign-in or privileges throws <code>GamerPrivilegeException</code>. <code>PresenceModeString</code> must be a mode defined in the title's LIVE configuration, or it throws <code>ArgumentException</code>.</p>
+<h2 id="parental-controls">Parental controls<a class="headerlink" href="#parental-controls" title="Permanent link">&para;</a></h2>
+<p><code>ContentRating</code> with <code>CanAccess</code>/<code>CanAccessAsync</code>, and <code>SignedInGamer.GetRating</code>, check content against the console's family settings.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../media/" class="btn btn-neutral float-left" title="Media"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../native-code/" class="btn btn-neutral float-right" title="Native code">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>Silverlight360 is licensed under the PolyForm Noncommercial License 1.0.0 with an additional condition. Xbox, Xbox 360 and Silverlight are trademarks of Microsoft.</p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/Digiex/Silverlight360" class="fa fa-code-fork" style="color: #fcfcfc"> Digiex/Silverlight360</a>
+        </span>
+    
+    
+      <span><a href="../media/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../native-code/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

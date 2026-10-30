@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://digiex.github.io/Silverlight360/reference/Microsoft.Xbox.Input/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Microsoft.Xbox.Input - Silverlight360</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Microsoft.Xbox.Input";
+        var mkdocs_page_input_path = "reference\\Microsoft.Xbox.Input.md";
+        var mkdocs_page_url = "/Silverlight360/reference/Microsoft.Xbox.Input/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/powershell.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/csharp.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/xml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Silverlight360
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../getting-started/">Getting started</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../project-setup/">Projects and Visual Studio</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../app-model/">App model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../input-and-focus/">Input and focus</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../controls/">Xbox controls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../networking/">Networking</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../storage/">Storage</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../media/">Media</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../gamer-services/">Gamer services</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../native-code/">Native code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../testing/">Testing in xenia</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../samples/">Samples</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../xenia-status/">Status under xenia</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../runtime-inventory/">Runtime inventory</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">API reference</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../MS.Internal/">MS.Internal</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Controls.Primitives/">Microsoft.Xbox.Controls.Primitives</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Controls/">Microsoft.Xbox.Controls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Core/">Microsoft.Xbox.Core</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Microsoft.Xbox.Input</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#gridfocushelper">GridFocusHelper</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#inputmodality">InputModality</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#inputmodalitychangedeventargs">InputModalityChangedEventArgs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#kinect">Kinect</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#kinectbindingchangedeventargs">KinectBindingChangedEventArgs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#kinectdevicestatus">KinectDeviceStatus</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#kinectdevicestatuschangedeventargs">KinectDeviceStatusChangedEventArgs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#kinectsystemgestureinvokedeventargs">KinectSystemGestureInvokedEventArgs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#kinecttrackedskeletoncountchangedeventargs">KinectTrackedSkeletonCountChangedEventArgs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#kinectuserengagedeventargs">KinectUserEngagedEventArgs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#kinectusereventargs">KinectUserEventArgs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#kinectuseridentificationqualityflags">KinectUserIdentificationQualityFlags</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#kinectuseridentificationupdateeventargs">KinectUserIdentificationUpdateEventArgs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#kinectuseridentifiedeventargs">KinectUserIdentifiedEventArgs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#kinectwaveprogresschangedeventargs">KinectWaveProgressChangedEventArgs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#runetileactivationeventargs">RuneTileActivationEventArgs</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Media.Mpeg/">Microsoft.Xbox.Media.Mpeg</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Media/">Microsoft.Xbox.Media</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Net/">Microsoft.Xbox.Net</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Security.XAuth/">Microsoft.Xbox.Security.XAuth</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Services/">Microsoft.Xbox.Services</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Transitions/">Microsoft.Xbox.Transitions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox/">Microsoft.Xbox</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xna.Framework.GamerServices.ContentRating.Level/">Microsoft.Xna.Framework.GamerServices.ContentRating.Level</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xna.Framework.GamerServices.ContentRating.System/">Microsoft.Xna.Framework.GamerServices.ContentRating.System</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xna.Framework.GamerServices.ContentRating/">Microsoft.Xna.Framework.GamerServices.ContentRating</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xna.Framework.GamerServices/">Microsoft.Xna.Framework.GamerServices</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xna.Framework.Storage/">Microsoft.Xna.Framework.Storage</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Reflection.ReflectionPermissionFrame/">System.Reflection.ReflectionPermissionFrame</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Reflection/">System.Reflection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Windows.Controls/">System.Windows.Controls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Windows.Input/">System.Windows.Input</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Windows.Media/">System.Windows.Media</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Windows/">System.Windows</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Silverlight360</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">API reference</li>
+      <li class="breadcrumb-item active">Microsoft.Xbox.Input</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/Digiex/Silverlight360/edit/master/docs/reference/Microsoft.Xbox.Input.md">Edit on Digiex/Silverlight360</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="microsoftxboxinput">Microsoft.Xbox.Input<a class="headerlink" href="#microsoftxboxinput" title="Permanent link">&para;</a></h1>
+<p>Assembly: <code>Microsoft.Xbox.dll</code></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Summary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#gridfocushelper"><code>GridFocusHelper</code></a></td>
+<td>Moves keyboard focus between the cells of a <code>Grid</code> in response to the controller's D-pad and thumbstick (arrow keys).</td>
+</tr>
+<tr>
+<td><a href="#inputmodality"><code>InputModality</code></a></td>
+<td>Identifies how the user is currently driving the application.</td>
+</tr>
+<tr>
+<td><a href="#inputmodalitychangedeventargs"><code>InputModalityChangedEventArgs</code></a></td>
+<td>Provides data for the <a href="./#kinect"><code>Kinect.InputModalityChanged</code></a> event.</td>
+</tr>
+<tr>
+<td><a href="#kinect"><code>Kinect</code></a></td>
+<td>Reports Kinect sensor status, user engagement and identification, and switches between controller and gesture input.</td>
+</tr>
+<tr>
+<td><a href="#kinectbindingchangedeventargs"><code>KinectBindingChangedEventArgs</code></a></td>
+<td>Provides data for a change in which signed-in user a Kinect user is bound to. No public event in this version raises it.</td>
+</tr>
+<tr>
+<td><a href="#kinectdevicestatus"><code>KinectDeviceStatus</code></a></td>
+<td>Describes the state of the Kinect sensor.</td>
+</tr>
+<tr>
+<td><a href="#kinectdevicestatuschangedeventargs"><code>KinectDeviceStatusChangedEventArgs</code></a></td>
+<td>Provides data for the <a href="./#kinect"><code>Kinect.DeviceStatusChanged</code></a> event.</td>
+</tr>
+<tr>
+<td><a href="#kinectsystemgestureinvokedeventargs"><code>KinectSystemGestureInvokedEventArgs</code></a></td>
+<td>Provides data for the <a href="./#kinect"><code>Kinect.SystemGestureInvoked</code></a> event.</td>
+</tr>
+<tr>
+<td><a href="#kinecttrackedskeletoncountchangedeventargs"><code>KinectTrackedSkeletonCountChangedEventArgs</code></a></td>
+<td>Provides data for the <a href="./#kinect"><code>Kinect.TrackedSkeletonCountChanged</code></a> event.</td>
+</tr>
+<tr>
+<td><a href="#kinectuserengagedeventargs"><code>KinectUserEngagedEventArgs</code></a></td>
+<td>Provides data for the <a href="./#kinect"><code>Kinect.UserEngaged</code></a> event. A <code>TrackingId</code> of <a href="./#kinect"><code>Kinect.InvalidTrackingId</code></a> means no user is engaged.</td>
+</tr>
+<tr>
+<td><a href="#kinectusereventargs"><code>KinectUserEventArgs</code></a></td>
+<td>Base class for Kinect event data that refers to a tracked user.</td>
+</tr>
+<tr>
+<td><a href="#kinectuseridentificationqualityflags"><code>KinectUserIdentificationQualityFlags</code></a></td>
+<td>Conditions that prevent the Kinect sensor from identifying a user. Several flags can be set at once.</td>
+</tr>
+<tr>
+<td><a href="#kinectuseridentificationupdateeventargs"><code>KinectUserIdentificationUpdateEventArgs</code></a></td>
+<td>Provides data for the <a href="./#kinect"><code>Kinect.UserIdentificationUpdate</code></a> event.</td>
+</tr>
+<tr>
+<td><a href="#kinectuseridentifiedeventargs"><code>KinectUserIdentifiedEventArgs</code></a></td>
+<td>Provides data for the <a href="./#kinect"><code>Kinect.UserIdentified</code></a> event. <a href="./#kinectusereventargs"><code>KinectUserEventArgs.UserInformation</code></a> carries both the tracking ID and the player index.</td>
+</tr>
+<tr>
+<td><a href="#kinectwaveprogresschangedeventargs"><code>KinectWaveProgressChangedEventArgs</code></a></td>
+<td>Provides data for the <a href="./#kinect"><code>Kinect.WaveProgressChanged</code></a> event.</td>
+</tr>
+<tr>
+<td><a href="#runetileactivationeventargs"><code>RuneTileActivationEventArgs</code></a></td>
+<td>Provides data when a key tile of the on-screen keyboard (<code>Rune</code>) control is activated.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="gridfocushelper">GridFocusHelper<a class="headerlink" href="#gridfocushelper" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.Input.GridFocusHelper</code></p>
+<p>Moves keyboard focus between the cells of a <code>Grid</code> in response to the controller's D-pad and thumbstick (arrow keys).</p>
+<p>The easiest way to use it is to set the <code>GridFocusHelper.IsFocusTarget</code> attached property to <code>true</code> on a <code>Grid</code> in XAML. On each unhandled arrow key the helper picks the nearest child in that direction, using the children's <code>Grid.Row</code>, <code>Grid.Column</code> and span values rather than their pixel positions, and focuses the first visible, enabled tab stop inside it (breadth-first). Call <a href="./#gridfocushelper"><code>GridFocusHelper.Dispose</code></a> or set the property to <code>false</code> to detach.</p>
+<p><strong>Constructors</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GridFocusHelper(System.Windows.Controls.Grid target)</code></td>
+<td>Creates a helper and attaches it to the specified grid, which also sets <code>IsFocusTarget</code> to <code>true</code> on that grid.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Void Dispose()</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>System.Windows.Controls.Control GetFocusableChild(System.Windows.FrameworkElement directChild)</code></td>
+<td>Returns the control that should receive focus when navigation lands on a direct child of the grid. Override this in a derived class to redirect focus to a specific control within a cell.</td>
+</tr>
+<tr>
+<td><code>static System.Boolean GetIsFocusTarget(System.Windows.Controls.Grid g)</code></td>
+<td>Gets whether a <a href="./#gridfocushelper"><code>GridFocusHelper</code></a> is attached to the specified grid.</td>
+</tr>
+<tr>
+<td><code>static System.Void SetIsFocusTarget(System.Windows.Controls.Grid g, System.Boolean value)</code></td>
+<td>Enables or disables directional focus navigation on the specified grid.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Fields</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>static System.Windows.DependencyProperty IsFocusTargetProperty</code></td>
+<td>Identifies the <code>GridFocusHelper.IsFocusTarget</code> attached property. Setting it to <code>true</code> on a <code>Grid</code> creates and attaches a <a href="./#gridfocushelper"><code>GridFocusHelper</code></a>; setting it to <code>false</code> disposes it. The default is <code>false</code>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="inputmodality">InputModality<a class="headerlink" href="#inputmodality" title="Permanent link">&para;</a></h2>
+<p><code>enum Microsoft.Xbox.Input.InputModality</code></p>
+<p>Identifies how the user is currently driving the application.</p>
+<p><strong>Values</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Controller</code></td>
+<td>The user is using a controller or remote. This is also the value at design time.</td>
+</tr>
+<tr>
+<td><code>Gesture</code></td>
+<td>The user is using Kinect gestures (hand cursor).</td>
+</tr>
+</tbody>
+</table>
+<h2 id="inputmodalitychangedeventargs">InputModalityChangedEventArgs<a class="headerlink" href="#inputmodalitychangedeventargs" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.Input.InputModalityChangedEventArgs</code></p>
+<p>Provides data for the <a href="./#kinect"><code>Kinect.InputModalityChanged</code></a> event.</p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Microsoft.Xbox.Input.InputModality InputModality { get; }</code></td>
+<td>Gets the input modality that is now active.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="kinect">Kinect<a class="headerlink" href="#kinect" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.Input.Kinect</code></p>
+<p>Reports Kinect sensor status, user engagement and identification, and switches between controller and gesture input.</p>
+<p>Requires a Kinect sensor for anything other than status queries. The first access to any member registers for sensor notifications and reads the initial <a href="./#kinect"><code>Kinect.DeviceStatus</code></a>, engaged user and tracked skeleton count, so touch the class early (for example, read <a href="./#kinect"><code>Kinect.DeviceStatus</code></a> at startup) if you rely on its events. Event handlers are invoked directly from the runtime's notification; they are not re-posted through a <code>Dispatcher</code>.</p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>static Microsoft.Xbox.Input.InputModality CurrentInputModality { get; }</code></td>
+<td>Gets whether the user is currently using the controller or Kinect gestures. Queried from the console each time; returns <a href="./#inputmodality"><code>InputModality.Controller</code></a> at design time.</td>
+</tr>
+<tr>
+<td><code>static Microsoft.Xbox.Input.KinectDeviceStatus DeviceStatus { get; }</code></td>
+<td>Gets the most recently reported state of the Kinect sensor. Updated before <a href="./#kinect"><code>Kinect.DeviceStatusChanged</code></a> is raised.</td>
+</tr>
+<tr>
+<td><code>static System.Int32 TrackedSkeletonCount { get; }</code></td>
+<td>Gets the number of skeletons the Kinect sensor is currently tracking. Updated before <a href="./#kinect"><code>Kinect.TrackedSkeletonCountChanged</code></a> is raised.</td>
+</tr>
+<tr>
+<td><code>static System.Windows.Input.UserInformation EngagedUserInformation { get; }</code></td>
+<td>Gets the tracking ID and player index of the user currently engaged with the Kinect sensor. The same object is updated in place as engagement and identification change.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>static System.Void ForceDisengage()</code></td>
+<td>Disengages the current Kinect user, so that a user has to engage again (for example, by waving) before gesture input resumes. Throws if the console reports a failure.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Events</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>event System.EventHandler&lt;Microsoft.Xbox.Input.InputModalityChangedEventArgs&gt; InputModalityChanged</code></td>
+<td>Occurs when the user switches between controller and Kinect gesture input.</td>
+</tr>
+<tr>
+<td><code>event System.EventHandler&lt;Microsoft.Xbox.Input.KinectDeviceStatusChangedEventArgs&gt; DeviceStatusChanged</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>event System.EventHandler&lt;Microsoft.Xbox.Input.KinectSystemGestureInvokedEventArgs&gt; SystemGestureInvoked</code></td>
+<td>Occurs when a Kinect user performs the console's reserved system gesture.</td>
+</tr>
+<tr>
+<td><code>event System.EventHandler&lt;Microsoft.Xbox.Input.KinectTrackedSkeletonCountChangedEventArgs&gt; TrackedSkeletonCountChanged</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>event System.EventHandler&lt;Microsoft.Xbox.Input.KinectUserEngagedEventArgs&gt; UserEngaged</code></td>
+<td>Occurs when a user engages with or disengages from the Kinect sensor. A tracking ID of <a href="./#kinect"><code>Kinect.InvalidTrackingId</code></a> means the engaged user disengaged. <a href="./#kinect"><code>Kinect.EngagedUserInformation</code></a> is updated before the event is raised, and the engage or disengage system sound plays if <a href="../Microsoft.Xbox.Media/#sounds"><code>Sounds.IsEnabled</code></a> is <code>true</code>.</td>
+</tr>
+<tr>
+<td><code>event System.EventHandler&lt;Microsoft.Xbox.Input.KinectUserIdentificationUpdateEventArgs&gt; UserIdentificationUpdate</code></td>
+<td>Occurs while the sensor is trying to identify an engaged user, reporting conditions that prevent recognition (lighting, position, occlusion) so the application can guide the user.</td>
+</tr>
+<tr>
+<td><code>event System.EventHandler&lt;Microsoft.Xbox.Input.KinectUserIdentifiedEventArgs&gt; UserIdentified</code></td>
+<td>Occurs when an engaged Kinect user has been matched to a signed-in profile. <a href="./#kinect"><code>Kinect.EngagedUserInformation</code></a> is updated with the player index before the event is raised.</td>
+</tr>
+<tr>
+<td><code>event System.EventHandler&lt;Microsoft.Xbox.Input.KinectWaveProgressChangedEventArgs&gt; WaveProgressChanged</code></td>
+<td>Occurs repeatedly while a user performs the engagement wave, reporting how far the wave has progressed.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Fields</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>const System.Int32 InvalidTrackingId</code></td>
+<td>The tracking ID (0) that means no Kinect skeleton, for example when no user is engaged.</td>
+</tr>
+<tr>
+<td><code>const System.Int32 NoUserIndex</code></td>
+<td>The player index (254) used when a tracked Kinect user has not been matched to a signed-in profile.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="kinectbindingchangedeventargs">KinectBindingChangedEventArgs<a class="headerlink" href="#kinectbindingchangedeventargs" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.Input.KinectBindingChangedEventArgs</code></p>
+<p>Provides data for a change in which signed-in user a Kinect user is bound to. No public event in this version raises it.</p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Int32 UserIndex { get; }</code></td>
+<td>Gets the player index whose binding changed.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="kinectdevicestatus">KinectDeviceStatus<a class="headerlink" href="#kinectdevicestatus" title="Permanent link">&para;</a></h2>
+<p><code>enum Microsoft.Xbox.Input.KinectDeviceStatus</code></p>
+<p>Describes the state of the Kinect sensor.</p>
+<p><strong>Values</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Connected</code></td>
+<td>The sensor is plugged in but not yet ready for use.</td>
+</tr>
+<tr>
+<td><code>Disconnected</code></td>
+<td>No sensor is connected.</td>
+</tr>
+<tr>
+<td><code>Error</code></td>
+<td>The sensor is connected but has reported an error.</td>
+</tr>
+<tr>
+<td><code>Ready</code></td>
+<td>The sensor is connected and ready.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="kinectdevicestatuschangedeventargs">KinectDeviceStatusChangedEventArgs<a class="headerlink" href="#kinectdevicestatuschangedeventargs" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.Input.KinectDeviceStatusChangedEventArgs</code></p>
+<p>Provides data for the <a href="./#kinect"><code>Kinect.DeviceStatusChanged</code></a> event.</p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Microsoft.Xbox.Input.KinectDeviceStatus Status { get; }</code></td>
+<td>Gets the new sensor state.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="kinectsystemgestureinvokedeventargs">KinectSystemGestureInvokedEventArgs<a class="headerlink" href="#kinectsystemgestureinvokedeventargs" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.Input.KinectSystemGestureInvokedEventArgs</code></p>
+<p>Provides data for the <a href="./#kinect"><code>Kinect.SystemGestureInvoked</code></a> event.</p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Windows.Input.UserInformation UserInformation { get; }</code></td>
+<td>Gets the user who performed the gesture. Only <code>TrackingId</code> is filled in.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="kinecttrackedskeletoncountchangedeventargs">KinectTrackedSkeletonCountChangedEventArgs<a class="headerlink" href="#kinecttrackedskeletoncountchangedeventargs" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.Input.KinectTrackedSkeletonCountChangedEventArgs</code></p>
+<p>Provides data for the <a href="./#kinect"><code>Kinect.TrackedSkeletonCountChanged</code></a> event.</p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Int32 TrackedSkeletonCount { get; }</code></td>
+<td>Gets the new number of tracked skeletons.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="kinectuserengagedeventargs">KinectUserEngagedEventArgs<a class="headerlink" href="#kinectuserengagedeventargs" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.Input.KinectUserEngagedEventArgs</code></p>
+<p>Provides data for the <a href="./#kinect"><code>Kinect.UserEngaged</code></a> event. A <code>TrackingId</code> of <a href="./#kinect"><code>Kinect.InvalidTrackingId</code></a> means no user is engaged.</p>
+<h2 id="kinectusereventargs">KinectUserEventArgs<a class="headerlink" href="#kinectusereventargs" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.Input.KinectUserEventArgs</code></p>
+<p>Base class for Kinect event data that refers to a tracked user.</p>
+<p><strong>Constructors</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>KinectUserEventArgs(System.Int32 trackingId)</code></td>
+<td>Initializes the event data for the specified tracked user.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Windows.Input.UserInformation UserInformation { get; }</code></td>
+<td>Gets the user the event relates to. <code>TrackingId</code> is always set; <code>PlayerIndex</code> is set only by <a href="./#kinect"><code>Kinect.UserIdentified</code></a>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="kinectuseridentificationqualityflags">KinectUserIdentificationQualityFlags<a class="headerlink" href="#kinectuseridentificationqualityflags" title="Permanent link">&para;</a></h2>
+<p><code>enum Microsoft.Xbox.Input.KinectUserIdentificationQualityFlags</code></p>
+<p>Conditions that prevent the Kinect sensor from identifying a user. Several flags can be set at once.</p>
+<p><strong>Values</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>EnvironmentFaceDetectFailure</code></td>
+<td>The user's face could not be detected.</td>
+</tr>
+<tr>
+<td><code>EnvironmentTooBright</code></td>
+<td>The room is too bright, or there is strong light behind the user.</td>
+</tr>
+<tr>
+<td><code>EnvironmentTooDark</code></td>
+<td>The room is too dark.</td>
+</tr>
+<tr>
+<td><code>UserBodyTurned</code></td>
+<td>The user is not facing the sensor.</td>
+</tr>
+<tr>
+<td><code>UserClippedAtBottom</code></td>
+<td>The user is partly outside the bottom edge of the sensor's view.</td>
+</tr>
+<tr>
+<td><code>UserClippedAtLeft</code></td>
+<td>The user is partly outside the left edge of the sensor's view.</td>
+</tr>
+<tr>
+<td><code>UserClippedAtRight</code></td>
+<td>The user is partly outside the right edge of the sensor's view.</td>
+</tr>
+<tr>
+<td><code>UserClippedAtTop</code></td>
+<td>The user is partly outside the top edge of the sensor's view.</td>
+</tr>
+<tr>
+<td><code>UserClose</code></td>
+<td>The user is too close to the sensor.</td>
+</tr>
+<tr>
+<td><code>UserFarAway</code></td>
+<td>The user is too far from the sensor.</td>
+</tr>
+<tr>
+<td><code>UserNotUpright</code></td>
+<td>The user is not standing or sitting upright.</td>
+</tr>
+<tr>
+<td><code>UserOccludedBody</code></td>
+<td>Something is blocking the user's body.</td>
+</tr>
+<tr>
+<td><code>UserOccludedFace</code></td>
+<td>Something is blocking the user's face.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="kinectuseridentificationupdateeventargs">KinectUserIdentificationUpdateEventArgs<a class="headerlink" href="#kinectuseridentificationupdateeventargs" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.Input.KinectUserIdentificationUpdateEventArgs</code></p>
+<p>Provides data for the <a href="./#kinect"><code>Kinect.UserIdentificationUpdate</code></a> event.</p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Microsoft.Xbox.Input.KinectUserIdentificationQualityFlags QualityFlags { get; }</code></td>
+<td>Gets the conditions currently preventing identification of the user.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="kinectuseridentifiedeventargs">KinectUserIdentifiedEventArgs<a class="headerlink" href="#kinectuseridentifiedeventargs" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.Input.KinectUserIdentifiedEventArgs</code></p>
+<p>Provides data for the <a href="./#kinect"><code>Kinect.UserIdentified</code></a> event. <a href="./#kinectusereventargs"><code>KinectUserEventArgs.UserInformation</code></a> carries both the tracking ID and the player index.</p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Boolean UserReturned { get; }</code></td>
+<td>Gets whether the identified user is one who was previously engaged and has come back, rather than a newly recognized user.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="kinectwaveprogresschangedeventargs">KinectWaveProgressChangedEventArgs<a class="headerlink" href="#kinectwaveprogresschangedeventargs" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.Input.KinectWaveProgressChangedEventArgs</code></p>
+<p>Provides data for the <a href="./#kinect"><code>Kinect.WaveProgressChanged</code></a> event.</p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Double Progress { get; }</code></td>
+<td>Gets how far the engagement wave has progressed, as the value reported by the sensor. Use it to drive an engagement progress indicator.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="runetileactivationeventargs">RuneTileActivationEventArgs<a class="headerlink" href="#runetileactivationeventargs" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.Input.RuneTileActivationEventArgs</code></p>
+<p>Provides data when a key tile of the on-screen keyboard (<code>Rune</code>) control is activated.</p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.String RuneString { get; }</code></td>
+<td>Gets the text of the activated key tile.</td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../Microsoft.Xbox.Core/" class="btn btn-neutral float-left" title="Microsoft.Xbox.Core"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Microsoft.Xbox.Media.Mpeg/" class="btn btn-neutral float-right" title="Microsoft.Xbox.Media.Mpeg">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>Silverlight360 is licensed under the PolyForm Noncommercial License 1.0.0 with an additional condition. Xbox, Xbox 360 and Silverlight are trademarks of Microsoft.</p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/Digiex/Silverlight360" class="fa fa-code-fork" style="color: #fcfcfc"> Digiex/Silverlight360</a>
+        </span>
+    
+    
+      <span><a href="../Microsoft.Xbox.Core/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../Microsoft.Xbox.Media.Mpeg/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

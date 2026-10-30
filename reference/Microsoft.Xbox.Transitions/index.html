@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://digiex.github.io/Silverlight360/reference/Microsoft.Xbox.Transitions/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Microsoft.Xbox.Transitions - Silverlight360</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Microsoft.Xbox.Transitions";
+        var mkdocs_page_input_path = "reference\\Microsoft.Xbox.Transitions.md";
+        var mkdocs_page_url = "/Silverlight360/reference/Microsoft.Xbox.Transitions/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/powershell.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/csharp.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/xml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Silverlight360
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../getting-started/">Getting started</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../project-setup/">Projects and Visual Studio</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../app-model/">App model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../input-and-focus/">Input and focus</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../controls/">Xbox controls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../networking/">Networking</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../storage/">Storage</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../media/">Media</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../gamer-services/">Gamer services</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../native-code/">Native code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../testing/">Testing in xenia</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../samples/">Samples</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../xenia-status/">Status under xenia</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../runtime-inventory/">Runtime inventory</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">API reference</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../MS.Internal/">MS.Internal</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Controls.Primitives/">Microsoft.Xbox.Controls.Primitives</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Controls/">Microsoft.Xbox.Controls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Core/">Microsoft.Xbox.Core</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Input/">Microsoft.Xbox.Input</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Media.Mpeg/">Microsoft.Xbox.Media.Mpeg</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Media/">Microsoft.Xbox.Media</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Net/">Microsoft.Xbox.Net</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Security.XAuth/">Microsoft.Xbox.Security.XAuth</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Services/">Microsoft.Xbox.Services</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Microsoft.Xbox.Transitions</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#fadetransition">FadeTransition</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#itransition">ITransition</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#navigationintransition">NavigationInTransition</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#navigationouttransition">NavigationOutTransition</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#navigationtransition">NavigationTransition</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#transition">Transition</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#transitionelement">TransitionElement</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#transitioneventargs">TransitionEventArgs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#transitionmode">TransitionMode</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#transitionservice">TransitionService</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#zindextransition">ZIndexTransition</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox/">Microsoft.Xbox</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xna.Framework.GamerServices.ContentRating.Level/">Microsoft.Xna.Framework.GamerServices.ContentRating.Level</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xna.Framework.GamerServices.ContentRating.System/">Microsoft.Xna.Framework.GamerServices.ContentRating.System</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xna.Framework.GamerServices.ContentRating/">Microsoft.Xna.Framework.GamerServices.ContentRating</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xna.Framework.GamerServices/">Microsoft.Xna.Framework.GamerServices</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xna.Framework.Storage/">Microsoft.Xna.Framework.Storage</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Reflection.ReflectionPermissionFrame/">System.Reflection.ReflectionPermissionFrame</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Reflection/">System.Reflection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Windows.Controls/">System.Windows.Controls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Windows.Input/">System.Windows.Input</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Windows.Media/">System.Windows.Media</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Windows/">System.Windows</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Silverlight360</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">API reference</li>
+      <li class="breadcrumb-item active">Microsoft.Xbox.Transitions</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/Digiex/Silverlight360/edit/master/docs/reference/Microsoft.Xbox.Transitions.md">Edit on Digiex/Silverlight360</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="microsoftxboxtransitions">Microsoft.Xbox.Transitions<a class="headerlink" href="#microsoftxboxtransitions" title="Permanent link">&para;</a></h1>
+<p>Assembly: <code>Microsoft.Xbox.dll</code></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Summary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#fadetransition"><code>FadeTransition</code></a></td>
+<td>A transition that fades the element in or out, using the built-in storyboard that matches <a href="./#fadetransition"><code>FadeTransition.Mode</code></a>.</td>
+</tr>
+<tr>
+<td><a href="#itransition"><code>ITransition</code></a></td>
+<td>A running or ready-to-run transition animation, with storyboard-style playback control.</td>
+</tr>
+<tr>
+<td><a href="#navigationintransition"><code>NavigationInTransition</code></a></td>
+<td>The transitions a page plays when it is navigated to. Attach with <code>TransitionService.NavigationInTransition</code>.</td>
+</tr>
+<tr>
+<td><a href="#navigationouttransition"><code>NavigationOutTransition</code></a></td>
+<td>The transitions a page plays when it is navigated away from. Attach with <code>TransitionService.NavigationOutTransition</code>.</td>
+</tr>
+<tr>
+<td><a href="#navigationtransition"><code>NavigationTransition</code></a></td>
+<td>Pairs the transitions used for forward and backward navigation. Use the derived <a href="./#navigationintransition"><code>NavigationInTransition</code></a> or <a href="./#navigationouttransition"><code>NavigationOutTransition</code></a>.</td>
+</tr>
+<tr>
+<td><a href="#transition"><code>Transition</code></a></td>
+<td>The standard <a href="./#itransition"><code>ITransition</code></a> implementation: wraps a <code>Storyboard</code> and makes the element ignore input while the animation runs.</td>
+</tr>
+<tr>
+<td><a href="#transitionelement"><code>TransitionElement</code></a></td>
+<td>Base class for a transition definition that can be used in XAML. Derive from it to create custom transitions.</td>
+</tr>
+<tr>
+<td><a href="#transitioneventargs"><code>TransitionEventArgs</code></a></td>
+<td>Provides data for the <a href="./#transitionservice"><code>TransitionService</code></a> events.</td>
+</tr>
+<tr>
+<td><a href="#transitionmode"><code>TransitionMode</code></a></td>
+<td>Selects the variant of a built-in transition animation by navigation direction and by whether the element is entering or leaving.</td>
+</tr>
+<tr>
+<td><a href="#transitionservice"><code>TransitionService</code></a></td>
+<td>Attached properties and events that control the animated transitions <code>XboxApplicationFrame</code> plays when navigating between pages.</td>
+</tr>
+<tr>
+<td><a href="#zindextransition"><code>ZIndexTransition</code></a></td>
+<td>The default page transition used by <code>XboxApplicationPage</code>: animates the element through a centered render transform, using the built-in storyboard that matches <a href="./#zindextransition"><code>ZIndexTransition.Mode</code></a>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="fadetransition">FadeTransition<a class="headerlink" href="#fadetransition" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.Transitions.FadeTransition</code></p>
+<p>A transition that fades the element in or out, using the built-in storyboard that matches <a href="./#fadetransition"><code>FadeTransition.Mode</code></a>.</p>
+<p><strong>Constructors</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>FadeTransition()</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Microsoft.Xbox.Transitions.TransitionMode Mode { get; set; }</code></td>
+<td>Gets or sets which fade animation is played. The default is <a href="./#transitionmode"><code>TransitionMode.ForwardIn</code></a>.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Microsoft.Xbox.Transitions.ITransition GetTransition(System.Windows.UIElement element, System.TimeSpan delay)</code></td>
+<td>Creates a fade animation for the element.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Fields</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>static System.Windows.DependencyProperty ModeProperty</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="itransition">ITransition<a class="headerlink" href="#itransition" title="Permanent link">&para;</a></h2>
+<p><code>interface Microsoft.Xbox.Transitions.ITransition</code></p>
+<p>A running or ready-to-run transition animation, with storyboard-style playback control.</p>
+<p><strong>Methods</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.TimeSpan GetCurrentTime()</code></td>
+<td>Gets the current position within the animation.</td>
+</tr>
+<tr>
+<td><code>System.Void Begin()</code></td>
+<td>Starts the animation.</td>
+</tr>
+<tr>
+<td><code>System.Void Pause()</code></td>
+<td>Pauses the animation.</td>
+</tr>
+<tr>
+<td><code>System.Void Resume()</code></td>
+<td>Resumes a paused animation.</td>
+</tr>
+<tr>
+<td><code>System.Void Seek(System.TimeSpan offset)</code></td>
+<td>Moves the animation to the specified position; takes effect on the next frame.</td>
+</tr>
+<tr>
+<td><code>System.Void SeekAlignedToLastTick(System.TimeSpan offset)</code></td>
+<td>Moves the animation to the specified position immediately.</td>
+</tr>
+<tr>
+<td><code>System.Void SkipToFill()</code></td>
+<td>Jumps to the end of the animation.</td>
+</tr>
+<tr>
+<td><code>System.Void Stop()</code></td>
+<td>Stops the animation and returns the animated properties to their original values.</td>
+</tr>
+<tr>
+<td><code>System.Windows.Duration GetStoryboardDuration()</code></td>
+<td>Gets the declared duration of the animation.</td>
+</tr>
+<tr>
+<td><code>System.Windows.Media.Animation.ClockState GetCurrentState()</code></td>
+<td>Gets the playback state of the animation.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Events</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>event System.EventHandler Completed</code></td>
+<td>Occurs when the animation finishes.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="navigationintransition">NavigationInTransition<a class="headerlink" href="#navigationintransition" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.Transitions.NavigationInTransition</code></p>
+<p>The transitions a page plays when it is navigated to. Attach with <code>TransitionService.NavigationInTransition</code>.</p>
+<p><strong>Constructors</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>NavigationInTransition()</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="navigationouttransition">NavigationOutTransition<a class="headerlink" href="#navigationouttransition" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.Transitions.NavigationOutTransition</code></p>
+<p>The transitions a page plays when it is navigated away from. Attach with <code>TransitionService.NavigationOutTransition</code>.</p>
+<p><strong>Constructors</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>NavigationOutTransition()</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="navigationtransition">NavigationTransition<a class="headerlink" href="#navigationtransition" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.Transitions.NavigationTransition</code></p>
+<p>Pairs the transitions used for forward and backward navigation. Use the derived <a href="./#navigationintransition"><code>NavigationInTransition</code></a> or <a href="./#navigationouttransition"><code>NavigationOutTransition</code></a>.</p>
+<p>Forward is used for new and forward navigations; Backward for back navigations. When you set one, set both: the frame does not check for a missing direction.</p>
+<p><strong>Constructors</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>NavigationTransition()</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Microsoft.Xbox.Transitions.TransitionElement Backward { get; set; }</code></td>
+<td>Gets or sets the transition used when navigating back.</td>
+</tr>
+<tr>
+<td><code>Microsoft.Xbox.Transitions.TransitionElement Forward { get; set; }</code></td>
+<td>Gets or sets the transition used when navigating to a new page or forward.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Events</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>event System.Windows.RoutedEventHandler BeginTransition</code></td>
+<td>Intended to occur when this transition starts. The navigation frame does not raise it in this version; use <a href="./#transitionservice"><code>TransitionService.TransitionInStarted</code></a> or <a href="./#transitionservice"><code>TransitionService.TransitionOutStarted</code></a> instead.</td>
+</tr>
+<tr>
+<td><code>event System.Windows.RoutedEventHandler EndTransition</code></td>
+<td>Occurs when all animations of the page that this transition is attached to have finished.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Fields</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>static System.Windows.DependencyProperty BackwardProperty</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>static System.Windows.DependencyProperty ForwardProperty</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="transition">Transition<a class="headerlink" href="#transition" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.Transitions.Transition</code></p>
+<p>The standard <a href="./#itransition"><code>ITransition</code></a> implementation: wraps a <code>Storyboard</code> and makes the element ignore input while the animation runs.</p>
+<p>Use it from a custom <a href="./#transitionelement"><code>TransitionElement</code></a> to return your own storyboard. The constructor does not set the storyboard target; set it yourself (for example with <code>Storyboard.SetTarget</code>).</p>
+<p><strong>Constructors</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Transition(System.Windows.UIElement element, System.Windows.Media.Animation.Storyboard storyboard)</code></td>
+<td>Creates a transition that plays a storyboard on an element.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.TimeSpan GetCurrentTime()</code></td>
+<td>Gets the current position of the storyboard.</td>
+</tr>
+<tr>
+<td><code>System.Void Begin()</code></td>
+<td>Disables hit testing on the element and starts the storyboard.</td>
+</tr>
+<tr>
+<td><code>System.Void Pause()</code></td>
+<td>Pauses the storyboard.</td>
+</tr>
+<tr>
+<td><code>System.Void Resume()</code></td>
+<td>Resumes the paused storyboard.</td>
+</tr>
+<tr>
+<td><code>System.Void Seek(System.TimeSpan offset)</code></td>
+<td>Moves the storyboard to the specified position on the next frame.</td>
+</tr>
+<tr>
+<td><code>System.Void SeekAlignedToLastTick(System.TimeSpan offset)</code></td>
+<td>Moves the storyboard to the specified position immediately.</td>
+</tr>
+<tr>
+<td><code>System.Void SkipToFill()</code></td>
+<td>Advances the storyboard to the end of its active period.</td>
+</tr>
+<tr>
+<td><code>System.Void Stop()</code></td>
+<td>Stops the storyboard and restores hit testing on the element. <a href="./#transition"><code>Transition.Completed</code></a> is not raised.</td>
+</tr>
+<tr>
+<td><code>System.Windows.Duration GetStoryboardDuration()</code></td>
+<td>Gets the storyboard's <code>Duration</code> property.</td>
+</tr>
+<tr>
+<td><code>System.Windows.Media.Animation.ClockState GetCurrentState()</code></td>
+<td>Gets the playback state of the storyboard.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Events</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>event System.EventHandler Completed</code></td>
+<td>Occurs when the storyboard completes, before hit testing is restored on the element.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="transitionelement">TransitionElement<a class="headerlink" href="#transitionelement" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.Transitions.TransitionElement</code></p>
+<p>Base class for a transition definition that can be used in XAML. Derive from it to create custom transitions.</p>
+<p><strong>Constructors</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>TransitionElement()</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Microsoft.Xbox.Transitions.ITransition GetTransition(System.Windows.UIElement element, System.TimeSpan delay)</code></td>
+<td>Creates the animation for a specific element.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="transitioneventargs">TransitionEventArgs<a class="headerlink" href="#transitioneventargs" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.Transitions.TransitionEventArgs</code></p>
+<p>Provides data for the <a href="./#transitionservice"><code>TransitionService</code></a> events.</p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Windows.UIElement TargetElement { get; }</code></td>
+<td>Gets the page whose transition started or finished. Always <code>null</code> for the completed events in this version.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="transitionmode">TransitionMode<a class="headerlink" href="#transitionmode" title="Permanent link">&para;</a></h2>
+<p><code>enum Microsoft.Xbox.Transitions.TransitionMode</code></p>
+<p>Selects the variant of a built-in transition animation by navigation direction and by whether the element is entering or leaving.</p>
+<p><strong>Values</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>BackwardIn</code></td>
+<td>The element enters during back navigation.</td>
+</tr>
+<tr>
+<td><code>BackwardOut</code></td>
+<td>The element leaves during back navigation.</td>
+</tr>
+<tr>
+<td><code>ForwardIn</code></td>
+<td>The element enters during forward navigation.</td>
+</tr>
+<tr>
+<td><code>ForwardOut</code></td>
+<td>The element leaves during forward navigation.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="transitionservice">TransitionService<a class="headerlink" href="#transitionservice" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.Transitions.TransitionService</code></p>
+<p>Attached properties and events that control the animated transitions <code>XboxApplicationFrame</code> plays when navigating between pages.</p>
+<p>Set <code>NavigationInTransition</code> and <code>NavigationOutTransition</code> on a page to choose its animations; <code>XboxApplicationPage</code> sets both to <a href="./#zindextransition"><code>ZIndexTransition</code></a> by default. A page without transitions is swapped instantly.</p>
+<p>Elements inside a page marked with <code>TransitionTarget="True"</code> animate individually after the page, staggered by 160 ms per <code>TransitionOrder</code> step. They use their own transitions if set, otherwise the page's.</p>
+<p><strong>Methods</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>static Microsoft.Xbox.Transitions.NavigationInTransition GetNavigationInTransition(System.Windows.UIElement element)</code></td>
+<td>Gets the transitions played when the element is navigated to.</td>
+</tr>
+<tr>
+<td><code>static Microsoft.Xbox.Transitions.NavigationOutTransition GetNavigationOutTransition(System.Windows.UIElement element)</code></td>
+<td>Gets the transitions played when the element is navigated away from.</td>
+</tr>
+<tr>
+<td><code>static System.Boolean GetTransitionTarget(System.Windows.UIElement element)</code></td>
+<td>Gets whether the element is animated separately from its page.</td>
+</tr>
+<tr>
+<td><code>static System.Int32 GetTransitionOrder(System.Windows.UIElement element)</code></td>
+<td>Gets the element's position in the staggered transition sequence.</td>
+</tr>
+<tr>
+<td><code>static System.Void SetNavigationInTransition(System.Windows.UIElement element, Microsoft.Xbox.Transitions.NavigationInTransition value)</code></td>
+<td>Sets the transitions played when the element is navigated to.</td>
+</tr>
+<tr>
+<td><code>static System.Void SetNavigationOutTransition(System.Windows.UIElement element, Microsoft.Xbox.Transitions.NavigationOutTransition value)</code></td>
+<td>Sets the transitions played when the element is navigated away from.</td>
+</tr>
+<tr>
+<td><code>static System.Void SetTransitionOrder(System.Windows.DependencyObject obj, System.Int32 value)</code></td>
+<td>Sets the element's position in the staggered transition sequence. Each step adds 160 ms of delay.</td>
+</tr>
+<tr>
+<td><code>static System.Void SetTransitionTarget(System.Windows.DependencyObject obj, System.Boolean value)</code></td>
+<td>Marks or unmarks an element as animated separately from its page.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Events</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>event System.EventHandler&lt;Microsoft.Xbox.Transitions.TransitionEventArgs&gt; TransitionInCompleted</code></td>
+<td>Occurs when all of the incoming page's transitions, including its transition targets, have finished and the page accepts input. In this version <a href="./#transitioneventargs"><code>TransitionEventArgs.TargetElement</code></a> is always <code>null</code> for this event.</td>
+</tr>
+<tr>
+<td><code>event System.EventHandler&lt;Microsoft.Xbox.Transitions.TransitionEventArgs&gt; TransitionInStarted</code></td>
+<td>Occurs when the incoming page's transitions start. <a href="./#transitioneventargs"><code>TransitionEventArgs.TargetElement</code></a> is the new page.</td>
+</tr>
+<tr>
+<td><code>event System.EventHandler&lt;Microsoft.Xbox.Transitions.TransitionEventArgs&gt; TransitionOutCompleted</code></td>
+<td>Occurs when all of the outgoing page's transitions have finished and the old page has been removed. In this version <a href="./#transitioneventargs"><code>TransitionEventArgs.TargetElement</code></a> is always <code>null</code> for this event.</td>
+</tr>
+<tr>
+<td><code>event System.EventHandler&lt;Microsoft.Xbox.Transitions.TransitionEventArgs&gt; TransitionOutStarted</code></td>
+<td>Occurs when the outgoing page's transitions start. <a href="./#transitioneventargs"><code>TransitionEventArgs.TargetElement</code></a> is the old page.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Fields</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>static System.Windows.DependencyProperty NavigationInTransitionProperty</code></td>
+<td>Identifies the <code>TransitionService.NavigationInTransition</code> attached property: the animations played when the element is navigated to.</td>
+</tr>
+<tr>
+<td><code>static System.Windows.DependencyProperty NavigationOutTransitionProperty</code></td>
+<td>Identifies the <code>TransitionService.NavigationOutTransition</code> attached property: the animations played when the element is navigated away from.</td>
+</tr>
+<tr>
+<td><code>static System.Windows.DependencyProperty TransitionOrderProperty</code></td>
+<td>Identifies the <code>TransitionService.TransitionOrder</code> attached property: the position of a transition target in the staggered sequence. Each step delays the element's animation by 160 ms. The default is 0.</td>
+</tr>
+<tr>
+<td><code>static System.Windows.DependencyProperty TransitionTargetProperty</code></td>
+<td>Identifies the <code>TransitionService.TransitionTarget</code> attached property. When <code>true</code>, the element is animated separately from its page during navigation. The default is <code>false</code>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="zindextransition">ZIndexTransition<a class="headerlink" href="#zindextransition" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.Transitions.ZIndexTransition</code></p>
+<p>The default page transition used by <code>XboxApplicationPage</code>: animates the element through a centered render transform, using the built-in storyboard that matches <a href="./#zindextransition"><code>ZIndexTransition.Mode</code></a>.</p>
+<p>Replaces the element's <code>RenderTransform</code> with a new <code>CompositeTransform</code> centered on the element, so any existing render transform is lost.</p>
+<p><strong>Constructors</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ZIndexTransition()</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Microsoft.Xbox.Transitions.TransitionMode Mode { get; set; }</code></td>
+<td>Gets or sets which depth animation is played. The default is <a href="./#transitionmode"><code>TransitionMode.ForwardIn</code></a>.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Microsoft.Xbox.Transitions.ITransition GetTransition(System.Windows.UIElement element, System.TimeSpan delay)</code></td>
+<td>Creates a depth animation for the element.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Fields</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>static System.Windows.DependencyProperty ModeProperty</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../Microsoft.Xbox.Services/" class="btn btn-neutral float-left" title="Microsoft.Xbox.Services"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Microsoft.Xbox/" class="btn btn-neutral float-right" title="Microsoft.Xbox">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>Silverlight360 is licensed under the PolyForm Noncommercial License 1.0.0 with an additional condition. Xbox, Xbox 360 and Silverlight are trademarks of Microsoft.</p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/Digiex/Silverlight360" class="fa fa-code-fork" style="color: #fcfcfc"> Digiex/Silverlight360</a>
+        </span>
+    
+    
+      <span><a href="../Microsoft.Xbox.Services/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../Microsoft.Xbox/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

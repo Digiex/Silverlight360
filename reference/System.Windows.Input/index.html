@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://digiex.github.io/Silverlight360/reference/System.Windows.Input/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>System.Windows.Input - Silverlight360</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "System.Windows.Input";
+        var mkdocs_page_input_path = "reference\\System.Windows.Input.md";
+        var mkdocs_page_url = "/Silverlight360/reference/System.Windows.Input/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/powershell.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/csharp.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/xml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Silverlight360
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../getting-started/">Getting started</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../project-setup/">Projects and Visual Studio</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../app-model/">App model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../input-and-focus/">Input and focus</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../controls/">Xbox controls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../networking/">Networking</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../storage/">Storage</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../media/">Media</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../gamer-services/">Gamer services</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../native-code/">Native code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../testing/">Testing in xenia</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../samples/">Samples</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../xenia-status/">Status under xenia</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../runtime-inventory/">Runtime inventory</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">API reference</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../MS.Internal/">MS.Internal</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Controls.Primitives/">Microsoft.Xbox.Controls.Primitives</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Controls/">Microsoft.Xbox.Controls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Core/">Microsoft.Xbox.Core</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Input/">Microsoft.Xbox.Input</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Media.Mpeg/">Microsoft.Xbox.Media.Mpeg</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Media/">Microsoft.Xbox.Media</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Net/">Microsoft.Xbox.Net</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Security.XAuth/">Microsoft.Xbox.Security.XAuth</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Services/">Microsoft.Xbox.Services</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Transitions/">Microsoft.Xbox.Transitions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox/">Microsoft.Xbox</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xna.Framework.GamerServices.ContentRating.Level/">Microsoft.Xna.Framework.GamerServices.ContentRating.Level</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xna.Framework.GamerServices.ContentRating.System/">Microsoft.Xna.Framework.GamerServices.ContentRating.System</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xna.Framework.GamerServices.ContentRating/">Microsoft.Xna.Framework.GamerServices.ContentRating</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xna.Framework.GamerServices/">Microsoft.Xna.Framework.GamerServices</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xna.Framework.Storage/">Microsoft.Xna.Framework.Storage</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Reflection.ReflectionPermissionFrame/">System.Reflection.ReflectionPermissionFrame</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Reflection/">System.Reflection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Windows.Controls/">System.Windows.Controls</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">System.Windows.Input</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#attachcompletedeventargs">AttachCompletedEventArgs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#attachprogresschangedeventargs">AttachProgressChangedEventArgs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#attachstartedeventargs">AttachStartedEventArgs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#detachcompletedeventargs">DetachCompletedEventArgs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#detachprogresschangedeventargs">DetachProgressChangedEventArgs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#detachstartedeventargs">DetachStartedEventArgs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#gamepadbutton">GamePadButton</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#gamepadbuttoneventargs">GamePadButtonEventArgs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#gamepadside">GamePadSide</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#gamepadthumbstickmovedeventargs">GamePadThumbStickMovedEventArgs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#gamepadtriggermovedeventargs">GamePadTriggerMovedEventArgs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#handedness">Handedness</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#hovercompletedeventargs">HoverCompletedEventArgs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#hoverprogresschangedeventargs">HoverProgressChangedEventArgs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#hoverstartedeventargs">HoverStartedEventArgs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#inputmodality">InputModality</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#inputmodalityroutedeventargs">InputModalityRoutedEventArgs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#magneticdelays">MagneticDelays</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#magneticdelaystypeconverter">MagneticDelaysTypeConverter</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#magneticeventargs">MagneticEventArgs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#magneticradii">MagneticRadii</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#magneticradiitypeconverter">MagneticRadiiTypeConverter</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#magneticzone">MagneticZone</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#speechcommand">SpeechCommand</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#userinformation">UserInformation</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Windows.Media/">System.Windows.Media</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Windows/">System.Windows</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Silverlight360</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">API reference</li>
+      <li class="breadcrumb-item active">System.Windows.Input</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/Digiex/Silverlight360/edit/master/docs/reference/System.Windows.Input.md">Edit on Digiex/Silverlight360</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="systemwindowsinput">System.Windows.Input<a class="headerlink" href="#systemwindowsinput" title="Permanent link">&para;</a></h1>
+<p>Assembly: <code>System.Windows.dll</code></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Summary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#attachcompletedeventargs"><code>AttachCompletedEventArgs</code></a></td>
+<td>Provides data for the <code>Button.AttachCompleted</code> event.</td>
+</tr>
+<tr>
+<td><a href="#attachprogresschangedeventargs"><code>AttachProgressChangedEventArgs</code></a></td>
+<td>Provides data for the <code>Button.AttachProgressChanged</code> event.</td>
+</tr>
+<tr>
+<td><a href="#attachstartedeventargs"><code>AttachStartedEventArgs</code></a></td>
+<td>Provides data for the <code>Button.AttachStarted</code> event.</td>
+</tr>
+<tr>
+<td><a href="#detachcompletedeventargs"><code>DetachCompletedEventArgs</code></a></td>
+<td>Provides data for the <code>Button.DetachCompleted</code> event.</td>
+</tr>
+<tr>
+<td><a href="#detachprogresschangedeventargs"><code>DetachProgressChangedEventArgs</code></a></td>
+<td>Provides data for the <code>Button.DetachProgressChanged</code> event.</td>
+</tr>
+<tr>
+<td><a href="#detachstartedeventargs"><code>DetachStartedEventArgs</code></a></td>
+<td>Provides data for the <code>Button.DetachStarted</code> event.</td>
+</tr>
+<tr>
+<td><a href="#gamepadbutton"><code>GamePadButton</code></a></td>
+<td>Identifies a digital button on an Xbox 360 controller.</td>
+</tr>
+<tr>
+<td><a href="#gamepadbuttoneventargs"><code>GamePadButtonEventArgs</code></a></td>
+<td>Provides data for the <code>UIElement.GamePadButtonDown</code> and <code>UIElement.GamePadButtonUp</code> events.</td>
+</tr>
+<tr>
+<td><a href="#gamepadside"><code>GamePadSide</code></a></td>
+<td>Identifies which of a pair of analog controls (thumbstick or trigger) produced an event.</td>
+</tr>
+<tr>
+<td><a href="#gamepadthumbstickmovedeventargs"><code>GamePadThumbStickMovedEventArgs</code></a></td>
+<td>Provides data for the <code>UIElement.GamePadThumbStickMoved</code> event.</td>
+</tr>
+<tr>
+<td><a href="#gamepadtriggermovedeventargs"><code>GamePadTriggerMovedEventArgs</code></a></td>
+<td>Provides data for the <code>UIElement.GamePadTriggerMoved</code> event.</td>
+</tr>
+<tr>
+<td><a href="#handedness"><code>Handedness</code></a></td>
+<td>Identifies which hand drives the Kinect hand cursor.</td>
+</tr>
+<tr>
+<td><a href="#hovercompletedeventargs"><code>HoverCompletedEventArgs</code></a></td>
+<td>Provides data for the <code>Button.HoverCompleted</code> event.</td>
+</tr>
+<tr>
+<td><a href="#hoverprogresschangedeventargs"><code>HoverProgressChangedEventArgs</code></a></td>
+<td>Provides data for the <code>Button.HoverProgressChanged</code> event.</td>
+</tr>
+<tr>
+<td><a href="#hoverstartedeventargs"><code>HoverStartedEventArgs</code></a></td>
+<td>Provides data for the <code>Button.HoverStarted</code> event.</td>
+</tr>
+<tr>
+<td><a href="#inputmodality"><code>InputModality</code></a></td>
+<td>Identifies the kind of input that caused an action, such as a button click.</td>
+</tr>
+<tr>
+<td><a href="#inputmodalityroutedeventargs"><code>InputModalityRoutedEventArgs</code></a></td>
+<td>Routed event data that records which input modality, and which user, caused the event.</td>
+</tr>
+<tr>
+<td><a href="#magneticdelays"><code>MagneticDelays</code></a></td>
+<td>Holds the four dwell times, in milliseconds, used by a magnetic <code>Button</code>.</td>
+</tr>
+<tr>
+<td><a href="#magneticdelaystypeconverter"><code>MagneticDelaysTypeConverter</code></a></td>
+<td>Converts between strings of four comma-separated integers and <a href="./#magneticdelays"><code>MagneticDelays</code></a> values, so the property can be set in XAML.</td>
+</tr>
+<tr>
+<td><a href="#magneticeventargs"><code>MagneticEventArgs</code></a></td>
+<td>Base class for the data of the attach and detach events of a magnetic <code>Button</code>.</td>
+</tr>
+<tr>
+<td><a href="#magneticradii"><code>MagneticRadii</code></a></td>
+<td>Holds the four zone sizes used by a magnetic <code>Button</code>, from the innermost zone outward.</td>
+</tr>
+<tr>
+<td><a href="#magneticradiitypeconverter"><code>MagneticRadiiTypeConverter</code></a></td>
+<td>Converts between strings of four comma-separated numbers and <a href="./#magneticradii"><code>MagneticRadii</code></a> values, so the property can be set in XAML.</td>
+</tr>
+<tr>
+<td><a href="#magneticzone"><code>MagneticZone</code></a></td>
+<td>Identifies the concentric zones around a magnetic button's origin that govern how the Kinect hand cursor snaps to it, from innermost to outermost.</td>
+</tr>
+<tr>
+<td><a href="#speechcommand"><code>SpeechCommand</code></a></td>
+<td>Base class for an <code>ICommand</code> that can also be invoked by voice, and that ties a phrase to a <code>Button</code>.</td>
+</tr>
+<tr>
+<td><a href="#userinformation"><code>UserInformation</code></a></td>
+<td>Identifies the user who produced an input event: the controller slot for controller input, and the Kinect tracking ID for gesture input.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="attachcompletedeventargs">AttachCompletedEventArgs<a class="headerlink" href="#attachcompletedeventargs" title="Permanent link">&para;</a></h2>
+<p><code>class System.Windows.Input.AttachCompletedEventArgs</code></p>
+<p>Provides data for the <code>Button.AttachCompleted</code> event.</p>
+<h2 id="attachprogresschangedeventargs">AttachProgressChangedEventArgs<a class="headerlink" href="#attachprogresschangedeventargs" title="Permanent link">&para;</a></h2>
+<p><code>class System.Windows.Input.AttachProgressChangedEventArgs</code></p>
+<p>Provides data for the <code>Button.AttachProgressChanged</code> event.</p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Double AttachProgress { get; }</code></td>
+<td>Gets the attach progress.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="attachstartedeventargs">AttachStartedEventArgs<a class="headerlink" href="#attachstartedeventargs" title="Permanent link">&para;</a></h2>
+<p><code>class System.Windows.Input.AttachStartedEventArgs</code></p>
+<p>Provides data for the <code>Button.AttachStarted</code> event.</p>
+<h2 id="detachcompletedeventargs">DetachCompletedEventArgs<a class="headerlink" href="#detachcompletedeventargs" title="Permanent link">&para;</a></h2>
+<p><code>class System.Windows.Input.DetachCompletedEventArgs</code></p>
+<p>Provides data for the <code>Button.DetachCompleted</code> event.</p>
+<h2 id="detachprogresschangedeventargs">DetachProgressChangedEventArgs<a class="headerlink" href="#detachprogresschangedeventargs" title="Permanent link">&para;</a></h2>
+<p><code>class System.Windows.Input.DetachProgressChangedEventArgs</code></p>
+<p>Provides data for the <code>Button.DetachProgressChanged</code> event.</p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Double DetachProgress { get; }</code></td>
+<td>Gets the detach progress, expressed as remaining attachment.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="detachstartedeventargs">DetachStartedEventArgs<a class="headerlink" href="#detachstartedeventargs" title="Permanent link">&para;</a></h2>
+<p><code>class System.Windows.Input.DetachStartedEventArgs</code></p>
+<p>Provides data for the <code>Button.DetachStarted</code> event.</p>
+<h2 id="gamepadbutton">GamePadButton<a class="headerlink" href="#gamepadbutton" title="Permanent link">&para;</a></h2>
+<p><code>enum System.Windows.Input.GamePadButton</code></p>
+<p>Identifies a digital button on an Xbox 360 controller.</p>
+<p>Reported by <a href="./#gamepadbuttoneventargs"><code>GamePadButtonEventArgs.Button</code></a> in the <code>UIElement.GamePadButtonDown</code> and <code>UIElement.GamePadButtonUp</code> events. The analog thumbsticks and triggers are reported separately through <code>UIElement.GamePadThumbStickMoved</code> and <code>UIElement.GamePadTriggerMoved</code>.</p>
+<p><strong>Values</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>A</code></td>
+<td>The A face button (green). A <code>Button</code> with focus treats it as a press and raises Click.</td>
+</tr>
+<tr>
+<td><code>B</code></td>
+<td>The B face button (red), conventionally used for "back" or "cancel".</td>
+</tr>
+<tr>
+<td><code>Back</code></td>
+<td>The Back button, to the left of the Xbox Guide button.</td>
+</tr>
+<tr>
+<td><code>DPadDown</code></td>
+<td>Down on the directional pad.</td>
+</tr>
+<tr>
+<td><code>DPadLeft</code></td>
+<td>Left on the directional pad.</td>
+</tr>
+<tr>
+<td><code>DPadRight</code></td>
+<td>Right on the directional pad.</td>
+</tr>
+<tr>
+<td><code>DPadUp</code></td>
+<td>Up on the directional pad.</td>
+</tr>
+<tr>
+<td><code>LeftShoulder</code></td>
+<td>The left bumper (LB), the digital button above the left trigger.</td>
+</tr>
+<tr>
+<td><code>LeftStick</code></td>
+<td>Pressing the left thumbstick down (left stick click).</td>
+</tr>
+<tr>
+<td><code>RightShoulder</code></td>
+<td>The right bumper (RB), the digital button above the right trigger.</td>
+</tr>
+<tr>
+<td><code>RightStick</code></td>
+<td>Pressing the right thumbstick down (right stick click).</td>
+</tr>
+<tr>
+<td><code>Start</code></td>
+<td>The Start button, to the right of the Xbox Guide button. A focused <code>Button</code> treats it like <a href="./#gamepadbutton"><code>GamePadButton.A</code></a>.</td>
+</tr>
+<tr>
+<td><code>X</code></td>
+<td>The X face button (blue).</td>
+</tr>
+<tr>
+<td><code>Y</code></td>
+<td>The Y face button (yellow).</td>
+</tr>
+</tbody>
+</table>
+<h2 id="gamepadbuttoneventargs">GamePadButtonEventArgs<a class="headerlink" href="#gamepadbuttoneventargs" title="Permanent link">&para;</a></h2>
+<p><code>class System.Windows.Input.GamePadButtonEventArgs</code></p>
+<p>Provides data for the <code>UIElement.GamePadButtonDown</code> and <code>UIElement.GamePadButtonUp</code> events.</p>
+<p>The values are read from the native event object, so read them inside the handler rather than storing the arguments for later.</p>
+<p><strong>Constructors</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GamePadButtonEventArgs()</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Boolean Handled { get; set; }</code></td>
+<td>Gets or sets a value that marks the routed event as handled. Handlers added with <code>UIElement.AddHandler</code> and handledEventsToo set to true still run.</td>
+</tr>
+<tr>
+<td><code>System.Windows.Input.GamePadButton Button { get; }</code></td>
+<td>Gets the controller button that was pressed or released.</td>
+</tr>
+<tr>
+<td><code>System.Windows.Input.UserInformation UserInformation { get; }</code></td>
+<td>Gets information about the user whose controller produced the event.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="gamepadside">GamePadSide<a class="headerlink" href="#gamepadside" title="Permanent link">&para;</a></h2>
+<p><code>enum System.Windows.Input.GamePadSide</code></p>
+<p>Identifies which of a pair of analog controls (thumbstick or trigger) produced an event.</p>
+<p><strong>Values</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Left</code></td>
+<td>The left thumbstick or left trigger.</td>
+</tr>
+<tr>
+<td><code>Right</code></td>
+<td>The right thumbstick or right trigger.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="gamepadthumbstickmovedeventargs">GamePadThumbStickMovedEventArgs<a class="headerlink" href="#gamepadthumbstickmovedeventargs" title="Permanent link">&para;</a></h2>
+<p><code>class System.Windows.Input.GamePadThumbStickMovedEventArgs</code></p>
+<p>Provides data for the <code>UIElement.GamePadThumbStickMoved</code> event.</p>
+<p><strong>Constructors</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GamePadThumbStickMovedEventArgs()</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Boolean Handled { get; set; }</code></td>
+<td>Gets or sets a value that marks the routed event as handled.</td>
+</tr>
+<tr>
+<td><code>System.Double XPosition { get; }</code></td>
+<td>Gets the horizontal position of the thumbstick that moved.</td>
+</tr>
+<tr>
+<td><code>System.Double YPosition { get; }</code></td>
+<td>Gets the vertical position of the thumbstick that moved.</td>
+</tr>
+<tr>
+<td><code>System.Windows.Input.GamePadSide Side { get; }</code></td>
+<td>Gets which thumbstick moved.</td>
+</tr>
+<tr>
+<td><code>System.Windows.Input.UserInformation UserInformation { get; }</code></td>
+<td>Gets information about the user whose controller produced the event.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="gamepadtriggermovedeventargs">GamePadTriggerMovedEventArgs<a class="headerlink" href="#gamepadtriggermovedeventargs" title="Permanent link">&para;</a></h2>
+<p><code>class System.Windows.Input.GamePadTriggerMovedEventArgs</code></p>
+<p>Provides data for the <code>UIElement.GamePadTriggerMoved</code> event.</p>
+<p><strong>Constructors</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GamePadTriggerMovedEventArgs()</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Boolean Handled { get; set; }</code></td>
+<td>Gets or sets a value that marks the routed event as handled.</td>
+</tr>
+<tr>
+<td><code>System.Double Position { get; }</code></td>
+<td>Gets how far the trigger that moved is pressed.</td>
+</tr>
+<tr>
+<td><code>System.Windows.Input.GamePadSide Side { get; }</code></td>
+<td>Gets which trigger moved.</td>
+</tr>
+<tr>
+<td><code>System.Windows.Input.UserInformation UserInformation { get; }</code></td>
+<td>Gets information about the user whose controller produced the event.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="handedness">Handedness<a class="headerlink" href="#handedness" title="Permanent link">&para;</a></h2>
+<p><code>enum System.Windows.Input.Handedness</code></p>
+<p>Identifies which hand drives the Kinect hand cursor.</p>
+<p><strong>Values</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Left</code></td>
+<td>The user's left hand.</td>
+</tr>
+<tr>
+<td><code>Right</code></td>
+<td>The user's right hand.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="hovercompletedeventargs">HoverCompletedEventArgs<a class="headerlink" href="#hovercompletedeventargs" title="Permanent link">&para;</a></h2>
+<p><code>class System.Windows.Input.HoverCompletedEventArgs</code></p>
+<p>Provides data for the <code>Button.HoverCompleted</code> event.</p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Windows.Input.UserInformation UserInformation { get; }</code></td>
+<td>Gets the user whose hover completed.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="hoverprogresschangedeventargs">HoverProgressChangedEventArgs<a class="headerlink" href="#hoverprogresschangedeventargs" title="Permanent link">&para;</a></h2>
+<p><code>class System.Windows.Input.HoverProgressChangedEventArgs</code></p>
+<p>Provides data for the <code>Button.HoverProgressChanged</code> event.</p>
+<p><strong>Constructors</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>HoverProgressChangedEventArgs(System.Double hoverProgress, System.Windows.Input.UserInformation userInfo)</code></td>
+<td>Initializes a new instance of the <a href="./#hoverprogresschangedeventargs"><code>HoverProgressChangedEventArgs</code></a> class.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Double HoverProgress { get; }</code></td>
+<td>Gets the new hover progress.</td>
+</tr>
+<tr>
+<td><code>System.Windows.Input.UserInformation UserInformation { get; }</code></td>
+<td>Gets the user whose hand cursor is hovering.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="hoverstartedeventargs">HoverStartedEventArgs<a class="headerlink" href="#hoverstartedeventargs" title="Permanent link">&para;</a></h2>
+<p><code>class System.Windows.Input.HoverStartedEventArgs</code></p>
+<p>Provides data for the <code>Button.HoverStarted</code> event.</p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Windows.Input.UserInformation UserInformation { get; }</code></td>
+<td>Gets the user whose hand cursor started the hover.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="inputmodality">InputModality<a class="headerlink" href="#inputmodality" title="Permanent link">&para;</a></h2>
+<p><code>enum System.Windows.Input.InputModality</code></p>
+<p>Identifies the kind of input that caused an action, such as a button click.</p>
+<p>The arguments of <code>ButtonBase.Click</code> are an <a href="./#inputmodalityroutedeventargs"><code>InputModalityRoutedEventArgs</code></a>; cast the <code>RoutedEventArgs</code> to read which modality activated the button.</p>
+<p><strong>Values</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GamePad</code></td>
+<td>An Xbox 360 controller button, such as A or Start.</td>
+</tr>
+<tr>
+<td><code>Gesture</code></td>
+<td>Kinect gesture input, such as completing a hover over a button with the hand cursor.</td>
+</tr>
+<tr>
+<td><code>Keyboard</code></td>
+<td>A keyboard key (Space, or Enter where it is accepted).</td>
+</tr>
+<tr>
+<td><code>Mouse</code></td>
+<td>A mouse or other pointer press.</td>
+</tr>
+<tr>
+<td><code>RemoteControl</code></td>
+<td>A media remote, for example the Play/Pause key.</td>
+</tr>
+<tr>
+<td><code>Unknown</code></td>
+<td>The source of the input is not known, for example when Click is raised from code or through automation.</td>
+</tr>
+<tr>
+<td><code>Voice</code></td>
+<td>A voice command, delivered through a <a href="./#speechcommand"><code>SpeechCommand</code></a>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="inputmodalityroutedeventargs">InputModalityRoutedEventArgs<a class="headerlink" href="#inputmodalityroutedeventargs" title="Permanent link">&para;</a></h2>
+<p><code>class System.Windows.Input.InputModalityRoutedEventArgs</code></p>
+<p>Routed event data that records which input modality, and which user, caused the event.</p>
+<p>Passed as the arguments of <code>ButtonBase.Click</code>. The event is still declared with <code>RoutedEventHandler</code>, so cast the arguments to this type.</p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Windows.Input.InputModality InputModality { get; }</code></td>
+<td>Gets the kind of input that caused the event.</td>
+</tr>
+<tr>
+<td><code>System.Windows.Input.UserInformation UserInformation { get; }</code></td>
+<td>Gets the user who caused the event.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="magneticdelays">MagneticDelays<a class="headerlink" href="#magneticdelays" title="Permanent link">&para;</a></h2>
+<p><code>struct System.Windows.Input.MagneticDelays</code></p>
+<p>Holds the four dwell times, in milliseconds, used by a magnetic <code>Button</code>.</p>
+<p>The XAML and string form is four comma-separated integers in constructor order, for example "350,840,2000,75". See <code>Button.MagneticDelays</code> for the allowed ranges.</p>
+<p><strong>Constructors</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MagneticDelays(System.Int32 fastAttachDelay, System.Int32 slowAttachDelay, System.Int32 slowDetachDelay, System.Int32 fastDetachDelay)</code></td>
+<td>Initializes a new <a href="./#magneticdelays"><code>MagneticDelays</code></a> with the given delays.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Int32 FastAttachDelay { get; set; }</code></td>
+<td>Gets or sets how long the cursor must stay in the fast-attach zone before it attaches.</td>
+</tr>
+<tr>
+<td><code>System.Int32 FastDetachDelay { get; set; }</code></td>
+<td>Gets or sets how long an attached cursor must stay in the fast-detach zone before it detaches.</td>
+</tr>
+<tr>
+<td><code>System.Int32 SlowAttachDelay { get; set; }</code></td>
+<td>Gets or sets how long the cursor must stay in the slow-attach zone before it attaches.</td>
+</tr>
+<tr>
+<td><code>System.Int32 SlowDetachDelay { get; set; }</code></td>
+<td>Gets or sets how long an attached cursor must stay in the slow-detach zone before it detaches.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.String ToString()</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="magneticdelaystypeconverter">MagneticDelaysTypeConverter<a class="headerlink" href="#magneticdelaystypeconverter" title="Permanent link">&para;</a></h2>
+<p><code>class System.Windows.Input.MagneticDelaysTypeConverter</code></p>
+<p>Converts between strings of four comma-separated integers and <a href="./#magneticdelays"><code>MagneticDelays</code></a> values, so the property can be set in XAML.</p>
+<p><strong>Constructors</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MagneticDelaysTypeConverter()</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Boolean CanConvertFrom(System.ComponentModel.ITypeDescriptorContext context, System.Type sourceType)</code></td>
+<td>Determines whether a value of the given type can be converted to <a href="./#magneticdelays"><code>MagneticDelays</code></a>.</td>
+</tr>
+<tr>
+<td><code>System.Boolean CanConvertTo(System.ComponentModel.ITypeDescriptorContext context, System.Type destinationType)</code></td>
+<td>Determines whether a <a href="./#magneticdelays"><code>MagneticDelays</code></a> can be converted to the given type.</td>
+</tr>
+<tr>
+<td><code>System.Object ConvertFrom(System.ComponentModel.ITypeDescriptorContext context, System.Globalization.CultureInfo culture, System.Object value)</code></td>
+<td>Parses a string of four comma-separated integers into a <a href="./#magneticdelays"><code>MagneticDelays</code></a>.</td>
+</tr>
+<tr>
+<td><code>System.Object ConvertTo(System.ComponentModel.ITypeDescriptorContext context, System.Globalization.CultureInfo culture, System.Object value, System.Type destinationType)</code></td>
+<td>Converts a <a href="./#magneticdelays"><code>MagneticDelays</code></a> to its string form.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="magneticeventargs">MagneticEventArgs<a class="headerlink" href="#magneticeventargs" title="Permanent link">&para;</a></h2>
+<p><code>class System.Windows.Input.MagneticEventArgs</code></p>
+<p>Base class for the data of the attach and detach events of a magnetic <code>Button</code>.</p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Windows.Input.UserInformation UserInformation { get; }</code></td>
+<td>Gets the user whose hand cursor caused the event.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="magneticradii">MagneticRadii<a class="headerlink" href="#magneticradii" title="Permanent link">&para;</a></h2>
+<p><code>struct System.Windows.Input.MagneticRadii</code></p>
+<p>Holds the four zone sizes used by a magnetic <code>Button</code>, from the innermost zone outward.</p>
+<p>The XAML and string form is four comma-separated numbers in constructor order, for example "0.1,0.15,0.1875,0.225".</p>
+<p><strong>Constructors</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MagneticRadii(System.Double fastAttachRadius, System.Double slowAttachRadius, System.Double approachRadius, System.Double slowDetachRadius)</code></td>
+<td>Initializes a new <a href="./#magneticradii"><code>MagneticRadii</code></a> with the given zone sizes.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Double ApproachRadius { get; set; }</code></td>
+<td>Gets or sets the size of the approach zone.</td>
+</tr>
+<tr>
+<td><code>System.Double FastAttachRadius { get; set; }</code></td>
+<td>Gets or sets the size of the fast-attach zone.</td>
+</tr>
+<tr>
+<td><code>System.Double SlowAttachRadius { get; set; }</code></td>
+<td>Gets or sets the size of the slow-attach zone.</td>
+</tr>
+<tr>
+<td><code>System.Double SlowDetachRadius { get; set; }</code></td>
+<td>Gets or sets the size of the slow-detach zone; beyond it lies the fast-detach zone.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.String ToString()</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="magneticradiitypeconverter">MagneticRadiiTypeConverter<a class="headerlink" href="#magneticradiitypeconverter" title="Permanent link">&para;</a></h2>
+<p><code>class System.Windows.Input.MagneticRadiiTypeConverter</code></p>
+<p>Converts between strings of four comma-separated numbers and <a href="./#magneticradii"><code>MagneticRadii</code></a> values, so the property can be set in XAML.</p>
+<p><strong>Constructors</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MagneticRadiiTypeConverter()</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Boolean CanConvertFrom(System.ComponentModel.ITypeDescriptorContext context, System.Type sourceType)</code></td>
+<td>Determines whether a value of the given type can be converted to <a href="./#magneticradii"><code>MagneticRadii</code></a>.</td>
+</tr>
+<tr>
+<td><code>System.Boolean CanConvertTo(System.ComponentModel.ITypeDescriptorContext context, System.Type destinationType)</code></td>
+<td>Determines whether a <a href="./#magneticradii"><code>MagneticRadii</code></a> can be converted to the given type.</td>
+</tr>
+<tr>
+<td><code>System.Object ConvertFrom(System.ComponentModel.ITypeDescriptorContext context, System.Globalization.CultureInfo culture, System.Object value)</code></td>
+<td>Parses a string of four comma-separated numbers into a <a href="./#magneticradii"><code>MagneticRadii</code></a>.</td>
+</tr>
+<tr>
+<td><code>System.Object ConvertTo(System.ComponentModel.ITypeDescriptorContext context, System.Globalization.CultureInfo culture, System.Object value, System.Type destinationType)</code></td>
+<td>Converts a <a href="./#magneticradii"><code>MagneticRadii</code></a> to its string form.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="magneticzone">MagneticZone<a class="headerlink" href="#magneticzone" title="Permanent link">&para;</a></h2>
+<p><code>enum System.Windows.Input.MagneticZone</code></p>
+<p>Identifies the concentric zones around a magnetic button's origin that govern how the Kinect hand cursor snaps to it, from innermost to outermost.</p>
+<p>The zone sizes are set with <code>Button.MagneticRadii</code> and the time spent in each zone before the cursor attaches or detaches with <code>Button.MagneticDelays</code>.</p>
+<p><strong>Values</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Approach</code></td>
+<td>The zone in which the cursor is approaching the button but does not attach.</td>
+</tr>
+<tr>
+<td><code>FastAttach</code></td>
+<td>The innermost zone; the cursor attaches after the short fast-attach delay.</td>
+</tr>
+<tr>
+<td><code>FastDetach</code></td>
+<td>The outermost zone; an attached cursor detaches after the short fast-detach delay.</td>
+</tr>
+<tr>
+<td><code>SlowAttach</code></td>
+<td>The zone outside <a href="./#magneticzone"><code>MagneticZone.FastAttach</code></a>; the cursor attaches after the longer slow-attach delay.</td>
+</tr>
+<tr>
+<td><code>SlowDetach</code></td>
+<td>The zone in which an attached cursor detaches after the slow-detach delay.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="speechcommand">SpeechCommand<a class="headerlink" href="#speechcommand" title="Permanent link">&para;</a></h2>
+<p><code>class System.Windows.Input.SpeechCommand</code></p>
+<p>Base class for an <code>ICommand</code> that can also be invoked by voice, and that ties a phrase to a <code>Button</code>.</p>
+<p>Derive from this class, implement <a href="./#speechcommand"><code>SpeechCommand.DisplayText</code></a>, <a href="./#speechcommand"><code>SpeechCommand.CanExecute</code></a> and <a href="./#speechcommand"><code>SpeechCommand.Execute</code></a>, and assign an instance to a button's Command property.</p>
+<p>While the button is loaded, the command is linked to it. When the command reports a voice activation by calling <a href="./#speechcommand"><code>SpeechCommand.OnInternalExecuted</code></a>, the button raises Click with <a href="./#inputmodality"><code>InputModality.Voice</code></a>, which then executes the command. The button's IsEnabled state is combined with <a href="./#speechcommand"><code>SpeechCommand.CanExecute</code></a> to decide whether the phrase is available. A command instance can be linked to only one loaded button at a time.</p>
+<p>Voice input requires a Kinect sensor. The button template can define the SpeechHidden, SpeechShown and SpeechDisambiguating visual states to show the phrase on screen.</p>
+<p><strong>Constructors</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SpeechCommand()</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.String DisambiguationText { get; }</code></td>
+<td>Gets the extra text shown when several commands share the same phrase and the user must choose between them.</td>
+</tr>
+<tr>
+<td><code>System.String DisplayText { get; set; }</code></td>
+<td>When overridden in a derived class, gets or sets the phrase the user says to invoke the command, as it is shown on screen.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Boolean CanExecute(System.Object parameter)</code></td>
+<td>When overridden in a derived class, determines whether the command can run.</td>
+</tr>
+<tr>
+<td><code>System.Void Execute(System.Object parameter)</code></td>
+<td>When overridden in a derived class, performs the command's action.</td>
+</tr>
+<tr>
+<td><code>System.Void OnCanExecuteChanged()</code></td>
+<td>Raises the <a href="./#speechcommand"><code>SpeechCommand.CanExecuteChanged</code></a> event unconditionally.</td>
+</tr>
+<tr>
+<td><code>System.Void OnInternalExecuted()</code></td>
+<td>Reports that the command was invoked by voice. The linked <code>Button</code> responds by raising Click with <a href="./#inputmodality"><code>InputModality.Voice</code></a>, which in turn calls <a href="./#speechcommand"><code>SpeechCommand.Execute</code></a>. Nothing happens if no loaded button is linked to the command, or if the button is already executing its command.</td>
+</tr>
+<tr>
+<td><code>System.Void OnPropertyChanged(System.String propertyName)</code></td>
+<td>Raises the <a href="./#speechcommand"><code>SpeechCommand.PropertyChanged</code></a> event.</td>
+</tr>
+<tr>
+<td><code>System.Void UpdateCanExecute()</code></td>
+<td>Re-evaluates <a href="./#speechcommand"><code>SpeechCommand.CanExecute</code></a> with a null parameter and raises <a href="./#speechcommand"><code>SpeechCommand.CanExecuteChanged</code></a> if the result differs from the previous one. Call this whenever the state that <a href="./#speechcommand"><code>SpeechCommand.CanExecute</code></a> depends on changes, so the voice phrase is enabled or disabled to match.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Events</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>event System.ComponentModel.PropertyChangedEventHandler PropertyChanged</code></td>
+<td>Occurs when a property value changes, for example <a href="./#speechcommand"><code>SpeechCommand.DisplayText</code></a>.</td>
+</tr>
+<tr>
+<td><code>event System.EventHandler CanExecuteChanged</code></td>
+<td>Occurs when the result of <a href="./#speechcommand"><code>SpeechCommand.CanExecute</code></a> changes. Raised by <a href="./#speechcommand"><code>SpeechCommand.OnCanExecuteChanged</code></a>, and by <a href="./#speechcommand"><code>SpeechCommand.UpdateCanExecute</code></a> when it detects a change.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="userinformation">UserInformation<a class="headerlink" href="#userinformation" title="Permanent link">&para;</a></h2>
+<p><code>class System.Windows.Input.UserInformation</code></p>
+<p>Identifies the user who produced an input event: the controller slot for controller input, and the Kinect tracking ID for gesture input.</p>
+<p>Instances are created by the platform. When a value is not known, the properties hold <a href="./#userinformation"><code>UserInformation.InvalidPlayerIndex</code></a> and <a href="./#userinformation"><code>UserInformation.InvalidTrackingId</code></a>.</p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Int32 PlayerIndex { get; }</code></td>
+<td>Gets the player (controller slot) index of the user who produced the input.</td>
+</tr>
+<tr>
+<td><code>System.Int32 TrackingId { get; }</code></td>
+<td>Gets the Kinect tracking ID of the body that produced the input.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Fields</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>const System.Int32 InvalidPlayerIndex</code></td>
+<td>The value of <a href="./#userinformation"><code>UserInformation.PlayerIndex</code></a> when no player is associated with the input. This field is constant (254).</td>
+</tr>
+<tr>
+<td><code>const System.Int32 InvalidTrackingId</code></td>
+<td>The value of <a href="./#userinformation"><code>UserInformation.TrackingId</code></a> when no tracked body is associated with the input. This field is constant (0).</td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../System.Windows.Controls/" class="btn btn-neutral float-left" title="System.Windows.Controls"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../System.Windows.Media/" class="btn btn-neutral float-right" title="System.Windows.Media">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>Silverlight360 is licensed under the PolyForm Noncommercial License 1.0.0 with an additional condition. Xbox, Xbox 360 and Silverlight are trademarks of Microsoft.</p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/Digiex/Silverlight360" class="fa fa-code-fork" style="color: #fcfcfc"> Digiex/Silverlight360</a>
+        </span>
+    
+    
+      <span><a href="../System.Windows.Controls/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../System.Windows.Media/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

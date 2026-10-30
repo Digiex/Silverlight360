@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://digiex.github.io/Silverlight360/reference/Microsoft.Xbox.Media/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Microsoft.Xbox.Media - Silverlight360</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Microsoft.Xbox.Media";
+        var mkdocs_page_input_path = "reference\\Microsoft.Xbox.Media.md";
+        var mkdocs_page_url = "/Silverlight360/reference/Microsoft.Xbox.Media/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/powershell.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/csharp.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/xml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Silverlight360
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../getting-started/">Getting started</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../project-setup/">Projects and Visual Studio</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../app-model/">App model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../input-and-focus/">Input and focus</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../controls/">Xbox controls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../networking/">Networking</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../storage/">Storage</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../media/">Media</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../gamer-services/">Gamer services</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../native-code/">Native code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../testing/">Testing in xenia</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../samples/">Samples</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../xenia-status/">Status under xenia</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../runtime-inventory/">Runtime inventory</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">API reference</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../MS.Internal/">MS.Internal</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Controls.Primitives/">Microsoft.Xbox.Controls.Primitives</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Controls/">Microsoft.Xbox.Controls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Core/">Microsoft.Xbox.Core</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Input/">Microsoft.Xbox.Input</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Media.Mpeg/">Microsoft.Xbox.Media.Mpeg</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Microsoft.Xbox.Media</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#mediacapabilities">MediaCapabilities</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#musicplayer">MusicPlayer</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#sounds">Sounds</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#speakers">Speakers</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#timedtextcolor">TimedTextColor</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#timedtextedgeattribute">TimedTextEdgeAttribute</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#timedtextfontsize">TimedTextFontSize</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#timedtextfontstyle">TimedTextFontStyle</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#timedtextlanguage">TimedTextLanguage</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#timedtextopacity">TimedTextOpacity</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#timedtextsettings">TimedTextSettings</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Net/">Microsoft.Xbox.Net</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Security.XAuth/">Microsoft.Xbox.Security.XAuth</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Services/">Microsoft.Xbox.Services</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Transitions/">Microsoft.Xbox.Transitions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox/">Microsoft.Xbox</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xna.Framework.GamerServices.ContentRating.Level/">Microsoft.Xna.Framework.GamerServices.ContentRating.Level</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xna.Framework.GamerServices.ContentRating.System/">Microsoft.Xna.Framework.GamerServices.ContentRating.System</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xna.Framework.GamerServices.ContentRating/">Microsoft.Xna.Framework.GamerServices.ContentRating</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xna.Framework.GamerServices/">Microsoft.Xna.Framework.GamerServices</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xna.Framework.Storage/">Microsoft.Xna.Framework.Storage</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Reflection.ReflectionPermissionFrame/">System.Reflection.ReflectionPermissionFrame</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Reflection/">System.Reflection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Windows.Controls/">System.Windows.Controls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Windows.Input/">System.Windows.Input</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Windows.Media/">System.Windows.Media</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Windows/">System.Windows</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Silverlight360</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">API reference</li>
+      <li class="breadcrumb-item active">Microsoft.Xbox.Media</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/Digiex/Silverlight360/edit/master/docs/reference/Microsoft.Xbox.Media.md">Edit on Digiex/Silverlight360</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="microsoftxboxmedia">Microsoft.Xbox.Media<a class="headerlink" href="#microsoftxboxmedia" title="Permanent link">&para;</a></h1>
+<p>Assembly: <code>Microsoft.Xbox.dll</code></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Summary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#mediacapabilities"><code>MediaCapabilities</code></a></td>
+<td>Reads and changes the console's closed-captioning settings and reports optional media components.</td>
+</tr>
+<tr>
+<td><a href="#musicplayer"><code>MusicPlayer</code></a></td>
+<td>Controls background music that the user is playing from the console's music player.</td>
+</tr>
+<tr>
+<td><a href="#sounds"><code>Sounds</code></a></td>
+<td>Plays the standard console navigation sounds for buttons and lets you replace them per element.</td>
+</tr>
+<tr>
+<td><a href="#speakers"><code>Speakers</code></a></td>
+<td>Reports the console's audio output configuration and lets the application force stereo output.</td>
+</tr>
+<tr>
+<td><a href="#timedtextcolor"><code>TimedTextColor</code></a></td>
+<td>Caption colors that the user can choose in the console's closed-captioning settings.</td>
+</tr>
+<tr>
+<td><a href="#timedtextedgeattribute"><code>TimedTextEdgeAttribute</code></a></td>
+<td>The edge effect drawn around caption characters.</td>
+</tr>
+<tr>
+<td><a href="#timedtextfontsize"><code>TimedTextFontSize</code></a></td>
+<td>Caption text size.</td>
+</tr>
+<tr>
+<td><a href="#timedtextfontstyle"><code>TimedTextFontStyle</code></a></td>
+<td>Caption font family style.</td>
+</tr>
+<tr>
+<td><a href="#timedtextlanguage"><code>TimedTextLanguage</code></a></td>
+<td>The caption track the user prefers.</td>
+</tr>
+<tr>
+<td><a href="#timedtextopacity"><code>TimedTextOpacity</code></a></td>
+<td>Opacity of caption text, background or window.</td>
+</tr>
+<tr>
+<td><a href="#timedtextsettings"><code>TimedTextSettings</code></a></td>
+<td>A snapshot of the user's caption appearance preferences. Obtain one from <a href="./#mediacapabilities"><code>MediaCapabilities.GetTimedTextSettings</code></a> and apply it when rendering captions; the properties are read-only.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="mediacapabilities">MediaCapabilities<a class="headerlink" href="#mediacapabilities" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.Media.MediaCapabilities</code></p>
+<p>Reads and changes the console's closed-captioning settings and reports optional media components.</p>
+<p>At design time the properties return <code>false</code>, setters do nothing, and <a href="./#mediacapabilities"><code>MediaCapabilities.GetTimedTextSettings</code></a> returns default settings.</p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>static System.Boolean Enable708Captioning { get; set; }</code></td>
+<td>Gets or sets whether the media pipeline decodes CEA-708 closed captions embedded in the video stream.</td>
+</tr>
+<tr>
+<td><code>static System.Boolean TimedTextEnabled { get; set; }</code></td>
+<td>Gets or sets the console-wide closed-captioning on/off state. Check it before showing captions so that you honor the user's system setting.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>static Microsoft.Xbox.Media.TimedTextSettings GetTimedTextSettings()</code></td>
+<td>Gets the user's caption appearance preferences (font, colors, opacity, edge style and language) from the console settings.</td>
+</tr>
+<tr>
+<td><code>static System.Boolean IsOptionalMediaUpdateInstalled()</code></td>
+<td>Gets whether the console's optional media update is installed. Some codecs and formats are available only after this update.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="musicplayer">MusicPlayer<a class="headerlink" href="#musicplayer" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.Media.MusicPlayer</code></p>
+<p>Controls background music that the user is playing from the console's music player.</p>
+<p>Pause the user's music before playing your own audio or video, and resume it when you are done. Both methods must be called on the UI thread.</p>
+<p><strong>Methods</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>static System.Void Pause()</code></td>
+<td>Pauses the user's background music so that the application's audio can play. Must be called on the UI thread.</td>
+</tr>
+<tr>
+<td><code>static System.Void Resume()</code></td>
+<td>Resumes background music that was paused with <a href="./#musicplayer"><code>MusicPlayer.Pause</code></a>. Must be called on the UI thread.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="sounds">Sounds<a class="headerlink" href="#sounds" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.Media.Sounds</code></p>
+<p>Plays the standard console navigation sounds for buttons and lets you replace them per element.</p>
+<p>Buttons play click, focus and hover sounds automatically. Sounds play only when <a href="./#sounds"><code>Sounds.IsEnabled</code></a> is <code>true</code>, which requires the user to have enabled interface sound effects in the console settings. A custom sound is loaded with <code>Application.GetResourceStream</code>, so the URI must refer to a WAV resource in the application package; each sound is loaded once and cached.</p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>static System.Boolean IsDashSoundEffectEnabled { get; }</code></td>
+<td>Gets whether interface sound effects are enabled in the console settings. Read once when the runtime initializes the sounds system.</td>
+</tr>
+<tr>
+<td><code>static System.Boolean IsEnabled { get; set; }</code></td>
+<td>Gets or sets whether the application plays navigation sounds.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>static System.Uri GetButtonClickUri(System.Windows.UIElement element)</code></td>
+<td>Gets the click sound for the specified element.</td>
+</tr>
+<tr>
+<td><code>static System.Uri GetButtonFocusUri(System.Windows.UIElement element)</code></td>
+<td>Gets the focus sound for the specified element.</td>
+</tr>
+<tr>
+<td><code>static System.Uri GetButtonHoverUri(System.Windows.UIElement element)</code></td>
+<td>Gets the hover sound for the specified element.</td>
+</tr>
+<tr>
+<td><code>static System.Void SetButtonClickUri(System.Windows.UIElement element, System.Uri value)</code></td>
+<td>Sets the sound played when the specified button is clicked.</td>
+</tr>
+<tr>
+<td><code>static System.Void SetButtonFocusUri(System.Windows.UIElement element, System.Uri value)</code></td>
+<td>Sets the sound played when the specified button receives focus.</td>
+</tr>
+<tr>
+<td><code>static System.Void SetButtonHoverUri(System.Windows.UIElement element, System.Uri value)</code></td>
+<td>Sets the sound played when the Kinect hand cursor hovers over the specified button.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Fields</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>static System.Uri DefaultButtonBackUri</code></td>
+<td>The relative URI of the built-in "back" navigation sound (<code>/SystemSounds/DefaultButtonBack.wav</code>).</td>
+</tr>
+<tr>
+<td><code>static System.Uri DefaultButtonClickUri</code></td>
+<td>The relative URI of the built-in button click sound (<code>/SystemSounds/DefaultButtonClick.wav</code>).</td>
+</tr>
+<tr>
+<td><code>static System.Uri DefaultButtonFocusUri</code></td>
+<td>The relative URI of the built-in button focus sound (<code>/SystemSounds/DefaultButtonFocus.wav</code>).</td>
+</tr>
+<tr>
+<td><code>static System.Uri DefaultButtonHoverUri</code></td>
+<td>The relative URI of the built-in button hover sound (<code>/SystemSounds/DefaultButtonHover.wav</code>).</td>
+</tr>
+<tr>
+<td><code>static System.Windows.DependencyProperty ButtonClickUriProperty</code></td>
+<td>Identifies the <code>Sounds.ButtonClickUri</code> attached property: the sound played when a button is clicked. Defaults to <a href="./#sounds"><code>Sounds.DefaultButtonClickUri</code></a>.</td>
+</tr>
+<tr>
+<td><code>static System.Windows.DependencyProperty ButtonFocusUriProperty</code></td>
+<td>Identifies the <code>Sounds.ButtonFocusUri</code> attached property: the sound played when a button receives focus. Defaults to <a href="./#sounds"><code>Sounds.DefaultButtonFocusUri</code></a>.</td>
+</tr>
+<tr>
+<td><code>static System.Windows.DependencyProperty ButtonHoverUriProperty</code></td>
+<td>Identifies the <code>Sounds.ButtonHoverUri</code> attached property: the sound played when the Kinect hand cursor hovers over a button. Defaults to <a href="./#sounds"><code>Sounds.DefaultButtonHoverUri</code></a>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="speakers">Speakers<a class="headerlink" href="#speakers" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.Media.Speakers</code></p>
+<p>Reports the console's audio output configuration and lets the application force stereo output.</p>
+<p>All members must be used on the UI thread.</p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>static System.Boolean ForceAudioOutputToStereo { get; set; }</code></td>
+<td>Gets or sets whether audio output is downmixed to stereo even when the console is configured for surround sound. Must be used on the UI thread.</td>
+</tr>
+<tr>
+<td><code>static System.Boolean Stereo { get; }</code></td>
+<td>Gets whether the console's audio output is configured for stereo (the inverse of <a href="./#speakers"><code>Speakers.Surround</code></a>). Must be read on the UI thread.</td>
+</tr>
+<tr>
+<td><code>static System.Boolean Surround { get; }</code></td>
+<td>Gets whether the console's audio output is configured for surround sound. Must be read on the UI thread.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="timedtextcolor">TimedTextColor<a class="headerlink" href="#timedtextcolor" title="Permanent link">&para;</a></h2>
+<p><code>enum Microsoft.Xbox.Media.TimedTextColor</code></p>
+<p>Caption colors that the user can choose in the console's closed-captioning settings.</p>
+<p><strong>Values</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Black</code></td>
+<td>Black.</td>
+</tr>
+<tr>
+<td><code>Blue</code></td>
+<td>Blue.</td>
+</tr>
+<tr>
+<td><code>Cyan</code></td>
+<td>Cyan.</td>
+</tr>
+<tr>
+<td><code>Green</code></td>
+<td>Green.</td>
+</tr>
+<tr>
+<td><code>Magenta</code></td>
+<td>Magenta.</td>
+</tr>
+<tr>
+<td><code>Red</code></td>
+<td>Red.</td>
+</tr>
+<tr>
+<td><code>White</code></td>
+<td>White.</td>
+</tr>
+<tr>
+<td><code>Yellow</code></td>
+<td>Yellow.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="timedtextedgeattribute">TimedTextEdgeAttribute<a class="headerlink" href="#timedtextedgeattribute" title="Permanent link">&para;</a></h2>
+<p><code>enum Microsoft.Xbox.Media.TimedTextEdgeAttribute</code></p>
+<p>The edge effect drawn around caption characters.</p>
+<p><strong>Values</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Depressed</code></td>
+<td>Characters appear depressed (engraved).</td>
+</tr>
+<tr>
+<td><code>DropShadow</code></td>
+<td>Characters have a drop shadow.</td>
+</tr>
+<tr>
+<td><code>None</code></td>
+<td>No edge effect.</td>
+</tr>
+<tr>
+<td><code>Raised</code></td>
+<td>Characters appear raised (embossed).</td>
+</tr>
+<tr>
+<td><code>Uniform</code></td>
+<td>Characters have a uniform outline.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="timedtextfontsize">TimedTextFontSize<a class="headerlink" href="#timedtextfontsize" title="Permanent link">&para;</a></h2>
+<p><code>enum Microsoft.Xbox.Media.TimedTextFontSize</code></p>
+<p>Caption text size.</p>
+<p><strong>Values</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Large</code></td>
+<td>Large text.</td>
+</tr>
+<tr>
+<td><code>Medium</code></td>
+<td>Medium (standard) text.</td>
+</tr>
+<tr>
+<td><code>Small</code></td>
+<td>Small text.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="timedtextfontstyle">TimedTextFontStyle<a class="headerlink" href="#timedtextfontstyle" title="Permanent link">&para;</a></h2>
+<p><code>enum Microsoft.Xbox.Media.TimedTextFontStyle</code></p>
+<p>Caption font family style.</p>
+<p><strong>Values</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Casual</code></td>
+<td>Casual (informal) font.</td>
+</tr>
+<tr>
+<td><code>Cursive</code></td>
+<td>Cursive (script) font.</td>
+</tr>
+<tr>
+<td><code>Default</code></td>
+<td>The renderer's default caption font.</td>
+</tr>
+<tr>
+<td><code>MonoSansSerif</code></td>
+<td>Monospaced font without serifs.</td>
+</tr>
+<tr>
+<td><code>MonoSerif</code></td>
+<td>Monospaced font with serifs.</td>
+</tr>
+<tr>
+<td><code>ProportionalSansSerif</code></td>
+<td>Proportional font without serifs.</td>
+</tr>
+<tr>
+<td><code>ProportionalSerif</code></td>
+<td>Proportional font with serifs.</td>
+</tr>
+<tr>
+<td><code>SmallCaps</code></td>
+<td>Small capitals.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="timedtextlanguage">TimedTextLanguage<a class="headerlink" href="#timedtextlanguage" title="Permanent link">&para;</a></h2>
+<p><code>enum Microsoft.Xbox.Media.TimedTextLanguage</code></p>
+<p>The caption track the user prefers.</p>
+<p><strong>Values</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>EasyReader</code></td>
+<td>Easy-reader captions (simplified text at a reduced reading rate).</td>
+</tr>
+<tr>
+<td><code>English</code></td>
+<td>English captions.</td>
+</tr>
+<tr>
+<td><code>Spanish</code></td>
+<td>Spanish captions.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="timedtextopacity">TimedTextOpacity<a class="headerlink" href="#timedtextopacity" title="Permanent link">&para;</a></h2>
+<p><code>enum Microsoft.Xbox.Media.TimedTextOpacity</code></p>
+<p>Opacity of caption text, background or window.</p>
+<p><strong>Values</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Opaque</code></td>
+<td>Fully opaque.</td>
+</tr>
+<tr>
+<td><code>SemiTransparent</code></td>
+<td>Partly transparent.</td>
+</tr>
+<tr>
+<td><code>Transparent</code></td>
+<td>Fully transparent (not drawn).</td>
+</tr>
+</tbody>
+</table>
+<h2 id="timedtextsettings">TimedTextSettings<a class="headerlink" href="#timedtextsettings" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.Media.TimedTextSettings</code></p>
+<p>A snapshot of the user's caption appearance preferences. Obtain one from <a href="./#mediacapabilities"><code>MediaCapabilities.GetTimedTextSettings</code></a> and apply it when rendering captions; the properties are read-only.</p>
+<p><strong>Constructors</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>TimedTextSettings()</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Microsoft.Xbox.Media.TimedTextColor BackgroundColor { get; }</code></td>
+<td>Gets the color of the box drawn directly behind the caption text.</td>
+</tr>
+<tr>
+<td><code>Microsoft.Xbox.Media.TimedTextColor FontColor { get; }</code></td>
+<td>Gets the caption text color. The default is <a href="./#timedtextcolor"><code>TimedTextColor.White</code></a>.</td>
+</tr>
+<tr>
+<td><code>Microsoft.Xbox.Media.TimedTextColor WindowColor { get; }</code></td>
+<td>Gets the color of the caption window (the area enclosing all caption lines).</td>
+</tr>
+<tr>
+<td><code>Microsoft.Xbox.Media.TimedTextEdgeAttribute EdgeAttribute { get; }</code></td>
+<td>Gets the edge effect for caption characters.</td>
+</tr>
+<tr>
+<td><code>Microsoft.Xbox.Media.TimedTextFontSize FontSize { get; }</code></td>
+<td>Gets the caption text size.</td>
+</tr>
+<tr>
+<td><code>Microsoft.Xbox.Media.TimedTextFontStyle FontStyle { get; }</code></td>
+<td>Gets the caption font style.</td>
+</tr>
+<tr>
+<td><code>Microsoft.Xbox.Media.TimedTextLanguage PreferredLanguage { get; }</code></td>
+<td>Gets the caption track the user prefers.</td>
+</tr>
+<tr>
+<td><code>Microsoft.Xbox.Media.TimedTextOpacity BackgroundOpacity { get; }</code></td>
+<td>Gets the opacity of the box drawn directly behind the caption text.</td>
+</tr>
+<tr>
+<td><code>Microsoft.Xbox.Media.TimedTextOpacity FontOpacity { get; }</code></td>
+<td>Gets the caption text opacity.</td>
+</tr>
+<tr>
+<td><code>Microsoft.Xbox.Media.TimedTextOpacity WindowOpacity { get; }</code></td>
+<td>Gets the opacity of the caption window.</td>
+</tr>
+<tr>
+<td><code>System.Boolean UseDefaults { get; }</code></td>
+<td>Gets whether the user has kept the default caption style. When <code>true</code>, render captions in your own default style and ignore the other properties.</td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../Microsoft.Xbox.Media.Mpeg/" class="btn btn-neutral float-left" title="Microsoft.Xbox.Media.Mpeg"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Microsoft.Xbox.Net/" class="btn btn-neutral float-right" title="Microsoft.Xbox.Net">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>Silverlight360 is licensed under the PolyForm Noncommercial License 1.0.0 with an additional condition. Xbox, Xbox 360 and Silverlight are trademarks of Microsoft.</p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/Digiex/Silverlight360" class="fa fa-code-fork" style="color: #fcfcfc"> Digiex/Silverlight360</a>
+        </span>
+    
+    
+      <span><a href="../Microsoft.Xbox.Media.Mpeg/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../Microsoft.Xbox.Net/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

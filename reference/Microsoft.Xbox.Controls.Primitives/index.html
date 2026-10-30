@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://digiex.github.io/Silverlight360/reference/Microsoft.Xbox.Controls.Primitives/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Microsoft.Xbox.Controls.Primitives - Silverlight360</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Microsoft.Xbox.Controls.Primitives";
+        var mkdocs_page_input_path = "reference\\Microsoft.Xbox.Controls.Primitives.md";
+        var mkdocs_page_url = "/Silverlight360/reference/Microsoft.Xbox.Controls.Primitives/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/powershell.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/csharp.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/xml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Silverlight360
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../getting-started/">Getting started</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../project-setup/">Projects and Visual Studio</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../app-model/">App model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../input-and-focus/">Input and focus</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../controls/">Xbox controls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../networking/">Networking</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../storage/">Storage</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../media/">Media</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../gamer-services/">Gamer services</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../native-code/">Native code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../testing/">Testing in xenia</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../samples/">Samples</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../xenia-status/">Status under xenia</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../runtime-inventory/">Runtime inventory</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">API reference</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../MS.Internal/">MS.Internal</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Microsoft.Xbox.Controls.Primitives</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#depthpip">DepthPIP</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#legendbutton">LegendButton</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#nuigearshift">NuiGearshift</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#nuitimelinebar">NuiTimelineBar</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#nuitimelinepanel">NuiTimelinePanel</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#pivotheaderitem">PivotHeaderItem</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#pivotheaderscontrol">PivotHeadersControl</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#resolutionnormalizingpanel">ResolutionNormalizingPanel</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#signalstrength">SignalStrength</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#tipsmanager">TipsManager</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#virtualizinggrid">VirtualizingGrid</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#vuicommandpresenter">VuiCommandPresenter</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#vuimeter">VuiMeter</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Controls/">Microsoft.Xbox.Controls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Core/">Microsoft.Xbox.Core</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Input/">Microsoft.Xbox.Input</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Media.Mpeg/">Microsoft.Xbox.Media.Mpeg</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Media/">Microsoft.Xbox.Media</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Net/">Microsoft.Xbox.Net</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Security.XAuth/">Microsoft.Xbox.Security.XAuth</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Services/">Microsoft.Xbox.Services</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Transitions/">Microsoft.Xbox.Transitions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox/">Microsoft.Xbox</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xna.Framework.GamerServices.ContentRating.Level/">Microsoft.Xna.Framework.GamerServices.ContentRating.Level</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xna.Framework.GamerServices.ContentRating.System/">Microsoft.Xna.Framework.GamerServices.ContentRating.System</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xna.Framework.GamerServices.ContentRating/">Microsoft.Xna.Framework.GamerServices.ContentRating</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xna.Framework.GamerServices/">Microsoft.Xna.Framework.GamerServices</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xna.Framework.Storage/">Microsoft.Xna.Framework.Storage</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Reflection.ReflectionPermissionFrame/">System.Reflection.ReflectionPermissionFrame</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Reflection/">System.Reflection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Windows.Controls/">System.Windows.Controls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Windows.Input/">System.Windows.Input</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Windows.Media/">System.Windows.Media</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Windows/">System.Windows</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Silverlight360</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">API reference</li>
+      <li class="breadcrumb-item active">Microsoft.Xbox.Controls.Primitives</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/Digiex/Silverlight360/edit/master/docs/reference/Microsoft.Xbox.Controls.Primitives.md">Edit on Digiex/Silverlight360</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="microsoftxboxcontrolsprimitives">Microsoft.Xbox.Controls.Primitives<a class="headerlink" href="#microsoftxboxcontrolsprimitives" title="Permanent link">&para;</a></h1>
+<p>Assembly: <code>Microsoft.Xbox.dll</code></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Summary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#depthpip"><code>DepthPIP</code></a></td>
+<td>Shows the Kinect camera feed in a small picture-in-picture rectangle so users can see how the sensor sees them.</td>
+</tr>
+<tr>
+<td><a href="#legendbutton"><code>LegendButton</code></a></td>
+<td>One entry in a <a href="../Microsoft.Xbox.Controls/#legend"><code>Legend</code></a>: a controller button glyph and its caption.</td>
+</tr>
+<tr>
+<td><a href="#nuigearshift"><code>NuiGearshift</code></a></td>
+<td>The Kinect scrub handle ("gearshift") drawn on the <a href="../Microsoft.Xbox.Controls/#nuitimeline"><code>NuiTimeline</code></a>.</td>
+</tr>
+<tr>
+<td><a href="#nuitimelinebar"><code>NuiTimelineBar</code></a></td>
+<td>A bar whose filled portion represents a progress fraction; used inside the <a href="../Microsoft.Xbox.Controls/#nuitimeline"><code>NuiTimeline</code></a> template.</td>
+</tr>
+<tr>
+<td><a href="#nuitimelinepanel"><code>NuiTimelinePanel</code></a></td>
+<td>A panel that positions <a href="../Microsoft.Xbox.Controls/#nuitimelinemarker"><code>NuiTimelineMarker</code></a> children horizontally by time, using the enclosing <a href="../Microsoft.Xbox.Controls/#nuitimeline"><code>NuiTimeline</code></a> to convert times to pixels.</td>
+</tr>
+<tr>
+<td><a href="#pivotheaderitem"><code>PivotHeaderItem</code></a></td>
+<td>The container for one header in a <a href="./#pivotheaderscontrol"><code>PivotHeadersControl</code></a>.</td>
+</tr>
+<tr>
+<td><a href="#pivotheaderscontrol"><code>PivotHeadersControl</code></a></td>
+<td>The header row of a <a href="../Microsoft.Xbox.Controls/#pivot"><code>Pivot</code></a>. Headers scroll so the selected header comes first, and can wrap around when looping is enabled.</td>
+</tr>
+<tr>
+<td><a href="#resolutionnormalizingpanel"><code>ResolutionNormalizingPanel</code></a></td>
+<td>A panel that lays out its children at a fixed logical height and scales them to the panel's actual size, so content designed for one resolution looks the same at 720p and 1080p.</td>
+</tr>
+<tr>
+<td><a href="#signalstrength"><code>SignalStrength</code></a></td>
+<td>A signal-strength indicator that switches between the visual states <code>None</code>, <code>Low</code>, <code>Medium</code>, <code>High</code> and <code>Full</code> (group <code>SignalStrengthStates</code>).</td>
+</tr>
+<tr>
+<td><a href="#tipsmanager"><code>TipsManager</code></a></td>
+<td>Shows Kinect tips and the wave-to-engage progress in the <a href="../Microsoft.Xbox.Controls/#feedback"><code>Feedback</code></a> strip.</td>
+</tr>
+<tr>
+<td><a href="#virtualizinggrid"><code>VirtualizingGrid</code></a></td>
+<td>The paging items panel of <a href="../Microsoft.Xbox.Controls/#continuouslist"><code>ContinuousList</code></a>. It places item containers into a <code>Grid</code> column by column and only keeps the columns around the visible page realized.</td>
+</tr>
+<tr>
+<td><a href="#vuicommandpresenter"><code>VuiCommandPresenter</code></a></td>
+<td>Displays one <a href="../Microsoft.Xbox.Controls/#vuicommand"><code>VuiCommand</code></a> on the <a href="../Microsoft.Xbox.Controls/#vuibar"><code>VuiBar</code></a>.</td>
+</tr>
+<tr>
+<td><a href="#vuimeter"><code>VuiMeter</code></a></td>
+<td>The animated microphone level meter on the <a href="../Microsoft.Xbox.Controls/#vuibar"><code>VuiBar</code></a>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="depthpip">DepthPIP<a class="headerlink" href="#depthpip" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.Controls.Primitives.DepthPIP</code></p>
+<p>Shows the Kinect camera feed in a small picture-in-picture rectangle so users can see how the sensor sees them.</p>
+<p>The template part <code>NuiCameraRectangle</code> (a <code>Rectangle</code>) is filled with a video brush whose source is the Kinect camera. The control is visible only while it is enabled and the Kinect sensor reports that it is ready; it collapses itself otherwise. Used by <a href="../Microsoft.Xbox.Controls/#feedback"><code>Feedback</code></a>.</p>
+<p><strong>Constructors</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DepthPIP()</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Void OnApplyTemplate()</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="legendbutton">LegendButton<a class="headerlink" href="#legendbutton" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.Controls.Primitives.LegendButton</code></p>
+<p>One entry in a <a href="../Microsoft.Xbox.Controls/#legend"><code>Legend</code></a>: a controller button glyph and its caption.</p>
+<p>Visual states <code>Active</code> (shown) and <code>Inactive</code> (hidden). When the caption of a visible entry changes, the entry briefly goes to <code>Inactive</code> and back so the change animates.</p>
+<p><strong>Constructors</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>LegendButton()</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Boolean ButtonVisible { get; set; }</code></td>
+<td>Gets or sets whether the entry is shown.</td>
+</tr>
+<tr>
+<td><code>System.String ButtonText { get; set; }</code></td>
+<td>Gets or sets the caption shown next to the button glyph.</td>
+</tr>
+<tr>
+<td><code>System.Windows.Input.GamePadButton ButtonType { get; set; }</code></td>
+<td>Gets or sets which controller button this entry describes.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Void OnApplyTemplate()</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Fields</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>static System.Windows.DependencyProperty ButtonTextProperty</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>static System.Windows.DependencyProperty ButtonTypeProperty</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>static System.Windows.DependencyProperty ButtonVisibleProperty</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="nuigearshift">NuiGearshift<a class="headerlink" href="#nuigearshift" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.Controls.Primitives.NuiGearshift</code></p>
+<p>The Kinect scrub handle ("gearshift") drawn on the <a href="../Microsoft.Xbox.Controls/#nuitimeline"><code>NuiTimeline</code></a>.</p>
+<p>The timeline drives this control from the native scrub tracker; apps do not normally use it directly. Template part: <code>GearshiftHandle</code>. Visual state groups: <code>TrackStates</code> (<code>TrackHidden</code>, <code>TrackElastic</code> while the user is within the dead zone, <code>TrackExpanded</code> once committed) and <code>HandednessStates</code> (<code>HandednessLeft</code>/<code>HandednessRight</code>).</p>
+<p><strong>Constructors</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>NuiGearshift()</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Boolean IsLeftHand { get; set; }</code></td>
+<td>Gets or sets whether the user is scrubbing with the left hand, which mirrors the handle.</td>
+</tr>
+<tr>
+<td><code>System.Boolean IsSeeking { get; set; }</code></td>
+<td>Gets or sets whether a scrub is in progress.</td>
+</tr>
+<tr>
+<td><code>System.Double DesiredCommitExpanderHeight { get; set; }</code></td>
+<td>Gets or sets the target height of the commit track that the expander animates toward.</td>
+</tr>
+<tr>
+<td><code>System.Double GearshiftHandleOffset { get; set; }</code></td>
+<td>Gets or sets how far the handle is pulled along the track.</td>
+</tr>
+<tr>
+<td><code>System.Double InterpolatedCommitExpanderHeight { get; set; }</code></td>
+<td>Gets or sets the current, animated height of the commit track.</td>
+</tr>
+<tr>
+<td><code>System.Double InterpolatedCommitExpanderProgress { get; set; }</code></td>
+<td>Gets or sets the progress, from 0 to 1, of the animation between the elastic and expanded track states.</td>
+</tr>
+<tr>
+<td><code>System.Double InverseCancelProgress { get; set; }</code></td>
+<td>Gets or sets one minus the dead-zone progress, used by the template to fade the handle as the user moves toward cancelling.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Void OnApplyTemplate()</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>System.Void UpdateProgress(System.Single deadZoneProgress, System.Single commitProgress)</code></td>
+<td>Updates the handle and track from the current scrub gesture progress.</td>
+</tr>
+<tr>
+<td><code>System.Windows.FrameworkElement GetHandle()</code></td>
+<td>Gets the handle element from the template.</td>
+</tr>
+<tr>
+<td><code>System.Windows.Point GetHandleScreenPosition()</code></td>
+<td>Gets the center of the handle in root-visual coordinates. <a href="../Microsoft.Xbox.Controls/#nuitimeline"><code>NuiTimeline</code></a> passes this point to the native scrub tracker so the gesture starts where the handle is drawn.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Fields</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>static System.Windows.DependencyProperty GearshiftHandleOffsetProperty</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>static System.Windows.DependencyProperty InterpolatedCommitExpanderHeightProperty</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>static System.Windows.DependencyProperty InterpolatedCommitExpanderProgressProperty</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>static System.Windows.DependencyProperty InverseCancelProgressProperty</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="nuitimelinebar">NuiTimelineBar<a class="headerlink" href="#nuitimelinebar" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.Controls.Primitives.NuiTimelineBar</code></p>
+<p>A bar whose filled portion represents a progress fraction; used inside the <a href="../Microsoft.Xbox.Controls/#nuitimeline"><code>NuiTimeline</code></a> template.</p>
+<p><strong>Constructors</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>NuiTimelineBar()</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Double Progress { get; set; }</code></td>
+<td>Gets or sets the filled fraction of the bar.</td>
+</tr>
+<tr>
+<td><code>System.Double ProgressWidth { get; }</code></td>
+<td>Gets the width of the filled portion.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Fields</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>static System.Windows.DependencyProperty ProgressProperty</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>static System.Windows.DependencyProperty ProgressWidthProperty</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="nuitimelinepanel">NuiTimelinePanel<a class="headerlink" href="#nuitimelinepanel" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.Controls.Primitives.NuiTimelinePanel</code></p>
+<p>A panel that positions <a href="../Microsoft.Xbox.Controls/#nuitimelinemarker"><code>NuiTimelineMarker</code></a> children horizontally by time, using the enclosing <a href="../Microsoft.Xbox.Controls/#nuitimeline"><code>NuiTimeline</code></a> to convert times to pixels.</p>
+<p>The panel finds the nearest <a href="../Microsoft.Xbox.Controls/#nuitimeline"><code>NuiTimeline</code></a> ancestor on first arrange and binds <a href="./#nuitimelinepanel"><code>NuiTimelinePanel.TimelineStartPosition</code></a> and <a href="./#nuitimelinepanel"><code>NuiTimelinePanel.TimelineEndPosition</code></a> to it. Markers are arranged at their start time with their desired width and the panel height, and <a href="../Microsoft.Xbox.Controls/#nuitimelinemarker"><code>NuiTimelineMarker.DurationWidth</code></a> is set. Markers that extend past the timeline are collapsed (or trimmed if <a href="../Microsoft.Xbox.Controls/#nuitimelinemarker"><code>NuiTimelineMarker.IsClamped</code></a>). Other children fill the panel. The panel reports a desired size of zero.</p>
+<p><strong>Constructors</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>NuiTimelinePanel()</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.TimeSpan TimelineEndPosition { get; set; }</code></td>
+<td>Gets or sets the time at the panel's right edge.</td>
+</tr>
+<tr>
+<td><code>System.TimeSpan TimelineStartPosition { get; set; }</code></td>
+<td>Gets or sets the time at the panel's left edge.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Windows.Size ArrangeOverride(System.Windows.Size finalSize)</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>System.Windows.Size MeasureOverride(System.Windows.Size availableSize)</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Fields</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>static System.Windows.DependencyProperty TimelineEndPositionProperty</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>static System.Windows.DependencyProperty TimelineStartPositionProperty</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="pivotheaderitem">PivotHeaderItem<a class="headerlink" href="#pivotheaderitem" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.Controls.Primitives.PivotHeaderItem</code></p>
+<p>The container for one header in a <a href="./#pivotheaderscontrol"><code>PivotHeadersControl</code></a>.</p>
+<p>Template part <code>HeaderButton</code> (a <code>Button</code>); clicking it selects the corresponding pivot page. Visual states (group <code>SelectionStates</code>), in priority order: <code>Focused</code>, <code>Selected</code>, <code>MouseOver</code>, <code>Unselected</code>.</p>
+<p><strong>Constructors</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PivotHeaderItem()</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Boolean IsSelected { get; set; }</code></td>
+<td>Gets or sets whether this header belongs to the selected pivot page.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Void OnApplyTemplate()</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>System.Void OnGotFocus(System.Windows.RoutedEventArgs e)</code></td>
+<td>Switches to the <code>Focused</code> visual state when the header itself receives focus.</td>
+</tr>
+<tr>
+<td><code>System.Void OnLostFocus(System.Windows.RoutedEventArgs e)</code></td>
+<td>Leaves the <code>Focused</code> visual state when the header itself loses focus.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Fields</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>static System.Windows.DependencyProperty IsSelectedProperty</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="pivotheaderscontrol">PivotHeadersControl<a class="headerlink" href="#pivotheaderscontrol" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.Controls.Primitives.PivotHeadersControl</code></p>
+<p>The header row of a <a href="../Microsoft.Xbox.Controls/#pivot"><code>Pivot</code></a>. Headers scroll so the selected header comes first, and can wrap around when looping is enabled.</p>
+<p>Used by the <a href="../Microsoft.Xbox.Controls/#pivot"><code>Pivot</code></a> template as <code>HeadersListElement</code>. Items are wrapped in <a href="./#pivotheaderitem"><code>PivotHeaderItem</code></a> containers. When looping, a mirror image of the trailing headers is drawn to the left of the first one.</p>
+<p><strong>Constructors</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PivotHeadersControl()</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Int32 VisualFirstIndex { get; set; }</code></td>
+<td>Gets or sets the index of the header drawn in the leftmost position.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Void ClearContainerForItemOverride(System.Windows.DependencyObject element, System.Object item)</code></td>
+<td>Detaches a header container from this control and stops tracking the header's size.</td>
+</tr>
+<tr>
+<td><code>System.Void OnApplyTemplate()</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>System.Void OnItemsChanged(System.Collections.Specialized.NotifyCollectionChangedEventArgs e)</code></td>
+<td>Re-lays out the headers after the item collection changes, or resets the selection and first index when it becomes empty.</td>
+</tr>
+<tr>
+<td><code>System.Void PrepareContainerForItemOverride(System.Windows.DependencyObject element, System.Object item)</code></td>
+<td>Attaches a header container to this control, sets its selection state and starts tracking the header's size for layout.</td>
+</tr>
+<tr>
+<td><code>System.Void SetLoopingEnabled(System.Boolean looping)</code></td>
+<td>Turns wrap-around header layout on or off.</td>
+</tr>
+<tr>
+<td><code>System.Windows.Size ArrangeOverride(System.Windows.Size finalSize)</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>System.Windows.Size MeasureOverride(System.Windows.Size availableSize)</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Fields</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>static System.Windows.DependencyProperty VisualFirstIndexProperty</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="resolutionnormalizingpanel">ResolutionNormalizingPanel<a class="headerlink" href="#resolutionnormalizingpanel" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.Controls.Primitives.ResolutionNormalizingPanel</code></p>
+<p>A panel that lays out its children at a fixed logical height and scales them to the panel's actual size, so content designed for one resolution looks the same at 720p and 1080p.</p>
+<p>Children are measured and arranged at <a href="./#resolutionnormalizingpanel"><code>ResolutionNormalizingPanel.NormalizedHeight</code></a> by a width that keeps the panel's aspect ratio, and then given a <code>ScaleTransform</code> equal to the actual height divided by the normalized height. This replaces any non-scale <code>RenderTransform</code> on the children. With unconstrained available size, the panel sizes itself to the screen width and to the normalized height scaled from a 720-line reference.</p>
+<p><strong>Constructors</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ResolutionNormalizingPanel()</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Boolean IsNormalizingEnabled { get; set; }</code></td>
+<td>Gets or sets whether children are scaled.</td>
+</tr>
+<tr>
+<td><code>System.Double NormalizedHeight { get; set; }</code></td>
+<td>Gets or sets the logical height at which children are laid out.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Windows.Size ArrangeOverride(System.Windows.Size finalSize)</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>System.Windows.Size MeasureOverride(System.Windows.Size availableSize)</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Fields</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>static System.Windows.DependencyProperty IsNormalizingEnabledProperty</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>static System.Windows.DependencyProperty NormalizedHeightProperty</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="signalstrength">SignalStrength<a class="headerlink" href="#signalstrength" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.Controls.Primitives.SignalStrength</code></p>
+<p>A signal-strength indicator that switches between the visual states <code>None</code>, <code>Low</code>, <code>Medium</code>, <code>High</code> and <code>Full</code> (group <code>SignalStrengthStates</code>).</p>
+<p><strong>Constructors</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SignalStrength()</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Microsoft.Xbox.Controls.SignalStrengthMode SignalStrengthMode { get; set; }</code></td>
+<td>Gets or sets the level to display.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Void OnApplyTemplate()</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Fields</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>static System.Windows.DependencyProperty SignalStrengthModeProperty</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="tipsmanager">TipsManager<a class="headerlink" href="#tipsmanager" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.Controls.Primitives.TipsManager</code></p>
+<p>Shows Kinect tips and the wave-to-engage progress in the <a href="../Microsoft.Xbox.Controls/#feedback"><code>Feedback</code></a> strip.</p>
+<p>While loaded, the control listens to the Kinect sensor: it shows a warming-up tip while the sensor starts, an identifying tip and a welcome message (with the user's gamertag when known) when a user engages, and the left- or right-hand wave progress. If the <a href="../Microsoft.Xbox.Controls/#vuibar"><code>VuiBar</code></a> is enabled and recognizing, a voice tip is shown every 30 seconds. Most tips fade after 10 seconds.</p>
+<p>Visual state groups: <code>VisualTipStates</code> (<code>EmptyTip</code>, <code>WaveTip</code>, <code>WelcomeTip</code>, <code>VuiTip</code>, <code>IdentifyingTip</code>, <code>KinectWarmingUpTip</code>) and <code>WaveStates</code> (<code>NoWave</code>, <code>LeftWave</code>, <code>RightWave</code>). The text properties are set by the control from its localized strings and are refreshed when <a href="../Microsoft.Xbox.Controls/#localization"><code>Localization.Culture</code></a> changes, so values you assign may be overwritten.</p>
+<p><strong>Constructors</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>TipsManager()</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Boolean WaveOnlyMode { get; set; }</code></td>
+<td>Gets or sets whether only the wave-progress indicators are shown, with no tip text.</td>
+</tr>
+<tr>
+<td><code>System.String IdentifyingTipText { get; set; }</code></td>
+<td>Gets or sets the text shown while Kinect is identifying the engaged user.</td>
+</tr>
+<tr>
+<td><code>System.String KinectStartingUpTipText { get; set; }</code></td>
+<td>Gets or sets the text shown while the Kinect sensor is starting up.</td>
+</tr>
+<tr>
+<td><code>System.String VuiTipText { get; set; }</code></td>
+<td>Gets or sets the text of the tip that tells users they can use voice commands.</td>
+</tr>
+<tr>
+<td><code>System.String WaveTipText { get; set; }</code></td>
+<td>Gets or sets the text of the tip that tells users how to engage by waving.</td>
+</tr>
+<tr>
+<td><code>System.String WelcomeTipText { get; set; }</code></td>
+<td>Gets or sets the text of the welcome tip currently displayed.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Void OnApplyTemplate()</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Fields</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>static System.Windows.DependencyProperty IdentifyingTipTextProperty</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>static System.Windows.DependencyProperty KinectStartingUpTipTextProperty</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>static System.Windows.DependencyProperty VuiTipTextProperty</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>static System.Windows.DependencyProperty WaveOnlyModeProperty</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>static System.Windows.DependencyProperty WaveTipTextProperty</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>static System.Windows.DependencyProperty WelcomeTipTextProperty</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="virtualizinggrid">VirtualizingGrid<a class="headerlink" href="#virtualizinggrid" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.Controls.Primitives.VirtualizingGrid</code></p>
+<p>The paging items panel of <a href="../Microsoft.Xbox.Controls/#continuouslist"><code>ContinuousList</code></a>. It places item containers into a <code>Grid</code> column by column and only keeps the columns around the visible page realized.</p>
+<p>Use it only as the items panel of a <a href="../Microsoft.Xbox.Controls/#continuouslist"><code>ContinuousList</code></a>; it reports paging and visible items back to that list. Items fill the grid's rows top to bottom, then move to the next column. Page changes animate with a 0.5-second ease-out slide. Directional focus moves between the realized items; moving focus past the edge of the page pages the list.</p>
+<p><strong>Constructors</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>VirtualizingGrid()</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Windows.Controls.Grid Grid { get; set; }</code></td>
+<td>Gets or sets the grid into which item containers are placed. Column definitions are generated by the panel; any you define are removed. A grid without row definitions gets one. Assigning a new grid discards the realized containers and resets the panel to the first page.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Boolean IsItemInViewport(System.Int32 index)</code></td>
+<td>Determines whether the item at an index is realized and inside the list's view area.</td>
+</tr>
+<tr>
+<td><code>System.Void OnItemsChanged(System.Object sender, System.Windows.Controls.Primitives.ItemsChangedEventArgs e)</code></td>
+<td>Removes or resets realized containers when items are removed, replaced or the collection is reset. If the focused container is removed, focus moves to the owning <a href="../Microsoft.Xbox.Controls/#continuouslist"><code>ContinuousList</code></a> and is restored to an item after the next layout.</td>
+</tr>
+<tr>
+<td><code>System.Windows.Size ArrangeOverride(System.Windows.Size finalSize)</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>System.Windows.Size MeasureOverride(System.Windows.Size availableSize)</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Fields</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>static System.Windows.DependencyProperty GridProperty</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="vuicommandpresenter">VuiCommandPresenter<a class="headerlink" href="#vuicommandpresenter" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.Controls.Primitives.VuiCommandPresenter</code></p>
+<p>Displays one <a href="../Microsoft.Xbox.Controls/#vuicommand"><code>VuiCommand</code></a> on the <a href="../Microsoft.Xbox.Controls/#vuibar"><code>VuiBar</code></a>.</p>
+<p>Visual states (group <code>States</code>): <code>Executable</code> or <code>NotExecutable</code> depending on <a href="../Microsoft.Xbox.Controls/#vuicommand"><code>VuiCommand.CanExecute</code></a>, and <code>Selected</code> when the command is recognized. If the template defines a storyboard named <code>SelectedStoryboard</code>, the bar waits for it to finish before running the command.</p>
+<p><strong>Constructors</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>VuiCommandPresenter()</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Microsoft.Xbox.Controls.VuiCommand VuiCommand { get; set; }</code></td>
+<td>Gets or sets the command to display.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Void OnApplyTemplate()</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Fields</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>static System.Windows.DependencyProperty VuiCommandProperty</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="vuimeter">VuiMeter<a class="headerlink" href="#vuimeter" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.Controls.Primitives.VuiMeter</code></p>
+<p>The animated microphone level meter on the <a href="../Microsoft.Xbox.Controls/#vuibar"><code>VuiBar</code></a>.</p>
+<p>Each <code>Rectangle</code> in the template part <code>RectangleParent</code> is scaled vertically to random heights. While the voice bar is visible the heights are drawn from the active range when speech sound is detected and from the inactive range otherwise; when the bar hides the bars settle to <a href="./#vuimeter"><code>VuiMeter.InactiveMin</code></a>. Each animation lasts a base time plus a scale time multiplied by the target height. The meter requires <a href="../Microsoft.Xbox.Controls/#vuibar"><code>VuiBar.Current</code></a>.</p>
+<p><strong>Constructors</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>VuiMeter()</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Double ActiveMax { get; set; }</code></td>
+<td>Gets or sets the largest vertical scale used while sound is detected.</td>
+</tr>
+<tr>
+<td><code>System.Double ActiveMin { get; set; }</code></td>
+<td>Gets or sets the smallest vertical scale used while sound is detected.</td>
+</tr>
+<tr>
+<td><code>System.Double InactiveMax { get; set; }</code></td>
+<td>Gets or sets the largest vertical scale used while no sound is detected.</td>
+</tr>
+<tr>
+<td><code>System.Double InactiveMin { get; set; }</code></td>
+<td>Gets or sets the smallest vertical scale used while no sound is detected, and the resting scale when the bar is hidden.</td>
+</tr>
+<tr>
+<td><code>System.TimeSpan ActiveDurationBase { get; set; }</code></td>
+<td>Gets or sets the fixed part of each animation's duration while sound is detected.</td>
+</tr>
+<tr>
+<td><code>System.TimeSpan ActiveDurationScale { get; set; }</code></td>
+<td>Gets or sets the part of each animation's duration that is multiplied by the target scale while sound is detected.</td>
+</tr>
+<tr>
+<td><code>System.TimeSpan InactiveDurationBase { get; set; }</code></td>
+<td>Gets or sets the fixed part of each animation's duration while no sound is detected.</td>
+</tr>
+<tr>
+<td><code>System.TimeSpan InactiveDurationScale { get; set; }</code></td>
+<td>Gets or sets the part of each animation's duration that is multiplied by the target scale while no sound is detected.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Void OnApplyTemplate()</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Fields</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>static System.Windows.DependencyProperty ActiveDurationBaseProperty</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>static System.Windows.DependencyProperty ActiveDurationScaleProperty</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>static System.Windows.DependencyProperty ActiveMaxProperty</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>static System.Windows.DependencyProperty ActiveMinProperty</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>static System.Windows.DependencyProperty InactiveDurationBaseProperty</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>static System.Windows.DependencyProperty InactiveDurationScaleProperty</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>static System.Windows.DependencyProperty InactiveMaxProperty</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>static System.Windows.DependencyProperty InactiveMinProperty</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../MS.Internal/" class="btn btn-neutral float-left" title="MS.Internal"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Microsoft.Xbox.Controls/" class="btn btn-neutral float-right" title="Microsoft.Xbox.Controls">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>Silverlight360 is licensed under the PolyForm Noncommercial License 1.0.0 with an additional condition. Xbox, Xbox 360 and Silverlight are trademarks of Microsoft.</p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/Digiex/Silverlight360" class="fa fa-code-fork" style="color: #fcfcfc"> Digiex/Silverlight360</a>
+        </span>
+    
+    
+      <span><a href="../MS.Internal/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../Microsoft.Xbox.Controls/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

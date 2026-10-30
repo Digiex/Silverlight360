@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://digiex.github.io/Silverlight360/reference/Microsoft.Xbox.Services/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Microsoft.Xbox.Services - Silverlight360</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Microsoft.Xbox.Services";
+        var mkdocs_page_input_path = "reference\\Microsoft.Xbox.Services.md";
+        var mkdocs_page_url = "/Silverlight360/reference/Microsoft.Xbox.Services/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/powershell.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/csharp.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/xml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Silverlight360
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../getting-started/">Getting started</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../project-setup/">Projects and Visual Studio</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../app-model/">App model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../input-and-focus/">Input and focus</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../controls/">Xbox controls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../networking/">Networking</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../storage/">Storage</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../media/">Media</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../gamer-services/">Gamer services</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../native-code/">Native code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../testing/">Testing in xenia</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../samples/">Samples</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../xenia-status/">Status under xenia</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../runtime-inventory/">Runtime inventory</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">API reference</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../MS.Internal/">MS.Internal</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Controls.Primitives/">Microsoft.Xbox.Controls.Primitives</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Controls/">Microsoft.Xbox.Controls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Core/">Microsoft.Xbox.Core</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Input/">Microsoft.Xbox.Input</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Media.Mpeg/">Microsoft.Xbox.Media.Mpeg</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Media/">Microsoft.Xbox.Media</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Net/">Microsoft.Xbox.Net</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Security.XAuth/">Microsoft.Xbox.Security.XAuth</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Microsoft.Xbox.Services</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#aggregaterating">AggregateRating</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#deleteuserratingcompletedeventargs">DeleteUserRatingCompletedEventArgs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#downloadaggregateratingscompletedeventargs">DownloadAggregateRatingsCompletedEventArgs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#downloaduserratingcompletedeventargs">DownloadUserRatingCompletedEventArgs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#mediatype">MediaType</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#mediausageserviceclient">MediaUsageServiceClient</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#ratingsserviceclient">RatingsServiceClient</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#serviceclientoperationcompletedeventargs">ServiceClientOperationCompletedEventArgs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#uploadmediausagecompletedeventargs">UploadMediaUsageCompletedEventArgs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#uploaduserratingcompletedeventargs">UploadUserRatingCompletedEventArgs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#usageeventtype">UsageEventType</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#userinterest">UserInterest</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#userrating">UserRating</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Transitions/">Microsoft.Xbox.Transitions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox/">Microsoft.Xbox</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xna.Framework.GamerServices.ContentRating.Level/">Microsoft.Xna.Framework.GamerServices.ContentRating.Level</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xna.Framework.GamerServices.ContentRating.System/">Microsoft.Xna.Framework.GamerServices.ContentRating.System</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xna.Framework.GamerServices.ContentRating/">Microsoft.Xna.Framework.GamerServices.ContentRating</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xna.Framework.GamerServices/">Microsoft.Xna.Framework.GamerServices</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xna.Framework.Storage/">Microsoft.Xna.Framework.Storage</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Reflection.ReflectionPermissionFrame/">System.Reflection.ReflectionPermissionFrame</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Reflection/">System.Reflection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Windows.Controls/">System.Windows.Controls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Windows.Input/">System.Windows.Input</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Windows.Media/">System.Windows.Media</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Windows/">System.Windows</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Silverlight360</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">API reference</li>
+      <li class="breadcrumb-item active">Microsoft.Xbox.Services</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/Digiex/Silverlight360/edit/master/docs/reference/Microsoft.Xbox.Services.md">Edit on Digiex/Silverlight360</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="microsoftxboxservices">Microsoft.Xbox.Services<a class="headerlink" href="#microsoftxboxservices" title="Permanent link">&para;</a></h1>
+<p>Assembly: <code>Microsoft.Xbox.dll</code></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Summary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#aggregaterating"><code>AggregateRating</code></a></td>
+<td>The community rating of a media item, returned by <a href="./#ratingsserviceclient"><code>RatingsServiceClient.DownloadAggregateRatingsAsync</code></a>.</td>
+</tr>
+<tr>
+<td><a href="#deleteuserratingcompletedeventargs"><code>DeleteUserRatingCompletedEventArgs</code></a></td>
+<td>Provides data for the <a href="./#ratingsserviceclient"><code>RatingsServiceClient.DeleteUserRatingCompleted</code></a> event.</td>
+</tr>
+<tr>
+<td><a href="#downloadaggregateratingscompletedeventargs"><code>DownloadAggregateRatingsCompletedEventArgs</code></a></td>
+<td>Provides data for the <a href="./#ratingsserviceclient"><code>RatingsServiceClient.DownloadAggregateRatingsCompleted</code></a> event.</td>
+</tr>
+<tr>
+<td><a href="#downloaduserratingcompletedeventargs"><code>DownloadUserRatingCompletedEventArgs</code></a></td>
+<td>Provides data for the <a href="./#ratingsserviceclient"><code>RatingsServiceClient.DownloadUserRatingCompleted</code></a> event.</td>
+</tr>
+<tr>
+<td><a href="#mediatype"><code>MediaType</code></a></td>
+<td>The kind of media item reported to the usage service.</td>
+</tr>
+<tr>
+<td><a href="#mediausageserviceclient"><code>MediaUsageServiceClient</code></a></td>
+<td>Reports playback activity (play, pause, stop and so on) for media items to the Xbox LIVE media usage service.</td>
+</tr>
+<tr>
+<td><a href="#ratingsserviceclient"><code>RatingsServiceClient</code></a></td>
+<td>Reads and writes media ratings and reviews on the Xbox LIVE ratings service for a signed-in user.</td>
+</tr>
+<tr>
+<td><a href="#serviceclientoperationcompletedeventargs"><code>ServiceClientOperationCompletedEventArgs</code></a></td>
+<td>The raw result of an HTTP request made by the Xbox LIVE service clients. Used internally; the public service clients translate it into their own event data.</td>
+</tr>
+<tr>
+<td><a href="#uploadmediausagecompletedeventargs"><code>UploadMediaUsageCompletedEventArgs</code></a></td>
+<td>Provides data for the <a href="./#mediausageserviceclient"><code>MediaUsageServiceClient.UploadMediaUsageCompleted</code></a> event.</td>
+</tr>
+<tr>
+<td><a href="#uploaduserratingcompletedeventargs"><code>UploadUserRatingCompletedEventArgs</code></a></td>
+<td>Provides data for the <a href="./#ratingsserviceclient"><code>RatingsServiceClient.UploadUserRatingCompleted</code></a> event.</td>
+</tr>
+<tr>
+<td><a href="#usageeventtype"><code>UsageEventType</code></a></td>
+<td>Playback actions reported with <a href="./#mediausageserviceclient"><code>MediaUsageServiceClient.UploadMediaUsageAsync</code></a>.</td>
+</tr>
+<tr>
+<td><a href="#userinterest"><code>UserInterest</code></a></td>
+<td>A user's stated interest in a media item, stored with their rating.</td>
+</tr>
+<tr>
+<td><a href="#userrating"><code>UserRating</code></a></td>
+<td>One user's rating, review and interest for a media item.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="aggregaterating">AggregateRating<a class="headerlink" href="#aggregaterating" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.Services.AggregateRating</code></p>
+<p>The community rating of a media item, returned by <a href="./#ratingsserviceclient"><code>RatingsServiceClient.DownloadAggregateRatingsAsync</code></a>.</p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Microsoft.Xbox.Services.UserRating UserRating { get; }</code></td>
+<td>Gets the requesting user's own rating of the item, or <code>null</code> if the service did not return one.</td>
+</tr>
+<tr>
+<td><code>System.DateTime LastUpdated { get; }</code></td>
+<td>Gets when the aggregate was last recalculated.</td>
+</tr>
+<tr>
+<td><code>System.Double AverageRating { get; }</code></td>
+<td>Gets the average of all user ratings, on the 0.0-1.0 scale used by <a href="./#userrating"><code>UserRating.RatingValue</code></a>.</td>
+</tr>
+<tr>
+<td><code>System.Int32 RatingCount { get; }</code></td>
+<td>Gets the number of user ratings the average is based on.</td>
+</tr>
+<tr>
+<td><code>System.String MediaAssetId { get; }</code></td>
+<td>Gets the identifier of the rated media item.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="deleteuserratingcompletedeventargs">DeleteUserRatingCompletedEventArgs<a class="headerlink" href="#deleteuserratingcompletedeventargs" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.Services.DeleteUserRatingCompletedEventArgs</code></p>
+<p>Provides data for the <a href="./#ratingsserviceclient"><code>RatingsServiceClient.DeleteUserRatingCompleted</code></a> event.</p>
+<h2 id="downloadaggregateratingscompletedeventargs">DownloadAggregateRatingsCompletedEventArgs<a class="headerlink" href="#downloadaggregateratingscompletedeventargs" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.Services.DownloadAggregateRatingsCompletedEventArgs</code></p>
+<p>Provides data for the <a href="./#ratingsserviceclient"><code>RatingsServiceClient.DownloadAggregateRatingsCompleted</code></a> event.</p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Microsoft.Xbox.Services.AggregateRating Result { get; }</code></td>
+<td>Gets the downloaded rating, or <code>null</code> if the operation failed or the service is not available.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="downloaduserratingcompletedeventargs">DownloadUserRatingCompletedEventArgs<a class="headerlink" href="#downloaduserratingcompletedeventargs" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.Services.DownloadUserRatingCompletedEventArgs</code></p>
+<p>Provides data for the <a href="./#ratingsserviceclient"><code>RatingsServiceClient.DownloadUserRatingCompleted</code></a> event.</p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Microsoft.Xbox.Services.UserRating Result { get; }</code></td>
+<td>Gets the user's rating, or <code>null</code> if the operation failed or the service is not available.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="mediatype">MediaType<a class="headerlink" href="#mediatype" title="Permanent link">&para;</a></h2>
+<p><code>enum Microsoft.Xbox.Services.MediaType</code></p>
+<p>The kind of media item reported to the usage service.</p>
+<p><strong>Values</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Audio</code></td>
+<td>Other audio content.</td>
+</tr>
+<tr>
+<td><code>GameTrailer</code></td>
+<td>A game trailer.</td>
+</tr>
+<tr>
+<td><code>Movie</code></td>
+<td>A movie.</td>
+</tr>
+<tr>
+<td><code>MovieTrailer</code></td>
+<td>A movie trailer.</td>
+</tr>
+<tr>
+<td><code>MusicVideo</code></td>
+<td>A music video.</td>
+</tr>
+<tr>
+<td><code>PodCast</code></td>
+<td>A podcast episode.</td>
+</tr>
+<tr>
+<td><code>Track</code></td>
+<td>A music track.</td>
+</tr>
+<tr>
+<td><code>TvEpisode</code></td>
+<td>A TV episode.</td>
+</tr>
+<tr>
+<td><code>Unknown</code></td>
+<td>The kind is not known.</td>
+</tr>
+<tr>
+<td><code>Video</code></td>
+<td>Other video content.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="mediausageserviceclient">MediaUsageServiceClient<a class="headerlink" href="#mediausageserviceclient" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.Services.MediaUsageServiceClient</code></p>
+<p>Reports playback activity (play, pause, stop and so on) for media items to the Xbox LIVE media usage service.</p>
+<p>Nothing is sent until <a href="./#mediausageserviceclient"><code>MediaUsageServiceClient.UploadUsageEnabled</code></a> is set to <code>true</code>. Events are queued (up to about 1,000) and posted in batches every 2 seconds by a UI-thread timer, using the Xbox LIVE token of the user at player index 0. Create the client on the UI thread.</p>
+<p><strong>Constructors</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MediaUsageServiceClient()</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Boolean UploadUsageEnabled { get; set; }</code></td>
+<td>Gets or sets whether usage events are collected and uploaded. The default is <code>false</code>; while it is <code>false</code>, <a href="./#mediausageserviceclient"><code>MediaUsageServiceClient.UploadMediaUsageAsync</code></a> discards events.</td>
+</tr>
+<tr>
+<td><code>static System.String SignalsMediaServiceBaseUrl { get; }</code></td>
+<td>Gets the base URL of the media usage service for the environment the console is configured for, derived from <a href="../Microsoft.Xbox.Net/#networksettings"><code>NetworkSettings.ActiveServiceEndpoint</code></a> the first time it is read.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Void UploadMediaUsageAsync(System.String mediaAssetId, Microsoft.Xbox.Services.UsageEventType eventType, Microsoft.Xbox.Services.MediaType mediaType, System.TimeSpan timelineEventTime, System.TimeSpan mediaLength)</code></td>
+<td>Queues a playback event for upload. The event is timestamped with the current UTC time and sent with the next batch. Does nothing if <a href="./#mediausageserviceclient"><code>MediaUsageServiceClient.UploadUsageEnabled</code></a> is <code>false</code>.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Events</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>event System.EventHandler&lt;Microsoft.Xbox.Services.UploadMediaUsageCompletedEventArgs&gt; UploadMediaUsageCompleted</code></td>
+<td>Occurs after a batch of usage events has been posted, or when queuing or posting fails. Check <code>AsyncCompletedEventArgs.Error</code>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="ratingsserviceclient">RatingsServiceClient<a class="headerlink" href="#ratingsserviceclient" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.Services.RatingsServiceClient</code></p>
+<p>Reads and writes media ratings and reviews on the Xbox LIVE ratings service for a signed-in user.</p>
+<p>Each call first resolves the service URL from the Xbox LIVE service directory (cached until it expires), then sends an HTTP request authorized with the user's Xbox LIVE token. Results arrive through the matching <code>...Completed</code> event; check <code>AsyncCompletedEventArgs.Error</code> before reading <code>Result</code>. Exceptions during the operation are reported through the event rather than thrown.</p>
+<p>If the service directory has no entry for the operation, the event is raised with no error and a <code>null</code> <code>Result</code>.</p>
+<p><strong>Constructors</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>RatingsServiceClient(System.Int32 playerIndex)</code></td>
+<td>Creates a ratings client that acts on behalf of the specified user.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Void DeleteUserRatingAsync(System.String mediaAssetId)</code></td>
+<td>Starts deleting the user's rating of a media item. Completion is reported by <a href="./#ratingsserviceclient"><code>RatingsServiceClient.DeleteUserRatingCompleted</code></a>.</td>
+</tr>
+<tr>
+<td><code>System.Void DownloadAggregateRatingsAsync(System.String mediaAssetId)</code></td>
+<td>Starts downloading the community rating of a media item. The result is reported by <a href="./#ratingsserviceclient"><code>RatingsServiceClient.DownloadAggregateRatingsCompleted</code></a>.</td>
+</tr>
+<tr>
+<td><code>System.Void DownloadUserRatingAsync(System.String mediaAssetId)</code></td>
+<td>Starts downloading the user's own rating of a media item. The result is reported by <a href="./#ratingsserviceclient"><code>RatingsServiceClient.DownloadUserRatingCompleted</code></a>.</td>
+</tr>
+<tr>
+<td><code>System.Void UploadUserRatingAsync(System.String mediaAssetId, System.Double ratingValue, System.String reviewText)</code></td>
+<td>Starts saving the user's rating and optional review of a media item. Completion is reported by <a href="./#ratingsserviceclient"><code>RatingsServiceClient.UploadUserRatingCompleted</code></a>.</td>
+</tr>
+<tr>
+<td><code>System.Void UploadUserRatingAsync(System.String mediaAssetId, System.Double ratingValue, System.String reviewText, Microsoft.Xbox.Services.UserInterest userInterest)</code></td>
+<td>Starts saving the user's rating, optional review and interest for a media item. Completion is reported by <a href="./#ratingsserviceclient"><code>RatingsServiceClient.UploadUserRatingCompleted</code></a>.</td>
+</tr>
+<tr>
+<td><code>System.Void UploadUserRatingInterestAsync(System.String mediaAssetId, Microsoft.Xbox.Services.UserInterest userInterest)</code></td>
+<td>Starts saving only the user's interest in a media item, without a rating value. Completion is reported by <a href="./#ratingsserviceclient"><code>RatingsServiceClient.UploadUserRatingCompleted</code></a>.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Events</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>event System.EventHandler&lt;Microsoft.Xbox.Services.DeleteUserRatingCompletedEventArgs&gt; DeleteUserRatingCompleted</code></td>
+<td>Occurs when <a href="./#ratingsserviceclient"><code>RatingsServiceClient.DeleteUserRatingAsync</code></a> finishes. Once the request has been sent, this event reports success even if the HTTP request failed; only errors while resolving the service URL are reported in <code>AsyncCompletedEventArgs.Error</code>.</td>
+</tr>
+<tr>
+<td><code>event System.EventHandler&lt;Microsoft.Xbox.Services.DownloadAggregateRatingsCompletedEventArgs&gt; DownloadAggregateRatingsCompleted</code></td>
+<td>Occurs when <a href="./#ratingsserviceclient"><code>RatingsServiceClient.DownloadAggregateRatingsAsync</code></a> finishes.</td>
+</tr>
+<tr>
+<td><code>event System.EventHandler&lt;Microsoft.Xbox.Services.DownloadUserRatingCompletedEventArgs&gt; DownloadUserRatingCompleted</code></td>
+<td>Occurs when <a href="./#ratingsserviceclient"><code>RatingsServiceClient.DownloadUserRatingAsync</code></a> finishes.</td>
+</tr>
+<tr>
+<td><code>event System.EventHandler&lt;Microsoft.Xbox.Services.UploadUserRatingCompletedEventArgs&gt; UploadUserRatingCompleted</code></td>
+<td>Occurs when an upload started with <code>UploadUserRatingAsync</code> or <a href="./#ratingsserviceclient"><code>RatingsServiceClient.UploadUserRatingInterestAsync</code></a> finishes. On success, <code>Result</code> holds the rating as stored by the service.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="serviceclientoperationcompletedeventargs">ServiceClientOperationCompletedEventArgs<a class="headerlink" href="#serviceclientoperationcompletedeventargs" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.Services.ServiceClientOperationCompletedEventArgs</code></p>
+<p>The raw result of an HTTP request made by the Xbox LIVE service clients. Used internally; the public service clients translate it into their own event data.</p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.String CacheHeader { get; set; }</code></td>
+<td>Gets or sets the response's <code>Expires</code> header when the response is marked cacheable (<code>Cache-Control: public</code> or <code>private</code>); otherwise <code>null</code>.</td>
+</tr>
+<tr>
+<td><code>System.String ResponseBody { get; }</code></td>
+<td>Gets the response body text, or <code>null</code> if the request failed.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="uploadmediausagecompletedeventargs">UploadMediaUsageCompletedEventArgs<a class="headerlink" href="#uploadmediausagecompletedeventargs" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.Services.UploadMediaUsageCompletedEventArgs</code></p>
+<p>Provides data for the <a href="./#mediausageserviceclient"><code>MediaUsageServiceClient.UploadMediaUsageCompleted</code></a> event.</p>
+<h2 id="uploaduserratingcompletedeventargs">UploadUserRatingCompletedEventArgs<a class="headerlink" href="#uploaduserratingcompletedeventargs" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.Services.UploadUserRatingCompletedEventArgs</code></p>
+<p>Provides data for the <a href="./#ratingsserviceclient"><code>RatingsServiceClient.UploadUserRatingCompleted</code></a> event.</p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Microsoft.Xbox.Services.UserRating Result { get; }</code></td>
+<td>Gets the rating as returned by the service, or <code>null</code> if the operation failed or the service is not available.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="usageeventtype">UsageEventType<a class="headerlink" href="#usageeventtype" title="Permanent link">&para;</a></h2>
+<p><code>enum Microsoft.Xbox.Services.UsageEventType</code></p>
+<p>Playback actions reported with <a href="./#mediausageserviceclient"><code>MediaUsageServiceClient.UploadMediaUsageAsync</code></a>.</p>
+<p><strong>Values</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>End</code></td>
+<td>Playback reached the end of the item.</td>
+</tr>
+<tr>
+<td><code>Forward</code></td>
+<td>The user fast-forwarded.</td>
+</tr>
+<tr>
+<td><code>Pause</code></td>
+<td>Playback was paused.</td>
+</tr>
+<tr>
+<td><code>Play</code></td>
+<td>Playback started.</td>
+</tr>
+<tr>
+<td><code>Resume</code></td>
+<td>Playback resumed after a pause.</td>
+</tr>
+<tr>
+<td><code>Rewind</code></td>
+<td>The user rewound.</td>
+</tr>
+<tr>
+<td><code>Skip</code></td>
+<td>The user skipped to another position or item.</td>
+</tr>
+<tr>
+<td><code>Stop</code></td>
+<td>The user stopped playback before the end.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="userinterest">UserInterest<a class="headerlink" href="#userinterest" title="Permanent link">&para;</a></h2>
+<p><code>enum Microsoft.Xbox.Services.UserInterest</code></p>
+<p>A user's stated interest in a media item, stored with their rating.</p>
+<p><strong>Values</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AlwaysInterested</code></td>
+<td>The user wants to see this kind of item.</td>
+</tr>
+<tr>
+<td><code>NotInterested</code></td>
+<td>The user does not want to see this kind of item.</td>
+</tr>
+<tr>
+<td><code>Undefined</code></td>
+<td>No preference.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="userrating">UserRating<a class="headerlink" href="#userrating" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.Services.UserRating</code></p>
+<p>One user's rating, review and interest for a media item.</p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.DateTime LastUpdated { get; }</code></td>
+<td>Gets when the rating was last changed.</td>
+</tr>
+<tr>
+<td><code>System.Nullable&lt;Microsoft.Xbox.Services.UserInterest&gt; UserInterest { get; }</code></td>
+<td>Gets the user's stated interest in the item, or <code>null</code> if none was recorded.</td>
+</tr>
+<tr>
+<td><code>System.Nullable&lt;System.Double&gt; RatingValue { get; }</code></td>
+<td>Gets the rating, from 0.0 to 1.0, or <code>null</code> if the user only recorded an interest.</td>
+</tr>
+<tr>
+<td><code>System.String MediaAssetId { get; }</code></td>
+<td>Gets the identifier of the rated media item.</td>
+</tr>
+<tr>
+<td><code>System.String ReviewText { get; }</code></td>
+<td>Gets the user's review text, or <code>null</code> if there is none.</td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../Microsoft.Xbox.Security.XAuth/" class="btn btn-neutral float-left" title="Microsoft.Xbox.Security.XAuth"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Microsoft.Xbox.Transitions/" class="btn btn-neutral float-right" title="Microsoft.Xbox.Transitions">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>Silverlight360 is licensed under the PolyForm Noncommercial License 1.0.0 with an additional condition. Xbox, Xbox 360 and Silverlight are trademarks of Microsoft.</p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/Digiex/Silverlight360" class="fa fa-code-fork" style="color: #fcfcfc"> Digiex/Silverlight360</a>
+        </span>
+    
+    
+      <span><a href="../Microsoft.Xbox.Security.XAuth/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../Microsoft.Xbox.Transitions/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

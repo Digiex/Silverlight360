@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://digiex.github.io/Silverlight360/reference/Microsoft.Xbox.Security.XAuth/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Microsoft.Xbox.Security.XAuth - Silverlight360</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Microsoft.Xbox.Security.XAuth";
+        var mkdocs_page_input_path = "reference\\Microsoft.Xbox.Security.XAuth.md";
+        var mkdocs_page_url = "/Silverlight360/reference/Microsoft.Xbox.Security.XAuth/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/powershell.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/csharp.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/xml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Silverlight360
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../getting-started/">Getting started</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../project-setup/">Projects and Visual Studio</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../app-model/">App model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../input-and-focus/">Input and focus</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../controls/">Xbox controls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../networking/">Networking</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../storage/">Storage</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../media/">Media</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../gamer-services/">Gamer services</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../native-code/">Native code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../testing/">Testing in xenia</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../samples/">Samples</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../xenia-status/">Status under xenia</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../runtime-inventory/">Runtime inventory</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">API reference</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../MS.Internal/">MS.Internal</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Controls.Primitives/">Microsoft.Xbox.Controls.Primitives</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Controls/">Microsoft.Xbox.Controls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Core/">Microsoft.Xbox.Core</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Input/">Microsoft.Xbox.Input</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Media.Mpeg/">Microsoft.Xbox.Media.Mpeg</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Media/">Microsoft.Xbox.Media</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Net/">Microsoft.Xbox.Net</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Microsoft.Xbox.Security.XAuth</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#xauthcompletedeventargs">XAuthCompletedEventArgs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#xauthexception">XAuthException</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#xauthservice">XAuthService</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#xauthtoken">XAuthToken</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#xauthtokenrequest">XAuthTokenRequest</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#xauthxuid">XAuthXuid</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Services/">Microsoft.Xbox.Services</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Transitions/">Microsoft.Xbox.Transitions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox/">Microsoft.Xbox</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xna.Framework.GamerServices.ContentRating.Level/">Microsoft.Xna.Framework.GamerServices.ContentRating.Level</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xna.Framework.GamerServices.ContentRating.System/">Microsoft.Xna.Framework.GamerServices.ContentRating.System</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xna.Framework.GamerServices.ContentRating/">Microsoft.Xna.Framework.GamerServices.ContentRating</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xna.Framework.GamerServices/">Microsoft.Xna.Framework.GamerServices</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xna.Framework.Storage/">Microsoft.Xna.Framework.Storage</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Reflection.ReflectionPermissionFrame/">System.Reflection.ReflectionPermissionFrame</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Reflection/">System.Reflection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Windows.Controls/">System.Windows.Controls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Windows.Input/">System.Windows.Input</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Windows.Media/">System.Windows.Media</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Windows/">System.Windows</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Silverlight360</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">API reference</li>
+      <li class="breadcrumb-item active">Microsoft.Xbox.Security.XAuth</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/Digiex/Silverlight360/edit/master/docs/reference/Microsoft.Xbox.Security.XAuth.md">Edit on Digiex/Silverlight360</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="microsoftxboxsecurityxauth">Microsoft.Xbox.Security.XAuth<a class="headerlink" href="#microsoftxboxsecurityxauth" title="Permanent link">&para;</a></h1>
+<p>Assembly: <code>Microsoft.Xbox.Services.dll</code></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Summary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#xauthcompletedeventargs"><code>XAuthCompletedEventArgs</code></a></td>
+<td>Provides data for the <a href="./#xauthtokenrequest"><code>XAuthTokenRequest.Completed</code></a> event.</td>
+</tr>
+<tr>
+<td><a href="#xauthexception"><code>XAuthException</code></a></td>
+<td>The exception that is thrown when an Xbox LIVE token (XAuth) operation fails.</td>
+</tr>
+<tr>
+<td><a href="#xauthservice"><code>XAuthService</code></a></td>
+<td>Provides static methods that control the Xbox LIVE token (XAuth) service used by <a href="./#xauthtokenrequest"><code>XAuthTokenRequest</code></a>.</td>
+</tr>
+<tr>
+<td><a href="#xauthtoken"><code>XAuthToken</code></a></td>
+<td>Represents an Xbox LIVE security token issued for a signed-in user and a relying party (web service).</td>
+</tr>
+<tr>
+<td><a href="#xauthtokenrequest"><code>XAuthTokenRequest</code></a></td>
+<td>Requests an Xbox LIVE security token for a signed-in player and a web service URN, either synchronously or asynchronously.</td>
+</tr>
+<tr>
+<td><a href="#xauthxuid"><code>XAuthXuid</code></a></td>
+<td>Represents the Xbox user ID (XUID) of the gamer an Xbox LIVE token was issued for.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="xauthcompletedeventargs">XAuthCompletedEventArgs<a class="headerlink" href="#xauthcompletedeventargs" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.Security.XAuth.XAuthCompletedEventArgs</code></p>
+<p>Provides data for the <a href="./#xauthtokenrequest"><code>XAuthTokenRequest.Completed</code></a> event.</p>
+<p>Check <code>AsyncCompletedEventArgs.Error</code> first; when it is not null it is an <a href="./#xauthexception"><code>XAuthException</code></a> and <a href="./#xauthcompletedeventargs"><code>XAuthCompletedEventArgs.Token</code></a> is null. The UserState property contains the request's <a href="./#xauthtokenrequest"><code>XAuthTokenRequest.UserData</code></a>.</p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Microsoft.Xbox.Security.XAuth.XAuthToken Token { get; }</code></td>
+<td>Gets the token that was obtained.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="xauthexception">XAuthException<a class="headerlink" href="#xauthexception" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.Security.XAuth.XAuthException</code></p>
+<p>The exception that is thrown when an Xbox LIVE token (XAuth) operation fails.</p>
+<p>The <code>Exception.HResult</code> property holds the failure code returned by the platform, and the message names the operation that failed together with that code in hexadecimal.</p>
+<p><strong>Constructors</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>XAuthException(System.String function, System.Int32 result)</code></td>
+<td>Initializes a new instance of the <a href="./#xauthexception"><code>XAuthException</code></a> class for a failed operation.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="xauthservice">XAuthService<a class="headerlink" href="#xauthservice" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.Security.XAuth.XAuthService</code></p>
+<p>Provides static methods that control the Xbox LIVE token (XAuth) service used by <a href="./#xauthtokenrequest"><code>XAuthTokenRequest</code></a>.</p>
+<p><strong>Constructors</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>XAuthService()</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>static System.Collections.Generic.Dictionary&lt;System.String,System.String&gt; LoadWhiteList()</code></td>
+<td>Returns the list of web service URLs this application may request tokens for. Throws <a href="./#xauthexception"><code>XAuthException</code></a> if the list cannot be read.</td>
+</tr>
+<tr>
+<td><code>static System.Void ReleaseTokens()</code></td>
+<td>Clears all cached tokens and cancels pending asynchronous token requests. Each pending request receives a <a href="./#xauthtokenrequest"><code>XAuthTokenRequest.Completed</code></a> callback whose Error is an <a href="./#xauthexception"><code>XAuthException</code></a>. Call this, for example, when the signed-in user changes.</td>
+</tr>
+<tr>
+<td><code>static System.Void Start(System.Boolean overRideBypass)</code></td>
+<td>Starts the Xbox LIVE token service for the application. Call once before requesting tokens. Throws <a href="./#xauthexception"><code>XAuthException</code></a> if the service cannot be started.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="xauthtoken">XAuthToken<a class="headerlink" href="#xauthtoken" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.Security.XAuth.XAuthToken</code></p>
+<p>Represents an Xbox LIVE security token issued for a signed-in user and a relying party (web service).</p>
+<p>Tokens are obtained through <a href="./#xauthtokenrequest"><code>XAuthTokenRequest</code></a> and cached by <a href="./#xauthservice"><code>XAuthService</code></a>. Two tokens are considered equal when they belong to the same user and the same relying party; the token bytes are not compared.</p>
+<p><strong>Constructors</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>XAuthToken()</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Microsoft.Xbox.Security.XAuth.XAuthXuid UserId { get; }</code></td>
+<td>Gets the Xbox user ID of the gamer the token was issued for.</td>
+</tr>
+<tr>
+<td><code>System.String AppliesTo { get; }</code></td>
+<td>Gets the relying-party identifier the token applies to.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Boolean Equals(Microsoft.Xbox.Security.XAuth.XAuthToken other)</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>System.Boolean Equals(System.Object other)</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>System.Byte[] GetBytes()</code></td>
+<td>Returns a copy of the raw token data. Send the bytes to the relying party in the form that service expects, for example in an HTTP authorization header.</td>
+</tr>
+<tr>
+<td><code>System.Int32 CompareTo(Microsoft.Xbox.Security.XAuth.XAuthToken other)</code></td>
+<td>Compares this token with another token, ordering by user ID and then by relying-party identifier.</td>
+</tr>
+<tr>
+<td><code>System.Int32 GetHashCode()</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>System.String ToString()</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Operators</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>static System.Boolean op_Equality(Microsoft.Xbox.Security.XAuth.XAuthToken t1, Microsoft.Xbox.Security.XAuth.XAuthToken t2)</code></td>
+<td>Determines whether two tokens refer to the same user and relying party.</td>
+</tr>
+<tr>
+<td><code>static System.Boolean op_Inequality(Microsoft.Xbox.Security.XAuth.XAuthToken t1, Microsoft.Xbox.Security.XAuth.XAuthToken t2)</code></td>
+<td>Determines whether two tokens refer to a different user or relying party.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="xauthtokenrequest">XAuthTokenRequest<a class="headerlink" href="#xauthtokenrequest" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.Security.XAuth.XAuthTokenRequest</code></p>
+<p>Requests an Xbox LIVE security token for a signed-in player and a web service URN, either synchronously or asynchronously.</p>
+<p>A request object can be used for one token request only; calling a Get method a second time throws <code>ArgumentException</code>. The user must be signed in to Xbox LIVE and the URN must be one the title is allowed to request tokens for (see <a href="./#xauthservice"><code>XAuthService.LoadWhiteList</code></a>). Call <a href="./#xauthservice"><code>XAuthService.Start</code></a> before requesting tokens.</p>
+<p><strong>Constructors</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>XAuthTokenRequest()</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Object UserData { get; set; }</code></td>
+<td>Gets or sets an application-defined object that is returned in the completion event arguments.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Microsoft.Xbox.Security.XAuth.XAuthToken GetToken(System.Int32 playerIndex, System.Uri urn)</code></td>
+<td>Obtains a token synchronously for the specified player and URN. This call blocks until the service responds, so avoid it on the UI thread. It throws <code>ArgumentException</code> if <code>urn</code> is null, if the request object was already used, or if a <a href="./#xauthtokenrequest"><code>XAuthTokenRequest.Completed</code></a> handler is attached (use GetTokenAsync in that case). Platform failures are reported as <a href="./#xauthexception"><code>XAuthException</code></a>.</td>
+</tr>
+<tr>
+<td><code>System.Void GetTokenAsync(System.Int32 playerIndex, System.Uri urn)</code></td>
+<td>Starts an asynchronous request for a token for the specified player and URN. The result is delivered through <a href="./#xauthtokenrequest"><code>XAuthTokenRequest.Completed</code></a>. A token already in the cache is delivered immediately; requests made before the token service is ready are queued until it is. Throws <code>ArgumentException</code> if this request object was already used.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Fields</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.EventHandler&lt;Microsoft.Xbox.Security.XAuth.XAuthCompletedEventArgs&gt; Completed</code></td>
+<td>Occurs when an asynchronous token request finishes, successfully or not. This is a public delegate field rather than an event; assign or combine handlers before calling <a href="./#xauthtokenrequest"><code>XAuthTokenRequest.GetTokenAsync</code></a>. If the token is already cached, the handler runs before GetTokenAsync returns. Otherwise it runs later, possibly on a thread other than the UI thread, so marshal UI updates through the Dispatcher. The sender argument is null.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="xauthxuid">XAuthXuid<a class="headerlink" href="#xauthxuid" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.Security.XAuth.XAuthXuid</code></p>
+<p>Represents the Xbox user ID (XUID) of the gamer an Xbox LIVE token was issued for.</p>
+<p>Instances are created by the platform and returned from <a href="./#xauthtoken"><code>XAuthToken.UserId</code></a>. Convert to <code>Int64</code> to read the numeric XUID.</p>
+<p><strong>Operators</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>static System.Int64 op_Implicit(Microsoft.Xbox.Security.XAuth.XAuthXuid x)</code></td>
+<td>Converts an <a href="./#xauthxuid"><code>XAuthXuid</code></a> to its 64-bit numeric XUID.</td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../Microsoft.Xbox.Net/" class="btn btn-neutral float-left" title="Microsoft.Xbox.Net"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Microsoft.Xbox.Services/" class="btn btn-neutral float-right" title="Microsoft.Xbox.Services">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>Silverlight360 is licensed under the PolyForm Noncommercial License 1.0.0 with an additional condition. Xbox, Xbox 360 and Silverlight are trademarks of Microsoft.</p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/Digiex/Silverlight360" class="fa fa-code-fork" style="color: #fcfcfc"> Digiex/Silverlight360</a>
+        </span>
+    
+    
+      <span><a href="../Microsoft.Xbox.Net/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../Microsoft.Xbox.Services/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

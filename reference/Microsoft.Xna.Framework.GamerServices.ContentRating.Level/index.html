@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://digiex.github.io/Silverlight360/reference/Microsoft.Xna.Framework.GamerServices.ContentRating.Level/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Microsoft.Xna.Framework.GamerServices.ContentRating.Level - Silverlight360</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Microsoft.Xna.Framework.GamerServices.ContentRating.Level";
+        var mkdocs_page_input_path = "reference\\Microsoft.Xna.Framework.GamerServices.ContentRating.Level.md";
+        var mkdocs_page_url = "/Silverlight360/reference/Microsoft.Xna.Framework.GamerServices.ContentRating.Level/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/powershell.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/csharp.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/xml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Silverlight360
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../getting-started/">Getting started</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../project-setup/">Projects and Visual Studio</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../app-model/">App model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../input-and-focus/">Input and focus</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../controls/">Xbox controls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../networking/">Networking</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../storage/">Storage</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../media/">Media</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../gamer-services/">Gamer services</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../native-code/">Native code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../testing/">Testing in xenia</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../samples/">Samples</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../xenia-status/">Status under xenia</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../runtime-inventory/">Runtime inventory</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">API reference</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../MS.Internal/">MS.Internal</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Controls.Primitives/">Microsoft.Xbox.Controls.Primitives</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Controls/">Microsoft.Xbox.Controls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Core/">Microsoft.Xbox.Core</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Input/">Microsoft.Xbox.Input</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Media.Mpeg/">Microsoft.Xbox.Media.Mpeg</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Media/">Microsoft.Xbox.Media</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Net/">Microsoft.Xbox.Net</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Security.XAuth/">Microsoft.Xbox.Security.XAuth</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Services/">Microsoft.Xbox.Services</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Transitions/">Microsoft.Xbox.Transitions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox/">Microsoft.Xbox</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Microsoft.Xna.Framework.GamerServices.ContentRating.Level</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#movie">Movie</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#tv">TV</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xna.Framework.GamerServices.ContentRating.System/">Microsoft.Xna.Framework.GamerServices.ContentRating.System</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xna.Framework.GamerServices.ContentRating/">Microsoft.Xna.Framework.GamerServices.ContentRating</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xna.Framework.GamerServices/">Microsoft.Xna.Framework.GamerServices</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xna.Framework.Storage/">Microsoft.Xna.Framework.Storage</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Reflection.ReflectionPermissionFrame/">System.Reflection.ReflectionPermissionFrame</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Reflection/">System.Reflection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Windows.Controls/">System.Windows.Controls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Windows.Input/">System.Windows.Input</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Windows.Media/">System.Windows.Media</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Windows/">System.Windows</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Silverlight360</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">API reference</li>
+      <li class="breadcrumb-item active">Microsoft.Xna.Framework.GamerServices.ContentRating.Level</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/Digiex/Silverlight360/edit/master/docs/reference/Microsoft.Xna.Framework.GamerServices.ContentRating.Level.md">Edit on Digiex/Silverlight360</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="microsoftxnaframeworkgamerservicescontentratinglevel">Microsoft.Xna.Framework.GamerServices.ContentRating.Level<a class="headerlink" href="#microsoftxnaframeworkgamerservicescontentratinglevel" title="Permanent link">&para;</a></h1>
+<p>Assembly: <code>Microsoft.Xbox.Services.dll</code></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Summary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#movie"><code>Movie</code></a></td>
+<td>Contains constants for movie rating levels. Each constant is prefixed with its rating system; within a system, a higher value is a more restrictive rating.</td>
+</tr>
+<tr>
+<td><a href="#tv"><code>TV</code></a></td>
+<td>Contains constants for television rating levels. Each constant is prefixed with its rating system; within a system, a higher value is a more restrictive rating.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="movie">Movie<a class="headerlink" href="#movie" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie</code></p>
+<p>Contains constants for movie rating levels. Each constant is prefixed with its rating system; within a system, a higher value is a more restrictive rating.</p>
+<p><strong>Fields</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>const System.Int32 AUSTRALIA_E</code></td>
+<td>The Australia movie rating "E".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 AUSTRALIA_G</code></td>
+<td>The Australia movie rating "G".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 AUSTRALIA_M</code></td>
+<td>The Australia movie rating "M".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 AUSTRALIA_MA15</code></td>
+<td>The Australia movie rating "MA15".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 AUSTRALIA_PG</code></td>
+<td>The Australia movie rating "PG".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 AUSTRALIA_R18</code></td>
+<td>The Australia movie rating "R18".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 AUSTRIA_0</code></td>
+<td>The Austria movie rating "0".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 AUSTRIA_10</code></td>
+<td>The Austria movie rating "10".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 AUSTRIA_12</code></td>
+<td>The Austria movie rating "12".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 AUSTRIA_14</code></td>
+<td>The Austria movie rating "14".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 AUSTRIA_16</code></td>
+<td>The Austria movie rating "16".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 AUSTRIA_18</code></td>
+<td>The Austria movie rating "18".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 AUSTRIA_6</code></td>
+<td>The Austria movie rating "6".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 BRAZIL_10</code></td>
+<td>The Brazil movie rating "10".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 BRAZIL_12</code></td>
+<td>The Brazil movie rating "12".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 BRAZIL_14</code></td>
+<td>The Brazil movie rating "14".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 BRAZIL_16</code></td>
+<td>The Brazil movie rating "16".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 BRAZIL_18</code></td>
+<td>The Brazil movie rating "18".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 BRAZIL_ER</code></td>
+<td>The Brazil movie rating "ER".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 BRAZIL_L</code></td>
+<td>The Brazil movie rating "L".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 CANADA_14</code></td>
+<td>The Canada movie rating "14".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 CANADA_18</code></td>
+<td>The Canada movie rating "18".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 CANADA_E</code></td>
+<td>The Canada movie rating "E".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 CANADA_G</code></td>
+<td>The Canada movie rating "G".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 CANADA_PG</code></td>
+<td>The Canada movie rating "PG".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 CANADA_R</code></td>
+<td>The Canada movie rating "R".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 DENMARK_11</code></td>
+<td>The Denmark movie rating "11".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 DENMARK_15</code></td>
+<td>The Denmark movie rating "15".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 DENMARK_7</code></td>
+<td>The Denmark movie rating "7".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 DENMARK_A</code></td>
+<td>The Denmark movie rating "A".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 FINLAND_K11</code></td>
+<td>The Finland movie rating "K11".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 FINLAND_K13</code></td>
+<td>The Finland movie rating "K13".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 FINLAND_K15</code></td>
+<td>The Finland movie rating "K15".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 FINLAND_K18</code></td>
+<td>The Finland movie rating "K18".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 FINLAND_K3</code></td>
+<td>The Finland movie rating "K3".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 FINLAND_K7</code></td>
+<td>The Finland movie rating "K7".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 FINLAND_S</code></td>
+<td>The Finland movie rating "S".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 FRANCE_12</code></td>
+<td>The France movie rating "12".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 FRANCE_16</code></td>
+<td>The France movie rating "16".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 FRANCE_18</code></td>
+<td>The France movie rating "18".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 FRANCE_U</code></td>
+<td>The France movie rating "U".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 GERMANY_FSK0</code></td>
+<td>The Germany movie rating "FSK0".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 GERMANY_FSK12</code></td>
+<td>The Germany movie rating "FSK12".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 GERMANY_FSK16</code></td>
+<td>The Germany movie rating "FSK16".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 GERMANY_FSK18</code></td>
+<td>The Germany movie rating "FSK18".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 GERMANY_FSK6</code></td>
+<td>The Germany movie rating "FSK6".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 GERMANY_SPIO</code></td>
+<td>The Germany movie rating "SPIO/JK".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 IRELAND_12A</code></td>
+<td>The Ireland movie rating "12A".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 IRELAND_15A</code></td>
+<td>The Ireland movie rating "15A".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 IRELAND_16</code></td>
+<td>The Ireland movie rating "16".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 IRELAND_18</code></td>
+<td>The Ireland movie rating "18".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 IRELAND_G</code></td>
+<td>The Ireland movie rating "G".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 IRELAND_PG</code></td>
+<td>The Ireland movie rating "PG".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 ITALY_T</code></td>
+<td>The Italy movie rating "T".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 ITALY_VM14</code></td>
+<td>The Italy movie rating "VM14".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 ITALY_VM18</code></td>
+<td>The Italy movie rating "VM18".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 JAPAN_1</code></td>
+<td>The Japan movie rating "level 1".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 JAPAN_2</code></td>
+<td>The Japan movie rating "level 2".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 JAPAN_3</code></td>
+<td>The Japan movie rating "level 3".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 JAPAN_4</code></td>
+<td>The Japan movie rating "level 4".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 JAPAN_5</code></td>
+<td>The Japan movie rating "level 5".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 JAPAN_6</code></td>
+<td>The Japan movie rating "level 6".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 JAPAN_7</code></td>
+<td>The Japan movie rating "level 7".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 JAPAN_8</code></td>
+<td>The Japan movie rating "level 8".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 MEXICO_A</code></td>
+<td>The Mexico movie rating "A".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 MEXICO_AA</code></td>
+<td>The Mexico movie rating "AA".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 MEXICO_B</code></td>
+<td>The Mexico movie rating "B".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 MEXICO_B15</code></td>
+<td>The Mexico movie rating "B15".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 MEXICO_C</code></td>
+<td>The Mexico movie rating "C".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 MEXICO_D</code></td>
+<td>The Mexico movie rating "D".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 MPAA_G</code></td>
+<td>The United States (MPAA) movie rating "G".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 MPAA_NC17</code></td>
+<td>The United States (MPAA) movie rating "NC-17".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 MPAA_PG</code></td>
+<td>The United States (MPAA) movie rating "PG".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 MPAA_PG13</code></td>
+<td>The United States (MPAA) movie rating "PG-13".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 MPAA_R</code></td>
+<td>The United States (MPAA) movie rating "R".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 NETHERLANDS_12</code></td>
+<td>The Netherlands movie rating "12".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 NETHERLANDS_16</code></td>
+<td>The Netherlands movie rating "16".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 NETHERLANDS_6</code></td>
+<td>The Netherlands movie rating "6".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 NETHERLANDS_9</code></td>
+<td>The Netherlands movie rating "9".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 NETHERLANDS_AL</code></td>
+<td>The Netherlands movie rating "AL".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 NEW_ZEALAND_G</code></td>
+<td>The New Zealand movie rating "G".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 NEW_ZEALAND_M</code></td>
+<td>The New Zealand movie rating "M".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 NEW_ZEALAND_PG</code></td>
+<td>The New Zealand movie rating "PG".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 NEW_ZEALAND_R</code></td>
+<td>The New Zealand movie rating "R".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 NEW_ZEALAND_R13</code></td>
+<td>The New Zealand movie rating "R13".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 NEW_ZEALAND_R15</code></td>
+<td>The New Zealand movie rating "R15".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 NEW_ZEALAND_R16</code></td>
+<td>The New Zealand movie rating "R16".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 NEW_ZEALAND_R18</code></td>
+<td>The New Zealand movie rating "R18".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 NORWAY_11</code></td>
+<td>The Norway movie rating "11".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 NORWAY_15</code></td>
+<td>The Norway movie rating "15".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 NORWAY_18</code></td>
+<td>The Norway movie rating "18".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 NORWAY_7</code></td>
+<td>The Norway movie rating "7".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 NORWAY_A</code></td>
+<td>The Norway movie rating "A".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 SLOVAKIA_12</code></td>
+<td>The Slovakia movie rating "12".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 SLOVAKIA_12PLUS</code></td>
+<td>The Slovakia movie rating "12+".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 SLOVAKIA_15</code></td>
+<td>The Slovakia movie rating "15".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 SLOVAKIA_18</code></td>
+<td>The Slovakia movie rating "18".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 SLOVAKIA_7</code></td>
+<td>The Slovakia movie rating "7".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 SLOVAKIA_7PLUS</code></td>
+<td>The Slovakia movie rating "7+".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 SLOVAKIA_U</code></td>
+<td>The Slovakia movie rating "U".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 SPAIN_13</code></td>
+<td>The Spain movie rating "13".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 SPAIN_16</code></td>
+<td>The Spain movie rating "16".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 SPAIN_18</code></td>
+<td>The Spain movie rating "18".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 SPAIN_7</code></td>
+<td>The Spain movie rating "7".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 SPAIN_TP</code></td>
+<td>The Spain movie rating "TP".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 SWEDEN_11</code></td>
+<td>The Sweden movie rating "11".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 SWEDEN_15</code></td>
+<td>The Sweden movie rating "15".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 SWEDEN_7</code></td>
+<td>The Sweden movie rating "7".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 SWEDEN_BTL</code></td>
+<td>The Sweden movie rating "BTL".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 TURKEY_13A</code></td>
+<td>The Turkey movie rating "13A".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 TURKEY_13PLUS</code></td>
+<td>The Turkey movie rating "13+".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 TURKEY_15A</code></td>
+<td>The Turkey movie rating "15A".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 TURKEY_15PLUS</code></td>
+<td>The Turkey movie rating "15+".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 TURKEY_18PLUS</code></td>
+<td>The Turkey movie rating "18+".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 TURKEY_7A</code></td>
+<td>The Turkey movie rating "7A".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 TURKEY_7PLUS</code></td>
+<td>The Turkey movie rating "7+".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 TURKEY_G</code></td>
+<td>The Turkey movie rating "G".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 UK_12</code></td>
+<td>The United Kingdom movie rating "12".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 UK_15</code></td>
+<td>The United Kingdom movie rating "15".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 UK_18</code></td>
+<td>The United Kingdom movie rating "18".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 UK_PG</code></td>
+<td>The United Kingdom movie rating "PG".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 UK_R18</code></td>
+<td>The United Kingdom movie rating "R18".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 UK_U</code></td>
+<td>The United Kingdom movie rating "U".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 UK_UC</code></td>
+<td>The United Kingdom movie rating "UC".</td>
+</tr>
+</tbody>
+</table>
+<h2 id="tv">TV<a class="headerlink" href="#tv" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV</code></p>
+<p>Contains constants for television rating levels. Each constant is prefixed with its rating system; within a system, a higher value is a more restrictive rating.</p>
+<p><strong>Fields</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>const System.Int32 AUSTRALIA_AV15</code></td>
+<td>The Australia television rating "AV15".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 AUSTRALIA_C</code></td>
+<td>The Australia television rating "C".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 AUSTRALIA_G</code></td>
+<td>The Australia television rating "G".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 AUSTRALIA_M</code></td>
+<td>The Australia television rating "M".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 AUSTRALIA_MA15</code></td>
+<td>The Australia television rating "MA15".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 AUSTRALIA_P</code></td>
+<td>The Australia television rating "P".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 AUSTRALIA_PG</code></td>
+<td>The Australia television rating "PG".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 AUSTRALIA_R18</code></td>
+<td>The Australia television rating "R18".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 BRAZIL_10</code></td>
+<td>The Brazil television rating "10".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 BRAZIL_12</code></td>
+<td>The Brazil television rating "12".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 BRAZIL_14</code></td>
+<td>The Brazil television rating "14".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 BRAZIL_16</code></td>
+<td>The Brazil television rating "16".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 BRAZIL_18</code></td>
+<td>The Brazil television rating "18".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 BRAZIL_ER</code></td>
+<td>The Brazil television rating "ER".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 BRAZIL_L</code></td>
+<td>The Brazil television rating "L".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 CANADA_14</code></td>
+<td>The Canada television rating "14".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 CANADA_18</code></td>
+<td>The Canada television rating "18".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 CANADA_C</code></td>
+<td>The Canada television rating "C".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 CANADA_C8</code></td>
+<td>The Canada television rating "C8".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 CANADA_E</code></td>
+<td>The Canada television rating "E".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 CANADA_G</code></td>
+<td>The Canada television rating "G".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 CANADA_PG</code></td>
+<td>The Canada television rating "PG".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 FINLAND_12</code></td>
+<td>The Finland television rating "12".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 FINLAND_16</code></td>
+<td>The Finland television rating "16".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 FINLAND_18</code></td>
+<td>The Finland television rating "18".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 FINLAND_7</code></td>
+<td>The Finland television rating "7".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 FINLAND_S</code></td>
+<td>The Finland television rating "S".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 FRANCE_10</code></td>
+<td>The France television rating "10".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 FRANCE_12</code></td>
+<td>The France television rating "12".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 FRANCE_16</code></td>
+<td>The France television rating "16".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 FRANCE_18</code></td>
+<td>The France television rating "18".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 ITALY_14</code></td>
+<td>The Italy television rating "14".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 ITALY_ADULT</code></td>
+<td>The Italy television rating "adults only".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 ITALY_MINOR</code></td>
+<td>The Italy television rating "minors (children)".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 MEXICO_A</code></td>
+<td>The Mexico television rating "A".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 MEXICO_AA</code></td>
+<td>The Mexico television rating "AA".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 MEXICO_B</code></td>
+<td>The Mexico television rating "B".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 MEXICO_B15</code></td>
+<td>The Mexico television rating "B15".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 MEXICO_C</code></td>
+<td>The Mexico television rating "C".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 MEXICO_D</code></td>
+<td>The Mexico television rating "D".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 NETHERLANDS_12</code></td>
+<td>The Netherlands television rating "12".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 NETHERLANDS_16</code></td>
+<td>The Netherlands television rating "16".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 NETHERLANDS_6</code></td>
+<td>The Netherlands television rating "6".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 NETHERLANDS_9</code></td>
+<td>The Netherlands television rating "9".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 NETHERLANDS_AL</code></td>
+<td>The Netherlands television rating "AL".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 NEW_ZEALAND_G</code></td>
+<td>The New Zealand television rating "G".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 NEW_ZEALAND_M</code></td>
+<td>The New Zealand television rating "M".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 NEW_ZEALAND_PG</code></td>
+<td>The New Zealand television rating "PG".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 NEW_ZEALAND_R16</code></td>
+<td>The New Zealand television rating "R16".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 NEW_ZEALAND_R18</code></td>
+<td>The New Zealand television rating "R18".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 SLOVAKIA_12</code></td>
+<td>The Slovakia television rating "12".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 SLOVAKIA_12PLUS</code></td>
+<td>The Slovakia television rating "12+".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 SLOVAKIA_15</code></td>
+<td>The Slovakia television rating "15".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 SLOVAKIA_18</code></td>
+<td>The Slovakia television rating "18".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 SLOVAKIA_7</code></td>
+<td>The Slovakia television rating "7".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 SLOVAKIA_7PLUS</code></td>
+<td>The Slovakia television rating "7+".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 SLOVAKIA_U</code></td>
+<td>The Slovakia television rating "U".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 SPAIN_13</code></td>
+<td>The Spain television rating "13".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 SPAIN_18</code></td>
+<td>The Spain television rating "18".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 SPAIN_7</code></td>
+<td>The Spain television rating "7".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 SPAIN_GP</code></td>
+<td>The Spain television rating "GP".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 SPAIN_MINOR</code></td>
+<td>The Spain television rating "minors (children)".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 SPAIN_X</code></td>
+<td>The Spain television rating "X".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 TURKEY_13A</code></td>
+<td>The Turkey television rating "13A".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 TURKEY_13PLUS</code></td>
+<td>The Turkey television rating "13+".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 TURKEY_15A</code></td>
+<td>The Turkey television rating "15A".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 TURKEY_15PLUS</code></td>
+<td>The Turkey television rating "15+".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 TURKEY_18PLUS</code></td>
+<td>The Turkey television rating "18+".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 TURKEY_7A</code></td>
+<td>The Turkey television rating "7A".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 TURKEY_7PLUS</code></td>
+<td>The Turkey television rating "7+".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 TURKEY_G</code></td>
+<td>The Turkey television rating "G".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 US_14</code></td>
+<td>The United States television rating "TV-14".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 US_G</code></td>
+<td>The United States television rating "TV-G".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 US_MATURE</code></td>
+<td>The United States television rating "TV-MA".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 US_PG</code></td>
+<td>The United States television rating "TV-PG".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 US_Y</code></td>
+<td>The United States television rating "TV-Y".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 US_Y7</code></td>
+<td>The United States television rating "TV-Y7".</td>
+</tr>
+<tr>
+<td><code>const System.Int32 US_Y7FV</code></td>
+<td>The United States television rating "TV-Y7-FV".</td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../Microsoft.Xbox/" class="btn btn-neutral float-left" title="Microsoft.Xbox"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Microsoft.Xna.Framework.GamerServices.ContentRating.System/" class="btn btn-neutral float-right" title="Microsoft.Xna.Framework.GamerServices.ContentRating.System">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>Silverlight360 is licensed under the PolyForm Noncommercial License 1.0.0 with an additional condition. Xbox, Xbox 360 and Silverlight are trademarks of Microsoft.</p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/Digiex/Silverlight360" class="fa fa-code-fork" style="color: #fcfcfc"> Digiex/Silverlight360</a>
+        </span>
+    
+    
+      <span><a href="../Microsoft.Xbox/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../Microsoft.Xna.Framework.GamerServices.ContentRating.System/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

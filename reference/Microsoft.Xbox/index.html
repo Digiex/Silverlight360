@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://digiex.github.io/Silverlight360/reference/Microsoft.Xbox/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Microsoft.Xbox - Silverlight360</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Microsoft.Xbox";
+        var mkdocs_page_input_path = "reference\\Microsoft.Xbox.md";
+        var mkdocs_page_url = "/Silverlight360/reference/Microsoft.Xbox/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/powershell.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/csharp.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/xml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Silverlight360
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../getting-started/">Getting started</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../project-setup/">Projects and Visual Studio</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../app-model/">App model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../input-and-focus/">Input and focus</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../controls/">Xbox controls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../networking/">Networking</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../storage/">Storage</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../media/">Media</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../gamer-services/">Gamer services</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../native-code/">Native code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../testing/">Testing in xenia</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../samples/">Samples</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../xenia-status/">Status under xenia</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../runtime-inventory/">Runtime inventory</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">API reference</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../MS.Internal/">MS.Internal</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Controls.Primitives/">Microsoft.Xbox.Controls.Primitives</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Controls/">Microsoft.Xbox.Controls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Core/">Microsoft.Xbox.Core</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Input/">Microsoft.Xbox.Input</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Media.Mpeg/">Microsoft.Xbox.Media.Mpeg</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Media/">Microsoft.Xbox.Media</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Net/">Microsoft.Xbox.Net</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Security.XAuth/">Microsoft.Xbox.Security.XAuth</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Services/">Microsoft.Xbox.Services</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Transitions/">Microsoft.Xbox.Transitions</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Microsoft.Xbox</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#alu">ALU</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#cache">Cache</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#companion">Companion</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#companionconnectedeventargs">CompanionConnectedEventArgs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#companionconnectionprotocol">CompanionConnectionProtocol</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#companiondisconnectedeventargs">CompanionDisconnectedEventArgs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#companioneventargs">CompanionEventArgs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#companionfailedeventargs">CompanionFailedEventArgs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#companionfailure">CompanionFailure</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#companionkeyboardtextchangedargs">CompanionKeyboardTextChangedArgs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#companionreceivedeventargs">CompanionReceivedEventArgs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#companionsendcompletedeventargs">CompanionSendCompletedEventArgs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#fpu">FPU</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#methodextensions">MethodExtensions</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#runtimehelpers">RuntimeHelpers</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xna.Framework.GamerServices.ContentRating.Level/">Microsoft.Xna.Framework.GamerServices.ContentRating.Level</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xna.Framework.GamerServices.ContentRating.System/">Microsoft.Xna.Framework.GamerServices.ContentRating.System</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xna.Framework.GamerServices.ContentRating/">Microsoft.Xna.Framework.GamerServices.ContentRating</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xna.Framework.GamerServices/">Microsoft.Xna.Framework.GamerServices</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xna.Framework.Storage/">Microsoft.Xna.Framework.Storage</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Reflection.ReflectionPermissionFrame/">System.Reflection.ReflectionPermissionFrame</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Reflection/">System.Reflection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Windows.Controls/">System.Windows.Controls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Windows.Input/">System.Windows.Input</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Windows.Media/">System.Windows.Media</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Windows/">System.Windows</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Silverlight360</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">API reference</li>
+      <li class="breadcrumb-item active">Microsoft.Xbox</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/Digiex/Silverlight360/edit/master/docs/reference/Microsoft.Xbox.md">Edit on Digiex/Silverlight360</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="microsoftxbox">Microsoft.Xbox<a class="headerlink" href="#microsoftxbox" title="Permanent link">&para;</a></h1>
+<p>Assembly: <code>Microsoft.Xbox.dll</code>, <code>System.Core.dll</code>, <code>mscorlib.dll</code></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Summary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#alu"><code>ALU</code></a></td>
+<td>Exposes Xbox 360 (PowerPC) integer instructions as methods that the JIT compiler emits inline.</td>
+</tr>
+<tr>
+<td><a href="#cache"><code>Cache</code></a></td>
+<td>Exposes Xbox 360 (PowerPC) data cache control instructions as methods that the JIT compiler emits inline.</td>
+</tr>
+<tr>
+<td><a href="#companion"><code>Companion</code></a></td>
+<td>Exchanges messages with SmartGlass companion devices (phones, tablets, PCs) that are connected to the console.</td>
+</tr>
+<tr>
+<td><a href="#companionconnectedeventargs"><code>CompanionConnectedEventArgs</code></a></td>
+<td>Provides data for the <a href="./#companion"><code>Companion.Connected</code></a> event.</td>
+</tr>
+<tr>
+<td><a href="#companionconnectionprotocol"><code>CompanionConnectionProtocol</code></a></td>
+<td>Identifies the transport used by a companion device connection.</td>
+</tr>
+<tr>
+<td><a href="#companiondisconnectedeventargs"><code>CompanionDisconnectedEventArgs</code></a></td>
+<td>Provides data for the <a href="./#companion"><code>Companion.Disconnected</code></a> event.</td>
+</tr>
+<tr>
+<td><a href="#companioneventargs"><code>CompanionEventArgs</code></a></td>
+<td>Base class for the data of <a href="./#companion"><code>Companion</code></a> events; identifies the companion client and the console user it belongs to.</td>
+</tr>
+<tr>
+<td><a href="#companionfailedeventargs"><code>CompanionFailedEventArgs</code></a></td>
+<td>Provides data for the <a href="./#companion"><code>Companion.Failed</code></a> event.</td>
+</tr>
+<tr>
+<td><a href="#companionfailure"><code>CompanionFailure</code></a></td>
+<td>Describes why a companion operation failed.</td>
+</tr>
+<tr>
+<td><a href="#companionkeyboardtextchangedargs"><code>CompanionKeyboardTextChangedArgs</code></a></td>
+<td>Provides the new text when a SmartGlass companion keyboard edits the text of the focused on-screen keyboard (<code>Rune</code>) control.</td>
+</tr>
+<tr>
+<td><a href="#companionreceivedeventargs"><code>CompanionReceivedEventArgs</code></a></td>
+<td>Provides data for the <a href="./#companion"><code>Companion.ReceivedMessage</code></a> event.</td>
+</tr>
+<tr>
+<td><a href="#companionsendcompletedeventargs"><code>CompanionSendCompletedEventArgs</code></a></td>
+<td>Provides data for the <a href="./#companion"><code>Companion.SendMessageCompleted</code></a> event.</td>
+</tr>
+<tr>
+<td><a href="#fpu"><code>FPU</code></a></td>
+<td>Exposes Xbox 360 (PowerPC) floating-point instructions as methods that the JIT compiler emits inline.</td>
+</tr>
+<tr>
+<td><a href="#methodextensions"><code>MethodExtensions</code></a></td>
+<td>Provides extension methods for <code>Thread</code> that query and set which Xbox 360 hardware thread a managed thread runs on.</td>
+</tr>
+<tr>
+<td><a href="#runtimehelpers"><code>RuntimeHelpers</code></a></td>
+<td>Provides Xbox 360 runtime services: console language and locale, processor affinity, ahead-of-time compilation of call graphs, and resource helpers.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="alu">ALU<a class="headerlink" href="#alu" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.ALU</code></p>
+<p>Exposes Xbox 360 (PowerPC) integer instructions as methods that the JIT compiler emits inline.</p>
+<p><strong>Methods</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>static System.Int64 mulh(System.Int64 a, System.Int64 b)</code></td>
+<td>Returns the high 64 bits of the 128-bit signed product of two 64-bit integers.</td>
+</tr>
+<tr>
+<td><code>static System.UInt32 cntlzd(System.Int64 b)</code></td>
+<td>Counts the leading zero bits of a 64-bit value.</td>
+</tr>
+<tr>
+<td><code>static System.UInt32 cntlzw(System.Int32 b)</code></td>
+<td>Counts the leading zero bits of a 32-bit value.</td>
+</tr>
+<tr>
+<td><code>static System.UInt64 umulh(System.UInt64 a, System.UInt64 b)</code></td>
+<td>Returns the high 64 bits of the 128-bit unsigned product of two 64-bit integers.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="cache">Cache<a class="headerlink" href="#cache" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.Cache</code></p>
+<p>Exposes Xbox 360 (PowerPC) data cache control instructions as methods that the JIT compiler emits inline.</p>
+<p>Each method addresses the cache block containing the address <code>_base + offset</code>. These methods are security critical and take unmanaged pointers, so they are not available to application code.</p>
+<p><strong>Methods</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>static System.Void dcbf(System.Int32 offset, System.Void* _base)</code></td>
+<td>Writes the cache block containing the specified address back to memory if it was modified and removes it from the cache.</td>
+</tr>
+<tr>
+<td><code>static System.Void dcbst(System.Int32 offset, System.Void* _base)</code></td>
+<td>Writes the cache block containing the specified address back to memory if it was modified, keeping it in the cache.</td>
+</tr>
+<tr>
+<td><code>static System.Void dcbt(System.Int32 offset, System.Void* _base)</code></td>
+<td>Hints that the cache block containing the specified address will be read soon, so it can be prefetched.</td>
+</tr>
+<tr>
+<td><code>static System.Void dcbz(System.Int32 offset, System.Void* _base)</code></td>
+<td>Zeroes the data cache block that contains the specified address without reading it from memory first.</td>
+</tr>
+<tr>
+<td><code>static System.Void dcbz128(System.Int32 offset, System.Void* _base)</code></td>
+<td>Zeroes the 128-byte cache line that contains the specified address without reading it from memory first.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="companion">Companion<a class="headerlink" href="#companion" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.Companion</code></p>
+<p>Exchanges messages with SmartGlass companion devices (phones, tablets, PCs) that are connected to the console.</p>
+<p>The companion session starts when the first handler is attached to any of this class's events and stops, discarding pending send contexts, when the last handler is removed. Keep at least one handler attached for as long as you want to receive companion traffic. All events are posted to the UI thread through the main <code>Dispatcher</code>. A message is a flat set of string key/value pairs; nested JSON is not supported.</p>
+<p><strong>Methods</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>static System.Void SendMessage(System.Int32 clientId, System.Collections.Generic.Dictionary&lt;System.String,System.String&gt; msg, System.Object context)</code></td>
+<td>Sends a key/value message to a connected companion device using reliable delivery. The call returns immediately; completion is reported through <a href="./#companion"><code>Companion.SendMessageCompleted</code></a> or <a href="./#companion"><code>Companion.Failed</code></a>. Attach a handler to at least one <a href="./#companion"><code>Companion</code></a> event first so that the companion service is running.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Events</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>event Microsoft.Xbox.CompanionEventHandler&lt;Microsoft.Xbox.CompanionConnectedEventArgs&gt; Connected</code></td>
+<td>Occurs when a companion device connects to the application. Raised on the UI thread. Attaching the first handler to any <a href="./#companion"><code>Companion</code></a> event starts the companion service.</td>
+</tr>
+<tr>
+<td><code>event Microsoft.Xbox.CompanionEventHandler&lt;Microsoft.Xbox.CompanionDisconnectedEventArgs&gt; Disconnected</code></td>
+<td>Occurs when a companion device disconnects. Raised on the UI thread.</td>
+</tr>
+<tr>
+<td><code>event Microsoft.Xbox.CompanionEventHandler&lt;Microsoft.Xbox.CompanionFailedEventArgs&gt; Failed</code></td>
+<td>Occurs when a companion connection, send or receive operation fails, or when a received message cannot be converted to a key/value dictionary. Raised on the UI thread. For a failed send, <a href="./#companionfailedeventargs"><code>CompanionFailedEventArgs.SendContext</code></a> holds the context object that was passed to <a href="./#companion"><code>Companion.SendMessage</code></a>.</td>
+</tr>
+<tr>
+<td><code>event Microsoft.Xbox.CompanionEventHandler&lt;Microsoft.Xbox.CompanionReceivedEventArgs&gt; ReceivedMessage</code></td>
+<td>Occurs when a message arrives from a companion device. Raised on the UI thread. If the incoming message contains a duplicate key, this event is not raised; <a href="./#companion"><code>Companion.Failed</code></a> is raised with <a href="./#companionfailure"><code>CompanionFailure.ReceivedUnsupportedJSon</code></a> instead.</td>
+</tr>
+<tr>
+<td><code>event Microsoft.Xbox.CompanionEventHandler&lt;Microsoft.Xbox.CompanionSendCompletedEventArgs&gt; SendMessageCompleted</code></td>
+<td>Occurs when a message sent with <a href="./#companion"><code>Companion.SendMessage</code></a> has been delivered. Raised on the UI thread.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="companionconnectedeventargs">CompanionConnectedEventArgs<a class="headerlink" href="#companionconnectedeventargs" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.CompanionConnectedEventArgs</code></p>
+<p>Provides data for the <a href="./#companion"><code>Companion.Connected</code></a> event.</p>
+<p><strong>Constructors</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CompanionConnectedEventArgs()</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Microsoft.Xbox.CompanionConnectionProtocol Protocol { get; }</code></td>
+<td>Gets the transport the companion device connected over.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="companionconnectionprotocol">CompanionConnectionProtocol<a class="headerlink" href="#companionconnectionprotocol" title="Permanent link">&para;</a></h2>
+<p><code>enum Microsoft.Xbox.CompanionConnectionProtocol</code></p>
+<p>Identifies the transport used by a companion device connection.</p>
+<p><strong>Values</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Cloud</code></td>
+<td>A connection relayed through the online service.</td>
+</tr>
+<tr>
+<td><code>None</code></td>
+<td>No transport, or the transport is not known.</td>
+</tr>
+<tr>
+<td><code>Tcp</code></td>
+<td>A direct TCP connection over the local network.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="companiondisconnectedeventargs">CompanionDisconnectedEventArgs<a class="headerlink" href="#companiondisconnectedeventargs" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.CompanionDisconnectedEventArgs</code></p>
+<p>Provides data for the <a href="./#companion"><code>Companion.Disconnected</code></a> event.</p>
+<p><strong>Constructors</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CompanionDisconnectedEventArgs()</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Microsoft.Xbox.CompanionConnectionProtocol Protocol { get; }</code></td>
+<td>Gets the transport the companion device was connected over.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="companioneventargs">CompanionEventArgs<a class="headerlink" href="#companioneventargs" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.CompanionEventArgs</code></p>
+<p>Base class for the data of <a href="./#companion"><code>Companion</code></a> events; identifies the companion client and the console user it belongs to.</p>
+<p><strong>Constructors</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CompanionEventArgs()</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Int32 ClientId { get; }</code></td>
+<td>Gets the identifier of the companion client that the event relates to. Pass this value to <a href="./#companion"><code>Companion.SendMessage</code></a> to reply.</td>
+</tr>
+<tr>
+<td><code>System.Int32 PlayerIndex { get; }</code></td>
+<td>Gets the index (0-3) of the signed-in console user associated with the companion client.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="companionfailedeventargs">CompanionFailedEventArgs<a class="headerlink" href="#companionfailedeventargs" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.CompanionFailedEventArgs</code></p>
+<p>Provides data for the <a href="./#companion"><code>Companion.Failed</code></a> event.</p>
+<p><strong>Constructors</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CompanionFailedEventArgs()</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Microsoft.Xbox.CompanionFailure Failure { get; }</code></td>
+<td>Gets the category of the failure.</td>
+</tr>
+<tr>
+<td><code>System.Int32 UnderlyingCode { get; }</code></td>
+<td>Gets the raw HRESULT reported by the companion service, for logging and diagnostics.</td>
+</tr>
+<tr>
+<td><code>System.Object SendContext { get; }</code></td>
+<td>Gets the context object passed to <a href="./#companion"><code>Companion.SendMessage</code></a> when the failure relates to a send; otherwise <code>null</code>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="companionfailure">CompanionFailure<a class="headerlink" href="#companionfailure" title="Permanent link">&para;</a></h2>
+<p><code>enum Microsoft.Xbox.CompanionFailure</code></p>
+<p>Describes why a companion operation failed.</p>
+<p><strong>Values</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ConnectedUnexpected</code></td>
+<td>An error occurred while a companion device was connecting.</td>
+</tr>
+<tr>
+<td><code>DisconnectedUnexpected</code></td>
+<td>An error occurred while a companion device was disconnecting.</td>
+</tr>
+<tr>
+<td><code>ReceiveProcessingAllocationFailure</code></td>
+<td>The console ran out of memory while processing a received message.</td>
+</tr>
+<tr>
+<td><code>ReceivedInvalidJson</code></td>
+<td>A received message was not valid JSON.</td>
+</tr>
+<tr>
+<td><code>ReceivedUnexpected</code></td>
+<td>Receiving a message failed for another reason; see <a href="./#companionfailedeventargs"><code>CompanionFailedEventArgs.UnderlyingCode</code></a>.</td>
+</tr>
+<tr>
+<td><code>ReceivedUnsupportedJSon</code></td>
+<td>A received message was valid JSON but could not be represented as a flat string dictionary (for example, it repeated a key).</td>
+</tr>
+<tr>
+<td><code>SendFailed</code></td>
+<td>A message could not be delivered to the companion device.</td>
+</tr>
+<tr>
+<td><code>SendUnexpected</code></td>
+<td>Sending a message failed for another reason; see <a href="./#companionfailedeventargs"><code>CompanionFailedEventArgs.UnderlyingCode</code></a>.</td>
+</tr>
+<tr>
+<td><code>Unknown</code></td>
+<td>The failure could not be classified.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="companionkeyboardtextchangedargs">CompanionKeyboardTextChangedArgs<a class="headerlink" href="#companionkeyboardtextchangedargs" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.CompanionKeyboardTextChangedArgs</code></p>
+<p>Provides the new text when a SmartGlass companion keyboard edits the text of the focused on-screen keyboard (<code>Rune</code>) control.</p>
+<p><strong>Constructors</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CompanionKeyboardTextChangedArgs()</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.String Text { get; }</code></td>
+<td>Gets the complete text entered on the companion keyboard.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="companionreceivedeventargs">CompanionReceivedEventArgs<a class="headerlink" href="#companionreceivedeventargs" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.CompanionReceivedEventArgs</code></p>
+<p>Provides data for the <a href="./#companion"><code>Companion.ReceivedMessage</code></a> event.</p>
+<p><strong>Constructors</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CompanionReceivedEventArgs()</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Collections.Generic.Dictionary&lt;System.String,System.String&gt; Message { get; }</code></td>
+<td>Gets the received message as string key/value pairs.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="companionsendcompletedeventargs">CompanionSendCompletedEventArgs<a class="headerlink" href="#companionsendcompletedeventargs" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.CompanionSendCompletedEventArgs</code></p>
+<p>Provides data for the <a href="./#companion"><code>Companion.SendMessageCompleted</code></a> event.</p>
+<p><strong>Constructors</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CompanionSendCompletedEventArgs()</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Object SendContext { get; }</code></td>
+<td>Gets the context object that was passed to <a href="./#companion"><code>Companion.SendMessage</code></a>, or <code>null</code> if none was supplied.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="fpu">FPU<a class="headerlink" href="#fpu" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.FPU</code></p>
+<p>Exposes Xbox 360 (PowerPC) floating-point instructions as methods that the JIT compiler emits inline.</p>
+<p>These methods let performance-sensitive code use hardware operations such as branch-free selection and fast reciprocal estimates. Estimate instructions trade precision for speed. The conversion methods follow the processor's register conventions: integer results are returned in the bit pattern of a double.</p>
+<p><strong>Methods</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>static System.Double fabs(System.Double b)</code></td>
+<td>Returns the absolute value of a double-precision value.</td>
+</tr>
+<tr>
+<td><code>static System.Double fcfid(System.Double b)</code></td>
+<td>Converts a 64-bit integer, stored in the bit pattern of a double, to a floating-point value.</td>
+</tr>
+<tr>
+<td><code>static System.Double fctid(System.Double b)</code></td>
+<td>Converts a value to a 64-bit integer using the current floating-point rounding mode.</td>
+</tr>
+<tr>
+<td><code>static System.Double fctidz(System.Double b)</code></td>
+<td>Converts a value to a 64-bit integer, rounding toward zero.</td>
+</tr>
+<tr>
+<td><code>static System.Double fctiw(System.Double b)</code></td>
+<td>Converts a value to a 32-bit integer using the current floating-point rounding mode.</td>
+</tr>
+<tr>
+<td><code>static System.Double fctiwz(System.Double b)</code></td>
+<td>Converts a value to a 32-bit integer, rounding toward zero.</td>
+</tr>
+<tr>
+<td><code>static System.Double fpmax(System.Double a, System.Double b)</code></td>
+<td>Returns the larger of two values using branch-free selection.</td>
+</tr>
+<tr>
+<td><code>static System.Double fpmin(System.Double a, System.Double b)</code></td>
+<td>Returns the smaller of two values using branch-free selection.</td>
+</tr>
+<tr>
+<td><code>static System.Double frnd(System.Double b)</code></td>
+<td>Applies the processor's floating-point rounding instruction to a value. Verify on the console whether the rounding you need (to an integer or to single precision) matches before relying on this method.</td>
+</tr>
+<tr>
+<td><code>static System.Double frsqrte(System.Double b)</code></td>
+<td>Computes a fast estimate of the reciprocal square root (1/sqrt(b)).</td>
+</tr>
+<tr>
+<td><code>static System.Double fsel(System.Double comparand, System.Double ge, System.Double lt)</code></td>
+<td>Selects one of two values according to the sign of a comparand, without branching.</td>
+</tr>
+<tr>
+<td><code>static System.Double fsqrt(System.Double b)</code></td>
+<td>Computes the square root of a double-precision value.</td>
+</tr>
+<tr>
+<td><code>static System.Single fpmax(System.Single a, System.Single b)</code></td>
+<td>Returns the larger of two single-precision values using branch-free selection.</td>
+</tr>
+<tr>
+<td><code>static System.Single fpmin(System.Single a, System.Single b)</code></td>
+<td>Returns the smaller of two single-precision values using branch-free selection.</td>
+</tr>
+<tr>
+<td><code>static System.Single fres(System.Double b)</code></td>
+<td>Computes a fast single-precision estimate of the reciprocal (1/b).</td>
+</tr>
+<tr>
+<td><code>static System.Single fself(System.Single comparand, System.Single ge, System.Single lt)</code></td>
+<td>Selects one of two single-precision values according to the sign of a comparand, without branching.</td>
+</tr>
+<tr>
+<td><code>static System.Single fsqrts(System.Single b)</code></td>
+<td>Computes the square root of a single-precision value.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="methodextensions">MethodExtensions<a class="headerlink" href="#methodextensions" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.MethodExtensions</code></p>
+<p>Provides extension methods for <code>Thread</code> that query and set which Xbox 360 hardware thread a managed thread runs on.</p>
+<p>Both methods operate only on the calling thread; passing any other thread throws <code>InvalidOperationException</code>.</p>
+<p><strong>Methods</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>static System.Int32 GetCurrentProcessorNumber(System.Threading.Thread thread)</code></td>
+<td>Returns the number of the hardware thread the calling thread is currently running on.</td>
+</tr>
+<tr>
+<td><code>static System.Void SetProcessorAffinity(System.Threading.Thread thread, System.Int32[] cpus)</code></td>
+<td>Moves the calling thread to the specified hardware thread. Throws <code>ArgumentException</code> if <code>cpus</code> is null, and <code>InvalidOperationException</code> if it does not contain exactly one value in the range 0 to 5, if <code>thread</code> is not the current thread, or if the affinity cannot be set.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="runtimehelpers">RuntimeHelpers<a class="headerlink" href="#runtimehelpers" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.RuntimeHelpers</code></p>
+<p>Provides Xbox 360 runtime services: console language and locale, processor affinity, ahead-of-time compilation of call graphs, and resource helpers.</p>
+<p>Several members are security critical or reserved for the platform and cannot be called from application code. Applications can use <a href="./#runtimehelpers"><code>RuntimeHelpers.GetLanguage</code></a> and <a href="./#runtimehelpers"><code>RuntimeHelpers.GetLocale</code></a>, and the extension methods in Microsoft.Xbox.MethodExtensions (System.Core) for processor affinity.</p>
+<p><strong>Methods</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>static System.Globalization.CultureInfo CreateCustomCultureInfoForResources(System.String name)</code></td>
+<td>Creates a culture with the specified name for use in resource lookup. Reserved for platform code. The culture only affects which resources are found; formatting follows the invariant culture.</td>
+</tr>
+<tr>
+<td><code>static System.Int32 GetCurrentProcessorNumber(System.Threading.Thread thread)</code></td>
+<td>Returns the number of the hardware thread the specified thread is running on. Reserved for platform code. Applications call the GetCurrentProcessorNumber extension method in Microsoft.Xbox.MethodExtensions instead.</td>
+</tr>
+<tr>
+<td><code>static System.Int32 SetProcessorAffinity(System.Threading.Thread thread, System.Int32 cpu)</code></td>
+<td>Sets the hardware thread the specified thread runs on. Reserved for platform code. Applications call the SetProcessorAffinity extension method in Microsoft.Xbox.MethodExtensions instead.</td>
+</tr>
+<tr>
+<td><code>static System.Resources.ResourceManager CreateFileBasedResourceManager(System.String baseName, System.String resourceDir, System.Type usingResourceSet)</code></td>
+<td>Creates a resource manager that reads .resources files from a directory instead of from assembly manifests. Reserved for platform code.</td>
+</tr>
+<tr>
+<td><code>static System.UInt32 GetLanguage()</code></td>
+<td>Returns the language selected in the console's system settings.</td>
+</tr>
+<tr>
+<td><code>static System.UInt32 GetLocale()</code></td>
+<td>Returns the country or region selected in the console's system settings.</td>
+</tr>
+<tr>
+<td><code>static System.Void CompileCallGraph(System.RuntimeMethodHandle method)</code></td>
+<td>Compiles the specified method and the methods it calls before they are first executed. Security critical; reserved for platform code.</td>
+</tr>
+<tr>
+<td><code>static System.Void CompileCallGraph(System.RuntimeMethodHandle method, System.RuntimeTypeHandle[] instantiation)</code></td>
+<td>Compiles the specified generic method instantiation and the methods it calls before they are first executed. Security critical; reserved for platform code.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Fields</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>const System.UInt32 XC_LANGUAGE_ENGLISH</code></td>
+<td>Value returned by <a href="./#runtimehelpers"><code>RuntimeHelpers.GetLanguage</code></a> when the console language is English.</td>
+</tr>
+<tr>
+<td><code>const System.UInt32 XC_LANGUAGE_FRENCH</code></td>
+<td>Value returned by <a href="./#runtimehelpers"><code>RuntimeHelpers.GetLanguage</code></a> when the console language is French.</td>
+</tr>
+<tr>
+<td><code>const System.UInt32 XC_LANGUAGE_GERMAN</code></td>
+<td>Value returned by <a href="./#runtimehelpers"><code>RuntimeHelpers.GetLanguage</code></a> when the console language is German.</td>
+</tr>
+<tr>
+<td><code>const System.UInt32 XC_LANGUAGE_ITALIAN</code></td>
+<td>Value returned by <a href="./#runtimehelpers"><code>RuntimeHelpers.GetLanguage</code></a> when the console language is Italian.</td>
+</tr>
+<tr>
+<td><code>const System.UInt32 XC_LANGUAGE_JAPANESE</code></td>
+<td>Value returned by <a href="./#runtimehelpers"><code>RuntimeHelpers.GetLanguage</code></a> when the console language is Japanese.</td>
+</tr>
+<tr>
+<td><code>const System.UInt32 XC_LANGUAGE_KOREAN</code></td>
+<td>Value returned by <a href="./#runtimehelpers"><code>RuntimeHelpers.GetLanguage</code></a> when the console language is Korean.</td>
+</tr>
+<tr>
+<td><code>const System.UInt32 XC_LANGUAGE_POLISH</code></td>
+<td>Value returned by <a href="./#runtimehelpers"><code>RuntimeHelpers.GetLanguage</code></a> when the console language is Polish.</td>
+</tr>
+<tr>
+<td><code>const System.UInt32 XC_LANGUAGE_PORTUGUESE</code></td>
+<td>Value returned by <a href="./#runtimehelpers"><code>RuntimeHelpers.GetLanguage</code></a> when the console language is Portuguese.</td>
+</tr>
+<tr>
+<td><code>const System.UInt32 XC_LANGUAGE_RUSSIAN</code></td>
+<td>Value returned by <a href="./#runtimehelpers"><code>RuntimeHelpers.GetLanguage</code></a> when the console language is Russian.</td>
+</tr>
+<tr>
+<td><code>const System.UInt32 XC_LANGUAGE_SCHINESE</code></td>
+<td>Value returned by <a href="./#runtimehelpers"><code>RuntimeHelpers.GetLanguage</code></a> when the console language is Simplified Chinese.</td>
+</tr>
+<tr>
+<td><code>const System.UInt32 XC_LANGUAGE_SPANISH</code></td>
+<td>Value returned by <a href="./#runtimehelpers"><code>RuntimeHelpers.GetLanguage</code></a> when the console language is Spanish.</td>
+</tr>
+<tr>
+<td><code>const System.UInt32 XC_LANGUAGE_TCHINESE</code></td>
+<td>Value returned by <a href="./#runtimehelpers"><code>RuntimeHelpers.GetLanguage</code></a> when the console language is Traditional Chinese.</td>
+</tr>
+<tr>
+<td><code>const System.UInt32 XC_LOCALE_AUSTRALIA</code></td>
+<td>Value returned by <a href="./#runtimehelpers"><code>RuntimeHelpers.GetLocale</code></a> when the console country or region is Australia.</td>
+</tr>
+<tr>
+<td><code>const System.UInt32 XC_LOCALE_AUSTRIA</code></td>
+<td>Value returned by <a href="./#runtimehelpers"><code>RuntimeHelpers.GetLocale</code></a> when the console country or region is Austria.</td>
+</tr>
+<tr>
+<td><code>const System.UInt32 XC_LOCALE_BELGIUM</code></td>
+<td>Value returned by <a href="./#runtimehelpers"><code>RuntimeHelpers.GetLocale</code></a> when the console country or region is Belgium.</td>
+</tr>
+<tr>
+<td><code>const System.UInt32 XC_LOCALE_BRAZIL</code></td>
+<td>Value returned by <a href="./#runtimehelpers"><code>RuntimeHelpers.GetLocale</code></a> when the console country or region is Brazil.</td>
+</tr>
+<tr>
+<td><code>const System.UInt32 XC_LOCALE_CANADA</code></td>
+<td>Value returned by <a href="./#runtimehelpers"><code>RuntimeHelpers.GetLocale</code></a> when the console country or region is Canada.</td>
+</tr>
+<tr>
+<td><code>const System.UInt32 XC_LOCALE_CHILE</code></td>
+<td>Value returned by <a href="./#runtimehelpers"><code>RuntimeHelpers.GetLocale</code></a> when the console country or region is Chile.</td>
+</tr>
+<tr>
+<td><code>const System.UInt32 XC_LOCALE_CHINA</code></td>
+<td>Value returned by <a href="./#runtimehelpers"><code>RuntimeHelpers.GetLocale</code></a> when the console country or region is China.</td>
+</tr>
+<tr>
+<td><code>const System.UInt32 XC_LOCALE_COLOMBIA</code></td>
+<td>Value returned by <a href="./#runtimehelpers"><code>RuntimeHelpers.GetLocale</code></a> when the console country or region is Colombia.</td>
+</tr>
+<tr>
+<td><code>const System.UInt32 XC_LOCALE_CZECH_REPUBLIC</code></td>
+<td>Value returned by <a href="./#runtimehelpers"><code>RuntimeHelpers.GetLocale</code></a> when the console country or region is Czech Republic.</td>
+</tr>
+<tr>
+<td><code>const System.UInt32 XC_LOCALE_DENMARK</code></td>
+<td>Value returned by <a href="./#runtimehelpers"><code>RuntimeHelpers.GetLocale</code></a> when the console country or region is Denmark.</td>
+</tr>
+<tr>
+<td><code>const System.UInt32 XC_LOCALE_FINLAND</code></td>
+<td>Value returned by <a href="./#runtimehelpers"><code>RuntimeHelpers.GetLocale</code></a> when the console country or region is Finland.</td>
+</tr>
+<tr>
+<td><code>const System.UInt32 XC_LOCALE_FRANCE</code></td>
+<td>Value returned by <a href="./#runtimehelpers"><code>RuntimeHelpers.GetLocale</code></a> when the console country or region is France.</td>
+</tr>
+<tr>
+<td><code>const System.UInt32 XC_LOCALE_GERMANY</code></td>
+<td>Value returned by <a href="./#runtimehelpers"><code>RuntimeHelpers.GetLocale</code></a> when the console country or region is Germany.</td>
+</tr>
+<tr>
+<td><code>const System.UInt32 XC_LOCALE_GREAT_BRITAIN</code></td>
+<td>Value returned by <a href="./#runtimehelpers"><code>RuntimeHelpers.GetLocale</code></a> when the console country or region is Great Britain.</td>
+</tr>
+<tr>
+<td><code>const System.UInt32 XC_LOCALE_GREECE</code></td>
+<td>Value returned by <a href="./#runtimehelpers"><code>RuntimeHelpers.GetLocale</code></a> when the console country or region is Greece.</td>
+</tr>
+<tr>
+<td><code>const System.UInt32 XC_LOCALE_HONG_KONG</code></td>
+<td>Value returned by <a href="./#runtimehelpers"><code>RuntimeHelpers.GetLocale</code></a> when the console country or region is Hong Kong.</td>
+</tr>
+<tr>
+<td><code>const System.UInt32 XC_LOCALE_HUNGARY</code></td>
+<td>Value returned by <a href="./#runtimehelpers"><code>RuntimeHelpers.GetLocale</code></a> when the console country or region is Hungary.</td>
+</tr>
+<tr>
+<td><code>const System.UInt32 XC_LOCALE_INDIA</code></td>
+<td>Value returned by <a href="./#runtimehelpers"><code>RuntimeHelpers.GetLocale</code></a> when the console country or region is India.</td>
+</tr>
+<tr>
+<td><code>const System.UInt32 XC_LOCALE_IRELAND</code></td>
+<td>Value returned by <a href="./#runtimehelpers"><code>RuntimeHelpers.GetLocale</code></a> when the console country or region is Ireland.</td>
+</tr>
+<tr>
+<td><code>const System.UInt32 XC_LOCALE_ITALY</code></td>
+<td>Value returned by <a href="./#runtimehelpers"><code>RuntimeHelpers.GetLocale</code></a> when the console country or region is Italy.</td>
+</tr>
+<tr>
+<td><code>const System.UInt32 XC_LOCALE_JAPAN</code></td>
+<td>Value returned by <a href="./#runtimehelpers"><code>RuntimeHelpers.GetLocale</code></a> when the console country or region is Japan.</td>
+</tr>
+<tr>
+<td><code>const System.UInt32 XC_LOCALE_KOREA</code></td>
+<td>Value returned by <a href="./#runtimehelpers"><code>RuntimeHelpers.GetLocale</code></a> when the console country or region is Korea.</td>
+</tr>
+<tr>
+<td><code>const System.UInt32 XC_LOCALE_MEXICO</code></td>
+<td>Value returned by <a href="./#runtimehelpers"><code>RuntimeHelpers.GetLocale</code></a> when the console country or region is Mexico.</td>
+</tr>
+<tr>
+<td><code>const System.UInt32 XC_LOCALE_NETHERLANDS</code></td>
+<td>Value returned by <a href="./#runtimehelpers"><code>RuntimeHelpers.GetLocale</code></a> when the console country or region is Netherlands.</td>
+</tr>
+<tr>
+<td><code>const System.UInt32 XC_LOCALE_NEW_ZEALAND</code></td>
+<td>Value returned by <a href="./#runtimehelpers"><code>RuntimeHelpers.GetLocale</code></a> when the console country or region is New Zealand.</td>
+</tr>
+<tr>
+<td><code>const System.UInt32 XC_LOCALE_NORWAY</code></td>
+<td>Value returned by <a href="./#runtimehelpers"><code>RuntimeHelpers.GetLocale</code></a> when the console country or region is Norway.</td>
+</tr>
+<tr>
+<td><code>const System.UInt32 XC_LOCALE_POLAND</code></td>
+<td>Value returned by <a href="./#runtimehelpers"><code>RuntimeHelpers.GetLocale</code></a> when the console country or region is Poland.</td>
+</tr>
+<tr>
+<td><code>const System.UInt32 XC_LOCALE_PORTUGAL</code></td>
+<td>Value returned by <a href="./#runtimehelpers"><code>RuntimeHelpers.GetLocale</code></a> when the console country or region is Portugal.</td>
+</tr>
+<tr>
+<td><code>const System.UInt32 XC_LOCALE_SINGAPORE</code></td>
+<td>Value returned by <a href="./#runtimehelpers"><code>RuntimeHelpers.GetLocale</code></a> when the console country or region is Singapore.</td>
+</tr>
+<tr>
+<td><code>const System.UInt32 XC_LOCALE_SLOVAK_REPUBLIC</code></td>
+<td>Value returned by <a href="./#runtimehelpers"><code>RuntimeHelpers.GetLocale</code></a> when the console country or region is Slovak Republic.</td>
+</tr>
+<tr>
+<td><code>const System.UInt32 XC_LOCALE_SOUTH_AFRICA</code></td>
+<td>Value returned by <a href="./#runtimehelpers"><code>RuntimeHelpers.GetLocale</code></a> when the console country or region is South Africa.</td>
+</tr>
+<tr>
+<td><code>const System.UInt32 XC_LOCALE_SPAIN</code></td>
+<td>Value returned by <a href="./#runtimehelpers"><code>RuntimeHelpers.GetLocale</code></a> when the console country or region is Spain.</td>
+</tr>
+<tr>
+<td><code>const System.UInt32 XC_LOCALE_SWEDEN</code></td>
+<td>Value returned by <a href="./#runtimehelpers"><code>RuntimeHelpers.GetLocale</code></a> when the console country or region is Sweden.</td>
+</tr>
+<tr>
+<td><code>const System.UInt32 XC_LOCALE_SWITZERLAND</code></td>
+<td>Value returned by <a href="./#runtimehelpers"><code>RuntimeHelpers.GetLocale</code></a> when the console country or region is Switzerland.</td>
+</tr>
+<tr>
+<td><code>const System.UInt32 XC_LOCALE_TAIWAN</code></td>
+<td>Value returned by <a href="./#runtimehelpers"><code>RuntimeHelpers.GetLocale</code></a> when the console country or region is Taiwan.</td>
+</tr>
+<tr>
+<td><code>const System.UInt32 XC_LOCALE_UNITED_STATES</code></td>
+<td>Value returned by <a href="./#runtimehelpers"><code>RuntimeHelpers.GetLocale</code></a> when the console country or region is United States.</td>
+</tr>
+<tr>
+<td><code>const System.UInt32 XC_LOCALE_UNKNOWN</code></td>
+<td>Value returned by <a href="./#runtimehelpers"><code>RuntimeHelpers.GetLocale</code></a> when the console country or region is not set or not recognized.</td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../Microsoft.Xbox.Transitions/" class="btn btn-neutral float-left" title="Microsoft.Xbox.Transitions"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Microsoft.Xna.Framework.GamerServices.ContentRating.Level/" class="btn btn-neutral float-right" title="Microsoft.Xna.Framework.GamerServices.ContentRating.Level">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>Silverlight360 is licensed under the PolyForm Noncommercial License 1.0.0 with an additional condition. Xbox, Xbox 360 and Silverlight are trademarks of Microsoft.</p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/Digiex/Silverlight360" class="fa fa-code-fork" style="color: #fcfcfc"> Digiex/Silverlight360</a>
+        </span>
+    
+    
+      <span><a href="../Microsoft.Xbox.Transitions/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../Microsoft.Xna.Framework.GamerServices.ContentRating.Level/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

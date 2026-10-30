@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://digiex.github.io/Silverlight360/controls/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Xbox controls - Silverlight360</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Xbox controls";
+        var mkdocs_page_input_path = "controls.md";
+        var mkdocs_page_url = "/Silverlight360/controls/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/powershell.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/csharp.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/xml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Silverlight360
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../getting-started/">Getting started</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../project-setup/">Projects and Visual Studio</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../app-model/">App model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../input-and-focus/">Input and focus</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Xbox controls</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#pivot">Pivot</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#rune">Rune</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#legend">Legend</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#mediatransport">MediaTransport</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#continuouslist">ContinuousList</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#transitions">Transitions</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#speech-vuibar-and-vuicommand">Speech: VuiBar and VuiCommand</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#kinect-only-controls">Kinect-only controls</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../networking/">Networking</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../storage/">Storage</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../media/">Media</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../gamer-services/">Gamer services</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../native-code/">Native code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../testing/">Testing in xenia</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../samples/">Samples</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../xenia-status/">Status under xenia</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../runtime-inventory/">Runtime inventory</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">API reference</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/MS.Internal/">MS.Internal</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Controls.Primitives/">Microsoft.Xbox.Controls.Primitives</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Controls/">Microsoft.Xbox.Controls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Core/">Microsoft.Xbox.Core</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Input/">Microsoft.Xbox.Input</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Media.Mpeg/">Microsoft.Xbox.Media.Mpeg</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Media/">Microsoft.Xbox.Media</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Net/">Microsoft.Xbox.Net</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Security.XAuth/">Microsoft.Xbox.Security.XAuth</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Services/">Microsoft.Xbox.Services</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Transitions/">Microsoft.Xbox.Transitions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox/">Microsoft.Xbox</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xna.Framework.GamerServices.ContentRating.Level/">Microsoft.Xna.Framework.GamerServices.ContentRating.Level</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xna.Framework.GamerServices.ContentRating.System/">Microsoft.Xna.Framework.GamerServices.ContentRating.System</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xna.Framework.GamerServices.ContentRating/">Microsoft.Xna.Framework.GamerServices.ContentRating</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xna.Framework.GamerServices/">Microsoft.Xna.Framework.GamerServices</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xna.Framework.Storage/">Microsoft.Xna.Framework.Storage</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/System.Reflection.ReflectionPermissionFrame/">System.Reflection.ReflectionPermissionFrame</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/System.Reflection/">System.Reflection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/System.Windows.Controls/">System.Windows.Controls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/System.Windows.Input/">System.Windows.Input</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/System.Windows.Media/">System.Windows.Media</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/System.Windows/">System.Windows</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Silverlight360</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Guides</li>
+      <li class="breadcrumb-item active">Xbox controls</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/Digiex/Silverlight360/edit/master/docs/controls.md">Edit on Digiex/Silverlight360</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="xbox-controls">Xbox controls<a class="headerlink" href="#xbox-controls" title="Permanent link">&para;</a></h1>
+<p><code>Microsoft.Xbox.dll</code> has the controls the dashboard-style apps are built from. Use them with <code>xmlns:xbox="clr-namespace:Microsoft.Xbox.Controls;assembly=Microsoft.Xbox"</code> and a <code>Microsoft.Xbox</code> reference. The <a href="../reference/Microsoft.Xbox.Controls/">API reference</a> documents every member; this page covers what you need to get them working.</p>
+<p>Their default styles come from the platform's theme. Some colors assume a light background (the Pivot headers are dark grey), so override templates where they don't fit.</p>
+<h2 id="pivot">Pivot<a class="headerlink" href="#pivot" title="Permanent link">&para;</a></h2>
+<p>Sections side by side, one shown at a time, with the neighbours peeking in at the edges. The shoulder buttons switch sections.</p>
+<pre><code class="language-xml">&lt;xbox:Pivot x:Name=&quot;Sections&quot;&gt;
+  &lt;xbox:Pivot.HeaderTemplate&gt;
+    &lt;DataTemplate&gt;
+      &lt;TextBlock Text=&quot;{Binding}&quot; FontSize=&quot;32&quot; Foreground=&quot;#FFEBEBEB&quot; /&gt;
+    &lt;/DataTemplate&gt;
+  &lt;/xbox:Pivot.HeaderTemplate&gt;
+  &lt;xbox:PivotItem Header=&quot;browse&quot;&gt;
+    &lt;Grid&gt;...buttons in rows and columns...&lt;/Grid&gt;
+  &lt;/xbox:PivotItem&gt;
+  &lt;xbox:PivotItem Header=&quot;search&quot;&gt;...&lt;/xbox:PivotItem&gt;
+&lt;/xbox:Pivot&gt;
+</code></pre>
+<ul>
+<li><strong>D-pad focus inside a section:</strong> each <code>PivotItem</code> moves it through the <code>Grid</code> it contains with the D-pad (<code>AutoGridNav</code>, on by default). Give it a <code>Grid</code> with the controls in rows and columns.</li>
+<li><strong>Focus when switching:</strong> focus the first control yourself in <code>SelectionChanged</code>.</li>
+<li><strong>Lazy loading:</strong> <code>LoadingPivotItem</code> and <code>UnloadingPivotItem</code> are raised for items within two positions of the selection, so you can load section content on demand.</li>
+<li><strong>Only one per page:</strong> a <code>Pivot</code> contains a <code>SwipeViewer</code>, and only one <code>SwipeViewer</code> can be active at a time. Don't put two <code>Pivot</code>s, or a <code>Pivot</code> and a <code>ContinuousList</code>, on one page.</li>
+</ul>
+<p>Samples: <code>samples\ui\XboxControls</code>, and <code>samples\apps\CatalogBrowser</code>, which builds its sections in code.</p>
+<h2 id="rune">Rune<a class="headerlink" href="#rune" title="Permanent link">&para;</a></h2>
+<p>Text entry made for the TV: a strip of characters the user scrolls through with the D-pad and picks with A. X deletes and Y closes. It shows as a popup while <code>IsOpen</code> is true.</p>
+<pre><code class="language-xml">&lt;xbox:Rune x:Name=&quot;SearchRune&quot; EmptyTextString=&quot;search for something&quot; /&gt;
+</code></pre>
+<pre><code class="language-csharp">SearchRune.IsOpen = true;
+SearchRune.Focus();
+SearchRune.TextChanged += delegate { Search(SearchRune.Text); };
+</code></pre>
+<p>A Rune also accepts text typed on a SmartGlass companion device. Under xenia the SmartGlass keyboard calls are missing, which only shows up in the log; typing with the controller works.</p>
+<h2 id="legend">Legend<a class="headerlink" href="#legend" title="Permanent link">&para;</a></h2>
+<p>The A/B/X/Y hints at the bottom of the screen. See <a href="../input-and-focus/#the-legend">Input and focus</a>.</p>
+<h2 id="mediatransport">MediaTransport<a class="headerlink" href="#mediatransport" title="Permanent link">&para;</a></h2>
+<p>The Xbox video player's chrome: a transport bar, timeline, status and busy indicator, wired to a player. See <a href="../media/">Media</a>.</p>
+<ul>
+<li><strong>Set <code>MediaAssetId</code> before playback.</strong> Every command reports it, and commands throw <code>InvalidOperationException</code> without it.</li>
+<li><strong>Needs GamerServices</strong>, for its screen-saver control; use it inside an <code>XboxApplicationFrame</code>.</li>
+</ul>
+<h2 id="continuouslist">ContinuousList<a class="headerlink" href="#continuouslist" title="Permanent link">&para;</a></h2>
+<p>A horizontally paged list for long rows of items. It pages with the shoulder buttons, the D-pad, the remote's previous/next or a swipe, and raises <code>ItemsInViewChanged</code>. It contains a <code>SwipeViewer</code>, so the one-per-page rule applies.</p>
+<h2 id="transitions">Transitions<a class="headerlink" href="#transitions" title="Permanent link">&para;</a></h2>
+<p>Page transitions and staggered element animations: see <a href="../app-model/#transitions">App model</a>.</p>
+<h2 id="speech-vuibar-and-vuicommand">Speech: VuiBar and VuiCommand<a class="headerlink" href="#speech-vuibar-and-vuicommand" title="Permanent link">&para;</a></h2>
+<p>Voice commands need a Kinect sensor, which xenia doesn't have, so none of this has been tested. From the code:</p>
+<ol>
+<li><code>XboxApplicationFrame</code>'s template hosts the one <code>VuiBar</code>; creating a second one throws.</li>
+<li>Build a <code>VuiGrammar</code> whose phrases' semantic values match each <code>VuiCommand.SemanticValue</code>, call <code>LoadGrammar</code>, add the commands, then <code>StartRecognition</code>. Grammars can't be loaded while recognition is running.</li>
+<li>Setting <code>Localization.Culture</code> unloads every grammar, the app's included; load them again afterwards.</li>
+</ol>
+<h2 id="kinect-only-controls">Kinect-only controls<a class="headerlink" href="#kinect-only-controls" title="Permanent link">&para;</a></h2>
+<p><code>NuiTimeline</code> scrubbing, <code>SwipeViewer</code>, <code>DepthPIP</code> and Rune gestures respond to the Kinect hand cursor. Without a sensor they still show, and the controller works with them.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../input-and-focus/" class="btn btn-neutral float-left" title="Input and focus"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../networking/" class="btn btn-neutral float-right" title="Networking">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>Silverlight360 is licensed under the PolyForm Noncommercial License 1.0.0 with an additional condition. Xbox, Xbox 360 and Silverlight are trademarks of Microsoft.</p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/Digiex/Silverlight360" class="fa fa-code-fork" style="color: #fcfcfc"> Digiex/Silverlight360</a>
+        </span>
+    
+    
+      <span><a href="../input-and-focus/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../networking/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

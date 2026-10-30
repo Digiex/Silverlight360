@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://digiex.github.io/Silverlight360/app-model/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>App model - Silverlight360</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "App model";
+        var mkdocs_page_input_path = "app-model.md";
+        var mkdocs_page_url = "/Silverlight360/app-model/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/powershell.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/csharp.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/xml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Silverlight360
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../getting-started/">Getting started</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../project-setup/">Projects and Visual Studio</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">App model</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#startup">Startup</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#xboxapplicationframe">XboxApplicationFrame</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#pages-and-navigation">Pages and navigation</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#transitions">Transitions</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#back-and-exit">Back and exit</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#unhandled-exceptions">Unhandled exceptions</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#threading">Threading</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../input-and-focus/">Input and focus</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../controls/">Xbox controls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../networking/">Networking</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../storage/">Storage</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../media/">Media</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../gamer-services/">Gamer services</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../native-code/">Native code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../testing/">Testing in xenia</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../samples/">Samples</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../xenia-status/">Status under xenia</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../runtime-inventory/">Runtime inventory</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">API reference</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/MS.Internal/">MS.Internal</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Controls.Primitives/">Microsoft.Xbox.Controls.Primitives</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Controls/">Microsoft.Xbox.Controls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Core/">Microsoft.Xbox.Core</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Input/">Microsoft.Xbox.Input</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Media.Mpeg/">Microsoft.Xbox.Media.Mpeg</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Media/">Microsoft.Xbox.Media</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Net/">Microsoft.Xbox.Net</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Security.XAuth/">Microsoft.Xbox.Security.XAuth</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Services/">Microsoft.Xbox.Services</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Transitions/">Microsoft.Xbox.Transitions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox/">Microsoft.Xbox</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xna.Framework.GamerServices.ContentRating.Level/">Microsoft.Xna.Framework.GamerServices.ContentRating.Level</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xna.Framework.GamerServices.ContentRating.System/">Microsoft.Xna.Framework.GamerServices.ContentRating.System</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xna.Framework.GamerServices.ContentRating/">Microsoft.Xna.Framework.GamerServices.ContentRating</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xna.Framework.GamerServices/">Microsoft.Xna.Framework.GamerServices</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xna.Framework.Storage/">Microsoft.Xna.Framework.Storage</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/System.Reflection.ReflectionPermissionFrame/">System.Reflection.ReflectionPermissionFrame</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/System.Reflection/">System.Reflection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/System.Windows.Controls/">System.Windows.Controls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/System.Windows.Input/">System.Windows.Input</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/System.Windows.Media/">System.Windows.Media</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/System.Windows/">System.Windows</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Silverlight360</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Guides</li>
+      <li class="breadcrumb-item active">App model</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/Digiex/Silverlight360/edit/master/docs/app-model.md">Edit on Digiex/Silverlight360</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="app-model">App model<a class="headerlink" href="#app-model" title="Permanent link">&para;</a></h1>
+<h2 id="startup">Startup<a class="headerlink" href="#startup" title="Permanent link">&para;</a></h2>
+<p>XamlHost (<code>default.xex</code>) starts the CLR, reads <code>AppManifest.xaml</code>, loads the entry assembly and creates the <code>Application</code> class named there. As in any Silverlight app, <code>Startup</code> sets <code>RootVisual</code>:</p>
+<pre><code class="language-csharp">private void Application_Startup(object sender, StartupEventArgs e)
+{
+    RootVisual = new MainPage();
+}
+</code></pre>
+<p>The screen is 1280x720. Design pages at that size and keep important content inside the title-safe area, the inner 90% (64 pixels from the left and right, 36 from the top and bottom), because TVs crop the edges.</p>
+<h2 id="xboxapplicationframe">XboxApplicationFrame<a class="headerlink" href="#xboxapplicationframe" title="Permanent link">&para;</a></h2>
+<p>Apps with more than one page use <code>XboxApplicationFrame</code> (<code>Microsoft.Xbox.Controls</code>) as the root. It's a navigation <code>Frame</code> that also:</p>
+<ul>
+<li><strong>Starts GamerServices</strong>: it calls <code>GamerServicesDispatcher.Initialize</code>, then pumps <code>GamerServicesDispatcher.Update</code> and <code>FrameworkDispatcher.Update</code> every frame. Signed-in gamer information, the Guide, storage containers and <code>MediaTransport</code>'s screen-saver control depend on that.</li>
+<li><strong>Initializes the UI sounds.</strong></li>
+<li><strong>Plays the page transitions</strong> set with <code>TransitionService</code>.</li>
+<li><strong>Hosts the one <code>VuiBar</code></strong> used for speech, in its template.</li>
+</ul>
+<pre><code class="language-csharp">private void Application_Startup(object sender, StartupEventArgs e)
+{
+    var frame = new XboxApplicationFrame();
+    frame.Source = new Uri(&quot;/Pages/HomePage.xaml&quot;, UriKind.Relative);
+    RootVisual = frame;
+}
+</code></pre>
+<p>Without the frame, an app that uses gamer services or storage has to start GamerServices itself. The PlatformCalls sample does:</p>
+<pre><code class="language-csharp">if (!GamerServicesDispatcher.IsInitialized)
+{
+    GamerServicesDispatcher.Initialize(null);
+}
+CompositionTarget.Rendering += delegate
+{
+    FrameworkDispatcher.Update();
+    GamerServicesDispatcher.Update();
+};
+</code></pre>
+<h2 id="pages-and-navigation">Pages and navigation<a class="headerlink" href="#pages-and-navigation" title="Permanent link">&para;</a></h2>
+<p>Pages are <code>XboxApplicationPage</code> XAML files (a <code>Page</code> with Xbox transitions):</p>
+<pre><code class="language-xml">&lt;xbox:XboxApplicationPage x:Class=&quot;MyApp.Pages.HomePage&quot;
+    xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+    xmlns:xbox=&quot;clr-namespace:Microsoft.Xbox.Controls;assembly=Microsoft.Xbox&quot;&gt;
+  ...
+&lt;/xbox:XboxApplicationPage&gt;
+</code></pre>
+<p>Navigate by URI. Parameters go on the query string and come back in <code>NavigationContext.QueryString</code>:</p>
+<pre><code class="language-csharp">NavigationService.Navigate(new Uri(&quot;/Pages/DetailPage.xaml?id=7&quot;, UriKind.Relative));
+
+protected override void OnNavigatedTo(NavigationEventArgs e)
+{
+    base.OnNavigatedTo(e);
+    int id = int.Parse(NavigationContext.QueryString[&quot;id&quot;]);
+    Dispatcher.BeginInvoke(delegate { FirstButton.Focus(); });
+}
+</code></pre>
+<ul>
+<li><strong>Every navigation creates a new page instance.</strong> Keep state that must survive in the <code>App</code> class or a static field, and focus something in <code>OnNavigatedTo</code>.</li>
+<li><strong>Navigation is asynchronous.</strong> To go back several pages, call <code>GoBack()</code> again from the frame's <code>Navigated</code> event rather than in a loop, through <code>Dispatcher.BeginInvoke</code> so the back stack has settled. Detach the handlers when the walk ends, and also when a <code>Navigating</code> event comes with a <code>NavigationMode</code> other than <code>Back</code>. A handler left attached sends every later navigation back to the first page. On the console that happened a few pages deep. See <code>App.GoHome</code> in <code>samples\ui\PageNavigation</code>.</li>
+</ul>
+<h3 id="transitions">Transitions<a class="headerlink" href="#transitions" title="Permanent link">&para;</a></h3>
+<p><code>XboxApplicationPage</code> slides pages in and out (<code>ZIndexTransition</code>) by default. Elements marked with <code>TransitionService.TransitionTarget="True"</code> animate on their own, staggered by <code>TransitionService.TransitionOrder</code>, with each step 160 ms later:</p>
+<pre><code class="language-xml">&lt;TextBlock Text=&quot;Title&quot; transitions:TransitionService.TransitionTarget=&quot;True&quot;
+           transitions:TransitionService.TransitionOrder=&quot;0&quot; /&gt;
+&lt;Button Content=&quot;First&quot; transitions:TransitionService.TransitionTarget=&quot;True&quot;
+        transitions:TransitionService.TransitionOrder=&quot;1&quot; /&gt;
+</code></pre>
+<p>with <code>xmlns:transitions="clr-namespace:Microsoft.Xbox.Transitions;assembly=Microsoft.Xbox"</code>.</p>
+<h2 id="back-and-exit">Back and exit<a class="headerlink" href="#back-and-exit" title="Permanent link">&para;</a></h2>
+<p>B is the back button by convention, and the app handles it. A frame-level handler sees B after the focused control has had its chance:</p>
+<pre><code class="language-csharp">frame.GamePadButtonDown += delegate(object s, GamePadButtonEventArgs args)
+{
+    if (args.Button == GamePadButton.B &amp;&amp; frame.CanGoBack)
+    {
+        frame.GoBack();
+        args.Handled = true;
+    }
+};
+</code></pre>
+<p><code>Application.Current.Shutdown()</code>, an Xbox addition, ends the app and returns to the dashboard. Shipped apps ask first (with <code>Guide.BeginShowMessageBox</code>) when B is pressed on the first page.</p>
+<h2 id="unhandled-exceptions">Unhandled exceptions<a class="headerlink" href="#unhandled-exceptions" title="Permanent link">&para;</a></h2>
+<p>An exception nobody catches reaches <code>Application.UnhandledException</code>. Unless the handler sets <code>e.Handled = true</code>, XamlHost quits to the dashboard. While developing, handle it and show the message on screen; the samples' <code>App</code> classes all do.</p>
+<h2 id="threading">Threading<a class="headerlink" href="#threading" title="Permanent link">&para;</a></h2>
+<p>The UI thread runs the app. Network callbacks from <code>WebClient</code> arrive on the UI thread. Storage, cache container and gamer services callbacks (<code>Begin...</code>/<code>End...</code>, <code>...Async</code> completion events) arrive on other threads, so use <code>Dispatcher.BeginInvoke</code> before touching the UI (see <a href="../storage/">Storage</a> and <a href="../gamer-services/">Gamer services</a>).</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../project-setup/" class="btn btn-neutral float-left" title="Projects and Visual Studio"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../input-and-focus/" class="btn btn-neutral float-right" title="Input and focus">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>Silverlight360 is licensed under the PolyForm Noncommercial License 1.0.0 with an additional condition. Xbox, Xbox 360 and Silverlight are trademarks of Microsoft.</p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/Digiex/Silverlight360" class="fa fa-code-fork" style="color: #fcfcfc"> Digiex/Silverlight360</a>
+        </span>
+    
+    
+      <span><a href="../project-setup/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../input-and-focus/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

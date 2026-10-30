@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://digiex.github.io/Silverlight360/reference/Microsoft.Xbox.Net/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Microsoft.Xbox.Net - Silverlight360</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Microsoft.Xbox.Net";
+        var mkdocs_page_input_path = "reference\\Microsoft.Xbox.Net.md";
+        var mkdocs_page_url = "/Silverlight360/reference/Microsoft.Xbox.Net/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/powershell.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/csharp.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/xml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Silverlight360
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../getting-started/">Getting started</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../project-setup/">Projects and Visual Studio</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../app-model/">App model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../input-and-focus/">Input and focus</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../controls/">Xbox controls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../networking/">Networking</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../storage/">Storage</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../media/">Media</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../gamer-services/">Gamer services</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../native-code/">Native code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../testing/">Testing in xenia</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../samples/">Samples</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../xenia-status/">Status under xenia</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../runtime-inventory/">Runtime inventory</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">API reference</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../MS.Internal/">MS.Internal</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Controls.Primitives/">Microsoft.Xbox.Controls.Primitives</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Controls/">Microsoft.Xbox.Controls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Core/">Microsoft.Xbox.Core</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Input/">Microsoft.Xbox.Input</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Media.Mpeg/">Microsoft.Xbox.Media.Mpeg</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Media/">Microsoft.Xbox.Media</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Microsoft.Xbox.Net</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#devicediscovery">DeviceDiscovery</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#devicediscoveryeventargs">DeviceDiscoveryEventArgs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#networklinkstatusflags">NetworkLinkStatusFlags</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#networkperfcounters">NetworkPerfCounters</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#networksettings">NetworkSettings</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#upnpdevice">UpnpDevice</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Security.XAuth/">Microsoft.Xbox.Security.XAuth</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Services/">Microsoft.Xbox.Services</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox.Transitions/">Microsoft.Xbox.Transitions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xbox/">Microsoft.Xbox</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xna.Framework.GamerServices.ContentRating.Level/">Microsoft.Xna.Framework.GamerServices.ContentRating.Level</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xna.Framework.GamerServices.ContentRating.System/">Microsoft.Xna.Framework.GamerServices.ContentRating.System</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xna.Framework.GamerServices.ContentRating/">Microsoft.Xna.Framework.GamerServices.ContentRating</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xna.Framework.GamerServices/">Microsoft.Xna.Framework.GamerServices</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Microsoft.Xna.Framework.Storage/">Microsoft.Xna.Framework.Storage</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Reflection.ReflectionPermissionFrame/">System.Reflection.ReflectionPermissionFrame</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Reflection/">System.Reflection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Windows.Controls/">System.Windows.Controls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Windows.Input/">System.Windows.Input</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Windows.Media/">System.Windows.Media</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System.Windows/">System.Windows</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Silverlight360</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">API reference</li>
+      <li class="breadcrumb-item active">Microsoft.Xbox.Net</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/Digiex/Silverlight360/edit/master/docs/reference/Microsoft.Xbox.Net.md">Edit on Digiex/Silverlight360</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="microsoftxboxnet">Microsoft.Xbox.Net<a class="headerlink" href="#microsoftxboxnet" title="Permanent link">&para;</a></h1>
+<p>Assembly: <code>Microsoft.Xbox.dll</code></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Summary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#devicediscovery"><code>DeviceDiscovery</code></a></td>
+<td>Discovers UPnP devices (such as media servers) on the local network.</td>
+</tr>
+<tr>
+<td><a href="#devicediscoveryeventargs"><code>DeviceDiscoveryEventArgs</code></a></td>
+<td>Provides data for the <a href="./#devicediscovery"><code>DeviceDiscovery.DeviceAdded</code></a> and <a href="./#devicediscovery"><code>DeviceDiscovery.DeviceRemoved</code></a> events.</td>
+</tr>
+<tr>
+<td><a href="#networklinkstatusflags"><code>NetworkLinkStatusFlags</code></a></td>
+<td>Describes the console's network link. Several flags can be combined.</td>
+</tr>
+<tr>
+<td><a href="#networkperfcounters"><code>NetworkPerfCounters</code></a></td>
+<td>A snapshot of the console HTTP stack's counters, returned by <a href="./#networksettings"><code>NetworkSettings.GetNetworkPerfCounters</code></a>. Useful for diagnostics and bandwidth display.</td>
+</tr>
+<tr>
+<td><a href="#networksettings"><code>NetworkSettings</code></a></td>
+<td>Reads and adjusts console network settings used by the application's HTTP requests.</td>
+</tr>
+<tr>
+<td><a href="#upnpdevice"><code>UpnpDevice</code></a></td>
+<td>A UPnP device found by <a href="./#devicediscovery"><code>DeviceDiscovery</code></a>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="devicediscovery">DeviceDiscovery<a class="headerlink" href="#devicediscovery" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.Net.DeviceDiscovery</code></p>
+<p>Discovers UPnP devices (such as media servers) on the local network.</p>
+<p>Call <a href="./#devicediscovery"><code>DeviceDiscovery.Start</code></a> on the UI thread. While discovery runs, the device list is polled every 3 seconds on the UI thread and <a href="./#devicediscovery"><code>DeviceDiscovery.DeviceAdded</code></a> and <a href="./#devicediscovery"><code>DeviceDiscovery.DeviceRemoved</code></a> are raised for the differences. Call <a href="./#devicediscovery"><code>DeviceDiscovery.Stop</code></a> when you no longer need results.</p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>static System.Boolean IsStarted { get; }</code></td>
+<td>Gets whether a discovery session is running. Must be read on the UI thread.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>static System.Boolean Start(System.String target)</code></td>
+<td>Starts searching the local network for UPnP devices of the specified type. Must be called on the UI thread.</td>
+</tr>
+<tr>
+<td><code>static System.Void Stop()</code></td>
+<td>Stops device discovery and forgets the devices found so far. No <a href="./#devicediscovery"><code>DeviceDiscovery.DeviceRemoved</code></a> events are raised for them. Must be called on the UI thread.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Events</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>event System.EventHandler&lt;Microsoft.Xbox.Net.DeviceDiscoveryEventArgs&gt; DeviceAdded</code></td>
+<td>Occurs on the UI thread when a device matching the search target is found. Devices whose description URL is not a valid URI are skipped.</td>
+</tr>
+<tr>
+<td><code>event System.EventHandler&lt;Microsoft.Xbox.Net.DeviceDiscoveryEventArgs&gt; DeviceRemoved</code></td>
+<td>Occurs on the UI thread when a previously found device is no longer reported.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="devicediscoveryeventargs">DeviceDiscoveryEventArgs<a class="headerlink" href="#devicediscoveryeventargs" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.Net.DeviceDiscoveryEventArgs</code></p>
+<p>Provides data for the <a href="./#devicediscovery"><code>DeviceDiscovery.DeviceAdded</code></a> and <a href="./#devicediscovery"><code>DeviceDiscovery.DeviceRemoved</code></a> events.</p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Microsoft.Xbox.Net.UpnpDevice Device { get; }</code></td>
+<td>Gets the device that was found or removed.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="networklinkstatusflags">NetworkLinkStatusFlags<a class="headerlink" href="#networklinkstatusflags" title="Permanent link">&para;</a></h2>
+<p><code>enum Microsoft.Xbox.Net.NetworkLinkStatusFlags</code></p>
+<p>Describes the console's network link. Several flags can be combined.</p>
+<p><strong>Values</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>FullDuplex</code></td>
+<td>The link is full duplex.</td>
+</tr>
+<tr>
+<td><code>HalfDuplex</code></td>
+<td>The link is half duplex.</td>
+</tr>
+<tr>
+<td><code>Link100mbps</code></td>
+<td>The wired link runs at 100 Mbps.</td>
+</tr>
+<tr>
+<td><code>Link10mbps</code></td>
+<td>The wired link runs at 10 Mbps.</td>
+</tr>
+<tr>
+<td><code>LinkActive</code></td>
+<td>A network link is active.</td>
+</tr>
+<tr>
+<td><code>LinkInactive</code></td>
+<td>No flags set: there is no active network link.</td>
+</tr>
+<tr>
+<td><code>LinkWireless</code></td>
+<td>The link is wireless.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="networkperfcounters">NetworkPerfCounters<a class="headerlink" href="#networkperfcounters" title="Permanent link">&para;</a></h2>
+<p><code>struct Microsoft.Xbox.Net.NetworkPerfCounters</code></p>
+<p>A snapshot of the console HTTP stack's counters, returned by <a href="./#networksettings"><code>NetworkSettings.GetNetworkPerfCounters</code></a>. Useful for diagnostics and bandwidth display.</p>
+<p><strong>Fields</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.Int32 ActiveConnectionHandleCount</code></td>
+<td>The number of open HTTP connection handles.</td>
+</tr>
+<tr>
+<td><code>System.Int32 ActiveRequestHandleCount</code></td>
+<td>The number of open HTTP request handles.</td>
+</tr>
+<tr>
+<td><code>System.Int32 ActiveSessionHandleCount</code></td>
+<td>The number of open HTTP session handles.</td>
+</tr>
+<tr>
+<td><code>System.Int64 TotalBytesReceived</code></td>
+<td>The total number of bytes received by the HTTP stack.</td>
+</tr>
+<tr>
+<td><code>System.Int64 TotalBytesSent</code></td>
+<td>The total number of bytes sent by the HTTP stack.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="networksettings">NetworkSettings<a class="headerlink" href="#networksettings" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.Net.NetworkSettings</code></p>
+<p>Reads and adjusts console network settings used by the application's HTTP requests.</p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>static System.Int32 ReceiveTimeout { get; set; }</code></td>
+<td>Gets or sets the time, in milliseconds, that HTTP requests wait for data from the server before failing.</td>
+</tr>
+<tr>
+<td><code>static System.String ActiveServiceEndpoint { get; }</code></td>
+<td>Gets the base URL of the online services environment the console is configured for (for example, the production or a test environment).</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>static Microsoft.Xbox.Net.NetworkLinkStatusFlags GetNetworkLinkStatus()</code></td>
+<td>Gets the state of the console's network link (active, speed, duplex, wireless). Must be called on the UI thread.</td>
+</tr>
+<tr>
+<td><code>static Microsoft.Xbox.Net.NetworkPerfCounters GetNetworkPerfCounters()</code></td>
+<td>Gets the current HTTP stack counters. Must be called on the UI thread.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="upnpdevice">UpnpDevice<a class="headerlink" href="#upnpdevice" title="Permanent link">&para;</a></h2>
+<p><code>class Microsoft.Xbox.Net.UpnpDevice</code></p>
+<p>A UPnP device found by <a href="./#devicediscovery"><code>DeviceDiscovery</code></a>.</p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>System.String Id { get; }</code></td>
+<td>Gets the unique identifier the device announced (its USN).</td>
+</tr>
+<tr>
+<td><code>System.Uri DescriptionUri { get; }</code></td>
+<td>Gets the HTTP URL of the device's description document. Download it to learn the device's name and services.</td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../Microsoft.Xbox.Media/" class="btn btn-neutral float-left" title="Microsoft.Xbox.Media"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Microsoft.Xbox.Security.XAuth/" class="btn btn-neutral float-right" title="Microsoft.Xbox.Security.XAuth">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>Silverlight360 is licensed under the PolyForm Noncommercial License 1.0.0 with an additional condition. Xbox, Xbox 360 and Silverlight are trademarks of Microsoft.</p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/Digiex/Silverlight360" class="fa fa-code-fork" style="color: #fcfcfc"> Digiex/Silverlight360</a>
+        </span>
+    
+    
+      <span><a href="../Microsoft.Xbox.Media/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../Microsoft.Xbox.Security.XAuth/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
