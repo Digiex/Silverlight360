@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly><name>System.Windows.Interactivity</name></assembly>
+  <members>
+    <member name="T:System.Windows.Interactivity.IAttachedObject">
+      <summary>An object that can be attached to, and later detached from, a single <see cref="T:System.Windows.DependencyObject" />.</summary>
+      <remarks>Implemented by behaviors, triggers, actions and their collections.</remarks>
+    </member>
+    <member name="P:System.Windows.Interactivity.IAttachedObject.AssociatedObject">
+      <summary>Gets the object this instance is attached to.</summary>
+      <value>The associated object, or null when detached.</value>
+    </member>
+    <member name="M:System.Windows.Interactivity.IAttachedObject.Attach(System.Windows.DependencyObject)">
+      <summary>Attaches this instance to an object.</summary>
+      <param name="dependencyObject">The object to attach to.</param>
+    </member>
+    <member name="M:System.Windows.Interactivity.IAttachedObject.Detach">
+      <summary>Detaches this instance from its associated object.</summary>
+    </member>
+
+    <member name="T:System.Windows.Interactivity.AttachableCollection`1">
+      <summary>Base class for the collections of behaviors, triggers and actions. Items added to an attached collection are attached to the same object, and removed items are detached.</summary>
+      <typeparam name="T">The item type.</typeparam>
+      <remarks>An item instance can appear only once in a collection; adding it again throws <see cref="T:System.InvalidOperationException" />. While a designer is in design mode, the collection does not record its associated object.</remarks>
+    </member>
+    <member name="P:System.Windows.Interactivity.AttachableCollection`1.AssociatedObject">
+      <summary>Gets the object the collection is attached to.</summary>
+      <value>The associated object, or null when detached.</value>
+    </member>
+    <member name="M:System.Windows.Interactivity.AttachableCollection`1.OnAttached">
+      <summary>When overridden in a derived class, called after the collection is attached; attaches the existing items.</summary>
+    </member>
+    <member name="M:System.Windows.Interactivity.AttachableCollection`1.OnDetaching">
+      <summary>When overridden in a derived class, called when the collection is being detached; detaches the items.</summary>
+    </member>
+    <member name="M:System.Windows.Interactivity.AttachableCollection`1.OnCollectionChanged(System.Collections.Specialized.NotifyCollectionChangedEventArgs)">
+      <summary>Attaches added items and detaches removed items, then raises the CollectionChanged event.</summary>
+      <param name="e">Information about the change.</param>
+      <exception cref="T:System.InvalidOperationException">An added item is already in the collection.</exception>
+    </member>
+    <member name="M:System.Windows.Interactivity.AttachableCollection`1.Attach(System.Windows.DependencyObject)">
+      <summary>Attaches the collection, and through it every item, to an object.</summary>
+      <param name="dependencyObject">The object to attach to.</param>
+      <exception cref="T:System.InvalidOperationException">The collection is already attached to a different object.</exception>
+    </member>
+    <member name="M:System.Windows.Interactivity.AttachableCollection`1.Detach">
+      <summary>Detaches the collection and its items from the associated object.</summary>
+    </member>
+
+    <member name="T:System.Windows.Interactivity.Behavior">
+      <summary>Non-generic base class for behaviors. Derive from <see cref="T:System.Windows.Interactivity.Behavior`1" /> instead.</summary>
+      <remarks>A behavior adds reusable functionality to an element. Attach it in XAML through the Interaction.Behaviors attached property, or in code with <see cref="M:System.Windows.Interactivity.Interaction.GetBehaviors(System.Windows.DependencyObject)" />. A behavior instance can be attached to only one object at a time.</remarks>
+    </member>
+    <member name="P:System.Windows.Interactivity.Behavior.AssociatedType">
+      <summary>Gets the type of object the behavior can be attached to.</summary>
+      <value>The type constraint given by the generic argument of <see cref="T:System.Windows.Interactivity.Behavior`1" />.</value>
+    </member>
+    <member name="P:System.Windows.Interactivity.Behavior.AssociatedObject">
+      <summary>Gets the object the behavior is attached to.</summary>
+      <value>The associated object, or null when detached.</value>
+    </member>
+    <member name="M:System.Windows.Interactivity.Behavior.OnAttached">
+      <summary>Called after the behavior is attached to <see cref="P:System.Windows.Interactivity.Behavior.AssociatedObject" />. Override it to hook up event handlers.</summary>
+    </member>
+    <member name="M:System.Windows.Interactivity.Behavior.OnDetaching">
+      <summary>Called when the behavior is being detached, while <see cref="P:System.Windows.Interactivity.Behavior.AssociatedObject" /> is still set. Override it to unhook event handlers.</summary>
+    </member>
+    <member name="M:System.Windows.Interactivity.Behavior.Attach(System.Windows.DependencyObject)">
+      <summary>Attaches the behavior to an object.</summary>
+      <param name="dependencyObject">The object to attach to.</param>
+      <exception cref="T:System.InvalidOperationException">The behavior is already attached to a different object, or <paramref name="dependencyObject" /> is not of the type in <see cref="P:System.Windows.Interactivity.Behavior.AssociatedType" />.</exception>
+    </member>
+    <member name="M:System.Windows.Interactivity.Behavior.Detach">
+      <summary>Detaches the behavior from its associated object.</summary>
+    </member>
+    <member name="T:System.Windows.Interactivity.Behavior`1">
+      <summary>Base class for behaviors that attach to objects of type <typeparamref name="T" />.</summary>
+      <typeparam name="T">The type the behavior can be attached to.</typeparam>
+      <remarks>Override <see cref="M:System.Windows.Interactivity.Behavior.OnAttached" /> and <see cref="M:System.Windows.Interactivity.Behavior.OnDetaching" /> to add and remove event handlers on <see cref="P:System.Windows.Interactivity.Behavior`1.AssociatedObject" />.</remarks>
+    </member>
+    <member name="P:System.Windows.Interactivity.Behavior`1.AssociatedObject">
+      <summary>Gets the object the behavior is attached to, typed as <typeparamref name="T" />.</summary>
+      <value>The associated object, or null when detached.</value>
+    </member>
+    <member name="T:System.Windows.Interactivity.BehaviorCollection">
+      <summary>The collection of behaviors attached to an object, as returned by <see cref="M:System.Windows.Interactivity.Interaction.GetBehaviors(System.Windows.DependencyObject)" />.</summary>
+    </member>
+    <member name="M:System.Windows.Interactivity.BehaviorCollection.OnAttached">
+      <summary>Attaches every behavior in the collection to the collection's associated object.</summary>
+    </member>
+    <member name="M:System.Windows.Interactivity.BehaviorCollection.OnDetaching">
+      <summary>Detaches every behavior in the collection.</summary>
+    </member>
+
+    <member name="T:System.Windows.Interactivity.CustomPropertyValueEditor">
+      <summary>Identifies a specialized value editor that a design tool should show for a behavior or action property.</summary>
+    </member>
+    <member name="F:System.Windows.Interactivity.CustomPropertyValueEditor.Element"><summary>The property names an element; the designer offers an element picker.</summary></member>
+    <member name="F:System.Windows.Interactivity.CustomPropertyValueEditor.Storyboard"><summary>The property names a storyboard; the designer offers a storyboard picker.</summary></member>
+    <member name="F:System.Windows.Interactivity.CustomPropertyValueEditor.StateName"><summary>The property names a visual state; the designer offers a state picker.</summary></member>
+    <member name="T:System.Windows.Interactivity.CustomPropertyValueEditorAttribute">
+      <summary>Tells a design tool which specialized editor to use for a property. Has no effect at run time.</summary>
+    </member>
+    <member name="P:System.Windows.Interactivity.CustomPropertyValueEditorAttribute.CustomPropertyValueEditor">
+      <summary>Gets the editor requested for the property.</summary>
+      <value>One of the <see cref="T:System.Windows.Interactivity.CustomPropertyValueEditor" /> values.</value>
+    </member>
+    <member name="M:System.Windows.Interactivity.CustomPropertyValueEditorAttribute.#ctor(System.Windows.Interactivity.CustomPropertyValueEditor)">
+      <summary>Initializes a new instance of the <see cref="T:System.Windows.Interactivity.CustomPropertyValueEditorAttribute" /> class.</summary>
+      <param name="customPropertyValueEditor">The editor to use for the property.</param>
+    </member>
+
+    <member name="T:System.Windows.Interactivity.DefaultTriggerAttribute">
+      <summary>Tells a design tool which trigger to create by default when an action or behavior is applied to an element of a given type.</summary>
+      <remarks>Can be applied several times, once per target type. It is used only by design tools.</remarks>
+    </member>
+    <member name="P:System.Windows.Interactivity.DefaultTriggerAttribute.TargetType">
+      <summary>Gets the element type this default applies to.</summary>
+      <value>The target type.</value>
+    </member>
+    <member name="P:System.Windows.Interactivity.DefaultTriggerAttribute.TriggerType">
+      <summary>Gets the type of trigger to create.</summary>
+      <value>A type derived from <see cref="T:System.Windows.Interactivity.TriggerBase" />.</value>
+    </member>
+    <member name="P:System.Windows.Interactivity.DefaultTriggerAttribute.Parameters">
+      <summary>Gets the constructor arguments used to create the trigger.</summary>
+      <value>The arguments, in order.</value>
+    </member>
+    <member name="M:System.Windows.Interactivity.DefaultTriggerAttribute.#ctor(System.Type,System.Type,System.Object)">
+      <summary>Initializes a new instance of the <see cref="T:System.Windows.Interactivity.DefaultTriggerAttribute" /> class with one trigger constructor argument.</summary>
+      <param name="targetType">The element type this default applies to.</param>
+      <param name="triggerType">The trigger type to create. Must derive from <see cref="T:System.Windows.Interactivity.TriggerBase" />.</param>
+      <param name="parameter">The argument passed to the trigger's constructor, for example an event name for <see cref="T:System.Windows.Interactivity.EventTrigger" />.</param>
+      <exception cref="T:System.ArgumentException"><paramref name="triggerType" /> does not derive from <see cref="T:System.Windows.Interactivity.TriggerBase" />.</exception>
+    </member>
+    <member name="M:System.Windows.Interactivity.DefaultTriggerAttribute.#ctor(System.Type,System.Type,System.Object[])">
+      <summary>Initializes a new instance of the <see cref="T:System.Windows.Interactivity.DefaultTriggerAttribute" /> class with any number of trigger constructor arguments.</summary>
+      <param name="targetType">The element type this default applies to.</param>
+      <param name="triggerType">The trigger type to create. Must derive from <see cref="T:System.Windows.Interactivity.TriggerBase" />.</param>
+      <param name="parameters">The arguments passed to the trigger's constructor.</param>
+      <exception cref="T:System.ArgumentException"><paramref name="triggerType" /> does not derive from <see cref="T:System.Windows.Interactivity.TriggerBase" />.</exception>
+    </member>
+    <member name="M:System.Windows.Interactivity.DefaultTriggerAttribute.Instantiate">
+      <summary>Creates the trigger described by this attribute.</summary>
+      <returns>The new trigger, or null if it could not be constructed with <see cref="P:System.Windows.Interactivity.DefaultTriggerAttribute.Parameters" />.</returns>
+    </member>
+
+    <member name="T:System.Windows.Interactivity.TriggerBase">
+      <summary>Base class for triggers: objects that run a collection of actions when a condition occurs.</summary>
+      <remarks>Attach triggers through the Interaction.Triggers attached property or <see cref="M:System.Windows.Interactivity.Interaction.GetTriggers(System.Windows.DependencyObject)" />. <see cref="P:System.Windows.Interactivity.TriggerBase.Actions" /> is the XAML content property. Derive from <see cref="T:System.Windows.Interactivity.TriggerBase`1" /> and call <see cref="M:System.Windows.Interactivity.TriggerBase.InvokeActions(System.Object)" /> to fire.</remarks>
+    </member>
+    <member name="P:System.Windows.Interactivity.TriggerBase.AssociatedObject">
+      <summary>Gets the object the trigger is attached to.</summary>
+      <value>The associated object, or null when detached.</value>
+    </member>
+    <member name="P:System.Windows.Interactivity.TriggerBase.AssociatedObjectTypeConstraint">
+      <summary>Gets the type of object the trigger can be attached to.</summary>
+      <value>The type constraint.</value>
+    </member>
+    <member name="P:System.Windows.Interactivity.TriggerBase.Actions">
+      <summary>Gets the actions run when the trigger fires.</summary>
+      <value>The trigger's <see cref="T:System.Windows.Interactivity.TriggerActionCollection" />. Actions in it are attached to the same object as the trigger.</value>
+    </member>
+    <member name="M:System.Windows.Interactivity.TriggerBase.InvokeActions(System.Object)">
+      <summary>Runs every enabled action in <see cref="P:System.Windows.Interactivity.TriggerBase.Actions" />, in order.</summary>
+      <param name="parameter">A value passed to each action's Invoke method, typically the event arguments.</param>
+      <remarks>Actions whose <see cref="P:System.Windows.Interactivity.TriggerAction.IsEnabled" /> is false are skipped.</remarks>
+    </member>
+    <member name="M:System.Windows.Interactivity.TriggerBase.OnAttached">
+      <summary>Called after the trigger is attached. Override it to start listening for the trigger's condition.</summary>
+    </member>
+    <member name="M:System.Windows.Interactivity.TriggerBase.OnDetaching">
+      <summary>Called when the trigger is being detached. Override it to stop listening.</summary>
+    </member>
+    <member name="M:System.Windows.Interactivity.TriggerBase.Attach(System.Windows.DependencyObject)">
+      <summary>Attaches the trigger and its actions to an object.</summary>
+      <param name="dependencyObject">The object to attach to.</param>
+      <exception cref="T:System.InvalidOperationException">The trigger is already attached to a different object, or <paramref name="dependencyObject" /> does not satisfy <see cref="P:System.Windows.Interactivity.TriggerBase.AssociatedObjectTypeConstraint" />.</exception>
+    </member>
+    <member name="M:System.Windows.Interactivity.TriggerBase.Detach">
+      <summary>Detaches the trigger and its actions from the associated object.</summary>
+    </member>
+    <member name="T:System.Windows.Interactivity.TriggerBase`1">
+      <summary>Base class for triggers that attach to objects of type <typeparamref name="T" />.</summary>
+      <typeparam name="T">The type the trigger can be attached to.</typeparam>
+    </member>
+    <member name="P:System.Windows.Interactivity.TriggerBase`1.AssociatedObject">
+      <summary>Gets the object the trigger is attached to, typed as <typeparamref name="T" />.</summary>
+      <value>The associated object, or null when detached.</value>
+    </member>
+    <member name="P:System.Windows.Interactivity.TriggerBase`1.AssociatedObjectTypeConstraint">
+      <summary>Gets the type the trigger can be attached to.</summary>
+      <value>typeof(<typeparamref name="T" />).</value>
+    </member>
+
+    <member name="T:System.Windows.Interactivity.EventTriggerBase">
+      <summary>Base class for triggers that fire when an event is raised on a source object.</summary>
+      <remarks>The source is the associated object, or the element named by <see cref="P:System.Windows.Interactivity.EventTriggerBase.SourceName" />. When the trigger is attached to a behavior, names are resolved relative to the behavior's associated element. The event is found by reflection, so it must be a public CLR event, for example <see cref="E:System.Windows.UIElement.GamePadButtonDown" />. The Loaded event is handled specially so the trigger still fires when it is attached before the element loads.</remarks>
+    </member>
+    <member name="P:System.Windows.Interactivity.EventTriggerBase.AssociatedObjectTypeConstraint">
+      <summary>Gets the type of object the trigger can be attached to.</summary>
+      <value>The type in the class's <see cref="T:System.Windows.Interactivity.TypeConstraintAttribute" />, or <see cref="T:System.Windows.DependencyObject" /> when there is none.</value>
+    </member>
+    <member name="P:System.Windows.Interactivity.EventTriggerBase.SourceTypeConstraint">
+      <summary>Gets the type the event source must have.</summary>
+      <value>The source type constraint.</value>
+    </member>
+    <member name="P:System.Windows.Interactivity.EventTriggerBase.SourceName">
+      <summary>Gets or sets the name of the element whose event the trigger listens to. This is a dependency property.</summary>
+      <value>The element name, or null to use the associated object.</value>
+      <remarks>The name is resolved with FindName once the associated element has loaded, and is re-resolved if the name changes.</remarks>
+    </member>
+    <member name="P:System.Windows.Interactivity.EventTriggerBase.Source">
+      <summary>Gets the object whose event the trigger listens to.</summary>
+      <value>The element named by <see cref="P:System.Windows.Interactivity.EventTriggerBase.SourceName" /> if it is set; otherwise, the associated object.</value>
+      <exception cref="T:System.InvalidOperationException">The resolved source does not satisfy <see cref="P:System.Windows.Interactivity.EventTriggerBase.SourceTypeConstraint" />.</exception>
+    </member>
+    <member name="M:System.Windows.Interactivity.EventTriggerBase.GetEventName">
+      <summary>When overridden in a derived class, returns the name of the event to listen to.</summary>
+      <returns>The event name.</returns>
+    </member>
+    <member name="M:System.Windows.Interactivity.EventTriggerBase.OnEvent(System.EventArgs)">
+      <summary>Called when the source raises the event. The default implementation calls <see cref="M:System.Windows.Interactivity.TriggerBase.InvokeActions(System.Object)" /> with the event arguments.</summary>
+      <param name="eventArgs">The event arguments.</param>
+      <remarks>Override to filter events, for example to fire only for a particular <see cref="T:System.Windows.Input.GamePadButton" />.</remarks>
+    </member>
+    <member name="M:System.Windows.Interactivity.EventTriggerBase.OnAttached">
+      <summary>Called after the trigger is attached; starts resolving the source and listening for the event.</summary>
+    </member>
+    <member name="M:System.Windows.Interactivity.EventTriggerBase.OnDetaching">
+      <summary>Called when the trigger is being detached; removes the event handler from the source.</summary>
+    </member>
+    <member name="T:System.Windows.Interactivity.EventTriggerBase`1">
+      <summary>Base class for event triggers whose source must be of type <typeparamref name="T" />.</summary>
+      <typeparam name="T">The required type of the event source.</typeparam>
+    </member>
+    <member name="P:System.Windows.Interactivity.EventTriggerBase`1.Source">
+      <summary>Gets the object whose event the trigger listens to, typed as <typeparamref name="T" />.</summary>
+      <value>The event source.</value>
+    </member>
+    <member name="M:System.Windows.Interactivity.EventTriggerBase`1.OnSourceChanged(`0,`0)">
+      <summary>Called when the event source changes, for example after <see cref="P:System.Windows.Interactivity.EventTriggerBase.SourceName" /> is resolved.</summary>
+      <param name="oldSource">The previous source, or null.</param>
+      <param name="newSource">The new source, or null.</param>
+    </member>
+    <member name="T:System.Windows.Interactivity.EventTrigger">
+      <summary>A trigger that runs its actions when a named event is raised on its source.</summary>
+      <remarks>Example: &lt;i:EventTrigger EventName="GamePadButtonDown"&gt; on an element runs its actions for every controller button press that reaches that element.</remarks>
+    </member>
+    <member name="P:System.Windows.Interactivity.EventTrigger.EventName">
+      <summary>Gets or sets the name of the event to listen to. This is a dependency property.</summary>
+      <value>The event name. The default is "Loaded".</value>
+      <exception cref="T:System.ArgumentException">The source has no public event with this name.</exception>
+    </member>
+    <member name="M:System.Windows.Interactivity.EventTrigger.#ctor(System.String)">
+      <summary>Initializes a new instance of the <see cref="T:System.Windows.Interactivity.EventTrigger" /> class that listens to the given event.</summary>
+      <param name="eventName">The name of the event.</param>
+    </member>
+    <member name="M:System.Windows.Interactivity.EventTrigger.GetEventName">
+      <summary>Returns the value of <see cref="P:System.Windows.Interactivity.EventTrigger.EventName" />.</summary>
+      <returns>The event name.</returns>
+    </member>
+
+    <member name="T:System.Windows.Interactivity.Interaction">
+      <summary>Provides the Triggers and Behaviors attached properties used to attach triggers and behaviors to elements.</summary>
+      <remarks>In XAML, map the namespace (for example xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity") and use &lt;i:Interaction.Triggers&gt; or &lt;i:Interaction.Behaviors&gt;.</remarks>
+    </member>
+    <member name="M:System.Windows.Interactivity.Interaction.GetTriggers(System.Windows.DependencyObject)">
+      <summary>Gets the triggers attached to an object, creating an empty collection the first time.</summary>
+      <param name="obj">The object whose triggers to get.</param>
+      <returns>The object's <see cref="T:System.Windows.Interactivity.TriggerCollection" />. Triggers added to it are attached to <paramref name="obj" />.</returns>
+    </member>
+    <member name="M:System.Windows.Interactivity.Interaction.GetBehaviors(System.Windows.DependencyObject)">
+      <summary>Gets the behaviors attached to an object, creating an empty collection the first time.</summary>
+      <param name="obj">The object whose behaviors to get.</param>
+      <returns>The object's <see cref="T:System.Windows.Interactivity.BehaviorCollection" />. Behaviors added to it are attached to <paramref name="obj" />.</returns>
+    </member>
+
+    <member name="T:System.Windows.Interactivity.TriggerAction">
+      <summary>Base class for actions: units of work that a trigger runs. Derive from <see cref="T:System.Windows.Interactivity.TriggerAction`1" />.</summary>
+      <remarks>An action instance can belong to only one trigger at a time.</remarks>
+    </member>
+    <member name="P:System.Windows.Interactivity.TriggerAction.IsEnabled">
+      <summary>Gets or sets a value that indicates whether the action runs when its trigger fires. This is a dependency property.</summary>
+      <value>true if the action runs; otherwise, false. The default is true.</value>
+    </member>
+    <member name="P:System.Windows.Interactivity.TriggerAction.AssociatedObject">
+      <summary>Gets the object the action is attached to (the same object as its trigger).</summary>
+      <value>The associated object, or null when detached.</value>
+    </member>
+    <member name="P:System.Windows.Interactivity.TriggerAction.AssociatedObjectTypeConstraint">
+      <summary>Gets the type of object the action can be attached to.</summary>
+      <value>The type constraint.</value>
+    </member>
+    <member name="M:System.Windows.Interactivity.TriggerAction.Invoke(System.Object)">
+      <summary>When overridden in a derived class, performs the action.</summary>
+      <param name="parameter">The value passed by the trigger, typically the event arguments; may be null.</param>
+    </member>
+    <member name="M:System.Windows.Interactivity.TriggerAction.OnAttached">
+      <summary>Called after the action is attached.</summary>
+    </member>
+    <member name="M:System.Windows.Interactivity.TriggerAction.OnDetaching">
+      <summary>Called when the action is being detached, while <see cref="P:System.Windows.Interactivity.TriggerAction.AssociatedObject" /> is still set.</summary>
+    </member>
+    <member name="M:System.Windows.Interactivity.TriggerAction.Attach(System.Windows.DependencyObject)">
+      <summary>Attaches the action to an object.</summary>
+      <param name="dependencyObject">The object to attach to.</param>
+      <exception cref="T:System.InvalidOperationException">The action is already attached to a different object, or <paramref name="dependencyObject" /> does not satisfy <see cref="P:System.Windows.Interactivity.TriggerAction.AssociatedObjectTypeConstraint" />.</exception>
+    </member>
+    <member name="M:System.Windows.Interactivity.TriggerAction.Detach">
+      <summary>Detaches the action from its associated object.</summary>
+    </member>
+    <member name="T:System.Windows.Interactivity.TriggerAction`1">
+      <summary>Base class for actions that attach to objects of type <typeparamref name="T" />.</summary>
+      <typeparam name="T">The type the action can be attached to.</typeparam>
+    </member>
+    <member name="P:System.Windows.Interactivity.TriggerAction`1.AssociatedObject">
+      <summary>Gets the object the action is attached to, typed as <typeparamref name="T" />.</summary>
+      <value>The associated object, or null when detached.</value>
+    </member>
+    <member name="P:System.Windows.Interactivity.TriggerAction`1.AssociatedObjectTypeConstraint">
+      <summary>Gets the type the action can be attached to.</summary>
+      <value>typeof(<typeparamref name="T" />).</value>
+    </member>
+
+    <member name="T:System.Windows.Interactivity.InvokeCommandAction">
+      <summary>An action that executes an <see cref="T:System.Windows.Input.ICommand" /> exposed as a property of the behavior it is attached to.</summary>
+      <remarks>In this version the action must be hosted on a <see cref="T:System.Windows.Interactivity.Behavior" /> (attached to a trigger whose associated object is a behavior); attaching it to anything else throws <see cref="T:System.InvalidOperationException" />. It cannot bind directly to a view-model command.</remarks>
+    </member>
+    <member name="P:System.Windows.Interactivity.InvokeCommandAction.CommandName">
+      <summary>Gets or sets the name of the <see cref="T:System.Windows.Input.ICommand" /> property, on the associated behavior, to execute.</summary>
+      <value>The property name, matched case-sensitively.</value>
+    </member>
+    <member name="P:System.Windows.Interactivity.InvokeCommandAction.CommandParameter">
+      <summary>Gets or sets the parameter passed to the command's CanExecute and Execute methods. This is a dependency property.</summary>
+      <value>The command parameter. The default is null.</value>
+    </member>
+    <member name="M:System.Windows.Interactivity.InvokeCommandAction.Invoke(System.Object)">
+      <summary>Finds the command named by <see cref="P:System.Windows.Interactivity.InvokeCommandAction.CommandName" /> and executes it with <see cref="P:System.Windows.Interactivity.InvokeCommandAction.CommandParameter" /> if CanExecute returns true.</summary>
+      <param name="parameter">The trigger's parameter. Not used.</param>
+      <remarks>Does nothing if the property is not found or its value is null.</remarks>
+    </member>
+    <member name="M:System.Windows.Interactivity.InvokeCommandAction.OnAttached">
+      <summary>Called after the action is attached; checks that the associated object is a behavior.</summary>
+      <exception cref="T:System.InvalidOperationException">The associated object is not a <see cref="T:System.Windows.Interactivity.Behavior" />.</exception>
+    </member>
+
+    <member name="T:System.Windows.Interactivity.TargetedTriggerAction">
+      <summary>Base class for actions that act on a target object other than, or in addition to, their associated object. Derive from <see cref="T:System.Windows.Interactivity.TargetedTriggerAction`1" />.</summary>
+      <remarks>The target is the element named by <see cref="P:System.Windows.Interactivity.TargetedTriggerAction.TargetName" />, or the associated object when no name is set. Names are resolved relative to the associated element (or, for an action hosted on a behavior, the behavior's element) after it loads.</remarks>
+    </member>
+    <member name="P:System.Windows.Interactivity.TargetedTriggerAction.TargetName">
+      <summary>Gets or sets the name of the element the action targets. This is a dependency property.</summary>
+      <value>The element name, or null to target the associated object.</value>
+    </member>
+    <member name="P:System.Windows.Interactivity.TargetedTriggerAction.Target">
+      <summary>Gets the object the action targets.</summary>
+      <value>The resolved target, or the associated object when <see cref="P:System.Windows.Interactivity.TargetedTriggerAction.TargetName" /> is not set.</value>
+      <exception cref="T:System.InvalidOperationException">The target does not satisfy <see cref="P:System.Windows.Interactivity.TargetedTriggerAction.TargetTypeConstraint" />.</exception>
+    </member>
+    <member name="P:System.Windows.Interactivity.TargetedTriggerAction.AssociatedObjectTypeConstraint">
+      <summary>Gets the type of object the action can be attached to.</summary>
+      <value>The type in the class's <see cref="T:System.Windows.Interactivity.TypeConstraintAttribute" />, or <see cref="T:System.Windows.DependencyObject" /> when there is none.</value>
+    </member>
+    <member name="P:System.Windows.Interactivity.TargetedTriggerAction.TargetTypeConstraint">
+      <summary>Gets the type the target must have.</summary>
+      <value>The target type constraint.</value>
+    </member>
+    <member name="M:System.Windows.Interactivity.TargetedTriggerAction.OnAttached">
+      <summary>Called after the action is attached; starts resolving <see cref="P:System.Windows.Interactivity.TargetedTriggerAction.TargetName" />.</summary>
+    </member>
+    <member name="M:System.Windows.Interactivity.TargetedTriggerAction.OnDetaching">
+      <summary>Called when the action is being detached; reports the target change to null and stops resolving the name.</summary>
+    </member>
+    <member name="T:System.Windows.Interactivity.TargetedTriggerAction`1">
+      <summary>Base class for targeted actions whose target must be of type <typeparamref name="T" />.</summary>
+      <typeparam name="T">The required type of the target.</typeparam>
+    </member>
+    <member name="P:System.Windows.Interactivity.TargetedTriggerAction`1.Target">
+      <summary>Gets the object the action targets, typed as <typeparamref name="T" />.</summary>
+      <value>The target.</value>
+    </member>
+    <member name="M:System.Windows.Interactivity.TargetedTriggerAction`1.OnTargetChanged(`0,`0)">
+      <summary>Called when the target changes, for example after <see cref="P:System.Windows.Interactivity.TargetedTriggerAction.TargetName" /> is resolved or the action is detached.</summary>
+      <param name="oldTarget">The previous target, or null.</param>
+      <param name="newTarget">The new target, or null.</param>
+    </member>
+
+    <member name="T:System.Windows.Interactivity.TriggerActionCollection">
+      <summary>The collection of actions run by a trigger; see <see cref="P:System.Windows.Interactivity.TriggerBase.Actions" />.</summary>
+      <remarks>Adding an action that already belongs to another collection throws <see cref="T:System.InvalidOperationException" />.</remarks>
+    </member>
+    <member name="M:System.Windows.Interactivity.TriggerActionCollection.OnAttached">
+      <summary>Attaches every action in the collection to the collection's associated object.</summary>
+    </member>
+    <member name="M:System.Windows.Interactivity.TriggerActionCollection.OnDetaching">
+      <summary>Detaches every action in the collection.</summary>
+    </member>
+    <member name="T:System.Windows.Interactivity.TriggerCollection">
+      <summary>The collection of triggers attached to an object, as returned by <see cref="M:System.Windows.Interactivity.Interaction.GetTriggers(System.Windows.DependencyObject)" />.</summary>
+    </member>
+    <member name="M:System.Windows.Interactivity.TriggerCollection.OnAttached">
+      <summary>Attaches every trigger in the collection to the collection's associated object.</summary>
+    </member>
+    <member name="M:System.Windows.Interactivity.TriggerCollection.OnDetaching">
+      <summary>Detaches every trigger in the collection.</summary>
+    </member>
+
+    <member name="T:System.Windows.Interactivity.TypeConstraintAttribute">
+      <summary>Restricts the type of object an <see cref="T:System.Windows.Interactivity.EventTriggerBase" /> or <see cref="T:System.Windows.Interactivity.TargetedTriggerAction" /> can be attached to.</summary>
+      <remarks>Apply it to the derived class. Attaching to an object of another type throws <see cref="T:System.InvalidOperationException" />.</remarks>
+    </member>
+    <member name="P:System.Windows.Interactivity.TypeConstraintAttribute.Constraint">
+      <summary>Gets the type the associated object must be assignable to.</summary>
+      <value>The constraint type.</value>
+    </member>
+    <member name="M:System.Windows.Interactivity.TypeConstraintAttribute.#ctor(System.Type)">
+      <summary>Initializes a new instance of the <see cref="T:System.Windows.Interactivity.TypeConstraintAttribute" /> class.</summary>
+      <param name="constraint">The type the associated object must be assignable to.</param>
+    </member>
+  </members>
+</doc>

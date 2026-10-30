@@ -1,0 +1,52 @@
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C3A85E47-7B1F-4F26-9D80-5E2A7C4B1A06}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>MediaPlayer</RootNamespace>
+    <AssemblyName>MediaPlayer</AssemblyName>
+    <SilverlightAppEntry>MediaPlayer.App</SilverlightAppEntry>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Windows.Controls.Navigation" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.Xbox" />
+    <Reference Include="Microsoft.Xbox.Core" />
+    <Reference Include="Microsoft.Xbox.Services" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml"><Generator>MSBuild:Compile</Generator></ApplicationDefinition>
+    <Page Include="Pages\ListPage.xaml"><Generator>MSBuild:Compile</Generator></Page>
+    <Page Include="Pages\PlayerPage.xaml"><Generator>MSBuild:Compile</Generator></Page>
+    <Compile Include="App.xaml.cs"><DependentUpon>App.xaml</DependentUpon></Compile>
+    <Compile Include="Pages\ListPage.xaml.cs"><DependentUpon>Pages\ListPage.xaml</DependentUpon></Compile>
+    <Compile Include="Pages\PlayerPage.xaml.cs"><DependentUpon>Pages\PlayerPage.xaml</DependentUpon></Compile>
+    <Compile Include="..\..\Common\ServerClient.cs"><Link>Common\ServerClient.cs</Link></Compile>
+    <Compile Include="..\..\Common\DirectionalFocus.cs"><Link>Common\DirectionalFocus.cs</Link></Compile>
+    <Compile Include="..\..\Common\DebugLog.cs"><Link>Common\DebugLog.cs</Link></Compile>
+  </ItemGroup>
+  <!-- Media files put in the Media folder go into the XAP and play from the
+       package. An app can't list its own XAP, so the build also writes their
+       names to Media\index.txt in it. -->
+  <ItemGroup>
+    <PackagedMedia Include="Media\*.wmv;Media\*.wma;Media\*.mp4;Media\*.mp3" />
+    <Content Include="@(PackagedMedia)" />
+  </ItemGroup>
+  <Target Name="WriteMediaIndex" BeforeTargets="BeforeBuild">
+    <WriteLinesToFile File="$(IntermediateOutputPath)MediaIndex.txt" Lines="@(PackagedMedia->'%(Filename)%(Extension)')" Overwrite="true" />
+    <ItemGroup>
+      <Content Include="$(IntermediateOutputPath)MediaIndex.txt"><Link>Media\index.txt</Link></Content>
+    </ItemGroup>
+  </Target>
+  <Import Project="..\..\..\msbuild\XboxSilverlight.targets" />
+</Project>

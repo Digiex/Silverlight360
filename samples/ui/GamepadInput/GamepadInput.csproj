@@ -1,0 +1,27 @@
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3B8E1A55-0C2D-4E61-9A47-6F1D2C8B4E01}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>GamepadInput</RootNamespace>
+    <AssemblyName>GamepadInput</AssemblyName>
+    <SilverlightAppEntry>GamepadInput.App</SilverlightAppEntry>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml"><Generator>MSBuild:Compile</Generator></ApplicationDefinition>
+    <Page Include="MainPage.xaml"><Generator>MSBuild:Compile</Generator></Page>
+    <Compile Include="App.xaml.cs"><DependentUpon>App.xaml</DependentUpon></Compile>
+    <Compile Include="MainPage.xaml.cs"><DependentUpon>MainPage.xaml</DependentUpon></Compile>
+  </ItemGroup>
+  <Import Project="..\..\..\msbuild\XboxSilverlight.targets" />
+</Project>

@@ -1,0 +1,1459 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly><name>Microsoft.Xbox</name></assembly>
+  <members>
+    <!-- Microsoft.Xbox: SmartGlass companion -->
+    <member name="T:Microsoft.Xbox.Companion">
+      <summary>Exchanges messages with SmartGlass companion devices (phones, tablets, PCs) that are connected to the console.</summary>
+      <remarks>The companion session starts when the first handler is attached to any of this class's events and stops, discarding pending send contexts, when the last handler is removed. Keep at least one handler attached for as long as you want to receive companion traffic. All events are posted to the UI thread through the main <see cref="T:System.Windows.Threading.Dispatcher"/>. A message is a flat set of string key/value pairs; nested JSON is not supported.</remarks>
+    </member>
+    <member name="E:Microsoft.Xbox.Companion.Connected">
+      <summary>Occurs when a companion device connects to the application. Raised on the UI thread.</summary>
+      <remarks>Attaching the first handler to any <see cref="T:Microsoft.Xbox.Companion"/> event starts the companion service.</remarks>
+    </member>
+    <member name="E:Microsoft.Xbox.Companion.Disconnected">
+      <summary>Occurs when a companion device disconnects. Raised on the UI thread.</summary>
+    </member>
+    <member name="E:Microsoft.Xbox.Companion.Failed">
+      <summary>Occurs when a companion connection, send or receive operation fails, or when a received message cannot be converted to a key/value dictionary. Raised on the UI thread.</summary>
+      <remarks>For a failed send, <see cref="P:Microsoft.Xbox.CompanionFailedEventArgs.SendContext"/> holds the context object that was passed to <see cref="M:Microsoft.Xbox.Companion.SendMessage(System.Int32,System.Collections.Generic.Dictionary{System.String,System.String},System.Object)"/>.</remarks>
+    </member>
+    <member name="E:Microsoft.Xbox.Companion.ReceivedMessage">
+      <summary>Occurs when a message arrives from a companion device. Raised on the UI thread.</summary>
+      <remarks>If the incoming message contains a duplicate key, this event is not raised; <see cref="E:Microsoft.Xbox.Companion.Failed"/> is raised with <see cref="F:Microsoft.Xbox.CompanionFailure.ReceivedUnsupportedJSon"/> instead.</remarks>
+    </member>
+    <member name="E:Microsoft.Xbox.Companion.SendMessageCompleted">
+      <summary>Occurs when a message sent with <see cref="M:Microsoft.Xbox.Companion.SendMessage(System.Int32,System.Collections.Generic.Dictionary{System.String,System.String},System.Object)"/> has been delivered. Raised on the UI thread.</summary>
+    </member>
+    <member name="M:Microsoft.Xbox.Companion.SendMessage(System.Int32,System.Collections.Generic.Dictionary{System.String,System.String},System.Object)">
+      <summary>Sends a key/value message to a connected companion device using reliable delivery.</summary>
+      <param name="clientId">The companion client to send to, as reported by <see cref="P:Microsoft.Xbox.CompanionEventArgs.ClientId"/> in a <see cref="E:Microsoft.Xbox.Companion.Connected"/> or <see cref="E:Microsoft.Xbox.Companion.ReceivedMessage"/> event.</param>
+      <param name="msg">The message to send. Neither keys nor values may be <see langword="null"/>.</param>
+      <param name="context">An optional object that is handed back in <see cref="P:Microsoft.Xbox.CompanionSendCompletedEventArgs.SendContext"/> or <see cref="P:Microsoft.Xbox.CompanionFailedEventArgs.SendContext"/> so you can match the completion to this call; may be <see langword="null"/>.</param>
+      <remarks>The call returns immediately; completion is reported through <see cref="E:Microsoft.Xbox.Companion.SendMessageCompleted"/> or <see cref="E:Microsoft.Xbox.Companion.Failed"/>. Attach a handler to at least one <see cref="T:Microsoft.Xbox.Companion"/> event first so that the companion service is running.</remarks>
+      <exception cref="T:System.ArgumentNullException"><paramref name="msg"/> is <see langword="null"/> or contains a <see langword="null"/> key or value.</exception>
+      <exception cref="T:System.InvalidOperationException">The companion service is not running or rejected the send.</exception>
+    </member>
+    <member name="T:Microsoft.Xbox.CompanionEventArgs">
+      <summary>Base class for the data of <see cref="T:Microsoft.Xbox.Companion"/> events; identifies the companion client and the console user it belongs to.</summary>
+    </member>
+    <member name="P:Microsoft.Xbox.CompanionEventArgs.ClientId">
+      <summary>Gets the identifier of the companion client that the event relates to. Pass this value to <see cref="M:Microsoft.Xbox.Companion.SendMessage(System.Int32,System.Collections.Generic.Dictionary{System.String,System.String},System.Object)"/> to reply.</summary>
+    </member>
+    <member name="P:Microsoft.Xbox.CompanionEventArgs.PlayerIndex">
+      <summary>Gets the index (0-3) of the signed-in console user associated with the companion client.</summary>
+    </member>
+    <member name="T:Microsoft.Xbox.CompanionConnectedEventArgs">
+      <summary>Provides data for the <see cref="E:Microsoft.Xbox.Companion.Connected"/> event.</summary>
+    </member>
+    <member name="P:Microsoft.Xbox.CompanionConnectedEventArgs.Protocol">
+      <summary>Gets the transport the companion device connected over.</summary>
+    </member>
+    <member name="T:Microsoft.Xbox.CompanionDisconnectedEventArgs">
+      <summary>Provides data for the <see cref="E:Microsoft.Xbox.Companion.Disconnected"/> event.</summary>
+    </member>
+    <member name="P:Microsoft.Xbox.CompanionDisconnectedEventArgs.Protocol">
+      <summary>Gets the transport the companion device was connected over.</summary>
+    </member>
+    <member name="T:Microsoft.Xbox.CompanionConnectionProtocol">
+      <summary>Identifies the transport used by a companion device connection.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.CompanionConnectionProtocol.None">
+      <summary>No transport, or the transport is not known.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.CompanionConnectionProtocol.Tcp">
+      <summary>A direct TCP connection over the local network.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.CompanionConnectionProtocol.Cloud">
+      <summary>A connection relayed through the online service.</summary>
+    </member>
+    <member name="T:Microsoft.Xbox.CompanionEventHandler`1">
+      <summary>Represents the method that handles a <see cref="T:Microsoft.Xbox.Companion"/> event.</summary>
+      <typeparam name="T">The event data type, derived from <see cref="T:Microsoft.Xbox.CompanionEventArgs"/>.</typeparam>
+      <param name="args">The event data.</param>
+    </member>
+    <member name="T:Microsoft.Xbox.CompanionFailedEventArgs">
+      <summary>Provides data for the <see cref="E:Microsoft.Xbox.Companion.Failed"/> event.</summary>
+    </member>
+    <member name="P:Microsoft.Xbox.CompanionFailedEventArgs.Failure">
+      <summary>Gets the category of the failure.</summary>
+    </member>
+    <member name="P:Microsoft.Xbox.CompanionFailedEventArgs.UnderlyingCode">
+      <summary>Gets the raw HRESULT reported by the companion service, for logging and diagnostics.</summary>
+    </member>
+    <member name="P:Microsoft.Xbox.CompanionFailedEventArgs.SendContext">
+      <summary>Gets the context object passed to <see cref="M:Microsoft.Xbox.Companion.SendMessage(System.Int32,System.Collections.Generic.Dictionary{System.String,System.String},System.Object)"/> when the failure relates to a send; otherwise <see langword="null"/>.</summary>
+    </member>
+    <member name="T:Microsoft.Xbox.CompanionFailure">
+      <summary>Describes why a companion operation failed.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.CompanionFailure.ReceivedUnsupportedJSon">
+      <summary>A received message was valid JSON but could not be represented as a flat string dictionary (for example, it repeated a key).</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.CompanionFailure.ReceivedInvalidJson">
+      <summary>A received message was not valid JSON.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.CompanionFailure.ReceiveProcessingAllocationFailure">
+      <summary>The console ran out of memory while processing a received message.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.CompanionFailure.ReceivedUnexpected">
+      <summary>Receiving a message failed for another reason; see <see cref="P:Microsoft.Xbox.CompanionFailedEventArgs.UnderlyingCode"/>.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.CompanionFailure.SendFailed">
+      <summary>A message could not be delivered to the companion device.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.CompanionFailure.SendUnexpected">
+      <summary>Sending a message failed for another reason; see <see cref="P:Microsoft.Xbox.CompanionFailedEventArgs.UnderlyingCode"/>.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.CompanionFailure.ConnectedUnexpected">
+      <summary>An error occurred while a companion device was connecting.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.CompanionFailure.DisconnectedUnexpected">
+      <summary>An error occurred while a companion device was disconnecting.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.CompanionFailure.Unknown">
+      <summary>The failure could not be classified.</summary>
+    </member>
+    <member name="T:Microsoft.Xbox.CompanionKeyboardTextChangedArgs">
+      <summary>Provides the new text when a SmartGlass companion keyboard edits the text of the focused on-screen keyboard (<c>Rune</c>) control.</summary>
+    </member>
+    <member name="P:Microsoft.Xbox.CompanionKeyboardTextChangedArgs.Text">
+      <summary>Gets the complete text entered on the companion keyboard.</summary>
+    </member>
+    <member name="T:Microsoft.Xbox.CompanionReceivedEventArgs">
+      <summary>Provides data for the <see cref="E:Microsoft.Xbox.Companion.ReceivedMessage"/> event.</summary>
+    </member>
+    <member name="P:Microsoft.Xbox.CompanionReceivedEventArgs.Message">
+      <summary>Gets the received message as string key/value pairs.</summary>
+    </member>
+    <member name="T:Microsoft.Xbox.CompanionSendCompletedEventArgs">
+      <summary>Provides data for the <see cref="E:Microsoft.Xbox.Companion.SendMessageCompleted"/> event.</summary>
+    </member>
+    <member name="P:Microsoft.Xbox.CompanionSendCompletedEventArgs.SendContext">
+      <summary>Gets the context object that was passed to <see cref="M:Microsoft.Xbox.Companion.SendMessage(System.Int32,System.Collections.Generic.Dictionary{System.String,System.String},System.Object)"/>, or <see langword="null"/> if none was supplied.</summary>
+    </member>
+
+    <!-- Microsoft.Xbox.Input -->
+    <member name="T:Microsoft.Xbox.Input.GridFocusHelper">
+      <summary>Moves keyboard focus between the cells of a <see cref="T:System.Windows.Controls.Grid"/> in response to the controller's D-pad and thumbstick (arrow keys).</summary>
+      <remarks>The easiest way to use it is to set the <c>GridFocusHelper.IsFocusTarget</c> attached property to <see langword="true"/> on a <see cref="T:System.Windows.Controls.Grid"/> in XAML. On each unhandled arrow key the helper picks the nearest child in that direction, using the children's <c>Grid.Row</c>, <c>Grid.Column</c> and span values rather than their pixel positions, and focuses the first visible, enabled tab stop inside it (breadth-first). Call <see cref="M:Microsoft.Xbox.Input.GridFocusHelper.Dispose"/> or set the property to <see langword="false"/> to detach.</remarks>
+    </member>
+    <member name="F:Microsoft.Xbox.Input.GridFocusHelper.IsFocusTargetProperty">
+      <summary>Identifies the <c>GridFocusHelper.IsFocusTarget</c> attached property. Setting it to <see langword="true"/> on a <see cref="T:System.Windows.Controls.Grid"/> creates and attaches a <see cref="T:Microsoft.Xbox.Input.GridFocusHelper"/>; setting it to <see langword="false"/> disposes it. The default is <see langword="false"/>.</summary>
+    </member>
+    <member name="M:Microsoft.Xbox.Input.GridFocusHelper.#ctor(System.Windows.Controls.Grid)">
+      <summary>Creates a helper and attaches it to the specified grid, which also sets <c>IsFocusTarget</c> to <see langword="true"/> on that grid.</summary>
+      <param name="target">The grid whose children should receive directional focus navigation. If <see langword="null"/>, the helper is created but not attached.</param>
+    </member>
+    <member name="M:Microsoft.Xbox.Input.GridFocusHelper.GetFocusableChild(System.Windows.FrameworkElement)">
+      <summary>Returns the control that should receive focus when navigation lands on a direct child of the grid.</summary>
+      <param name="directChild">A direct child of the target grid.</param>
+      <returns>The first visible, enabled <see cref="T:System.Windows.Controls.Control"/> with <c>IsTabStop</c> set found by a breadth-first search of <paramref name="directChild"/>, or <see langword="null"/> if there is none (the cell is skipped).</returns>
+      <remarks>Override this in a derived class to redirect focus to a specific control within a cell.</remarks>
+    </member>
+    <member name="M:Microsoft.Xbox.Input.GridFocusHelper.GetIsFocusTarget(System.Windows.Controls.Grid)">
+      <summary>Gets whether a <see cref="T:Microsoft.Xbox.Input.GridFocusHelper"/> is attached to the specified grid.</summary>
+      <param name="g">The grid to query.</param>
+      <returns><see langword="true"/> if directional focus navigation is enabled on <paramref name="g"/>; <see langword="false"/> if it is not or if <paramref name="g"/> is <see langword="null"/>.</returns>
+    </member>
+    <member name="M:Microsoft.Xbox.Input.GridFocusHelper.SetIsFocusTarget(System.Windows.Controls.Grid,System.Boolean)">
+      <summary>Enables or disables directional focus navigation on the specified grid.</summary>
+      <param name="g">The grid to change. Ignored if <see langword="null"/>.</param>
+      <param name="value"><see langword="true"/> to attach a helper; <see langword="false"/> to detach it.</param>
+    </member>
+    <member name="T:Microsoft.Xbox.Input.InputModality">
+      <summary>Identifies how the user is currently driving the application.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Input.InputModality.Controller">
+      <summary>The user is using a controller or remote. This is also the value at design time.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Input.InputModality.Gesture">
+      <summary>The user is using Kinect gestures (hand cursor).</summary>
+    </member>
+    <member name="T:Microsoft.Xbox.Input.InputModalityChangedEventArgs">
+      <summary>Provides data for the <see cref="E:Microsoft.Xbox.Input.Kinect.InputModalityChanged"/> event.</summary>
+    </member>
+    <member name="P:Microsoft.Xbox.Input.InputModalityChangedEventArgs.InputModality">
+      <summary>Gets the input modality that is now active.</summary>
+    </member>
+    <member name="T:Microsoft.Xbox.Input.Kinect">
+      <summary>Reports Kinect sensor status, user engagement and identification, and switches between controller and gesture input.</summary>
+      <remarks>Requires a Kinect sensor for anything other than status queries. The first access to any member registers for sensor notifications and reads the initial <see cref="P:Microsoft.Xbox.Input.Kinect.DeviceStatus"/>, engaged user and tracked skeleton count, so touch the class early (for example, read <see cref="P:Microsoft.Xbox.Input.Kinect.DeviceStatus"/> at startup) if you rely on its events. Event handlers are invoked directly from the runtime's notification; they are not re-posted through a <see cref="T:System.Windows.Threading.Dispatcher"/>.</remarks>
+    </member>
+    <member name="F:Microsoft.Xbox.Input.Kinect.InvalidTrackingId">
+      <summary>The tracking ID (0) that means no Kinect skeleton, for example when no user is engaged.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Input.Kinect.NoUserIndex">
+      <summary>The player index (254) used when a tracked Kinect user has not been matched to a signed-in profile.</summary>
+    </member>
+    <member name="P:Microsoft.Xbox.Input.Kinect.CurrentInputModality">
+      <summary>Gets whether the user is currently using the controller or Kinect gestures. Queried from the console each time; returns <see cref="F:Microsoft.Xbox.Input.InputModality.Controller"/> at design time.</summary>
+    </member>
+    <member name="P:Microsoft.Xbox.Input.Kinect.DeviceStatus">
+      <summary>Gets the most recently reported state of the Kinect sensor. Updated before <see cref="E:Microsoft.Xbox.Input.Kinect.DeviceStatusChanged"/> is raised.</summary>
+    </member>
+    <member name="P:Microsoft.Xbox.Input.Kinect.EngagedUserInformation">
+      <summary>Gets the tracking ID and player index of the user currently engaged with the Kinect sensor.</summary>
+      <value>When nobody is engaged, <c>TrackingId</c> is <see cref="F:Microsoft.Xbox.Input.Kinect.InvalidTrackingId"/>. After a new engagement and until the user is identified, <c>PlayerIndex</c> is <see cref="F:Microsoft.Xbox.Input.Kinect.NoUserIndex"/>.</value>
+      <remarks>The same object is updated in place as engagement and identification change.</remarks>
+    </member>
+    <member name="P:Microsoft.Xbox.Input.Kinect.TrackedSkeletonCount">
+      <summary>Gets the number of skeletons the Kinect sensor is currently tracking. Updated before <see cref="E:Microsoft.Xbox.Input.Kinect.TrackedSkeletonCountChanged"/> is raised.</summary>
+    </member>
+    <member name="E:Microsoft.Xbox.Input.Kinect.InputModalityChanged">
+      <summary>Occurs when the user switches between controller and Kinect gesture input.</summary>
+    </member>
+    <member name="E:Microsoft.Xbox.Input.Kinect.SystemGestureInvoked">
+      <summary>Occurs when a Kinect user performs the console's reserved system gesture.</summary>
+    </member>
+    <member name="E:Microsoft.Xbox.Input.Kinect.UserEngaged">
+      <summary>Occurs when a user engages with or disengages from the Kinect sensor. A tracking ID of <see cref="F:Microsoft.Xbox.Input.Kinect.InvalidTrackingId"/> means the engaged user disengaged.</summary>
+      <remarks><see cref="P:Microsoft.Xbox.Input.Kinect.EngagedUserInformation"/> is updated before the event is raised, and the engage or disengage system sound plays if <see cref="P:Microsoft.Xbox.Media.Sounds.IsEnabled"/> is <see langword="true"/>.</remarks>
+    </member>
+    <member name="E:Microsoft.Xbox.Input.Kinect.UserIdentificationUpdate">
+      <summary>Occurs while the sensor is trying to identify an engaged user, reporting conditions that prevent recognition (lighting, position, occlusion) so the application can guide the user.</summary>
+    </member>
+    <member name="E:Microsoft.Xbox.Input.Kinect.UserIdentified">
+      <summary>Occurs when an engaged Kinect user has been matched to a signed-in profile. <see cref="P:Microsoft.Xbox.Input.Kinect.EngagedUserInformation"/> is updated with the player index before the event is raised.</summary>
+    </member>
+    <member name="E:Microsoft.Xbox.Input.Kinect.WaveProgressChanged">
+      <summary>Occurs repeatedly while a user performs the engagement wave, reporting how far the wave has progressed.</summary>
+    </member>
+    <member name="M:Microsoft.Xbox.Input.Kinect.ForceDisengage">
+      <summary>Disengages the current Kinect user, so that a user has to engage again (for example, by waving) before gesture input resumes. Throws if the console reports a failure.</summary>
+    </member>
+    <member name="T:Microsoft.Xbox.Input.KinectBindingChangedEventArgs">
+      <summary>Provides data for a change in which signed-in user a Kinect user is bound to. No public event in this version raises it.</summary>
+    </member>
+    <member name="P:Microsoft.Xbox.Input.KinectBindingChangedEventArgs.UserIndex">
+      <summary>Gets the player index whose binding changed.</summary>
+    </member>
+    <member name="T:Microsoft.Xbox.Input.KinectDeviceStatus">
+      <summary>Describes the state of the Kinect sensor.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Input.KinectDeviceStatus.Connected">
+      <summary>The sensor is plugged in but not yet ready for use.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Input.KinectDeviceStatus.Ready">
+      <summary>The sensor is connected and ready.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Input.KinectDeviceStatus.Disconnected">
+      <summary>No sensor is connected.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Input.KinectDeviceStatus.Error">
+      <summary>The sensor is connected but has reported an error.</summary>
+    </member>
+    <member name="T:Microsoft.Xbox.Input.KinectDeviceStatusChangedEventArgs">
+      <summary>Provides data for the <see cref="E:Microsoft.Xbox.Input.Kinect.DeviceStatusChanged"/> event.</summary>
+    </member>
+    <member name="P:Microsoft.Xbox.Input.KinectDeviceStatusChangedEventArgs.Status">
+      <summary>Gets the new sensor state.</summary>
+    </member>
+    <member name="T:Microsoft.Xbox.Input.KinectSystemGestureInvokedEventArgs">
+      <summary>Provides data for the <see cref="E:Microsoft.Xbox.Input.Kinect.SystemGestureInvoked"/> event.</summary>
+    </member>
+    <member name="P:Microsoft.Xbox.Input.KinectSystemGestureInvokedEventArgs.UserInformation">
+      <summary>Gets the user who performed the gesture. Only <c>TrackingId</c> is filled in.</summary>
+    </member>
+    <member name="T:Microsoft.Xbox.Input.KinectTrackedSkeletonCountChangedEventArgs">
+      <summary>Provides data for the <see cref="E:Microsoft.Xbox.Input.Kinect.TrackedSkeletonCountChanged"/> event.</summary>
+    </member>
+    <member name="P:Microsoft.Xbox.Input.KinectTrackedSkeletonCountChangedEventArgs.TrackedSkeletonCount">
+      <summary>Gets the new number of tracked skeletons.</summary>
+    </member>
+    <member name="T:Microsoft.Xbox.Input.KinectUserEngagedEventArgs">
+      <summary>Provides data for the <see cref="E:Microsoft.Xbox.Input.Kinect.UserEngaged"/> event. A <c>TrackingId</c> of <see cref="F:Microsoft.Xbox.Input.Kinect.InvalidTrackingId"/> means no user is engaged.</summary>
+    </member>
+    <member name="T:Microsoft.Xbox.Input.KinectUserEventArgs">
+      <summary>Base class for Kinect event data that refers to a tracked user.</summary>
+    </member>
+    <member name="M:Microsoft.Xbox.Input.KinectUserEventArgs.#ctor(System.Int32)">
+      <summary>Initializes the event data for the specified tracked user.</summary>
+      <param name="trackingId">The Kinect tracking ID of the user; stored in <see cref="P:Microsoft.Xbox.Input.KinectUserEventArgs.UserInformation"/>.</param>
+    </member>
+    <member name="P:Microsoft.Xbox.Input.KinectUserEventArgs.UserInformation">
+      <summary>Gets the user the event relates to. <c>TrackingId</c> is always set; <c>PlayerIndex</c> is set only by <see cref="E:Microsoft.Xbox.Input.Kinect.UserIdentified"/>.</summary>
+    </member>
+    <member name="T:Microsoft.Xbox.Input.KinectUserIdentificationQualityFlags">
+      <summary>Conditions that prevent the Kinect sensor from identifying a user. Several flags can be set at once.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Input.KinectUserIdentificationQualityFlags.EnvironmentFaceDetectFailure">
+      <summary>The user's face could not be detected.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Input.KinectUserIdentificationQualityFlags.UserBodyTurned">
+      <summary>The user is not facing the sensor.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Input.KinectUserIdentificationQualityFlags.UserNotUpright">
+      <summary>The user is not standing or sitting upright.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Input.KinectUserIdentificationQualityFlags.UserOccludedFace">
+      <summary>Something is blocking the user's face.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Input.KinectUserIdentificationQualityFlags.UserOccludedBody">
+      <summary>Something is blocking the user's body.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Input.KinectUserIdentificationQualityFlags.UserFarAway">
+      <summary>The user is too far from the sensor.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Input.KinectUserIdentificationQualityFlags.UserClose">
+      <summary>The user is too close to the sensor.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Input.KinectUserIdentificationQualityFlags.UserClippedAtLeft">
+      <summary>The user is partly outside the left edge of the sensor's view.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Input.KinectUserIdentificationQualityFlags.UserClippedAtRight">
+      <summary>The user is partly outside the right edge of the sensor's view.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Input.KinectUserIdentificationQualityFlags.UserClippedAtTop">
+      <summary>The user is partly outside the top edge of the sensor's view.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Input.KinectUserIdentificationQualityFlags.UserClippedAtBottom">
+      <summary>The user is partly outside the bottom edge of the sensor's view.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Input.KinectUserIdentificationQualityFlags.EnvironmentTooDark">
+      <summary>The room is too dark.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Input.KinectUserIdentificationQualityFlags.EnvironmentTooBright">
+      <summary>The room is too bright, or there is strong light behind the user.</summary>
+    </member>
+    <member name="T:Microsoft.Xbox.Input.KinectUserIdentificationUpdateEventArgs">
+      <summary>Provides data for the <see cref="E:Microsoft.Xbox.Input.Kinect.UserIdentificationUpdate"/> event.</summary>
+    </member>
+    <member name="P:Microsoft.Xbox.Input.KinectUserIdentificationUpdateEventArgs.QualityFlags">
+      <summary>Gets the conditions currently preventing identification of the user.</summary>
+    </member>
+    <member name="T:Microsoft.Xbox.Input.KinectUserIdentifiedEventArgs">
+      <summary>Provides data for the <see cref="E:Microsoft.Xbox.Input.Kinect.UserIdentified"/> event. <see cref="P:Microsoft.Xbox.Input.KinectUserEventArgs.UserInformation"/> carries both the tracking ID and the player index.</summary>
+    </member>
+    <member name="P:Microsoft.Xbox.Input.KinectUserIdentifiedEventArgs.UserReturned">
+      <summary>Gets whether the identified user is one who was previously engaged and has come back, rather than a newly recognized user.</summary>
+    </member>
+    <member name="T:Microsoft.Xbox.Input.KinectWaveProgressChangedEventArgs">
+      <summary>Provides data for the <see cref="E:Microsoft.Xbox.Input.Kinect.WaveProgressChanged"/> event.</summary>
+    </member>
+    <member name="P:Microsoft.Xbox.Input.KinectWaveProgressChangedEventArgs.Progress">
+      <summary>Gets how far the engagement wave has progressed, as the value reported by the sensor. Use it to drive an engagement progress indicator.</summary>
+    </member>
+    <member name="T:Microsoft.Xbox.Input.RuneTileActivationEventArgs">
+      <summary>Provides data when a key tile of the on-screen keyboard (<c>Rune</c>) control is activated.</summary>
+    </member>
+    <member name="P:Microsoft.Xbox.Input.RuneTileActivationEventArgs.RuneString">
+      <summary>Gets the text of the activated key tile.</summary>
+    </member>
+
+    <!-- Microsoft.Xbox.Media -->
+    <member name="T:Microsoft.Xbox.Media.MediaCapabilities">
+      <summary>Reads and changes the console's closed-captioning settings and reports optional media components.</summary>
+      <remarks>At design time the properties return <see langword="false"/>, setters do nothing, and <see cref="M:Microsoft.Xbox.Media.MediaCapabilities.GetTimedTextSettings"/> returns default settings.</remarks>
+    </member>
+    <member name="P:Microsoft.Xbox.Media.MediaCapabilities.Enable708Captioning">
+      <summary>Gets or sets whether the media pipeline decodes CEA-708 closed captions embedded in the video stream.</summary>
+    </member>
+    <member name="P:Microsoft.Xbox.Media.MediaCapabilities.TimedTextEnabled">
+      <summary>Gets or sets the console-wide closed-captioning on/off state. Check it before showing captions so that you honor the user's system setting.</summary>
+      <value><see langword="true"/> if captions are turned on; <see langword="false"/> if they are off or the state cannot be read.</value>
+    </member>
+    <member name="M:Microsoft.Xbox.Media.MediaCapabilities.GetTimedTextSettings">
+      <summary>Gets the user's caption appearance preferences (font, colors, opacity, edge style and language) from the console settings.</summary>
+      <returns>A new <see cref="T:Microsoft.Xbox.Media.TimedTextSettings"/>. If the stored settings contain an out-of-range value, or at design time, a default instance is returned (white text, <see cref="P:Microsoft.Xbox.Media.TimedTextSettings.UseDefaults"/> set).</returns>
+    </member>
+    <member name="M:Microsoft.Xbox.Media.MediaCapabilities.IsOptionalMediaUpdateInstalled">
+      <summary>Gets whether the console's optional media update is installed. Some codecs and formats are available only after this update.</summary>
+      <returns><see langword="true"/> if the optional media update is installed; otherwise <see langword="false"/>.</returns>
+    </member>
+    <member name="T:Microsoft.Xbox.Media.MusicPlayer">
+      <summary>Controls background music that the user is playing from the console's music player.</summary>
+      <remarks>Pause the user's music before playing your own audio or video, and resume it when you are done. Both methods must be called on the UI thread.</remarks>
+    </member>
+    <member name="M:Microsoft.Xbox.Media.MusicPlayer.Pause">
+      <summary>Pauses the user's background music so that the application's audio can play. Must be called on the UI thread.</summary>
+    </member>
+    <member name="M:Microsoft.Xbox.Media.MusicPlayer.Resume">
+      <summary>Resumes background music that was paused with <see cref="M:Microsoft.Xbox.Media.MusicPlayer.Pause"/>. Must be called on the UI thread.</summary>
+    </member>
+    <member name="T:Microsoft.Xbox.Media.Sounds">
+      <summary>Plays the standard console navigation sounds for buttons and lets you replace them per element.</summary>
+      <remarks>Buttons play click, focus and hover sounds automatically. Sounds play only when <see cref="P:Microsoft.Xbox.Media.Sounds.IsEnabled"/> is <see langword="true"/>, which requires the user to have enabled interface sound effects in the console settings. A custom sound is loaded with <c>Application.GetResourceStream</c>, so the URI must refer to a WAV resource in the application package; each sound is loaded once and cached.</remarks>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.Sounds.ButtonClickUriProperty">
+      <summary>Identifies the <c>Sounds.ButtonClickUri</c> attached property: the sound played when a button is clicked. Defaults to <see cref="F:Microsoft.Xbox.Media.Sounds.DefaultButtonClickUri"/>.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.Sounds.ButtonFocusUriProperty">
+      <summary>Identifies the <c>Sounds.ButtonFocusUri</c> attached property: the sound played when a button receives focus. Defaults to <see cref="F:Microsoft.Xbox.Media.Sounds.DefaultButtonFocusUri"/>.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.Sounds.ButtonHoverUriProperty">
+      <summary>Identifies the <c>Sounds.ButtonHoverUri</c> attached property: the sound played when the Kinect hand cursor hovers over a button. Defaults to <see cref="F:Microsoft.Xbox.Media.Sounds.DefaultButtonHoverUri"/>.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.Sounds.DefaultButtonBackUri">
+      <summary>The relative URI of the built-in "back" navigation sound (<c>/SystemSounds/DefaultButtonBack.wav</c>).</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.Sounds.DefaultButtonClickUri">
+      <summary>The relative URI of the built-in button click sound (<c>/SystemSounds/DefaultButtonClick.wav</c>).</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.Sounds.DefaultButtonFocusUri">
+      <summary>The relative URI of the built-in button focus sound (<c>/SystemSounds/DefaultButtonFocus.wav</c>).</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.Sounds.DefaultButtonHoverUri">
+      <summary>The relative URI of the built-in button hover sound (<c>/SystemSounds/DefaultButtonHover.wav</c>).</summary>
+    </member>
+    <member name="P:Microsoft.Xbox.Media.Sounds.IsDashSoundEffectEnabled">
+      <summary>Gets whether interface sound effects are enabled in the console settings. Read once when the runtime initializes the sounds system.</summary>
+    </member>
+    <member name="P:Microsoft.Xbox.Media.Sounds.IsEnabled">
+      <summary>Gets or sets whether the application plays navigation sounds.</summary>
+      <value>Initially equal to <see cref="P:Microsoft.Xbox.Media.Sounds.IsDashSoundEffectEnabled"/>. Setting it to <see langword="true"/> has no effect (the value stays <see langword="false"/>) when the user has turned interface sounds off.</value>
+    </member>
+    <member name="M:Microsoft.Xbox.Media.Sounds.GetButtonClickUri(System.Windows.UIElement)">
+      <summary>Gets the click sound for the specified element.</summary>
+      <param name="element">The element to query.</param>
+      <returns>The sound URI, or <see langword="null"/> if the click sound was turned off for this element.</returns>
+    </member>
+    <member name="M:Microsoft.Xbox.Media.Sounds.GetButtonFocusUri(System.Windows.UIElement)">
+      <summary>Gets the focus sound for the specified element.</summary>
+      <param name="element">The element to query.</param>
+      <returns>The sound URI, or <see langword="null"/> if the focus sound was turned off for this element.</returns>
+    </member>
+    <member name="M:Microsoft.Xbox.Media.Sounds.GetButtonHoverUri(System.Windows.UIElement)">
+      <summary>Gets the hover sound for the specified element.</summary>
+      <param name="element">The element to query.</param>
+      <returns>The sound URI, or <see langword="null"/> if the hover sound was turned off for this element.</returns>
+    </member>
+    <member name="M:Microsoft.Xbox.Media.Sounds.SetButtonClickUri(System.Windows.UIElement,System.Uri)">
+      <summary>Sets the sound played when the specified button is clicked.</summary>
+      <param name="element">The button (or other element) to change.</param>
+      <param name="value">A relative URI of a WAV resource in the application package, or <see langword="null"/> for no sound.</param>
+    </member>
+    <member name="M:Microsoft.Xbox.Media.Sounds.SetButtonFocusUri(System.Windows.UIElement,System.Uri)">
+      <summary>Sets the sound played when the specified button receives focus.</summary>
+      <param name="element">The button (or other element) to change.</param>
+      <param name="value">A relative URI of a WAV resource in the application package, or <see langword="null"/> for no sound.</param>
+    </member>
+    <member name="M:Microsoft.Xbox.Media.Sounds.SetButtonHoverUri(System.Windows.UIElement,System.Uri)">
+      <summary>Sets the sound played when the Kinect hand cursor hovers over the specified button.</summary>
+      <param name="element">The button (or other element) to change.</param>
+      <param name="value">A relative URI of a WAV resource in the application package, or <see langword="null"/> for no sound.</param>
+    </member>
+    <member name="T:Microsoft.Xbox.Media.Speakers">
+      <summary>Reports the console's audio output configuration and lets the application force stereo output.</summary>
+      <remarks>All members must be used on the UI thread.</remarks>
+    </member>
+    <member name="P:Microsoft.Xbox.Media.Speakers.ForceAudioOutputToStereo">
+      <summary>Gets or sets whether audio output is downmixed to stereo even when the console is configured for surround sound. Must be used on the UI thread.</summary>
+    </member>
+    <member name="P:Microsoft.Xbox.Media.Speakers.Stereo">
+      <summary>Gets whether the console's audio output is configured for stereo (the inverse of <see cref="P:Microsoft.Xbox.Media.Speakers.Surround"/>). Must be read on the UI thread.</summary>
+    </member>
+    <member name="P:Microsoft.Xbox.Media.Speakers.Surround">
+      <summary>Gets whether the console's audio output is configured for surround sound. Must be read on the UI thread.</summary>
+    </member>
+    <member name="T:Microsoft.Xbox.Media.TimedTextColor">
+      <summary>Caption colors that the user can choose in the console's closed-captioning settings.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.TimedTextColor.Black">
+      <summary>Black.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.TimedTextColor.White">
+      <summary>White.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.TimedTextColor.Red">
+      <summary>Red.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.TimedTextColor.Green">
+      <summary>Green.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.TimedTextColor.Blue">
+      <summary>Blue.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.TimedTextColor.Yellow">
+      <summary>Yellow.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.TimedTextColor.Magenta">
+      <summary>Magenta.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.TimedTextColor.Cyan">
+      <summary>Cyan.</summary>
+    </member>
+    <member name="T:Microsoft.Xbox.Media.TimedTextEdgeAttribute">
+      <summary>The edge effect drawn around caption characters.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.TimedTextEdgeAttribute.Raised">
+      <summary>Characters appear raised (embossed).</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.TimedTextEdgeAttribute.Depressed">
+      <summary>Characters appear depressed (engraved).</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.TimedTextEdgeAttribute.DropShadow">
+      <summary>Characters have a drop shadow.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.TimedTextEdgeAttribute.Uniform">
+      <summary>Characters have a uniform outline.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.TimedTextEdgeAttribute.None">
+      <summary>No edge effect.</summary>
+    </member>
+    <member name="T:Microsoft.Xbox.Media.TimedTextFontSize">
+      <summary>Caption text size.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.TimedTextFontSize.Small">
+      <summary>Small text.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.TimedTextFontSize.Medium">
+      <summary>Medium (standard) text.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.TimedTextFontSize.Large">
+      <summary>Large text.</summary>
+    </member>
+    <member name="T:Microsoft.Xbox.Media.TimedTextFontStyle">
+      <summary>Caption font family style.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.TimedTextFontStyle.Default">
+      <summary>The renderer's default caption font.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.TimedTextFontStyle.MonoSerif">
+      <summary>Monospaced font with serifs.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.TimedTextFontStyle.ProportionalSerif">
+      <summary>Proportional font with serifs.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.TimedTextFontStyle.MonoSansSerif">
+      <summary>Monospaced font without serifs.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.TimedTextFontStyle.ProportionalSansSerif">
+      <summary>Proportional font without serifs.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.TimedTextFontStyle.Casual">
+      <summary>Casual (informal) font.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.TimedTextFontStyle.Cursive">
+      <summary>Cursive (script) font.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.TimedTextFontStyle.SmallCaps">
+      <summary>Small capitals.</summary>
+    </member>
+    <member name="T:Microsoft.Xbox.Media.TimedTextLanguage">
+      <summary>The caption track the user prefers.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.TimedTextLanguage.English">
+      <summary>English captions.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.TimedTextLanguage.Spanish">
+      <summary>Spanish captions.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.TimedTextLanguage.EasyReader">
+      <summary>Easy-reader captions (simplified text at a reduced reading rate).</summary>
+    </member>
+    <member name="T:Microsoft.Xbox.Media.TimedTextOpacity">
+      <summary>Opacity of caption text, background or window.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.TimedTextOpacity.Opaque">
+      <summary>Fully opaque.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.TimedTextOpacity.SemiTransparent">
+      <summary>Partly transparent.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.TimedTextOpacity.Transparent">
+      <summary>Fully transparent (not drawn).</summary>
+    </member>
+    <member name="T:Microsoft.Xbox.Media.TimedTextSettings">
+      <summary>A snapshot of the user's caption appearance preferences. Obtain one from <see cref="M:Microsoft.Xbox.Media.MediaCapabilities.GetTimedTextSettings"/> and apply it when rendering captions; the properties are read-only.</summary>
+    </member>
+    <member name="P:Microsoft.Xbox.Media.TimedTextSettings.UseDefaults">
+      <summary>Gets whether the user has kept the default caption style. When <see langword="true"/>, render captions in your own default style and ignore the other properties.</summary>
+    </member>
+    <member name="P:Microsoft.Xbox.Media.TimedTextSettings.BackgroundColor">
+      <summary>Gets the color of the box drawn directly behind the caption text.</summary>
+    </member>
+    <member name="P:Microsoft.Xbox.Media.TimedTextSettings.BackgroundOpacity">
+      <summary>Gets the opacity of the box drawn directly behind the caption text.</summary>
+    </member>
+    <member name="P:Microsoft.Xbox.Media.TimedTextSettings.EdgeAttribute">
+      <summary>Gets the edge effect for caption characters.</summary>
+    </member>
+    <member name="P:Microsoft.Xbox.Media.TimedTextSettings.FontColor">
+      <summary>Gets the caption text color. The default is <see cref="F:Microsoft.Xbox.Media.TimedTextColor.White"/>.</summary>
+    </member>
+    <member name="P:Microsoft.Xbox.Media.TimedTextSettings.FontOpacity">
+      <summary>Gets the caption text opacity.</summary>
+    </member>
+    <member name="P:Microsoft.Xbox.Media.TimedTextSettings.FontSize">
+      <summary>Gets the caption text size.</summary>
+    </member>
+    <member name="P:Microsoft.Xbox.Media.TimedTextSettings.FontStyle">
+      <summary>Gets the caption font style.</summary>
+    </member>
+    <member name="P:Microsoft.Xbox.Media.TimedTextSettings.PreferredLanguage">
+      <summary>Gets the caption track the user prefers.</summary>
+    </member>
+    <member name="P:Microsoft.Xbox.Media.TimedTextSettings.WindowColor">
+      <summary>Gets the color of the caption window (the area enclosing all caption lines).</summary>
+    </member>
+    <member name="P:Microsoft.Xbox.Media.TimedTextSettings.WindowOpacity">
+      <summary>Gets the opacity of the caption window.</summary>
+    </member>
+
+    <!-- Microsoft.Xbox.Media.Mpeg -->
+    <member name="T:Microsoft.Xbox.Media.Mpeg.MpegDemultiplexer">
+      <summary>Splits an MPEG-2 transport stream into its elementary audio, video and caption streams using the console's native demultiplexer. Typically used inside a custom <c>MediaStreamSource</c> to play transport-stream content.</summary>
+      <remarks>
+        <para>Feed raw transport-stream bytes with <see cref="M:Microsoft.Xbox.Media.Mpeg.MpegDemultiplexer.ProcessInput(System.Byte[],System.Int32)"/>. Once <see cref="M:Microsoft.Xbox.Media.Mpeg.MpegDemultiplexer.HasStreamProperties"/> returns <see langword="true"/>, find streams with <see cref="M:Microsoft.Xbox.Media.Mpeg.MpegDemultiplexer.GetStreamIdAtIndex(Microsoft.Xbox.Media.Mpeg.MpegStreamType,System.Int32)"/>, enable them with <see cref="M:Microsoft.Xbox.Media.Mpeg.MpegDemultiplexer.SelectStream(System.Int32,System.Boolean)"/>, read their formats, and pull samples with <see cref="M:Microsoft.Xbox.Media.Mpeg.MpegDemultiplexer.ProduceOutputForStream(System.Int32)"/>.</para>
+        <para>Only <see cref="F:Microsoft.Xbox.Media.Mpeg.MpegContainerType.Transport"/> is supported. Dispose the demultiplexer to release the native instance; calls after disposal throw <see cref="T:System.InvalidOperationException"/>.</para>
+      </remarks>
+    </member>
+    <member name="M:Microsoft.Xbox.Media.Mpeg.MpegDemultiplexer.#ctor(Microsoft.Xbox.Media.Mpeg.MpegContainerType)">
+      <summary>Creates a demultiplexer for the specified container format.</summary>
+      <param name="streamType">The container format. Must be <see cref="F:Microsoft.Xbox.Media.Mpeg.MpegContainerType.Transport"/>.</param>
+      <exception cref="T:System.NotImplementedException"><paramref name="streamType"/> is <see cref="F:Microsoft.Xbox.Media.Mpeg.MpegContainerType.Program"/>, or the native demultiplexer could not be created.</exception>
+    </member>
+    <member name="M:Microsoft.Xbox.Media.Mpeg.MpegDemultiplexer.Finalize">
+      <summary>Releases the native demultiplexer if <see cref="M:Microsoft.Xbox.Media.Mpeg.MpegDemultiplexer.Dispose"/> was not called.</summary>
+    </member>
+    <member name="M:Microsoft.Xbox.Media.Mpeg.MpegDemultiplexer.Flush">
+      <summary>Discards all buffered input and pending samples, for example when playback stops or the source changes.</summary>
+    </member>
+    <member name="M:Microsoft.Xbox.Media.Mpeg.MpegDemultiplexer.PrepareForSeek(System.Int64)">
+      <summary>Prepares the demultiplexer to receive data from a new position in the stream. Call it before feeding input from the seek target.</summary>
+      <param name="seekToTime">The target presentation time, in the same units as <see cref="P:Microsoft.Xbox.Media.Mpeg.MpegStreamSample.PresentationTime"/>.</param>
+    </member>
+    <member name="M:Microsoft.Xbox.Media.Mpeg.MpegDemultiplexer.ProcessInput(System.Byte[],System.Int32)">
+      <summary>Passes a block of raw container data to the demultiplexer.</summary>
+      <param name="data">The buffer that holds the data.</param>
+      <param name="dataLength">The number of bytes to read from the start of <paramref name="data"/>; must be greater than zero.</param>
+      <exception cref="T:System.ArgumentException"><paramref name="data"/> is <see langword="null"/> or <paramref name="dataLength"/> is zero or negative.</exception>
+    </member>
+    <member name="M:Microsoft.Xbox.Media.Mpeg.MpegDemultiplexer.ProduceOutputForStream(System.Int32)">
+      <summary>Retrieves the next complete sample for an elementary stream.</summary>
+      <param name="streamId">The stream ID from <see cref="M:Microsoft.Xbox.Media.Mpeg.MpegDemultiplexer.GetStreamIdAtIndex(Microsoft.Xbox.Media.Mpeg.MpegStreamType,System.Int32)"/>; must not be negative.</param>
+      <returns>A sample whose data has been copied into managed memory, or <see langword="null"/> if no complete sample is available yet (feed more input).</returns>
+    </member>
+    <member name="M:Microsoft.Xbox.Media.Mpeg.MpegDemultiplexer.GetStreamIdAtIndex(Microsoft.Xbox.Media.Mpeg.MpegStreamType,System.Int32)">
+      <summary>Gets the ID of the n-th elementary stream of a given kind.</summary>
+      <param name="streamType">The kind of stream to look for.</param>
+      <param name="index">The zero-based index among streams of that kind.</param>
+      <returns>The stream ID, used by the other methods of this class.</returns>
+      <exception cref="T:Microsoft.Xbox.Media.Mpeg.MpegStreamsNotInitializedException">Not enough input has been processed to know the stream layout.</exception>
+    </member>
+    <member name="M:Microsoft.Xbox.Media.Mpeg.MpegDemultiplexer.GetStreamIdForProgramId(System.Int32)">
+      <summary>Gets the stream ID for a transport-stream packet identifier (PID).</summary>
+      <param name="programId">The PID of the elementary stream.</param>
+      <returns>The corresponding stream ID.</returns>
+    </member>
+    <member name="M:Microsoft.Xbox.Media.Mpeg.MpegDemultiplexer.GetProgramIdForStreamId(System.Int32)">
+      <summary>Gets the transport-stream packet identifier (PID) for a stream ID.</summary>
+      <param name="id">The stream ID.</param>
+      <returns>The PID that carries the stream.</returns>
+    </member>
+    <member name="M:Microsoft.Xbox.Media.Mpeg.MpegDemultiplexer.SelectStream(System.Int32,System.Boolean)">
+      <summary>Enables or disables output for an elementary stream. Only enabled streams produce samples.</summary>
+      <param name="id">The stream ID.</param>
+      <param name="enableStream"><see langword="true"/> to produce samples for the stream; <see langword="false"/> to drop its data.</param>
+      <exception cref="T:Microsoft.Xbox.Media.Mpeg.MpegStreamsNotInitializedException">Not enough input has been processed to know the stream layout.</exception>
+    </member>
+    <member name="M:Microsoft.Xbox.Media.Mpeg.MpegDemultiplexer.HasStreamProperties">
+      <summary>Gets whether enough input has been processed for the stream layout and formats to be known.</summary>
+      <returns><see langword="true"/> if stream information is available; otherwise <see langword="false"/>.</returns>
+    </member>
+    <member name="M:Microsoft.Xbox.Media.Mpeg.MpegDemultiplexer.GetAudioStreamProperties(System.Int32)">
+      <summary>Gets the format of an audio stream.</summary>
+      <param name="streamIndex">The stream ID of an audio stream.</param>
+      <returns>A dictionary with an entry for every <see cref="T:Microsoft.Xbox.Media.Mpeg.MpegAudioStreamKey"/> value, all formatted as invariant-culture strings; or <see langword="null"/> if the stream's properties could not be read.</returns>
+      <exception cref="T:Microsoft.Xbox.Media.Mpeg.MpegStreamsNotInitializedException"><see cref="M:Microsoft.Xbox.Media.Mpeg.MpegDemultiplexer.HasStreamProperties"/> is <see langword="false"/>.</exception>
+    </member>
+    <member name="M:Microsoft.Xbox.Media.Mpeg.MpegDemultiplexer.GetVideoStreamProperties(System.Int32)">
+      <summary>Gets the format of a video stream.</summary>
+      <param name="streamIndex">The stream ID of a video stream.</param>
+      <returns>A dictionary with the width, height and codec (<c>"H264"</c> or <c>"MPG2"</c>); or <see langword="null"/> if the stream's properties could not be read.</returns>
+      <exception cref="T:Microsoft.Xbox.Media.Mpeg.MpegStreamsNotInitializedException"><see cref="M:Microsoft.Xbox.Media.Mpeg.MpegDemultiplexer.HasStreamProperties"/> is <see langword="false"/>.</exception>
+      <exception cref="T:System.NotImplementedException">The video codec is neither H.264 nor MPEG-2.</exception>
+    </member>
+    <member name="T:Microsoft.Xbox.Media.Mpeg.MpegAudioStreamKey">
+      <summary>Keys of the dictionary returned by <see cref="M:Microsoft.Xbox.Media.Mpeg.MpegDemultiplexer.GetAudioStreamProperties(System.Int32)"/>.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.Mpeg.MpegAudioStreamKey.Frequency">
+      <summary>The sampling rate, in Hz.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.Mpeg.MpegAudioStreamKey.Channels">
+      <summary>The number of audio channels.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.Mpeg.MpegAudioStreamKey.ChannelsMask">
+      <summary>The speaker-position mask for the channels, as a decimal number.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.Mpeg.MpegAudioStreamKey.AudioProfile">
+      <summary>The codec profile, as a decimal number.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.Mpeg.MpegAudioStreamKey.CodecPrivateData">
+      <summary>Codec initialization data (up to 128 bytes) as an uppercase hexadecimal string, suitable for the <c>CodecPrivateData</c> media attribute of a <c>MediaStreamSource</c>.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.Mpeg.MpegAudioStreamKey.Language">
+      <summary>The language code declared for the stream.</summary>
+    </member>
+    <member name="T:Microsoft.Xbox.Media.Mpeg.MpegVideoStreamKey">
+      <summary>Keys of the dictionary returned by <see cref="M:Microsoft.Xbox.Media.Mpeg.MpegDemultiplexer.GetVideoStreamProperties(System.Int32)"/>.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.Mpeg.MpegVideoStreamKey.Width">
+      <summary>The frame width, in pixels.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.Mpeg.MpegVideoStreamKey.Height">
+      <summary>The frame height, in pixels.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.Mpeg.MpegVideoStreamKey.Codec">
+      <summary>The codec: <c>"H264"</c> or <c>"MPG2"</c>.</summary>
+    </member>
+    <member name="T:Microsoft.Xbox.Media.Mpeg.MpegContainerType">
+      <summary>MPEG-2 system container formats.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.Mpeg.MpegContainerType.Transport">
+      <summary>MPEG-2 transport stream (188-byte packets). This is the only supported format.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.Mpeg.MpegContainerType.Program">
+      <summary>MPEG-2 program stream. Not supported; the <see cref="T:Microsoft.Xbox.Media.Mpeg.MpegDemultiplexer"/> constructor throws <see cref="T:System.NotImplementedException"/>.</summary>
+    </member>
+    <member name="T:Microsoft.Xbox.Media.Mpeg.MpegElementaryStreamType">
+      <summary>The coding of an elementary stream. Most values equal the MPEG-2 transport-stream <c>stream_type</c> code.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.Mpeg.MpegElementaryStreamType.None">
+      <summary>No stream type, or not known.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.Mpeg.MpegElementaryStreamType.Video">
+      <summary>MPEG-1 video (ISO/IEC 11172-2), stream type 1.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.Mpeg.MpegElementaryStreamType.VideoConstrained">
+      <summary>MPEG-2 video (ISO/IEC 13818-2), stream type 2.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.Mpeg.MpegElementaryStreamType.Audio11172">
+      <summary>MPEG-1 audio (ISO/IEC 11172-3), stream type 3.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.Mpeg.MpegElementaryStreamType.Audio13818Part3">
+      <summary>MPEG-2 audio (ISO/IEC 13818-3), stream type 4.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.Mpeg.MpegElementaryStreamType.PacketizedElementaryStreamPrivate">
+      <summary>Private data carried in PES packets, stream type 6.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.Mpeg.MpegElementaryStreamType.Video13522Part5">
+      <summary>MHEG data (ISO/IEC 13522-5), stream type 7.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.Mpeg.MpegElementaryStreamType.DigitalStorageMedia">
+      <summary>DSM-CC data, stream type 8.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.Mpeg.MpegElementaryStreamType.DigitalStorageMediaTypeA">
+      <summary>DSM-CC type A (multiprotocol encapsulation), stream type 10.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.Mpeg.MpegElementaryStreamType.DigitalStorageMediaTypeB">
+      <summary>DSM-CC type B (U-N messages), stream type 11.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.Mpeg.MpegElementaryStreamType.DigitalStorageMediaTypeC">
+      <summary>DSM-CC type C (stream descriptors), stream type 12.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.Mpeg.MpegElementaryStreamType.DigitalStorageMediaTypeD">
+      <summary>DSM-CC type D (sections), stream type 13.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.Mpeg.MpegElementaryStreamType.Auxiliary">
+      <summary>MPEG-2 auxiliary data, stream type 14.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.Mpeg.MpegElementaryStreamType.AdvancedAudioCoding">
+      <summary>AAC audio with ADTS framing, stream type 15.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.Mpeg.MpegElementaryStreamType.HighEfficiencyAdvancedAudioCoding">
+      <summary>HE-AAC (MPEG-4 audio with LATM framing), stream type 17.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.Mpeg.MpegElementaryStreamType.AdvancedVideoCodingH264">
+      <summary>H.264/AVC video, stream type 27.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.Mpeg.MpegElementaryStreamType.VideoMpg2High">
+      <summary>MPEG-2 video (private code 128). Reported as <c>"MPG2"</c> by <see cref="M:Microsoft.Xbox.Media.Mpeg.MpegDemultiplexer.GetVideoStreamProperties(System.Int32)"/>.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.Mpeg.MpegElementaryStreamType.AudioAC3">
+      <summary>Dolby Digital (AC-3) audio, code 129.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.Mpeg.MpegElementaryStreamType.AudioPulseCodeModulation">
+      <summary>LPCM audio, code 131.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.Mpeg.MpegElementaryStreamType.AudioDts">
+      <summary>DTS audio, code 133.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.Mpeg.MpegElementaryStreamType.ClosedCaption">
+      <summary>Closed-caption data, code 134.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.Mpeg.MpegElementaryStreamType.AudioEnhancedAC3">
+      <summary>Dolby Digital Plus (E-AC-3) audio, code 135.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.Mpeg.MpegElementaryStreamType.AudioVC9">
+      <summary>Audio stream with private code 136.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.Mpeg.MpegElementaryStreamType.AudioWma">
+      <summary>Windows Media Audio, code 230.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.Mpeg.MpegElementaryStreamType.AudioWmaPro">
+      <summary>Windows Media Audio Professional, code 231.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.Mpeg.MpegElementaryStreamType.VideoVC1">
+      <summary>VC-1 video, code 234.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.Mpeg.MpegElementaryStreamType.WindowsMediaVideo9">
+      <summary>Windows Media Video 9, code 235.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.Mpeg.MpegElementaryStreamType.AudioWmaWithHeader">
+      <summary>Windows Media Audio with an embedded format header, code 255.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.Mpeg.MpegElementaryStreamType.EntitlementControlMessage">
+      <summary>Conditional-access entitlement control messages (ECM); not a media stream.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.Mpeg.MpegElementaryStreamType.DistributionFormatExchangeProfile">
+      <summary>DFXP (TTML) timed-text data.</summary>
+    </member>
+    <member name="T:Microsoft.Xbox.Media.Mpeg.MpegFrameType">
+      <summary>How a video sample depends on other frames.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.Mpeg.MpegFrameType.Unknown">
+      <summary>The frame type is not known (for example, for audio samples).</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.Mpeg.MpegFrameType.NoDepend">
+      <summary>An intra-coded frame (I-frame) that does not depend on other frames; a valid seek or start point.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.Mpeg.MpegFrameType.Depend">
+      <summary>A predicted frame (P-frame) that depends on an earlier frame.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.Mpeg.MpegFrameType.DependAndDepend">
+      <summary>A bidirectionally predicted frame (B-frame) that depends on earlier and later frames.</summary>
+    </member>
+    <member name="T:Microsoft.Xbox.Media.Mpeg.MpegSampleProperty">
+      <summary>Flags attached to a demultiplexed sample.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.Mpeg.MpegSampleProperty.None">
+      <summary>No special condition.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.Mpeg.MpegSampleProperty.Discontinuity">
+      <summary>The sample follows a break in the stream (for example, after a seek or lost data); timestamps may jump.</summary>
+    </member>
+    <member name="T:Microsoft.Xbox.Media.Mpeg.MpegStreamSample">
+      <summary>One demultiplexed elementary-stream sample (an access unit) with its timing information.</summary>
+    </member>
+    <member name="M:Microsoft.Xbox.Media.Mpeg.MpegStreamSample.GetBuffer">
+      <summary>Gets the sample data.</summary>
+      <returns>The buffer holding the sample bytes. Its length equals <see cref="P:Microsoft.Xbox.Media.Mpeg.MpegStreamSample.SampleDataSize"/>.</returns>
+    </member>
+    <member name="P:Microsoft.Xbox.Media.Mpeg.MpegStreamSample.ElementaryStreamType">
+      <summary>Gets the coding of the stream the sample came from.</summary>
+    </member>
+    <member name="P:Microsoft.Xbox.Media.Mpeg.MpegStreamSample.FrameType">
+      <summary>Gets how the sample depends on other frames. Use it to find key frames.</summary>
+    </member>
+    <member name="P:Microsoft.Xbox.Media.Mpeg.MpegStreamSample.PresentationTime">
+      <summary>Gets the presentation timestamp (PTS) of the sample, as reported by the native demultiplexer.</summary>
+    </member>
+    <member name="P:Microsoft.Xbox.Media.Mpeg.MpegStreamSample.SampleAttributes">
+      <summary>Gets flags for the sample, such as a discontinuity.</summary>
+    </member>
+    <member name="P:Microsoft.Xbox.Media.Mpeg.MpegStreamSample.SampleDataSize">
+      <summary>Gets the number of bytes of sample data.</summary>
+    </member>
+    <member name="P:Microsoft.Xbox.Media.Mpeg.MpegStreamSample.SampleDuration">
+      <summary>Gets the duration of the sample, as reported by the native demultiplexer.</summary>
+    </member>
+    <member name="P:Microsoft.Xbox.Media.Mpeg.MpegStreamSample.StreamTime">
+      <summary>Gets the decoding timestamp (DTS) of the sample, as reported by the native demultiplexer.</summary>
+    </member>
+    <member name="T:Microsoft.Xbox.Media.Mpeg.MpegStreamType">
+      <summary>Kinds of elementary streams, used to look up stream IDs with <see cref="M:Microsoft.Xbox.Media.Mpeg.MpegDemultiplexer.GetStreamIdAtIndex(Microsoft.Xbox.Media.Mpeg.MpegStreamType,System.Int32)"/>.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.Mpeg.MpegStreamType.Unknown">
+      <summary>Any other or unrecognized stream.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.Mpeg.MpegStreamType.Video">
+      <summary>A video stream.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.Mpeg.MpegStreamType.Audio">
+      <summary>An audio stream.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.Mpeg.MpegStreamType.ClosedCaption">
+      <summary>A closed-caption stream.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Media.Mpeg.MpegStreamType.PlayReadyProtected">
+      <summary>A stream protected with PlayReady encryption.</summary>
+    </member>
+    <member name="T:Microsoft.Xbox.Media.Mpeg.MpegStreamsNotInitializedException">
+      <summary>The exception thrown when an <see cref="T:Microsoft.Xbox.Media.Mpeg.MpegDemultiplexer"/> method needs the stream layout before enough input has been processed. Keep calling <see cref="M:Microsoft.Xbox.Media.Mpeg.MpegDemultiplexer.ProcessInput(System.Byte[],System.Int32)"/> and retry.</summary>
+    </member>
+    <member name="M:Microsoft.Xbox.Media.Mpeg.MpegStreamsNotInitializedException.#ctor(System.String)">
+      <summary>Initializes a new instance with the specified error message.</summary>
+      <param name="message">The message that describes the error.</param>
+    </member>
+    <member name="M:Microsoft.Xbox.Media.Mpeg.MpegStreamsNotInitializedException.#ctor(System.String,System.Exception)">
+      <summary>Initializes a new instance with the specified error message and inner exception.</summary>
+      <param name="message">The message that describes the error.</param>
+      <param name="innerException">The exception that caused this one.</param>
+    </member>
+
+    <!-- Microsoft.Xbox.Net -->
+    <member name="T:Microsoft.Xbox.Net.DeviceDiscovery">
+      <summary>Discovers UPnP devices (such as media servers) on the local network.</summary>
+      <remarks>Call <see cref="M:Microsoft.Xbox.Net.DeviceDiscovery.Start(System.String)"/> on the UI thread. While discovery runs, the device list is polled every 3 seconds on the UI thread and <see cref="E:Microsoft.Xbox.Net.DeviceDiscovery.DeviceAdded"/> and <see cref="E:Microsoft.Xbox.Net.DeviceDiscovery.DeviceRemoved"/> are raised for the differences. Call <see cref="M:Microsoft.Xbox.Net.DeviceDiscovery.Stop"/> when you no longer need results.</remarks>
+    </member>
+    <member name="E:Microsoft.Xbox.Net.DeviceDiscovery.DeviceAdded">
+      <summary>Occurs on the UI thread when a device matching the search target is found. Devices whose description URL is not a valid URI are skipped.</summary>
+    </member>
+    <member name="E:Microsoft.Xbox.Net.DeviceDiscovery.DeviceRemoved">
+      <summary>Occurs on the UI thread when a previously found device is no longer reported.</summary>
+    </member>
+    <member name="P:Microsoft.Xbox.Net.DeviceDiscovery.IsStarted">
+      <summary>Gets whether a discovery session is running. Must be read on the UI thread.</summary>
+    </member>
+    <member name="M:Microsoft.Xbox.Net.DeviceDiscovery.Start(System.String)">
+      <summary>Starts searching the local network for UPnP devices of the specified type. Must be called on the UI thread.</summary>
+      <param name="target">The SSDP search target, for example <c>urn:schemas-upnp-org:device:MediaServer:1</c> or <c>ssdp:all</c>.</param>
+      <returns><see langword="true"/> if discovery started; <see langword="false"/> if the console could not start it (discovery is then stopped).</returns>
+      <exception cref="T:System.InvalidOperationException">Discovery is already running.</exception>
+      <exception cref="T:System.ArgumentNullException"><paramref name="target"/> is <see langword="null"/> or empty.</exception>
+    </member>
+    <member name="M:Microsoft.Xbox.Net.DeviceDiscovery.Stop">
+      <summary>Stops device discovery and forgets the devices found so far. No <see cref="E:Microsoft.Xbox.Net.DeviceDiscovery.DeviceRemoved"/> events are raised for them. Must be called on the UI thread.</summary>
+    </member>
+    <member name="T:Microsoft.Xbox.Net.DeviceDiscoveryEventArgs">
+      <summary>Provides data for the <see cref="E:Microsoft.Xbox.Net.DeviceDiscovery.DeviceAdded"/> and <see cref="E:Microsoft.Xbox.Net.DeviceDiscovery.DeviceRemoved"/> events.</summary>
+    </member>
+    <member name="P:Microsoft.Xbox.Net.DeviceDiscoveryEventArgs.Device">
+      <summary>Gets the device that was found or removed.</summary>
+    </member>
+    <member name="T:Microsoft.Xbox.Net.UpnpDevice">
+      <summary>A UPnP device found by <see cref="T:Microsoft.Xbox.Net.DeviceDiscovery"/>.</summary>
+    </member>
+    <member name="P:Microsoft.Xbox.Net.UpnpDevice.Id">
+      <summary>Gets the unique identifier the device announced (its USN).</summary>
+    </member>
+    <member name="P:Microsoft.Xbox.Net.UpnpDevice.DescriptionUri">
+      <summary>Gets the HTTP URL of the device's description document. Download it to learn the device's name and services.</summary>
+    </member>
+    <member name="T:Microsoft.Xbox.Net.NetworkLinkStatusFlags">
+      <summary>Describes the console's network link. Several flags can be combined.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Net.NetworkLinkStatusFlags.LinkInactive">
+      <summary>No flags set: there is no active network link.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Net.NetworkLinkStatusFlags.LinkActive">
+      <summary>A network link is active.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Net.NetworkLinkStatusFlags.Link100mbps">
+      <summary>The wired link runs at 100 Mbps.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Net.NetworkLinkStatusFlags.Link10mbps">
+      <summary>The wired link runs at 10 Mbps.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Net.NetworkLinkStatusFlags.FullDuplex">
+      <summary>The link is full duplex.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Net.NetworkLinkStatusFlags.HalfDuplex">
+      <summary>The link is half duplex.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Net.NetworkLinkStatusFlags.LinkWireless">
+      <summary>The link is wireless.</summary>
+    </member>
+    <member name="T:Microsoft.Xbox.Net.NetworkPerfCounters">
+      <summary>A snapshot of the console HTTP stack's counters, returned by <see cref="M:Microsoft.Xbox.Net.NetworkSettings.GetNetworkPerfCounters"/>. Useful for diagnostics and bandwidth display.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Net.NetworkPerfCounters.ActiveConnectionHandleCount">
+      <summary>The number of open HTTP connection handles.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Net.NetworkPerfCounters.ActiveRequestHandleCount">
+      <summary>The number of open HTTP request handles.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Net.NetworkPerfCounters.ActiveSessionHandleCount">
+      <summary>The number of open HTTP session handles.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Net.NetworkPerfCounters.TotalBytesReceived">
+      <summary>The total number of bytes received by the HTTP stack.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Net.NetworkPerfCounters.TotalBytesSent">
+      <summary>The total number of bytes sent by the HTTP stack.</summary>
+    </member>
+    <member name="T:Microsoft.Xbox.Net.NetworkSettings">
+      <summary>Reads and adjusts console network settings used by the application's HTTP requests.</summary>
+    </member>
+    <member name="P:Microsoft.Xbox.Net.NetworkSettings.ActiveServiceEndpoint">
+      <summary>Gets the base URL of the online services environment the console is configured for (for example, the production or a test environment).</summary>
+      <value>The endpoint URL, or an empty string at design time or if it cannot be read.</value>
+    </member>
+    <member name="P:Microsoft.Xbox.Net.NetworkSettings.ReceiveTimeout">
+      <summary>Gets or sets the time, in milliseconds, that HTTP requests wait for data from the server before failing.</summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">The value is negative.</exception>
+    </member>
+    <member name="M:Microsoft.Xbox.Net.NetworkSettings.GetNetworkLinkStatus">
+      <summary>Gets the state of the console's network link (active, speed, duplex, wireless). Must be called on the UI thread.</summary>
+      <returns>A combination of <see cref="T:Microsoft.Xbox.Net.NetworkLinkStatusFlags"/> values; <see cref="F:Microsoft.Xbox.Net.NetworkLinkStatusFlags.LinkInactive"/> if there is no link.</returns>
+    </member>
+    <member name="M:Microsoft.Xbox.Net.NetworkSettings.GetNetworkPerfCounters">
+      <summary>Gets the current HTTP stack counters. Must be called on the UI thread.</summary>
+      <returns>A snapshot of the counters.</returns>
+    </member>
+
+    <!-- Microsoft.Xbox.Services -->
+    <member name="T:Microsoft.Xbox.Services.AggregateRating">
+      <summary>The community rating of a media item, returned by <see cref="M:Microsoft.Xbox.Services.RatingsServiceClient.DownloadAggregateRatingsAsync(System.String)"/>.</summary>
+    </member>
+    <member name="P:Microsoft.Xbox.Services.AggregateRating.AverageRating">
+      <summary>Gets the average of all user ratings, on the 0.0-1.0 scale used by <see cref="P:Microsoft.Xbox.Services.UserRating.RatingValue"/>.</summary>
+    </member>
+    <member name="P:Microsoft.Xbox.Services.AggregateRating.LastUpdated">
+      <summary>Gets when the aggregate was last recalculated.</summary>
+    </member>
+    <member name="P:Microsoft.Xbox.Services.AggregateRating.MediaAssetId">
+      <summary>Gets the identifier of the rated media item.</summary>
+    </member>
+    <member name="P:Microsoft.Xbox.Services.AggregateRating.RatingCount">
+      <summary>Gets the number of user ratings the average is based on.</summary>
+    </member>
+    <member name="P:Microsoft.Xbox.Services.AggregateRating.UserRating">
+      <summary>Gets the requesting user's own rating of the item, or <see langword="null"/> if the service did not return one.</summary>
+    </member>
+    <member name="T:Microsoft.Xbox.Services.UserRating">
+      <summary>One user's rating, review and interest for a media item.</summary>
+    </member>
+    <member name="P:Microsoft.Xbox.Services.UserRating.LastUpdated">
+      <summary>Gets when the rating was last changed.</summary>
+    </member>
+    <member name="P:Microsoft.Xbox.Services.UserRating.MediaAssetId">
+      <summary>Gets the identifier of the rated media item.</summary>
+    </member>
+    <member name="P:Microsoft.Xbox.Services.UserRating.RatingValue">
+      <summary>Gets the rating, from 0.0 to 1.0, or <see langword="null"/> if the user only recorded an interest.</summary>
+    </member>
+    <member name="P:Microsoft.Xbox.Services.UserRating.ReviewText">
+      <summary>Gets the user's review text, or <see langword="null"/> if there is none.</summary>
+    </member>
+    <member name="P:Microsoft.Xbox.Services.UserRating.UserInterest">
+      <summary>Gets the user's stated interest in the item, or <see langword="null"/> if none was recorded.</summary>
+    </member>
+    <member name="T:Microsoft.Xbox.Services.RatingsServiceClient">
+      <summary>Reads and writes media ratings and reviews on the Xbox LIVE ratings service for a signed-in user.</summary>
+      <remarks>
+        <para>Each call first resolves the service URL from the Xbox LIVE service directory (cached until it expires), then sends an HTTP request authorized with the user's Xbox LIVE token. Results arrive through the matching <c>...Completed</c> event; check <see cref="P:System.ComponentModel.AsyncCompletedEventArgs.Error"/> before reading <c>Result</c>. Exceptions during the operation are reported through the event rather than thrown.</para>
+        <para>If the service directory has no entry for the operation, the event is raised with no error and a <see langword="null"/> <c>Result</c>.</para>
+      </remarks>
+    </member>
+    <member name="M:Microsoft.Xbox.Services.RatingsServiceClient.#ctor(System.Int32)">
+      <summary>Creates a ratings client that acts on behalf of the specified user.</summary>
+      <param name="playerIndex">The index (0-3) of the signed-in user whose Xbox LIVE identity is used for the requests.</param>
+    </member>
+    <member name="E:Microsoft.Xbox.Services.RatingsServiceClient.DeleteUserRatingCompleted">
+      <summary>Occurs when <see cref="M:Microsoft.Xbox.Services.RatingsServiceClient.DeleteUserRatingAsync(System.String)"/> finishes.</summary>
+      <remarks>Once the request has been sent, this event reports success even if the HTTP request failed; only errors while resolving the service URL are reported in <see cref="P:System.ComponentModel.AsyncCompletedEventArgs.Error"/>.</remarks>
+    </member>
+    <member name="E:Microsoft.Xbox.Services.RatingsServiceClient.DownloadAggregateRatingsCompleted">
+      <summary>Occurs when <see cref="M:Microsoft.Xbox.Services.RatingsServiceClient.DownloadAggregateRatingsAsync(System.String)"/> finishes.</summary>
+    </member>
+    <member name="E:Microsoft.Xbox.Services.RatingsServiceClient.DownloadUserRatingCompleted">
+      <summary>Occurs when <see cref="M:Microsoft.Xbox.Services.RatingsServiceClient.DownloadUserRatingAsync(System.String)"/> finishes.</summary>
+    </member>
+    <member name="E:Microsoft.Xbox.Services.RatingsServiceClient.UploadUserRatingCompleted">
+      <summary>Occurs when an upload started with <c>UploadUserRatingAsync</c> or <see cref="M:Microsoft.Xbox.Services.RatingsServiceClient.UploadUserRatingInterestAsync(System.String,Microsoft.Xbox.Services.UserInterest)"/> finishes. On success, <c>Result</c> holds the rating as stored by the service.</summary>
+    </member>
+    <member name="M:Microsoft.Xbox.Services.RatingsServiceClient.DeleteUserRatingAsync(System.String)">
+      <summary>Starts deleting the user's rating of a media item. Completion is reported by <see cref="E:Microsoft.Xbox.Services.RatingsServiceClient.DeleteUserRatingCompleted"/>.</summary>
+      <param name="mediaAssetId">The identifier of the media item.</param>
+    </member>
+    <member name="M:Microsoft.Xbox.Services.RatingsServiceClient.DownloadAggregateRatingsAsync(System.String)">
+      <summary>Starts downloading the community rating of a media item. The result is reported by <see cref="E:Microsoft.Xbox.Services.RatingsServiceClient.DownloadAggregateRatingsCompleted"/>.</summary>
+      <param name="mediaAssetId">The identifier of the media item.</param>
+    </member>
+    <member name="M:Microsoft.Xbox.Services.RatingsServiceClient.DownloadUserRatingAsync(System.String)">
+      <summary>Starts downloading the user's own rating of a media item. The result is reported by <see cref="E:Microsoft.Xbox.Services.RatingsServiceClient.DownloadUserRatingCompleted"/>.</summary>
+      <param name="mediaAssetId">The identifier of the media item.</param>
+    </member>
+    <member name="M:Microsoft.Xbox.Services.RatingsServiceClient.UploadUserRatingAsync(System.String,System.Double,System.String)">
+      <summary>Starts saving the user's rating and optional review of a media item. Completion is reported by <see cref="E:Microsoft.Xbox.Services.RatingsServiceClient.UploadUserRatingCompleted"/>.</summary>
+      <param name="mediaAssetId">The identifier of the media item.</param>
+      <param name="ratingValue">The rating, from 0.0 to 1.0 inclusive (for a five-star scale, divide the stars by 5).</param>
+      <param name="reviewText">The review text, or <see langword="null"/> or empty for none.</param>
+      <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="ratingValue"/> is less than 0.0 or greater than 1.0.</exception>
+    </member>
+    <member name="M:Microsoft.Xbox.Services.RatingsServiceClient.UploadUserRatingAsync(System.String,System.Double,System.String,Microsoft.Xbox.Services.UserInterest)">
+      <summary>Starts saving the user's rating, optional review and interest for a media item. Completion is reported by <see cref="E:Microsoft.Xbox.Services.RatingsServiceClient.UploadUserRatingCompleted"/>.</summary>
+      <param name="mediaAssetId">The identifier of the media item.</param>
+      <param name="ratingValue">The rating, from 0.0 to 1.0 inclusive.</param>
+      <param name="reviewText">The review text, or <see langword="null"/> or empty for none.</param>
+      <param name="userInterest">Whether the user wants to see this kind of item.</param>
+      <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="ratingValue"/> is less than 0.0 or greater than 1.0.</exception>
+    </member>
+    <member name="M:Microsoft.Xbox.Services.RatingsServiceClient.UploadUserRatingInterestAsync(System.String,Microsoft.Xbox.Services.UserInterest)">
+      <summary>Starts saving only the user's interest in a media item, without a rating value. Completion is reported by <see cref="E:Microsoft.Xbox.Services.RatingsServiceClient.UploadUserRatingCompleted"/>.</summary>
+      <param name="mediaAssetId">The identifier of the media item.</param>
+      <param name="userInterest">Whether the user wants to see this kind of item.</param>
+    </member>
+    <member name="T:Microsoft.Xbox.Services.MediaUsageServiceClient">
+      <summary>Reports playback activity (play, pause, stop and so on) for media items to the Xbox LIVE media usage service.</summary>
+      <remarks>Nothing is sent until <see cref="P:Microsoft.Xbox.Services.MediaUsageServiceClient.UploadUsageEnabled"/> is set to <see langword="true"/>. Events are queued (up to about 1,000) and posted in batches every 2 seconds by a UI-thread timer, using the Xbox LIVE token of the user at player index 0. Create the client on the UI thread.</remarks>
+    </member>
+    <member name="P:Microsoft.Xbox.Services.MediaUsageServiceClient.SignalsMediaServiceBaseUrl">
+      <summary>Gets the base URL of the media usage service for the environment the console is configured for, derived from <see cref="P:Microsoft.Xbox.Net.NetworkSettings.ActiveServiceEndpoint"/> the first time it is read.</summary>
+    </member>
+    <member name="P:Microsoft.Xbox.Services.MediaUsageServiceClient.UploadUsageEnabled">
+      <summary>Gets or sets whether usage events are collected and uploaded. The default is <see langword="false"/>; while it is <see langword="false"/>, <see cref="M:Microsoft.Xbox.Services.MediaUsageServiceClient.UploadMediaUsageAsync(System.String,Microsoft.Xbox.Services.UsageEventType,Microsoft.Xbox.Services.MediaType,System.TimeSpan,System.TimeSpan)"/> discards events.</summary>
+    </member>
+    <member name="E:Microsoft.Xbox.Services.MediaUsageServiceClient.UploadMediaUsageCompleted">
+      <summary>Occurs after a batch of usage events has been posted, or when queuing or posting fails. Check <see cref="P:System.ComponentModel.AsyncCompletedEventArgs.Error"/>.</summary>
+    </member>
+    <member name="M:Microsoft.Xbox.Services.MediaUsageServiceClient.UploadMediaUsageAsync(System.String,Microsoft.Xbox.Services.UsageEventType,Microsoft.Xbox.Services.MediaType,System.TimeSpan,System.TimeSpan)">
+      <summary>Queues a playback event for upload. The event is timestamped with the current UTC time and sent with the next batch.</summary>
+      <param name="mediaAssetId">The provider's identifier for the media item.</param>
+      <param name="eventType">What happened (play, pause, seek and so on).</param>
+      <param name="mediaType">The kind of media being played.</param>
+      <param name="timelineEventTime">The playback position at which the event occurred.</param>
+      <param name="mediaLength">The total duration of the media item.</param>
+      <remarks>Does nothing if <see cref="P:Microsoft.Xbox.Services.MediaUsageServiceClient.UploadUsageEnabled"/> is <see langword="false"/>.</remarks>
+    </member>
+    <member name="T:Microsoft.Xbox.Services.MediaType">
+      <summary>The kind of media item reported to the usage service.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Services.MediaType.Unknown">
+      <summary>The kind is not known.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Services.MediaType.TvEpisode">
+      <summary>A TV episode.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Services.MediaType.Movie">
+      <summary>A movie.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Services.MediaType.Track">
+      <summary>A music track.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Services.MediaType.MusicVideo">
+      <summary>A music video.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Services.MediaType.PodCast">
+      <summary>A podcast episode.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Services.MediaType.GameTrailer">
+      <summary>A game trailer.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Services.MediaType.MovieTrailer">
+      <summary>A movie trailer.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Services.MediaType.Video">
+      <summary>Other video content.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Services.MediaType.Audio">
+      <summary>Other audio content.</summary>
+    </member>
+    <member name="T:Microsoft.Xbox.Services.UsageEventType">
+      <summary>Playback actions reported with <see cref="M:Microsoft.Xbox.Services.MediaUsageServiceClient.UploadMediaUsageAsync(System.String,Microsoft.Xbox.Services.UsageEventType,Microsoft.Xbox.Services.MediaType,System.TimeSpan,System.TimeSpan)"/>.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Services.UsageEventType.Play">
+      <summary>Playback started.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Services.UsageEventType.Pause">
+      <summary>Playback was paused.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Services.UsageEventType.Stop">
+      <summary>The user stopped playback before the end.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Services.UsageEventType.End">
+      <summary>Playback reached the end of the item.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Services.UsageEventType.Skip">
+      <summary>The user skipped to another position or item.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Services.UsageEventType.Resume">
+      <summary>Playback resumed after a pause.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Services.UsageEventType.Forward">
+      <summary>The user fast-forwarded.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Services.UsageEventType.Rewind">
+      <summary>The user rewound.</summary>
+    </member>
+    <member name="T:Microsoft.Xbox.Services.UserInterest">
+      <summary>A user's stated interest in a media item, stored with their rating.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Services.UserInterest.Undefined">
+      <summary>No preference.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Services.UserInterest.AlwaysInterested">
+      <summary>The user wants to see this kind of item.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Services.UserInterest.NotInterested">
+      <summary>The user does not want to see this kind of item.</summary>
+    </member>
+    <member name="T:Microsoft.Xbox.Services.DeleteUserRatingCompletedEventArgs">
+      <summary>Provides data for the <see cref="E:Microsoft.Xbox.Services.RatingsServiceClient.DeleteUserRatingCompleted"/> event.</summary>
+    </member>
+    <member name="T:Microsoft.Xbox.Services.DownloadAggregateRatingsCompletedEventArgs">
+      <summary>Provides data for the <see cref="E:Microsoft.Xbox.Services.RatingsServiceClient.DownloadAggregateRatingsCompleted"/> event.</summary>
+    </member>
+    <member name="P:Microsoft.Xbox.Services.DownloadAggregateRatingsCompletedEventArgs.Result">
+      <summary>Gets the downloaded rating, or <see langword="null"/> if the operation failed or the service is not available.</summary>
+    </member>
+    <member name="T:Microsoft.Xbox.Services.DownloadUserRatingCompletedEventArgs">
+      <summary>Provides data for the <see cref="E:Microsoft.Xbox.Services.RatingsServiceClient.DownloadUserRatingCompleted"/> event.</summary>
+    </member>
+    <member name="P:Microsoft.Xbox.Services.DownloadUserRatingCompletedEventArgs.Result">
+      <summary>Gets the user's rating, or <see langword="null"/> if the operation failed or the service is not available.</summary>
+    </member>
+    <member name="T:Microsoft.Xbox.Services.UploadUserRatingCompletedEventArgs">
+      <summary>Provides data for the <see cref="E:Microsoft.Xbox.Services.RatingsServiceClient.UploadUserRatingCompleted"/> event.</summary>
+    </member>
+    <member name="P:Microsoft.Xbox.Services.UploadUserRatingCompletedEventArgs.Result">
+      <summary>Gets the rating as returned by the service, or <see langword="null"/> if the operation failed or the service is not available.</summary>
+    </member>
+    <member name="T:Microsoft.Xbox.Services.UploadMediaUsageCompletedEventArgs">
+      <summary>Provides data for the <see cref="E:Microsoft.Xbox.Services.MediaUsageServiceClient.UploadMediaUsageCompleted"/> event.</summary>
+    </member>
+    <member name="T:Microsoft.Xbox.Services.ServiceClientOperationCompletedEventArgs">
+      <summary>The raw result of an HTTP request made by the Xbox LIVE service clients. Used internally; the public service clients translate it into their own event data.</summary>
+    </member>
+    <member name="P:Microsoft.Xbox.Services.ServiceClientOperationCompletedEventArgs.CacheHeader">
+      <summary>Gets or sets the response's <c>Expires</c> header when the response is marked cacheable (<c>Cache-Control: public</c> or <c>private</c>); otherwise <see langword="null"/>.</summary>
+    </member>
+    <member name="P:Microsoft.Xbox.Services.ServiceClientOperationCompletedEventArgs.ResponseBody">
+      <summary>Gets the response body text, or <see langword="null"/> if the request failed.</summary>
+    </member>
+
+    <!-- Microsoft.Xbox.Transitions -->
+    <member name="T:Microsoft.Xbox.Transitions.TransitionService">
+      <summary>Attached properties and events that control the animated transitions <c>XboxApplicationFrame</c> plays when navigating between pages.</summary>
+      <remarks>
+        <para>Set <c>NavigationInTransition</c> and <c>NavigationOutTransition</c> on a page to choose its animations; <c>XboxApplicationPage</c> sets both to <see cref="T:Microsoft.Xbox.Transitions.ZIndexTransition"/> by default. A page without transitions is swapped instantly.</para>
+        <para>Elements inside a page marked with <c>TransitionTarget="True"</c> animate individually after the page, staggered by 160 ms per <c>TransitionOrder</c> step. They use their own transitions if set, otherwise the page's.</para>
+      </remarks>
+    </member>
+    <member name="F:Microsoft.Xbox.Transitions.TransitionService.NavigationInTransitionProperty">
+      <summary>Identifies the <c>TransitionService.NavigationInTransition</c> attached property: the animations played when the element is navigated to.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Transitions.TransitionService.NavigationOutTransitionProperty">
+      <summary>Identifies the <c>TransitionService.NavigationOutTransition</c> attached property: the animations played when the element is navigated away from.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Transitions.TransitionService.TransitionTargetProperty">
+      <summary>Identifies the <c>TransitionService.TransitionTarget</c> attached property. When <see langword="true"/>, the element is animated separately from its page during navigation. The default is <see langword="false"/>.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Transitions.TransitionService.TransitionOrderProperty">
+      <summary>Identifies the <c>TransitionService.TransitionOrder</c> attached property: the position of a transition target in the staggered sequence. Each step delays the element's animation by 160 ms. The default is 0.</summary>
+    </member>
+    <member name="E:Microsoft.Xbox.Transitions.TransitionService.TransitionInStarted">
+      <summary>Occurs when the incoming page's transitions start. <see cref="P:Microsoft.Xbox.Transitions.TransitionEventArgs.TargetElement"/> is the new page.</summary>
+    </member>
+    <member name="E:Microsoft.Xbox.Transitions.TransitionService.TransitionInCompleted">
+      <summary>Occurs when all of the incoming page's transitions, including its transition targets, have finished and the page accepts input.</summary>
+      <remarks>In this version <see cref="P:Microsoft.Xbox.Transitions.TransitionEventArgs.TargetElement"/> is always <see langword="null"/> for this event.</remarks>
+    </member>
+    <member name="E:Microsoft.Xbox.Transitions.TransitionService.TransitionOutStarted">
+      <summary>Occurs when the outgoing page's transitions start. <see cref="P:Microsoft.Xbox.Transitions.TransitionEventArgs.TargetElement"/> is the old page.</summary>
+    </member>
+    <member name="E:Microsoft.Xbox.Transitions.TransitionService.TransitionOutCompleted">
+      <summary>Occurs when all of the outgoing page's transitions have finished and the old page has been removed.</summary>
+      <remarks>In this version <see cref="P:Microsoft.Xbox.Transitions.TransitionEventArgs.TargetElement"/> is always <see langword="null"/> for this event.</remarks>
+    </member>
+    <member name="M:Microsoft.Xbox.Transitions.TransitionService.GetNavigationInTransition(System.Windows.UIElement)">
+      <summary>Gets the transitions played when the element is navigated to.</summary>
+      <param name="element">The page or element to query.</param>
+      <returns>The transitions, or <see langword="null"/> if none are set.</returns>
+      <exception cref="T:System.ArgumentNullException"><paramref name="element"/> is <see langword="null"/>.</exception>
+    </member>
+    <member name="M:Microsoft.Xbox.Transitions.TransitionService.SetNavigationInTransition(System.Windows.UIElement,Microsoft.Xbox.Transitions.NavigationInTransition)">
+      <summary>Sets the transitions played when the element is navigated to.</summary>
+      <param name="element">The page or transition target to change.</param>
+      <param name="value">The transitions, or <see langword="null"/> to show the element without animation.</param>
+      <exception cref="T:System.ArgumentNullException"><paramref name="element"/> is <see langword="null"/>.</exception>
+    </member>
+    <member name="M:Microsoft.Xbox.Transitions.TransitionService.GetNavigationOutTransition(System.Windows.UIElement)">
+      <summary>Gets the transitions played when the element is navigated away from.</summary>
+      <param name="element">The page or element to query.</param>
+      <returns>The transitions, or <see langword="null"/> if none are set.</returns>
+      <exception cref="T:System.ArgumentNullException"><paramref name="element"/> is <see langword="null"/>.</exception>
+    </member>
+    <member name="M:Microsoft.Xbox.Transitions.TransitionService.SetNavigationOutTransition(System.Windows.UIElement,Microsoft.Xbox.Transitions.NavigationOutTransition)">
+      <summary>Sets the transitions played when the element is navigated away from.</summary>
+      <param name="element">The page or transition target to change.</param>
+      <param name="value">The transitions, or <see langword="null"/> to remove the element without animation.</param>
+      <exception cref="T:System.ArgumentNullException"><paramref name="element"/> is <see langword="null"/>.</exception>
+    </member>
+    <member name="M:Microsoft.Xbox.Transitions.TransitionService.GetTransitionTarget(System.Windows.UIElement)">
+      <summary>Gets whether the element is animated separately from its page.</summary>
+      <param name="element">The element to query.</param>
+      <returns><see langword="true"/> if the element is a transition target.</returns>
+      <exception cref="T:System.ArgumentNullException"><paramref name="element"/> is <see langword="null"/>.</exception>
+    </member>
+    <member name="M:Microsoft.Xbox.Transitions.TransitionService.SetTransitionTarget(System.Windows.DependencyObject,System.Boolean)">
+      <summary>Marks or unmarks an element as animated separately from its page.</summary>
+      <param name="obj">The element to change.</param>
+      <param name="value"><see langword="true"/> to make the element a transition target.</param>
+    </member>
+    <member name="M:Microsoft.Xbox.Transitions.TransitionService.GetTransitionOrder(System.Windows.UIElement)">
+      <summary>Gets the element's position in the staggered transition sequence.</summary>
+      <param name="element">The element to query.</param>
+      <returns>The order value; 0 if not set.</returns>
+      <exception cref="T:System.ArgumentNullException"><paramref name="element"/> is <see langword="null"/>.</exception>
+    </member>
+    <member name="M:Microsoft.Xbox.Transitions.TransitionService.SetTransitionOrder(System.Windows.DependencyObject,System.Int32)">
+      <summary>Sets the element's position in the staggered transition sequence. Each step adds 160 ms of delay.</summary>
+      <param name="obj">The transition target to change.</param>
+      <param name="value">The order value; 0 starts first.</param>
+    </member>
+    <member name="T:Microsoft.Xbox.Transitions.NavigationTransition">
+      <summary>Pairs the transitions used for forward and backward navigation. Use the derived <see cref="T:Microsoft.Xbox.Transitions.NavigationInTransition"/> or <see cref="T:Microsoft.Xbox.Transitions.NavigationOutTransition"/>.</summary>
+      <remarks>Forward is used for new and forward navigations; Backward for back navigations. When you set one, set both: the frame does not check for a missing direction.</remarks>
+    </member>
+    <member name="P:Microsoft.Xbox.Transitions.NavigationTransition.Backward">
+      <summary>Gets or sets the transition used when navigating back.</summary>
+    </member>
+    <member name="P:Microsoft.Xbox.Transitions.NavigationTransition.Forward">
+      <summary>Gets or sets the transition used when navigating to a new page or forward.</summary>
+    </member>
+    <member name="E:Microsoft.Xbox.Transitions.NavigationTransition.BeginTransition">
+      <summary>Intended to occur when this transition starts. The navigation frame does not raise it in this version; use <see cref="E:Microsoft.Xbox.Transitions.TransitionService.TransitionInStarted"/> or <see cref="E:Microsoft.Xbox.Transitions.TransitionService.TransitionOutStarted"/> instead.</summary>
+    </member>
+    <member name="E:Microsoft.Xbox.Transitions.NavigationTransition.EndTransition">
+      <summary>Occurs when all animations of the page that this transition is attached to have finished.</summary>
+    </member>
+    <member name="T:Microsoft.Xbox.Transitions.NavigationInTransition">
+      <summary>The transitions a page plays when it is navigated to. Attach with <c>TransitionService.NavigationInTransition</c>.</summary>
+    </member>
+    <member name="T:Microsoft.Xbox.Transitions.NavigationOutTransition">
+      <summary>The transitions a page plays when it is navigated away from. Attach with <c>TransitionService.NavigationOutTransition</c>.</summary>
+    </member>
+    <member name="T:Microsoft.Xbox.Transitions.TransitionElement">
+      <summary>Base class for a transition definition that can be used in XAML. Derive from it to create custom transitions.</summary>
+    </member>
+    <member name="M:Microsoft.Xbox.Transitions.TransitionElement.GetTransition(System.Windows.UIElement,System.TimeSpan)">
+      <summary>Creates the animation for a specific element.</summary>
+      <param name="element">The element to animate.</param>
+      <param name="delay">How long to wait after <see cref="M:Microsoft.Xbox.Transitions.ITransition.Begin"/> before the animation starts.</param>
+      <returns>A transition ready to start.</returns>
+    </member>
+    <member name="T:Microsoft.Xbox.Transitions.FadeTransition">
+      <summary>A transition that fades the element in or out, using the built-in storyboard that matches <see cref="P:Microsoft.Xbox.Transitions.FadeTransition.Mode"/>.</summary>
+    </member>
+    <member name="P:Microsoft.Xbox.Transitions.FadeTransition.Mode">
+      <summary>Gets or sets which fade animation is played. The default is <see cref="F:Microsoft.Xbox.Transitions.TransitionMode.ForwardIn"/>.</summary>
+    </member>
+    <member name="M:Microsoft.Xbox.Transitions.FadeTransition.GetTransition(System.Windows.UIElement,System.TimeSpan)">
+      <summary>Creates a fade animation for the element.</summary>
+      <param name="element">The element to animate.</param>
+      <param name="delay">How long to wait after <see cref="M:Microsoft.Xbox.Transitions.ITransition.Begin"/> before the animation starts.</param>
+      <returns>A transition ready to start.</returns>
+      <exception cref="T:System.ArgumentNullException"><paramref name="element"/> is <see langword="null"/>.</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException"><see cref="P:Microsoft.Xbox.Transitions.FadeTransition.Mode"/> is not a defined value.</exception>
+    </member>
+    <member name="T:Microsoft.Xbox.Transitions.ZIndexTransition">
+      <summary>The default page transition used by <c>XboxApplicationPage</c>: animates the element through a centered render transform, using the built-in storyboard that matches <see cref="P:Microsoft.Xbox.Transitions.ZIndexTransition.Mode"/>.</summary>
+      <remarks>Replaces the element's <c>RenderTransform</c> with a new <see cref="T:System.Windows.Media.CompositeTransform"/> centered on the element, so any existing render transform is lost.</remarks>
+    </member>
+    <member name="P:Microsoft.Xbox.Transitions.ZIndexTransition.Mode">
+      <summary>Gets or sets which depth animation is played. The default is <see cref="F:Microsoft.Xbox.Transitions.TransitionMode.ForwardIn"/>.</summary>
+    </member>
+    <member name="M:Microsoft.Xbox.Transitions.ZIndexTransition.GetTransition(System.Windows.UIElement,System.TimeSpan)">
+      <summary>Creates a depth animation for the element.</summary>
+      <param name="element">The element to animate. Its <c>RenderTransform</c> and <c>RenderTransformOrigin</c> are replaced.</param>
+      <param name="delay">How long to wait after <see cref="M:Microsoft.Xbox.Transitions.ITransition.Begin"/> before the animation starts.</param>
+      <returns>A transition ready to start.</returns>
+      <exception cref="T:System.ArgumentNullException"><paramref name="element"/> is <see langword="null"/>.</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException"><see cref="P:Microsoft.Xbox.Transitions.ZIndexTransition.Mode"/> is not a defined value.</exception>
+    </member>
+    <member name="T:Microsoft.Xbox.Transitions.TransitionMode">
+      <summary>Selects the variant of a built-in transition animation by navigation direction and by whether the element is entering or leaving.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Transitions.TransitionMode.ForwardIn">
+      <summary>The element enters during forward navigation.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Transitions.TransitionMode.ForwardOut">
+      <summary>The element leaves during forward navigation.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Transitions.TransitionMode.BackwardIn">
+      <summary>The element enters during back navigation.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.Transitions.TransitionMode.BackwardOut">
+      <summary>The element leaves during back navigation.</summary>
+    </member>
+    <member name="T:Microsoft.Xbox.Transitions.TransitionEventArgs">
+      <summary>Provides data for the <see cref="T:Microsoft.Xbox.Transitions.TransitionService"/> events.</summary>
+    </member>
+    <member name="P:Microsoft.Xbox.Transitions.TransitionEventArgs.TargetElement">
+      <summary>Gets the page whose transition started or finished. Always <see langword="null"/> for the completed events in this version.</summary>
+    </member>
+    <member name="T:Microsoft.Xbox.Transitions.ITransition">
+      <summary>A running or ready-to-run transition animation, with storyboard-style playback control.</summary>
+    </member>
+    <member name="E:Microsoft.Xbox.Transitions.ITransition.Completed">
+      <summary>Occurs when the animation finishes.</summary>
+    </member>
+    <member name="M:Microsoft.Xbox.Transitions.ITransition.Begin">
+      <summary>Starts the animation.</summary>
+    </member>
+    <member name="M:Microsoft.Xbox.Transitions.ITransition.GetCurrentState">
+      <summary>Gets the playback state of the animation.</summary>
+      <returns>Whether the animation is active, filling, or stopped.</returns>
+    </member>
+    <member name="M:Microsoft.Xbox.Transitions.ITransition.GetCurrentTime">
+      <summary>Gets the current position within the animation.</summary>
+      <returns>The elapsed animation time.</returns>
+    </member>
+    <member name="M:Microsoft.Xbox.Transitions.ITransition.GetStoryboardDuration">
+      <summary>Gets the declared duration of the animation.</summary>
+      <returns>The duration.</returns>
+    </member>
+    <member name="M:Microsoft.Xbox.Transitions.ITransition.Pause">
+      <summary>Pauses the animation.</summary>
+    </member>
+    <member name="M:Microsoft.Xbox.Transitions.ITransition.Resume">
+      <summary>Resumes a paused animation.</summary>
+    </member>
+    <member name="M:Microsoft.Xbox.Transitions.ITransition.Seek(System.TimeSpan)">
+      <summary>Moves the animation to the specified position; takes effect on the next frame.</summary>
+      <param name="offset">The position from the start of the animation.</param>
+    </member>
+    <member name="M:Microsoft.Xbox.Transitions.ITransition.SeekAlignedToLastTick(System.TimeSpan)">
+      <summary>Moves the animation to the specified position immediately.</summary>
+      <param name="offset">The position from the start of the animation.</param>
+    </member>
+    <member name="M:Microsoft.Xbox.Transitions.ITransition.SkipToFill">
+      <summary>Jumps to the end of the animation.</summary>
+    </member>
+    <member name="M:Microsoft.Xbox.Transitions.ITransition.Stop">
+      <summary>Stops the animation and returns the animated properties to their original values.</summary>
+    </member>
+    <member name="T:Microsoft.Xbox.Transitions.Transition">
+      <summary>The standard <see cref="T:Microsoft.Xbox.Transitions.ITransition"/> implementation: wraps a <see cref="T:System.Windows.Media.Animation.Storyboard"/> and makes the element ignore input while the animation runs.</summary>
+      <remarks>Use it from a custom <see cref="T:Microsoft.Xbox.Transitions.TransitionElement"/> to return your own storyboard. The constructor does not set the storyboard target; set it yourself (for example with <c>Storyboard.SetTarget</c>).</remarks>
+    </member>
+    <member name="M:Microsoft.Xbox.Transitions.Transition.#ctor(System.Windows.UIElement,System.Windows.Media.Animation.Storyboard)">
+      <summary>Creates a transition that plays a storyboard on an element.</summary>
+      <param name="element">The animated element. Its <c>IsHitTestVisible</c> is set to <see langword="false"/> while the animation runs and restored when it completes or is stopped.</param>
+      <param name="storyboard">The animation to play.</param>
+      <exception cref="T:System.ArgumentNullException"><paramref name="element"/> or <paramref name="storyboard"/> is <see langword="null"/>.</exception>
+    </member>
+    <member name="E:Microsoft.Xbox.Transitions.Transition.Completed">
+      <summary>Occurs when the storyboard completes, before hit testing is restored on the element.</summary>
+    </member>
+    <member name="M:Microsoft.Xbox.Transitions.Transition.Begin">
+      <summary>Disables hit testing on the element and starts the storyboard.</summary>
+    </member>
+    <member name="M:Microsoft.Xbox.Transitions.Transition.GetCurrentState">
+      <summary>Gets the playback state of the storyboard.</summary>
+      <returns>Whether the storyboard is active, filling, or stopped.</returns>
+    </member>
+    <member name="M:Microsoft.Xbox.Transitions.Transition.GetCurrentTime">
+      <summary>Gets the current position of the storyboard.</summary>
+      <returns>The elapsed storyboard time.</returns>
+    </member>
+    <member name="M:Microsoft.Xbox.Transitions.Transition.GetStoryboardDuration">
+      <summary>Gets the storyboard's <c>Duration</c> property.</summary>
+      <returns>The declared duration, which is <c>Automatic</c> unless the storyboard sets it explicitly.</returns>
+    </member>
+    <member name="M:Microsoft.Xbox.Transitions.Transition.Pause">
+      <summary>Pauses the storyboard.</summary>
+    </member>
+    <member name="M:Microsoft.Xbox.Transitions.Transition.Resume">
+      <summary>Resumes the paused storyboard.</summary>
+    </member>
+    <member name="M:Microsoft.Xbox.Transitions.Transition.Seek(System.TimeSpan)">
+      <summary>Moves the storyboard to the specified position on the next frame.</summary>
+      <param name="offset">The position from the start of the storyboard.</param>
+    </member>
+    <member name="M:Microsoft.Xbox.Transitions.Transition.SeekAlignedToLastTick(System.TimeSpan)">
+      <summary>Moves the storyboard to the specified position immediately.</summary>
+      <param name="offset">The position from the start of the storyboard.</param>
+    </member>
+    <member name="M:Microsoft.Xbox.Transitions.Transition.SkipToFill">
+      <summary>Advances the storyboard to the end of its active period.</summary>
+    </member>
+    <member name="M:Microsoft.Xbox.Transitions.Transition.Stop">
+      <summary>Stops the storyboard and restores hit testing on the element. <see cref="E:Microsoft.Xbox.Transitions.Transition.Completed"/> is not raised.</summary>
+    </member>
+  </members>
+</doc>

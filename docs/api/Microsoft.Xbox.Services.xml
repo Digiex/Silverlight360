@@ -1,0 +1,1501 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly><name>Microsoft.Xbox.Services</name></assembly>
+  <members>
+    <member name="P:Microsoft.Xna.Framework.GamerServices.GamerPrivileges.AllowVideoCommunication">
+      <summary>Gets whether this gamer may take part in video communication (for example video chat), and with whom.</summary>
+      <value><see cref="T:Microsoft.Xna.Framework.GamerServices.GamerPrivilegeSetting"/> Everyone if allowed with anyone, FriendsOnly if limited to friends, or Blocked if not allowed.</value>
+      <remarks>The value comes from the profile's account and parental-control settings and is refreshed when the sign-in state changes.</remarks>
+    </member>
+    <member name="P:Microsoft.Xna.Framework.GamerServices.GamerPrivileges.AllowPremiumVideo">
+      <summary>Gets whether this gamer is allowed to access premium video content.</summary>
+      <value>true if premium video is allowed for the profile; otherwise, false.</value>
+    </member>
+    <member name="P:Microsoft.Xna.Framework.GamerServices.GamerPrivileges.AllowSocialNetworkAccess">
+      <summary>Gets whether this gamer is allowed to use social network features, such as posting links or images or obtaining a social network token.</summary>
+      <value>true if social network access is allowed for the profile; otherwise, false.</value>
+    </member>
+    <member name="P:Microsoft.Xna.Framework.GamerServices.GamerPrivileges.AllowExplicitContent">
+      <summary>Gets whether this gamer is allowed to access content marked as explicit.</summary>
+      <value>true if explicit content is allowed for the profile; otherwise, false.</value>
+    </member>
+    <member name="P:Microsoft.Xna.Framework.GamerServices.GamerPrivileges.AllowUnsafeProgramming">
+      <summary>Gets whether this gamer is allowed to access programming that is flagged as unsafe.</summary>
+      <value>true if the privilege is granted for the profile; otherwise, false.</value>
+    </member>
+    <member name="T:Microsoft.Xbox.Security.XAuth.XAuthException">
+      <summary>The exception that is thrown when an Xbox LIVE token (XAuth) operation fails.</summary>
+      <remarks>The <see cref="P:System.Exception.HResult"/> property holds the failure code returned by the platform, and the message names the operation that failed together with that code in hexadecimal.</remarks>
+    </member>
+    <member name="M:Microsoft.Xbox.Security.XAuth.XAuthException.#ctor(System.String,System.Int32)">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.Xbox.Security.XAuth.XAuthException"/> class for a failed operation.</summary>
+      <param name="function">The name of the operation that failed. It is included in the exception message.</param>
+      <param name="result">The failure code returned by the platform. It is stored in the HResult property and appended to the message.</param>
+    </member>
+    <member name="T:Microsoft.Xbox.Security.XAuth.XAuthXuid">
+      <summary>Represents the Xbox user ID (XUID) of the gamer an Xbox LIVE token was issued for.</summary>
+      <remarks>Instances are created by the platform and returned from <see cref="P:Microsoft.Xbox.Security.XAuth.XAuthToken.UserId"/>. Convert to <see cref="T:System.Int64"/> to read the numeric XUID.</remarks>
+    </member>
+    <member name="M:Microsoft.Xbox.Security.XAuth.XAuthXuid.op_Implicit(Microsoft.Xbox.Security.XAuth.XAuthXuid)~System.Int64">
+      <summary>Converts an <see cref="T:Microsoft.Xbox.Security.XAuth.XAuthXuid"/> to its 64-bit numeric XUID.</summary>
+      <param name="x">The user ID to convert.</param>
+      <returns>The numeric Xbox user ID.</returns>
+    </member>
+    <member name="T:Microsoft.Xbox.Security.XAuth.XAuthToken">
+      <summary>Represents an Xbox LIVE security token issued for a signed-in user and a relying party (web service).</summary>
+      <remarks>Tokens are obtained through <see cref="T:Microsoft.Xbox.Security.XAuth.XAuthTokenRequest"/> and cached by <see cref="T:Microsoft.Xbox.Security.XAuth.XAuthService"/>. Two tokens are considered equal when they belong to the same user and the same relying party; the token bytes are not compared.</remarks>
+    </member>
+    <member name="P:Microsoft.Xbox.Security.XAuth.XAuthToken.AppliesTo">
+      <summary>Gets the relying-party identifier the token applies to.</summary>
+      <value>The relying-party identifier resolved from the requested URN, or an empty string for a token that was not issued.</value>
+    </member>
+    <member name="P:Microsoft.Xbox.Security.XAuth.XAuthToken.UserId">
+      <summary>Gets the Xbox user ID of the gamer the token was issued for.</summary>
+      <value>An <see cref="T:Microsoft.Xbox.Security.XAuth.XAuthXuid"/> for the user; its value is 0 for a token that is not associated with a user.</value>
+    </member>
+    <member name="M:Microsoft.Xbox.Security.XAuth.XAuthToken.GetBytes">
+      <summary>Returns a copy of the raw token data.</summary>
+      <returns>A new byte array containing the token, an empty array when the service returned no token for the URN, or null if the token holds no data.</returns>
+      <remarks>Send the bytes to the relying party in the form that service expects, for example in an HTTP authorization header.</remarks>
+    </member>
+    <member name="M:Microsoft.Xbox.Security.XAuth.XAuthToken.op_Equality(Microsoft.Xbox.Security.XAuth.XAuthToken,Microsoft.Xbox.Security.XAuth.XAuthToken)">
+      <summary>Determines whether two tokens refer to the same user and relying party.</summary>
+      <param name="t1">The first token to compare, or null.</param>
+      <param name="t2">The second token to compare, or null.</param>
+      <returns>true if both are null, or if both have the same user ID and relying-party identifier; otherwise, false.</returns>
+    </member>
+    <member name="M:Microsoft.Xbox.Security.XAuth.XAuthToken.op_Inequality(Microsoft.Xbox.Security.XAuth.XAuthToken,Microsoft.Xbox.Security.XAuth.XAuthToken)">
+      <summary>Determines whether two tokens refer to a different user or relying party.</summary>
+      <param name="t1">The first token to compare, or null.</param>
+      <param name="t2">The second token to compare, or null.</param>
+      <returns>true if the tokens are not equal according to the equality operator; otherwise, false.</returns>
+    </member>
+    <member name="M:Microsoft.Xbox.Security.XAuth.XAuthToken.CompareTo(Microsoft.Xbox.Security.XAuth.XAuthToken)">
+      <summary>Compares this token with another token, ordering by user ID and then by relying-party identifier.</summary>
+      <param name="other">The token to compare with. Must not be null.</param>
+      <returns>A negative number if this token sorts before <paramref name="other"/>, zero if they are equal, or a positive number if it sorts after.</returns>
+    </member>
+    <member name="T:Microsoft.Xbox.Security.XAuth.XAuthCompletedEventArgs">
+      <summary>Provides data for the <see cref="F:Microsoft.Xbox.Security.XAuth.XAuthTokenRequest.Completed"/> event.</summary>
+      <remarks>Check <see cref="P:System.ComponentModel.AsyncCompletedEventArgs.Error"/> first; when it is not null it is an <see cref="T:Microsoft.Xbox.Security.XAuth.XAuthException"/> and <see cref="P:Microsoft.Xbox.Security.XAuth.XAuthCompletedEventArgs.Token"/> is null. The UserState property contains the request's <see cref="P:Microsoft.Xbox.Security.XAuth.XAuthTokenRequest.UserData"/>.</remarks>
+    </member>
+    <member name="P:Microsoft.Xbox.Security.XAuth.XAuthCompletedEventArgs.Token">
+      <summary>Gets the token that was obtained.</summary>
+      <value>The <see cref="T:Microsoft.Xbox.Security.XAuth.XAuthToken"/>, or null if the request failed.</value>
+    </member>
+    <member name="T:Microsoft.Xbox.Security.XAuth.XAuthTokenRequest">
+      <summary>Requests an Xbox LIVE security token for a signed-in player and a web service URN, either synchronously or asynchronously.</summary>
+      <remarks>A request object can be used for one token request only; calling a Get method a second time throws <see cref="T:System.ArgumentException"/>. The user must be signed in to Xbox LIVE and the URN must be one the title is allowed to request tokens for (see <see cref="M:Microsoft.Xbox.Security.XAuth.XAuthService.LoadWhiteList"/>). Call <see cref="M:Microsoft.Xbox.Security.XAuth.XAuthService.Start(System.Boolean)"/> before requesting tokens.</remarks>
+    </member>
+    <member name="P:Microsoft.Xbox.Security.XAuth.XAuthTokenRequest.UserData">
+      <summary>Gets or sets an application-defined object that is returned in the completion event arguments.</summary>
+      <value>Any object, or null. It appears as UserState in <see cref="T:Microsoft.Xbox.Security.XAuth.XAuthCompletedEventArgs"/>.</value>
+    </member>
+    <member name="F:Microsoft.Xbox.Security.XAuth.XAuthTokenRequest.Completed">
+      <summary>Occurs when an asynchronous token request finishes, successfully or not.</summary>
+      <remarks>This is a public delegate field rather than an event; assign or combine handlers before calling <see cref="M:Microsoft.Xbox.Security.XAuth.XAuthTokenRequest.GetTokenAsync(System.Int32,System.Uri)"/>. If the token is already cached, the handler runs before GetTokenAsync returns. Otherwise it runs later, possibly on a thread other than the UI thread, so marshal UI updates through the Dispatcher. The sender argument is null.</remarks>
+    </member>
+    <member name="M:Microsoft.Xbox.Security.XAuth.XAuthTokenRequest.GetToken(System.Int32,System.Uri)">
+      <summary>Obtains a token synchronously for the specified player and URN.</summary>
+      <param name="playerIndex">The zero-based index (0 to 3) of the signed-in player the token is requested for.</param>
+      <param name="urn">The URN or URL of the web service (relying party) to request a token for.</param>
+      <returns>The cached or newly obtained <see cref="T:Microsoft.Xbox.Security.XAuth.XAuthToken"/>.</returns>
+      <remarks>This call blocks until the service responds, so avoid it on the UI thread. It throws <see cref="T:System.ArgumentException"/> if <paramref name="urn"/> is null, if the request object was already used, or if a <see cref="F:Microsoft.Xbox.Security.XAuth.XAuthTokenRequest.Completed"/> handler is attached (use GetTokenAsync in that case). Platform failures are reported as <see cref="T:Microsoft.Xbox.Security.XAuth.XAuthException"/>.</remarks>
+    </member>
+    <member name="M:Microsoft.Xbox.Security.XAuth.XAuthTokenRequest.GetTokenAsync(System.Int32,System.Uri)">
+      <summary>Starts an asynchronous request for a token for the specified player and URN.</summary>
+      <param name="playerIndex">The zero-based index (0 to 3) of the signed-in player the token is requested for.</param>
+      <param name="urn">The URN or URL of the web service (relying party) to request a token for.</param>
+      <remarks>The result is delivered through <see cref="F:Microsoft.Xbox.Security.XAuth.XAuthTokenRequest.Completed"/>. A token already in the cache is delivered immediately; requests made before the token service is ready are queued until it is. Throws <see cref="T:System.ArgumentException"/> if this request object was already used.</remarks>
+    </member>
+    <member name="T:Microsoft.Xbox.Security.XAuth.XAuthService">
+      <summary>Provides static methods that control the Xbox LIVE token (XAuth) service used by <see cref="T:Microsoft.Xbox.Security.XAuth.XAuthTokenRequest"/>.</summary>
+    </member>
+    <member name="M:Microsoft.Xbox.Security.XAuth.XAuthService.Start(System.Boolean)">
+      <summary>Starts the Xbox LIVE token service for the application.</summary>
+      <param name="overRideBypass">true to override the platform's security bypass setting when starting the service; the default, false, uses the platform default.</param>
+      <remarks>Call once before requesting tokens. Throws <see cref="T:Microsoft.Xbox.Security.XAuth.XAuthException"/> if the service cannot be started.</remarks>
+    </member>
+    <member name="M:Microsoft.Xbox.Security.XAuth.XAuthService.ReleaseTokens">
+      <summary>Clears all cached tokens and cancels pending asynchronous token requests.</summary>
+      <remarks>Each pending request receives a <see cref="F:Microsoft.Xbox.Security.XAuth.XAuthTokenRequest.Completed"/> callback whose Error is an <see cref="T:Microsoft.Xbox.Security.XAuth.XAuthException"/>. Call this, for example, when the signed-in user changes.</remarks>
+    </member>
+    <member name="M:Microsoft.Xbox.Security.XAuth.XAuthService.LoadWhiteList">
+      <summary>Returns the list of web service URLs this application may request tokens for.</summary>
+      <returns>A dictionary that maps each allowed URL to the relying-party identifier it applies to (null when no identifier is configured for the entry).</returns>
+      <remarks>Throws <see cref="T:Microsoft.Xbox.Security.XAuth.XAuthException"/> if the list cannot be read.</remarks>
+    </member>
+    <member name="T:Microsoft.Xna.Framework.GamerServices.MessageBoxCompletedEventArgs">
+      <summary>Provides data for the <see cref="E:Microsoft.Xna.Framework.GamerServices.MessageBox.Completed"/> event.</summary>
+      <remarks>If the user dismissed the message box without choosing a button, Cancelled is true and <see cref="P:Microsoft.Xna.Framework.GamerServices.MessageBoxCompletedEventArgs.Result"/> is null.</remarks>
+    </member>
+    <member name="P:Microsoft.Xna.Framework.GamerServices.MessageBoxCompletedEventArgs.Result">
+      <summary>Gets the zero-based index of the button the user chose.</summary>
+      <value>The index into <see cref="P:Microsoft.Xna.Framework.GamerServices.MessageBox.Buttons"/>, or null if the message box was cancelled or failed.</value>
+    </member>
+    <member name="T:Microsoft.Xna.Framework.GamerServices.MessageBox">
+      <summary>Displays a system message box with up to three buttons and reports the user's choice through an event.</summary>
+      <remarks>Set <see cref="P:Microsoft.Xna.Framework.GamerServices.MessageBox.Title"/>, <see cref="P:Microsoft.Xna.Framework.GamerServices.MessageBox.Text"/> and <see cref="P:Microsoft.Xna.Framework.GamerServices.MessageBox.Buttons"/>, subscribe to <see cref="E:Microsoft.Xna.Framework.GamerServices.MessageBox.Completed"/>, and call one of the OpenAsync overloads. Gamer services must be initialized (XboxApplicationFrame does this). Only one system UI can be shown at a time; opening a message box while another is visible throws <see cref="T:Microsoft.Xna.Framework.GamerServices.GuideAlreadyVisibleException"/>.</remarks>
+    </member>
+    <member name="P:Microsoft.Xna.Framework.GamerServices.MessageBox.Title">
+      <summary>Gets or sets the message box title.</summary>
+      <value>A non-empty string shorter than 256 characters. Validated when the message box is opened.</value>
+    </member>
+    <member name="P:Microsoft.Xna.Framework.GamerServices.MessageBox.Text">
+      <summary>Gets or sets the message text.</summary>
+      <value>A non-empty string shorter than 256 characters. Validated when the message box is opened.</value>
+    </member>
+    <member name="P:Microsoft.Xna.Framework.GamerServices.MessageBox.Buttons">
+      <summary>Gets or sets the button labels.</summary>
+      <value>One to three non-empty strings, each shorter than 256 characters. The index of the chosen label is returned in <see cref="P:Microsoft.Xna.Framework.GamerServices.MessageBoxCompletedEventArgs.Result"/>.</value>
+    </member>
+    <member name="P:Microsoft.Xna.Framework.GamerServices.MessageBox.FocusButton">
+      <summary>Gets or sets the index of the button that has focus when the message box opens.</summary>
+      <value>A zero-based index into <see cref="P:Microsoft.Xna.Framework.GamerServices.MessageBox.Buttons"/>. The default is 0.</value>
+    </member>
+    <member name="P:Microsoft.Xna.Framework.GamerServices.MessageBox.Icon">
+      <summary>Gets or sets the icon displayed in the message box.</summary>
+      <value>A <see cref="T:Microsoft.Xna.Framework.GamerServices.MessageBoxIcon"/> value.</value>
+    </member>
+    <member name="E:Microsoft.Xna.Framework.GamerServices.MessageBox.Completed">
+      <summary>Occurs when the message box closes.</summary>
+      <remarks>This event is raised on a background thread, not the UI thread. Use the Dispatcher to update the user interface from the handler.</remarks>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.GamerServices.MessageBox.OpenAsync(Microsoft.Xna.Framework.PlayerIndex,System.Object)">
+      <summary>Opens the message box for the specified player.</summary>
+      <param name="playerIndex">The player whose controller can respond to the message box.</param>
+      <param name="userState">An object returned in the UserState property of the completion event arguments.</param>
+      <remarks>Throws <see cref="T:System.ArgumentException"/> if the title, text or buttons are not valid, and <see cref="T:Microsoft.Xna.Framework.GamerServices.GuideAlreadyVisibleException"/> if other system UI is already displayed.</remarks>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.GamerServices.MessageBox.OpenAsync(System.Object)">
+      <summary>Opens the message box so that any player can respond to it.</summary>
+      <param name="userState">An object returned in the UserState property of the completion event arguments.</param>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.GamerServices.MessageBox.OpenAsync(System.Int32,Microsoft.Xna.Framework.PlayerIndex,System.Object)">
+      <summary>Opens the Kinect-enabled version of the message box for a tracked user and the specified player.</summary>
+      <param name="trackingId">The Kinect skeleton tracking ID of the user who interacts with the message box.</param>
+      <param name="playerIndex">The player whose controller can respond to the message box.</param>
+      <param name="userState">An object returned in the UserState property of the completion event arguments.</param>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.GamerServices.MessageBox.OpenAsync(System.Int32,System.Object)">
+      <summary>Opens the Kinect-enabled version of the message box for a tracked user, allowing any player to respond.</summary>
+      <param name="trackingId">The Kinect skeleton tracking ID of the user who interacts with the message box.</param>
+      <param name="userState">An object returned in the UserState property of the completion event arguments.</param>
+    </member>
+    <member name="T:Microsoft.Xna.Framework.GamerServices.SoftwareKeyboardInputCompletedEventArgs">
+      <summary>Provides data for the <see cref="E:Microsoft.Xna.Framework.GamerServices.SoftwareKeyboardInput.Completed"/> event.</summary>
+      <remarks>If the user cancelled the keyboard, Cancelled is true and <see cref="P:Microsoft.Xna.Framework.GamerServices.SoftwareKeyboardInputCompletedEventArgs.Result"/> is null.</remarks>
+    </member>
+    <member name="P:Microsoft.Xna.Framework.GamerServices.SoftwareKeyboardInputCompletedEventArgs.Result">
+      <summary>Gets the text the user entered.</summary>
+      <value>The entered text, or null if the keyboard was cancelled or failed.</value>
+    </member>
+    <member name="T:Microsoft.Xna.Framework.GamerServices.SoftwareKeyboardInput">
+      <summary>Displays the system on-screen keyboard to collect a line of text from the user.</summary>
+      <remarks>Set the text properties, subscribe to <see cref="E:Microsoft.Xna.Framework.GamerServices.SoftwareKeyboardInput.Completed"/>, then call OpenAsync. Gamer services must be initialized. Opening the keyboard while other system UI is visible throws <see cref="T:Microsoft.Xna.Framework.GamerServices.GuideAlreadyVisibleException"/>.</remarks>
+    </member>
+    <member name="P:Microsoft.Xna.Framework.GamerServices.SoftwareKeyboardInput.Title">
+      <summary>Gets or sets the title shown at the top of the keyboard screen.</summary>
+      <value>A string shorter than 256 characters; null is treated as empty.</value>
+    </member>
+    <member name="P:Microsoft.Xna.Framework.GamerServices.SoftwareKeyboardInput.Description">
+      <summary>Gets or sets the descriptive text that tells the user what to enter.</summary>
+      <value>A string shorter than 256 characters; null is treated as empty.</value>
+    </member>
+    <member name="P:Microsoft.Xna.Framework.GamerServices.SoftwareKeyboardInput.DefaultText">
+      <summary>Gets or sets the text initially shown in the input field.</summary>
+      <value>A string shorter than 256 characters; null is treated as empty.</value>
+    </member>
+    <member name="P:Microsoft.Xna.Framework.GamerServices.SoftwareKeyboardInput.UsePasswordMode">
+      <summary>Gets or sets whether the entered characters are masked, as for a password.</summary>
+      <value>true to mask the input; otherwise, false. The default is false.</value>
+    </member>
+    <member name="E:Microsoft.Xna.Framework.GamerServices.SoftwareKeyboardInput.Completed">
+      <summary>Occurs when the user accepts or cancels the keyboard.</summary>
+      <remarks>This event is raised on a background thread, not the UI thread. Use the Dispatcher to update the user interface from the handler.</remarks>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.GamerServices.SoftwareKeyboardInput.OpenAsync(Microsoft.Xna.Framework.PlayerIndex)">
+      <summary>Opens the on-screen keyboard for the specified player.</summary>
+      <param name="playerIndex">The player who enters the text.</param>
+      <remarks>Throws <see cref="T:System.ArgumentException"/> if any of the text properties is 256 characters or longer.</remarks>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.GamerServices.SoftwareKeyboardInput.OpenAsync(Microsoft.Xna.Framework.PlayerIndex,System.Object)">
+      <summary>Opens the on-screen keyboard for the specified player and associates a state object with the operation.</summary>
+      <param name="playerIndex">The player who enters the text.</param>
+      <param name="userState">An object returned in the UserState property of the completion event arguments.</param>
+    </member>
+    <member name="T:Microsoft.Xna.Framework.GamerServices.AgeGroup">
+      <summary>Specifies the age group of a gamer profile.</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.AgeGroup.Child">
+      <summary>The profile belongs to a child.</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.AgeGroup.Teen">
+      <summary>The profile belongs to a teenager.</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.AgeGroup.Adult">
+      <summary>The profile belongs to an adult.</summary>
+    </member>
+    <member name="T:Microsoft.Xna.Framework.GamerServices.ContentAccessType">
+      <summary>Specifies how content will be used when checking parental-control access with <see cref="M:Microsoft.Xna.Framework.GamerServices.ContentRating.CanAccessAsync(System.Collections.Generic.IEnumerable{Microsoft.Xna.Framework.GamerServices.SignedInGamer},Microsoft.Xna.Framework.GamerServices.ContentAccessType,Microsoft.Xna.Framework.GamerServices.ContentRating,System.Object)"/>.</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentAccessType.Play">
+      <summary>The content will be played in full.</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentAccessType.Preview">
+      <summary>Only a preview (for example a trailer or clip) of the content will be shown.</summary>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.GamerServices.FriendCollection.Finalize">
+      <summary>Releases the platform resources held by the collection if it was not disposed.</summary>
+      <remarks>Call Dispose when you are finished with the collection instead of relying on finalization.</remarks>
+    </member>
+    <member name="P:Microsoft.Xna.Framework.GamerServices.GamerPresence.PresenceModeString">
+      <summary>Gets or sets the rich presence mode shown to other players, by name.</summary>
+      <value>The name of a presence mode defined in the title's LIVE configuration. Initially the first defined mode.</value>
+      <remarks>Setting a name that is not defined in the title's configuration throws <see cref="T:System.ArgumentException"/>; setting null or an empty string throws <see cref="T:System.ArgumentNullException"/>. Changes are sent to the service on the next call to <see cref="M:Microsoft.Xna.Framework.GamerServices.GamerServicesDispatcher.Update"/>.</remarks>
+    </member>
+    <member name="P:Microsoft.Xna.Framework.GamerServices.GamerPresence.Properties">
+      <summary>Gets the presence properties (context and property values) used to fill in the presence string.</summary>
+      <value>A <see cref="T:Microsoft.Xna.Framework.GamerServices.PropertyDictionary"/> pre-populated with the presence properties defined in the title's configuration. Changed values are sent on the next <see cref="M:Microsoft.Xna.Framework.GamerServices.GamerServicesDispatcher.Update"/>.</value>
+    </member>
+    <member name="P:Microsoft.Xna.Framework.GamerServices.GamerProfile.TwoLetterISORegionName">
+      <summary>Gets the two-letter ISO 3166 code of the country or region associated with the profile.</summary>
+      <value>A two-letter region code, for example "US".</value>
+    </member>
+    <member name="P:Microsoft.Xna.Framework.GamerServices.GamerProfile.AgeGroup">
+      <summary>Gets the age group of the profile owner.</summary>
+      <value>An <see cref="T:Microsoft.Xna.Framework.GamerServices.AgeGroup"/> value.</value>
+      <remarks>Throws <see cref="T:System.InvalidOperationException"/> if the age group was not available when the profile was read.</remarks>
+    </member>
+    <member name="T:Microsoft.Xna.Framework.GamerServices.ShowParentControlPasscodeCompletedEventArgs">
+      <summary>Provides data for the <see cref="E:Microsoft.Xna.Framework.GamerServices.SignedInGamer.ShowParentControlPasscodeCompleted"/> event.</summary>
+    </member>
+    <member name="P:Microsoft.Xna.Framework.GamerServices.ShowParentControlPasscodeCompletedEventArgs.PassCodeEntered">
+      <summary>Gets whether the correct parental-control passcode was entered.</summary>
+      <value>true if the passcode was entered successfully; otherwise, false. If the user backed out, Cancelled is also true.</value>
+    </member>
+    <member name="T:Microsoft.Xna.Framework.GamerServices.GetSocialCapabilitiesCompletedEventArgs">
+      <summary>Provides data for the <see cref="E:Microsoft.Xna.Framework.GamerServices.SignedInGamer.GetSocialCapabilitiesCompleted"/> event.</summary>
+    </member>
+    <member name="P:Microsoft.Xna.Framework.GamerServices.GetSocialCapabilitiesCompletedEventArgs.CanPostImages">
+      <summary>Gets whether image posts to a social network are available.</summary>
+      <value>true if <see cref="T:Microsoft.Xna.Framework.GamerServices.SocialNetworkImagePost"/> can be used; otherwise, false.</value>
+    </member>
+    <member name="P:Microsoft.Xna.Framework.GamerServices.GetSocialCapabilitiesCompletedEventArgs.CanPostLinks">
+      <summary>Gets whether link posts to a social network are available.</summary>
+      <value>true if <see cref="T:Microsoft.Xna.Framework.GamerServices.SocialNetworkLinkPost"/> can be used; otherwise, false.</value>
+    </member>
+    <member name="T:Microsoft.Xna.Framework.GamerServices.GetSocialNetworkTokenCompletedEventArgs">
+      <summary>Provides data for the <see cref="E:Microsoft.Xna.Framework.GamerServices.SignedInGamer.GetSocialNetworkTokenCompleted"/> event.</summary>
+    </member>
+    <member name="P:Microsoft.Xna.Framework.GamerServices.GetSocialNetworkTokenCompletedEventArgs.UserToken">
+      <summary>Gets the social network access token returned for the gamer.</summary>
+      <value>The token string. Check Error and Cancelled before using it.</value>
+    </member>
+    <member name="T:Microsoft.Xna.Framework.GamerServices.ShowGetSocialNetworkTokenCompletedEventArgs">
+      <summary>Provides data for the <see cref="E:Microsoft.Xna.Framework.GamerServices.SignedInGamer.ShowGetSocialNetworkTokenCompleted"/> event.</summary>
+    </member>
+    <member name="P:Microsoft.Xna.Framework.GamerServices.ShowGetSocialNetworkTokenCompletedEventArgs.UserToken">
+      <summary>Gets the social network access token returned for the gamer.</summary>
+      <value>The token string. Check Error and Cancelled before using it.</value>
+    </member>
+    <member name="E:Microsoft.Xna.Framework.GamerServices.SignedInGamer.ShowParentControlPasscodeCompleted">
+      <summary>Occurs when the parental-control passcode screen opened by ShowParentalControlPasscodeAsync closes.</summary>
+      <remarks>This event is raised on a background thread. Use the Dispatcher to update the user interface.</remarks>
+    </member>
+    <member name="E:Microsoft.Xna.Framework.GamerServices.SignedInGamer.GetSocialCapabilitiesCompleted">
+      <summary>Occurs when a <see cref="M:Microsoft.Xna.Framework.GamerServices.SignedInGamer.GetSocialCapabilitiesAsync(System.Object)"/> request completes.</summary>
+      <remarks>This is a static event; the sender is null. It is raised on a background thread.</remarks>
+    </member>
+    <member name="E:Microsoft.Xna.Framework.GamerServices.SignedInGamer.GetSocialNetworkTokenCompleted">
+      <summary>Occurs when a <see cref="M:Microsoft.Xna.Framework.GamerServices.SignedInGamer.GetSocialNetworkTokenAsync(System.Int32,System.String,System.Object)"/> request completes.</summary>
+      <remarks>This is a static event shared by all gamers; the sender is null, so use the userState argument to tell requests apart. It is raised on a background thread.</remarks>
+    </member>
+    <member name="E:Microsoft.Xna.Framework.GamerServices.SignedInGamer.ShowGetSocialNetworkTokenCompleted">
+      <summary>Occurs when a <see cref="M:Microsoft.Xna.Framework.GamerServices.SignedInGamer.ShowGetSocialNetworkTokenAsync(System.Int32,System.String,System.Nullable{System.Int32},System.Object)"/> request completes.</summary>
+      <remarks>This is a static event shared by all gamers; the sender is null, so use the userState argument to tell requests apart. It is raised on a background thread.</remarks>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.GamerServices.SignedInGamer.GetLiveLocale">
+      <summary>Gets the Xbox LIVE locale of this gamer as a language-region string.</summary>
+      <returns>A string such as "EN-US" (uppercase language code, a hyphen, and the region code), or an empty string if the locale could not be determined.</returns>
+      <remarks>Throws <see cref="T:System.ObjectDisposedException"/> if the gamer has signed out.</remarks>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.GamerServices.SignedInGamer.ShowComposeMessage(System.String,System.Collections.Generic.IEnumerable{Microsoft.Xna.Framework.GamerServices.Gamer})">
+      <summary>Opens the system screen for composing a message to other gamers, from this gamer.</summary>
+      <param name="text">The initial message text, shorter than 256 characters. null is treated as empty.</param>
+      <param name="recipients">The gamers to address the message to (up to 100), or an empty collection to let the user choose.</param>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.GamerServices.SignedInGamer.ShowFriends">
+      <summary>Opens the system friends list for this gamer.</summary>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.GamerServices.SignedInGamer.ShowFriends(System.Int32)">
+      <summary>Opens the Kinect-enabled friends list for this gamer.</summary>
+      <param name="trackingId">The Kinect skeleton tracking ID of the user who interacts with the screen.</param>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.GamerServices.SignedInGamer.ShowGamerCard(Microsoft.Xna.Framework.GamerServices.Gamer)">
+      <summary>Opens the system gamer card of the specified gamer, viewed by this gamer.</summary>
+      <param name="gamer">The gamer whose card is displayed. Must not be null or disposed.</param>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.GamerServices.SignedInGamer.ShowGamerCard(System.Int32,Microsoft.Xna.Framework.GamerServices.Gamer)">
+      <summary>Opens the Kinect-enabled gamer card of the specified gamer.</summary>
+      <param name="trackingId">The Kinect skeleton tracking ID of the user who interacts with the screen.</param>
+      <param name="gamer">The gamer whose card is displayed. Must not be null or disposed.</param>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.GamerServices.SignedInGamer.BeginShowMarketplace(System.Nullable{System.Int32},System.String,System.AsyncCallback,System.Object)">
+      <summary>Begins showing the Marketplace purchase UI for an offer, on behalf of this gamer.</summary>
+      <param name="trackingId">The Kinect skeleton tracking ID of the user who interacts with the screen, or null for the controller UI.</param>
+      <param name="purchaseOrder">The purchase order that identifies what to buy. Must not be null or empty.</param>
+      <param name="callback">A method called when the purchase UI closes, or null.</param>
+      <param name="state">An object returned in the AsyncState property of the result.</param>
+      <returns>An <see cref="T:System.IAsyncResult"/> to pass to <see cref="M:Microsoft.Xna.Framework.GamerServices.SignedInGamer.EndShowMarketplace(System.IAsyncResult)"/>.</returns>
+      <remarks>The gamer must be signed in to Xbox LIVE and have the purchase privilege (<see cref="P:Microsoft.Xna.Framework.GamerServices.GamerPrivileges.AllowPurchaseContent"/>); otherwise <see cref="T:Microsoft.Xna.Framework.GamerServices.GamerPrivilegeException"/> is thrown. The callback runs on a background thread.</remarks>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.GamerServices.SignedInGamer.EndShowMarketplace(System.IAsyncResult)">
+      <summary>Ends a Marketplace purchase operation and returns the order receipt.</summary>
+      <param name="result">The <see cref="T:System.IAsyncResult"/> returned by BeginShowMarketplace.</param>
+      <returns>The order receipt as a string, or null if no receipt was returned (for example, the user did not complete a purchase).</returns>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.GamerServices.SignedInGamer.BeginGetLastMarketplaceReceipt(System.AsyncCallback,System.Object)">
+      <summary>Begins retrieving the receipt of this gamer's most recent Marketplace purchase.</summary>
+      <param name="callback">A method called when the operation completes, or null.</param>
+      <param name="state">An object returned in the AsyncState property of the result.</param>
+      <returns>An <see cref="T:System.IAsyncResult"/> to pass to <see cref="M:Microsoft.Xna.Framework.GamerServices.SignedInGamer.EndGetLastMarketplaceReceipt(System.IAsyncResult)"/>.</returns>
+      <remarks>The gamer must be signed in to Xbox LIVE; otherwise <see cref="T:Microsoft.Xna.Framework.GamerServices.GamerPrivilegeException"/> is thrown.</remarks>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.GamerServices.SignedInGamer.EndGetLastMarketplaceReceipt(System.IAsyncResult)">
+      <summary>Ends retrieval of the last Marketplace receipt.</summary>
+      <param name="result">The <see cref="T:System.IAsyncResult"/> returned by BeginGetLastMarketplaceReceipt.</param>
+      <returns>The receipt as a string, or null if there is none.</returns>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.GamerServices.SignedInGamer.ShowMessages">
+      <summary>Opens the system message inbox for this gamer.</summary>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.GamerServices.SignedInGamer.ShowParty">
+      <summary>Opens the system party screen for this gamer.</summary>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.GamerServices.SignedInGamer.ShowParty(System.Int32)">
+      <summary>Opens the Kinect-enabled party screen for this gamer.</summary>
+      <param name="trackingId">The Kinect skeleton tracking ID of the user who interacts with the screen.</param>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.GamerServices.SignedInGamer.ShowPartySessions">
+      <summary>Opens the system screen listing the games and sessions that members of this gamer's party are in.</summary>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.GamerServices.SignedInGamer.ShowPartySessions(System.Int32)">
+      <summary>Opens the Kinect-enabled party sessions screen for this gamer.</summary>
+      <param name="trackingId">The Kinect skeleton tracking ID of the user who interacts with the screen.</param>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.GamerServices.SignedInGamer.ShowPlayerReview(Microsoft.Xna.Framework.GamerServices.Gamer)">
+      <summary>Opens the system screen for submitting feedback (a review) about another gamer.</summary>
+      <param name="gamer">The gamer to review. Must not be null or disposed.</param>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.GamerServices.SignedInGamer.ShowPlayers">
+      <summary>Opens the system list of players this gamer has recently played with.</summary>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.GamerServices.SignedInGamer.GetRating(System.Int32)">
+      <summary>Gets the parental-control rating limit that applies to this gamer for a type of content.</summary>
+      <param name="contentRatingType">The content type, one of the <see cref="T:Microsoft.Xna.Framework.GamerServices.ContentRating.Type"/> constants (for example Movie or TV).</param>
+      <returns>A <see cref="T:Microsoft.Xna.Framework.GamerServices.ContentRating"/> with the rating system and the highest allowed rating level for that content type.</returns>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.GamerServices.SignedInGamer.ShowParentalControlPasscodeAsync(System.Object)">
+      <summary>Opens the system screen that asks for the console's parental-control passcode.</summary>
+      <param name="userState">An object returned in the UserState property of the completion event arguments.</param>
+      <remarks>The result is reported through <see cref="E:Microsoft.Xna.Framework.GamerServices.SignedInGamer.ShowParentControlPasscodeCompleted"/>. Throws <see cref="T:System.InvalidOperationException"/> if parental controls are not enabled.</remarks>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.GamerServices.SignedInGamer.ShowParentalControlPasscodeAsync(System.Int32,System.Object)">
+      <summary>Opens the Kinect-enabled parental-control passcode screen.</summary>
+      <param name="trackingId">The Kinect skeleton tracking ID of the user who interacts with the screen.</param>
+      <param name="userState">An object returned in the UserState property of the completion event arguments.</param>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.GamerServices.SignedInGamer.GetSocialCapabilitiesAsync(System.Object)">
+      <summary>Starts a query for which kinds of social network posts are available.</summary>
+      <param name="userState">An object returned in the UserState property of the completion event arguments.</param>
+      <remarks>The result is reported through the static <see cref="E:Microsoft.Xna.Framework.GamerServices.SignedInGamer.GetSocialCapabilitiesCompleted"/> event.</remarks>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.GamerServices.SignedInGamer.GetSocialNetworkTokenAsync(System.Int32,System.String,System.Object)">
+      <summary>Starts a request for this gamer's access token for a linked social network account, without showing UI.</summary>
+      <param name="socialId">The identifier of the social network to request a token for.</param>
+      <param name="permissions">The permissions to request for the token. Must not be null or empty.</param>
+      <param name="userState">An object returned in the UserState property of the completion event arguments.</param>
+      <remarks>The gamer must be signed in to Xbox LIVE; otherwise <see cref="T:Microsoft.Xna.Framework.GamerServices.GamerPrivilegeException"/> is thrown. The result is reported through <see cref="E:Microsoft.Xna.Framework.GamerServices.SignedInGamer.GetSocialNetworkTokenCompleted"/>.</remarks>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.GamerServices.SignedInGamer.ShowGetSocialNetworkTokenAsync(System.Int32,System.String,System.Nullable{System.Int32},System.Object)">
+      <summary>Starts a request for this gamer's social network access token, displaying system UI so the user can sign in to or authorize the social network account.</summary>
+      <param name="socialId">The identifier of the social network to request a token for.</param>
+      <param name="permissions">The permissions to request for the token. Must not be null or empty.</param>
+      <param name="trackingId">The Kinect skeleton tracking ID of the user who interacts with the UI, or null for the controller UI.</param>
+      <param name="userState">An object returned in the UserState property of the completion event arguments.</param>
+      <remarks>The gamer must be signed in to Xbox LIVE. The result is reported through <see cref="E:Microsoft.Xna.Framework.GamerServices.SignedInGamer.ShowGetSocialNetworkTokenCompleted"/>.</remarks>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.GamerServices.SignedInGamer.ShowUpSell">
+      <summary>Opens the system screen that offers this gamer an upgrade, such as an Xbox LIVE Gold membership.</summary>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.GamerServices.SignedInGamer.ShowUpSell(System.Int32)">
+      <summary>Opens the Kinect-enabled upgrade offer screen for this gamer.</summary>
+      <param name="trackingId">The Kinect skeleton tracking ID of the user who interacts with the screen.</param>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.GamerServices.SignedInGamer.ShowSignIn(System.Int32,System.Boolean)">
+      <summary>Opens the system sign-in screen.</summary>
+      <param name="paneCount">The number of sign-in panes to show: 1, 2 or 4. Other values throw <see cref="T:System.ArgumentException"/>.</param>
+      <param name="onlineOnly">true to allow only profiles that can sign in to Xbox LIVE; false to allow any profile.</param>
+      <remarks>Watch <see cref="E:Microsoft.Xna.Framework.GamerServices.SignedInGamer.SignedIn"/> or <see cref="P:Microsoft.Xna.Framework.GamerServices.Gamer.SignedInGamers"/> to find out who signed in; the change is reported during <see cref="M:Microsoft.Xna.Framework.GamerServices.GamerServicesDispatcher.Update"/>.</remarks>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.GamerServices.SignedInGamer.ShowSignInForTrackedUser(System.Int32,System.Boolean)">
+      <summary>Opens the Kinect-enabled sign-in screen for a tracked user.</summary>
+      <param name="trackingId">The Kinect skeleton tracking ID of the user who signs in.</param>
+      <param name="onlineOnly">true to allow only profiles that can sign in to Xbox LIVE; false to allow any profile.</param>
+    </member>
+    <member name="P:Microsoft.Xna.Framework.GamerServices.Guide.IsNetworkCableUnplugged">
+      <summary>Gets or sets whether the console reports that its network cable is unplugged.</summary>
+      <value>true if the network cable is unplugged; otherwise, false.</value>
+      <remarks>The value is refreshed from the system on every <see cref="M:Microsoft.Xna.Framework.GamerServices.GamerServicesDispatcher.Update"/> call, so a value you set is overwritten on the next update.</remarks>
+    </member>
+    <member name="T:Microsoft.Xna.Framework.GamerServices.NuiHardwareRequiredCompletedEventArgs">
+      <summary>Provides data for the <see cref="E:Microsoft.Xna.Framework.GamerServices.NuiGuide.ShowHardwareRequiredCompleted"/> event.</summary>
+    </member>
+    <member name="P:Microsoft.Xna.Framework.GamerServices.NuiHardwareRequiredCompletedEventArgs.Result">
+      <summary>Gets the outcome reported by the Kinect-required screen.</summary>
+      <value>true if the screen reported a positive result (code 1); false otherwise. Cancelled is true if the screen was dismissed.</value>
+    </member>
+    <member name="T:Microsoft.Xna.Framework.GamerServices.NuiControllerRequiredCompletedEventArgs">
+      <summary>Provides data for the <see cref="E:Microsoft.Xna.Framework.GamerServices.NuiGuide.ShowControllerRequiredCompleted"/> event.</summary>
+    </member>
+    <member name="P:Microsoft.Xna.Framework.GamerServices.NuiControllerRequiredCompletedEventArgs.Result">
+      <summary>Gets whether the controller-required screen completed with a selection.</summary>
+      <value>true if the screen returned a result; false if it was cancelled or failed (Cancelled is then true).</value>
+    </member>
+    <member name="T:Microsoft.Xna.Framework.GamerServices.NuiGuide">
+      <summary>Provides static methods that display the Kinect (NUI) versions of system Guide screens.</summary>
+      <remarks>Gamer services must be initialized. Completion events on this class are static and are raised on a background thread. Only one system UI can be shown at a time.</remarks>
+    </member>
+    <member name="E:Microsoft.Xna.Framework.GamerServices.NuiGuide.ShowControllerRequiredCompleted">
+      <summary>Occurs when a screen opened by ShowControllerRequiredAsync closes.</summary>
+      <remarks>The sender is null. Raised on a background thread.</remarks>
+    </member>
+    <member name="E:Microsoft.Xna.Framework.GamerServices.NuiGuide.ShowHardwareRequiredCompleted">
+      <summary>Occurs when a screen opened by ShowHardwareRequiredAsync closes.</summary>
+      <remarks>The sender is null. Raised on a background thread.</remarks>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.GamerServices.NuiGuide.Show(System.Int32)">
+      <summary>Opens the Kinect Guide for a tracked user.</summary>
+      <param name="trackingId">The Kinect skeleton tracking ID of the user who interacts with the Guide.</param>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.GamerServices.NuiGuide.ShowControllerRequiredAsync(System.Int32,System.Object)">
+      <summary>Opens the system screen telling a Kinect user that a controller is required for the next step.</summary>
+      <param name="trackingId">The Kinect skeleton tracking ID of the user the screen is shown to.</param>
+      <param name="userState">An object returned in the UserState property of the completion event arguments.</param>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.GamerServices.NuiGuide.ShowControllerRequiredAsync(Microsoft.Xna.Framework.PlayerIndex,System.Int32,System.Object)">
+      <summary>Opens the controller-required screen for a tracked Kinect user and a specific player.</summary>
+      <param name="playerIndex">The player whose controller is expected.</param>
+      <param name="trackingId">The Kinect skeleton tracking ID of the user the screen is shown to.</param>
+      <param name="userState">An object returned in the UserState property of the completion event arguments.</param>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.GamerServices.NuiGuide.ShowHardwareRequiredAsync(System.Object)">
+      <summary>Opens the system screen telling the user that a Kinect sensor is required.</summary>
+      <param name="userState">An object returned in the UserState property of the completion event arguments.</param>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.GamerServices.NuiGuide.ShowHardwareRequiredAsync">
+      <summary>Opens the system screen telling the user that a Kinect sensor is required, without a state object.</summary>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.GamerServices.NuiGuide.ShowTroubleShooting">
+      <summary>Opens the system Kinect troubleshooting screen.</summary>
+    </member>
+    <member name="T:Microsoft.Xna.Framework.GamerServices.ContentAccessConfirmationCompletedEventArgs">
+      <summary>Provides data for the <see cref="E:Microsoft.Xna.Framework.GamerServices.ContentRating.AccessConfirmationCompleted"/> event.</summary>
+    </member>
+    <member name="P:Microsoft.Xna.Framework.GamerServices.ContentAccessConfirmationCompletedEventArgs.Result">
+      <summary>Gets whether access to the content was granted.</summary>
+      <value>true if all the specified gamers may access the content; otherwise, false. Cancelled is true if the check was cancelled.</value>
+    </member>
+    <member name="T:Microsoft.Xna.Framework.GamerServices.ContentRating">
+      <summary>Represents a content rating (content type, rating system and level) and checks it against the parental-control settings of signed-in gamers.</summary>
+      <remarks>Build a rating from the constants in the nested <see cref="T:Microsoft.Xna.Framework.GamerServices.ContentRating.Type"/>, <see cref="T:Microsoft.Xna.Framework.GamerServices.ContentRating.System"/> and <see cref="T:Microsoft.Xna.Framework.GamerServices.ContentRating.Level"/> classes, then call CanAccess or CanAccessAsync before playing rated video. Use <see cref="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Unrated"/> for content without a rating.</remarks>
+    </member>
+    <member name="P:Microsoft.Xna.Framework.GamerServices.ContentRating.RatingType">
+      <summary>Gets the content type of the rating.</summary>
+      <value>One of the <see cref="T:Microsoft.Xna.Framework.GamerServices.ContentRating.Type"/> constants.</value>
+    </member>
+    <member name="P:Microsoft.Xna.Framework.GamerServices.ContentRating.RatingSystem">
+      <summary>Gets the rating system (country or board) of the rating.</summary>
+      <value>One of the <see cref="T:Microsoft.Xna.Framework.GamerServices.ContentRating.System.Movie"/> or <see cref="T:Microsoft.Xna.Framework.GamerServices.ContentRating.System.TV"/> constants, matching the rating type.</value>
+    </member>
+    <member name="P:Microsoft.Xna.Framework.GamerServices.ContentRating.RatingLevel">
+      <summary>Gets the rating level within the rating system.</summary>
+      <value>One of the <see cref="T:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie"/> or <see cref="T:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV"/> constants for the rating system.</value>
+    </member>
+    <member name="P:Microsoft.Xna.Framework.GamerServices.ContentRating.Tag">
+      <summary>Gets or sets an application-defined object associated with the rating.</summary>
+      <value>Any object, or null. Not used by the platform.</value>
+    </member>
+    <member name="E:Microsoft.Xna.Framework.GamerServices.ContentRating.AccessConfirmationCompleted">
+      <summary>Occurs when a <see cref="M:Microsoft.Xna.Framework.GamerServices.ContentRating.CanAccessAsync(System.Collections.Generic.IEnumerable{Microsoft.Xna.Framework.GamerServices.SignedInGamer},Microsoft.Xna.Framework.GamerServices.ContentAccessType,Microsoft.Xna.Framework.GamerServices.ContentRating,System.Object)"/> check completes.</summary>
+      <remarks>This is a static event; the sender is null. Raised on a background thread.</remarks>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Unrated">
+      <summary>A shared rating that represents unrated content.</summary>
+      <remarks>Its type is <see cref="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Type.Unrated"/>, its system is 0 and its level is 255. Do not modify its Tag, because the instance is shared.</remarks>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.GamerServices.ContentRating.#ctor(System.Int32,System.Int32,System.Int32)">
+      <summary>Initializes a new rating from a content type, rating system and rating level.</summary>
+      <param name="ratingType">One of the <see cref="T:Microsoft.Xna.Framework.GamerServices.ContentRating.Type"/> constants.</param>
+      <param name="ratingSystem">A <see cref="T:Microsoft.Xna.Framework.GamerServices.ContentRating.System.Movie"/> or <see cref="T:Microsoft.Xna.Framework.GamerServices.ContentRating.System.TV"/> constant.</param>
+      <param name="ratingLevel">A <see cref="T:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie"/> or <see cref="T:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV"/> constant valid for the rating system.</param>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.GamerServices.ContentRating.CanAccessAsync(System.Collections.Generic.IEnumerable{Microsoft.Xna.Framework.GamerServices.SignedInGamer},Microsoft.Xna.Framework.GamerServices.ContentAccessType,Microsoft.Xna.Framework.GamerServices.ContentRating,System.Object)">
+      <summary>Starts an asynchronous parental-control check of whether the specified gamers may access content with a given rating.</summary>
+      <param name="gamers">One to four signed-in gamers who will watch the content.</param>
+      <param name="accessType">Whether the content will be played in full or previewed.</param>
+      <param name="contentRating">The rating of the content.</param>
+      <param name="state">An object returned in the UserState property of the completion event arguments.</param>
+      <remarks>The result is reported through <see cref="E:Microsoft.Xna.Framework.GamerServices.ContentRating.AccessConfirmationCompleted"/>. Unlike CanAccess, this goes through the system's confirmation path, which can involve system UI. Throws <see cref="T:System.ArgumentNullException"/> if <paramref name="gamers"/> is null.</remarks>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.GamerServices.ContentRating.CanAccess(System.Collections.Generic.IEnumerable{Microsoft.Xna.Framework.GamerServices.SignedInGamer},Microsoft.Xna.Framework.GamerServices.ContentRating)">
+      <summary>Checks immediately whether the specified gamers may access content with a given rating under their parental-control settings.</summary>
+      <param name="gamers">One to four signed-in gamers who will watch the content.</param>
+      <param name="contentRating">The rating of the content.</param>
+      <returns>true if access is allowed; otherwise, false.</returns>
+    </member>
+    <member name="T:Microsoft.Xna.Framework.GamerServices.ContentRating.Type">
+      <summary>Contains constants that identify the type of rated content.</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Type.Movie">
+      <summary>The content is a movie. Use with <see cref="T:Microsoft.Xna.Framework.GamerServices.ContentRating.System.Movie"/> and <see cref="T:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie"/>.</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Type.TV">
+      <summary>The content is a television program. Use with <see cref="T:Microsoft.Xna.Framework.GamerServices.ContentRating.System.TV"/> and <see cref="T:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV"/>.</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Type.Unrated">
+      <summary>The content is unrated.</summary>
+    </member>
+    <member name="T:Microsoft.Xna.Framework.GamerServices.ContentRating.System">
+      <summary>Contains nested classes with constants that identify rating systems.</summary>
+    </member>
+    <member name="T:Microsoft.Xna.Framework.GamerServices.ContentRating.System.Movie">
+      <summary>Contains constants that identify movie rating systems (by country or rating board).</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.System.Movie.Default">
+      <summary>The default movie rating system; the same value as MPAA.</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.System.Movie.None">
+      <summary>No movie rating system is used.</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.System.Movie.MPAA">
+      <summary>The United States (MPAA) movie rating system.</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.System.Movie.Japan">
+      <summary>The Japan movie rating system.</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.System.Movie.UK">
+      <summary>The United Kingdom movie rating system.</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.System.Movie.Ireland">
+      <summary>The Ireland movie rating system.</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.System.Movie.France">
+      <summary>The France movie rating system.</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.System.Movie.Germany">
+      <summary>The Germany movie rating system.</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.System.Movie.Australia">
+      <summary>The Australia movie rating system.</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.System.Movie.Netherlands">
+      <summary>The Netherlands movie rating system.</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.System.Movie.Austria">
+      <summary>The Austria movie rating system.</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.System.Movie.NewZealand">
+      <summary>The New Zealand movie rating system.</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.System.Movie.Sweden">
+      <summary>The Sweden movie rating system.</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.System.Movie.Norway">
+      <summary>The Norway movie rating system.</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.System.Movie.Denmark">
+      <summary>The Denmark movie rating system.</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.System.Movie.Finland">
+      <summary>The Finland movie rating system.</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.System.Movie.HongKong">
+      <summary>The Hong Kong movie rating system.</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.System.Movie.Singapore">
+      <summary>The Singapore movie rating system.</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.System.Movie.Canada">
+      <summary>The Canada movie rating system.</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.System.Movie.Spain">
+      <summary>The Spain movie rating system.</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.System.Movie.Italy">
+      <summary>The Italy movie rating system.</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.System.Movie.Mexico">
+      <summary>The Mexico movie rating system.</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.System.Movie.Turkey">
+      <summary>The Turkey movie rating system.</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.System.Movie.Slovakia">
+      <summary>The Slovakia movie rating system.</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.System.Movie.Brazil">
+      <summary>The Brazil movie rating system.</summary>
+    </member>
+    <member name="T:Microsoft.Xna.Framework.GamerServices.ContentRating.System.TV">
+      <summary>Contains constants that identify television rating systems (by country).</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.System.TV.USA">
+      <summary>The United States television rating system.</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.System.TV.Canada">
+      <summary>The Canada television rating system.</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.System.TV.Mexico">
+      <summary>The Mexico television rating system.</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.System.TV.France">
+      <summary>The France television rating system.</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.System.TV.Australia">
+      <summary>The Australia television rating system.</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.System.TV.Brazil">
+      <summary>The Brazil television rating system.</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.System.TV.Spain">
+      <summary>The Spain television rating system.</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.System.TV.Italy">
+      <summary>The Italy television rating system.</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.System.TV.None">
+      <summary>No television rating system is used.</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.System.TV.Finland">
+      <summary>The Finland television rating system.</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.System.TV.NewZealand">
+      <summary>The New Zealand television rating system.</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.System.TV.Turkey">
+      <summary>The Turkey television rating system.</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.System.TV.Slovakia">
+      <summary>The Slovakia television rating system.</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.System.TV.Netherlands">
+      <summary>The Netherlands television rating system.</summary>
+    </member>
+    <member name="T:Microsoft.Xna.Framework.GamerServices.ContentRating.Level">
+      <summary>Contains nested classes with constants that identify rating levels within each rating system.</summary>
+    </member>
+    <member name="T:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie">
+      <summary>Contains constants for movie rating levels. Each constant is prefixed with its rating system; within a system, a higher value is a more restrictive rating.</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.MPAA_G">
+      <summary>The United States (MPAA) movie rating "G".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.MPAA_PG">
+      <summary>The United States (MPAA) movie rating "PG".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.MPAA_PG13">
+      <summary>The United States (MPAA) movie rating "PG-13".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.MPAA_R">
+      <summary>The United States (MPAA) movie rating "R".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.MPAA_NC17">
+      <summary>The United States (MPAA) movie rating "NC-17".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.JAPAN_1">
+      <summary>The Japan movie rating "level 1".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.JAPAN_2">
+      <summary>The Japan movie rating "level 2".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.JAPAN_3">
+      <summary>The Japan movie rating "level 3".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.JAPAN_4">
+      <summary>The Japan movie rating "level 4".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.JAPAN_5">
+      <summary>The Japan movie rating "level 5".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.JAPAN_6">
+      <summary>The Japan movie rating "level 6".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.JAPAN_7">
+      <summary>The Japan movie rating "level 7".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.JAPAN_8">
+      <summary>The Japan movie rating "level 8".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.UK_UC">
+      <summary>The United Kingdom movie rating "UC".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.UK_U">
+      <summary>The United Kingdom movie rating "U".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.UK_PG">
+      <summary>The United Kingdom movie rating "PG".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.UK_12">
+      <summary>The United Kingdom movie rating "12".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.UK_15">
+      <summary>The United Kingdom movie rating "15".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.UK_18">
+      <summary>The United Kingdom movie rating "18".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.UK_R18">
+      <summary>The United Kingdom movie rating "R18".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.IRELAND_G">
+      <summary>The Ireland movie rating "G".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.IRELAND_PG">
+      <summary>The Ireland movie rating "PG".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.IRELAND_12A">
+      <summary>The Ireland movie rating "12A".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.IRELAND_15A">
+      <summary>The Ireland movie rating "15A".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.IRELAND_16">
+      <summary>The Ireland movie rating "16".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.IRELAND_18">
+      <summary>The Ireland movie rating "18".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.FRANCE_U">
+      <summary>The France movie rating "U".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.FRANCE_12">
+      <summary>The France movie rating "12".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.FRANCE_16">
+      <summary>The France movie rating "16".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.FRANCE_18">
+      <summary>The France movie rating "18".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.GERMANY_FSK0">
+      <summary>The Germany movie rating "FSK0".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.GERMANY_FSK6">
+      <summary>The Germany movie rating "FSK6".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.GERMANY_FSK12">
+      <summary>The Germany movie rating "FSK12".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.GERMANY_FSK16">
+      <summary>The Germany movie rating "FSK16".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.GERMANY_FSK18">
+      <summary>The Germany movie rating "FSK18".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.GERMANY_SPIO">
+      <summary>The Germany movie rating "SPIO/JK".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.AUSTRALIA_G">
+      <summary>The Australia movie rating "G".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.AUSTRALIA_PG">
+      <summary>The Australia movie rating "PG".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.AUSTRALIA_M">
+      <summary>The Australia movie rating "M".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.AUSTRALIA_MA15">
+      <summary>The Australia movie rating "MA15".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.AUSTRALIA_R18">
+      <summary>The Australia movie rating "R18".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.AUSTRALIA_E">
+      <summary>The Australia movie rating "E".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.NETHERLANDS_AL">
+      <summary>The Netherlands movie rating "AL".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.NETHERLANDS_6">
+      <summary>The Netherlands movie rating "6".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.NETHERLANDS_9">
+      <summary>The Netherlands movie rating "9".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.NETHERLANDS_12">
+      <summary>The Netherlands movie rating "12".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.NETHERLANDS_16">
+      <summary>The Netherlands movie rating "16".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.AUSTRIA_0">
+      <summary>The Austria movie rating "0".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.AUSTRIA_6">
+      <summary>The Austria movie rating "6".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.AUSTRIA_10">
+      <summary>The Austria movie rating "10".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.AUSTRIA_12">
+      <summary>The Austria movie rating "12".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.AUSTRIA_14">
+      <summary>The Austria movie rating "14".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.AUSTRIA_16">
+      <summary>The Austria movie rating "16".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.AUSTRIA_18">
+      <summary>The Austria movie rating "18".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.NEW_ZEALAND_G">
+      <summary>The New Zealand movie rating "G".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.NEW_ZEALAND_PG">
+      <summary>The New Zealand movie rating "PG".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.NEW_ZEALAND_R13">
+      <summary>The New Zealand movie rating "R13".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.NEW_ZEALAND_R15">
+      <summary>The New Zealand movie rating "R15".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.NEW_ZEALAND_R16">
+      <summary>The New Zealand movie rating "R16".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.NEW_ZEALAND_M">
+      <summary>The New Zealand movie rating "M".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.NEW_ZEALAND_R18">
+      <summary>The New Zealand movie rating "R18".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.NEW_ZEALAND_R">
+      <summary>The New Zealand movie rating "R".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.SWEDEN_BTL">
+      <summary>The Sweden movie rating "BTL".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.SWEDEN_7">
+      <summary>The Sweden movie rating "7".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.SWEDEN_11">
+      <summary>The Sweden movie rating "11".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.SWEDEN_15">
+      <summary>The Sweden movie rating "15".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.NORWAY_A">
+      <summary>The Norway movie rating "A".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.NORWAY_7">
+      <summary>The Norway movie rating "7".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.NORWAY_11">
+      <summary>The Norway movie rating "11".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.NORWAY_15">
+      <summary>The Norway movie rating "15".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.NORWAY_18">
+      <summary>The Norway movie rating "18".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.DENMARK_A">
+      <summary>The Denmark movie rating "A".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.DENMARK_7">
+      <summary>The Denmark movie rating "7".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.DENMARK_11">
+      <summary>The Denmark movie rating "11".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.DENMARK_15">
+      <summary>The Denmark movie rating "15".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.FINLAND_S">
+      <summary>The Finland movie rating "S".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.FINLAND_K3">
+      <summary>The Finland movie rating "K3".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.FINLAND_K7">
+      <summary>The Finland movie rating "K7".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.FINLAND_K11">
+      <summary>The Finland movie rating "K11".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.FINLAND_K13">
+      <summary>The Finland movie rating "K13".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.FINLAND_K15">
+      <summary>The Finland movie rating "K15".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.FINLAND_K18">
+      <summary>The Finland movie rating "K18".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.CANADA_G">
+      <summary>The Canada movie rating "G".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.CANADA_PG">
+      <summary>The Canada movie rating "PG".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.CANADA_14">
+      <summary>The Canada movie rating "14".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.CANADA_18">
+      <summary>The Canada movie rating "18".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.CANADA_R">
+      <summary>The Canada movie rating "R".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.CANADA_E">
+      <summary>The Canada movie rating "E".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.SPAIN_TP">
+      <summary>The Spain movie rating "TP".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.SPAIN_7">
+      <summary>The Spain movie rating "7".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.SPAIN_13">
+      <summary>The Spain movie rating "13".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.SPAIN_16">
+      <summary>The Spain movie rating "16".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.SPAIN_18">
+      <summary>The Spain movie rating "18".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.ITALY_T">
+      <summary>The Italy movie rating "T".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.ITALY_VM14">
+      <summary>The Italy movie rating "VM14".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.ITALY_VM18">
+      <summary>The Italy movie rating "VM18".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.MEXICO_AA">
+      <summary>The Mexico movie rating "AA".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.MEXICO_A">
+      <summary>The Mexico movie rating "A".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.MEXICO_B">
+      <summary>The Mexico movie rating "B".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.MEXICO_B15">
+      <summary>The Mexico movie rating "B15".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.MEXICO_C">
+      <summary>The Mexico movie rating "C".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.MEXICO_D">
+      <summary>The Mexico movie rating "D".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.TURKEY_G">
+      <summary>The Turkey movie rating "G".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.TURKEY_7PLUS">
+      <summary>The Turkey movie rating "7+".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.TURKEY_7A">
+      <summary>The Turkey movie rating "7A".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.TURKEY_13PLUS">
+      <summary>The Turkey movie rating "13+".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.TURKEY_13A">
+      <summary>The Turkey movie rating "13A".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.TURKEY_15PLUS">
+      <summary>The Turkey movie rating "15+".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.TURKEY_15A">
+      <summary>The Turkey movie rating "15A".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.TURKEY_18PLUS">
+      <summary>The Turkey movie rating "18+".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.SLOVAKIA_U">
+      <summary>The Slovakia movie rating "U".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.SLOVAKIA_7">
+      <summary>The Slovakia movie rating "7".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.SLOVAKIA_7PLUS">
+      <summary>The Slovakia movie rating "7+".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.SLOVAKIA_12">
+      <summary>The Slovakia movie rating "12".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.SLOVAKIA_12PLUS">
+      <summary>The Slovakia movie rating "12+".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.SLOVAKIA_15">
+      <summary>The Slovakia movie rating "15".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.SLOVAKIA_18">
+      <summary>The Slovakia movie rating "18".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.BRAZIL_ER">
+      <summary>The Brazil movie rating "ER".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.BRAZIL_L">
+      <summary>The Brazil movie rating "L".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.BRAZIL_10">
+      <summary>The Brazil movie rating "10".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.BRAZIL_12">
+      <summary>The Brazil movie rating "12".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.BRAZIL_14">
+      <summary>The Brazil movie rating "14".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.BRAZIL_16">
+      <summary>The Brazil movie rating "16".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.Movie.BRAZIL_18">
+      <summary>The Brazil movie rating "18".</summary>
+    </member>
+    <member name="T:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV">
+      <summary>Contains constants for television rating levels. Each constant is prefixed with its rating system; within a system, a higher value is a more restrictive rating.</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.US_Y">
+      <summary>The United States television rating "TV-Y".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.US_Y7">
+      <summary>The United States television rating "TV-Y7".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.US_Y7FV">
+      <summary>The United States television rating "TV-Y7-FV".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.US_G">
+      <summary>The United States television rating "TV-G".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.US_PG">
+      <summary>The United States television rating "TV-PG".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.US_14">
+      <summary>The United States television rating "TV-14".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.US_MATURE">
+      <summary>The United States television rating "TV-MA".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.CANADA_E">
+      <summary>The Canada television rating "E".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.CANADA_C">
+      <summary>The Canada television rating "C".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.CANADA_C8">
+      <summary>The Canada television rating "C8".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.CANADA_G">
+      <summary>The Canada television rating "G".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.CANADA_PG">
+      <summary>The Canada television rating "PG".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.CANADA_14">
+      <summary>The Canada television rating "14".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.CANADA_18">
+      <summary>The Canada television rating "18".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.MEXICO_AA">
+      <summary>The Mexico television rating "AA".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.MEXICO_A">
+      <summary>The Mexico television rating "A".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.MEXICO_B">
+      <summary>The Mexico television rating "B".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.MEXICO_B15">
+      <summary>The Mexico television rating "B15".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.MEXICO_C">
+      <summary>The Mexico television rating "C".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.MEXICO_D">
+      <summary>The Mexico television rating "D".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.FRANCE_10">
+      <summary>The France television rating "10".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.FRANCE_12">
+      <summary>The France television rating "12".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.FRANCE_16">
+      <summary>The France television rating "16".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.FRANCE_18">
+      <summary>The France television rating "18".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.AUSTRALIA_P">
+      <summary>The Australia television rating "P".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.AUSTRALIA_C">
+      <summary>The Australia television rating "C".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.AUSTRALIA_G">
+      <summary>The Australia television rating "G".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.AUSTRALIA_PG">
+      <summary>The Australia television rating "PG".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.AUSTRALIA_M">
+      <summary>The Australia television rating "M".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.AUSTRALIA_MA15">
+      <summary>The Australia television rating "MA15".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.AUSTRALIA_AV15">
+      <summary>The Australia television rating "AV15".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.AUSTRALIA_R18">
+      <summary>The Australia television rating "R18".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.BRAZIL_ER">
+      <summary>The Brazil television rating "ER".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.BRAZIL_L">
+      <summary>The Brazil television rating "L".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.BRAZIL_10">
+      <summary>The Brazil television rating "10".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.BRAZIL_12">
+      <summary>The Brazil television rating "12".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.BRAZIL_14">
+      <summary>The Brazil television rating "14".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.BRAZIL_16">
+      <summary>The Brazil television rating "16".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.BRAZIL_18">
+      <summary>The Brazil television rating "18".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.SPAIN_MINOR">
+      <summary>The Spain television rating "minors (children)".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.SPAIN_GP">
+      <summary>The Spain television rating "GP".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.SPAIN_7">
+      <summary>The Spain television rating "7".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.SPAIN_13">
+      <summary>The Spain television rating "13".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.SPAIN_18">
+      <summary>The Spain television rating "18".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.SPAIN_X">
+      <summary>The Spain television rating "X".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.ITALY_MINOR">
+      <summary>The Italy television rating "minors (children)".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.ITALY_14">
+      <summary>The Italy television rating "14".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.ITALY_ADULT">
+      <summary>The Italy television rating "adults only".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.FINLAND_S">
+      <summary>The Finland television rating "S".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.FINLAND_7">
+      <summary>The Finland television rating "7".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.FINLAND_12">
+      <summary>The Finland television rating "12".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.FINLAND_16">
+      <summary>The Finland television rating "16".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.FINLAND_18">
+      <summary>The Finland television rating "18".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.NEW_ZEALAND_G">
+      <summary>The New Zealand television rating "G".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.NEW_ZEALAND_PG">
+      <summary>The New Zealand television rating "PG".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.NEW_ZEALAND_M">
+      <summary>The New Zealand television rating "M".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.NEW_ZEALAND_R16">
+      <summary>The New Zealand television rating "R16".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.NEW_ZEALAND_R18">
+      <summary>The New Zealand television rating "R18".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.TURKEY_G">
+      <summary>The Turkey television rating "G".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.TURKEY_7PLUS">
+      <summary>The Turkey television rating "7+".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.TURKEY_7A">
+      <summary>The Turkey television rating "7A".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.TURKEY_13PLUS">
+      <summary>The Turkey television rating "13+".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.TURKEY_13A">
+      <summary>The Turkey television rating "13A".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.TURKEY_15PLUS">
+      <summary>The Turkey television rating "15+".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.TURKEY_15A">
+      <summary>The Turkey television rating "15A".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.TURKEY_18PLUS">
+      <summary>The Turkey television rating "18+".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.SLOVAKIA_U">
+      <summary>The Slovakia television rating "U".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.SLOVAKIA_7">
+      <summary>The Slovakia television rating "7".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.SLOVAKIA_7PLUS">
+      <summary>The Slovakia television rating "7+".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.SLOVAKIA_12">
+      <summary>The Slovakia television rating "12".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.SLOVAKIA_12PLUS">
+      <summary>The Slovakia television rating "12+".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.SLOVAKIA_15">
+      <summary>The Slovakia television rating "15".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.SLOVAKIA_18">
+      <summary>The Slovakia television rating "18".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.NETHERLANDS_AL">
+      <summary>The Netherlands television rating "AL".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.NETHERLANDS_6">
+      <summary>The Netherlands television rating "6".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.NETHERLANDS_9">
+      <summary>The Netherlands television rating "9".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.NETHERLANDS_12">
+      <summary>The Netherlands television rating "12".</summary>
+    </member>
+    <member name="F:Microsoft.Xna.Framework.GamerServices.ContentRating.Level.TV.NETHERLANDS_16">
+      <summary>The Netherlands television rating "16".</summary>
+    </member>
+    <member name="T:Microsoft.Xna.Framework.GamerServices.SocialNetworkImagePost">
+      <summary>Posts an image, with a title, caption and description, to the gamer's linked social network account through system UI.</summary>
+      <remarks>Set all properties and call [[M:Microsoft.Xna.Framework.GamerServices.SocialNetworkImagePost.SetPreviewImageData(System.Int32,System.Int32,System.Int32[])]] before calling PostAsync; missing values cause <see cref="T:System.ArgumentException"/> or <see cref="T:System.ArgumentNullException"/>. Use <see cref="M:Microsoft.Xna.Framework.GamerServices.SignedInGamer.GetSocialCapabilitiesAsync(System.Object)"/> to check that image posts are available. The gamer needs the social network privilege.</remarks>
+    </member>
+    <member name="P:Microsoft.Xna.Framework.GamerServices.SocialNetworkImagePost.Title">
+      <summary>Gets or sets the title of the post.</summary>
+      <value>A non-empty string shorter than 256 characters.</value>
+    </member>
+    <member name="P:Microsoft.Xna.Framework.GamerServices.SocialNetworkImagePost.ImageCaption">
+      <summary>Gets or sets the caption shown with the image.</summary>
+      <value>A non-empty string shorter than 256 characters.</value>
+    </member>
+    <member name="P:Microsoft.Xna.Framework.GamerServices.SocialNetworkImagePost.ImageDescription">
+      <summary>Gets or sets the description shown with the image.</summary>
+      <value>A non-empty string shorter than 256 characters.</value>
+    </member>
+    <member name="P:Microsoft.Xna.Framework.GamerServices.SocialNetworkImagePost.FullSizedImage">
+      <summary>Gets or sets a stream containing the full-size image to post.</summary>
+      <value>A readable stream. Must be set before posting.</value>
+      <remarks>The setter reads the whole stream immediately and then closes it, so do not reuse the stream afterwards.</remarks>
+    </member>
+    <member name="E:Microsoft.Xna.Framework.GamerServices.SocialNetworkImagePost.Completed">
+      <summary>Occurs when the post operation completes.</summary>
+      <remarks>Raised on a background thread.</remarks>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.GamerServices.SocialNetworkImagePost.SetPreviewImageData(System.Int32,System.Int32,System.Int32[])">
+      <summary>Sets the small preview image shown in the posting UI.</summary>
+      <param name="width">The image width. Must be 64.</param>
+      <param name="height">The image height. Must be 64.</param>
+      <param name="data">The pixels of the 64 by 64 image as 4096 32-bit values. The array is copied.</param>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.GamerServices.SocialNetworkImagePost.PostAsync(Microsoft.Xna.Framework.GamerServices.SignedInGamer)">
+      <summary>Shows the posting UI for the specified gamer.</summary>
+      <param name="gamer">The signed-in gamer whose social network account receives the post.</param>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.GamerServices.SocialNetworkImagePost.PostAsync(Microsoft.Xna.Framework.GamerServices.SignedInGamer,System.Int32)">
+      <summary>Shows the Kinect-enabled posting UI for the specified gamer.</summary>
+      <param name="gamer">The signed-in gamer whose social network account receives the post.</param>
+      <param name="trackingId">The Kinect skeleton tracking ID of the user who interacts with the UI.</param>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.GamerServices.SocialNetworkImagePost.PostAsync(Microsoft.Xna.Framework.GamerServices.SignedInGamer,System.Object)">
+      <summary>Shows the posting UI for the specified gamer and associates a state object with the operation.</summary>
+      <param name="gamer">The signed-in gamer whose social network account receives the post.</param>
+      <param name="userState">An object returned in the UserState property of the completion event arguments.</param>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.GamerServices.SocialNetworkImagePost.PostAsync(Microsoft.Xna.Framework.GamerServices.SignedInGamer,System.Int32,System.Object)">
+      <summary>Shows the Kinect-enabled posting UI for the specified gamer and associates a state object with the operation.</summary>
+      <param name="gamer">The signed-in gamer whose social network account receives the post.</param>
+      <param name="trackingId">The Kinect skeleton tracking ID of the user who interacts with the UI.</param>
+      <param name="userState">An object returned in the UserState property of the completion event arguments.</param>
+    </member>
+    <member name="T:Microsoft.Xna.Framework.GamerServices.SocialNetworkPostCompletedEventArgs">
+      <summary>Provides data for the Completed events of <see cref="T:Microsoft.Xna.Framework.GamerServices.SocialNetworkImagePost"/> and <see cref="T:Microsoft.Xna.Framework.GamerServices.SocialNetworkLinkPost"/>.</summary>
+    </member>
+    <member name="P:Microsoft.Xna.Framework.GamerServices.SocialNetworkPostCompletedEventArgs.Result">
+      <summary>Gets whether the item was posted.</summary>
+      <value>true if the post was made; otherwise, false. Cancelled is true if the user backed out.</value>
+    </member>
+    <member name="T:Microsoft.Xna.Framework.GamerServices.SocialNetworkLinkPost">
+      <summary>Posts a link, with a title and picture, to the gamer's linked social network account through system UI.</summary>
+      <remarks>Set all properties and call [[M:Microsoft.Xna.Framework.GamerServices.SocialNetworkLinkPost.SetPreviewImageData(System.Int32,System.Int32,System.Int32[])]] before calling PostAsync; missing values cause <see cref="T:System.ArgumentException"/> or <see cref="T:System.ArgumentNullException"/>. Use <see cref="M:Microsoft.Xna.Framework.GamerServices.SignedInGamer.GetSocialCapabilitiesAsync(System.Object)"/> to check that link posts are available. The gamer needs the social network privilege.</remarks>
+    </member>
+    <member name="P:Microsoft.Xna.Framework.GamerServices.SocialNetworkLinkPost.Title">
+      <summary>Gets or sets the title of the link.</summary>
+      <value>A non-empty string shorter than 256 characters.</value>
+    </member>
+    <member name="P:Microsoft.Xna.Framework.GamerServices.SocialNetworkLinkPost.TitleUri">
+      <summary>Gets or sets the address the link points to.</summary>
+      <value>An absolute URI. Must not be null.</value>
+    </member>
+    <member name="P:Microsoft.Xna.Framework.GamerServices.SocialNetworkLinkPost.PictureCaption">
+      <summary>Gets or sets the caption of the picture shown with the link.</summary>
+      <value>A non-empty string shorter than 256 characters.</value>
+    </member>
+    <member name="P:Microsoft.Xna.Framework.GamerServices.SocialNetworkLinkPost.PictureDescription">
+      <summary>Gets or sets the description of the picture shown with the link.</summary>
+      <value>A non-empty string shorter than 256 characters.</value>
+    </member>
+    <member name="P:Microsoft.Xna.Framework.GamerServices.SocialNetworkLinkPost.PictureUri">
+      <summary>Gets or sets the address of the picture shown with the link.</summary>
+      <value>An absolute URI. Must not be null.</value>
+    </member>
+    <member name="E:Microsoft.Xna.Framework.GamerServices.SocialNetworkLinkPost.Completed">
+      <summary>Occurs when the post operation completes.</summary>
+      <remarks>Raised on a background thread.</remarks>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.GamerServices.SocialNetworkLinkPost.SetPreviewImageData(System.Int32,System.Int32,System.Int32[])">
+      <summary>Sets the small preview image shown in the posting UI.</summary>
+      <param name="width">The image width. Must be 64.</param>
+      <param name="height">The image height. Must be 64.</param>
+      <param name="data">The pixels of the 64 by 64 image as 4096 32-bit values. The array is copied.</param>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.GamerServices.SocialNetworkLinkPost.PostAsync(Microsoft.Xna.Framework.GamerServices.SignedInGamer)">
+      <summary>Shows the posting UI for the specified gamer.</summary>
+      <param name="gamer">The signed-in gamer whose social network account receives the post.</param>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.GamerServices.SocialNetworkLinkPost.PostAsync(Microsoft.Xna.Framework.GamerServices.SignedInGamer,System.Int32)">
+      <summary>Shows the Kinect-enabled posting UI for the specified gamer.</summary>
+      <param name="gamer">The signed-in gamer whose social network account receives the post.</param>
+      <param name="trackingId">The Kinect skeleton tracking ID of the user who interacts with the UI.</param>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.GamerServices.SocialNetworkLinkPost.PostAsync(Microsoft.Xna.Framework.GamerServices.SignedInGamer,System.Object)">
+      <summary>Shows the posting UI for the specified gamer and associates a state object with the operation.</summary>
+      <param name="gamer">The signed-in gamer whose social network account receives the post.</param>
+      <param name="userState">An object returned in the UserState property of the completion event arguments.</param>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.GamerServices.SocialNetworkLinkPost.PostAsync(Microsoft.Xna.Framework.GamerServices.SignedInGamer,System.Int32,System.Object)">
+      <summary>Shows the Kinect-enabled posting UI for the specified gamer and associates a state object with the operation.</summary>
+      <param name="gamer">The signed-in gamer whose social network account receives the post.</param>
+      <param name="trackingId">The Kinect skeleton tracking ID of the user who interacts with the UI.</param>
+      <param name="userState">An object returned in the UserState property of the completion event arguments.</param>
+    </member>
+    <member name="T:Microsoft.Xna.Framework.GamerServices.VideoSharingConfirmationCompletedEventArgs">
+      <summary>Provides data for the <see cref="E:Microsoft.Xna.Framework.GamerServices.VideoSharing.ConfirmationCompleted"/> event.</summary>
+    </member>
+    <member name="P:Microsoft.Xna.Framework.GamerServices.VideoSharingConfirmationCompletedEventArgs.IsEnabled">
+      <summary>Gets whether video sharing is enabled for the gamer.</summary>
+      <value>true if video sharing is enabled; otherwise, false.</value>
+    </member>
+    <member name="P:Microsoft.Xna.Framework.GamerServices.VideoSharingConfirmationCompletedEventArgs.IsConfirmed">
+      <summary>Gets whether the user confirmed video sharing.</summary>
+      <value>true if the user confirmed; otherwise, false.</value>
+    </member>
+    <member name="T:Microsoft.Xna.Framework.GamerServices.VideoSharing">
+      <summary>Provides static methods that ask the system to confirm video sharing for a gamer.</summary>
+      <remarks>Results are reported through the static <see cref="E:Microsoft.Xna.Framework.GamerServices.VideoSharing.ConfirmationCompleted"/> event.</remarks>
+    </member>
+    <member name="E:Microsoft.Xna.Framework.GamerServices.VideoSharing.ConfirmationCompleted">
+      <summary>Occurs when a video sharing confirmation completes.</summary>
+      <remarks>The sender is null. Raised on a background thread.</remarks>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.GamerServices.VideoSharing.ConfirmAsync(Microsoft.Xna.Framework.GamerServices.SignedInGamer)">
+      <summary>Starts the video sharing confirmation for the specified gamer.</summary>
+      <param name="gamer">The signed-in gamer to confirm video sharing for.</param>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.GamerServices.VideoSharing.ConfirmAsync(Microsoft.Xna.Framework.GamerServices.SignedInGamer,System.Object)">
+      <summary>Starts the video sharing confirmation for the specified gamer and associates a state object with the operation.</summary>
+      <param name="gamer">The signed-in gamer to confirm video sharing for.</param>
+      <param name="userState">An object returned in the UserState property of the completion event arguments.</param>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.GamerServices.VideoSharing.ConfirmAsync(Microsoft.Xna.Framework.GamerServices.SignedInGamer,System.Int32)">
+      <summary>Starts the Kinect-enabled video sharing confirmation for the specified gamer.</summary>
+      <param name="gamer">The signed-in gamer to confirm video sharing for.</param>
+      <param name="trackingId">The Kinect skeleton tracking ID of the user who interacts with the UI.</param>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.GamerServices.VideoSharing.ConfirmAsync(Microsoft.Xna.Framework.GamerServices.SignedInGamer,System.Int32,System.Object)">
+      <summary>Starts the Kinect-enabled video sharing confirmation for the specified gamer and associates a state object with the operation.</summary>
+      <param name="gamer">The signed-in gamer to confirm video sharing for.</param>
+      <param name="trackingId">The Kinect skeleton tracking ID of the user who interacts with the UI.</param>
+      <param name="userState">An object returned in the UserState property of the completion event arguments.</param>
+    </member>
+    <member name="T:Microsoft.Xna.Framework.GamerServices.StringChecker">
+      <summary>Submits user-entered strings to the Xbox LIVE string verification service.</summary>
+      <remarks>Each request accepts 1 to 10 strings, each non-empty and shorter than 256 characters. The service returns one Boolean result per string. Test with known acceptable and unacceptable strings to confirm which value indicates a rejected string before relying on it. The synchronous methods block until the service responds; prefer the Begin/End methods on the UI thread.</remarks>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.GamerServices.StringChecker.CheckString(System.String)">
+      <summary>Checks a single string with the verification service and waits for the result.</summary>
+      <param name="value">The string to check. Must be non-empty and shorter than 256 characters.</param>
+      <returns>The service's Boolean result for the string.</returns>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.GamerServices.StringChecker.CheckStrings(System.Collections.Generic.IEnumerable{System.String})">
+      <summary>Checks up to ten strings with the verification service and waits for the results.</summary>
+      <param name="strings">The strings to check (1 to 10, each non-empty and shorter than 256 characters).</param>
+      <returns>An array with one Boolean result per string, in input order.</returns>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.GamerServices.StringChecker.BeginCheckString(System.String,System.AsyncCallback,System.Object)">
+      <summary>Begins an asynchronous check of a single string.</summary>
+      <param name="value">The string to check. Must be non-empty and shorter than 256 characters.</param>
+      <param name="callback">A method called when the check completes, or null. It runs on a background thread.</param>
+      <param name="asyncState">An object returned in the AsyncState property of the result.</param>
+      <returns>An <see cref="T:System.IAsyncResult"/> to pass to <see cref="M:Microsoft.Xna.Framework.GamerServices.StringChecker.EndCheckString(System.IAsyncResult)"/>.</returns>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.GamerServices.StringChecker.EndCheckString(System.IAsyncResult)">
+      <summary>Ends an asynchronous single-string check.</summary>
+      <param name="result">The <see cref="T:System.IAsyncResult"/> returned by BeginCheckString.</param>
+      <returns>The service's Boolean result for the string.</returns>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.GamerServices.StringChecker.BeginCheckStrings(System.Collections.Generic.IEnumerable{System.String},System.AsyncCallback,System.Object)">
+      <summary>Begins an asynchronous check of up to ten strings.</summary>
+      <param name="strings">The strings to check (1 to 10, each non-empty and shorter than 256 characters).</param>
+      <param name="callback">A method called when the check completes, or null. It runs on a background thread.</param>
+      <param name="asyncState">An object returned in the AsyncState property of the result.</param>
+      <returns>An <see cref="T:System.IAsyncResult"/> to pass to <see cref="M:Microsoft.Xna.Framework.GamerServices.StringChecker.EndCheckStrings(System.IAsyncResult)"/>.</returns>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.GamerServices.StringChecker.EndCheckStrings(System.IAsyncResult)">
+      <summary>Ends an asynchronous multi-string check.</summary>
+      <param name="result">The <see cref="T:System.IAsyncResult"/> returned by BeginCheckStrings.</param>
+      <returns>An array with one Boolean result per string, in input order.</returns>
+    </member>
+  </members>
+</doc>

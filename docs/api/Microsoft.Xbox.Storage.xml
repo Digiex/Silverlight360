@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly><name>Microsoft.Xbox.Storage</name></assembly>
+  <members>
+    <member name="M:Microsoft.Xna.Framework.Storage.StorageContainer.GetThumbnail">
+      <summary>Gets the thumbnail image stored with this save container, as shown in the console's storage UI.</summary>
+      <returns>A read-only stream containing the image data (at most 16 KB).</returns>
+      <exception cref="T:System.ObjectDisposedException">The container has been disposed.</exception>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.Storage.StorageContainer.SetThumbnail(System.IO.Stream)">
+      <summary>Sets the thumbnail image shown for this save container in the console's storage UI.</summary>
+      <param name="pngStream">A seekable stream containing a PNG image of at most 15,616 bytes. The whole stream is read from the beginning.</param>
+      <exception cref="T:System.ObjectDisposedException">The container has been disposed.</exception>
+      <exception cref="T:System.ArgumentException"><paramref name="pngStream"/> is not seekable.</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="pngStream"/> is longer than 15,616 bytes.</exception>
+    </member>
+    <member name="T:Microsoft.Xna.Framework.Storage.CacheContainer">
+      <summary>A temporary storage area on the console's utility (cache) partition, for downloaded data that can be recreated if lost, such as images or media segments. Use the inherited <see cref="T:Microsoft.Xna.Framework.Storage.StorageContainer"/> file methods to read and write files.</summary>
+      <remarks>Only one cache container can be open at a time. Disposing it unmounts the partition. The container is not tied to a user profile; opening it with <c>format</c> set to <see langword="true"/> erases its content, so treat it as a cache rather than a place for user data.</remarks>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.Storage.CacheContainer.BeginOpenCacheContainer(System.AsyncCallback,System.Object)">
+      <summary>Starts mounting the cache partition with default settings (no format, 4,096-byte clusters, minimum file cache).</summary>
+      <param name="callback">The method to call when the mount finishes, on a thread-pool thread; may be <see langword="null"/>.</param>
+      <param name="state">A user object available from <see cref="P:System.IAsyncResult.AsyncState"/>.</param>
+      <returns>An <see cref="T:System.IAsyncResult"/> to pass to <see cref="M:Microsoft.Xna.Framework.Storage.CacheContainer.EndOpenCacheContainer(System.IAsyncResult)"/>.</returns>
+      <exception cref="T:System.InvalidOperationException">A cache container is already open or being opened.</exception>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.Storage.CacheContainer.BeginOpenCacheContainer(System.Boolean,System.Int32,System.Int32,System.AsyncCallback,System.Object)">
+      <summary>Starts mounting the cache partition with the specified settings. The mount runs on a thread-pool thread.</summary>
+      <param name="format"><see langword="true"/> to erase the cache partition before mounting it; <see langword="false"/> to keep existing content.</param>
+      <param name="bytesPerCluster">The cluster size used when formatting: 4096, 8192, 16384, 32768 or 65536. 0 selects 4096.</param>
+      <param name="fileCacheSize">The size of the file system cache, from 20,480 to 1,044,480. 0 selects 20,480.</param>
+      <param name="callback">The method to call when the mount finishes, on a thread-pool thread; may be <see langword="null"/>.</param>
+      <param name="state">A user object available from <see cref="P:System.IAsyncResult.AsyncState"/>.</param>
+      <returns>An <see cref="T:System.IAsyncResult"/> to pass to <see cref="M:Microsoft.Xna.Framework.Storage.CacheContainer.EndOpenCacheContainer(System.IAsyncResult)"/>.</returns>
+      <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="bytesPerCluster"/> or <paramref name="fileCacheSize"/> is not an allowed value.</exception>
+      <exception cref="T:System.InvalidOperationException">A cache container is already open or being opened.</exception>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.Storage.CacheContainer.EndOpenCacheContainer(System.IAsyncResult)">
+      <summary>Completes mounting the cache partition and returns the container. Blocks until the mount has finished.</summary>
+      <param name="result">The value returned by <c>BeginOpenCacheContainer</c>.</param>
+      <returns>The open cache container, rooted at <c>cache:\</c>. Dispose it when you are done.</returns>
+      <exception cref="T:System.ArgumentNullException"><paramref name="result"/> did not come from <c>BeginOpenCacheContainer</c>.</exception>
+      <exception cref="T:System.InvalidOperationException"><paramref name="result"/> has already been ended, or no open operation is pending.</exception>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.Storage.StorageDevice.#ctor(Microsoft.Xna.Framework.PlayerIndex)">
+      <summary>Creates a storage device object for the console's default storage device, used to save data for the specified player.</summary>
+      <param name="playerIndex">The signed-in player whose save data is accessed through this device.</param>
+      <remarks>No device selector is shown; the console's default device is used. Throws if the default device cannot be determined.</remarks>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.Storage.StorageDevice.BeginOpenContainer(System.String,System.String,System.AsyncCallback,System.Object)">
+      <summary>Starts opening (creating if necessary) a save container on this device.</summary>
+      <param name="displayName">The name shown for the container in the console's storage UI. Truncated to 127 characters.</param>
+      <param name="fileName">The container's file name. Must contain only ASCII characters.</param>
+      <param name="callback">The method to call when the operation completes; may be <see langword="null"/>.</param>
+      <param name="state">A user object available from <see cref="P:System.IAsyncResult.AsyncState"/>.</param>
+      <returns>An <see cref="T:System.IAsyncResult"/> to pass to <see cref="M:Microsoft.Xna.Framework.Storage.StorageDevice.EndOpenContainer(System.IAsyncResult)"/>.</returns>
+      <exception cref="T:System.ArgumentNullException"><paramref name="displayName"/> or <paramref name="fileName"/> is <see langword="null"/> or empty.</exception>
+      <exception cref="T:System.ArgumentException"><paramref name="fileName"/> contains non-ASCII characters.</exception>
+      <exception cref="T:System.InvalidOperationException">This player already has a container open on the device.</exception>
+      <exception cref="T:Microsoft.Xna.Framework.GamerServices.GamerPrivilegeException">The player's profile is not signed in.</exception>
+    </member>
+  </members>
+</doc>

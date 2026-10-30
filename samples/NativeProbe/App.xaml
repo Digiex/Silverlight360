@@ -1,0 +1,11 @@
+<Application xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             x:Class="NativeProbe.App"
+             Startup="Application_Startup"
+             UnhandledException="Application_UnhandledException">
+  <Application.Resources>
+    <!-- Where the test server runs. 127.0.0.1 is the PC running the emulator. -->
+    <sys:String x:Key="ServerUrl">http://127.0.0.1:8360/</sys:String>
+  </Application.Resources>
+</Application>

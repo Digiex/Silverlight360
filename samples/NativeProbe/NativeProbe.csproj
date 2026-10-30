@@ -1,0 +1,33 @@
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6C3F5D2B-8E4A-4F9C-0B71-4D2E3F5A6B72}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>NativeProbe</RootNamespace>
+    <AssemblyName>NativeProbe</AssemblyName>
+    <SilverlightAppEntry>NativeProbe.App</SilverlightAppEntry>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Windows" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </ApplicationDefinition>
+    <Page Include="MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Compile Include="App.xaml.cs"><DependentUpon>App.xaml</DependentUpon></Compile>
+    <Compile Include="MainPage.xaml.cs"><DependentUpon>MainPage.xaml</DependentUpon></Compile>
+    <Compile Include="..\HelloXbox\ServerClient.cs"><Link>ServerClient.cs</Link></Compile>
+    <Compile Include="NativeMethods.cs" />
+  </ItemGroup>
+  <Import Project="..\..\msbuild\XboxSilverlight.targets" />
+</Project>

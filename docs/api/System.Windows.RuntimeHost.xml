@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly><name>System.Windows.RuntimeHost</name></assembly>
+  <members>
+    <member name="T:System.Windows.RuntimeHost.HostAppDomainManager">
+      <summary>The application domain manager the Silverlight host installs for the application's domain. It answers security checks and isolated-storage management requests from the native host. Applications do not create or call it.</summary>
+      <remarks>On Xbox 360 the isolated-storage management callbacks are not implemented: they return <c>E_NOTIMPL</c> (0x80004001) and report empty values.</remarks>
+    </member>
+    <member name="M:System.Windows.RuntimeHost.HostAppDomainManager.GetIsolatedStorageEnabled(System.Boolean@)">
+      <summary>Host callback that reports whether isolated storage is enabled. Not implemented on this platform.</summary>
+      <param name="enabled">Always receives <see langword="false"/>.</param>
+      <returns>Always <c>E_NOTIMPL</c> (0x80004001, -2147467263).</returns>
+    </member>
+    <member name="M:System.Windows.RuntimeHost.HostAppDomainManager.SetIsolatedStorageEnabled(System.Boolean)">
+      <summary>Host callback that turns isolated storage on or off. Not implemented on this platform; the setting is ignored.</summary>
+      <param name="enabled">The requested setting (ignored).</param>
+      <returns>Always <c>E_NOTIMPL</c> (0x80004001, -2147467263).</returns>
+    </member>
+    <member name="M:System.Windows.RuntimeHost.HostAppDomainManager.GetIsolatedStoreCount(System.Int32@)">
+      <summary>Host callback that reports how many sites have isolated stores. Not implemented on this platform.</summary>
+      <param name="length">Always receives 0.</param>
+      <returns>Always <c>E_NOTIMPL</c> (0x80004001, -2147467263).</returns>
+    </member>
+    <member name="M:System.Windows.RuntimeHost.HostAppDomainManager.GetIsolatedStoreInfo(System.Int32,System.Int32,System.Text.StringBuilder,System.Double@,System.Double@)">
+      <summary>Host callback that describes one site's isolated store. Not implemented on this platform.</summary>
+      <param name="index">The zero-based index of the store (ignored).</param>
+      <param name="maxLength">The capacity of <paramref name="site"/> (ignored).</param>
+      <param name="site">A buffer for the site URL; left unchanged.</param>
+      <param name="quotaInMB">Always receives 0.</param>
+      <param name="usedInMB">Always receives 0.</param>
+      <returns>Always <c>E_NOTIMPL</c> (0x80004001, -2147467263).</returns>
+    </member>
+    <member name="M:System.Windows.RuntimeHost.HostAppDomainManager.DeleteIsolatedStore(System.String)">
+      <summary>Host callback that deletes a site's isolated store. Not implemented on this platform; nothing is deleted.</summary>
+      <param name="site">The site whose store would be deleted (ignored).</param>
+      <returns>Always <c>E_NOTIMPL</c> (0x80004001, -2147467263).</returns>
+    </member>
+    <member name="M:System.Windows.RuntimeHost.HostAppDomainManager.CheckSecuritySettings(System.Security.SecurityState)">
+      <summary>Called by the runtime to approve a security-sensitive operation.</summary>
+      <param name="state">Describes the operation being checked.</param>
+      <returns>For socket checks, <see langword="false"/> when the socket state asks for a new security manager to be created; otherwise <see langword="true"/>, after recording the application's origin URL as the origin host for socket policy checks. All other checks return <see langword="true"/>.</returns>
+    </member>
+    <member name="M:System.Windows.RuntimeHost.HostAppDomainManager.GetPlatformRootUserDirectory(System.Text.StringBuilder@)">
+      <summary>Would return the platform's per-user root directory. Not implemented on this platform.</summary>
+      <param name="lpszPath">A buffer for the path.</param>
+      <returns>Does not return.</returns>
+      <exception cref="T:System.NotImplementedException">Always thrown.</exception>
+    </member>
+  </members>
+</doc>

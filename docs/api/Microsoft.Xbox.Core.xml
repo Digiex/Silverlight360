@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly><name>Microsoft.Xbox.Core</name></assembly>
+  <members>
+    <member name="T:Microsoft.Xbox.Core.RuntimeExtensions">
+      <summary>Console-specific helpers for the Xbox 360 runtime.</summary>
+    </member>
+    <member name="M:Microsoft.Xbox.Core.RuntimeExtensions.SetThreadProcessorAffinity(System.Threading.Thread,System.Int32[])">
+      <summary>Restricts a managed thread to run on the specified hardware threads of the console's CPU. Use it to keep a background worker (decoding, parsing, networking) off the hardware thread that runs the UI.</summary>
+      <param name="thread">The thread to assign.</param>
+      <param name="cpu">The hardware thread numbers the thread may run on.</param>
+      <remarks>Forwards to the console runtime's <c>Thread.SetProcessorAffinity</c>, which validates the values.</remarks>
+      <exception cref="T:System.ArgumentNullException"><paramref name="thread"/> is <see langword="null"/>.</exception>
+    </member>
+    <member name="M:Microsoft.Xna.Framework.Audio.SoundEffect.Finalize">
+      <summary>Releases the native sound data and any remaining instances of this sound effect if <see cref="M:Microsoft.Xna.Framework.Audio.SoundEffect.Dispose"/> was not called.</summary>
+    </member>
+  </members>
+</doc>

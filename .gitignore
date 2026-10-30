@@ -1,0 +1,14 @@
+runtime/
+bin/
+obj/
+*.user
+
+# Your own media for the MediaPlayer sample
+samples/TestServer/media/
+
+# Media packaged into the MediaPlayer sample
+samples/apps/MediaPlayer/Media/
+
+# Python
+__pycache__/
+*.pyc

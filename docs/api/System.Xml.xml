@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly><name>System.Xml</name></assembly>
+  <members>
+    <member name="M:System.Xml.XmlConvert.IsStartNCNameSurrogateChar(System.Char,System.Char)">
+      <summary>Determines whether a surrogate pair is a valid first character of an XML non-colonized name (NCName).</summary>
+      <param name="lowChar">The low surrogate of the pair.</param>
+      <param name="highChar">The high surrogate of the pair.</param>
+      <returns>true if the pair can start an NCName; otherwise, false.</returns>
+    </member>
+    <member name="M:System.Xml.XmlConvert.IsNCNameSurrogateChar(System.Char,System.Char)">
+      <summary>Determines whether a surrogate pair is a valid character in an XML non-colonized name (NCName).</summary>
+      <param name="lowChar">The low surrogate of the pair.</param>
+      <param name="highChar">The high surrogate of the pair.</param>
+      <returns>true if the pair can appear in an NCName; otherwise, false.</returns>
+    </member>
+    <member name="M:System.Xml.XmlConvert.IsValidXmlChar(System.Char)">
+      <summary>Determines whether a character is allowed in XML content.</summary>
+      <param name="ch">The character to test.</param>
+      <returns>true if the character is a valid XML character; otherwise, false.</returns>
+    </member>
+    <member name="M:System.Xml.XmlConvert.IsValidXmlSurrogateChar(System.Char,System.Char)">
+      <summary>Determines whether two characters form a valid surrogate pair.</summary>
+      <param name="lowChar">The character expected to be the low surrogate.</param>
+      <param name="highChar">The character expected to be the high surrogate.</param>
+      <returns>true if <paramref name="highChar"/> is a high surrogate and <paramref name="lowChar"/> is a low surrogate; otherwise, false.</returns>
+    </member>
+    <member name="M:System.Xml.XmlConvert.IsValidPublicIdChar(System.Char)">
+      <summary>Determines whether a character is allowed in an XML public identifier (PUBLIC ID).</summary>
+      <param name="ch">The character to test.</param>
+      <returns>true if the character is a valid public identifier character; otherwise, false.</returns>
+    </member>
+    <member name="P:System.Xml.XmlXapResolver.Credentials">
+      <summary>Sets the credentials used to resolve resources. Not supported.</summary>
+      <remarks>The resolver only reads resources from the application package, so setting this property always throws <see cref="T:System.NotSupportedException"/>.</remarks>
+    </member>
+  </members>
+</doc>

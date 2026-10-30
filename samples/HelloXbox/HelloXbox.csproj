@@ -1,0 +1,35 @@
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5B2E4C1A-7D3F-4E8B-9A60-3C1D2E4F5A61}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>HelloXbox</RootNamespace>
+    <AssemblyName>HelloXbox</AssemblyName>
+    <SilverlightAppEntry>HelloXbox.App</SilverlightAppEntry>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Windows" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </ApplicationDefinition>
+    <Page Include="MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Compile Include="App.xaml.cs"><DependentUpon>App.xaml</DependentUpon></Compile>
+    <Compile Include="MainPage.xaml.cs"><DependentUpon>MainPage.xaml</DependentUpon></Compile>
+    <Compile Include="ServerClient.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Common\DebugLog.cs"><Link>Common\DebugLog.cs</Link></Compile>
+  </ItemGroup>
+  <Import Project="..\..\msbuild\XboxSilverlight.targets" />
+</Project>

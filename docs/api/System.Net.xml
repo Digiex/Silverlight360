@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly><name>System.Net</name></assembly>
+  <members>
+    <member name="P:System.Net.HttpWebRequest.IsAuthCall">
+      <summary>Gets or sets whether the request is marked as an authentication request for the console's network stack.</summary>
+      <value>true to mark the request as an authentication call; otherwise, false. The default is false.</value>
+      <remarks>The flag is passed to the platform network stack when the request is sent.</remarks>
+    </member>
+    <member name="P:System.Net.HttpWebRequest.LimitDownloadBufferSize">
+      <summary>Gets or sets whether the platform network stack limits the size of the buffer used to receive the response.</summary>
+      <value>true to limit the download buffer size; otherwise, false. The default is false.</value>
+      <remarks>Set this property before the request is sent; changing it afterwards throws <see cref="T:System.InvalidOperationException"/>. The base class implementation throws <see cref="T:System.NotImplementedException"/>; the request objects created by WebRequest.Create support it.</remarks>
+    </member>
+    <member name="P:System.Net.HttpWebRequest.AllowLocalConnections">
+      <summary>Gets or sets whether the request may connect to addresses on the local network.</summary>
+      <value>true to allow local connections; otherwise, false. The default is false.</value>
+      <remarks>Set this property before the request is sent; changing it afterwards throws <see cref="T:System.InvalidOperationException"/>. The base class implementation throws <see cref="T:System.NotImplementedException"/>; the request objects created by WebRequest.Create support it.</remarks>
+    </member>
+    <member name="P:System.Net.WebResponse.ResponseIPAddress">
+      <summary>When overridden in a derived class, gets the IP address of the server that sent the response.</summary>
+      <value>The IPv4 address in dotted-decimal form, for example "192.0.2.10".</value>
+    </member>
+  </members>
+</doc>

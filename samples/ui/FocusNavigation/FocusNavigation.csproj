@@ -1,0 +1,28 @@
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5C1F7A20-9E44-4B3D-8D2E-1A6B3F9C7D02}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>FocusNavigation</RootNamespace>
+    <AssemblyName>FocusNavigation</AssemblyName>
+    <SilverlightAppEntry>FocusNavigation.App</SilverlightAppEntry>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml"><Generator>MSBuild:Compile</Generator></ApplicationDefinition>
+    <Page Include="MainPage.xaml"><Generator>MSBuild:Compile</Generator></Page>
+    <Compile Include="App.xaml.cs"><DependentUpon>App.xaml</DependentUpon></Compile>
+    <Compile Include="MainPage.xaml.cs"><DependentUpon>MainPage.xaml</DependentUpon></Compile>
+    <Compile Include="..\..\Common\DirectionalFocus.cs"><Link>Common\DirectionalFocus.cs</Link></Compile>
+  </ItemGroup>
+  <Import Project="..\..\..\msbuild\XboxSilverlight.targets" />
+</Project>

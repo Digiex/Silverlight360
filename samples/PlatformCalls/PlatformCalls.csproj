@@ -1,0 +1,35 @@
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8E1A7C40-3B5D-4F2A-9C61-2D7E4B9A5C13}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>PlatformCalls</RootNamespace>
+    <AssemblyName>PlatformCalls</AssemblyName>
+    <SilverlightAppEntry>PlatformCalls.App</SilverlightAppEntry>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows" />
+    <Reference Include="Microsoft.Xbox" />
+    <Reference Include="Microsoft.Xbox.Core" />
+    <Reference Include="Microsoft.Xbox.Services" />
+    <Reference Include="Microsoft.Xbox.Storage" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </ApplicationDefinition>
+    <Page Include="MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Compile Include="App.xaml.cs"><DependentUpon>App.xaml</DependentUpon></Compile>
+    <Compile Include="MainPage.xaml.cs"><DependentUpon>MainPage.xaml</DependentUpon></Compile>
+  </ItemGroup>
+  <Import Project="..\..\msbuild\XboxSilverlight.targets" />
+</Project>

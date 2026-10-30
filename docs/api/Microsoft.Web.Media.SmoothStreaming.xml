@@ -1,0 +1,1684 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly><name>Microsoft.Web.Media.SmoothStreaming</name></assembly>
+  <members>
+    <!-- ===================== DotfuscatorAttribute ===================== -->
+    <member name="T:DotfuscatorAttribute">
+      <summary>Marker attribute left in the assembly by the obfuscation tool used to build it. It has no effect at run time and is not intended for use by applications.</summary>
+    </member>
+    <member name="P:DotfuscatorAttribute.A">
+      <summary>Gets the string value recorded by the obfuscation tool.</summary>
+      <value>The string passed to the constructor.</value>
+    </member>
+    <member name="P:DotfuscatorAttribute.C">
+      <summary>Gets the integer value recorded by the obfuscation tool.</summary>
+      <value>The integer passed to the constructor.</value>
+    </member>
+    <member name="M:DotfuscatorAttribute.#ctor(System.String,System.Int32)">
+      <summary>Initializes a new instance of the attribute. Used only by the obfuscation tool.</summary>
+      <param name="a">String value stored in <see cref="P:DotfuscatorAttribute.A"/>.</param>
+      <param name="c">Integer value stored in <see cref="P:DotfuscatorAttribute.C"/>.</param>
+    </member>
+
+    <!-- ===================== SmoothStreamingMediaElement ===================== -->
+    <member name="T:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement">
+      <summary>A templated control that plays IIS Smooth Streaming content (on-demand and live), adapting the downloaded video bitrate to network and playback conditions. It wraps a <c>MediaElement</c> from its control template and exposes a MediaElement-like API plus Smooth Streaming features such as track selection, trick play, live position control and ad clip scheduling.</summary>
+      <remarks>
+        <para>Typical setup: place the control in XAML (give it a <c>Name</c>; it is used as the instance identifier in logs and traces), optionally set <see cref="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.SmoothStreamingPlaybackMode"/>, <see cref="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.SmoothStreamingCache"/> and <see cref="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.CookieContainer"/>, then set <see cref="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.SmoothStreamingSource"/> to the manifest URL (for example <c>http://server/video.ism/Manifest</c>). Sources set before the template is applied are held and opened when the template's media element becomes available.</para>
+        <para>On this platform progressive (non-Smooth) playback through <see cref="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.Source"/> is not supported; use a plain <c>MediaElement</c> for progressive files.</para>
+        <para>Event order for a new source: <see cref="E:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.ManifestMerge"/> (optional), <see cref="E:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.ManifestReady"/> (the place to restrict or select tracks and streams), then <see cref="E:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.MediaOpened"/>. All public events are raised on the UI thread. Most members must be called from the UI thread; several throw <c>UnauthorizedAccessException</c> otherwise.</para>
+        <para>To control bitrate, use <see cref="M:Microsoft.Web.Media.SmoothStreaming.StreamInfo.RestrictTracks(System.Collections.Generic.IList{Microsoft.Web.Media.SmoothStreaming.TrackInfo})"/> inside the ManifestReady handler or <see cref="M:Microsoft.Web.Media.SmoothStreaming.StreamInfo.SelectTracks(System.Collections.Generic.IList{Microsoft.Web.Media.SmoothStreaming.TrackInfo},System.Boolean)"/> at any time; the built-in heuristics then switch only among the allowed tracks.</para>
+        <para>Engine tuning settings are read from an embedded default configuration, optionally overridden by the XML file named by <see cref="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.ConfigPath"/>, when the template is applied.</para>
+      </remarks>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.PlaybackRate">
+      <summary>Gets the current playback rate reported by the Smooth Streaming source.</summary>
+      <value>1.0 for normal playback; values such as 4.0 or -8.0 during fast-forward or rewind. Updated after a <see cref="M:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.SetPlaybackRate(System.Double)"/> call takes effect. Default is 1.0.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.SupportedPlaybackRates">
+      <summary>Gets the playback rates that <see cref="M:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.SetPlaybackRate(System.Double)"/> accepts for the current content.</summary>
+      <value>Normally -8, -4, 0.25, 1, 4 and 8. Only 1.0 is returned in picture-in-picture mode, in <see cref="F:Microsoft.Web.Media.SmoothStreaming.PlaybackMode.AudioOnly"/> mode, or when the content can neither seek nor pause.</value>
+      <remarks>Must be read on the UI thread. The setter is not implemented and throws <c>NotImplementedException</c>.</remarks>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.LivePlaybackOffset">
+      <summary>Gets or sets how far behind the live edge playback is positioned when joining or seeking to live.</summary>
+      <value>A time offset from the live position. Default is 7 seconds.</value>
+      <remarks>Smaller values reduce latency but increase the risk of rebuffering. Also used by <see cref="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.IsLivePosition"/> to decide whether playback is "at live".</remarks>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.LiveBackOff">
+      <summary>Gets or sets the back-off distance from the live edge that the player keeps when it must fall back from the live position, for example after reaching the end of available live data.</summary>
+      <value>A time span. Default is 6 seconds.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.IsLive">
+      <summary>Gets a value indicating whether the open Smooth Streaming presentation is a live broadcast.</summary>
+      <value><see langword="true"/> for live content; <see langword="false"/> for on-demand content or when no Smooth Streaming source is open.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.LivePosition">
+      <summary>Gets the current live edge of a live presentation, in seconds on the presentation timeline.</summary>
+      <value>The live position in seconds, or 0 when the content is not live.</value>
+      <remarks>Use with <see cref="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.Position"/> to show how far behind live the viewer is. To jump to it, call <see cref="M:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.StartSeekToLive"/>.</remarks>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.IsLivePosition">
+      <summary>Gets a value indicating whether playback of a live presentation is currently close enough to the live edge to be considered "live".</summary>
+      <value><see langword="true"/> when the content is live and the distance between <see cref="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.Position"/> and <see cref="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.EndPosition"/> is within the live tolerance (live playback offset plus buffering time plus one chunk, but at least 10 seconds); otherwise <see langword="false"/>. Always <see langword="false"/> for on-demand or composite content.</value>
+      <remarks>Useful for enabling or disabling a "Go to live" button.</remarks>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.TrailingWindowDuration">
+      <summary>Gets or sets the length of the seekable window behind the live edge (the DVR window) for live content.</summary>
+      <value>The trailing window length for live content; <c>Duration.Forever</c> when the content is not live. Setting the value has no effect unless live content is open.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.Attributes">
+      <summary>Gets or sets the media attributes reported by the underlying media element (for example metadata carried in the stream).</summary>
+      <value>A dictionary of attribute names and values, or <see langword="null"/>. The control refreshes this value from the inner media element several times per second.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.AudioStreamCount">
+      <summary>Gets the number of audio streams available in the current media, as reported by the underlying media element.</summary>
+      <value>The audio stream count. Default is 0. The control refreshes this value from the inner media element periodically; values set by the application are overwritten.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.AudioStreamIndex">
+      <summary>Gets the index of the audio stream being played, as reported by the underlying media element.</summary>
+      <value>The zero-based index, or <see langword="null"/> when unknown. The control refreshes this value from the inner media element periodically.</value>
+      <remarks>To switch the Smooth Streaming audio language, select a different audio <see cref="T:Microsoft.Web.Media.SmoothStreaming.StreamInfo"/> with <see cref="M:Microsoft.Web.Media.SmoothStreaming.SegmentInfo.SelectStreamsAsync(System.Collections.Generic.IList{Microsoft.Web.Media.SmoothStreaming.StreamInfo})"/> instead of setting this property.</remarks>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.AutoPlay">
+      <summary>Gets or sets a value indicating whether playback starts automatically once the media opens.</summary>
+      <value><see langword="true"/> to start playing after <see cref="E:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.MediaOpened"/>; <see langword="false"/> to remain paused until <see cref="M:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.Play"/> is called. Default is <see langword="true"/>.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.Balance">
+      <summary>Gets or sets the stereo balance.</summary>
+      <value>A value from -1 (full left) to 1 (full right). Default is 0 (centered).</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.BufferingProgress">
+      <summary>Gets how much of the required buffer has been filled while the control is in the Buffering state.</summary>
+      <value>A value from 0 to 1. Refreshed from the inner media element several times per second.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.BufferingTime">
+      <summary>Gets or sets the amount of media to buffer before playback starts or resumes.</summary>
+      <value>A time span. Default is 2 seconds.</value>
+      <remarks>Also used in the live tolerance calculation of <see cref="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.IsLivePosition"/>.</remarks>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.CanPause">
+      <summary>Gets or sets a value indicating whether <see cref="M:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.Pause"/> has any effect.</summary>
+      <value>Default is <see langword="true"/>. When <see langword="false"/>, Pause returns without pausing.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.CanSeek">
+      <summary>Gets or sets a value indicating whether setting <see cref="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.Position"/> performs a seek.</summary>
+      <value>Default is <see langword="true"/>. When <see langword="false"/>, assignments to Position are ignored.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.CurrentState">
+      <summary>Gets the current playback state of the control.</summary>
+      <value>A <see cref="T:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElementState"/> value. Default is <see cref="F:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElementState.Closed"/>.</value>
+      <remarks>Mirrors the inner media element's state, except that it stays <see cref="F:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElementState.ClipPlaying"/> while a scheduled clip is playing. Listen to the <c>CurrentStateChanged</c> event for changes.</remarks>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.ConfigPath">
+      <summary>Gets or sets the path or URI of an XML configuration file that overrides the built-in Smooth Streaming engine settings (buffering, heuristics, download and playback tuning).</summary>
+      <value>A path relative to the application package or an absolute URI, or <see langword="null"/> (the default) to use only the built-in settings.</value>
+      <remarks>The file is read when the control template is applied, so set this property in XAML or before the control is added to the visual tree. Changes made later have no effect on the current instance.</remarks>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.DownloadProgress">
+      <summary>Gets the download progress reported by the underlying media element.</summary>
+      <value>A value from 0 to 1. Mainly meaningful for progressive sources; for Smooth Streaming content it reflects what the inner media element reports.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.DownloadProgressOffset">
+      <summary>Gets the offset of the downloaded range reported by the underlying media element.</summary>
+      <value>A value from 0 to 1. Updated when the inner media element raises its download progress notification.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.IsMuted">
+      <summary>Gets or sets a value indicating whether audio is muted.</summary>
+      <value>Default is <see langword="false"/>. Picture-in-picture instances are always muted.</value>
+      <remarks>Playback at a rate other than 1.0 mutes the inner media element.</remarks>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.PipMode">
+      <summary>Gets or sets a value indicating whether this instance is a lightweight picture-in-picture player.</summary>
+      <value>Default is <see langword="false"/>. Only the first assignment is honored; set it in XAML before any source is assigned.</value>
+      <remarks>A picture-in-picture instance is muted, does not produce playback logs, and supports only a playback rate of 1.0. Assign the main player to its <see cref="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.Master"/> property to link the two.</remarks>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.Source">
+      <summary>Gets the URI of a progressive (non-Smooth Streaming) media source.</summary>
+      <value>The progressive source URI, or <see langword="null"/>.</value>
+      <remarks>On Xbox 360, setting this property throws <c>NotSupportedException</c>: progressive playback is not supported by this control. Use <see cref="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.SmoothStreamingSource"/> for Smooth Streaming manifests, or a standard <c>MediaElement</c> for progressive files.</remarks>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.TimedTextSource">
+      <summary>Gets or sets the URI of an external timed-text (caption) file to display with the media.</summary>
+      <value>The caption file URI, or <see langword="null"/> (the default). The value is passed to the inner media element; if the template is not applied yet it is applied later.</value>
+      <remarks>Watch <see cref="E:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.TimedTextLoaded"/> and <see cref="E:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.TimedTextFailed"/> for the result.</remarks>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.Stretch">
+      <summary>Gets or sets how the video is scaled to fill the control.</summary>
+      <value>A <c>Stretch</c> value. Default is <c>Uniform</c> (letterbox, keep aspect ratio).</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.Volume">
+      <summary>Gets or sets the audio volume.</summary>
+      <value>A value from 0 to 1. Default is 0.5. Scheduled clips use the same volume.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.NaturalDuration">
+      <summary>Gets the duration of the open presentation.</summary>
+      <value>For Smooth Streaming content, the span between the start and end of the presentation timeline; for live content it is refreshed periodically as the available window changes. Default is an empty <c>Duration</c> until media opens.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.NaturalVideoWidth">
+      <summary>Gets the width, in pixels, of the decoded video as reported when the media opened.</summary>
+      <value>The video width, or 0 before media opens.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.NaturalVideoHeight">
+      <summary>Gets the height, in pixels, of the decoded video as reported when the media opened.</summary>
+      <value>The video height, or 0 before media opens.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.ClipPosition">
+      <summary>Gets the playback position within the clip (ad) that is currently playing.</summary>
+      <value>The position relative to the start of the current scheduled or linear clip, or <c>TimeSpan.Zero</c> when no clip is playing.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.ClipMediaElementStyle">
+      <summary>Gets or sets the style applied to the media elements that the control creates to play scheduled clips.</summary>
+      <value>A <c>Style</c> targeting <c>MediaElement</c>, or <see langword="null"/> (the default).</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.LivePlaybackStartPosition">
+      <summary>Gets or sets where playback of a live presentation starts when it is opened.</summary>
+      <value>A <see cref="T:Microsoft.Web.Media.SmoothStreaming.PlaybackStartPosition"/> value. Default is <see cref="F:Microsoft.Web.Media.SmoothStreaming.PlaybackStartPosition.End"/> (join at the live edge).</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.SmoothStreamingSource">
+      <summary>Gets or sets the URI of the Smooth Streaming manifest to play.</summary>
+      <value>The manifest URI (typically ending in <c>/Manifest</c>), or <see langword="null"/>. Default is <see langword="null"/>.</value>
+      <remarks>
+        <para>Setting a new value closes any current presentation and its scheduled clips, then starts downloading the new manifest. Setting <see langword="null"/> closes the media and sets <see cref="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.CurrentState"/> to Closed.</para>
+        <para><see cref="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.SmoothStreamingPlaybackMode"/>, <see cref="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.SmoothStreamingCache"/>, <see cref="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.CookieContainer"/> and <see cref="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.LivePlaybackStartPosition"/> are captured at this moment, so set them first.</para>
+      </remarks>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.SmoothStreamingCache">
+      <summary>Gets or sets an application-supplied cache that the download engine consults before, and updates after, each HTTP request for manifests and chunks.</summary>
+      <value>An <see cref="T:Microsoft.Web.Media.SmoothStreaming.ISmoothStreamingCache"/> implementation, or <see langword="null"/> (the default) for no application cache.</value>
+      <remarks>The new value takes effect the next time <see cref="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.SmoothStreamingSource"/> is set; the getter returns the cache in use by the current presentation.</remarks>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.SmoothStreamingPlaybackMode">
+      <summary>Gets or sets which media types are played from the Smooth Streaming presentation.</summary>
+      <value>A <see cref="T:Microsoft.Web.Media.SmoothStreaming.PlaybackMode"/> value, or <see langword="null"/> for the default of <see cref="F:Microsoft.Web.Media.SmoothStreaming.PlaybackMode.AudioVideo"/>.</value>
+      <remarks>The new value takes effect the next time <see cref="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.SmoothStreamingSource"/> is set; the getter returns the mode of the current presentation.</remarks>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.EnableGPUAcceleration">
+      <summary>Gets or sets a value indicating whether the video surfaces (main and clip media elements) are composited with GPU bitmap caching.</summary>
+      <value>Default is <see langword="true"/>.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.VideoPlaybackTrack">
+      <summary>Gets the video track (bitrate) currently being rendered.</summary>
+      <value>A <see cref="T:Microsoft.Web.Media.SmoothStreaming.TrackInfo"/>, or <see langword="null"/> before playback starts. Updated together with <see cref="E:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.PlaybackTrackChanged"/>.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.VideoHighestPlayableTrack">
+      <summary>Gets the highest-bitrate video track that the heuristics currently consider playable given rendering performance.</summary>
+      <value>A <see cref="T:Microsoft.Web.Media.SmoothStreaming.TrackInfo"/>, or <see langword="null"/> when unknown.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.VideoDownloadTrack">
+      <summary>Gets the video track (bitrate) currently being downloaded.</summary>
+      <value>A <see cref="T:Microsoft.Web.Media.SmoothStreaming.TrackInfo"/>, or <see langword="null"/>. Usually leads <see cref="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.VideoPlaybackTrack"/> by the buffer length. Updated together with <see cref="E:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.DownloadTrackChanged"/>.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.CookieContainer">
+      <summary>Gets or sets the cookie container used for the manifest and chunk HTTP requests.</summary>
+      <value>A <c>CookieContainer</c>, or <see langword="null"/> (the default) for none. Changing the value also updates the presentation that is currently open.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.DroppedFramesPerSecond">
+      <summary>Gets the number of video frames per second currently being dropped by the renderer (of the playing clip, if any, otherwise of the main content).</summary>
+      <value>Frames per second; 0 when nothing is playing.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.EndPosition">
+      <summary>Gets the last position available on the presentation timeline.</summary>
+      <value>For Smooth Streaming content, the end of the available timeline (for live content, the end of what has been published so far); otherwise the natural duration of the media. <c>TimeSpan.Zero</c> when nothing is open.</value>
+      <remarks>The setter is not implemented and throws <c>NotImplementedException</c>.</remarks>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.LicenseAcquirer">
+      <summary>Gets or sets the object used to acquire PlayReady licenses for protected content.</summary>
+      <value>A <c>LicenseAcquirer</c>. If none was set, a default instance is created and returned.</value>
+      <remarks>Set this before assigning the source so that customized license acquisition (for example a custom license server URL or challenge data) is used for the first license request.</remarks>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.Markers">
+      <summary>Gets the timeline markers of the underlying media element.</summary>
+      <value>The marker collection, or <see langword="null"/> before the control template has been applied.</value>
+      <remarks>Markers carried in the Smooth Streaming manifest are added when the media opens. <see cref="E:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.MarkerReached"/> is raised when playback crosses a marker.</remarks>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.Position">
+      <summary>Gets or sets the current playback position on the presentation timeline. Setting it seeks.</summary>
+      <value>The position. Returns <c>TimeSpan.Zero</c> when nothing is open.</value>
+      <remarks>
+        <para>Setting the position throws <c>InvalidOperationException</c> when <see cref="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.CurrentState"/> is Closed, and is ignored when <see cref="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.CanSeek"/> is <see langword="false"/> or another seek is still in progress.</para>
+        <para>Seeks on Smooth Streaming content are asynchronous: <see cref="E:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.SeekCompleted"/> reports the actual position reached (normally the nearest preceding key frame). Until then the getter may keep returning the requested position. When paused on on-demand content, a seek close to the end is clamped slightly before the end.</para>
+      </remarks>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.RenderedFramesPerSecond">
+      <summary>Gets the number of video frames per second currently being rendered (of the playing clip, if any, otherwise of the main content).</summary>
+      <value>Frames per second; 0 when nothing is playing.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.StartPosition">
+      <summary>Gets the first position available on the presentation timeline.</summary>
+      <value>For Smooth Streaming content, the start of the available timeline (for live content with a trailing window this moves forward over time); otherwise <c>TimeSpan.Zero</c>.</value>
+      <remarks>The setter is not implemented and throws <c>NotImplementedException</c>.</remarks>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.Master">
+      <summary>Gets or sets the main player that this picture-in-picture instance is linked to.</summary>
+      <value>The main <see cref="T:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement"/>, or <see langword="null"/>.</value>
+      <remarks>Can be set only once, only on an instance whose <see cref="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.PipMode"/> is <see langword="true"/>, and only to a non-null instance that is not itself in picture-in-picture mode; otherwise a <see cref="T:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingException"/> is thrown.</remarks>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.ManifestInfo">
+      <summary>Gets the parsed manifest of the open Smooth Streaming presentation.</summary>
+      <value>A <see cref="T:Microsoft.Web.Media.SmoothStreaming.ManifestInfo"/>, or <see langword="null"/> before the manifest has been downloaded or when no Smooth Streaming source is open.</value>
+      <remarks>Available from the <see cref="E:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.ManifestReady"/> event onward. Use it to enumerate segments, streams and tracks for language and bitrate selection.</remarks>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.CurrentSegmentIndex">
+      <summary>Gets the index of the manifest segment currently playing.</summary>
+      <value>In this implementation the value is always 0.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.TotalBytesDownloaded">
+      <summary>Gets the total number of bytes downloaded by this instance.</summary>
+      <value>A running byte count, useful for diagnostics overlays.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.CurrentLinearClipContext">
+      <summary>Gets the context of the linear clip (ad spliced into the main timeline) at the current position.</summary>
+      <value>The <see cref="T:Microsoft.Web.Media.SmoothStreaming.ClipContext"/> returned by <see cref="M:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.ScheduleLinearClip(Microsoft.Web.Media.SmoothStreaming.ClipInformation,System.TimeSpan,System.Object)"/> for the clip being played, or <see langword="null"/> when main content is playing.</value>
+    </member>
+    <member name="E:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.LiveEventCompleted">
+      <summary>Occurs when a live presentation has ended (the encoder signaled the end of the broadcast) and playback has reached it.</summary>
+    </member>
+    <member name="E:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.TimedTextLoaded">
+      <summary>Occurs when the caption file set in <see cref="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.TimedTextSource"/> has been loaded successfully.</summary>
+    </member>
+    <member name="E:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.TimedTextFailed">
+      <summary>Occurs when the caption file set in <see cref="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.TimedTextSource"/> could not be loaded or parsed.</summary>
+    </member>
+    <member name="E:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.LogReady">
+      <summary>Occurs when a playback log is available, either in response to <see cref="M:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.RequestLog"/> or when the engine produces one on its own (for example when playback ends or the source changes).</summary>
+      <remarks>The handler receives the log as an XML string in <see cref="P:Microsoft.Web.Media.SmoothStreaming.SSMELogReadyRoutedEventArgs.Log"/>. Raised on the UI thread.</remarks>
+    </member>
+    <member name="E:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.MarkerReached">
+      <summary>Occurs when playback reaches a timeline marker in <see cref="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.Markers"/>, including markers delivered in the manifest or in a sparse text stream.</summary>
+    </member>
+    <member name="E:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.MediaEnded">
+      <summary>Occurs when playback reaches the end of the presentation.</summary>
+      <remarks>The control stops the media and sets <see cref="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.CurrentState"/> to Stopped before raising the event. When rewinding reaches the start, playback resumes at normal speed instead and the event is not raised.</remarks>
+    </member>
+    <member name="E:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.MediaFailed">
+      <summary>Occurs when the media cannot be opened or played, for example because of an unsupported format, a decoding error or a license failure.</summary>
+      <remarks>Inspect <c>ErrorException</c> in the event data for the cause. Network and manifest errors in the Smooth Streaming engine are reported through <see cref="E:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.SmoothStreamingErrorOccurred"/>.</remarks>
+    </member>
+    <member name="E:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.MediaOpened">
+      <summary>Occurs when the presentation has been opened and its duration and video dimensions are known.</summary>
+      <remarks>Raised after <see cref="E:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.ManifestReady"/>. If <see cref="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.AutoPlay"/> is <see langword="false"/> or a clip is playing, the main content is left paused.</remarks>
+    </member>
+    <member name="E:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.ChunkDownloadFailed">
+      <summary>Occurs when a chunk (fragment) request fails or times out.</summary>
+      <remarks>The event data identifies the chunk, track, URL, request type and HTTP status. The engine retries or switches tracks on its own; use this event for diagnostics. Raised on the UI thread.</remarks>
+    </member>
+    <member name="E:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.PlaybackTrackChanged">
+      <summary>Occurs when the video bitrate being rendered changes.</summary>
+      <remarks>Raised for video only, after <see cref="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.VideoPlaybackTrack"/> has been updated. Use it to display the current bitrate.</remarks>
+    </member>
+    <member name="E:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.ManifestMerge">
+      <summary>Occurs while a manifest is being processed, before <see cref="E:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.ManifestReady"/>, to let the application merge additional manifests into it.</summary>
+      <remarks>In the handler, call <see cref="M:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.ParseExternalManifest(System.Uri,System.Int32,System.Object@)"/> and then <see cref="M:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.MergeExternalManifest(System.Object)"/>, for example to add caption or alternate-audio streams hosted separately. The handler may run off the UI thread.</remarks>
+    </member>
+    <member name="E:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.ManifestReady">
+      <summary>Occurs when the Smooth Streaming manifest has been downloaded and parsed and <see cref="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.ManifestInfo"/> is available.</summary>
+      <remarks>This is the only point at which <see cref="M:Microsoft.Web.Media.SmoothStreaming.StreamInfo.RestrictTracks(System.Collections.Generic.IList{Microsoft.Web.Media.SmoothStreaming.TrackInfo})"/> may be called, and the best point to call <see cref="M:Microsoft.Web.Media.SmoothStreaming.SegmentInfo.SelectStreamsAsync(System.Collections.Generic.IList{Microsoft.Web.Media.SmoothStreaming.StreamInfo})"/>, <see cref="M:Microsoft.Web.Media.SmoothStreaming.StreamInfo.SelectTracks(System.Collections.Generic.IList{Microsoft.Web.Media.SmoothStreaming.TrackInfo},System.Boolean)"/> or schedule pre-roll clips, before any media is downloaded. Raised on the UI thread.</remarks>
+    </member>
+    <member name="E:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.SetPlaybackRangeCompleted">
+      <summary>Occurs when an operation started by <see cref="M:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.SetPlaybackRangeAsync(System.TimeSpan,System.TimeSpan,System.Object)"/> finishes.</summary>
+      <remarks>The event data is a <see cref="T:Microsoft.Web.Media.SmoothStreaming.SetPlaybackRangeCompletedEventArgs"/>; check <c>Error</c> before reading its edges.</remarks>
+    </member>
+    <member name="E:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.SeekCompleted">
+      <summary>Occurs when a seek on Smooth Streaming content (setting <see cref="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.Position"/>, changing the playback rate, or seeking to live) has finished.</summary>
+      <remarks>A new seek requested before this event is ignored. The event data gives the position actually reached.</remarks>
+    </member>
+    <member name="E:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.SmoothStreamingErrorOccurred">
+      <summary>Occurs when the Smooth Streaming engine hits an unrecoverable error, such as a manifest that cannot be downloaded or parsed.</summary>
+      <remarks>After the handler runs, the media source of the current presentation is shut down; to retry, set <see cref="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.SmoothStreamingSource"/> again. Raised on the UI thread.</remarks>
+    </member>
+    <member name="E:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.DownloadTrackChanged">
+      <summary>Occurs when the heuristics switch the track (bitrate) being downloaded for a stream.</summary>
+      <remarks>Raised for audio and video; for video, <see cref="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.VideoDownloadTrack"/> is updated first. Raised on the UI thread.</remarks>
+    </member>
+    <member name="E:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.DrmSetupDecryptorCompleted">
+      <summary>Occurs when the decryptor for protected content has been set up for a key, after license acquisition.</summary>
+      <remarks>Check <c>Error</c> in the event data to detect license or decryption setup failures for a given key ID.</remarks>
+    </member>
+    <member name="E:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.LinearClipChanged">
+      <summary>Occurs when playback moves into or out of a linear clip scheduled with <see cref="M:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.ScheduleLinearClip(Microsoft.Web.Media.SmoothStreaming.ClipInformation,System.TimeSpan,System.Object)"/>.</summary>
+      <remarks>The event data holds the new clip context (<see langword="null"/> when returning to main content). The sender is the previous clip context, not the control.</remarks>
+    </member>
+    <member name="E:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.ClipStateChanged">
+      <summary>Occurs when the media state of a playing scheduled clip changes (for example Opening, Buffering, Playing).</summary>
+      <remarks>Read <see cref="P:Microsoft.Web.Media.SmoothStreaming.ClipContext.CurrentClipState"/> from the event data.</remarks>
+    </member>
+    <member name="E:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.ClipProgressUpdate">
+      <summary>Occurs when a clip reaches a progress milestone: start, each quartile, and completion.</summary>
+      <remarks>Use it to fire ad-tracking beacons. Quartile milestones are reported only when the clip duration is known (<see cref="P:Microsoft.Web.Media.SmoothStreaming.ClipContext.HasQuartileEvents"/>).</remarks>
+    </member>
+    <member name="E:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.ClipClickThrough">
+      <summary>Occurs when the user clicks a playing clip that has a <see cref="P:Microsoft.Web.Media.SmoothStreaming.ClipInformation.ClickThroughUri"/>.</summary>
+      <remarks>The control does not navigate; the application decides what to do with the click-through URI.</remarks>
+    </member>
+    <member name="E:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.ClipError">
+      <summary>Occurs when a scheduled clip fails to open or play. Playback continues with the next clip or returns to the main content.</summary>
+    </member>
+    <member name="M:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.SetPlaybackRate(System.Double)">
+      <summary>Changes the playback rate for trick play (fast-forward, rewind or slow motion).</summary>
+      <param name="playbackRate">The new rate. Must be one of the values in <see cref="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.SupportedPlaybackRates"/>; use 1.0 to return to normal playback.</param>
+      <remarks>
+        <para>Call on the UI thread while the state is Playing, Paused or Buffering and a Smooth Streaming source is open. Throws <c>InvalidOperationException</c> when no Smooth Streaming source is set, while a clip is playing, or in other states; throws <c>ArgumentOutOfRangeException</c> for an unsupported rate.</para>
+        <para>The change is performed as a seek to the current position, so <see cref="E:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.SeekCompleted"/> follows and <see cref="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.PlaybackRate"/> is updated. Audio is muted at rates other than 1.0. The call is ignored while another seek is in progress.</para>
+      </remarks>
+    </member>
+    <member name="M:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.StartSeekToLive">
+      <summary>Starts a seek to the live edge (minus <see cref="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.LivePlaybackOffset"/>) of a live presentation.</summary>
+      <returns>In this implementation the method always returns <see langword="false"/>; observe <see cref="E:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.SeekCompleted"/> to learn when the seek finishes.</returns>
+      <remarks>Does nothing for on-demand content, or when a seek or seek-to-live is already in progress.</remarks>
+    </member>
+    <member name="M:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.RenderTimedTextData(System.Byte[])">
+      <summary>Passes caption data supplied by the application to the underlying media element for display.</summary>
+      <param name="timedTextData">The timed-text document bytes (for example TTML).</param>
+      <remarks>Requires the control template to have been applied.</remarks>
+    </member>
+    <member name="M:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.ParseExternalManifest(System.Uri,System.Int32,System.Object@)">
+      <summary>Downloads and parses an additional Smooth Streaming manifest so that it can be merged into the current presentation.</summary>
+      <param name="externalManifestUri">URI of the manifest to merge.</param>
+      <param name="millisecondsTimeout">Maximum time to wait for the download, in milliseconds.</param>
+      <param name="externalManifest">On return, an opaque object representing the parsed manifest to pass to <see cref="M:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.MergeExternalManifest(System.Object)"/>, or <see langword="null"/> if no Smooth Streaming source is open.</param>
+      <remarks>Intended to be called from a <see cref="E:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.ManifestMerge"/> handler. The call blocks until the manifest is parsed or the timeout elapses.</remarks>
+    </member>
+    <member name="M:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.MergeExternalManifest(System.Object)">
+      <summary>Merges a manifest previously parsed with <see cref="M:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.ParseExternalManifest(System.Uri,System.Int32,System.Object@)"/> into the current presentation, adding its streams.</summary>
+      <param name="externalManifest">The object returned by ParseExternalManifest.</param>
+      <remarks>Call from a <see cref="E:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.ManifestMerge"/> handler. Does nothing if no Smooth Streaming source is open.</remarks>
+    </member>
+    <member name="M:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.SetPlaybackRangeAsync(System.TimeSpan,System.TimeSpan,System.Object)">
+      <summary>Moves the start of the playable range of a live-to-on-demand (segmented) presentation, for "start over" scenarios.</summary>
+      <param name="leftEdge">New start of the playable range. Must be less than <paramref name="rightEdge"/> and not later than the current live position.</param>
+      <param name="rightEdge">End of the range. Only <c>TimeSpan.MaxValue</c> (keep following the live edge) is supported.</param>
+      <param name="userState">Optional object returned in the completion event data.</param>
+      <remarks>Call on the UI thread after the manifest is ready. Throws <c>NotImplementedException</c> if <paramref name="rightEdge"/> is not <c>TimeSpan.MaxValue</c>, <c>ArgumentOutOfRangeException</c> if the edges are out of order, and <c>InvalidOperationException</c> if the manifest is not ready or is not a <see cref="F:Microsoft.Web.Media.SmoothStreaming.ManifestType.Segmented"/> manifest. Completion is reported by <see cref="E:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.SetPlaybackRangeCompleted"/>.</remarks>
+    </member>
+    <member name="M:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.FlushBuffers(System.TimeSpan,System.Boolean,System.Boolean)">
+      <summary>Discards buffered audio and/or video beyond a given amount, forcing the engine to download that media again (for example after changing track selection).</summary>
+      <param name="bufferToKeep">How much already-buffered media, measured from the playback position, to keep.</param>
+      <param name="flushAudio"><see langword="true"/> to flush the audio buffer.</param>
+      <param name="flushVideo"><see langword="true"/> to flush the video buffer.</param>
+    </member>
+    <member name="M:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.Pause">
+      <summary>Pauses playback of the main content, or of the clip that is playing.</summary>
+      <remarks>Throws <c>InvalidOperationException</c> when <see cref="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.CurrentState"/> is Closed. Has no effect when <see cref="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.CanPause"/> is <see langword="false"/>.</remarks>
+    </member>
+    <member name="M:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.Play">
+      <summary>Starts or resumes playback of the main content, or of the clip that is playing.</summary>
+      <remarks>Throws <c>InvalidOperationException</c> when <see cref="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.CurrentState"/> is Closed (no source set). Calling Play while the state is still Opening is allowed; playback begins once the media opens.</remarks>
+    </member>
+    <member name="M:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.RequestLog">
+      <summary>Asks the engine to produce a playback log now; the log is delivered through the <see cref="E:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.LogReady"/> event.</summary>
+    </member>
+    <member name="M:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.SetSource(System.IO.Stream)">
+      <summary>Closes the current presentation and plays media from a stream supplied by the application, using the underlying media element directly (no adaptive streaming).</summary>
+      <param name="stream">A stream containing a complete media file in a format the platform media element can play.</param>
+    </member>
+    <member name="M:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.Stop">
+      <summary>Stops playback of the main content and of any clip media elements and stops the Smooth Streaming source.</summary>
+      <remarks>Throws <c>InvalidOperationException</c> when <see cref="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.CurrentState"/> is Closed.</remarks>
+    </member>
+    <member name="M:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.ScheduleClip(Microsoft.Web.Media.SmoothStreaming.ClipInformation,System.Boolean,System.Object)">
+      <summary>Schedules a clip (for example an ad) to play immediately, on top of the main content.</summary>
+      <param name="clipInfo">Describes the clip to play.</param>
+      <param name="pauseTimeline"><see langword="true"/> to pause the main content while the clip plays; <see langword="false"/> to let the main timeline keep running.</param>
+      <param name="userData">Application data stored in <see cref="P:Microsoft.Web.Media.SmoothStreaming.ClipContext.Data"/>.</param>
+      <returns>A <see cref="T:Microsoft.Web.Media.SmoothStreaming.ClipContext"/> that identifies the clip in clip events and can be passed to the append overload.</returns>
+      <remarks>Allowed only after the manifest is ready (from the <see cref="E:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.ManifestReady"/> handler onward) and not while Stopped or Closed; otherwise <c>InvalidOperationException</c> is thrown. Called before the main media opens, the clip plays as a pre-roll.</remarks>
+    </member>
+    <member name="M:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.ScheduleClip(Microsoft.Web.Media.SmoothStreaming.ClipInformation,Microsoft.Web.Media.SmoothStreaming.ClipContext,System.Object)">
+      <summary>Schedules a clip to play right after another scheduled clip, forming an ad pod.</summary>
+      <param name="clipInfo">Describes the clip to play.</param>
+      <param name="clipToAppendTo">The context of a previously scheduled clip; the new clip is added to the end of its chain and inherits its pause-timeline setting.</param>
+      <param name="userData">Application data stored in <see cref="P:Microsoft.Web.Media.SmoothStreaming.ClipContext.Data"/>.</param>
+      <returns>The <see cref="T:Microsoft.Web.Media.SmoothStreaming.ClipContext"/> of the new clip.</returns>
+      <remarks>Throws <c>ArgumentNullException</c> if <paramref name="clipToAppendTo"/> is <see langword="null"/>. The same state restrictions apply as for the other overloads.</remarks>
+    </member>
+    <member name="M:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.ScheduleClip(Microsoft.Web.Media.SmoothStreaming.ClipInformation,System.TimeSpan,System.Boolean,System.Object)">
+      <summary>Schedules a clip to play when the main content reaches a given position (a mid-roll).</summary>
+      <param name="clipInfo">Describes the clip to play.</param>
+      <param name="startTime">Position on the main timeline at which the clip starts. A timeline marker is added at this position.</param>
+      <param name="pauseTimeline"><see langword="true"/> to pause the main content while the clip plays.</param>
+      <param name="userData">Application data stored in <see cref="P:Microsoft.Web.Media.SmoothStreaming.ClipContext.Data"/>.</param>
+      <returns>The <see cref="T:Microsoft.Web.Media.SmoothStreaming.ClipContext"/> of the scheduled clip.</returns>
+      <remarks>Throws <c>InvalidOperationException</c> before the manifest is ready or while Stopped or Closed.</remarks>
+    </member>
+    <member name="M:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.ScheduleClip(Microsoft.Web.Media.SmoothStreaming.ClipInformation,System.Boolean,System.TimeSpan,System.Object)">
+      <summary>Schedules a clip to play immediately, starting part way into the clip.</summary>
+      <param name="clipInfo">Describes the clip to play.</param>
+      <param name="pauseTimeline"><see langword="true"/> to pause the main content while the clip plays.</param>
+      <param name="startOffset">Position within the clip at which to begin. Must not be negative and must be less than the clip's <see cref="P:Microsoft.Web.Media.SmoothStreaming.ClipInformation.Duration"/> when one is given.</param>
+      <param name="userData">Application data stored in <see cref="P:Microsoft.Web.Media.SmoothStreaming.ClipContext.Data"/>.</param>
+      <returns>The <see cref="T:Microsoft.Web.Media.SmoothStreaming.ClipContext"/> of the scheduled clip.</returns>
+      <remarks>Throws <c>InvalidOperationException</c> for an invalid offset, before the manifest is ready, or while Stopped or Closed.</remarks>
+    </member>
+    <member name="M:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.ScheduleLinearClip(Microsoft.Web.Media.SmoothStreaming.ClipInformation,System.TimeSpan,System.Object)">
+      <summary>Splices a Smooth Streaming clip into the main presentation timeline at a manifest timestamp, so that it plays in the main media element as part of the content (a linear ad).</summary>
+      <param name="clipInfo">Describes the clip. Must be a Smooth Streaming source.</param>
+      <param name="manifestTimestamp">Position on the main presentation timeline at which the clip is inserted.</param>
+      <param name="userData">Application data stored in <see cref="P:Microsoft.Web.Media.SmoothStreaming.ClipContext.Data"/>. If it is a non-empty string it is also used as the clip's name.</param>
+      <returns>The <see cref="T:Microsoft.Web.Media.SmoothStreaming.ClipContext"/> for the linear clip.</returns>
+      <remarks>Throws <c>InvalidOperationException</c> if no <see cref="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.SmoothStreamingSource"/> is set or the clip is progressive. Progress is reported through <see cref="E:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.LinearClipChanged"/> and <see cref="E:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.ClipProgressUpdate"/>; the main timeline is not paused.</remarks>
+    </member>
+    <member name="T:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.ManifestMergeHandler">
+      <summary>Represents the method that handles the <see cref="E:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.ManifestMerge"/> event.</summary>
+      <param name="ssme">The control whose manifest is being processed. Call its manifest merge methods from the handler.</param>
+    </member>
+    <member name="T:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.SetPlaybackRangeCompletedEventHandler">
+      <summary>Represents the method that handles the <see cref="E:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.SetPlaybackRangeCompleted"/> event.</summary>
+      <param name="sender">The control that raised the event.</param>
+      <param name="args">The completion data; cast to <see cref="T:Microsoft.Web.Media.SmoothStreaming.SetPlaybackRangeCompletedEventArgs"/> to read the new range.</param>
+    </member>
+
+    <!-- ===================== Enums ===================== -->
+    <member name="T:Microsoft.Web.Media.SmoothStreaming.PlaybackStartPosition">
+      <summary>Specifies where playback of a live presentation begins when it is opened. Used by <see cref="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.LivePlaybackStartPosition"/>.</summary>
+    </member>
+    <member name="F:Microsoft.Web.Media.SmoothStreaming.PlaybackStartPosition.Beginning">
+      <summary>Start at the beginning of the available content. For a live presentation that declares a DVR window, the engine treats this value as <see cref="F:Microsoft.Web.Media.SmoothStreaming.PlaybackStartPosition.End"/>.</summary>
+    </member>
+    <member name="F:Microsoft.Web.Media.SmoothStreaming.PlaybackStartPosition.End">
+      <summary>Start near the live edge. This is the default.</summary>
+    </member>
+    <member name="F:Microsoft.Web.Media.SmoothStreaming.PlaybackStartPosition.PausedPosition">
+      <summary>Resume from the position at which playback was previously paused rather than at either end of the window.</summary>
+    </member>
+    <member name="T:Microsoft.Web.Media.SmoothStreaming.PlaybackMode">
+      <summary>Specifies which media types of a Smooth Streaming presentation are played. Used by <see cref="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.SmoothStreamingPlaybackMode"/>.</summary>
+    </member>
+    <member name="F:Microsoft.Web.Media.SmoothStreaming.PlaybackMode.AudioVideo">
+      <summary>Play both audio and video. This is the default.</summary>
+    </member>
+    <member name="F:Microsoft.Web.Media.SmoothStreaming.PlaybackMode.AudioOnly">
+      <summary>Play audio only; video chunks are not downloaded. Only normal-speed playback is supported in this mode.</summary>
+    </member>
+    <member name="F:Microsoft.Web.Media.SmoothStreaming.PlaybackMode.VideoOnly">
+      <summary>Play video only; audio chunks are not downloaded.</summary>
+    </member>
+    <member name="T:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElementState">
+      <summary>Specifies the playback state of a <see cref="T:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement"/>. The values 0 through 7 match those of the platform media element state; <see cref="F:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElementState.ClipPlaying"/> is specific to this control.</summary>
+    </member>
+    <member name="F:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElementState.Closed">
+      <summary>No media is open. Play, Pause, Stop and seeking throw in this state.</summary>
+    </member>
+    <member name="F:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElementState.Opening">
+      <summary>The source has been set and the manifest or media is being opened.</summary>
+    </member>
+    <member name="F:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElementState.Buffering">
+      <summary>Playback is waiting for enough media to be downloaded.</summary>
+    </member>
+    <member name="F:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElementState.Playing">
+      <summary>The main content is playing.</summary>
+    </member>
+    <member name="F:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElementState.Paused">
+      <summary>Playback is paused.</summary>
+    </member>
+    <member name="F:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElementState.Stopped">
+      <summary>Playback has been stopped or has reached the end of the media.</summary>
+    </member>
+    <member name="F:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElementState.Individualizing">
+      <summary>The DRM client is being individualized before protected content can play.</summary>
+    </member>
+    <member name="F:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElementState.AcquiringLicense">
+      <summary>A license for protected content is being acquired.</summary>
+    </member>
+    <member name="F:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElementState.ClipPlaying">
+      <summary>A scheduled clip (for example an ad) is playing instead of the main content. Trick play is not available in this state.</summary>
+    </member>
+    <member name="T:Microsoft.Web.Media.SmoothStreaming.ManifestType">
+      <summary>Identifies the structure of a parsed Smooth Streaming manifest.</summary>
+    </member>
+    <member name="F:Microsoft.Web.Media.SmoothStreaming.ManifestType.Standard">
+      <summary>A regular single-presentation manifest (on-demand or live).</summary>
+    </member>
+    <member name="F:Microsoft.Web.Media.SmoothStreaming.ManifestType.Segmented">
+      <summary>A manifest (version 3 or later) that contains <c>Segment</c> elements, as produced for live-to-on-demand archives. Required by <see cref="M:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.SetPlaybackRangeAsync(System.TimeSpan,System.TimeSpan,System.Object)"/>.</summary>
+    </member>
+    <member name="F:Microsoft.Web.Media.SmoothStreaming.ManifestType.Composite">
+      <summary>A composite (rough-cut editing) manifest that stitches clips from other presentations into one timeline. Track selection and restriction are not supported for this type.</summary>
+    </member>
+    <member name="T:Microsoft.Web.Media.SmoothStreaming.ChunkRequestType">
+      <summary>Identifies the kind of chunk request reported by <see cref="T:Microsoft.Web.Media.SmoothStreaming.ChunkDownloadedEventArgs"/>.</summary>
+    </member>
+    <member name="F:Microsoft.Web.Media.SmoothStreaming.ChunkRequestType.Fragment">
+      <summary>A normal media fragment request.</summary>
+    </member>
+    <member name="F:Microsoft.Web.Media.SmoothStreaming.ChunkRequestType.FragmentInfo">
+      <summary>A request for fragment metadata only, without the media payload.</summary>
+    </member>
+    <member name="F:Microsoft.Web.Media.SmoothStreaming.ChunkRequestType.KeyFrame">
+      <summary>A request for a key frame only, used during fast-forward and rewind.</summary>
+    </member>
+    <member name="T:Microsoft.Web.Media.SmoothStreaming.ClipProgress">
+      <summary>Identifies a playback milestone of a clip, reported by <see cref="E:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.ClipProgressUpdate"/>.</summary>
+    </member>
+    <member name="F:Microsoft.Web.Media.SmoothStreaming.ClipProgress.Start">
+      <summary>The clip has started playing.</summary>
+    </member>
+    <member name="F:Microsoft.Web.Media.SmoothStreaming.ClipProgress.FirstQuartile">
+      <summary>25 percent of the clip has played.</summary>
+    </member>
+    <member name="F:Microsoft.Web.Media.SmoothStreaming.ClipProgress.Midpoint">
+      <summary>50 percent of the clip has played.</summary>
+    </member>
+    <member name="F:Microsoft.Web.Media.SmoothStreaming.ClipProgress.ThirdQuartile">
+      <summary>75 percent of the clip has played.</summary>
+    </member>
+    <member name="F:Microsoft.Web.Media.SmoothStreaming.ClipProgress.Complete">
+      <summary>The clip has played to the end.</summary>
+    </member>
+    <member name="F:Microsoft.Web.Media.SmoothStreaming.ClipProgress.Unknown">
+      <summary>A milestone that could not be identified.</summary>
+    </member>
+
+    <!-- ===================== Cache ===================== -->
+    <member name="T:Microsoft.Web.Media.SmoothStreaming.ISmoothStreamingCache">
+      <summary>Implemented by the application to cache, or substitute, the HTTP responses that the Smooth Streaming engine downloads (manifests and chunks). Assign an implementation to <see cref="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.SmoothStreamingCache"/>.</summary>
+      <remarks>
+        <para>Before each request the engine calls <see cref="M:Microsoft.Web.Media.SmoothStreaming.ISmoothStreamingCache.BeginRetrieve(Microsoft.Web.Media.SmoothStreaming.CacheRequest,System.AsyncCallback,System.Object)"/> and immediately <see cref="M:Microsoft.Web.Media.SmoothStreaming.ISmoothStreamingCache.EndRetrieve(System.IAsyncResult)"/>; a response with status OK is used instead of downloading. After a successful download it calls <see cref="M:Microsoft.Web.Media.SmoothStreaming.ISmoothStreamingCache.BeginPersist(Microsoft.Web.Media.SmoothStreaming.CacheRequest,Microsoft.Web.Media.SmoothStreaming.CacheResponse,System.AsyncCallback,System.Object)"/> and <see cref="M:Microsoft.Web.Media.SmoothStreaming.ISmoothStreamingCache.EndPersist(System.IAsyncResult)"/>.</para>
+        <para>These calls are made on engine worker threads, not the UI thread, and the engine blocks on the End methods, so implementations should complete quickly. <see cref="T:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingAsyncResult"/> can be used as the returned <c>IAsyncResult</c>.</para>
+      </remarks>
+    </member>
+    <member name="M:Microsoft.Web.Media.SmoothStreaming.ISmoothStreamingCache.BeginRetrieve(Microsoft.Web.Media.SmoothStreaming.CacheRequest,System.AsyncCallback,System.Object)">
+      <summary>Begins looking up a cached response for a request.</summary>
+      <param name="request">The request. For chunk requests this is a <see cref="T:Microsoft.Web.Media.SmoothStreaming.CacheRequest2"/> carrying the outgoing web request and the selectable tracks.</param>
+      <param name="callback">Callback to invoke when the lookup completes; may be <see langword="null"/>.</param>
+      <param name="state">Caller state to store in the result.</param>
+      <returns>An <c>IAsyncResult</c> that is passed to <see cref="M:Microsoft.Web.Media.SmoothStreaming.ISmoothStreamingCache.EndRetrieve(System.IAsyncResult)"/>.</returns>
+    </member>
+    <member name="M:Microsoft.Web.Media.SmoothStreaming.ISmoothStreamingCache.EndRetrieve(System.IAsyncResult)">
+      <summary>Completes a lookup started by BeginRetrieve and returns the cached response, if any.</summary>
+      <param name="ar">The result returned by BeginRetrieve.</param>
+      <returns>A <see cref="T:Microsoft.Web.Media.SmoothStreaming.CacheResponse"/> with status OK and a response stream to serve the data from the cache; <see langword="null"/> (or a non-OK response) to let the engine download normally; or a non-OK response whose <see cref="P:Microsoft.Web.Media.SmoothStreaming.CacheResponse.ContinueProcessing"/> is <see langword="false"/> to fail the request without downloading.</returns>
+      <remarks>Exceptions thrown here are caught and treated as a cache miss.</remarks>
+    </member>
+    <member name="M:Microsoft.Web.Media.SmoothStreaming.ISmoothStreamingCache.BeginPersist(Microsoft.Web.Media.SmoothStreaming.CacheRequest,Microsoft.Web.Media.SmoothStreaming.CacheResponse,System.AsyncCallback,System.Object)">
+      <summary>Begins storing a successfully downloaded response.</summary>
+      <param name="request">The request that was downloaded.</param>
+      <param name="response">The downloaded response, including headers and the response stream.</param>
+      <param name="callback">Callback to invoke when storing completes; may be <see langword="null"/>.</param>
+      <param name="state">Caller state to store in the result.</param>
+      <returns>An <c>IAsyncResult</c> that is passed to <see cref="M:Microsoft.Web.Media.SmoothStreaming.ISmoothStreamingCache.EndPersist(System.IAsyncResult)"/>.</returns>
+    </member>
+    <member name="M:Microsoft.Web.Media.SmoothStreaming.ISmoothStreamingCache.EndPersist(System.IAsyncResult)">
+      <summary>Completes a store operation started by BeginPersist.</summary>
+      <param name="ar">The result returned by BeginPersist.</param>
+      <returns><see langword="true"/> if the response was handled. In that case the engine re-reads the fields of the <see cref="T:Microsoft.Web.Media.SmoothStreaming.CacheResponse"/> passed to BeginPersist, so the cache may modify the response (for example replace its stream) before it is consumed. <see langword="false"/> to leave the download unchanged.</returns>
+    </member>
+    <member name="M:Microsoft.Web.Media.SmoothStreaming.ISmoothStreamingCache.OpenMedia(System.Uri)">
+      <summary>Called when the engine starts using the cache for a presentation.</summary>
+      <param name="manifestUri">The manifest URI of the presentation being opened.</param>
+    </member>
+    <member name="M:Microsoft.Web.Media.SmoothStreaming.ISmoothStreamingCache.CloseMedia(System.Uri)">
+      <summary>Called when the engine stops using the cache for a presentation, for example when the source changes.</summary>
+      <param name="manifestUri">The manifest URI of the presentation being closed.</param>
+    </member>
+    <member name="T:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingException">
+      <summary>The exception thrown by the Smooth Streaming client for errors specific to it, such as invalid serialized cache data or invalid property combinations.</summary>
+    </member>
+    <member name="T:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingAsyncResult">
+      <summary>A ready-made <c>IAsyncResult</c> implementation used by the Smooth Streaming asynchronous methods, and usable by <see cref="T:Microsoft.Web.Media.SmoothStreaming.ISmoothStreamingCache"/> implementations.</summary>
+      <remarks>Create an instance in a Begin method, call <see cref="M:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingAsyncResult.Complete(System.Object,System.Boolean)"/> when the work is done, and read <see cref="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingAsyncResult.Result"/> in the End method.</remarks>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingAsyncResult.AsyncState">
+      <summary>Gets the caller state passed to the constructor.</summary>
+      <value>The state object, or <see langword="null"/>.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingAsyncResult.AsyncWaitHandle">
+      <summary>Gets a wait handle that is signaled when the operation completes.</summary>
+      <value>A manual-reset event set by <see cref="M:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingAsyncResult.Complete(System.Object,System.Boolean)"/>.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingAsyncResult.CompletedSynchronously">
+      <summary>Gets a value indicating whether the operation completed on the thread that started it.</summary>
+      <value>The value passed to Complete; <see langword="false"/> until then.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingAsyncResult.IsCompleted">
+      <summary>Gets a value indicating whether the operation has completed.</summary>
+      <value><see langword="true"/> after Complete has been called.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingAsyncResult.Result">
+      <summary>Gets the result object passed to Complete.</summary>
+      <value>The operation's result, for example a <see cref="T:Microsoft.Web.Media.SmoothStreaming.ChunkResult"/> or a <see cref="T:Microsoft.Web.Media.SmoothStreaming.CacheResponse"/>; <see langword="null"/> before completion.</value>
+    </member>
+    <member name="M:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingAsyncResult.#ctor(System.AsyncCallback,System.Object,System.Boolean)">
+      <summary>Initializes a new, not yet completed, asynchronous result.</summary>
+      <param name="callback">Callback invoked when <see cref="M:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingAsyncResult.Complete(System.Object,System.Boolean)"/> is called; may be <see langword="null"/>.</param>
+      <param name="state">Caller state exposed through <see cref="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingAsyncResult.AsyncState"/>.</param>
+      <param name="callbackOnUIThread"><see langword="true"/> (the default) to marshal an asynchronous completion callback to the UI thread; <see langword="false"/> to invoke it on the completing thread.</param>
+    </member>
+    <member name="M:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingAsyncResult.Complete(System.Object,System.Boolean)">
+      <summary>Marks the operation as completed, stores its result, signals the wait handle and invokes the callback.</summary>
+      <param name="result">The result to expose through <see cref="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingAsyncResult.Result"/>.</param>
+      <param name="completedSynchronously"><see langword="true"/> if the operation finished on the thread that started it. In that case, or if already on the UI thread, the callback runs immediately on the current thread.</param>
+    </member>
+
+    <!-- ===================== Clips ===================== -->
+    <member name="T:Microsoft.Web.Media.SmoothStreaming.ClipContext">
+      <summary>Tracks one scheduled clip (for example an ad) and its playback. Returned by the ScheduleClip and ScheduleLinearClip methods and passed in clip events.</summary>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.ClipContext.ClipInformation">
+      <summary>Gets the description of the clip that was scheduled.</summary>
+      <value>The <see cref="T:Microsoft.Web.Media.SmoothStreaming.ClipInformation"/> passed when scheduling.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.ClipContext.CurrentClipState">
+      <summary>Gets the media state of the element playing the clip.</summary>
+      <value>The clip media element's state, or <c>Closed</c> when the clip is not loaded.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.ClipContext.HasQuartileEvents">
+      <summary>Gets a value indicating whether quartile progress milestones will be reported for this clip.</summary>
+      <value><see langword="true"/> once the clip duration is known and quartile markers have been placed.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.ClipContext.NaturalDuration">
+      <summary>Gets the actual duration of the clip media, once it has been opened.</summary>
+      <value>The duration reported by the clip's source; may be empty before the clip opens.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.ClipContext.Data">
+      <summary>Gets the application data passed as <c>userData</c> when the clip was scheduled.</summary>
+      <value>The user data object, or <see langword="null"/>.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.ClipContext.PlaybackDuration">
+      <summary>Gets how long the clip will actually play: the shorter of its natural duration and the requested <see cref="P:Microsoft.Web.Media.SmoothStreaming.ClipInformation.Duration"/>, minus any start offset.</summary>
+      <value>The playback duration; empty until the clip has opened.</value>
+    </member>
+    <member name="T:Microsoft.Web.Media.SmoothStreaming.ClipEventArgs">
+      <summary>Provides data for clip events such as <see cref="E:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.ClipStateChanged"/>, <see cref="E:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.ClipError"/> and <see cref="E:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.LinearClipChanged"/>.</summary>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.ClipEventArgs.Context">
+      <summary>Gets the clip the event refers to.</summary>
+      <value>The <see cref="T:Microsoft.Web.Media.SmoothStreaming.ClipContext"/> returned when the clip was scheduled; may be <see langword="null"/> for <see cref="E:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.LinearClipChanged"/> when returning to main content.</value>
+    </member>
+    <member name="T:Microsoft.Web.Media.SmoothStreaming.ClipPlaybackEventArgs">
+      <summary>Provides data for the <see cref="E:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.ClipProgressUpdate"/> event.</summary>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.ClipPlaybackEventArgs.Progress">
+      <summary>Gets the milestone the clip has reached.</summary>
+      <value>A <see cref="T:Microsoft.Web.Media.SmoothStreaming.ClipProgress"/> value.</value>
+    </member>
+    <member name="T:Microsoft.Web.Media.SmoothStreaming.ClipInformation">
+      <summary>Describes a clip (for example an ad) to be played by <see cref="T:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement"/> through its ScheduleClip or ScheduleLinearClip methods.</summary>
+      <remarks>Create one instance per scheduled clip. Smooth Streaming clips are played through their own media source; progressive clips are played by a separate media element using the clip URI directly.</remarks>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.ClipInformation.IsSmoothStreamingSource">
+      <summary>Gets a value indicating whether <see cref="P:Microsoft.Web.Media.SmoothStreaming.ClipInformation.ClipUri"/> points to a Smooth Streaming manifest rather than a progressive media file.</summary>
+      <value>The value passed to the constructor.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.ClipInformation.ClipUri">
+      <summary>Gets the URI of the clip: a manifest URI for Smooth Streaming clips, or a media file URI for progressive clips.</summary>
+      <value>The clip URI.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.ClipInformation.SmoothStreamingCache">
+      <summary>Gets the cache to use for this clip's downloads.</summary>
+      <value>The cache passed to the constructor, or <see langword="null"/>.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.ClipInformation.UseSmoothStreamingCache">
+      <summary>Gets a value indicating whether this clip uses its own <see cref="P:Microsoft.Web.Media.SmoothStreaming.ClipInformation.SmoothStreamingCache"/> instead of the main player's cache.</summary>
+      <value><see langword="true"/> if a cache was passed to the constructor; otherwise <see langword="false"/>, and the player's cache is used.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.ClipInformation.ClickThroughUri">
+      <summary>Gets the URI associated with clicking the clip.</summary>
+      <value>The click-through URI, or <see langword="null"/>. When set, the clip shows a hand cursor and clicks raise <see cref="E:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.ClipClickThrough"/>.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.ClipInformation.Duration">
+      <summary>Gets the maximum time the clip should play.</summary>
+      <value>The requested duration, or an empty <c>Duration</c> to play the clip to its natural end. If the clip is longer, playback ends early at this duration.</value>
+    </member>
+    <member name="M:Microsoft.Web.Media.SmoothStreaming.ClipInformation.#ctor(System.Boolean,System.Uri,System.Uri,System.Windows.Duration,Microsoft.Web.Media.SmoothStreaming.ISmoothStreamingCache)">
+      <summary>Initializes a clip description with a click-through URI, a play duration and a clip-specific cache.</summary>
+      <param name="isSmoothStreamingSource"><see langword="true"/> if <paramref name="clipUri"/> is a Smooth Streaming manifest.</param>
+      <param name="clipUri">URI of the clip manifest or media file.</param>
+      <param name="clickThroughUri">URI associated with clicking the clip, or <see langword="null"/>.</param>
+      <param name="duration">Maximum play duration, or an empty duration for the full clip.</param>
+      <param name="smoothStreamingCache">Cache to use for this clip's downloads.</param>
+    </member>
+    <member name="M:Microsoft.Web.Media.SmoothStreaming.ClipInformation.#ctor(System.Boolean,System.Uri,System.Uri,System.Windows.Duration)">
+      <summary>Initializes a clip description with a click-through URI and a play duration.</summary>
+      <param name="isSmoothStreamingSource"><see langword="true"/> if <paramref name="clipUri"/> is a Smooth Streaming manifest.</param>
+      <param name="clipUri">URI of the clip manifest or media file.</param>
+      <param name="clickThroughUri">URI associated with clicking the clip, or <see langword="null"/>.</param>
+      <param name="duration">Maximum play duration, or an empty duration for the full clip.</param>
+    </member>
+    <member name="M:Microsoft.Web.Media.SmoothStreaming.ClipInformation.#ctor(System.Boolean,System.Uri,System.Windows.Duration)">
+      <summary>Initializes a clip description with a play duration.</summary>
+      <param name="isSmoothStreamingSource"><see langword="true"/> if <paramref name="clipUri"/> is a Smooth Streaming manifest.</param>
+      <param name="clipUri">URI of the clip manifest or media file.</param>
+      <param name="duration">Maximum play duration, or an empty duration for the full clip.</param>
+    </member>
+    <member name="M:Microsoft.Web.Media.SmoothStreaming.ClipInformation.#ctor(System.Boolean,System.Uri,System.Uri)">
+      <summary>Initializes a clip description with a click-through URI.</summary>
+      <param name="isSmoothStreamingSource"><see langword="true"/> if <paramref name="clipUri"/> is a Smooth Streaming manifest.</param>
+      <param name="clipUri">URI of the clip manifest or media file.</param>
+      <param name="clickThroughUri">URI associated with clicking the clip, or <see langword="null"/>.</param>
+    </member>
+    <member name="M:Microsoft.Web.Media.SmoothStreaming.ClipInformation.#ctor(System.Boolean,System.Uri)">
+      <summary>Initializes a clip description that plays the full clip with no click-through.</summary>
+      <param name="isSmoothStreamingSource"><see langword="true"/> if <paramref name="clipUri"/> is a Smooth Streaming manifest.</param>
+      <param name="clipUri">URI of the clip manifest or media file.</param>
+    </member>
+    <member name="M:Microsoft.Web.Media.SmoothStreaming.ClipInformation.SetSource(Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement,System.Windows.Controls.MediaElement,System.String,System.Int64)">
+      <summary>Assigns the clip's source to the media element that will play it. Called by <see cref="T:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement"/>; override in a derived class to customize how the clip source is opened.</summary>
+      <param name="ssme">The player that scheduled the clip; its playback mode and cache are used as defaults.</param>
+      <param name="mediaElement">The media element that will play the clip.</param>
+      <param name="markerStringId">Internal identifier of the clip, used for its timeline markers.</param>
+      <param name="clipLength">Length of the clip in 100-nanosecond ticks, or 0 if unknown.</param>
+      <remarks>The default implementation creates a Smooth Streaming media source for manifest clips or sets the element's <c>Source</c> for progressive clips, and shows a hand cursor if a click-through URI is set.</remarks>
+    </member>
+
+    <!-- ===================== Event args ===================== -->
+    <member name="T:Microsoft.Web.Media.SmoothStreaming.SSMEDrmSetupDecryptorCompletedEventArgs">
+      <summary>Provides data for the <see cref="E:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.DrmSetupDecryptorCompleted"/> event. Check the inherited <c>Error</c> property for failures.</summary>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SSMEDrmSetupDecryptorCompletedEventArgs.KeyId">
+      <summary>Gets the content key ID for which the decryptor was set up.</summary>
+      <value>The key ID.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SSMEDrmSetupDecryptorCompletedEventArgs.ChunkInfo">
+      <summary>Gets the chunk that triggered the decryptor setup.</summary>
+      <value>A <see cref="T:Microsoft.Web.Media.SmoothStreaming.ChunkInfo"/>, or <see langword="null"/>.</value>
+    </member>
+    <member name="T:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingErrorEventArgs">
+      <summary>Provides data for the <see cref="E:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.SmoothStreamingErrorOccurred"/> event.</summary>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingErrorEventArgs.ErrorCode">
+      <summary>Gets or sets a numeric code for the error.</summary>
+      <value>An error code; 0 when no specific code applies.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingErrorEventArgs.ErrorException">
+      <summary>Gets or sets the exception that caused the error.</summary>
+      <value>The exception, or <see langword="null"/> when the error has only a message.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingErrorEventArgs.ErrorMessage">
+      <summary>Gets or sets a description of the error.</summary>
+      <value>A human-readable message intended for logs, not end users.</value>
+    </member>
+    <member name="T:Microsoft.Web.Media.SmoothStreaming.SSMELogReadyRoutedEventArgs">
+      <summary>Provides data for the <see cref="E:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.LogReady"/> event.</summary>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SSMELogReadyRoutedEventArgs.Log">
+      <summary>Gets the playback log.</summary>
+      <value>An XML document as a string, describing playback quality, bitrate switches and errors.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SSMELogReadyRoutedEventArgs.LogSource">
+      <summary>Gets the reason the log was produced (for example an explicit request, or the media being closed or ended).</summary>
+      <value>A <c>LogSource</c> value.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SSMELogReadyRoutedEventArgs.OriginalSource">
+      <summary>Gets the object that originally produced the log.</summary>
+      <value>The source object; for logs delivered by the control this is the <see cref="T:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement"/> or its inner media element.</value>
+    </member>
+    <member name="T:Microsoft.Web.Media.SmoothStreaming.SSMELogReadyRoutedEventHandler">
+      <summary>Represents the method that handles the <see cref="E:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.LogReady"/> event.</summary>
+      <param name="sender">The control that raised the event.</param>
+      <param name="e">The event data containing the log.</param>
+    </member>
+
+    <!-- ===================== Manifest model ===================== -->
+    <member name="T:Microsoft.Web.Media.SmoothStreaming.ManifestInfo">
+      <summary>The parsed contents of a Smooth Streaming manifest: its segments, their streams (audio, video, text) and each stream's tracks (bitrates). Obtain it from <see cref="P:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.ManifestInfo"/>.</summary>
+      <remarks>For ordinary content there is one segment; use <c>Segments[0].AvailableStreams</c> to find streams by <see cref="P:Microsoft.Web.Media.SmoothStreaming.StreamInfo.Type"/> and attributes such as Language or Name.</remarks>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.ManifestInfo.Segments">
+      <summary>Gets the segments of the presentation.</summary>
+      <value>A list of <see cref="T:Microsoft.Web.Media.SmoothStreaming.SegmentInfo"/>; contains a single segment for standard and composite manifests.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.ManifestInfo.ManifestType">
+      <summary>Gets the structure of the manifest.</summary>
+      <value>A <see cref="T:Microsoft.Web.Media.SmoothStreaming.ManifestType"/> value.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.ManifestInfo.Attributes">
+      <summary>Gets the attributes of the manifest's root element.</summary>
+      <value>A dictionary with entries such as MajorVersion, MinorVersion, TimeScale, Duration, IsLive, LookAheadFragmentCount and DVRWindowLength, when present in the manifest.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.ManifestInfo.ProtectionInfo">
+      <summary>Gets the content protection information declared in the manifest.</summary>
+      <value>A <see cref="T:Microsoft.Web.Media.SmoothStreaming.ProtectionInfo"/>, or <see langword="null"/> for unprotected content.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.ManifestInfo.LogUris">
+      <summary>Gets the log upload URLs declared in the manifest.</summary>
+      <value>A read-only list of absolute URIs (relative URLs in the manifest are resolved against the manifest location). Used by <see cref="T:Microsoft.Web.Media.Diagnostics.AdvancedLoggingPlugin"/>.</value>
+    </member>
+    <member name="E:Microsoft.Web.Media.SmoothStreaming.ManifestInfo.ChunkListChanged">
+      <summary>Occurs when a chunk is added to a stream's <see cref="P:Microsoft.Web.Media.SmoothStreaming.StreamInfo.ChunkList"/>, for example when new sparse-text or live data arrives.</summary>
+      <remarks>Raised on the UI thread. Use it to process data delivered in text streams (captions, metadata) as it becomes available.</remarks>
+    </member>
+    <member name="E:Microsoft.Web.Media.SmoothStreaming.ManifestInfo.SelectStreamsCompleted">
+      <summary>Occurs when a stream selection started by <see cref="M:Microsoft.Web.Media.SmoothStreaming.SegmentInfo.SelectStreamsAsync(System.Collections.Generic.IList{Microsoft.Web.Media.SmoothStreaming.StreamInfo},System.Object)"/> on any of the manifest's segments completes.</summary>
+    </member>
+    <member name="M:Microsoft.Web.Media.SmoothStreaming.ManifestInfo.ParseManifest(System.IO.Stream,System.Uri)">
+      <summary>Parses a Smooth Streaming manifest document without playing it.</summary>
+      <param name="manifestStream">A stream containing the manifest XML.</param>
+      <param name="manifestUri">The URI the manifest came from, used to resolve relative URLs.</param>
+      <returns>The parsed <see cref="T:Microsoft.Web.Media.SmoothStreaming.ManifestInfo"/>, or <see langword="null"/> if it could not be parsed.</returns>
+      <remarks>Useful for inspecting the available streams and bitrates of content before deciding to play it. Track and stream selection on the returned object has no effect, because no player is attached.</remarks>
+    </member>
+    <member name="T:Microsoft.Web.Media.SmoothStreaming.TrackInfo">
+      <summary>Describes one track (quality level) of a stream, typically one encoded bitrate of the video or audio.</summary>
+      <remarks>Tracks of a stream are sorted by <see cref="P:Microsoft.Web.Media.SmoothStreaming.TrackInfo.Bitrate"/> (instances compare by bitrate). Pass a subset of <see cref="P:Microsoft.Web.Media.SmoothStreaming.StreamInfo.AvailableTracks"/> to <see cref="M:Microsoft.Web.Media.SmoothStreaming.StreamInfo.SelectTracks(System.Collections.Generic.IList{Microsoft.Web.Media.SmoothStreaming.TrackInfo},System.Boolean)"/> to limit the bitrates the heuristics may use.</remarks>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.TrackInfo.Index">
+      <summary>Gets the track index declared in the manifest.</summary>
+      <value>The value of the track's Index attribute.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.TrackInfo.Bitrate">
+      <summary>Gets the encoded bitrate of the track.</summary>
+      <value>Bits per second, from the track's Bitrate attribute.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.TrackInfo.CustomAttributes">
+      <summary>Gets the custom attributes declared for the track in the manifest.</summary>
+      <value>A case-insensitive dictionary of name/value pairs; empty when none are declared.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.TrackInfo.Attributes">
+      <summary>Gets all attributes of the track's manifest element.</summary>
+      <value>A case-insensitive dictionary, including entries such as Index, Bitrate, MaxWidth, MaxHeight, FourCC and CodecPrivateData when present.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.TrackInfo.Stream">
+      <summary>Gets the stream that contains this track.</summary>
+      <value>The parent <see cref="T:Microsoft.Web.Media.SmoothStreaming.StreamInfo"/>, or <see langword="null"/> if it is no longer available.</value>
+    </member>
+    <member name="M:Microsoft.Web.Media.SmoothStreaming.TrackInfo.BeginGetChunk(System.TimeSpan,System.AsyncCallback,System.Object)">
+      <summary>Begins downloading the chunk of this track that starts at a given timestamp, for example to read data from a text stream.</summary>
+      <param name="timestamp">Timestamp of the chunk, as given by <see cref="P:Microsoft.Web.Media.SmoothStreaming.ChunkInfo.TimeStamp"/>.</param>
+      <param name="callback">Callback invoked when the chunk is available; may be <see langword="null"/>. Asynchronous completions are delivered on the UI thread.</param>
+      <param name="state">Caller state stored in the result.</param>
+      <returns>An <c>IAsyncResult</c> to pass to <see cref="M:Microsoft.Web.Media.SmoothStreaming.TrackInfo.EndGetChunk(System.IAsyncResult)"/>.</returns>
+      <remarks>The track's stream must be selected. If the chunk data is already cached in the manifest the operation completes synchronously. Errors are reported in the <see cref="T:Microsoft.Web.Media.SmoothStreaming.ChunkResult"/>, not thrown.</remarks>
+    </member>
+    <member name="M:Microsoft.Web.Media.SmoothStreaming.TrackInfo.EndGetChunk(System.IAsyncResult)">
+      <summary>Waits for and returns the result of a chunk request started by BeginGetChunk.</summary>
+      <param name="ar">The result returned by BeginGetChunk.</param>
+      <returns>A <see cref="T:Microsoft.Web.Media.SmoothStreaming.ChunkResult"/> containing the chunk data or the error.</returns>
+      <remarks>Blocks until the request completes; call it from the callback to avoid blocking. Throws <c>ArgumentException</c> for a foreign result and <c>InvalidOperationException</c> if called twice with the same result.</remarks>
+    </member>
+    <member name="M:Microsoft.Web.Media.SmoothStreaming.TrackInfo.GetChunkUri(System.TimeSpan)">
+      <summary>Builds the URL from which the chunk of this track at a given timestamp is downloaded.</summary>
+      <param name="timestamp">Timestamp of the chunk.</param>
+      <returns>The absolute chunk URL.</returns>
+    </member>
+    <member name="M:Microsoft.Web.Media.SmoothStreaming.TrackInfo.CompareTo(System.Object)">
+      <summary>Compares this track with another by bitrate.</summary>
+      <param name="obj">Another <see cref="T:Microsoft.Web.Media.SmoothStreaming.TrackInfo"/>.</param>
+      <returns>Less than zero if this track's bitrate is lower, zero if equal, greater than zero if higher.</returns>
+      <remarks>Throws <c>ArgumentException</c> if <paramref name="obj"/> is not a TrackInfo.</remarks>
+    </member>
+    <member name="T:Microsoft.Web.Media.SmoothStreaming.ChunkDownloadedEventArgs">
+      <summary>Provides data for the <see cref="E:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.ChunkDownloadFailed"/> event.</summary>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.ChunkDownloadedEventArgs.Chunk">
+      <summary>Gets the chunk that was requested.</summary>
+      <value>A <see cref="T:Microsoft.Web.Media.SmoothStreaming.ChunkInfo"/> with the chunk's timestamp and duration.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.ChunkDownloadedEventArgs.Track">
+      <summary>Gets the track the chunk was requested from.</summary>
+      <value>A <see cref="T:Microsoft.Web.Media.SmoothStreaming.TrackInfo"/>, or <see langword="null"/>.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.ChunkDownloadedEventArgs.CanonicalUri">
+      <summary>Gets the URL of the chunk request.</summary>
+      <value>The canonical chunk URL.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.ChunkDownloadedEventArgs.RequestType">
+      <summary>Gets the kind of request that was made.</summary>
+      <value>A <see cref="T:Microsoft.Web.Media.SmoothStreaming.ChunkRequestType"/> value.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.ChunkDownloadedEventArgs.DownloadResult">
+      <summary>Gets the outcome of the download.</summary>
+      <value><see cref="F:Microsoft.Web.Media.SmoothStreaming.ChunkResult.ChunkResultState.Failed"/> or <see cref="F:Microsoft.Web.Media.SmoothStreaming.ChunkResult.ChunkResultState.TimedOut"/> for the failure event.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.ChunkDownloadedEventArgs.StatusCode">
+      <summary>Gets the HTTP status code returned for the request.</summary>
+      <value>The status code, for example 404 or 503.</value>
+    </member>
+    <member name="T:Microsoft.Web.Media.SmoothStreaming.StreamUpdatedEventArgs">
+      <summary>Describes one change to a stream: its selection state, or a chunk added to or removed from its chunk list.</summary>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.StreamUpdatedEventArgs.Stream">
+      <summary>Gets the stream that changed.</summary>
+      <value>A <see cref="T:Microsoft.Web.Media.SmoothStreaming.StreamInfo"/>.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.StreamUpdatedEventArgs.Action">
+      <summary>Gets what happened to the stream.</summary>
+      <value>A <see cref="T:Microsoft.Web.Media.SmoothStreaming.StreamUpdatedEventArgs.StreamUpdatedAction"/> value.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.StreamUpdatedEventArgs.Timestamp">
+      <summary>Gets the timestamp of the chunk that was added or removed.</summary>
+      <value>The chunk timestamp, or <see langword="null"/> for selection changes.</value>
+    </member>
+    <member name="M:Microsoft.Web.Media.SmoothStreaming.StreamUpdatedEventArgs.#ctor(Microsoft.Web.Media.SmoothStreaming.StreamInfo,Microsoft.Web.Media.SmoothStreaming.StreamUpdatedEventArgs.StreamUpdatedAction,System.Nullable{System.TimeSpan})">
+      <summary>Initializes a new stream update record.</summary>
+      <param name="stream">The stream that changed.</param>
+      <param name="action">What happened to the stream.</param>
+      <param name="timestamp">Timestamp of the affected chunk, or <see langword="null"/>.</param>
+    </member>
+    <member name="T:Microsoft.Web.Media.SmoothStreaming.StreamUpdatedEventArgs.StreamUpdatedAction">
+      <summary>Identifies the kind of change described by a <see cref="T:Microsoft.Web.Media.SmoothStreaming.StreamUpdatedEventArgs"/>.</summary>
+    </member>
+    <member name="F:Microsoft.Web.Media.SmoothStreaming.StreamUpdatedEventArgs.StreamUpdatedAction.StreamSelected">
+      <summary>The stream was added to the selected streams.</summary>
+    </member>
+    <member name="F:Microsoft.Web.Media.SmoothStreaming.StreamUpdatedEventArgs.StreamUpdatedAction.StreamDeselected">
+      <summary>The stream was removed from the selected streams.</summary>
+    </member>
+    <member name="F:Microsoft.Web.Media.SmoothStreaming.StreamUpdatedEventArgs.StreamUpdatedAction.ChunkAdded">
+      <summary>A chunk was added to the stream's chunk list.</summary>
+    </member>
+    <member name="F:Microsoft.Web.Media.SmoothStreaming.StreamUpdatedEventArgs.StreamUpdatedAction.ChunkRemoved">
+      <summary>A chunk was removed from the stream's chunk list.</summary>
+    </member>
+    <member name="T:Microsoft.Web.Media.SmoothStreaming.StreamUpdatedListEventArgs">
+      <summary>Provides data for the SelectStreamsCompleted events of <see cref="T:Microsoft.Web.Media.SmoothStreaming.SegmentInfo"/> and <see cref="T:Microsoft.Web.Media.SmoothStreaming.ManifestInfo"/>. Check the inherited <c>Error</c> property first.</summary>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.StreamUpdatedListEventArgs.StreamUpdatedEvents">
+      <summary>Gets the list of stream selection changes that were applied.</summary>
+      <value>A read-only list of <see cref="T:Microsoft.Web.Media.SmoothStreaming.StreamUpdatedEventArgs"/>. Reading it rethrows the operation's error if it failed.</value>
+    </member>
+    <member name="M:Microsoft.Web.Media.SmoothStreaming.StreamUpdatedListEventArgs.#ctor(System.Collections.Generic.List{Microsoft.Web.Media.SmoothStreaming.StreamUpdatedEventArgs},System.Object)">
+      <summary>Initializes event data for a successful stream selection.</summary>
+      <param name="streamUpdatedEvents">The changes that were applied.</param>
+      <param name="userState">The user state passed to SelectStreamsAsync.</param>
+    </member>
+    <member name="M:Microsoft.Web.Media.SmoothStreaming.StreamUpdatedListEventArgs.#ctor(System.Exception,System.Object)">
+      <summary>Initializes event data for a failed stream selection.</summary>
+      <param name="error">The error that occurred.</param>
+      <param name="userState">The user state passed to SelectStreamsAsync.</param>
+    </member>
+    <member name="T:Microsoft.Web.Media.SmoothStreaming.ChunkInfo">
+      <summary>Describes one chunk (fragment) of a stream: its timestamp and duration on the presentation timeline.</summary>
+      <remarks>Chunks are listed in <see cref="P:Microsoft.Web.Media.SmoothStreaming.StreamInfo.ChunkList"/> and compare by timestamp.</remarks>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.ChunkInfo.TimeStamp">
+      <summary>Gets the start time of the chunk on the presentation timeline.</summary>
+      <value>The chunk timestamp.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.ChunkInfo.Duration">
+      <summary>Gets the duration of the chunk.</summary>
+      <value>The duration, or <c>TimeSpan.Zero</c> when the manifest did not specify one.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.ChunkInfo.Attributes">
+      <summary>Gets additional attributes associated with the chunk.</summary>
+      <value>A dictionary of name/value pairs; usually empty.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.ChunkInfo.Stream">
+      <summary>Gets the stream the chunk belongs to.</summary>
+      <value>The <see cref="T:Microsoft.Web.Media.SmoothStreaming.StreamInfo"/>, or <see langword="null"/> if it is not known or no longer available.</value>
+    </member>
+    <member name="M:Microsoft.Web.Media.SmoothStreaming.ChunkInfo.CompareTo(System.Object)">
+      <summary>Compares this chunk with another by timestamp.</summary>
+      <param name="chunk">Another <see cref="T:Microsoft.Web.Media.SmoothStreaming.ChunkInfo"/>.</param>
+      <returns>Less than zero if this chunk starts earlier, zero if at the same time, greater than zero if later.</returns>
+      <remarks>Throws <c>ArgumentException</c> if <paramref name="chunk"/> is not a ChunkInfo.</remarks>
+    </member>
+    <member name="T:Microsoft.Web.Media.SmoothStreaming.CacheRequest">
+      <summary>Identifies an HTTP request made by the Smooth Streaming engine, passed to <see cref="T:Microsoft.Web.Media.SmoothStreaming.ISmoothStreamingCache"/> methods. Can be serialized so that a cache can store it alongside the response.</summary>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.CacheRequest.CanonicalUri">
+      <summary>Gets the URL of the request, suitable as a cache key.</summary>
+      <value>The canonical request URI.</value>
+    </member>
+    <member name="M:Microsoft.Web.Media.SmoothStreaming.CacheRequest.#ctor(System.Uri)">
+      <summary>Initializes a request for a URL.</summary>
+      <param name="canonicalUri">The request URL.</param>
+    </member>
+    <member name="M:Microsoft.Web.Media.SmoothStreaming.CacheRequest.#ctor(System.IO.Stream)">
+      <summary>Reads a request previously written with <see cref="M:Microsoft.Web.Media.SmoothStreaming.CacheRequest.WriteTo(System.IO.Stream)"/>.</summary>
+      <param name="stream">A stream positioned at the start of the serialized request.</param>
+      <remarks>Throws <see cref="T:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingException"/> if the data at the current position is not a serialized request.</remarks>
+    </member>
+    <member name="M:Microsoft.Web.Media.SmoothStreaming.CacheRequest.WriteTo(System.IO.Stream)">
+      <summary>Writes the request in a compact binary form (a marker followed by the UTF-8 URL).</summary>
+      <param name="stream">The stream to write to.</param>
+    </member>
+    <member name="M:Microsoft.Web.Media.SmoothStreaming.CacheRequest.ReadFrom(System.IO.Stream)">
+      <summary>Not supported; always throws <c>NotSupportedException</c>. Use the constructor that takes a stream instead.</summary>
+      <param name="stream">Ignored.</param>
+    </member>
+    <member name="T:Microsoft.Web.Media.SmoothStreaming.CacheResponse">
+      <summary>Holds an HTTP response for <see cref="T:Microsoft.Web.Media.SmoothStreaming.ISmoothStreamingCache"/>: returned from a cache lookup to serve data, or passed to the cache after a download to be stored. Can be serialized together with its body.</summary>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.CacheResponse.ContentLength">
+      <summary>Gets or sets the content length of the response.</summary>
+      <value>The length in bytes.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.CacheResponse.ContentType">
+      <summary>Gets or sets the MIME type of the response.</summary>
+      <value>The content type string.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.CacheResponse.Headers">
+      <summary>Gets or sets the HTTP response headers.</summary>
+      <value>A header collection, or <see langword="null"/>. A Cache-Control max-age header determines <see cref="P:Microsoft.Web.Media.SmoothStreaming.CacheResponse.ExpiryTime"/>.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.CacheResponse.ContinueProcessing">
+      <summary>Gets a value indicating whether the engine should continue with a normal download when this response is not a successful hit.</summary>
+      <value><see langword="true"/> (the default) to fall back to downloading; <see langword="false"/> to fail the request without contacting the server.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.CacheResponse.Response">
+      <summary>Gets or sets the response body.</summary>
+      <value>A readable stream with the content. The engine rewinds it to the start before reading.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.CacheResponse.StatusCode">
+      <summary>Gets or sets the HTTP status of the response.</summary>
+      <value>Only <c>OK</c> is stored as given; any other value is stored as <c>NotFound</c>. Only an OK response is used as a cache hit.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.CacheResponse.StatusDescription">
+      <summary>Gets or sets the HTTP status description.</summary>
+      <value>The status text.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.CacheResponse.ExpiryTime">
+      <summary>Gets the time after which the cached response should be considered stale.</summary>
+      <value>The download time plus the Cache-Control max-age value, or <c>DateTime.MaxValue</c> if no max-age header is present.</value>
+    </member>
+    <member name="M:Microsoft.Web.Media.SmoothStreaming.CacheResponse.#ctor(System.Int64,System.String,System.Net.WebHeaderCollection,System.IO.Stream,System.Net.HttpStatusCode,System.String,System.DateTime,System.Boolean)">
+      <summary>Initializes a response from its parts.</summary>
+      <param name="contentLength">Content length in bytes.</param>
+      <param name="contentType">MIME type.</param>
+      <param name="headers">Response headers, or <see langword="null"/>.</param>
+      <param name="response">Stream containing the body.</param>
+      <param name="statusCode">HTTP status; values other than OK are stored as NotFound.</param>
+      <param name="statusDescription">HTTP status text.</param>
+      <param name="downloadTime">When the response was downloaded; the base for <see cref="P:Microsoft.Web.Media.SmoothStreaming.CacheResponse.ExpiryTime"/>.</param>
+      <param name="continueProcessing">Whether the engine should fall back to downloading if this is not a hit. Default is <see langword="true"/>.</param>
+    </member>
+    <member name="M:Microsoft.Web.Media.SmoothStreaming.CacheResponse.#ctor(System.IO.Stream,System.Boolean)">
+      <summary>Reads a response previously written with <see cref="M:Microsoft.Web.Media.SmoothStreaming.CacheResponse.WriteTo(System.IO.Stream)"/>, including its body.</summary>
+      <param name="stream">A stream positioned at the start of the serialized response.</param>
+      <param name="continueProcessing">Value for <see cref="P:Microsoft.Web.Media.SmoothStreaming.CacheResponse.ContinueProcessing"/>. Default is <see langword="true"/>.</param>
+      <remarks>The body is loaded into memory. Throws <see cref="T:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingException"/> if the data is not a serialized response or is truncated.</remarks>
+    </member>
+    <member name="M:Microsoft.Web.Media.SmoothStreaming.CacheResponse.WriteTo(System.IO.Stream)">
+      <summary>Writes the response, including headers and the full body, in a compact binary form.</summary>
+      <param name="stream">The stream to write to, typically an isolated storage file.</param>
+      <remarks>The position of <see cref="P:Microsoft.Web.Media.SmoothStreaming.CacheResponse.Response"/> is restored afterwards.</remarks>
+    </member>
+    <member name="M:Microsoft.Web.Media.SmoothStreaming.CacheResponse.ReadFrom(System.IO.Stream)">
+      <summary>Not supported; always throws <c>NotSupportedException</c>. Use the constructor that takes a stream instead.</summary>
+      <param name="stream">Ignored.</param>
+    </member>
+    <member name="T:Microsoft.Web.Media.SmoothStreaming.CacheRequest2">
+      <summary>An extended <see cref="T:Microsoft.Web.Media.SmoothStreaming.CacheRequest"/> passed to <see cref="M:Microsoft.Web.Media.SmoothStreaming.ISmoothStreamingCache.BeginRetrieve(Microsoft.Web.Media.SmoothStreaming.CacheRequest,System.AsyncCallback,System.Object)"/>. It exposes the outgoing web request and the tracks the engine may use, so a cache can modify the request or serve a different bitrate.</summary>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.CacheRequest2.WebRequest">
+      <summary>Gets or sets the HTTP request the engine is about to send.</summary>
+      <value>The web request. A cache may change its headers or cookies, or replace it; the engine then uses the resulting request. Replacement requests must be created with the client HTTP stack.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.CacheRequest2.SelectableTracks">
+      <summary>Gets the tracks of the stream that the engine is allowed to use for this chunk.</summary>
+      <value>The currently selected tracks of the chunk's stream, or <see langword="null"/> for non-chunk requests. A cache that serves a different bitrate must report one of these tracks in <see cref="P:Microsoft.Web.Media.SmoothStreaming.CacheResponse2.UsedTrack"/>.</value>
+    </member>
+    <member name="M:Microsoft.Web.Media.SmoothStreaming.CacheRequest2.#ctor(System.Net.HttpWebRequest,System.Collections.Generic.IList{Microsoft.Web.Media.SmoothStreaming.TrackInfo})">
+      <summary>Initializes a request from a web request and the selectable tracks.</summary>
+      <param name="request">The outgoing HTTP request; its URI becomes the canonical URI.</param>
+      <param name="tracks">The tracks the engine may use, or <see langword="null"/>.</param>
+    </member>
+    <member name="M:Microsoft.Web.Media.SmoothStreaming.CacheRequest2.#ctor(System.IO.Stream)">
+      <summary>Reads a request previously serialized with WriteTo. Only the canonical URI is restored.</summary>
+      <param name="stream">A stream positioned at the start of the serialized request.</param>
+    </member>
+    <member name="T:Microsoft.Web.Media.SmoothStreaming.CacheResponse2">
+      <summary>An extended <see cref="T:Microsoft.Web.Media.SmoothStreaming.CacheResponse"/> that lets a cache report the bandwidth to attribute to a cache hit and the track (bitrate) it actually served.</summary>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.CacheResponse2.PerceivedBandwidth">
+      <summary>Gets or sets the bandwidth the heuristics should assume for this response.</summary>
+      <value>A rate in bytes per second; the simulated download time is the body size divided by this value. 0 (the default) treats the hit as instantaneous.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.CacheResponse2.UsedTrack">
+      <summary>Gets or sets the track whose data was actually returned.</summary>
+      <value>One of <see cref="P:Microsoft.Web.Media.SmoothStreaming.CacheRequest2.SelectableTracks"/>, or <see langword="null"/> if the requested track was served. Values not in that list are ignored.</value>
+    </member>
+    <member name="M:Microsoft.Web.Media.SmoothStreaming.CacheResponse2.#ctor(System.Int64,System.String,System.Net.WebHeaderCollection,System.IO.Stream,System.Net.HttpStatusCode,System.String,System.DateTime,System.Boolean)">
+      <summary>Initializes a response from its parts.</summary>
+      <param name="contentLength">Content length in bytes.</param>
+      <param name="contentType">MIME type.</param>
+      <param name="headers">Response headers, or <see langword="null"/>.</param>
+      <param name="response">Stream containing the body.</param>
+      <param name="statusCode">HTTP status; values other than OK are stored as NotFound.</param>
+      <param name="statusDescription">HTTP status text.</param>
+      <param name="downloadTime">When the response was downloaded.</param>
+      <param name="continueProcessing">Whether the engine should fall back to downloading if this is not a hit. Default is <see langword="true"/>.</param>
+    </member>
+    <member name="M:Microsoft.Web.Media.SmoothStreaming.CacheResponse2.#ctor(System.IO.Stream,System.Boolean)">
+      <summary>Reads a response previously serialized with WriteTo. The extended properties are not restored.</summary>
+      <param name="stream">A stream positioned at the start of the serialized response.</param>
+      <param name="continueProcessing">Value for ContinueProcessing.</param>
+    </member>
+    <member name="T:Microsoft.Web.Media.SmoothStreaming.ChunkResult">
+      <summary>The outcome of a chunk request made with <see cref="M:Microsoft.Web.Media.SmoothStreaming.TrackInfo.BeginGetChunk(System.TimeSpan,System.AsyncCallback,System.Object)"/>.</summary>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.ChunkResult.Result">
+      <summary>Gets whether the request succeeded.</summary>
+      <value>A <see cref="T:Microsoft.Web.Media.SmoothStreaming.ChunkResult.ChunkResultState"/> value.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.ChunkResult.ChunkData">
+      <summary>Gets the downloaded chunk content.</summary>
+      <value>A stream with the chunk data when the request succeeded; otherwise <see langword="null"/>.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.ChunkResult.Error">
+      <summary>Gets the error that caused the request to fail.</summary>
+      <value>The exception, or <see langword="null"/> on success.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.ChunkResult.Timestamp">
+      <summary>Gets the timestamp of the requested chunk.</summary>
+      <value>The timestamp passed to BeginGetChunk.</value>
+    </member>
+    <member name="T:Microsoft.Web.Media.SmoothStreaming.ChunkResult.ChunkResultState">
+      <summary>Identifies the outcome of a chunk request.</summary>
+    </member>
+    <member name="F:Microsoft.Web.Media.SmoothStreaming.ChunkResult.ChunkResultState.Succeeded">
+      <summary>The chunk was retrieved.</summary>
+    </member>
+    <member name="F:Microsoft.Web.Media.SmoothStreaming.ChunkResult.ChunkResultState.Failed">
+      <summary>The request failed, for example with an HTTP error.</summary>
+    </member>
+    <member name="F:Microsoft.Web.Media.SmoothStreaming.ChunkResult.ChunkResultState.TimedOut">
+      <summary>The request did not complete in time.</summary>
+    </member>
+    <member name="T:Microsoft.Web.Media.SmoothStreaming.StreamInfo">
+      <summary>Describes one stream of a presentation (for example the video, an audio language, or a caption or metadata text stream) and its tracks. Obtained from <see cref="P:Microsoft.Web.Media.SmoothStreaming.SegmentInfo.AvailableStreams"/>.</summary>
+      <remarks>Use <see cref="M:Microsoft.Web.Media.SmoothStreaming.StreamInfo.RestrictTracks(System.Collections.Generic.IList{Microsoft.Web.Media.SmoothStreaming.TrackInfo})"/> (only in the ManifestReady handler) to permanently remove bitrates, and <see cref="M:Microsoft.Web.Media.SmoothStreaming.StreamInfo.SelectTracks(System.Collections.Generic.IList{Microsoft.Web.Media.SmoothStreaming.TrackInfo},System.Boolean)"/> to change at any time which bitrates the heuristics may choose. Members marked as UI-thread-only throw <c>UnauthorizedAccessException</c> when called from another thread.</remarks>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.StreamInfo.ParentStream">
+      <summary>Gets the stream this stream is associated with, for a stream declared as a child of another (such as a sparse text track tied to a video stream).</summary>
+      <value>The parent stream, or <see langword="null"/>.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.StreamInfo.Segment">
+      <summary>Gets the segment that contains this stream.</summary>
+      <value>A <see cref="T:Microsoft.Web.Media.SmoothStreaming.SegmentInfo"/>, or <see langword="null"/> if no longer available.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.StreamInfo.ChunkList">
+      <summary>Gets the chunks currently known for the stream.</summary>
+      <value>A read-only snapshot list of <see cref="T:Microsoft.Web.Media.SmoothStreaming.ChunkInfo"/>. For live content it grows over time; see <see cref="E:Microsoft.Web.Media.SmoothStreaming.ManifestInfo.ChunkListChanged"/>.</value>
+      <remarks>Must be read on the UI thread.</remarks>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.StreamInfo.UniqueId">
+      <summary>Gets an identifier that distinguishes this stream from others in the presentation.</summary>
+      <value>A string identifier.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.StreamInfo.Attributes">
+      <summary>Gets the attributes of the stream's manifest element.</summary>
+      <value>A case-insensitive dictionary, with entries such as Type, Name, Subtype, Language, Url and Chunks when present.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.StreamInfo.ChildStreams">
+      <summary>Gets the streams that declare this stream as their parent.</summary>
+      <value>A read-only list; empty when there are none.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.StreamInfo.Subtype">
+      <summary>Gets the stream subtype from the manifest, for example the kind of text stream (such as captions or data).</summary>
+      <value>The subtype string, or <see langword="null"/>.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.StreamInfo.Timescale">
+      <summary>Gets or sets the number of time units per second used by the stream's timestamps in the manifest.</summary>
+      <value>The timescale; Smooth Streaming content commonly uses 10,000,000 (100-nanosecond units).</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.StreamInfo.AvailableTracks">
+      <summary>Gets all tracks of the stream that may be selected.</summary>
+      <value>A list of <see cref="T:Microsoft.Web.Media.SmoothStreaming.TrackInfo"/> sorted by ascending bitrate. Reduced permanently by <see cref="M:Microsoft.Web.Media.SmoothStreaming.StreamInfo.RestrictTracks(System.Collections.Generic.IList{Microsoft.Web.Media.SmoothStreaming.TrackInfo})"/>.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.StreamInfo.SelectedTracks">
+      <summary>Gets the tracks the heuristics are currently allowed to choose from.</summary>
+      <value>A read-only list, a subset of <see cref="P:Microsoft.Web.Media.SmoothStreaming.StreamInfo.AvailableTracks"/>.</value>
+      <remarks>Must be read on the UI thread. Change it with <see cref="M:Microsoft.Web.Media.SmoothStreaming.StreamInfo.SelectTracks(System.Collections.Generic.IList{Microsoft.Web.Media.SmoothStreaming.TrackInfo},System.Boolean)"/>.</remarks>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.StreamInfo.Type">
+      <summary>Gets the media type of the stream.</summary>
+      <value><c>Video</c>, <c>Audio</c> or <c>Script</c> (text streams).</value>
+    </member>
+    <member name="M:Microsoft.Web.Media.SmoothStreaming.StreamInfo.SelectTracks(System.Collections.Generic.IList{Microsoft.Web.Media.SmoothStreaming.TrackInfo},System.Boolean)">
+      <summary>Sets which tracks (bitrates) of this stream the adaptive heuristics may use. Selecting a single track locks the bitrate.</summary>
+      <param name="selectedTracks">One or more tracks from <see cref="P:Microsoft.Web.Media.SmoothStreaming.StreamInfo.AvailableTracks"/>.</param>
+      <param name="flushBuffer"><see langword="true"/> to discard media already buffered for this stream so that the change is seen sooner; <see langword="false"/> to apply it only to future downloads.</param>
+      <returns><see langword="true"/> if the selection was accepted (applied immediately, or queued if the media source is still starting); <see langword="false"/> if no player is attached.</returns>
+      <remarks>Call on the UI thread. Throws <c>ArgumentNullException</c> for <see langword="null"/>, <c>ArgumentException</c> for an empty list, <c>InvalidOperationException</c> for a track not in AvailableTracks or for composite manifests. <see cref="E:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.DownloadTrackChanged"/> reports the resulting switches.</remarks>
+    </member>
+    <member name="M:Microsoft.Web.Media.SmoothStreaming.StreamInfo.RestrictTracks(System.Collections.Generic.IList{Microsoft.Web.Media.SmoothStreaming.TrackInfo})">
+      <summary>Permanently limits the stream's <see cref="P:Microsoft.Web.Media.SmoothStreaming.StreamInfo.AvailableTracks"/> to the given tracks and selects them, for example to drop bitrates or resolutions the device should never use.</summary>
+      <param name="availableTracks">The tracks to keep; must be a non-empty subset of the current AvailableTracks. For audio, exactly one track.</param>
+      <remarks>Allowed only for audio and video streams, only inside the <see cref="E:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.ManifestReady"/> handler, only once per stream, and before any call to <see cref="M:Microsoft.Web.Media.SmoothStreaming.StreamInfo.SelectTracks(System.Collections.Generic.IList{Microsoft.Web.Media.SmoothStreaming.TrackInfo},System.Boolean)"/>; otherwise <c>InvalidOperationException</c> is thrown. Unlike SelectTracks, the media description given to the decoder is recalculated from the remaining tracks (for example the maximum resolution).</remarks>
+    </member>
+    <member name="T:Microsoft.Web.Media.SmoothStreaming.SetPlaybackRangeCompletedEventArgs">
+      <summary>Provides data for the <see cref="E:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.SetPlaybackRangeCompleted"/> event. Check the inherited <c>Error</c> property first; reading the edges of a failed operation rethrows the error.</summary>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SetPlaybackRangeCompletedEventArgs.LeftEdge">
+      <summary>Gets the start of the playable range that was applied.</summary>
+      <value>The new left edge.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SetPlaybackRangeCompletedEventArgs.RightEdge">
+      <summary>Gets the end of the playable range that was applied.</summary>
+      <value>The right edge; <c>TimeSpan.MaxValue</c> when the range follows the live edge.</value>
+    </member>
+    <member name="M:Microsoft.Web.Media.SmoothStreaming.SetPlaybackRangeCompletedEventArgs.#ctor(System.TimeSpan,System.TimeSpan,System.Object)">
+      <summary>Initializes event data for a successful range change.</summary>
+      <param name="leftEdge">The applied left edge.</param>
+      <param name="rightEdge">The applied right edge.</param>
+      <param name="userState">The user state passed to SetPlaybackRangeAsync.</param>
+    </member>
+    <member name="M:Microsoft.Web.Media.SmoothStreaming.SetPlaybackRangeCompletedEventArgs.#ctor(System.Exception,System.Object)">
+      <summary>Initializes event data for a failed range change.</summary>
+      <param name="error">The error that occurred.</param>
+      <param name="userState">The user state passed to SetPlaybackRangeAsync.</param>
+    </member>
+    <member name="T:Microsoft.Web.Media.SmoothStreaming.SeekCompletedEventArgs">
+      <summary>Provides data for the <see cref="E:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.SeekCompleted"/> event.</summary>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SeekCompletedEventArgs.ActualSeekPosition">
+      <summary>Gets or sets the position playback actually resumed from, which may differ from the requested position because seeks land on chunk boundaries.</summary>
+      <value>The actual position.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SeekCompletedEventArgs.Success">
+      <summary>Gets or sets a value indicating whether the seek succeeded.</summary>
+      <value><see langword="true"/> when the seek completed normally.</value>
+    </member>
+    <member name="T:Microsoft.Web.Media.SmoothStreaming.TrackChangedEventArgs">
+      <summary>Provides data for the <see cref="E:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.PlaybackTrackChanged"/> and <see cref="E:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.DownloadTrackChanged"/> events.</summary>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.TrackChangedEventArgs.NewTrack">
+      <summary>Gets the track that is now being played or downloaded.</summary>
+      <value>A <see cref="T:Microsoft.Web.Media.SmoothStreaming.TrackInfo"/>; read its Bitrate to show the current quality.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.TrackChangedEventArgs.HighestPlayableTrack">
+      <summary>Gets the highest-bitrate track the heuristics currently consider playable.</summary>
+      <value>A <see cref="T:Microsoft.Web.Media.SmoothStreaming.TrackInfo"/>, or <see langword="null"/>.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.TrackChangedEventArgs.StreamType">
+      <summary>Gets the type of stream whose track changed.</summary>
+      <value><c>Video</c> or <c>Audio</c>.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.TrackChangedEventArgs.Timestamp">
+      <summary>Gets the presentation time at which the change takes effect.</summary>
+      <value>The timestamp of the first chunk of the new track.</value>
+    </member>
+    <member name="T:Microsoft.Web.Media.SmoothStreaming.SegmentInfo">
+      <summary>Describes one segment of a presentation and the streams in it. Standard manifests have a single segment, <c>ManifestInfo.Segments[0]</c>.</summary>
+      <remarks>Use <see cref="M:Microsoft.Web.Media.SmoothStreaming.SegmentInfo.SelectStreamsAsync(System.Collections.Generic.IList{Microsoft.Web.Media.SmoothStreaming.StreamInfo},System.Object)"/> to switch audio languages or enable text streams. UI-thread-only members throw <c>UnauthorizedAccessException</c> on other threads.</remarks>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SegmentInfo.EndPosition">
+      <summary>Gets the end of the segment on the presentation timeline.</summary>
+      <value>The earlier of the audio and video end times; for live content, the latest available time.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SegmentInfo.StartPosition">
+      <summary>Gets the start of the segment on the presentation timeline.</summary>
+      <value>The later of the audio and video start times.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SegmentInfo.AvailableStreams">
+      <summary>Gets all streams of the segment that may be selected.</summary>
+      <value>A read-only list of <see cref="T:Microsoft.Web.Media.SmoothStreaming.StreamInfo"/>, including all audio languages and text streams.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.SegmentInfo.SelectedStreams">
+      <summary>Gets the streams currently being downloaded and played.</summary>
+      <value>A read-only list. By default it holds one video and one audio stream.</value>
+      <remarks>Must be read on the UI thread.</remarks>
+    </member>
+    <member name="M:Microsoft.Web.Media.SmoothStreaming.SegmentInfo.RestrictStreams(System.Collections.Generic.IList{Microsoft.Web.Media.SmoothStreaming.StreamInfo})">
+      <summary>Permanently limits <see cref="P:Microsoft.Web.Media.SmoothStreaming.SegmentInfo.AvailableStreams"/> to the given streams, for example to hide audio languages the application does not offer.</summary>
+      <param name="availableStreams">The streams to keep; must contain at least one audio or video stream.</param>
+      <remarks>Call on the UI thread, typically in the <see cref="E:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.ManifestReady"/> handler. Throws <c>ArgumentNullException</c> or <c>ArgumentException</c> for a null, empty or unusable list.</remarks>
+    </member>
+    <member name="M:Microsoft.Web.Media.SmoothStreaming.SegmentInfo.SelectStreamsAsync(System.Collections.Generic.IList{Microsoft.Web.Media.SmoothStreaming.StreamInfo},System.Object)">
+      <summary>Replaces the set of selected streams, for example to switch to another audio language or to start downloading a text stream.</summary>
+      <param name="selectedStreams">The complete list of streams to select, taken from <see cref="P:Microsoft.Web.Media.SmoothStreaming.SegmentInfo.AvailableStreams"/>. Streams not in the list are deselected.</param>
+      <param name="userState">Object returned in the completion event data.</param>
+      <remarks>Call on the UI thread. Completion (or failure) is reported by the segment's and the manifest's SelectStreamsCompleted events (<see cref="E:Microsoft.Web.Media.SmoothStreaming.ManifestInfo.SelectStreamsCompleted"/>). A new call made before the previous one completes supersedes it, and the previous call completes with an error.</remarks>
+    </member>
+    <member name="M:Microsoft.Web.Media.SmoothStreaming.SegmentInfo.SelectStreamsAsync(System.Collections.Generic.IList{Microsoft.Web.Media.SmoothStreaming.StreamInfo})">
+      <summary>Replaces the set of selected streams without a user state object.</summary>
+      <param name="selectedStreams">The complete list of streams to select.</param>
+      <remarks>Equivalent to calling the two-parameter overload with <see langword="null"/> user state.</remarks>
+    </member>
+    <member name="T:Microsoft.Web.Media.SmoothStreaming.ProtectionInfo">
+      <summary>Holds the content protection information declared in a manifest.</summary>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.ProtectionInfo.ProtectionHeader">
+      <summary>Gets the protection header from the manifest.</summary>
+      <value>A <see cref="T:Microsoft.Web.Media.SmoothStreaming.ProtectionHeader"/>, or <see langword="null"/>.</value>
+    </member>
+    <member name="T:Microsoft.Web.Media.SmoothStreaming.ProtectionHeader">
+      <summary>The DRM protection header declared in a Smooth Streaming manifest.</summary>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.ProtectionHeader.SystemID">
+      <summary>Gets the identifier of the DRM system the header is for.</summary>
+      <value>A GUID identifying the protection system (for example PlayReady).</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.SmoothStreaming.ProtectionHeader.ProtectionData">
+      <summary>Gets the system-specific protection data.</summary>
+      <value>The protection header bytes, decoded from the base64 text in the manifest. Set only for a recognized protection system; otherwise <see langword="null"/>.</value>
+    </member>
+
+    <!-- ===================== Diagnostics ===================== -->
+    <member name="T:Microsoft.Web.Media.Diagnostics.AdvancedLoggingPlugin">
+      <summary>Periodically collects playback logs from a <see cref="T:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement"/> and posts them as XML to logging servers.</summary>
+      <remarks>Set <see cref="P:Microsoft.Web.Media.Diagnostics.AdvancedLoggingPlugin.SmoothStreamingMediaElement"/> to start. On every <see cref="P:Microsoft.Web.Media.Diagnostics.AdvancedLoggingPlugin.TimerInterval"/> the plug-in requests a log; each log is sent with an HTTP POST (content type text/xml) to every URL in <see cref="P:Microsoft.Web.Media.Diagnostics.AdvancedLoggingPlugin.ApplicationLogUrls"/> and <see cref="P:Microsoft.Web.Media.Diagnostics.AdvancedLoggingPlugin.ManifestLogUrls"/>. Dispose the plug-in to stop it.</remarks>
+    </member>
+    <member name="P:Microsoft.Web.Media.Diagnostics.AdvancedLoggingPlugin.TimerInterval">
+      <summary>Gets or sets how often a log is requested from the player.</summary>
+      <value>The interval. Default is 30 seconds. Changing it restarts the timer immediately.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.Diagnostics.AdvancedLoggingPlugin.ApplicationLogUrls">
+      <summary>Gets or sets the application-defined URLs that receive each log.</summary>
+      <value>A list of absolute URLs; empty by default.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.Diagnostics.AdvancedLoggingPlugin.ManifestLogUrls">
+      <summary>Gets the log URLs declared in the current presentation's manifest.</summary>
+      <value>A read-only list, refreshed from <see cref="P:Microsoft.Web.Media.SmoothStreaming.ManifestInfo.LogUris"/> on each <see cref="E:Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement.ManifestReady"/> event.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.Diagnostics.AdvancedLoggingPlugin.SmoothStreamingMediaElement">
+      <summary>Gets or sets the player whose logs are collected.</summary>
+      <value>The player, or <see langword="null"/> to detach. Attaching subscribes to its ManifestReady and LogReady events and starts the timer; detaching stops it.</value>
+    </member>
+    <member name="T:Microsoft.Web.Media.Diagnostics.TraceEntry">
+      <summary>One diagnostic trace record produced by <see cref="T:Microsoft.Web.Media.Diagnostics.Tracing"/>.</summary>
+    </member>
+    <member name="P:Microsoft.Web.Media.Diagnostics.TraceEntry.Date">
+      <summary>Gets or sets when the entry was created.</summary>
+      <value>The local creation time.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.Diagnostics.TraceEntry.ClassName">
+      <summary>Gets or sets the class that produced the entry.</summary>
+      <value>The class name.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.Diagnostics.TraceEntry.MethodName">
+      <summary>Gets or sets the method that produced the entry.</summary>
+      <value>The method name.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.Diagnostics.TraceEntry.MediaElementId">
+      <summary>Gets or sets the identifier of the player instance the entry relates to (its <c>Name</c>, or a generated ID).</summary>
+      <value>The identifier, or "?" when not associated with an instance.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.Diagnostics.TraceEntry.ThreadId">
+      <summary>Gets or sets the managed ID of the thread that produced the entry.</summary>
+      <value>The thread ID.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.Diagnostics.TraceEntry.TraceArea">
+      <summary>Gets or sets the component area of the entry.</summary>
+      <value>A <see cref="T:Microsoft.Web.Media.Diagnostics.TraceArea"/> value.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.Diagnostics.TraceEntry.TraceLevel">
+      <summary>Gets or sets the severity of the entry.</summary>
+      <value>A <see cref="T:Microsoft.Web.Media.Diagnostics.TraceLevel"/> value.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.Diagnostics.TraceEntry.Text">
+      <summary>Gets or sets the message text.</summary>
+      <value>The formatted message.</value>
+    </member>
+    <member name="M:Microsoft.Web.Media.Diagnostics.TraceEntry.#ctor(System.String,System.String,System.String,Microsoft.Web.Media.Diagnostics.TraceArea,Microsoft.Web.Media.Diagnostics.TraceLevel,System.String)">
+      <summary>Initializes a trace entry stamped with the current time and thread.</summary>
+      <param name="mediaElementId">Identifier of the related player instance.</param>
+      <param name="className">Class name; if <see langword="null"/> or empty, it is determined from the call stack.</param>
+      <param name="methodName">Method name; if <see langword="null"/> or empty, it is determined from the call stack.</param>
+      <param name="traceArea">Component area.</param>
+      <param name="traceLevel">Severity.</param>
+      <param name="text">Message text.</param>
+    </member>
+    <member name="T:Microsoft.Web.Media.Diagnostics.Tracing">
+      <summary>Static diagnostic tracing facility used by the Smooth Streaming client; applications can read its output and add their own entries.</summary>
+      <remarks>
+        <para>Tracing is disabled until a configuration with <c>enabled="true"</c> on its <c>TracingConfiguration</c> root element is loaded. The player tries to load <c>TracingConfig.xml</c> from the application package automatically the first time a control template is applied; you can also call one of the ReadTraceConfig overloads. The configuration selects areas, levels and destinations and the fields included in formatted output.</para>
+        <para>An entry is recorded only when its area, its level and at least one destination are enabled. The Memory destination keeps the most recent entries for <see cref="M:Microsoft.Web.Media.Diagnostics.Tracing.GetTraceEntries(System.Boolean)"/>; Console writes formatted lines to the console; RemoteServer posts the memory history as XML to <see cref="P:Microsoft.Web.Media.Diagnostics.Tracing.RemoteServerUri"/> every <see cref="F:Microsoft.Web.Media.Diagnostics.Tracing.PostInterval"/> seconds.</para>
+      </remarks>
+    </member>
+    <member name="P:Microsoft.Web.Media.Diagnostics.Tracing.IsolatedStorageQuota">
+      <summary>Gets the isolated storage quota read from the tracing configuration for the IsolatedStorage destination.</summary>
+      <value>The quota in bytes, or 0 if not configured.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.Diagnostics.Tracing.RemoteServerUri">
+      <summary>Gets the URL to which trace history is posted when the RemoteServer destination is enabled.</summary>
+      <value>The URL from the tracing configuration, or <see langword="null"/>. Reset to <see langword="null"/> if an upload fails.</value>
+    </member>
+    <member name="P:Microsoft.Web.Media.Diagnostics.Tracing.ConfigLoaded">
+      <summary>Gets a value indicating whether a tracing configuration has been loaded successfully.</summary>
+      <value><see langword="true"/> after a valid configuration has been read.</value>
+    </member>
+    <member name="F:Microsoft.Web.Media.Diagnostics.Tracing.IncludeClassName">
+      <summary>Whether <see cref="M:Microsoft.Web.Media.Diagnostics.Tracing.FormatTraceOutput(Microsoft.Web.Media.Diagnostics.TraceEntry)"/> includes the class name.</summary>
+    </member>
+    <member name="F:Microsoft.Web.Media.Diagnostics.Tracing.IncludeDate">
+      <summary>Whether formatted output includes the date (yyyy-MM-dd).</summary>
+    </member>
+    <member name="F:Microsoft.Web.Media.Diagnostics.Tracing.IncludeMediaElementId">
+      <summary>Whether formatted output includes the player instance identifier.</summary>
+    </member>
+    <member name="F:Microsoft.Web.Media.Diagnostics.Tracing.IncludeMethodName">
+      <summary>Whether formatted output includes the method name.</summary>
+    </member>
+    <member name="F:Microsoft.Web.Media.Diagnostics.Tracing.IncludeThreadId">
+      <summary>Whether formatted output includes the thread ID.</summary>
+    </member>
+    <member name="F:Microsoft.Web.Media.Diagnostics.Tracing.IncludeTraceArea">
+      <summary>Whether formatted output includes the trace area name.</summary>
+    </member>
+    <member name="F:Microsoft.Web.Media.Diagnostics.Tracing.IncludeTraceLevel">
+      <summary>Whether formatted output includes the trace level name.</summary>
+    </member>
+    <member name="F:Microsoft.Web.Media.Diagnostics.Tracing.IncludeTime">
+      <summary>Whether formatted output includes the time of day with milliseconds.</summary>
+    </member>
+    <member name="F:Microsoft.Web.Media.Diagnostics.Tracing.TraceHistoryMaxLines">
+      <summary>The maximum number of entries kept by the Memory destination; older entries are discarded. 0 disables the history.</summary>
+    </member>
+    <member name="F:Microsoft.Web.Media.Diagnostics.Tracing.PostInterval">
+      <summary>The interval, in seconds, at which trace history is posted to <see cref="P:Microsoft.Web.Media.Diagnostics.Tracing.RemoteServerUri"/>. Read from the tracing configuration.</summary>
+    </member>
+    <member name="M:Microsoft.Web.Media.Diagnostics.Tracing.GetTraceEntries(System.Boolean)">
+      <summary>Returns the entries kept by the Memory destination.</summary>
+      <param name="flushList"><see langword="true"/> to clear the history after copying it.</param>
+      <returns>An array of entries, oldest first, or <see langword="null"/> if tracing has been shut down.</returns>
+    </member>
+    <member name="M:Microsoft.Web.Media.Diagnostics.Tracing.DisableTraceArea(Microsoft.Web.Media.Diagnostics.TraceArea)">
+      <summary>Stops recording entries for the given areas.</summary>
+      <param name="traceArea">One or more areas (flags may be combined).</param>
+    </member>
+    <member name="M:Microsoft.Web.Media.Diagnostics.Tracing.DisableTraceDestination(Microsoft.Web.Media.Diagnostics.TraceDestination)">
+      <summary>Stops sending entries to the given destinations.</summary>
+      <param name="destination">One or more destinations (flags may be combined).</param>
+    </member>
+    <member name="M:Microsoft.Web.Media.Diagnostics.Tracing.DisableTraceLevel(Microsoft.Web.Media.Diagnostics.TraceLevel)">
+      <summary>Stops recording entries of the given levels.</summary>
+      <param name="traceLevel">One or more levels (flags may be combined).</param>
+    </member>
+    <member name="M:Microsoft.Web.Media.Diagnostics.Tracing.EnableTraceArea(Microsoft.Web.Media.Diagnostics.TraceArea)">
+      <summary>Starts recording entries for the given areas.</summary>
+      <param name="traceArea">One or more areas (flags may be combined).</param>
+      <remarks>Has no visible effect unless tracing has been enabled by a configuration.</remarks>
+    </member>
+    <member name="M:Microsoft.Web.Media.Diagnostics.Tracing.EnableTraceDestination(Microsoft.Web.Media.Diagnostics.TraceDestination)">
+      <summary>Starts sending entries to the given destinations.</summary>
+      <param name="destination">One or more destinations (flags may be combined).</param>
+    </member>
+    <member name="M:Microsoft.Web.Media.Diagnostics.Tracing.EnableTraceLevel(Microsoft.Web.Media.Diagnostics.TraceLevel)">
+      <summary>Starts recording entries of the given levels.</summary>
+      <param name="traceLevel">One or more levels (flags may be combined).</param>
+    </member>
+    <member name="M:Microsoft.Web.Media.Diagnostics.Tracing.Initialize">
+      <summary>Prepares the tracing facility. Called automatically by the player; calling it again has no effect.</summary>
+    </member>
+    <member name="M:Microsoft.Web.Media.Diagnostics.Tracing.Shutdown">
+      <summary>Shuts down tracing, posting any remaining history to the remote server first if that destination is enabled. Called automatically when the application exits.</summary>
+    </member>
+    <member name="M:Microsoft.Web.Media.Diagnostics.Tracing.IsTraceAreaEnabled(Microsoft.Web.Media.Diagnostics.TraceArea)">
+      <summary>Determines whether any of the given areas is enabled.</summary>
+      <param name="traceArea">The area or areas to test.</param>
+      <returns><see langword="true"/> if at least one of the areas is enabled.</returns>
+    </member>
+    <member name="M:Microsoft.Web.Media.Diagnostics.Tracing.IsTraceDestinationEnabled(Microsoft.Web.Media.Diagnostics.TraceDestination)">
+      <summary>Determines whether any of the given destinations is enabled.</summary>
+      <param name="traceDestination">The destination or destinations to test.</param>
+      <returns><see langword="true"/> if at least one of the destinations is enabled.</returns>
+    </member>
+    <member name="M:Microsoft.Web.Media.Diagnostics.Tracing.IsTraceLevelEnabled(Microsoft.Web.Media.Diagnostics.TraceLevel)">
+      <summary>Determines whether any of the given levels is enabled.</summary>
+      <param name="traceLevel">The level or levels to test.</param>
+      <returns><see langword="true"/> if at least one of the levels is enabled.</returns>
+    </member>
+    <member name="M:Microsoft.Web.Media.Diagnostics.Tracing.ReadTraceConfig(System.String)">
+      <summary>Applies a tracing configuration supplied as an XML string.</summary>
+      <param name="xmlConfig">XML with a <c>TracingConfiguration</c> root element. Ignored if <see langword="null"/> or empty.</param>
+    </member>
+    <member name="M:Microsoft.Web.Media.Diagnostics.Tracing.ReadTraceConfig(System.Uri)">
+      <summary>Applies a tracing configuration read from a file or URL.</summary>
+      <param name="uri">Location of the configuration XML, such as a file in the application package.</param>
+      <remarks>Load failures are recorded as warnings and do not throw.</remarks>
+    </member>
+    <member name="M:Microsoft.Web.Media.Diagnostics.Tracing.ReadTraceConfig(System.Xml.XmlReader)">
+      <summary>Applies a tracing configuration read from an XML reader, then closes the reader.</summary>
+      <param name="xmlReader">A reader positioned before a <c>TracingConfiguration</c> element. Its <c>enabled</c> and <c>include*</c> attributes and the <c>TraceAreas</c>, <c>TraceLevels</c> and <c>TraceDestinations</c> child elements are read.</param>
+    </member>
+    <member name="M:Microsoft.Web.Media.Diagnostics.Tracing.FormatTraceOutput(Microsoft.Web.Media.Diagnostics.TraceEntry)">
+      <summary>Formats an entry as a single line, using the Include fields to choose the prefix columns.</summary>
+      <param name="entry">The entry to format.</param>
+      <returns>The formatted line (the selected columns, a dash separator, then the text), or <see langword="null"/> if tracing has been shut down.</returns>
+    </member>
+    <member name="M:Microsoft.Web.Media.Diagnostics.Tracing.Trace(System.String,System.String,System.String,Microsoft.Web.Media.Diagnostics.TraceArea,Microsoft.Web.Media.Diagnostics.TraceLevel,System.String)">
+      <summary>Records a trace entry for a specific player instance.</summary>
+      <param name="mediaElementId">Identifier of the related player instance.</param>
+      <param name="className">Class name, or <see langword="null"/> to take it from the call stack.</param>
+      <param name="methodName">Method name, or <see langword="null"/> to take it from the call stack.</param>
+      <param name="traceArea">Component area.</param>
+      <param name="traceLevel">Severity.</param>
+      <param name="line">Message text. Braces are treated as composite format placeholders, so escape literal braces.</param>
+    </member>
+    <member name="M:Microsoft.Web.Media.Diagnostics.Tracing.Trace(Microsoft.Web.Media.Diagnostics.TraceArea,Microsoft.Web.Media.Diagnostics.TraceLevel)">
+      <summary>Records an entry with no text; class and method names are taken from the call stack.</summary>
+      <param name="traceArea">Component area.</param>
+      <param name="traceLevel">Severity.</param>
+    </member>
+    <member name="M:Microsoft.Web.Media.Diagnostics.Tracing.Trace(Microsoft.Web.Media.Diagnostics.TraceArea,Microsoft.Web.Media.Diagnostics.TraceLevel,System.String)">
+      <summary>Records an entry; class and method names are taken from the call stack.</summary>
+      <param name="traceArea">Component area.</param>
+      <param name="traceLevel">Severity.</param>
+      <param name="line">Message text.</param>
+    </member>
+    <member name="M:Microsoft.Web.Media.Diagnostics.Tracing.Trace(System.String,System.String,Microsoft.Web.Media.Diagnostics.TraceArea,Microsoft.Web.Media.Diagnostics.TraceLevel)">
+      <summary>Records an entry with no text for the given class and method.</summary>
+      <param name="className">Class name.</param>
+      <param name="methodName">Method name.</param>
+      <param name="traceArea">Component area.</param>
+      <param name="traceLevel">Severity.</param>
+    </member>
+    <member name="M:Microsoft.Web.Media.Diagnostics.Tracing.Trace(System.String,System.String,Microsoft.Web.Media.Diagnostics.TraceArea,Microsoft.Web.Media.Diagnostics.TraceLevel,System.String)">
+      <summary>Records an entry for the given class and method.</summary>
+      <param name="className">Class name.</param>
+      <param name="methodName">Method name.</param>
+      <param name="traceArea">Component area.</param>
+      <param name="traceLevel">Severity.</param>
+      <param name="line">Message text.</param>
+    </member>
+    <member name="M:Microsoft.Web.Media.Diagnostics.Tracing.Trace(System.String,System.String,System.String,Microsoft.Web.Media.Diagnostics.TraceArea,Microsoft.Web.Media.Diagnostics.TraceLevel,System.String,System.Object[])">
+      <summary>Records a formatted entry for a specific player instance.</summary>
+      <param name="mediaElementId">Identifier of the related player instance.</param>
+      <param name="className">Class name.</param>
+      <param name="methodName">Method name.</param>
+      <param name="traceArea">Component area.</param>
+      <param name="traceLevel">Severity.</param>
+      <param name="format">Composite format string, formatted with the invariant culture.</param>
+      <param name="list">Values to insert into <paramref name="format"/>.</param>
+    </member>
+    <member name="M:Microsoft.Web.Media.Diagnostics.Tracing.Trace(System.String,System.String,Microsoft.Web.Media.Diagnostics.TraceArea,Microsoft.Web.Media.Diagnostics.TraceLevel,System.String,System.Object[])">
+      <summary>Records a formatted entry for the given class and method.</summary>
+      <param name="className">Class name.</param>
+      <param name="methodName">Method name.</param>
+      <param name="traceArea">Component area.</param>
+      <param name="traceLevel">Severity.</param>
+      <param name="format">Composite format string, formatted with the invariant culture.</param>
+      <param name="list">Values to insert into <paramref name="format"/>.</param>
+    </member>
+    <member name="M:Microsoft.Web.Media.Diagnostics.Tracing.Trace(Microsoft.Web.Media.Diagnostics.TraceArea,Microsoft.Web.Media.Diagnostics.TraceLevel,System.String,System.Object[])">
+      <summary>Records a formatted entry; class and method names are taken from the call stack.</summary>
+      <param name="traceArea">Component area.</param>
+      <param name="traceLevel">Severity.</param>
+      <param name="format">Composite format string, formatted with the invariant culture.</param>
+      <param name="list">Values to insert into <paramref name="format"/>.</param>
+    </member>
+    <member name="M:Microsoft.Web.Media.Diagnostics.Tracing.TraceFunctionEntry(System.String,System.String,Microsoft.Web.Media.Diagnostics.TraceArea)">
+      <summary>Records a <see cref="F:Microsoft.Web.Media.Diagnostics.TraceLevel.FunctionEntry"/> entry for the given class and method.</summary>
+      <param name="className">Class name.</param>
+      <param name="methodName">Method name.</param>
+      <param name="traceArea">Component area.</param>
+    </member>
+    <member name="M:Microsoft.Web.Media.Diagnostics.Tracing.TraceFunctionEntry(System.String,System.String,System.String,Microsoft.Web.Media.Diagnostics.TraceArea)">
+      <summary>Records a <see cref="F:Microsoft.Web.Media.Diagnostics.TraceLevel.FunctionEntry"/> entry for a specific player instance.</summary>
+      <param name="mediaElementId">Identifier of the related player instance.</param>
+      <param name="className">Class name.</param>
+      <param name="methodName">Method name.</param>
+      <param name="traceArea">Component area.</param>
+    </member>
+    <member name="M:Microsoft.Web.Media.Diagnostics.Tracing.TraceFunctionEntry(Microsoft.Web.Media.Diagnostics.TraceArea)">
+      <summary>Records a <see cref="F:Microsoft.Web.Media.Diagnostics.TraceLevel.FunctionEntry"/> entry; class and method names are taken from the call stack.</summary>
+      <param name="traceArea">Component area.</param>
+    </member>
+    <member name="M:Microsoft.Web.Media.Diagnostics.Tracing.TraceFunctionExit(System.String,System.String,System.String,Microsoft.Web.Media.Diagnostics.TraceArea)">
+      <summary>Records a <see cref="F:Microsoft.Web.Media.Diagnostics.TraceLevel.FunctionExit"/> entry for a specific player instance.</summary>
+      <param name="mediaElementId">Identifier of the related player instance.</param>
+      <param name="className">Class name.</param>
+      <param name="methodName">Method name.</param>
+      <param name="traceArea">Component area.</param>
+    </member>
+    <member name="M:Microsoft.Web.Media.Diagnostics.Tracing.TraceFunctionExit(System.String,System.String,Microsoft.Web.Media.Diagnostics.TraceArea)">
+      <summary>Records a <see cref="F:Microsoft.Web.Media.Diagnostics.TraceLevel.FunctionExit"/> entry for the given class and method.</summary>
+      <param name="className">Class name.</param>
+      <param name="methodName">Method name.</param>
+      <param name="traceArea">Component area.</param>
+    </member>
+    <member name="M:Microsoft.Web.Media.Diagnostics.Tracing.TraceFunctionExit(Microsoft.Web.Media.Diagnostics.TraceArea)">
+      <summary>Records a <see cref="F:Microsoft.Web.Media.Diagnostics.TraceLevel.FunctionExit"/> entry; class and method names are taken from the call stack.</summary>
+      <param name="traceArea">Component area.</param>
+    </member>
+    <member name="M:Microsoft.Web.Media.Diagnostics.Tracing.UploadTraces">
+      <summary>Reserved. In this implementation the method does nothing; remote uploads happen on the configured post interval.</summary>
+    </member>
+    <member name="M:Microsoft.Web.Media.Diagnostics.Tracing.UpdateIsolatedStorageAvailableFreeSpace">
+      <summary>Reserved. In this implementation the method has no effect.</summary>
+    </member>
+    <member name="T:Microsoft.Web.Media.Diagnostics.TraceArea">
+      <summary>Identifies the component a trace entry comes from. Values are flags and can be combined to enable or disable several areas at once.</summary>
+    </member>
+    <member name="F:Microsoft.Web.Media.Diagnostics.TraceArea.None"><summary>No area.</summary></member>
+    <member name="F:Microsoft.Web.Media.Diagnostics.TraceArea.AdsInsert"><summary>Clip and ad insertion.</summary></member>
+    <member name="F:Microsoft.Web.Media.Diagnostics.TraceArea.BufferingEngine"><summary>The buffering engine that schedules chunk downloads.</summary></member>
+    <member name="F:Microsoft.Web.Media.Diagnostics.TraceArea.Config"><summary>Loading of configuration files.</summary></member>
+    <member name="F:Microsoft.Web.Media.Diagnostics.TraceArea.Diagnostics"><summary>Diagnostics and playback statistics collection.</summary></member>
+    <member name="F:Microsoft.Web.Media.Diagnostics.TraceArea.Download"><summary>The download manager, including cache lookups.</summary></member>
+    <member name="F:Microsoft.Web.Media.Diagnostics.TraceArea.Heuristics"><summary>Bitrate selection heuristics.</summary></member>
+    <member name="F:Microsoft.Web.Media.Diagnostics.TraceArea.HttpWebRequest"><summary>Outgoing HTTP requests.</summary></member>
+    <member name="F:Microsoft.Web.Media.Diagnostics.TraceArea.HttpWebResponse"><summary>Incoming HTTP responses.</summary></member>
+    <member name="F:Microsoft.Web.Media.Diagnostics.TraceArea.Logging"><summary>Playback log generation.</summary></member>
+    <member name="F:Microsoft.Web.Media.Diagnostics.TraceArea.Manifest"><summary>Manifest download, parsing and merging.</summary></member>
+    <member name="F:Microsoft.Web.Media.Diagnostics.TraceArea.ManifestStreamInfo"><summary>Per-stream manifest information.</summary></member>
+    <member name="F:Microsoft.Web.Media.Diagnostics.TraceArea.MediaChunk"><summary>Chunk parsing and handling.</summary></member>
+    <member name="F:Microsoft.Web.Media.Diagnostics.TraceArea.MediaChunkCache"><summary>The in-memory chunk cache.</summary></member>
+    <member name="F:Microsoft.Web.Media.Diagnostics.TraceArea.MediaElement"><summary>The SmoothStreamingMediaElement control.</summary></member>
+    <member name="F:Microsoft.Web.Media.Diagnostics.TraceArea.MediaPlayer"><summary>Media player integration.</summary></member>
+    <member name="F:Microsoft.Web.Media.Diagnostics.TraceArea.MediaStreamSource"><summary>The media stream source that feeds samples to the platform decoder.</summary></member>
+    <member name="F:Microsoft.Web.Media.Diagnostics.TraceArea.NetworkHeuristics"><summary>Bandwidth measurement used by the heuristics.</summary></member>
+    <member name="F:Microsoft.Web.Media.Diagnostics.TraceArea.Playlist"><summary>Playlist handling.</summary></member>
+    <member name="F:Microsoft.Web.Media.Diagnostics.TraceArea.ResponseCache"><summary>The HTTP response cache.</summary></member>
+    <member name="F:Microsoft.Web.Media.Diagnostics.TraceArea.Seek"><summary>Seeking.</summary></member>
+    <member name="F:Microsoft.Web.Media.Diagnostics.TraceArea.Statistics"><summary>Statistics counters.</summary></member>
+    <member name="F:Microsoft.Web.Media.Diagnostics.TraceArea.Test"><summary>Test instrumentation.</summary></member>
+    <member name="F:Microsoft.Web.Media.Diagnostics.TraceArea.Tracing"><summary>The tracing facility itself.</summary></member>
+    <member name="F:Microsoft.Web.Media.Diagnostics.TraceArea.UploadManager"><summary>Uploading of logs and traces to servers.</summary></member>
+    <member name="F:Microsoft.Web.Media.Diagnostics.TraceArea.MediaSampleTrickPlay"><summary>Sample timing during trick play (fast-forward and rewind).</summary></member>
+    <member name="F:Microsoft.Web.Media.Diagnostics.TraceArea.CompositeManifest"><summary>Composite (rough-cut editing) manifests.</summary></member>
+    <member name="F:Microsoft.Web.Media.Diagnostics.TraceArea.Multicast"><summary>Multicast delivery.</summary></member>
+    <member name="F:Microsoft.Web.Media.Diagnostics.TraceArea.LowLatency"><summary>Low-latency live playback.</summary></member>
+    <member name="F:Microsoft.Web.Media.Diagnostics.TraceArea.LiveTimeManager"><summary>Tracking of the live edge and live timeline.</summary></member>
+    <member name="F:Microsoft.Web.Media.Diagnostics.TraceArea.PerSample"><summary>Per-sample detail; very verbose.</summary></member>
+    <member name="F:Microsoft.Web.Media.Diagnostics.TraceArea.SilverlightMSS"><summary>Interaction with the platform media stream source infrastructure.</summary></member>
+    <member name="F:Microsoft.Web.Media.Diagnostics.TraceArea.All"><summary>All areas.</summary></member>
+    <member name="T:Microsoft.Web.Media.Diagnostics.TraceDestination">
+      <summary>Identifies where trace entries are sent. Values are flags and can be combined.</summary>
+    </member>
+    <member name="F:Microsoft.Web.Media.Diagnostics.TraceDestination.None"><summary>No destination; nothing is recorded.</summary></member>
+    <member name="F:Microsoft.Web.Media.Diagnostics.TraceDestination.Memory"><summary>Keep entries in an in-memory history, readable with GetTraceEntries and used for remote uploads.</summary></member>
+    <member name="F:Microsoft.Web.Media.Diagnostics.TraceDestination.Console"><summary>Write formatted entries to the console output.</summary></member>
+    <member name="F:Microsoft.Web.Media.Diagnostics.TraceDestination.Debug"><summary>Debugger output. In this implementation entries are formatted but not written anywhere.</summary></member>
+    <member name="F:Microsoft.Web.Media.Diagnostics.TraceDestination.IsolatedStorage"><summary>A file in isolated storage, configured with a file name and quota. In this implementation no entries are written to it.</summary></member>
+    <member name="F:Microsoft.Web.Media.Diagnostics.TraceDestination.RemoteServer"><summary>Periodically post the in-memory history as XML to the configured remote server URL. Requires the Memory destination to collect entries.</summary></member>
+    <member name="F:Microsoft.Web.Media.Diagnostics.TraceDestination.All"><summary>All destinations.</summary></member>
+    <member name="T:Microsoft.Web.Media.Diagnostics.TraceLevel">
+      <summary>Identifies the severity or kind of a trace entry. Values are flags and can be combined.</summary>
+    </member>
+    <member name="F:Microsoft.Web.Media.Diagnostics.TraceLevel.None"><summary>No level.</summary></member>
+    <member name="F:Microsoft.Web.Media.Diagnostics.TraceLevel.Assertion"><summary>A failed internal consistency check.</summary></member>
+    <member name="F:Microsoft.Web.Media.Diagnostics.TraceLevel.Error"><summary>An error that affects the current operation.</summary></member>
+    <member name="F:Microsoft.Web.Media.Diagnostics.TraceLevel.Fatal"><summary>An error that stops playback.</summary></member>
+    <member name="F:Microsoft.Web.Media.Diagnostics.TraceLevel.FunctionEntry"><summary>Entry into a method.</summary></member>
+    <member name="F:Microsoft.Web.Media.Diagnostics.TraceLevel.FunctionExit"><summary>Exit from a method.</summary></member>
+    <member name="F:Microsoft.Web.Media.Diagnostics.TraceLevel.Informational"><summary>Normal operational information, such as state changes and requests.</summary></member>
+    <member name="F:Microsoft.Web.Media.Diagnostics.TraceLevel.Shutdown"><summary>Messages emitted while components shut down.</summary></member>
+    <member name="F:Microsoft.Web.Media.Diagnostics.TraceLevel.Verbose"><summary>Detailed diagnostic information.</summary></member>
+    <member name="F:Microsoft.Web.Media.Diagnostics.TraceLevel.Warning"><summary>A recoverable problem.</summary></member>
+    <member name="F:Microsoft.Web.Media.Diagnostics.TraceLevel.All"><summary>All levels.</summary></member>
+  </members>
+</doc>

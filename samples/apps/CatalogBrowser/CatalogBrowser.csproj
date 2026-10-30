@@ -1,0 +1,42 @@
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B6E1F0A2-2C7D-4D93-8E55-4A9C6E1B3F05}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>CatalogBrowser</RootNamespace>
+    <AssemblyName>CatalogBrowser</AssemblyName>
+    <SilverlightAppEntry>CatalogBrowser.App</SilverlightAppEntry>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Windows.Controls.Navigation" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.Xbox" />
+    <Reference Include="Microsoft.Xbox.Core" />
+    <Reference Include="Microsoft.Xbox.Services" />
+    <Reference Include="Microsoft.Xbox.Storage" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml"><Generator>MSBuild:Compile</Generator></ApplicationDefinition>
+    <Page Include="Pages\HomePage.xaml"><Generator>MSBuild:Compile</Generator></Page>
+    <Page Include="Pages\DetailPage.xaml"><Generator>MSBuild:Compile</Generator></Page>
+    <Compile Include="App.xaml.cs"><DependentUpon>App.xaml</DependentUpon></Compile>
+    <Compile Include="Pages\HomePage.xaml.cs"><DependentUpon>Pages\HomePage.xaml</DependentUpon></Compile>
+    <Compile Include="Pages\DetailPage.xaml.cs"><DependentUpon>Pages\DetailPage.xaml</DependentUpon></Compile>
+    <Compile Include="Catalog.cs" />
+    <Compile Include="PosterCache.cs" />
+    <Compile Include="Favorites.cs" />
+    <Compile Include="..\..\Common\ServerClient.cs"><Link>Common\ServerClient.cs</Link></Compile>
+    <Compile Include="..\..\Common\DirectionalFocus.cs"><Link>Common\DirectionalFocus.cs</Link></Compile>
+  </ItemGroup>
+  <Import Project="..\..\..\msbuild\XboxSilverlight.targets" />
+</Project>

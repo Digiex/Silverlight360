@@ -1,0 +1,26 @@
+<xbox:XboxApplicationPage x:Class="PageNavigation.Pages.HomePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:xbox="clr-namespace:Microsoft.Xbox.Controls;assembly=Microsoft.Xbox"
+    xmlns:transitions="clr-namespace:Microsoft.Xbox.Transitions;assembly=Microsoft.Xbox"
+    xmlns:sdk="clr-namespace:XboxSdk.Samples"
+    Title="Home">
+  <Grid Background="#FF101820">
+    <StackPanel Margin="64,36,64,36" sdk:DirectionalFocus.IsEnabled="True">
+      <!-- TransitionTarget elements animate on their own when the page comes
+           and goes, staggered by TransitionOrder. -->
+      <TextBlock Text="Page navigation" FontSize="44" Foreground="White"
+                 transitions:TransitionService.TransitionTarget="True"
+                 transitions:TransitionService.TransitionOrder="0" />
+      <TextBlock Text="Pick a page. B goes back." FontSize="22" Foreground="#FF9FC5E8" Margin="0,0,0,24"
+                 transitions:TransitionService.TransitionTarget="True"
+                 transitions:TransitionService.TransitionOrder="0" />
+      <Button x:Name="First" Content="Lakes" Tag="Lakes" Style="{StaticResource MenuButton}" Click="Open_Click"
+              transitions:TransitionService.TransitionTarget="True" transitions:TransitionService.TransitionOrder="1" />
+      <Button Content="Forests" Tag="Forests" Style="{StaticResource MenuButton}" Click="Open_Click"
+              transitions:TransitionService.TransitionTarget="True" transitions:TransitionService.TransitionOrder="2" />
+      <Button Content="Islands" Tag="Islands" Style="{StaticResource MenuButton}" Click="Open_Click"
+              transitions:TransitionService.TransitionTarget="True" transitions:TransitionService.TransitionOrder="3" />
+    </StackPanel>
+  </Grid>
+</xbox:XboxApplicationPage>

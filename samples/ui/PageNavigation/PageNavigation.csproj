@@ -1,0 +1,33 @@
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9D4E2B17-6A35-4E8C-A1F0-3C7B5D2E8F04}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>PageNavigation</RootNamespace>
+    <AssemblyName>PageNavigation</AssemblyName>
+    <SilverlightAppEntry>PageNavigation.App</SilverlightAppEntry>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Windows.Controls.Navigation" />
+    <Reference Include="Microsoft.Xbox" />
+    <Reference Include="Microsoft.Xbox.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml"><Generator>MSBuild:Compile</Generator></ApplicationDefinition>
+    <Page Include="Pages\HomePage.xaml"><Generator>MSBuild:Compile</Generator></Page>
+    <Page Include="Pages\DetailPage.xaml"><Generator>MSBuild:Compile</Generator></Page>
+    <Compile Include="App.xaml.cs"><DependentUpon>App.xaml</DependentUpon></Compile>
+    <Compile Include="Pages\HomePage.xaml.cs"><DependentUpon>Pages\HomePage.xaml</DependentUpon></Compile>
+    <Compile Include="Pages\DetailPage.xaml.cs"><DependentUpon>Pages\DetailPage.xaml</DependentUpon></Compile>
+    <Compile Include="..\..\Common\DirectionalFocus.cs"><Link>Common\DirectionalFocus.cs</Link></Compile>
+  </ItemGroup>
+  <Import Project="..\..\..\msbuild\XboxSilverlight.targets" />
+</Project>

@@ -1,0 +1,977 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly><name>System.Windows</name></assembly>
+  <members>
+
+    <!-- ===================== Gamepad input ===================== -->
+    <member name="T:System.Windows.Input.GamePadButton">
+      <summary>Identifies a digital button on an Xbox 360 controller.</summary>
+      <remarks>Reported by <see cref="P:System.Windows.Input.GamePadButtonEventArgs.Button" /> in the <see cref="E:System.Windows.UIElement.GamePadButtonDown" /> and <see cref="E:System.Windows.UIElement.GamePadButtonUp" /> events. The analog thumbsticks and triggers are reported separately through <see cref="E:System.Windows.UIElement.GamePadThumbStickMoved" /> and <see cref="E:System.Windows.UIElement.GamePadTriggerMoved" />.</remarks>
+    </member>
+    <member name="F:System.Windows.Input.GamePadButton.A"><summary>The A face button (green). A <see cref="T:System.Windows.Controls.Button" /> with focus treats it as a press and raises Click.</summary></member>
+    <member name="F:System.Windows.Input.GamePadButton.B"><summary>The B face button (red), conventionally used for "back" or "cancel".</summary></member>
+    <member name="F:System.Windows.Input.GamePadButton.Back"><summary>The Back button, to the left of the Xbox Guide button.</summary></member>
+    <member name="F:System.Windows.Input.GamePadButton.DPadDown"><summary>Down on the directional pad.</summary></member>
+    <member name="F:System.Windows.Input.GamePadButton.DPadLeft"><summary>Left on the directional pad.</summary></member>
+    <member name="F:System.Windows.Input.GamePadButton.DPadRight"><summary>Right on the directional pad.</summary></member>
+    <member name="F:System.Windows.Input.GamePadButton.DPadUp"><summary>Up on the directional pad.</summary></member>
+    <member name="F:System.Windows.Input.GamePadButton.LeftShoulder"><summary>The left bumper (LB), the digital button above the left trigger.</summary></member>
+    <member name="F:System.Windows.Input.GamePadButton.LeftStick"><summary>Pressing the left thumbstick down (left stick click).</summary></member>
+    <member name="F:System.Windows.Input.GamePadButton.RightShoulder"><summary>The right bumper (RB), the digital button above the right trigger.</summary></member>
+    <member name="F:System.Windows.Input.GamePadButton.RightStick"><summary>Pressing the right thumbstick down (right stick click).</summary></member>
+    <member name="F:System.Windows.Input.GamePadButton.Start"><summary>The Start button, to the right of the Xbox Guide button. A focused <see cref="T:System.Windows.Controls.Button" /> treats it like <see cref="F:System.Windows.Input.GamePadButton.A" />.</summary></member>
+    <member name="F:System.Windows.Input.GamePadButton.X"><summary>The X face button (blue).</summary></member>
+    <member name="F:System.Windows.Input.GamePadButton.Y"><summary>The Y face button (yellow).</summary></member>
+
+    <member name="T:System.Windows.Input.GamePadSide">
+      <summary>Identifies which of a pair of analog controls (thumbstick or trigger) produced an event.</summary>
+    </member>
+    <member name="F:System.Windows.Input.GamePadSide.Left"><summary>The left thumbstick or left trigger.</summary></member>
+    <member name="F:System.Windows.Input.GamePadSide.Right"><summary>The right thumbstick or right trigger.</summary></member>
+
+    <member name="T:System.Windows.Input.GamePadButtonEventArgs">
+      <summary>Provides data for the <see cref="E:System.Windows.UIElement.GamePadButtonDown" /> and <see cref="E:System.Windows.UIElement.GamePadButtonUp" /> events.</summary>
+      <remarks>The values are read from the native event object, so read them inside the handler rather than storing the arguments for later.</remarks>
+    </member>
+    <member name="P:System.Windows.Input.GamePadButtonEventArgs.Handled">
+      <summary>Gets or sets a value that marks the routed event as handled.</summary>
+      <value>true to stop ordinary handlers on elements further up the tree from receiving the event; otherwise, false. The default is false.</value>
+      <remarks>Handlers added with <see cref="M:System.Windows.UIElement.AddHandler(System.Windows.RoutedEvent,System.Delegate,System.Boolean)" /> and handledEventsToo set to true still run.</remarks>
+    </member>
+    <member name="P:System.Windows.Input.GamePadButtonEventArgs.Button">
+      <summary>Gets the controller button that was pressed or released.</summary>
+      <value>One of the <see cref="T:System.Windows.Input.GamePadButton" /> values.</value>
+    </member>
+    <member name="P:System.Windows.Input.GamePadButtonEventArgs.UserInformation">
+      <summary>Gets information about the user whose controller produced the event.</summary>
+      <value>A <see cref="T:System.Windows.Input.UserInformation" /> whose <see cref="P:System.Windows.Input.UserInformation.PlayerIndex" /> identifies the controller.</value>
+    </member>
+
+    <member name="T:System.Windows.Input.GamePadThumbStickMovedEventArgs">
+      <summary>Provides data for the <see cref="E:System.Windows.UIElement.GamePadThumbStickMoved" /> event.</summary>
+    </member>
+    <member name="P:System.Windows.Input.GamePadThumbStickMovedEventArgs.Handled">
+      <summary>Gets or sets a value that marks the routed event as handled.</summary>
+      <value>true to stop ordinary handlers on elements further up the tree from receiving the event; otherwise, false. The default is false.</value>
+    </member>
+    <member name="P:System.Windows.Input.GamePadThumbStickMovedEventArgs.XPosition">
+      <summary>Gets the horizontal position of the thumbstick that moved.</summary>
+      <value>The stick's position on its horizontal axis.</value>
+    </member>
+    <member name="P:System.Windows.Input.GamePadThumbStickMovedEventArgs.YPosition">
+      <summary>Gets the vertical position of the thumbstick that moved.</summary>
+      <value>The stick's position on its vertical axis.</value>
+    </member>
+    <member name="P:System.Windows.Input.GamePadThumbStickMovedEventArgs.Side">
+      <summary>Gets which thumbstick moved.</summary>
+      <value><see cref="F:System.Windows.Input.GamePadSide.Left" /> or <see cref="F:System.Windows.Input.GamePadSide.Right" />.</value>
+    </member>
+    <member name="P:System.Windows.Input.GamePadThumbStickMovedEventArgs.UserInformation">
+      <summary>Gets information about the user whose controller produced the event.</summary>
+      <value>A <see cref="T:System.Windows.Input.UserInformation" /> identifying the controller.</value>
+    </member>
+
+    <member name="T:System.Windows.Input.GamePadTriggerMovedEventArgs">
+      <summary>Provides data for the <see cref="E:System.Windows.UIElement.GamePadTriggerMoved" /> event.</summary>
+    </member>
+    <member name="P:System.Windows.Input.GamePadTriggerMovedEventArgs.Handled">
+      <summary>Gets or sets a value that marks the routed event as handled.</summary>
+      <value>true to stop ordinary handlers on elements further up the tree from receiving the event; otherwise, false. The default is false.</value>
+    </member>
+    <member name="P:System.Windows.Input.GamePadTriggerMovedEventArgs.Position">
+      <summary>Gets how far the trigger that moved is pressed.</summary>
+      <value>The trigger's analog position; larger values mean the trigger is pulled further.</value>
+    </member>
+    <member name="P:System.Windows.Input.GamePadTriggerMovedEventArgs.Side">
+      <summary>Gets which trigger moved.</summary>
+      <value><see cref="F:System.Windows.Input.GamePadSide.Left" /> for the left trigger (LT) or <see cref="F:System.Windows.Input.GamePadSide.Right" /> for the right trigger (RT).</value>
+    </member>
+    <member name="P:System.Windows.Input.GamePadTriggerMovedEventArgs.UserInformation">
+      <summary>Gets information about the user whose controller produced the event.</summary>
+      <value>A <see cref="T:System.Windows.Input.UserInformation" /> identifying the controller.</value>
+    </member>
+
+    <member name="E:System.Windows.UIElement.GamePadButtonDown">
+      <summary>Occurs when a controller button is pressed while this element or one of its descendants has focus.</summary>
+      <remarks>
+        <para>This is a bubbling routed event, delivered like <see cref="E:System.Windows.UIElement.KeyDown" />: it starts at the focused element and travels up the visual tree until a handler sets <see cref="P:System.Windows.Input.GamePadButtonEventArgs.Handled" /> to true. Handlers run on the UI thread. If nothing has focus, the event is not delivered to your elements, so give an element focus (for example with <see cref="M:System.Windows.Controls.Control.Focus" />) once the page loads.</para>
+        <para><see cref="T:System.Windows.Controls.Button" /> handles <see cref="F:System.Windows.Input.GamePadButton.A" /> and <see cref="F:System.Windows.Input.GamePadButton.Start" /> itself: it raises Click and marks the event handled. Controls can also override <see cref="M:System.Windows.Controls.Control.OnGamePadButtonDown(System.Windows.Input.GamePadButtonEventArgs)" />.</para>
+        <para>To receive events that a descendant already handled, register with <see cref="M:System.Windows.UIElement.AddHandler(System.Windows.RoutedEvent,System.Delegate,System.Boolean)" /> and <see cref="F:System.Windows.UIElement.GamePadButtonDownEvent" />.</para>
+      </remarks>
+    </member>
+    <member name="E:System.Windows.UIElement.GamePadButtonUp">
+      <summary>Occurs when a controller button is released while this element or one of its descendants has focus.</summary>
+      <remarks>A bubbling routed event that follows the same route as <see cref="E:System.Windows.UIElement.GamePadButtonDown" />. Use <see cref="F:System.Windows.UIElement.GamePadButtonUpEvent" /> with <see cref="M:System.Windows.UIElement.AddHandler(System.Windows.RoutedEvent,System.Delegate,System.Boolean)" /> to see already-handled events.</remarks>
+    </member>
+    <member name="E:System.Windows.UIElement.GamePadThumbStickMoved">
+      <summary>Occurs when a controller thumbstick changes position while this element or one of its descendants has focus.</summary>
+      <remarks>A bubbling routed event that starts at the focused element. It is raised for each change, so it can arrive many times per second while the stick is held; keep handlers light. <see cref="P:System.Windows.Input.GamePadThumbStickMovedEventArgs.Side" /> tells the two sticks apart. There is no routed event identifier for it, so it cannot be registered with AddHandler.</remarks>
+    </member>
+    <member name="E:System.Windows.UIElement.GamePadTriggerMoved">
+      <summary>Occurs when a controller trigger (LT or RT) changes position while this element or one of its descendants has focus.</summary>
+      <remarks>A bubbling routed event that starts at the focused element and is raised for each change in trigger position. There is no routed event identifier for it, so it cannot be registered with AddHandler.</remarks>
+    </member>
+    <member name="E:System.Windows.UIElement.MediaCommand">
+      <summary>Occurs when a media transport command, such as Play, Pause or Fast Forward, arrives from a media remote or another media-command source.</summary>
+      <remarks>
+        <para>The event is routed from the focused element up the tree in the same way as the gamepad events; set <see cref="P:System.Windows.Media.MediaCommandEventArgs.Handled" /> to stop it. Handle it high in the tree (for example on the page root) to give a media player transport controls that work regardless of which element has focus.</para>
+        <para>A focused <see cref="T:System.Windows.Controls.Button" /> treats <see cref="F:System.Windows.Media.MediaCommand.TogglePlayPause" /> as a press, raises Click and marks the event handled.</para>
+      </remarks>
+    </member>
+    <member name="F:System.Windows.UIElement.GamePadButtonDownEvent">
+      <summary>Identifies the <see cref="E:System.Windows.UIElement.GamePadButtonDown" /> routed event.</summary>
+      <remarks>Pass this to <see cref="M:System.Windows.UIElement.AddHandler(System.Windows.RoutedEvent,System.Delegate,System.Boolean)" /> with an <see cref="T:System.EventHandler`1" /> of <see cref="T:System.Windows.Input.GamePadButtonEventArgs" />; any other delegate type is rejected with <see cref="T:System.ArgumentException" />.</remarks>
+    </member>
+    <member name="F:System.Windows.UIElement.GamePadButtonUpEvent">
+      <summary>Identifies the <see cref="E:System.Windows.UIElement.GamePadButtonUp" /> routed event.</summary>
+      <remarks>Pass this to <see cref="M:System.Windows.UIElement.AddHandler(System.Windows.RoutedEvent,System.Delegate,System.Boolean)" /> with an <see cref="T:System.EventHandler`1" /> of <see cref="T:System.Windows.Input.GamePadButtonEventArgs" />.</remarks>
+    </member>
+
+    <member name="M:System.Windows.Controls.Control.OnGamePadButtonUp(System.Windows.Input.GamePadButtonEventArgs)">
+      <summary>Called before the <see cref="E:System.Windows.UIElement.GamePadButtonUp" /> event reaches handlers on this control. Override it to provide class handling for controller button releases.</summary>
+      <param name="e">The event data.</param>
+      <exception cref="T:System.ArgumentNullException"><paramref name="e" /> is null.</exception>
+      <remarks>The base implementation does nothing except check its argument. Set <see cref="P:System.Windows.Input.GamePadButtonEventArgs.Handled" /> to true to stop the event from bubbling further.</remarks>
+    </member>
+    <member name="M:System.Windows.Controls.Control.OnGamePadButtonDown(System.Windows.Input.GamePadButtonEventArgs)">
+      <summary>Called before the <see cref="E:System.Windows.UIElement.GamePadButtonDown" /> event reaches handlers on this control. Override it to provide class handling for controller button presses.</summary>
+      <param name="e">The event data.</param>
+      <exception cref="T:System.ArgumentNullException"><paramref name="e" /> is null.</exception>
+      <remarks>The base implementation does nothing except check its argument. Set <see cref="P:System.Windows.Input.GamePadButtonEventArgs.Handled" /> to true to stop the event from bubbling further.</remarks>
+    </member>
+
+    <!-- ===================== Media commands ===================== -->
+    <member name="T:System.Windows.Media.MediaCommandEventHandler">
+      <summary>Represents the method that handles the <see cref="E:System.Windows.UIElement.MediaCommand" /> event.</summary>
+      <param name="sender">The element whose handler is being invoked.</param>
+      <param name="e">The event data, including the command that arrived.</param>
+    </member>
+    <member name="T:System.Windows.Media.MediaCommand">
+      <summary>Identifies a media transport or navigation command, such as those sent by a media remote.</summary>
+    </member>
+    <member name="F:System.Windows.Media.MediaCommand.Play"><summary>Start or resume playback.</summary></member>
+    <member name="F:System.Windows.Media.MediaCommand.Pause"><summary>Pause playback.</summary></member>
+    <member name="F:System.Windows.Media.MediaCommand.TogglePlayPause"><summary>Toggle between playing and paused (a single Play/Pause key). A focused <see cref="T:System.Windows.Controls.Button" /> also treats this command as a press.</summary></member>
+    <member name="F:System.Windows.Media.MediaCommand.Stop"><summary>Stop playback.</summary></member>
+    <member name="F:System.Windows.Media.MediaCommand.Record"><summary>The Record key.</summary></member>
+    <member name="F:System.Windows.Media.MediaCommand.FastForward"><summary>Fast forward.</summary></member>
+    <member name="F:System.Windows.Media.MediaCommand.Rewind"><summary>Rewind.</summary></member>
+    <member name="F:System.Windows.Media.MediaCommand.NextTrack"><summary>Skip to the next track, chapter or item.</summary></member>
+    <member name="F:System.Windows.Media.MediaCommand.PreviousTrack"><summary>Go back to the previous track, chapter or item.</summary></member>
+    <member name="F:System.Windows.Media.MediaCommand.IncreaseVolume"><summary>The Volume Up key.</summary></member>
+    <member name="F:System.Windows.Media.MediaCommand.DecreaseVolume"><summary>The Volume Down key.</summary></member>
+    <member name="F:System.Windows.Media.MediaCommand.ChannelUp"><summary>The Channel Up key.</summary></member>
+    <member name="F:System.Windows.Media.MediaCommand.ChannelDown"><summary>The Channel Down key.</summary></member>
+    <member name="F:System.Windows.Media.MediaCommand.MuteVolume"><summary>The Mute key.</summary></member>
+    <member name="F:System.Windows.Media.MediaCommand.Menu"><summary>The Menu key, typically used to open a menu or options for the current content.</summary></member>
+    <member name="F:System.Windows.Media.MediaCommand.Title"><summary>The Title key, typically used to go to the title or top menu of the content.</summary></member>
+    <member name="F:System.Windows.Media.MediaCommand.Info"><summary>The Info key, typically used to show details about the current item.</summary></member>
+    <member name="F:System.Windows.Media.MediaCommand.Display"><summary>The Display key, typically used to show or hide on-screen playback information.</summary></member>
+    <member name="F:System.Windows.Media.MediaCommand.Guide"><summary>The Guide key of a media remote.</summary></member>
+    <member name="F:System.Windows.Media.MediaCommand.TV"><summary>The TV key of a media remote.</summary></member>
+    <member name="T:System.Windows.Media.MediaCommandEventArgs">
+      <summary>Provides data for the <see cref="E:System.Windows.UIElement.MediaCommand" /> event.</summary>
+    </member>
+    <member name="P:System.Windows.Media.MediaCommandEventArgs.Handled">
+      <summary>Gets or sets a value that marks the routed event as handled.</summary>
+      <value>true to stop ordinary handlers on elements further up the tree from receiving the event; otherwise, false. The default is false.</value>
+    </member>
+    <member name="P:System.Windows.Media.MediaCommandEventArgs.MediaCommand">
+      <summary>Gets or sets the command that arrived.</summary>
+      <value>One of the <see cref="T:System.Windows.Media.MediaCommand" /> values.</value>
+    </member>
+
+    <!-- ===================== User identity / modality ===================== -->
+    <member name="T:System.Windows.Input.UserInformation">
+      <summary>Identifies the user who produced an input event: the controller slot for controller input, and the Kinect tracking ID for gesture input.</summary>
+      <remarks>Instances are created by the platform. When a value is not known, the properties hold <see cref="F:System.Windows.Input.UserInformation.InvalidPlayerIndex" /> and <see cref="F:System.Windows.Input.UserInformation.InvalidTrackingId" />.</remarks>
+    </member>
+    <member name="P:System.Windows.Input.UserInformation.TrackingId">
+      <summary>Gets the Kinect tracking ID of the body that produced the input.</summary>
+      <value>The tracking ID, or <see cref="F:System.Windows.Input.UserInformation.InvalidTrackingId" /> (0) when the input did not come from a tracked body.</value>
+    </member>
+    <member name="P:System.Windows.Input.UserInformation.PlayerIndex">
+      <summary>Gets the player (controller slot) index of the user who produced the input.</summary>
+      <value>The player index, or <see cref="F:System.Windows.Input.UserInformation.InvalidPlayerIndex" /> (254) when no player is associated with the input.</value>
+    </member>
+    <member name="F:System.Windows.Input.UserInformation.InvalidTrackingId">
+      <summary>The value of <see cref="P:System.Windows.Input.UserInformation.TrackingId" /> when no tracked body is associated with the input. This field is constant (0).</summary>
+    </member>
+    <member name="F:System.Windows.Input.UserInformation.InvalidPlayerIndex">
+      <summary>The value of <see cref="P:System.Windows.Input.UserInformation.PlayerIndex" /> when no player is associated with the input. This field is constant (254).</summary>
+    </member>
+    <member name="P:System.Windows.Input.MouseEventArgs.UserInformation">
+      <summary>Gets information about the user who produced the pointer input.</summary>
+      <value>A <see cref="T:System.Windows.Input.UserInformation" /> for the input; for the Kinect hand cursor it carries the tracking ID of the user's body.</value>
+      <remarks>On this platform mouse events are also raised by the Kinect hand cursor.</remarks>
+    </member>
+    <member name="P:System.Windows.Input.KeyEventArgs.UserInformation">
+      <summary>Gets information about the user who produced the key input.</summary>
+      <value>A <see cref="T:System.Windows.Input.UserInformation" /> for the input. If the source is not tied to a player, its properties hold the invalid values.</value>
+    </member>
+
+    <member name="T:System.Windows.Input.InputModality">
+      <summary>Identifies the kind of input that caused an action, such as a button click.</summary>
+      <remarks>The arguments of <see cref="E:System.Windows.Controls.Primitives.ButtonBase.Click" /> are an <see cref="T:System.Windows.Input.InputModalityRoutedEventArgs" />; cast the <see cref="T:System.Windows.RoutedEventArgs" /> to read which modality activated the button.</remarks>
+    </member>
+    <member name="F:System.Windows.Input.InputModality.Unknown"><summary>The source of the input is not known, for example when Click is raised from code or through automation.</summary></member>
+    <member name="F:System.Windows.Input.InputModality.Gesture"><summary>Kinect gesture input, such as completing a hover over a button with the hand cursor.</summary></member>
+    <member name="F:System.Windows.Input.InputModality.Voice"><summary>A voice command, delivered through a <see cref="T:System.Windows.Input.SpeechCommand" />.</summary></member>
+    <member name="F:System.Windows.Input.InputModality.GamePad"><summary>An Xbox 360 controller button, such as A or Start.</summary></member>
+    <member name="F:System.Windows.Input.InputModality.Keyboard"><summary>A keyboard key (Space, or Enter where it is accepted).</summary></member>
+    <member name="F:System.Windows.Input.InputModality.Mouse"><summary>A mouse or other pointer press.</summary></member>
+    <member name="F:System.Windows.Input.InputModality.RemoteControl"><summary>A media remote, for example the Play/Pause key.</summary></member>
+    <member name="T:System.Windows.Input.InputModalityRoutedEventArgs">
+      <summary>Routed event data that records which input modality, and which user, caused the event.</summary>
+      <remarks>Passed as the arguments of <see cref="E:System.Windows.Controls.Primitives.ButtonBase.Click" />. The event is still declared with <see cref="T:System.Windows.RoutedEventHandler" />, so cast the arguments to this type.</remarks>
+    </member>
+    <member name="P:System.Windows.Input.InputModalityRoutedEventArgs.InputModality">
+      <summary>Gets the kind of input that caused the event.</summary>
+      <value>One of the <see cref="T:System.Windows.Input.InputModality" /> values.</value>
+    </member>
+    <member name="P:System.Windows.Input.InputModalityRoutedEventArgs.UserInformation">
+      <summary>Gets the user who caused the event.</summary>
+      <value>A <see cref="T:System.Windows.Input.UserInformation" />, or null when no user is associated with the action (for example a Click raised from code).</value>
+    </member>
+
+    <!-- ===================== Speech ===================== -->
+    <member name="T:System.Windows.Input.SpeechCommand">
+      <summary>Base class for an <see cref="T:System.Windows.Input.ICommand" /> that can also be invoked by voice, and that ties a phrase to a <see cref="T:System.Windows.Controls.Button" />.</summary>
+      <remarks>
+        <para>Derive from this class, implement <see cref="P:System.Windows.Input.SpeechCommand.DisplayText" />, <see cref="M:System.Windows.Input.SpeechCommand.CanExecute(System.Object)" /> and <see cref="M:System.Windows.Input.SpeechCommand.Execute(System.Object)" />, and assign an instance to a button's Command property.</para>
+        <para>While the button is loaded, the command is linked to it. When the command reports a voice activation by calling <see cref="M:System.Windows.Input.SpeechCommand.OnInternalExecuted" />, the button raises Click with <see cref="F:System.Windows.Input.InputModality.Voice" />, which then executes the command. The button's IsEnabled state is combined with <see cref="M:System.Windows.Input.SpeechCommand.CanExecute(System.Object)" /> to decide whether the phrase is available. A command instance can be linked to only one loaded button at a time.</para>
+        <para>Voice input requires a Kinect sensor. The button template can define the SpeechHidden, SpeechShown and SpeechDisambiguating visual states to show the phrase on screen.</para>
+      </remarks>
+    </member>
+    <member name="P:System.Windows.Input.SpeechCommand.DisplayText">
+      <summary>When overridden in a derived class, gets or sets the phrase the user says to invoke the command, as it is shown on screen.</summary>
+      <value>The spoken and displayed phrase.</value>
+    </member>
+    <member name="P:System.Windows.Input.SpeechCommand.DisambiguationText">
+      <summary>Gets the extra text shown when several commands share the same phrase and the user must choose between them.</summary>
+      <value>The disambiguation text. The base implementation returns null.</value>
+    </member>
+    <member name="E:System.Windows.Input.SpeechCommand.CanExecuteChanged">
+      <summary>Occurs when the result of <see cref="M:System.Windows.Input.SpeechCommand.CanExecute(System.Object)" /> changes.</summary>
+      <remarks>Raised by <see cref="M:System.Windows.Input.SpeechCommand.OnCanExecuteChanged" />, and by <see cref="M:System.Windows.Input.SpeechCommand.UpdateCanExecute" /> when it detects a change.</remarks>
+    </member>
+    <member name="E:System.Windows.Input.SpeechCommand.PropertyChanged">
+      <summary>Occurs when a property value changes, for example <see cref="P:System.Windows.Input.SpeechCommand.DisplayText" />.</summary>
+    </member>
+    <member name="M:System.Windows.Input.SpeechCommand.CanExecute(System.Object)">
+      <summary>When overridden in a derived class, determines whether the command can run.</summary>
+      <param name="parameter">Data used by the command. The base class itself always passes null.</param>
+      <returns>true if the command can run; otherwise, false.</returns>
+    </member>
+    <member name="M:System.Windows.Input.SpeechCommand.UpdateCanExecute">
+      <summary>Re-evaluates <see cref="M:System.Windows.Input.SpeechCommand.CanExecute(System.Object)" /> with a null parameter and raises <see cref="E:System.Windows.Input.SpeechCommand.CanExecuteChanged" /> if the result differs from the previous one.</summary>
+      <remarks>Call this whenever the state that <see cref="M:System.Windows.Input.SpeechCommand.CanExecute(System.Object)" /> depends on changes, so the voice phrase is enabled or disabled to match.</remarks>
+    </member>
+    <member name="M:System.Windows.Input.SpeechCommand.OnCanExecuteChanged">
+      <summary>Raises the <see cref="E:System.Windows.Input.SpeechCommand.CanExecuteChanged" /> event unconditionally.</summary>
+    </member>
+    <member name="M:System.Windows.Input.SpeechCommand.Execute(System.Object)">
+      <summary>When overridden in a derived class, performs the command's action.</summary>
+      <param name="parameter">Data used by the command, for example the button's CommandParameter.</param>
+    </member>
+    <member name="M:System.Windows.Input.SpeechCommand.OnPropertyChanged(System.String)">
+      <summary>Raises the <see cref="E:System.Windows.Input.SpeechCommand.PropertyChanged" /> event.</summary>
+      <param name="propertyName">The name of the property that changed.</param>
+    </member>
+    <member name="M:System.Windows.Input.SpeechCommand.OnInternalExecuted">
+      <summary>Reports that the command was invoked by voice.</summary>
+      <remarks>The linked <see cref="T:System.Windows.Controls.Button" /> responds by raising Click with <see cref="F:System.Windows.Input.InputModality.Voice" />, which in turn calls <see cref="M:System.Windows.Input.SpeechCommand.Execute(System.Object)" />. Nothing happens if no loaded button is linked to the command, or if the button is already executing its command.</remarks>
+    </member>
+
+    <!-- ===================== Kinect hand cursor / magnetic buttons ===================== -->
+    <member name="T:System.Windows.Input.Handedness">
+      <summary>Identifies which hand drives the Kinect hand cursor.</summary>
+    </member>
+    <member name="F:System.Windows.Input.Handedness.Right"><summary>The user's right hand.</summary></member>
+    <member name="F:System.Windows.Input.Handedness.Left"><summary>The user's left hand.</summary></member>
+    <member name="T:System.Windows.Input.MagneticZone">
+      <summary>Identifies the concentric zones around a magnetic button's origin that govern how the Kinect hand cursor snaps to it, from innermost to outermost.</summary>
+      <remarks>The zone sizes are set with <see cref="P:System.Windows.Controls.Button.MagneticRadii" /> and the time spent in each zone before the cursor attaches or detaches with <see cref="P:System.Windows.Controls.Button.MagneticDelays" />.</remarks>
+    </member>
+    <member name="F:System.Windows.Input.MagneticZone.FastAttach"><summary>The innermost zone; the cursor attaches after the short fast-attach delay.</summary></member>
+    <member name="F:System.Windows.Input.MagneticZone.SlowAttach"><summary>The zone outside <see cref="F:System.Windows.Input.MagneticZone.FastAttach" />; the cursor attaches after the longer slow-attach delay.</summary></member>
+    <member name="F:System.Windows.Input.MagneticZone.Approach"><summary>The zone in which the cursor is approaching the button but does not attach.</summary></member>
+    <member name="F:System.Windows.Input.MagneticZone.SlowDetach"><summary>The zone in which an attached cursor detaches after the slow-detach delay.</summary></member>
+    <member name="F:System.Windows.Input.MagneticZone.FastDetach"><summary>The outermost zone; an attached cursor detaches after the short fast-detach delay.</summary></member>
+
+    <member name="T:System.Windows.Controls.CursorEventArgs">
+      <summary>Provides data about the Kinect hand cursor: its position, which hand drives it and how far the arm is extended.</summary>
+    </member>
+    <member name="P:System.Windows.Controls.CursorEventArgs.ArmExtent">
+      <summary>Gets how far the user's arm is extended toward the sensor.</summary>
+      <value>The arm extension reported by the hand tracker.</value>
+    </member>
+    <member name="P:System.Windows.Controls.CursorEventArgs.Handedness">
+      <summary>Gets which hand drives the cursor.</summary>
+      <value>One of the <see cref="T:System.Windows.Input.Handedness" /> values.</value>
+    </member>
+    <member name="P:System.Windows.Controls.CursorEventArgs.UserInformation">
+      <summary>Gets the user whose hand drives the cursor.</summary>
+      <value>A <see cref="T:System.Windows.Input.UserInformation" /> carrying the user's tracking ID.</value>
+    </member>
+    <member name="M:System.Windows.Controls.CursorEventArgs.GetPosition(System.Windows.UIElement)">
+      <summary>Returns the cursor position relative to an element.</summary>
+      <param name="relativeTo">The element whose coordinate space is used, or null for the plug-in's root coordinate space.</param>
+      <returns>The cursor position in the coordinate space of <paramref name="relativeTo" />.</returns>
+    </member>
+
+    <member name="F:System.Windows.Controls.ClickMode.PressAndHover">
+      <summary>Click is raised both when the control is pressed (controller A or Start, Space or Enter, media remote Play/Pause, voice) and when the Kinect hand cursor completes a hover over it. This is the default for button controls on this platform.</summary>
+      <remarks>On this platform <see cref="F:System.Windows.Controls.ClickMode.Release" /> is not accepted; setting it throws <see cref="T:System.ArgumentException" />. Use <see cref="F:System.Windows.Controls.ClickMode.Press" /> to disable hover activation, or <see cref="F:System.Windows.Controls.ClickMode.Hover" /> for hover only.</remarks>
+    </member>
+
+    <member name="P:System.Windows.Controls.Button.MagneticRadii">
+      <summary>Gets or sets the sizes of the zones around <see cref="P:System.Windows.Controls.Button.MagneticOrigin" /> that control how the Kinect hand cursor attaches to the button. This is a dependency property.</summary>
+      <value>A <see cref="T:System.Windows.Input.MagneticRadii" />. The default is 0.1, 0.15, 0.1875, 0.225 (fast attach, slow attach, approach, slow detach).</value>
+      <remarks>Has an effect only when <see cref="P:System.Windows.Controls.Button.IsMagnetic" /> is true. In XAML, give four comma-separated numbers.</remarks>
+    </member>
+    <member name="P:System.Windows.Controls.Button.MagneticDelays">
+      <summary>Gets or sets how long, in milliseconds, the Kinect hand cursor must stay in each magnetic zone before it attaches to or detaches from the button. This is a dependency property.</summary>
+      <value>A <see cref="T:System.Windows.Input.MagneticDelays" />. The default is 350, 840, 2000, 75 (fast attach, slow attach, slow detach, fast detach).</value>
+      <remarks>The allowed ranges are 50–1000 ms for fast attach, 50–1500 ms for slow attach, 500–3000 ms for slow detach and 5–200 ms for fast detach. A value outside these ranges throws <see cref="T:System.ArgumentOutOfRangeException" /> when it is applied to an active magnetic button. In XAML, give four comma-separated integers.</remarks>
+    </member>
+    <member name="P:System.Windows.Controls.Button.MagneticOrigin">
+      <summary>Gets or sets the point the hand cursor is pulled toward, relative to the button's size. This is a dependency property.</summary>
+      <value>A point where (0,0) is the top-left corner and (1,1) the bottom-right corner of the button. The default is (0.5, 0.5), the center.</value>
+    </member>
+    <member name="P:System.Windows.Controls.Button.AbsoluteMagneticOrigin">
+      <summary>Gets the magnetic origin in the coordinate space of the application's root visual. This is a read-only dependency property.</summary>
+      <value>The position of <see cref="P:System.Windows.Controls.Button.MagneticOrigin" /> transformed to root-visual coordinates, or (NaN, NaN) while the button is not magnetic.</value>
+      <remarks>Recalculated on every layout pass while the button is magnetic.</remarks>
+    </member>
+    <member name="P:System.Windows.Controls.Button.CurrentHoverProgress">
+      <summary>Gets the progress of the current hover activation by the Kinect hand cursor. This is a dependency property.</summary>
+      <value>A value from 0 (no hover, or just started) to 1 (hover complete, Click about to be raised).</value>
+      <remarks>Bind to it in the button template to draw a hover progress indicator; <see cref="T:System.Windows.CurrentHoverProgressToPathDataConverter" /> turns it into an arc. It is animated over <see cref="P:System.Windows.Controls.Button.MaximumHoverDelay" /> and resets to 0 when the cursor leaves.</remarks>
+    </member>
+    <member name="P:System.Windows.Controls.Button.CurrentAttachProgress">
+      <summary>Gets the progress of the hand cursor attaching to or detaching from a magnetic button. This is a read-only dependency property.</summary>
+      <value>A value from 0 (detached) to 1 (attached). The default is 0.</value>
+    </member>
+    <member name="P:System.Windows.Controls.Button.MaximumHoverDelay">
+      <summary>Gets or sets how long, in milliseconds, the hand cursor must hover over the button for the hover to complete and Click to be raised. This is a dependency property.</summary>
+      <value>The hover duration in milliseconds. The default is 1650.</value>
+    </member>
+    <member name="P:System.Windows.Controls.Button.HoverStartDelay">
+      <summary>Gets or sets the delay, in milliseconds, between the hover starting and <see cref="P:System.Windows.Controls.Button.CurrentHoverProgress" /> beginning to advance. This is a dependency property.</summary>
+      <value>The delay in milliseconds. The default is 100.</value>
+      <remarks>A hover starts about 300 ms after the hand cursor enters the button; at that point the button also takes focus.</remarks>
+    </member>
+    <member name="P:System.Windows.Controls.Button.IsMagnetic">
+      <summary>Gets or sets a value that indicates whether the Kinect hand cursor snaps to this button. This is a dependency property.</summary>
+      <value>true to make the button magnetic; otherwise, false. The default is false.</value>
+      <remarks>Magnetism is active only while the button is loaded, enabled, visible, has a <see cref="P:System.Windows.Controls.Primitives.ButtonBase.ClickMode" /> that includes hover, and the Kinect software is ready. The attach and detach events and the MagneticStates visual states (Detached, Attaching, Attached, Detaching) follow the cursor.</remarks>
+    </member>
+    <member name="P:System.Windows.Controls.Button.IsAttaching">
+      <summary>Gets a value that indicates whether the hand cursor is in the process of attaching to the button. This is a read-only dependency property.</summary>
+      <value>true while attaching; otherwise, false.</value>
+    </member>
+    <member name="P:System.Windows.Controls.Button.IsDetaching">
+      <summary>Gets a value that indicates whether the hand cursor is in the process of detaching from the button. This is a read-only dependency property.</summary>
+      <value>true while detaching; otherwise, false.</value>
+    </member>
+    <member name="P:System.Windows.Controls.Button.IsAttached">
+      <summary>Gets a value that indicates whether the hand cursor is attached to the button. This is a read-only dependency property.</summary>
+      <value>true while attached; otherwise, false.</value>
+    </member>
+    <member name="E:System.Windows.Controls.Button.AttachStarted">
+      <summary>Occurs when the hand cursor starts attaching to a magnetic button.</summary>
+    </member>
+    <member name="E:System.Windows.Controls.Button.AttachProgressChanged">
+      <summary>Occurs as the hand cursor's attach progress changes.</summary>
+    </member>
+    <member name="E:System.Windows.Controls.Button.AttachCompleted">
+      <summary>Occurs when the hand cursor has attached to a magnetic button.</summary>
+    </member>
+    <member name="E:System.Windows.Controls.Button.DetachStarted">
+      <summary>Occurs when an attached hand cursor starts detaching from the button.</summary>
+    </member>
+    <member name="E:System.Windows.Controls.Button.DetachProgressChanged">
+      <summary>Occurs as the hand cursor's detach progress changes.</summary>
+    </member>
+    <member name="E:System.Windows.Controls.Button.DetachCompleted">
+      <summary>Occurs when the hand cursor has detached from the button.</summary>
+    </member>
+    <member name="E:System.Windows.Controls.Button.HoverStarted">
+      <summary>Occurs when the Kinect hand cursor begins a hover activation on the button.</summary>
+      <remarks>Raised only when <see cref="P:System.Windows.Controls.Primitives.ButtonBase.ClickMode" /> includes hover.</remarks>
+    </member>
+    <member name="E:System.Windows.Controls.Button.HoverProgressChanged">
+      <summary>Occurs whenever <see cref="P:System.Windows.Controls.Button.CurrentHoverProgress" /> changes.</summary>
+    </member>
+    <member name="E:System.Windows.Controls.Button.HoverCompleted">
+      <summary>Occurs when a hover activation completes.</summary>
+      <remarks>Right after this event the button raises Click with <see cref="F:System.Windows.Input.InputModality.Gesture" />.</remarks>
+    </member>
+    <member name="M:System.Windows.Controls.Button.OnMouseEnter(System.Windows.Input.MouseEventArgs)">
+      <summary>Called when the pointer or Kinect hand cursor enters the button. When <see cref="P:System.Windows.Controls.Primitives.ButtonBase.ClickMode" /> includes hover, starts the timer that begins a hover activation.</summary>
+      <param name="e">The event data.</param>
+    </member>
+    <member name="M:System.Windows.Controls.Button.OnMouseLeave(System.Windows.Input.MouseEventArgs)">
+      <summary>Called when the pointer or Kinect hand cursor leaves the button. Cancels any hover in progress, resets <see cref="P:System.Windows.Controls.Button.CurrentHoverProgress" /> and clears the pressed state.</summary>
+      <param name="e">The event data.</param>
+    </member>
+    <member name="M:System.Windows.Controls.Button.OnGotFocus(System.Windows.RoutedEventArgs)">
+      <summary>Called when the button receives focus.</summary>
+      <param name="e">The event data.</param>
+    </member>
+
+    <member name="T:System.Windows.Input.MagneticEventArgs">
+      <summary>Base class for the data of the attach and detach events of a magnetic <see cref="T:System.Windows.Controls.Button" />.</summary>
+    </member>
+    <member name="P:System.Windows.Input.MagneticEventArgs.UserInformation">
+      <summary>Gets the user whose hand cursor caused the event.</summary>
+      <value>A <see cref="T:System.Windows.Input.UserInformation" /> carrying the user's tracking ID.</value>
+    </member>
+    <member name="T:System.Windows.Input.AttachStartedEventArgs"><summary>Provides data for the <see cref="E:System.Windows.Controls.Button.AttachStarted" /> event.</summary></member>
+    <member name="T:System.Windows.Input.AttachProgressChangedEventArgs"><summary>Provides data for the <see cref="E:System.Windows.Controls.Button.AttachProgressChanged" /> event.</summary></member>
+    <member name="P:System.Windows.Input.AttachProgressChangedEventArgs.AttachProgress">
+      <summary>Gets the attach progress.</summary>
+      <value>A value from 0 to 1, where 1 means attached.</value>
+    </member>
+    <member name="T:System.Windows.Input.AttachCompletedEventArgs"><summary>Provides data for the <see cref="E:System.Windows.Controls.Button.AttachCompleted" /> event.</summary></member>
+    <member name="T:System.Windows.Input.DetachStartedEventArgs"><summary>Provides data for the <see cref="E:System.Windows.Controls.Button.DetachStarted" /> event.</summary></member>
+    <member name="T:System.Windows.Input.DetachProgressChangedEventArgs"><summary>Provides data for the <see cref="E:System.Windows.Controls.Button.DetachProgressChanged" /> event.</summary></member>
+    <member name="P:System.Windows.Input.DetachProgressChangedEventArgs.DetachProgress">
+      <summary>Gets the detach progress, expressed as remaining attachment.</summary>
+      <value>A value from 1 (still attached) down to 0 (detached).</value>
+    </member>
+    <member name="T:System.Windows.Input.DetachCompletedEventArgs"><summary>Provides data for the <see cref="E:System.Windows.Controls.Button.DetachCompleted" /> event.</summary></member>
+    <member name="T:System.Windows.Input.HoverStartedEventArgs"><summary>Provides data for the <see cref="E:System.Windows.Controls.Button.HoverStarted" /> event.</summary></member>
+    <member name="P:System.Windows.Input.HoverStartedEventArgs.UserInformation">
+      <summary>Gets the user whose hand cursor started the hover.</summary>
+      <value>A <see cref="T:System.Windows.Input.UserInformation" />.</value>
+    </member>
+    <member name="T:System.Windows.Input.HoverProgressChangedEventArgs"><summary>Provides data for the <see cref="E:System.Windows.Controls.Button.HoverProgressChanged" /> event.</summary></member>
+    <member name="P:System.Windows.Input.HoverProgressChangedEventArgs.HoverProgress">
+      <summary>Gets the new hover progress.</summary>
+      <value>A value from 0 to 1, where 1 means the hover is complete.</value>
+    </member>
+    <member name="P:System.Windows.Input.HoverProgressChangedEventArgs.UserInformation">
+      <summary>Gets the user whose hand cursor is hovering.</summary>
+      <value>A <see cref="T:System.Windows.Input.UserInformation" />.</value>
+    </member>
+    <member name="M:System.Windows.Input.HoverProgressChangedEventArgs.#ctor(System.Double,System.Windows.Input.UserInformation)">
+      <summary>Initializes a new instance of the <see cref="T:System.Windows.Input.HoverProgressChangedEventArgs" /> class.</summary>
+      <param name="hoverProgress">The hover progress, from 0 to 1.</param>
+      <param name="userInfo">The user whose hand cursor is hovering.</param>
+    </member>
+    <member name="T:System.Windows.Input.HoverCompletedEventArgs"><summary>Provides data for the <see cref="E:System.Windows.Controls.Button.HoverCompleted" /> event.</summary></member>
+    <member name="P:System.Windows.Input.HoverCompletedEventArgs.UserInformation">
+      <summary>Gets the user whose hover completed.</summary>
+      <value>A <see cref="T:System.Windows.Input.UserInformation" />.</value>
+    </member>
+
+    <member name="T:System.Windows.Input.MagneticRadii">
+      <summary>Holds the four zone sizes used by a magnetic <see cref="T:System.Windows.Controls.Button" />, from the innermost zone outward.</summary>
+      <remarks>The XAML and string form is four comma-separated numbers in constructor order, for example "0.1,0.15,0.1875,0.225".</remarks>
+    </member>
+    <member name="P:System.Windows.Input.MagneticRadii.FastAttachRadius"><summary>Gets or sets the size of the fast-attach zone.</summary><value>The radius of the innermost zone.</value></member>
+    <member name="P:System.Windows.Input.MagneticRadii.SlowAttachRadius"><summary>Gets or sets the size of the slow-attach zone.</summary><value>The outer radius of the slow-attach zone.</value></member>
+    <member name="P:System.Windows.Input.MagneticRadii.ApproachRadius"><summary>Gets or sets the size of the approach zone.</summary><value>The outer radius of the approach zone.</value></member>
+    <member name="P:System.Windows.Input.MagneticRadii.SlowDetachRadius"><summary>Gets or sets the size of the slow-detach zone; beyond it lies the fast-detach zone.</summary><value>The outer radius of the slow-detach zone.</value></member>
+    <member name="M:System.Windows.Input.MagneticRadii.#ctor(System.Double,System.Double,System.Double,System.Double)">
+      <summary>Initializes a new <see cref="T:System.Windows.Input.MagneticRadii" /> with the given zone sizes.</summary>
+      <param name="fastAttachRadius">The size of the fast-attach zone.</param>
+      <param name="slowAttachRadius">The size of the slow-attach zone.</param>
+      <param name="approachRadius">The size of the approach zone.</param>
+      <param name="slowDetachRadius">The size of the slow-detach zone.</param>
+    </member>
+    <member name="T:System.Windows.Input.MagneticRadiiTypeConverter">
+      <summary>Converts between strings of four comma-separated numbers and <see cref="T:System.Windows.Input.MagneticRadii" /> values, so the property can be set in XAML.</summary>
+    </member>
+    <member name="M:System.Windows.Input.MagneticRadiiTypeConverter.CanConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Type)">
+      <summary>Determines whether a value of the given type can be converted to <see cref="T:System.Windows.Input.MagneticRadii" />.</summary>
+      <param name="context">The type descriptor context.</param>
+      <param name="sourceType">The type to convert from.</param>
+      <returns>true for <see cref="T:System.String" />; otherwise, the base class result.</returns>
+    </member>
+    <member name="M:System.Windows.Input.MagneticRadiiTypeConverter.CanConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Type)">
+      <summary>Determines whether a <see cref="T:System.Windows.Input.MagneticRadii" /> can be converted to the given type.</summary>
+      <param name="context">The type descriptor context.</param>
+      <param name="destinationType">The type to convert to.</param>
+      <returns>true for <see cref="T:System.String" />; otherwise, the base class result.</returns>
+    </member>
+    <member name="M:System.Windows.Input.MagneticRadiiTypeConverter.ConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object)">
+      <summary>Parses a string of four comma-separated numbers into a <see cref="T:System.Windows.Input.MagneticRadii" />.</summary>
+      <param name="context">The type descriptor context.</param>
+      <param name="culture">The culture to use. The numbers are parsed with the current culture.</param>
+      <param name="value">The string to convert.</param>
+      <returns>The parsed <see cref="T:System.Windows.Input.MagneticRadii" />.</returns>
+      <exception cref="T:System.InvalidCastException">The string does not contain exactly four valid numbers.</exception>
+    </member>
+    <member name="M:System.Windows.Input.MagneticRadiiTypeConverter.ConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object,System.Type)">
+      <summary>Converts a <see cref="T:System.Windows.Input.MagneticRadii" /> to its string form.</summary>
+      <param name="context">The type descriptor context.</param>
+      <param name="culture">The culture to use.</param>
+      <param name="value">The value to convert.</param>
+      <param name="destinationType">The type to convert to.</param>
+      <returns>A string of four comma-separated numbers when <paramref name="destinationType" /> is <see cref="T:System.String" />; otherwise, the base class result.</returns>
+    </member>
+
+    <member name="T:System.Windows.Input.MagneticDelays">
+      <summary>Holds the four dwell times, in milliseconds, used by a magnetic <see cref="T:System.Windows.Controls.Button" />.</summary>
+      <remarks>The XAML and string form is four comma-separated integers in constructor order, for example "350,840,2000,75". See <see cref="P:System.Windows.Controls.Button.MagneticDelays" /> for the allowed ranges.</remarks>
+    </member>
+    <member name="P:System.Windows.Input.MagneticDelays.FastAttachDelay"><summary>Gets or sets how long the cursor must stay in the fast-attach zone before it attaches.</summary><value>The delay in milliseconds (50–1000).</value></member>
+    <member name="P:System.Windows.Input.MagneticDelays.SlowAttachDelay"><summary>Gets or sets how long the cursor must stay in the slow-attach zone before it attaches.</summary><value>The delay in milliseconds (50–1500).</value></member>
+    <member name="P:System.Windows.Input.MagneticDelays.SlowDetachDelay"><summary>Gets or sets how long an attached cursor must stay in the slow-detach zone before it detaches.</summary><value>The delay in milliseconds (500–3000).</value></member>
+    <member name="P:System.Windows.Input.MagneticDelays.FastDetachDelay"><summary>Gets or sets how long an attached cursor must stay in the fast-detach zone before it detaches.</summary><value>The delay in milliseconds (5–200).</value></member>
+    <member name="M:System.Windows.Input.MagneticDelays.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)">
+      <summary>Initializes a new <see cref="T:System.Windows.Input.MagneticDelays" /> with the given delays.</summary>
+      <param name="fastAttachDelay">The fast-attach delay, in milliseconds.</param>
+      <param name="slowAttachDelay">The slow-attach delay, in milliseconds.</param>
+      <param name="slowDetachDelay">The slow-detach delay, in milliseconds.</param>
+      <param name="fastDetachDelay">The fast-detach delay, in milliseconds.</param>
+    </member>
+    <member name="T:System.Windows.Input.MagneticDelaysTypeConverter">
+      <summary>Converts between strings of four comma-separated integers and <see cref="T:System.Windows.Input.MagneticDelays" /> values, so the property can be set in XAML.</summary>
+    </member>
+    <member name="M:System.Windows.Input.MagneticDelaysTypeConverter.CanConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Type)">
+      <summary>Determines whether a value of the given type can be converted to <see cref="T:System.Windows.Input.MagneticDelays" />.</summary>
+      <param name="context">The type descriptor context.</param>
+      <param name="sourceType">The type to convert from.</param>
+      <returns>true for <see cref="T:System.String" />; otherwise, the base class result.</returns>
+    </member>
+    <member name="M:System.Windows.Input.MagneticDelaysTypeConverter.CanConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Type)">
+      <summary>Determines whether a <see cref="T:System.Windows.Input.MagneticDelays" /> can be converted to the given type.</summary>
+      <param name="context">The type descriptor context.</param>
+      <param name="destinationType">The type to convert to.</param>
+      <returns>true for <see cref="T:System.String" />; otherwise, the base class result.</returns>
+    </member>
+    <member name="M:System.Windows.Input.MagneticDelaysTypeConverter.ConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object)">
+      <summary>Parses a string of four comma-separated integers into a <see cref="T:System.Windows.Input.MagneticDelays" />.</summary>
+      <param name="context">The type descriptor context.</param>
+      <param name="culture">The culture to use.</param>
+      <param name="value">The string to convert.</param>
+      <returns>The parsed <see cref="T:System.Windows.Input.MagneticDelays" />.</returns>
+      <exception cref="T:System.InvalidCastException">The string does not contain exactly four valid integers.</exception>
+    </member>
+    <member name="M:System.Windows.Input.MagneticDelaysTypeConverter.ConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object,System.Type)">
+      <summary>Converts a <see cref="T:System.Windows.Input.MagneticDelays" /> to its string form.</summary>
+      <param name="context">The type descriptor context.</param>
+      <param name="culture">The culture to use.</param>
+      <param name="value">The value to convert.</param>
+      <param name="destinationType">The type to convert to.</param>
+      <returns>A string of four comma-separated integers when <paramref name="destinationType" /> is <see cref="T:System.String" />; otherwise, the base class result.</returns>
+    </member>
+
+    <member name="T:System.Windows.CurrentHoverProgressToPathDataConverter">
+      <summary>Converts a hover progress value (0 to 1) into an arc geometry, for drawing a circular hover-progress indicator in a button template.</summary>
+      <remarks>Bind a <see cref="T:System.Windows.Shapes.Path" />'s Data to <see cref="P:System.Windows.Controls.Button.CurrentHoverProgress" /> through this converter and pass the circle radius as the ConverterParameter. The arc starts at (radius, 0) and sweeps clockwise around (0,0); a progress of 1 is a full circle. ConvertBack is not supported.</remarks>
+    </member>
+
+    <!-- ===================== Control overrides ===================== -->
+    <member name="M:System.Windows.Controls.PasswordBox.OnMouseMove(System.Windows.Input.MouseEventArgs)">
+      <summary>Called when the pointer moves over the password box; forwards the event to the native text editor.</summary>
+      <param name="e">The event data.</param>
+    </member>
+    <member name="M:System.Windows.Controls.PasswordBox.OnMouseEnter(System.Windows.Input.MouseEventArgs)">
+      <summary>Called when the pointer enters the password box; forwards the event to the native text editor.</summary>
+      <param name="e">The event data.</param>
+    </member>
+    <member name="M:System.Windows.Controls.PasswordBox.OnMouseLeave(System.Windows.Input.MouseEventArgs)">
+      <summary>Called when the pointer leaves the password box; forwards the event to the native text editor.</summary>
+      <param name="e">The event data.</param>
+    </member>
+    <member name="M:System.Windows.Controls.PasswordBox.OnMouseLeftButtonDown(System.Windows.Input.MouseButtonEventArgs)">
+      <summary>Called when the left button is pressed over the password box; if the event is not already handled, forwards it to the native text editor.</summary>
+      <param name="e">The event data.</param>
+    </member>
+    <member name="M:System.Windows.Controls.PasswordBox.OnMouseLeftButtonUp(System.Windows.Input.MouseButtonEventArgs)">
+      <summary>Called when the left button is released over the password box; if the event is not already handled, forwards it to the native text editor.</summary>
+      <param name="e">The event data.</param>
+    </member>
+    <member name="M:System.Windows.Controls.PasswordBox.OnKeyUp(System.Windows.Input.KeyEventArgs)">
+      <summary>Called when a key is released while the password box has focus; if the event is not already handled, forwards it to the native text editor.</summary>
+      <param name="e">The event data.</param>
+    </member>
+    <member name="M:System.Windows.Controls.PasswordBox.OnKeyDown(System.Windows.Input.KeyEventArgs)">
+      <summary>Called when a key is pressed while the password box has focus; if the event is not already handled, forwards it to the native text editor.</summary>
+      <param name="e">The event data.</param>
+      <remarks>Override and set Handled to keep a key from reaching the editor.</remarks>
+    </member>
+    <member name="M:System.Windows.Controls.PasswordBox.OnGotFocus(System.Windows.RoutedEventArgs)">
+      <summary>Called when the password box receives focus; notifies the native text editor.</summary>
+      <param name="e">The event data.</param>
+    </member>
+    <member name="M:System.Windows.Controls.PasswordBox.OnLostFocus(System.Windows.RoutedEventArgs)">
+      <summary>Called when the password box loses focus; notifies the native text editor.</summary>
+      <param name="e">The event data.</param>
+    </member>
+    <member name="M:System.Windows.Controls.ComboBoxItem.OnManipulationStarted(System.Windows.Input.ManipulationStartedEventArgs)">
+      <summary>Called when a manipulation starts on the item; if the event is not already handled, moves focus to the item.</summary>
+      <param name="e">The event data.</param>
+    </member>
+    <member name="M:System.Windows.Controls.ComboBoxItem.OnManipulationCompleted(System.Windows.Input.ManipulationCompletedEventArgs)">
+      <summary>Called when a manipulation on the item completes; if the manipulation was handled, closes the owning combo box's drop-down.</summary>
+      <param name="e">The event data.</param>
+    </member>
+    <member name="M:System.Windows.Controls.Primitives.RepeatButton.OnLostFocus(System.Windows.RoutedEventArgs)">
+      <summary>Called when the repeat button loses focus; stops any repeating that a key or pointer press started (unless ClickMode is Hover).</summary>
+      <param name="e">The event data.</param>
+    </member>
+    <member name="M:System.Windows.Controls.Primitives.RepeatButton.OnMouseMove(System.Windows.Input.MouseEventArgs)">
+      <summary>Called when the pointer moves; records the pointer position used to decide whether repeating continues.</summary>
+      <param name="e">The event data.</param>
+      <exception cref="T:System.ArgumentNullException"><paramref name="e" /> is null.</exception>
+    </member>
+    <member name="M:System.Windows.Controls.Primitives.ScrollBar.OnValueChanged(System.Double,System.Double)">
+      <summary>Called when <see cref="P:System.Windows.Controls.Primitives.RangeBase.Value" /> changes; raises the base notification and updates the thumb position.</summary>
+      <param name="oldValue">The previous value.</param>
+      <param name="newValue">The new value.</param>
+    </member>
+    <member name="M:System.Windows.Controls.Primitives.ScrollBar.OnMaximumChanged(System.Double,System.Double)">
+      <summary>Called when <see cref="P:System.Windows.Controls.Primitives.RangeBase.Maximum" /> changes; updates the track layout.</summary>
+      <param name="oldMaximum">The previous maximum.</param>
+      <param name="newMaximum">The new maximum.</param>
+    </member>
+    <member name="M:System.Windows.Controls.Primitives.ScrollBar.OnMinimumChanged(System.Double,System.Double)">
+      <summary>Called when <see cref="P:System.Windows.Controls.Primitives.RangeBase.Minimum" /> changes; updates the track layout.</summary>
+      <param name="oldMinimum">The previous minimum.</param>
+      <param name="newMinimum">The new minimum.</param>
+    </member>
+    <member name="M:System.Windows.Controls.Primitives.ScrollBar.OnMouseEnter(System.Windows.Input.MouseEventArgs)">
+      <summary>Called when the pointer enters the scroll bar; sets the pointer-over state and, unless the thumb is being dragged, updates the visual state.</summary>
+      <param name="e">The event data.</param>
+    </member>
+    <member name="M:System.Windows.Controls.Primitives.ScrollBar.OnMouseLeave(System.Windows.Input.MouseEventArgs)">
+      <summary>Called when the pointer leaves the scroll bar; clears the pointer-over state and, unless the thumb is being dragged, updates the visual state.</summary>
+      <param name="e">The event data.</param>
+    </member>
+    <member name="M:System.Windows.Controls.Primitives.ScrollBar.OnMouseLeftButtonDown(System.Windows.Input.MouseButtonEventArgs)">
+      <summary>Called when the left button is pressed on the scroll bar; if the event is not already handled, marks it handled and captures the pointer.</summary>
+      <param name="e">The event data.</param>
+    </member>
+    <member name="M:System.Windows.Controls.Primitives.ScrollBar.OnMouseLeftButtonUp(System.Windows.Input.MouseButtonEventArgs)">
+      <summary>Called when the left button is released on the scroll bar; marks the event handled.</summary>
+      <param name="e">The event data.</param>
+    </member>
+    <member name="M:System.Windows.Controls.Primitives.ScrollBar.OnLostMouseCapture(System.Windows.Input.MouseEventArgs)">
+      <summary>Called when the scroll bar loses pointer capture; updates the visual state.</summary>
+      <param name="e">The event data.</param>
+    </member>
+    <member name="M:System.Windows.Controls.Primitives.Thumb.OnLostMouseCapture(System.Windows.Input.MouseEventArgs)">
+      <summary>Called when the thumb loses pointer capture; if a drag is in progress, ends it and raises <see cref="E:System.Windows.Controls.Primitives.Thumb.DragCompleted" />.</summary>
+      <param name="e">The event data.</param>
+    </member>
+    <member name="M:System.Windows.Controls.Primitives.Thumb.OnMouseEnter(System.Windows.Input.MouseEventArgs)">
+      <summary>Called when the pointer enters the thumb; if the thumb is enabled, updates its pointer-over visual state.</summary>
+      <param name="e">The event data.</param>
+    </member>
+    <member name="M:System.Windows.Controls.Primitives.Thumb.OnMouseLeave(System.Windows.Input.MouseEventArgs)">
+      <summary>Called when the pointer leaves the thumb; if the thumb is enabled, updates its pointer-over visual state.</summary>
+      <param name="e">The event data.</param>
+    </member>
+    <member name="M:System.Windows.Controls.Primitives.Thumb.OnManipulationDelta(System.Windows.Input.ManipulationDeltaEventArgs)">
+      <summary>Called during a manipulation; marks the event handled while the thumb is being dragged so containers such as <see cref="T:System.Windows.Controls.ScrollViewer" /> do not also pan.</summary>
+      <param name="e">The event data.</param>
+    </member>
+    <member name="M:System.Windows.Controls.Primitives.Thumb.OnGotFocus(System.Windows.RoutedEventArgs)">
+      <summary>Called when the thumb receives focus; updates the focused visual state.</summary>
+      <param name="e">The event data.</param>
+    </member>
+    <member name="M:System.Windows.Controls.Primitives.Thumb.OnLostFocus(System.Windows.RoutedEventArgs)">
+      <summary>Called when the thumb loses focus; updates the focused visual state.</summary>
+      <param name="e">The event data.</param>
+    </member>
+    <member name="M:System.Windows.Controls.ScrollViewer.OnManipulationStarted(System.Windows.Input.ManipulationStartedEventArgs)">
+      <summary>Called when a manipulation starts; unless it begins on one of the scroll bars, makes the scroll viewer the manipulation container so the gesture pans the content.</summary>
+      <param name="e">The event data.</param>
+    </member>
+
+    <!-- ===================== MediaElement / imaging / misc ===================== -->
+    <member name="P:System.Windows.Controls.MediaElement.DroppedFramesCount">
+      <summary>Gets the number of video frames dropped during playback. This is a dependency property.</summary>
+      <value>The count of dropped frames.</value>
+    </member>
+    <member name="P:System.Windows.Controls.MediaElement.RenderedFramesCount">
+      <summary>Gets the number of video frames rendered during playback. This is a dependency property.</summary>
+      <value>The count of rendered frames.</value>
+    </member>
+    <member name="P:System.Windows.Controls.MediaElement.VideoLatency">
+      <summary>Gets the latency of the video output path. This is a dependency property.</summary>
+      <value>The video latency as a <see cref="T:System.TimeSpan" />.</value>
+    </member>
+    <member name="P:System.Windows.Controls.MediaElement.TimedTextSource">
+      <summary>Gets or sets the URI of a timed-text (caption) file that the media element renders over the video. This is a dependency property.</summary>
+      <value>The caption file URI, or null for none.</value>
+      <remarks><see cref="E:System.Windows.Controls.MediaElement.TimedTextLoaded" /> or <see cref="E:System.Windows.Controls.MediaElement.TimedTextFailed" /> reports the result of loading it.</remarks>
+    </member>
+    <member name="E:System.Windows.Controls.MediaElement.TimedTextLoaded">
+      <summary>Occurs when the file set in <see cref="P:System.Windows.Controls.MediaElement.TimedTextSource" /> has loaded.</summary>
+    </member>
+    <member name="E:System.Windows.Controls.MediaElement.TimedTextFailed">
+      <summary>Occurs when the file set in <see cref="P:System.Windows.Controls.MediaElement.TimedTextSource" /> cannot be loaded or parsed.</summary>
+    </member>
+    <member name="M:System.Windows.Controls.MediaElement.RenderTimedTextData(System.Byte[])">
+      <summary>Supplies timed-text (caption) data from memory instead of from <see cref="P:System.Windows.Controls.MediaElement.TimedTextSource" />.</summary>
+      <param name="bytes">The raw timed-text document.</param>
+      <remarks>Use this when the captions are downloaded or generated by the application, for example when they are embedded in an adaptive stream.</remarks>
+    </member>
+    <member name="P:System.Windows.Controls.MultiScaleImage.SkipLevels">
+      <summary>Gets or sets the number of levels of the Deep Zoom image pyramid to skip when loading tiles. This is a dependency property.</summary>
+      <value>The number of levels to skip.</value>
+    </member>
+    <member name="F:System.Windows.Media.Imaging.BitmapCreateOptions.BackgroundCreation">
+      <summary>Decodes the image on a background thread instead of the UI thread, so large images do not stall the UI.</summary>
+    </member>
+    <member name="M:System.Windows.Media.Imaging.WriteableBitmap.Finalize">
+      <summary>Releases the bitmap's pixel buffer when the object is garbage-collected.</summary>
+    </member>
+    <member name="M:System.Windows.Media.DeepZoomImageTileSource.GetTileLayers(System.Int32,System.Int32,System.Int32,System.Collections.Generic.IList{System.Object})">
+      <summary>Not supported. Tiles for a <see cref="T:System.Windows.Media.DeepZoomImageTileSource" /> are loaded by the runtime from <see cref="P:System.Windows.Media.DeepZoomImageTileSource.UriSource" />.</summary>
+      <param name="tileLevel">The pyramid level of the tile.</param>
+      <param name="tilePositionX">The horizontal tile index.</param>
+      <param name="tilePositionY">The vertical tile index.</param>
+      <param name="tileImageLayerSources">The list that would receive the tile image sources.</param>
+      <exception cref="T:System.NotImplementedException">Always thrown.</exception>
+    </member>
+    <member name="E:System.Windows.Application.InitParamsChanged">
+      <summary>Occurs when the platform delivers new launch parameters to an application that is already running.</summary>
+      <remarks>The sender is null. Before the event is raised the cached initialization parameters are discarded, so <see cref="P:System.Windows.StartupEventArgs.InitParams" /> and <see cref="P:System.Windows.Interop.SilverlightHost.InitParams" /> return the new values. Handle it to react to a relaunch (for example a deep link) without restarting.</remarks>
+    </member>
+    <member name="M:System.Windows.Application.OnPlatformAssemblyUnhandledException(System.Exception,System.Boolean)">
+      <summary>Infrastructure. Reports an unhandled exception from a platform assembly to the application's <see cref="E:System.Windows.Application.UnhandledException" /> handler.</summary>
+      <param name="e">The exception.</param>
+      <param name="recoverable">true if the platform can continue when the application handles the exception.</param>
+      <remarks>This method is security critical and cannot be called from application code. If the exception is not handled, is not recoverable, or is critical, the application is shut down with an error.</remarks>
+    </member>
+    <member name="T:MS.Internal.HwndHost">
+      <summary>Infrastructure. Base class for an element that hosts a native window. Not for use by application code; the type is security critical.</summary>
+    </member>
+    <member name="M:MS.Internal.HwndHost.BuildWindowCore(System.IntPtr)">
+      <summary>When overridden in a derived class, creates the hosted native window.</summary>
+      <param name="hwndParent">The handle of the parent window.</param>
+      <returns>The handle of the created window.</returns>
+    </member>
+    <member name="M:MS.Internal.HwndHost.DestroyWindowCore(System.IntPtr)">
+      <summary>When overridden in a derived class, destroys the hosted native window.</summary>
+      <param name="hwnd">The handle returned by <see cref="M:MS.Internal.HwndHost.BuildWindowCore(System.IntPtr)" />.</param>
+    </member>
+
+    <!-- ===================== DRM / content protection ===================== -->
+    <member name="F:System.Windows.Media.MediaStreamAttributeKeys.MaximumReferenceFrameBufferLength">
+      <summary>The maximum number of reference frames the video decoder needs to buffer for this stream.</summary>
+    </member>
+    <member name="F:System.Windows.Media.MediaSampleAttributeKeys.DRMKeyIdentifier">
+      <summary>The key ID of the content key that encrypts this sample. Used with rotating keys; see <see cref="M:System.Windows.Media.MediaStreamSource.BeginDrmSetupDecryptor(System.Byte[],System.Guid)" />.</summary>
+    </member>
+    <member name="F:System.Windows.Media.MediaSampleAttributeKeys.DRMAlgorithmID">
+      <summary>The encryption algorithm used for this sample.</summary>
+    </member>
+    <member name="F:System.Windows.Media.MediaSourceAttributesKeys.AllowedSourceIDs">
+      <summary>The list of source IDs permitted to play this content.</summary>
+    </member>
+    <member name="F:System.Windows.Media.MediaSourceAttributesKeys.PRNDSessionID">
+      <summary>The PlayReady-ND session ID, from <see cref="P:System.Windows.Media.PRNDReceiver.SessionId" />, under which licenses for this content were received.</summary>
+    </member>
+    <member name="F:System.Windows.Media.ContentKeyType.Unprotected"><summary>The content is not encrypted.</summary></member>
+    <member name="F:System.Windows.Media.ContentKeyType.Aes128Ctr"><summary>AES 128-bit counter mode. Same numeric value as Aes128Bit.</summary></member>
+    <member name="F:System.Windows.Media.ContentKeyType.Uninitialized"><summary>The key type has not been specified.</summary></member>
+
+    <member name="T:System.Windows.Media.DrmSetupDecryptorCompletedEventArgs">
+      <summary>Provides data for the <see cref="E:System.Windows.Media.MediaStreamSource.DrmSetupDecryptorCompleted" /> event.</summary>
+      <remarks>Check <see cref="P:System.ComponentModel.AsyncCompletedEventArgs.Error" /> first; it holds a DRM exception when setup failed. <see cref="P:System.ComponentModel.AsyncCompletedEventArgs.Cancelled" /> is true when the operation was aborted.</remarks>
+    </member>
+    <member name="P:System.Windows.Media.DrmSetupDecryptorCompletedEventArgs.KeyID">
+      <summary>Gets the key ID of the decryptor that was set up.</summary>
+      <value>The key ID, or <see cref="F:System.Guid.Empty" /> if none was reported.</value>
+    </member>
+    <member name="P:System.Windows.Media.MediaStreamSource.MaxDecryptorCount">
+      <summary>Gets the maximum number of decryptors (content keys) the pipeline can hold at once.</summary>
+      <value>The decryptor limit.</value>
+      <exception cref="T:System.InvalidOperationException">The media element is not in a state where the value is available.</exception>
+    </member>
+    <member name="E:System.Windows.Media.MediaStreamSource.DrmSetupDecryptorCompleted">
+      <summary>Occurs when a call to BeginDrmSetupDecryptor finishes.</summary>
+      <remarks>The user state passed to <see cref="M:System.Windows.Media.MediaStreamSource.BeginDrmSetupDecryptor(System.Byte[],System.Guid,System.Object)" /> is returned in <see cref="P:System.ComponentModel.AsyncCompletedEventArgs.UserState" />. Exceptions thrown by handlers are swallowed.</remarks>
+    </member>
+    <member name="M:System.Windows.Media.MediaStreamSource.BeginDrmSetupDecryptor(System.Byte[],System.Guid)">
+      <summary>Starts setting up a decryptor for an additional content key, for streams that rotate keys during playback.</summary>
+      <param name="DrmKeyRotationData">The DRM data needed to obtain the new key.</param>
+      <param name="KeyId">The key ID of the new key. Must not be <see cref="F:System.Guid.Empty" />.</param>
+      <exception cref="T:System.ArgumentException"><paramref name="KeyId" /> is <see cref="F:System.Guid.Empty" />.</exception>
+      <exception cref="T:System.InvalidOperationException">The media has not been opened yet with ReportOpenMediaCompleted.</exception>
+      <remarks>Completion is reported by <see cref="E:System.Windows.Media.MediaStreamSource.DrmSetupDecryptorCompleted" />. Tag samples encrypted with the new key with <see cref="F:System.Windows.Media.MediaSampleAttributeKeys.DRMKeyIdentifier" />.</remarks>
+    </member>
+    <member name="M:System.Windows.Media.MediaStreamSource.BeginDrmSetupDecryptor(System.Byte[],System.Guid,System.Object)">
+      <summary>Starts setting up a decryptor for an additional content key, passing a state object to the completion event.</summary>
+      <param name="DrmKeyRotationData">The DRM data needed to obtain the new key.</param>
+      <param name="KeyId">The key ID of the new key. Must not be <see cref="F:System.Guid.Empty" />.</param>
+      <param name="userState">An object returned in <see cref="P:System.ComponentModel.AsyncCompletedEventArgs.UserState" /> of the completion event.</param>
+      <exception cref="T:System.ArgumentException"><paramref name="KeyId" /> is <see cref="F:System.Guid.Empty" />.</exception>
+      <exception cref="T:System.InvalidOperationException">The media has not been opened yet with ReportOpenMediaCompleted.</exception>
+    </member>
+    <member name="M:System.Windows.Media.LicenseAcquirer.AcquireLicenseAsync(System.Guid)">
+      <summary>Starts license acquisition without a key ID, media stream or header.</summary>
+      <param name="serviceId">A service identifier. In this build the value is not passed to the license request.</param>
+      <remarks>Completion is reported by the AcquireLicenseCompleted event, as with the other overloads.</remarks>
+    </member>
+    <member name="E:System.Windows.Media.LicenseManagement.ManuallyEngagedOutputProtectionFailed">
+      <summary>Occurs when output protection that the application engaged on a video output (with <see cref="M:System.Windows.Media.VideoOutputConnector.EngageHdcpAsync" /> or <see cref="M:System.Windows.Media.VideoOutputConnector.EngageCgmsaAsync" />) fails.</summary>
+      <remarks>The sender is the affected <see cref="T:System.Windows.Media.VideoOutputConnector" />. Stop or degrade protected playback when this occurs.</remarks>
+    </member>
+    <member name="E:System.Windows.Media.VideoOutputConnector.EngageHdcpCompleted">
+      <summary>Occurs when a request to engage or disengage HDCP on this connector finishes.</summary>
+      <remarks><see cref="P:System.ComponentModel.AsyncCompletedEventArgs.Error" /> is non-null if the change failed.</remarks>
+    </member>
+    <member name="E:System.Windows.Media.VideoOutputConnector.EngageCgmsaCompleted">
+      <summary>Occurs when a request to engage or disengage CGMS-A on this connector finishes.</summary>
+      <remarks><see cref="P:System.ComponentModel.AsyncCompletedEventArgs.Error" /> is non-null if the change failed.</remarks>
+    </member>
+    <member name="M:System.Windows.Media.VideoOutputConnector.EngageHdcpAsync">
+      <summary>Requests that High-bandwidth Digital Content Protection (HDCP) be turned on for this output.</summary>
+      <remarks>Check <see cref="P:System.Windows.Media.VideoOutputConnector.CanEnableHdcp" /> first. Completion is reported by <see cref="E:System.Windows.Media.VideoOutputConnector.EngageHdcpCompleted" />.</remarks>
+    </member>
+    <member name="M:System.Windows.Media.VideoOutputConnector.CancelEngageHdcp">
+      <summary>Requests that HDCP engaged by <see cref="M:System.Windows.Media.VideoOutputConnector.EngageHdcpAsync" /> be turned off again.</summary>
+      <remarks>Completion is reported by <see cref="E:System.Windows.Media.VideoOutputConnector.EngageHdcpCompleted" />.</remarks>
+    </member>
+    <member name="M:System.Windows.Media.VideoOutputConnector.EngageCgmsaAsync">
+      <summary>Requests that Copy Generation Management System – Analog (CGMS-A) be turned on for this output.</summary>
+      <remarks>Check <see cref="P:System.Windows.Media.VideoOutputConnector.CanEnableCgmsa" /> first. Completion is reported by <see cref="E:System.Windows.Media.VideoOutputConnector.EngageCgmsaCompleted" />.</remarks>
+    </member>
+    <member name="M:System.Windows.Media.VideoOutputConnector.CancelEngageCgmsa">
+      <summary>Requests that CGMS-A engaged by <see cref="M:System.Windows.Media.VideoOutputConnector.EngageCgmsaAsync" /> be turned off again.</summary>
+      <remarks>Completion is reported by <see cref="E:System.Windows.Media.VideoOutputConnector.EngageCgmsaCompleted" />.</remarks>
+    </member>
+    <member name="T:System.Windows.Media.EngageOutputProtectionCompletedEventArgs">
+      <summary>Base class for the data of the output-protection completion events of <see cref="T:System.Windows.Media.VideoOutputConnector" />.</summary>
+    </member>
+    <member name="M:System.Windows.Media.EngageOutputProtectionCompletedEventArgs.#ctor(System.Exception,System.Boolean,System.Object)">
+      <summary>Initializes a new instance of the <see cref="T:System.Windows.Media.EngageOutputProtectionCompletedEventArgs" /> class.</summary>
+      <param name="error">The error that occurred, or null on success.</param>
+      <param name="cancelled">true if the operation was cancelled.</param>
+      <param name="userState">An optional user state object.</param>
+    </member>
+    <member name="T:System.Windows.Media.EngageHdcpCompletedEventArgs">
+      <summary>Provides data for the <see cref="E:System.Windows.Media.VideoOutputConnector.EngageHdcpCompleted" /> event.</summary>
+    </member>
+    <member name="T:System.Windows.Media.EngageCgmsaCompletedEventArgs">
+      <summary>Provides data for the <see cref="E:System.Windows.Media.VideoOutputConnector.EngageCgmsaCompleted" /> event.</summary>
+    </member>
+    <member name="M:System.Windows.Media.EngageCgmsaCompletedEventArgs.#ctor(System.Exception,System.Boolean,System.Object)">
+      <summary>Initializes a new instance of the <see cref="T:System.Windows.Media.EngageCgmsaCompletedEventArgs" /> class.</summary>
+      <param name="error">The error that occurred, or null on success.</param>
+      <param name="cancelled">true if the operation was cancelled.</param>
+      <param name="userState">An optional user state object.</param>
+    </member>
+
+    <!-- ===================== PlayReady-ND receiver ===================== -->
+    <member name="T:System.Windows.Media.ContentIdentifierType">
+      <summary>Specifies how the content identifier passed to <see cref="M:System.Windows.Media.PRNDReceiver.AcquireLicenseAsync(System.Windows.Media.ContentIdentifierType,System.Byte[],System.Byte[],System.Byte[])" /> is interpreted.</summary>
+    </member>
+    <member name="F:System.Windows.Media.ContentIdentifierType.KeyId"><summary>The identifier is the content key ID.</summary></member>
+    <member name="F:System.Windows.Media.ContentIdentifierType.Custom"><summary>The identifier is a custom value understood by the transmitter.</summary></member>
+    <member name="T:System.Windows.Media.PRNDException">
+      <summary>The exception reported when a PlayReady-ND receiver operation fails.</summary>
+      <remarks>Delivered through <see cref="P:System.ComponentModel.AsyncCompletedEventArgs.Error" /> of the <see cref="T:System.Windows.Media.PRNDReceiver" /> completion events.</remarks>
+    </member>
+    <member name="P:System.Windows.Media.PRNDException.RawErrorCode">
+      <summary>Gets the native error code (HRESULT) of the failure.</summary>
+      <value>The HRESULT as a signed integer.</value>
+    </member>
+    <member name="T:System.Windows.Media.PRNDReceiverOpenCompletedEventArgs">
+      <summary>Provides data for the <see cref="E:System.Windows.Media.PRNDReceiver.PRNDReceiverOpenCompleted" /> event.</summary>
+    </member>
+    <member name="T:System.Windows.Media.PRNDReceiverPerformHandshakeCompletedEventArgs">
+      <summary>Provides data for the <see cref="E:System.Windows.Media.PRNDReceiver.PRNDReceiverPerformHandshakeCompleted" /> event.</summary>
+    </member>
+    <member name="P:System.Windows.Media.PRNDReceiverPerformHandshakeCompletedEventArgs.CustomDataTypeId">
+      <summary>Gets the type ID of the custom data the transmitter returned with the handshake.</summary>
+      <value>A 16-byte type ID, or null.</value>
+      <exception cref="T:System.Reflection.TargetInvocationException">The operation failed; the inner exception is the <see cref="P:System.ComponentModel.AsyncCompletedEventArgs.Error" />.</exception>
+    </member>
+    <member name="P:System.Windows.Media.PRNDReceiverPerformHandshakeCompletedEventArgs.CustomData">
+      <summary>Gets the custom data the transmitter returned with the handshake.</summary>
+      <value>The custom data, or null.</value>
+      <exception cref="T:System.Reflection.TargetInvocationException">The operation failed; the inner exception is the <see cref="P:System.ComponentModel.AsyncCompletedEventArgs.Error" />.</exception>
+    </member>
+    <member name="T:System.Windows.Media.PRNDReceiverAcquireLicenseCompletedEventArgs">
+      <summary>Provides data for the <see cref="E:System.Windows.Media.PRNDReceiver.PRNDReceiverAcquireLicenseCompleted" /> event.</summary>
+    </member>
+    <member name="P:System.Windows.Media.PRNDReceiverAcquireLicenseCompletedEventArgs.CustomDataTypeId">
+      <summary>Gets the type ID of the custom data the transmitter returned with the license.</summary>
+      <value>A 16-byte type ID, or null.</value>
+      <exception cref="T:System.Reflection.TargetInvocationException">The operation failed; the inner exception is the <see cref="P:System.ComponentModel.AsyncCompletedEventArgs.Error" />.</exception>
+    </member>
+    <member name="P:System.Windows.Media.PRNDReceiverAcquireLicenseCompletedEventArgs.CustomData">
+      <summary>Gets the custom data the transmitter returned with the license.</summary>
+      <value>The custom data, or null.</value>
+      <exception cref="T:System.Reflection.TargetInvocationException">The operation failed; the inner exception is the <see cref="P:System.ComponentModel.AsyncCompletedEventArgs.Error" />.</exception>
+    </member>
+    <member name="T:System.Windows.Media.PRNDReceiver">
+      <summary>A PlayReady-ND (network device) receiver: obtains licenses for protected content from a PlayReady-ND transmitter on the local network.</summary>
+      <remarks>
+        <para>Call <see cref="M:System.Windows.Media.PRNDReceiver.OpenAsync(System.Uri)" />, then <see cref="M:System.Windows.Media.PRNDReceiver.PerformHandshakeAsync(System.Byte[],System.Byte[])" />, then <see cref="M:System.Windows.Media.PRNDReceiver.AcquireLicenseAsync(System.Windows.Media.ContentIdentifierType,System.Byte[],System.Byte[],System.Byte[])" /> for each item; wait for each step's completion event before the next. Pass <see cref="P:System.Windows.Media.PRNDReceiver.SessionId" /> to the media pipeline with <see cref="F:System.Windows.Media.MediaSourceAttributesKeys.PRNDSessionID" />.</para>
+        <para>Exceptions thrown by your event handlers are swallowed.</para>
+      </remarks>
+    </member>
+    <member name="P:System.Windows.Media.PRNDReceiver.SessionId">
+      <summary>Gets the identifier of the receiver's current session.</summary>
+      <value>A new <see cref="F:System.Windows.Media.PRNDReceiver.IdByteCount" />-byte array on each call.</value>
+    </member>
+    <member name="P:System.Windows.Media.PRNDReceiver.HandshakeAlertInterval">
+      <summary>Gets or sets how long after a successful handshake <see cref="E:System.Windows.Media.PRNDReceiver.PRNDReceiverHandshakeAlert" /> is raised, in minutes.</summary>
+      <value>The interval in minutes. The default is 2850 (47.5 hours).</value>
+      <exception cref="T:System.ArgumentException">The value is greater than <see cref="F:System.Windows.Media.PRNDReceiver.MaxHandshakeAlertInterval" />.</exception>
+      <remarks>Set it before the handshake; the timer is started when the handshake completes.</remarks>
+    </member>
+    <member name="E:System.Windows.Media.PRNDReceiver.PRNDReceiverOpenCompleted">
+      <summary>Occurs when <see cref="M:System.Windows.Media.PRNDReceiver.OpenAsync(System.Uri)" /> finishes.</summary>
+      <remarks>If <see cref="P:System.ComponentModel.AsyncCompletedEventArgs.Error" /> is null the receiver is open and ready for a handshake; otherwise it holds a <see cref="T:System.Windows.Media.PRNDException" />.</remarks>
+    </member>
+    <member name="E:System.Windows.Media.PRNDReceiver.PRNDReceiverPerformHandshakeCompleted">
+      <summary>Occurs when <see cref="M:System.Windows.Media.PRNDReceiver.PerformHandshakeAsync(System.Byte[],System.Byte[])" /> finishes.</summary>
+      <remarks>On success the receiver can acquire licenses, and the timer for <see cref="E:System.Windows.Media.PRNDReceiver.PRNDReceiverHandshakeAlert" /> starts.</remarks>
+    </member>
+    <member name="E:System.Windows.Media.PRNDReceiver.PRNDReceiverAcquireLicenseCompleted">
+      <summary>Occurs when <see cref="M:System.Windows.Media.PRNDReceiver.AcquireLicenseAsync(System.Windows.Media.ContentIdentifierType,System.Byte[],System.Byte[],System.Byte[])" /> finishes.</summary>
+    </member>
+    <member name="E:System.Windows.Media.PRNDReceiver.PRNDReceiverHandshakeAlert">
+      <summary>Occurs once, <see cref="P:System.Windows.Media.PRNDReceiver.HandshakeAlertInterval" /> minutes after a successful handshake, to signal that the handshake (proximity check) should be repeated.</summary>
+      <remarks>Raised on the UI thread by a dispatcher timer. The event arguments are null. <see cref="M:System.Windows.Media.PRNDReceiver.Close" /> cancels the pending alert.</remarks>
+    </member>
+    <member name="F:System.Windows.Media.PRNDReceiver.IdByteCount">
+      <summary>The length, in bytes, of session IDs and custom data type IDs (16). This field is constant.</summary>
+    </member>
+    <member name="F:System.Windows.Media.PRNDReceiver.MaxHandshakeAlertInterval">
+      <summary>The largest value accepted by <see cref="P:System.Windows.Media.PRNDReceiver.HandshakeAlertInterval" />: 2880 minutes (48 hours). This field is constant.</summary>
+    </member>
+    <member name="M:System.Windows.Media.PRNDReceiver.OpenAsync(System.Uri)">
+      <summary>Starts connecting to a PlayReady-ND transmitter.</summary>
+      <param name="transmitterUri">The transmitter address, using the tcp scheme, for example tcp://192.168.1.20:8080.</param>
+      <exception cref="T:System.ArgumentException">The URI scheme is not tcp.</exception>
+      <exception cref="T:System.InvalidOperationException">The receiver is already open.</exception>
+      <remarks>Completion is reported by <see cref="E:System.Windows.Media.PRNDReceiver.PRNDReceiverOpenCompleted" />.</remarks>
+    </member>
+    <member name="M:System.Windows.Media.PRNDReceiver.Close">
+      <summary>Closes the receiver and cancels any pending handshake alert. The receiver can then be opened again.</summary>
+    </member>
+    <member name="M:System.Windows.Media.PRNDReceiver.PerformHandshakeAsync(System.Byte[],System.Byte[])">
+      <summary>Starts the registration handshake with the transmitter, optionally sending custom data.</summary>
+      <param name="customDataTypeId">A 16-byte type ID for <paramref name="customData" />, or null to send no custom data.</param>
+      <param name="customData">The custom data, or null. Must be non-empty when <paramref name="customDataTypeId" /> is given, and null when it is not.</param>
+      <exception cref="T:System.InvalidOperationException">The receiver is not open.</exception>
+      <exception cref="T:System.ArgumentException"><paramref name="customDataTypeId" /> is not 16 bytes long, or only one of the two arguments was supplied.</exception>
+      <remarks>Completion is reported by <see cref="E:System.Windows.Media.PRNDReceiver.PRNDReceiverPerformHandshakeCompleted" />. The handshake may be repeated on an open receiver.</remarks>
+    </member>
+    <member name="M:System.Windows.Media.PRNDReceiver.AcquireLicenseAsync(System.Windows.Media.ContentIdentifierType,System.Byte[],System.Byte[],System.Byte[])">
+      <summary>Starts acquiring a license for one content item from the transmitter.</summary>
+      <param name="contentIdentifierType">How <paramref name="contentIdentifier" /> is interpreted.</param>
+      <param name="contentIdentifier">The key ID or custom identifier of the content. Required.</param>
+      <param name="customDataTypeId">A 16-byte type ID for <paramref name="customData" />, or null.</param>
+      <param name="customData">Custom data to send with the request, or null. Must be non-empty when <paramref name="customDataTypeId" /> is given, and null when it is not.</param>
+      <exception cref="T:System.InvalidOperationException">The receiver is not open, or the handshake has not completed.</exception>
+      <exception cref="T:System.ArgumentNullException"><paramref name="contentIdentifier" /> is null.</exception>
+      <exception cref="T:System.ArgumentException"><paramref name="customDataTypeId" /> is not 16 bytes long, or only one of the custom data arguments was supplied.</exception>
+      <remarks>Completion is reported by <see cref="E:System.Windows.Media.PRNDReceiver.PRNDReceiverAcquireLicenseCompleted" />.</remarks>
+    </member>
+  </members>
+</doc>

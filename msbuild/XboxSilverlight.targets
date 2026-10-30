@@ -1,0 +1,96 @@
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--
+    Builds a Silverlight 3 project for the Xbox 360 Silverlight platform.
+
+    Import this instead of Microsoft.Silverlight.CSharp.targets. It compiles
+    C# and XAML with the installed Silverlight 3 tools against the framework
+    assemblies of a runtime profile (see tools\New-RuntimeProfile.ps1), then
+    lays out a package the Xbox XamlHost can run in $(XboxPackageDir).
+
+    Properties a project can set:
+      XboxRuntimeProfile  runtime profile folder (default runtime\plex-2015)
+      XboxPackageDir      package output (default $(OutDir)xbox\)
+      XboxSplashScreen    720p splash image (default: the SDK's)
+      XboxSplashScreen480 480p splash image (default: the SDK's)
+  -->
+  <PropertyGroup>
+    <XboxSdkRoot>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..'))\</XboxSdkRoot>
+    <XboxRuntimeProfile Condition="'$(XboxRuntimeProfile)' == ''">$(XboxSdkRoot)runtime\plex-2015\</XboxRuntimeProfile>
+    <XboxRuntimeProfile Condition="!HasTrailingSlash('$(XboxRuntimeProfile)')">$(XboxRuntimeProfile)\</XboxRuntimeProfile>
+    <XboxSplashScreen Condition="'$(XboxSplashScreen)' == ''">$(XboxSdkRoot)templates\SplashScreenImage.jpg</XboxSplashScreen>
+    <XboxSplashScreen480 Condition="'$(XboxSplashScreen480)' == ''">$(XboxSdkRoot)templates\SplashScreenImage480.jpg</XboxSplashScreen480>
+
+    <!-- Silverlight 3 is what the Xbox runtime reports (3.0.40818.0). -->
+    <TargetFrameworkVersion>v3.0</TargetFrameworkVersion>
+    <SilverlightVersion>v3.0</SilverlightVersion>
+    <SilverlightApplication>true</SilverlightApplication>
+    <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
+    <SilverlightManifestTemplate Condition="'$(SilverlightManifestTemplate)' == ''">$(XboxSdkRoot)templates\AppManifest.xml</SilverlightManifestTemplate>
+    <XapOutputs>true</XapOutputs>
+    <XapFilename Condition="'$(XapFilename)' == ''">$(AssemblyName).xap</XapFilename>
+    <NoStdLib>true</NoStdLib>
+
+    <!-- Resolve framework references from the profile, not desktop Silverlight. -->
+    <TargetFrameworkDirectory>$(XboxRuntimeProfile)reference</TargetFrameworkDirectory>
+    <TargetPlatformDisplayName>Silverlight</TargetPlatformDisplayName>
+    <TargetPlatformSdkPath Condition="'$(TargetPlatformSdkPath)' == ''">$(ProgramFiles)\Microsoft SDKs\Windows\v7.0A</TargetPlatformSdkPath>
+    <TargetPlatformSdkPath Condition="!Exists('$(TargetPlatformSdkPath)')">$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.0A</TargetPlatformSdkPath>
+  </PropertyGroup>
+
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\v3.0\Microsoft.Silverlight.CSharp.targets" />
+
+  <PropertyGroup>
+    <XboxPackageDir Condition="'$(XboxPackageDir)' == ''">$(OutDir)xbox\</XboxPackageDir>
+    <BuildDependsOn>$(BuildDependsOn);XboxPackage</BuildDependsOn>
+  </PropertyGroup>
+
+  <!--
+    The core framework comes with the runtime, so it isn't copied or listed.
+    The Xbox and extension libraries (Microsoft.Xbox, SmoothStreaming, ...)
+    stay copy-local like in the shipped apps: an app's manifest has to list
+    them, or XAML can't resolve their types.
+  -->
+  <ItemGroup>
+    <XboxCoreAssembly Include="mscorlib;System;System.Core;System.Net;System.Windows;System.Windows.RuntimeHost;System.Xml" />
+  </ItemGroup>
+  <Target Name="XboxMarkFrameworkReferences" BeforeTargets="ResolveAssemblyReferences">
+    <PropertyGroup>
+      <_XboxCoreAssemblies>;@(XboxCoreAssembly);</_XboxCoreAssemblies>
+    </PropertyGroup>
+    <ItemGroup>
+      <Reference Condition="$(_XboxCoreAssemblies.Contains(';%(Identity);'))">
+        <Private>false</Private>
+      </Reference>
+      <Reference Condition="!$(_XboxCoreAssemblies.Contains(';%(Identity);')) And Exists('$(XboxRuntimeProfile)reference\%(Identity).dll')">
+        <HintPath>$(XboxRuntimeProfile)reference\%(Identity).dll</HintPath>
+        <Private>true</Private>
+      </Reference>
+    </ItemGroup>
+  </Target>
+
+  <Target Name="XboxPackage" DependsOnTargets="XboxValidateProfile">
+    <ItemGroup>
+      <_XboxRuntimeFile Include="$(XboxRuntimeProfile)package\**\*" />
+      <_XboxAppFile Include="$(TargetPath)" />
+      <_XboxAppFile Include="@(ReferenceCopyLocalPaths)" Condition="'%(Extension)' == '.dll'" />
+    </ItemGroup>
+    <!-- Content keeps its folder (or its Link) in the package, as in the XAP. -->
+    <AssignTargetPath Files="@(Content)" RootFolder="$(MSBuildProjectDirectory)">
+      <Output TaskParameter="AssignedFiles" ItemName="_XboxContentFile" />
+    </AssignTargetPath>
+    <RemoveDir Directories="$(XboxPackageDir)" />
+    <Copy SourceFiles="@(_XboxRuntimeFile)" DestinationFiles="@(_XboxRuntimeFile->'$(XboxPackageDir)%(RecursiveDir)%(Filename)%(Extension)')" />
+    <Copy SourceFiles="@(_XboxAppFile)" DestinationFolder="$(XboxPackageDir)" />
+    <Copy SourceFiles="@(_XboxContentFile)" DestinationFiles="@(_XboxContentFile->'$(XboxPackageDir)%(TargetPath)')" />
+    <Copy SourceFiles="$(OutDir)AppManifest.xaml" DestinationFolder="$(XboxPackageDir)" />
+    <Copy SourceFiles="$(XboxSdkRoot)templates\XboxAppManifest.xml" DestinationFolder="$(XboxPackageDir)" />
+    <Copy SourceFiles="$(XboxSplashScreen)" DestinationFiles="$(XboxPackageDir)SplashScreenImage.jpg" />
+    <Copy SourceFiles="$(XboxSplashScreen480)" DestinationFiles="$(XboxPackageDir)SplashScreenImage480.jpg" />
+    <Message Importance="high" Text="Xbox 360 package: $(XboxPackageDir)default.xex" />
+  </Target>
+
+  <Target Name="XboxValidateProfile">
+    <Error Condition="!Exists('$(XboxRuntimeProfile)package\default.xex')"
+           Text="No runtime profile at $(XboxRuntimeProfile). Make one with tools\New-RuntimeProfile.ps1 from an extracted Xbox 360 Silverlight app." />
+  </Target>
+</Project>

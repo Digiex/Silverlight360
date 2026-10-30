@@ -1,0 +1,73 @@
+<Application xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             x:Class="CatalogBrowser.App"
+             Startup="Application_Startup"
+             UnhandledException="Application_UnhandledException">
+  <Application.Resources>
+    <!-- Where the test server runs (samples\TestServer\server.py). 127.0.0.1
+         is the PC running the emulator. -->
+    <sys:String x:Key="ServerUrl">http://127.0.0.1:8360/</sys:String>
+
+    <SolidColorBrush x:Key="Accent" Color="#FF51860F" />
+    <SolidColorBrush x:Key="Muted" Color="#FF9FC5E8" />
+
+    <!-- A poster tile: the image fills the button, focus adds a green frame. -->
+    <Style x:Key="PosterButton" TargetType="Button">
+      <Setter Property="Width" Value="160" />
+      <Setter Property="Height" Value="240" />
+      <Setter Property="Margin" Value="10" />
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="Button">
+            <Grid>
+              <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="FocusStates">
+                  <VisualState x:Name="Focused">
+                    <Storyboard>
+                      <DoubleAnimation Storyboard.TargetName="Frame" Storyboard.TargetProperty="Opacity" To="1" Duration="0" />
+                    </Storyboard>
+                  </VisualState>
+                  <VisualState x:Name="Unfocused" />
+                </VisualStateGroup>
+              </VisualStateManager.VisualStateGroups>
+              <Rectangle Fill="#FF2A3440" />
+              <ContentPresenter />
+              <Rectangle x:Name="Frame" Stroke="#FF77BA02" StrokeThickness="6" Opacity="0" />
+            </Grid>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+
+    <Style x:Key="ActionButton" TargetType="Button">
+      <Setter Property="Height" Value="60" />
+      <Setter Property="MinWidth" Value="300" />
+      <Setter Property="Margin" Value="0,8,0,0" />
+      <Setter Property="HorizontalAlignment" Value="Left" />
+      <Setter Property="Foreground" Value="White" />
+      <Setter Property="FontSize" Value="24" />
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="Button">
+            <Grid>
+              <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="FocusStates">
+                  <VisualState x:Name="Focused">
+                    <Storyboard>
+                      <DoubleAnimation Storyboard.TargetName="FocusFill" Storyboard.TargetProperty="Opacity" To="1" Duration="0" />
+                    </Storyboard>
+                  </VisualState>
+                  <VisualState x:Name="Unfocused" />
+                </VisualStateGroup>
+              </VisualStateManager.VisualStateGroups>
+              <Rectangle Fill="#FF2A3440" />
+              <Rectangle x:Name="FocusFill" Fill="#FF51860F" Opacity="0" />
+              <ContentPresenter Margin="20,0" VerticalAlignment="Center" />
+            </Grid>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+  </Application.Resources>
+</Application>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly><name>System.Core</name></assembly>
+  <members>
+    <member name="T:Microsoft.Xbox.MethodExtensions">
+      <summary>Provides extension methods for <see cref="T:System.Threading.Thread"/> that query and set which Xbox 360 hardware thread a managed thread runs on.</summary>
+      <remarks>Both methods operate only on the calling thread; passing any other thread throws <see cref="T:System.InvalidOperationException"/>.</remarks>
+    </member>
+    <member name="M:Microsoft.Xbox.MethodExtensions.GetCurrentProcessorNumber(System.Threading.Thread)">
+      <summary>Returns the number of the hardware thread the calling thread is currently running on.</summary>
+      <param name="thread">The thread to query. Must be the current thread.</param>
+      <returns>The zero-based hardware thread number.</returns>
+    </member>
+    <member name="M:Microsoft.Xbox.MethodExtensions.SetProcessorAffinity(System.Threading.Thread,System.Int32[])">
+      <summary>Moves the calling thread to the specified hardware thread.</summary>
+      <param name="thread">The thread to move. Must be the current thread.</param>
+      <param name="cpus">Exactly one hardware thread number, from 0 to 5.</param>
+      <remarks>Throws <see cref="T:System.ArgumentException"/> if <paramref name="cpus"/> is null, and <see cref="T:System.InvalidOperationException"/> if it does not contain exactly one value in the range 0 to 5, if <paramref name="thread"/> is not the current thread, or if the affinity cannot be set.</remarks>
+    </member>
+    <member name="M:System.Security.Cryptography.AesManaged.Dispose(System.Boolean)">
+      <summary>Releases the resources used by the <see cref="T:System.Security.Cryptography.AesManaged"/> object.</summary>
+      <param name="disposing">true to release both managed and unmanaged resources; false to release only unmanaged resources.</param>
+    </member>
+  </members>
+</doc>

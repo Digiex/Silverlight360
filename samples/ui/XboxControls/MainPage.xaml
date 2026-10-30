@@ -1,0 +1,80 @@
+<UserControl x:Class="XboxControls.MainPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:xbox="clr-namespace:Microsoft.Xbox.Controls;assembly=Microsoft.Xbox"
+             Width="1280" Height="720">
+  <Grid Background="#FF101820">
+    <Grid Margin="64,36,64,36">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="Auto" />
+      </Grid.RowDefinitions>
+
+      <TextBlock Text="Xbox controls" FontSize="44" Foreground="White" />
+
+      <!-- Pivot: one section at a time, switched with LB/RB. Each PivotItem
+           moves focus through the Grid it contains on its own
+           (PivotItem.AutoGridNav, on by default). -->
+      <xbox:Pivot x:Name="Sections" Grid.Row="1" Margin="0,12,0,0">
+        <!-- The default header text is dark, for light backgrounds. -->
+        <xbox:Pivot.HeaderTemplate>
+          <DataTemplate>
+            <TextBlock Text="{Binding}" FontSize="32" Foreground="#FFEBEBEB" />
+          </DataTemplate>
+        </xbox:Pivot.HeaderTemplate>
+        <xbox:PivotItem Header="browse">
+          <Grid x:Name="BrowseGrid" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <Grid.RowDefinitions>
+              <RowDefinition /><RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition /><ColumnDefinition /><ColumnDefinition /><ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <!-- Legend.*ButtonText on a control sets the button hints the
+                 Legend shows while that control has focus. -->
+            <Button Grid.Row="0" Grid.Column="0" Style="{StaticResource Tile}" Content="New releases"
+                    xbox:Legend.AButtonText="open" xbox:Legend.YButtonText="details" />
+            <Button Grid.Row="0" Grid.Column="1" Style="{StaticResource Tile}" Content="Popular"
+                    xbox:Legend.AButtonText="open" />
+            <Button Grid.Row="0" Grid.Column="2" Style="{StaticResource Tile}" Content="Genres"
+                    xbox:Legend.AButtonText="open" />
+            <Button Grid.Row="0" Grid.Column="3" Style="{StaticResource Tile}" Content="Kids"
+                    xbox:Legend.AButtonText="open" />
+            <Button Grid.Row="1" Grid.Column="0" Style="{StaticResource Tile}" Content="Watch list"
+                    xbox:Legend.AButtonText="open" xbox:Legend.XButtonText="clear list" />
+            <Button Grid.Row="1" Grid.Column="1" Style="{StaticResource Tile}" Content="History"
+                    xbox:Legend.AButtonText="open" xbox:Legend.XButtonText="clear history" />
+            <Button Grid.Row="1" Grid.Column="2" Style="{StaticResource Tile}" Content="Settings"
+                    xbox:Legend.AButtonText="open" />
+            <Button Grid.Row="1" Grid.Column="3" Style="{StaticResource Tile}" Content="Help"
+                    xbox:Legend.AButtonText="open" />
+          </Grid>
+        </xbox:PivotItem>
+
+        <xbox:PivotItem Header="search">
+          <StackPanel Width="900" HorizontalAlignment="Left">
+            <!-- Rune: the Xbox text entry strip. It shows as a popup while
+                 IsOpen is true; letters scroll with the D-pad and A types
+                 the highlighted one. -->
+            <xbox:Rune x:Name="SearchRune" EmptyTextString="search for something"
+                       xbox:Legend.AButtonText="type" xbox:Legend.BButtonText="close" />
+            <TextBlock x:Name="SearchEcho" FontSize="26" Foreground="#FFDDDDDD" Margin="0,24,0,0"
+                       Text="Type with the Rune; what you type shows here." />
+          </StackPanel>
+        </xbox:PivotItem>
+
+        <xbox:PivotItem Header="about">
+          <TextBlock FontSize="26" Foreground="#FFDDDDDD" TextWrapping="Wrap" Width="900" HorizontalAlignment="Left"
+                     Text="This sample uses the controls from Microsoft.Xbox.dll: Pivot and PivotItem for sections, Rune for text entry, and Legend for the button hints at the bottom of the screen. Press LB and RB to change sections." />
+        </xbox:PivotItem>
+      </xbox:Pivot>
+
+      <Grid Grid.Row="2">
+        <TextBlock x:Name="Status" FontSize="22" Foreground="#FF9FC5E8" VerticalAlignment="Center" />
+        <!-- Shows the A/B/X/Y hints of the focused control. -->
+        <xbox:Legend HorizontalAlignment="Right" />
+      </Grid>
+    </Grid>
+  </Grid>
+</UserControl>

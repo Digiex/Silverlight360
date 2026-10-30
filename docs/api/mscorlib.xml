@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly><name>mscorlib</name></assembly>
+  <members>
+    <member name="T:System.Reflection.ReflectionPermissionFrame">
+      <summary>Represents a runtime stack frame that temporarily relaxes reflection permission checks for the code that pushes it.</summary>
+      <remarks>This structure is security critical and used by the platform itself; application code cannot use it.</remarks>
+    </member>
+    <member name="M:System.Reflection.ReflectionPermissionFrame.Push(System.Reflection.ReflectionPermissionFrame.PermissionFlag)">
+      <summary>Pushes the frame onto the current thread's frame chain with the specified permissions.</summary>
+      <param name="flag">The reflection permissions the frame grants.</param>
+      <remarks>Every Push must be matched by a call to <see cref="M:System.Reflection.ReflectionPermissionFrame.Pop"/> on the same thread.</remarks>
+    </member>
+    <member name="M:System.Reflection.ReflectionPermissionFrame.Pop">
+      <summary>Removes the frame from the current thread's frame chain.</summary>
+    </member>
+    <member name="T:System.Reflection.ReflectionPermissionFrame.PermissionFlag">
+      <summary>Specifies the reflection permissions granted by a <see cref="T:System.Reflection.ReflectionPermissionFrame"/>. Values can be combined.</summary>
+    </member>
+    <member name="F:System.Reflection.ReflectionPermissionFrame.PermissionFlag.BypassTransparencyChecks">
+      <summary>Reflection calls skip security transparency checks.</summary>
+    </member>
+    <member name="F:System.Reflection.ReflectionPermissionFrame.PermissionFlag.BypassVisibilityChecks">
+      <summary>Reflection may access members that are not visible to the caller, such as private members.</summary>
+    </member>
+    <member name="F:System.Reflection.ReflectionPermissionFrame.PermissionFlag.AllowRiskyMethods">
+      <summary>Reflection may invoke methods the runtime otherwise blocks as risky.</summary>
+    </member>
+    <member name="M:Microsoft.Win32.SafeHandles.SafeWaitHandle.ReleaseHandle">
+      <summary>Closes the underlying wait handle.</summary>
+      <returns>true if the handle was closed successfully; otherwise, false.</returns>
+    </member>
+    <member name="T:Microsoft.Xbox.RuntimeHelpers">
+      <summary>Provides Xbox 360 runtime services: console language and locale, processor affinity, ahead-of-time compilation of call graphs, and resource helpers.</summary>
+      <remarks>Several members are security critical or reserved for the platform and cannot be called from application code. Applications can use <see cref="M:Microsoft.Xbox.RuntimeHelpers.GetLanguage"/> and <see cref="M:Microsoft.Xbox.RuntimeHelpers.GetLocale"/>, and the extension methods in Microsoft.Xbox.MethodExtensions (System.Core) for processor affinity.</remarks>
+    </member>
+    <member name="F:Microsoft.Xbox.RuntimeHelpers.XC_LANGUAGE_ENGLISH">
+      <summary>Value returned by <see cref="M:Microsoft.Xbox.RuntimeHelpers.GetLanguage"/> when the console language is English.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.RuntimeHelpers.XC_LANGUAGE_JAPANESE">
+      <summary>Value returned by <see cref="M:Microsoft.Xbox.RuntimeHelpers.GetLanguage"/> when the console language is Japanese.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.RuntimeHelpers.XC_LANGUAGE_GERMAN">
+      <summary>Value returned by <see cref="M:Microsoft.Xbox.RuntimeHelpers.GetLanguage"/> when the console language is German.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.RuntimeHelpers.XC_LANGUAGE_FRENCH">
+      <summary>Value returned by <see cref="M:Microsoft.Xbox.RuntimeHelpers.GetLanguage"/> when the console language is French.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.RuntimeHelpers.XC_LANGUAGE_SPANISH">
+      <summary>Value returned by <see cref="M:Microsoft.Xbox.RuntimeHelpers.GetLanguage"/> when the console language is Spanish.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.RuntimeHelpers.XC_LANGUAGE_ITALIAN">
+      <summary>Value returned by <see cref="M:Microsoft.Xbox.RuntimeHelpers.GetLanguage"/> when the console language is Italian.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.RuntimeHelpers.XC_LANGUAGE_KOREAN">
+      <summary>Value returned by <see cref="M:Microsoft.Xbox.RuntimeHelpers.GetLanguage"/> when the console language is Korean.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.RuntimeHelpers.XC_LANGUAGE_TCHINESE">
+      <summary>Value returned by <see cref="M:Microsoft.Xbox.RuntimeHelpers.GetLanguage"/> when the console language is Traditional Chinese.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.RuntimeHelpers.XC_LANGUAGE_PORTUGUESE">
+      <summary>Value returned by <see cref="M:Microsoft.Xbox.RuntimeHelpers.GetLanguage"/> when the console language is Portuguese.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.RuntimeHelpers.XC_LANGUAGE_SCHINESE">
+      <summary>Value returned by <see cref="M:Microsoft.Xbox.RuntimeHelpers.GetLanguage"/> when the console language is Simplified Chinese.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.RuntimeHelpers.XC_LANGUAGE_POLISH">
+      <summary>Value returned by <see cref="M:Microsoft.Xbox.RuntimeHelpers.GetLanguage"/> when the console language is Polish.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.RuntimeHelpers.XC_LANGUAGE_RUSSIAN">
+      <summary>Value returned by <see cref="M:Microsoft.Xbox.RuntimeHelpers.GetLanguage"/> when the console language is Russian.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.RuntimeHelpers.XC_LOCALE_AUSTRALIA">
+      <summary>Value returned by <see cref="M:Microsoft.Xbox.RuntimeHelpers.GetLocale"/> when the console country or region is Australia.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.RuntimeHelpers.XC_LOCALE_AUSTRIA">
+      <summary>Value returned by <see cref="M:Microsoft.Xbox.RuntimeHelpers.GetLocale"/> when the console country or region is Austria.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.RuntimeHelpers.XC_LOCALE_BELGIUM">
+      <summary>Value returned by <see cref="M:Microsoft.Xbox.RuntimeHelpers.GetLocale"/> when the console country or region is Belgium.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.RuntimeHelpers.XC_LOCALE_BRAZIL">
+      <summary>Value returned by <see cref="M:Microsoft.Xbox.RuntimeHelpers.GetLocale"/> when the console country or region is Brazil.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.RuntimeHelpers.XC_LOCALE_CANADA">
+      <summary>Value returned by <see cref="M:Microsoft.Xbox.RuntimeHelpers.GetLocale"/> when the console country or region is Canada.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.RuntimeHelpers.XC_LOCALE_CHILE">
+      <summary>Value returned by <see cref="M:Microsoft.Xbox.RuntimeHelpers.GetLocale"/> when the console country or region is Chile.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.RuntimeHelpers.XC_LOCALE_CHINA">
+      <summary>Value returned by <see cref="M:Microsoft.Xbox.RuntimeHelpers.GetLocale"/> when the console country or region is China.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.RuntimeHelpers.XC_LOCALE_COLOMBIA">
+      <summary>Value returned by <see cref="M:Microsoft.Xbox.RuntimeHelpers.GetLocale"/> when the console country or region is Colombia.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.RuntimeHelpers.XC_LOCALE_CZECH_REPUBLIC">
+      <summary>Value returned by <see cref="M:Microsoft.Xbox.RuntimeHelpers.GetLocale"/> when the console country or region is Czech Republic.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.RuntimeHelpers.XC_LOCALE_DENMARK">
+      <summary>Value returned by <see cref="M:Microsoft.Xbox.RuntimeHelpers.GetLocale"/> when the console country or region is Denmark.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.RuntimeHelpers.XC_LOCALE_FINLAND">
+      <summary>Value returned by <see cref="M:Microsoft.Xbox.RuntimeHelpers.GetLocale"/> when the console country or region is Finland.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.RuntimeHelpers.XC_LOCALE_FRANCE">
+      <summary>Value returned by <see cref="M:Microsoft.Xbox.RuntimeHelpers.GetLocale"/> when the console country or region is France.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.RuntimeHelpers.XC_LOCALE_GERMANY">
+      <summary>Value returned by <see cref="M:Microsoft.Xbox.RuntimeHelpers.GetLocale"/> when the console country or region is Germany.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.RuntimeHelpers.XC_LOCALE_GREECE">
+      <summary>Value returned by <see cref="M:Microsoft.Xbox.RuntimeHelpers.GetLocale"/> when the console country or region is Greece.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.RuntimeHelpers.XC_LOCALE_HONG_KONG">
+      <summary>Value returned by <see cref="M:Microsoft.Xbox.RuntimeHelpers.GetLocale"/> when the console country or region is Hong Kong.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.RuntimeHelpers.XC_LOCALE_HUNGARY">
+      <summary>Value returned by <see cref="M:Microsoft.Xbox.RuntimeHelpers.GetLocale"/> when the console country or region is Hungary.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.RuntimeHelpers.XC_LOCALE_INDIA">
+      <summary>Value returned by <see cref="M:Microsoft.Xbox.RuntimeHelpers.GetLocale"/> when the console country or region is India.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.RuntimeHelpers.XC_LOCALE_IRELAND">
+      <summary>Value returned by <see cref="M:Microsoft.Xbox.RuntimeHelpers.GetLocale"/> when the console country or region is Ireland.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.RuntimeHelpers.XC_LOCALE_ITALY">
+      <summary>Value returned by <see cref="M:Microsoft.Xbox.RuntimeHelpers.GetLocale"/> when the console country or region is Italy.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.RuntimeHelpers.XC_LOCALE_JAPAN">
+      <summary>Value returned by <see cref="M:Microsoft.Xbox.RuntimeHelpers.GetLocale"/> when the console country or region is Japan.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.RuntimeHelpers.XC_LOCALE_KOREA">
+      <summary>Value returned by <see cref="M:Microsoft.Xbox.RuntimeHelpers.GetLocale"/> when the console country or region is Korea.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.RuntimeHelpers.XC_LOCALE_MEXICO">
+      <summary>Value returned by <see cref="M:Microsoft.Xbox.RuntimeHelpers.GetLocale"/> when the console country or region is Mexico.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.RuntimeHelpers.XC_LOCALE_NETHERLANDS">
+      <summary>Value returned by <see cref="M:Microsoft.Xbox.RuntimeHelpers.GetLocale"/> when the console country or region is Netherlands.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.RuntimeHelpers.XC_LOCALE_NEW_ZEALAND">
+      <summary>Value returned by <see cref="M:Microsoft.Xbox.RuntimeHelpers.GetLocale"/> when the console country or region is New Zealand.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.RuntimeHelpers.XC_LOCALE_NORWAY">
+      <summary>Value returned by <see cref="M:Microsoft.Xbox.RuntimeHelpers.GetLocale"/> when the console country or region is Norway.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.RuntimeHelpers.XC_LOCALE_POLAND">
+      <summary>Value returned by <see cref="M:Microsoft.Xbox.RuntimeHelpers.GetLocale"/> when the console country or region is Poland.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.RuntimeHelpers.XC_LOCALE_PORTUGAL">
+      <summary>Value returned by <see cref="M:Microsoft.Xbox.RuntimeHelpers.GetLocale"/> when the console country or region is Portugal.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.RuntimeHelpers.XC_LOCALE_SINGAPORE">
+      <summary>Value returned by <see cref="M:Microsoft.Xbox.RuntimeHelpers.GetLocale"/> when the console country or region is Singapore.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.RuntimeHelpers.XC_LOCALE_SLOVAK_REPUBLIC">
+      <summary>Value returned by <see cref="M:Microsoft.Xbox.RuntimeHelpers.GetLocale"/> when the console country or region is Slovak Republic.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.RuntimeHelpers.XC_LOCALE_SOUTH_AFRICA">
+      <summary>Value returned by <see cref="M:Microsoft.Xbox.RuntimeHelpers.GetLocale"/> when the console country or region is South Africa.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.RuntimeHelpers.XC_LOCALE_SPAIN">
+      <summary>Value returned by <see cref="M:Microsoft.Xbox.RuntimeHelpers.GetLocale"/> when the console country or region is Spain.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.RuntimeHelpers.XC_LOCALE_SWEDEN">
+      <summary>Value returned by <see cref="M:Microsoft.Xbox.RuntimeHelpers.GetLocale"/> when the console country or region is Sweden.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.RuntimeHelpers.XC_LOCALE_SWITZERLAND">
+      <summary>Value returned by <see cref="M:Microsoft.Xbox.RuntimeHelpers.GetLocale"/> when the console country or region is Switzerland.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.RuntimeHelpers.XC_LOCALE_TAIWAN">
+      <summary>Value returned by <see cref="M:Microsoft.Xbox.RuntimeHelpers.GetLocale"/> when the console country or region is Taiwan.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.RuntimeHelpers.XC_LOCALE_GREAT_BRITAIN">
+      <summary>Value returned by <see cref="M:Microsoft.Xbox.RuntimeHelpers.GetLocale"/> when the console country or region is Great Britain.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.RuntimeHelpers.XC_LOCALE_UNITED_STATES">
+      <summary>Value returned by <see cref="M:Microsoft.Xbox.RuntimeHelpers.GetLocale"/> when the console country or region is United States.</summary>
+    </member>
+    <member name="F:Microsoft.Xbox.RuntimeHelpers.XC_LOCALE_UNKNOWN">
+      <summary>Value returned by <see cref="M:Microsoft.Xbox.RuntimeHelpers.GetLocale"/> when the console country or region is not set or not recognized.</summary>
+    </member>
+    <member name="M:Microsoft.Xbox.RuntimeHelpers.CompileCallGraph(System.RuntimeMethodHandle)">
+      <summary>Compiles the specified method and the methods it calls before they are first executed.</summary>
+      <param name="method">A handle to the method to compile.</param>
+      <remarks>Security critical; reserved for platform code.</remarks>
+    </member>
+    <member name="M:Microsoft.Xbox.RuntimeHelpers.CompileCallGraph(System.RuntimeMethodHandle,System.RuntimeTypeHandle[])">
+      <summary>Compiles the specified generic method instantiation and the methods it calls before they are first executed.</summary>
+      <param name="method">A handle to the method to compile.</param>
+      <param name="instantiation">The type arguments of the generic instantiation to compile.</param>
+      <remarks>Security critical; reserved for platform code.</remarks>
+    </member>
+    <member name="M:Microsoft.Xbox.RuntimeHelpers.GetCurrentProcessorNumber(System.Threading.Thread)">
+      <summary>Returns the number of the hardware thread the specified thread is running on.</summary>
+      <param name="thread">The thread to query.</param>
+      <returns>The zero-based hardware thread number.</returns>
+      <remarks>Reserved for platform code. Applications call the GetCurrentProcessorNumber extension method in Microsoft.Xbox.MethodExtensions instead.</remarks>
+    </member>
+    <member name="M:Microsoft.Xbox.RuntimeHelpers.SetProcessorAffinity(System.Threading.Thread,System.Int32)">
+      <summary>Sets the hardware thread the specified thread runs on.</summary>
+      <param name="thread">The thread to move.</param>
+      <param name="cpu">The zero-based hardware thread number.</param>
+      <returns>-1 if the affinity could not be set; otherwise, another value.</returns>
+      <remarks>Reserved for platform code. Applications call the SetProcessorAffinity extension method in Microsoft.Xbox.MethodExtensions instead.</remarks>
+    </member>
+    <member name="M:Microsoft.Xbox.RuntimeHelpers.GetLanguage">
+      <summary>Returns the language selected in the console's system settings.</summary>
+      <returns>One of the XC_LANGUAGE_ constants, such as <see cref="F:Microsoft.Xbox.RuntimeHelpers.XC_LANGUAGE_ENGLISH"/>.</returns>
+    </member>
+    <member name="M:Microsoft.Xbox.RuntimeHelpers.GetLocale">
+      <summary>Returns the country or region selected in the console's system settings.</summary>
+      <returns>One of the XC_LOCALE_ constants, such as <see cref="F:Microsoft.Xbox.RuntimeHelpers.XC_LOCALE_UNITED_STATES"/>, or <see cref="F:Microsoft.Xbox.RuntimeHelpers.XC_LOCALE_UNKNOWN"/>.</returns>
+    </member>
+    <member name="M:Microsoft.Xbox.RuntimeHelpers.CreateCustomCultureInfoForResources(System.String)">
+      <summary>Creates a culture with the specified name for use in resource lookup.</summary>
+      <param name="name">The culture name to assign. Must not be null.</param>
+      <returns>A copy of the invariant culture renamed to <paramref name="name"/>, whose parent is the invariant culture.</returns>
+      <remarks>Reserved for platform code. The culture only affects which resources are found; formatting follows the invariant culture.</remarks>
+    </member>
+    <member name="M:Microsoft.Xbox.RuntimeHelpers.CreateFileBasedResourceManager(System.String,System.String,System.Type)">
+      <summary>Creates a resource manager that reads .resources files from a directory instead of from assembly manifests.</summary>
+      <param name="baseName">The root name of the resource files.</param>
+      <param name="resourceDir">The directory that contains the resource files.</param>
+      <param name="usingResourceSet">The resource set type to use, or null for the default.</param>
+      <returns>A file-based <see cref="T:System.Resources.ResourceManager"/>.</returns>
+      <remarks>Reserved for platform code.</remarks>
+    </member>
+    <member name="T:Microsoft.Xbox.FPU">
+      <summary>Exposes Xbox 360 (PowerPC) floating-point instructions as methods that the JIT compiler emits inline.</summary>
+      <remarks>These methods let performance-sensitive code use hardware operations such as branch-free selection and fast reciprocal estimates. Estimate instructions trade precision for speed. The conversion methods follow the processor's register conventions: integer results are returned in the bit pattern of a double.</remarks>
+    </member>
+    <member name="M:Microsoft.Xbox.FPU.fsqrt(System.Double)">
+      <summary>Computes the square root of a double-precision value.</summary>
+      <param name="b">The value.</param>
+      <returns>The square root of <paramref name="b"/>.</returns>
+    </member>
+    <member name="M:Microsoft.Xbox.FPU.fsqrts(System.Single)">
+      <summary>Computes the square root of a single-precision value.</summary>
+      <param name="b">The value.</param>
+      <returns>The square root of <paramref name="b"/>, in single precision.</returns>
+    </member>
+    <member name="M:Microsoft.Xbox.FPU.frsqrte(System.Double)">
+      <summary>Computes a fast estimate of the reciprocal square root (1/sqrt(b)).</summary>
+      <param name="b">The value.</param>
+      <returns>An approximation of 1 / sqrt(<paramref name="b"/>) with reduced precision.</returns>
+    </member>
+    <member name="M:Microsoft.Xbox.FPU.fres(System.Double)">
+      <summary>Computes a fast single-precision estimate of the reciprocal (1/b).</summary>
+      <param name="b">The value.</param>
+      <returns>An approximation of 1 / <paramref name="b"/> with reduced precision.</returns>
+    </member>
+    <member name="M:Microsoft.Xbox.FPU.fabs(System.Double)">
+      <summary>Returns the absolute value of a double-precision value.</summary>
+      <param name="b">The value.</param>
+      <returns>The absolute value of <paramref name="b"/>.</returns>
+    </member>
+    <member name="M:Microsoft.Xbox.FPU.fsel(System.Double,System.Double,System.Double)">
+      <summary>Selects one of two values according to the sign of a comparand, without branching.</summary>
+      <param name="comparand">The value tested against zero.</param>
+      <param name="ge">The value returned when <paramref name="comparand"/> is greater than or equal to zero.</param>
+      <param name="lt">The value returned when <paramref name="comparand"/> is less than zero or is NaN.</param>
+      <returns><paramref name="ge"/> or <paramref name="lt"/>.</returns>
+    </member>
+    <member name="M:Microsoft.Xbox.FPU.fself(System.Single,System.Single,System.Single)">
+      <summary>Selects one of two single-precision values according to the sign of a comparand, without branching.</summary>
+      <param name="comparand">The value tested against zero.</param>
+      <param name="ge">The value returned when <paramref name="comparand"/> is greater than or equal to zero.</param>
+      <param name="lt">The value returned when <paramref name="comparand"/> is less than zero or is NaN.</param>
+      <returns><paramref name="ge"/> or <paramref name="lt"/>.</returns>
+    </member>
+    <member name="M:Microsoft.Xbox.FPU.fpmin(System.Double,System.Double)">
+      <summary>Returns the smaller of two values using branch-free selection.</summary>
+      <param name="a">The first value.</param>
+      <param name="b">The second value.</param>
+      <returns>The smaller of <paramref name="a"/> and <paramref name="b"/>. If the difference is NaN, <paramref name="a"/> is returned.</returns>
+    </member>
+    <member name="M:Microsoft.Xbox.FPU.fpmin(System.Single,System.Single)">
+      <summary>Returns the smaller of two single-precision values using branch-free selection.</summary>
+      <param name="a">The first value.</param>
+      <param name="b">The second value.</param>
+      <returns>The smaller of <paramref name="a"/> and <paramref name="b"/>. If the difference is NaN, <paramref name="a"/> is returned.</returns>
+    </member>
+    <member name="M:Microsoft.Xbox.FPU.fpmax(System.Double,System.Double)">
+      <summary>Returns the larger of two values using branch-free selection.</summary>
+      <param name="a">The first value.</param>
+      <param name="b">The second value.</param>
+      <returns>The larger of <paramref name="a"/> and <paramref name="b"/>. If the difference is NaN, <paramref name="b"/> is returned.</returns>
+    </member>
+    <member name="M:Microsoft.Xbox.FPU.fpmax(System.Single,System.Single)">
+      <summary>Returns the larger of two single-precision values using branch-free selection.</summary>
+      <param name="a">The first value.</param>
+      <param name="b">The second value.</param>
+      <returns>The larger of <paramref name="a"/> and <paramref name="b"/>. If the difference is NaN, <paramref name="b"/> is returned.</returns>
+    </member>
+    <member name="M:Microsoft.Xbox.FPU.fctiwz(System.Double)">
+      <summary>Converts a value to a 32-bit integer, rounding toward zero.</summary>
+      <param name="b">The value to convert.</param>
+      <returns>A double whose bit pattern holds the 32-bit integer result in its low-order word. Use <see cref="M:System.BitConverter.DoubleToInt64Bits(System.Double)"/> to read it.</returns>
+    </member>
+    <member name="M:Microsoft.Xbox.FPU.fctidz(System.Double)">
+      <summary>Converts a value to a 64-bit integer, rounding toward zero.</summary>
+      <param name="b">The value to convert.</param>
+      <returns>A double whose bit pattern is the 64-bit integer result. Use <see cref="M:System.BitConverter.DoubleToInt64Bits(System.Double)"/> to read it.</returns>
+    </member>
+    <member name="M:Microsoft.Xbox.FPU.fctiw(System.Double)">
+      <summary>Converts a value to a 32-bit integer using the current floating-point rounding mode.</summary>
+      <param name="b">The value to convert.</param>
+      <returns>A double whose bit pattern holds the 32-bit integer result in its low-order word.</returns>
+    </member>
+    <member name="M:Microsoft.Xbox.FPU.fctid(System.Double)">
+      <summary>Converts a value to a 64-bit integer using the current floating-point rounding mode.</summary>
+      <param name="b">The value to convert.</param>
+      <returns>A double whose bit pattern is the 64-bit integer result.</returns>
+    </member>
+    <member name="M:Microsoft.Xbox.FPU.fcfid(System.Double)">
+      <summary>Converts a 64-bit integer, stored in the bit pattern of a double, to a floating-point value.</summary>
+      <param name="b">A double whose bit pattern is a 64-bit signed integer (for example from <see cref="M:System.BitConverter.Int64BitsToDouble(System.Int64)"/>).</param>
+      <returns>The integer's value as a double.</returns>
+    </member>
+    <member name="M:Microsoft.Xbox.FPU.frnd(System.Double)">
+      <summary>Applies the processor's floating-point rounding instruction to a value.</summary>
+      <param name="b">The value to round.</param>
+      <returns>The rounded value.</returns>
+      <remarks>Verify on the console whether the rounding you need (to an integer or to single precision) matches before relying on this method.</remarks>
+    </member>
+    <member name="T:Microsoft.Xbox.ALU">
+      <summary>Exposes Xbox 360 (PowerPC) integer instructions as methods that the JIT compiler emits inline.</summary>
+    </member>
+    <member name="M:Microsoft.Xbox.ALU.mulh(System.Int64,System.Int64)">
+      <summary>Returns the high 64 bits of the 128-bit signed product of two 64-bit integers.</summary>
+      <param name="a">The first factor.</param>
+      <param name="b">The second factor.</param>
+      <returns>The upper 64 bits of <paramref name="a"/> times <paramref name="b"/>.</returns>
+    </member>
+    <member name="M:Microsoft.Xbox.ALU.umulh(System.UInt64,System.UInt64)">
+      <summary>Returns the high 64 bits of the 128-bit unsigned product of two 64-bit integers.</summary>
+      <param name="a">The first factor.</param>
+      <param name="b">The second factor.</param>
+      <returns>The upper 64 bits of <paramref name="a"/> times <paramref name="b"/>.</returns>
+    </member>
+    <member name="M:Microsoft.Xbox.ALU.cntlzw(System.Int32)">
+      <summary>Counts the leading zero bits of a 32-bit value.</summary>
+      <param name="b">The value.</param>
+      <returns>The number of consecutive zero bits starting at the most significant bit, from 0 to 32.</returns>
+    </member>
+    <member name="M:Microsoft.Xbox.ALU.cntlzd(System.Int64)">
+      <summary>Counts the leading zero bits of a 64-bit value.</summary>
+      <param name="b">The value.</param>
+      <returns>The number of consecutive zero bits starting at the most significant bit, from 0 to 64.</returns>
+    </member>
+    <member name="T:Microsoft.Xbox.Cache">
+      <summary>Exposes Xbox 360 (PowerPC) data cache control instructions as methods that the JIT compiler emits inline.</summary>
+      <remarks>Each method addresses the cache block containing the address <c>_base + offset</c>. These methods are security critical and take unmanaged pointers, so they are not available to application code.</remarks>
+    </member>
+    <member name="M:Microsoft.Xbox.Cache.dcbz128(System.Int32,System.Void*)">
+      <summary>Zeroes the 128-byte cache line that contains the specified address without reading it from memory first.</summary>
+      <param name="offset">The byte offset added to <paramref name="_base"/>.</param>
+      <param name="_base">The base address.</param>
+    </member>
+    <member name="M:Microsoft.Xbox.Cache.dcbz(System.Int32,System.Void*)">
+      <summary>Zeroes the data cache block that contains the specified address without reading it from memory first.</summary>
+      <param name="offset">The byte offset added to <paramref name="_base"/>.</param>
+      <param name="_base">The base address.</param>
+    </member>
+    <member name="M:Microsoft.Xbox.Cache.dcbt(System.Int32,System.Void*)">
+      <summary>Hints that the cache block containing the specified address will be read soon, so it can be prefetched.</summary>
+      <param name="offset">The byte offset added to <paramref name="_base"/>.</param>
+      <param name="_base">The base address.</param>
+    </member>
+    <member name="M:Microsoft.Xbox.Cache.dcbst(System.Int32,System.Void*)">
+      <summary>Writes the cache block containing the specified address back to memory if it was modified, keeping it in the cache.</summary>
+      <param name="offset">The byte offset added to <paramref name="_base"/>.</param>
+      <param name="_base">The base address.</param>
+    </member>
+    <member name="M:Microsoft.Xbox.Cache.dcbf(System.Int32,System.Void*)">
+      <summary>Writes the cache block containing the specified address back to memory if it was modified and removes it from the cache.</summary>
+      <param name="offset">The byte offset added to <paramref name="_base"/>.</param>
+      <param name="_base">The base address.</param>
+    </member>
+  </members>
+</doc>

@@ -1,0 +1,20 @@
+<xbox:XboxApplicationPage x:Class="PageNavigation.Pages.DetailPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:xbox="clr-namespace:Microsoft.Xbox.Controls;assembly=Microsoft.Xbox"
+    xmlns:transitions="clr-namespace:Microsoft.Xbox.Transitions;assembly=Microsoft.Xbox"
+    xmlns:sdk="clr-namespace:XboxSdk.Samples"
+    Title="Detail">
+  <Grid Background="#FF14202C">
+    <StackPanel Margin="64,36,64,36" sdk:DirectionalFocus.IsEnabled="True">
+      <TextBlock x:Name="Heading" FontSize="44" Foreground="White"
+                 transitions:TransitionService.TransitionTarget="True" transitions:TransitionService.TransitionOrder="0" />
+      <TextBlock x:Name="Info" FontSize="22" Foreground="#FF9FC5E8" Margin="0,0,0,24"
+                 transitions:TransitionService.TransitionTarget="True" transitions:TransitionService.TransitionOrder="1" />
+      <Button x:Name="Deeper" Content="Go one page deeper" Style="{StaticResource MenuButton}" Click="Deeper_Click"
+              transitions:TransitionService.TransitionTarget="True" transitions:TransitionService.TransitionOrder="2" />
+      <Button Content="Back to the start" Style="{StaticResource MenuButton}" Click="Home_Click"
+              transitions:TransitionService.TransitionTarget="True" transitions:TransitionService.TransitionOrder="3" />
+    </StackPanel>
+  </Grid>
+</xbox:XboxApplicationPage>
