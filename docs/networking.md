@@ -33,7 +33,7 @@ Silverlight's `Socket` only connects out; it has no `Bind`, `Listen` or `Accept`
 
 Declare them with `DllImport` by ordinal (see [Native code](native-code.md)) and pass addresses as pinned buffers. They block, so run each socket on a thread of its own.
 
-- **Plain TCP needs the title's "insecure sockets" privilege.** The Plex host the default profile packages has it. Start the network with `XNetStartup` and the bypass-security flag, and set `SO_INSECURE` (0x4001) on each socket.
+- **Mark every socket as plain TCP.** A title's sockets use the console's encrypted protocol by default, which only other consoles speak: a PC's connections go unanswered. `setsockopt(socket, SOL_SOCKET, 0x5801, &one, 4)` marks a socket as plain, which the console allows for titles with the "insecure sockets" privilege. The Plex host the default profile packages has it. Check the result; xenia-edge accepts any option, so a wrong one only shows on a console.
 - **In xenia-edge,** title TCP goes through its emulated System Link network unless it runs with `--systemlink_transport=off`; only then does a listening socket open on the PC. Ports below 1024 move up by 10000, so port 21 is 10021 on the PC.
 ## Xbox LIVE and XAuth
 
