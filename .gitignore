@@ -12,3 +12,6 @@ samples/apps/MediaPlayer/Media/
 # Python
 __pycache__/
 *.pyc
+
+# Built documentation site
+site/

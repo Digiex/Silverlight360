@@ -1,5 +1,11 @@
 # Silverlight360 documentation
 
+Silverlight360 builds C# and XAML Silverlight apps for the Xbox 360 Silverlight platform, the one Netflix, YouTube and the other Xbox 360 apps used. The output is a package with a `default.xex` you can run in the [xenia-edge](https://github.com/has207/xenia-edge) emulator.
+
+![The CatalogBrowser sample](images/samples/catalog-browser.png)
+
+The code, samples and tools are at [github.com/Digiex/Silverlight360](https://github.com/Digiex/Silverlight360).
+
 Guides:
 
 | | |

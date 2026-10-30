@@ -25,3 +25,20 @@ Build any sample with `tools\Build-XboxApp.ps1 -Project <csproj>` and run its `b
 | [HelloXbox](../samples/HelloXbox) | The smallest app: XAML, A on the controller, HTTP GET and POST to the test server, a `DebugLog` line at startup. |
 | [NativeProbe](../samples/NativeProbe) | `DllImport` into xam and the kernel by ordinal. |
 | [PlatformCalls](../samples/PlatformCalls) | A storage container, the cache drive and `MediaTransport` commands, each reporting OK or the error. Written to test the xenia fixes for them. |
+
+## Screenshots
+
+All taken in xenia-edge.
+
+| | |
+|---|---|
+| ![HelloXbox](images/samples/hello-xbox.png) | ![GamepadInput](images/samples/gamepad-input.png) |
+| **HelloXbox** | **GamepadInput** |
+| ![FocusNavigation](images/samples/focus-navigation.png) | ![XboxControls](images/samples/xbox-controls.png) |
+| **FocusNavigation** | **XboxControls** |
+| ![PageNavigation](images/samples/page-navigation.png) | ![CatalogBrowser](images/samples/catalog-browser.png) |
+| **PageNavigation** | **CatalogBrowser** |
+| ![MediaPlayer list](images/samples/media-player-list.png) | ![MediaPlayer playing a WMV](images/samples/media-player.png) |
+| **MediaPlayer**, the list | **MediaPlayer**, a WMV playing |
+| ![PlatformCalls](images/samples/platform-calls.png) | |
+| **PlatformCalls** | |

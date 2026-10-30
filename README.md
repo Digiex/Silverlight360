@@ -2,7 +2,6 @@
 
 An SDK for the Xbox 360 Silverlight platform.
 
-
 Builds C# and XAML Silverlight apps that run on the Xbox 360 Silverlight
 platform (the one Netflix, YouTube, Hulu Plus and the other Xbox 360 apps
 used). The output is a folder with a `default.xex` you can launch in the
@@ -14,15 +13,33 @@ WMV and MP3 playback with the console's codec module (see
 [docs/media.md](docs/media.md)). The PageNavigation sample has also been run
 on a console.
 
-**Documentation:** [docs/README.md](docs/README.md): guides, the API
-reference, the samples and what works in xenia. Visual Studio shows the same
-API text in IntelliSense once a runtime profile exists
+**Documentation:** <https://digiex.github.io/Silverlight360/>, also in
+[docs/README.md](docs/README.md): guides, the API reference, the samples and
+what works in xenia. Visual Studio shows the same API text in IntelliSense
+once a runtime profile exists
 ([Projects and Visual Studio](docs/project-setup.md#intellisense)).
 
 **Samples:** UI samples in [samples/ui](samples/ui) (gamepad input, focus
 navigation, Xbox controls, page navigation) and application samples in
 [samples/apps](samples/apps) (a catalog browser, a media player). See
 [docs/samples.md](docs/samples.md).
+
+## Screenshots
+
+The samples running in xenia-edge.
+
+| | |
+|---|---|
+| ![HelloXbox: a greeting and an echo from the test server](docs/images/samples/hello-xbox.png) | ![GamepadInput: every controller event live](docs/images/samples/gamepad-input.png) |
+| **HelloXbox**: HTTP GET and POST to the test server | **GamepadInput**: buttons, sticks and triggers as they happen |
+| ![FocusNavigation: a grid of tiles with D-pad focus](docs/images/samples/focus-navigation.png) | ![XboxControls: a Pivot with sections](docs/images/samples/xbox-controls.png) |
+| **FocusNavigation**: D-pad focus across a grid of tiles | **XboxControls**: `Pivot`, `Rune` and `Legend` |
+| ![PageNavigation: the home page](docs/images/samples/page-navigation.png) | ![CatalogBrowser: a catalog pivot with posters](docs/images/samples/catalog-browser.png) |
+| **PageNavigation**: pages, transitions and B for back | **CatalogBrowser**: a catalog from a server, posters on the cache drive |
+| ![MediaPlayer: the media list](docs/images/samples/media-player-list.png) | ![MediaPlayer: a WMV playing with the transport bar](docs/images/samples/media-player.png) |
+| **MediaPlayer**: media from the package and the server | **MediaPlayer**: WMV playback with `MediaTransport` |
+| ![PlatformCalls: storage, cache drive and playback bar results](docs/images/samples/platform-calls.png) | |
+| **PlatformCalls**: encrypted saves, the cache drive and the playback bar | |
 
 ## How it works
 

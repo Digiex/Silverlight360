@@ -1,0 +1,81 @@
+# Documentation site, published to GitHub Pages from the gh-pages branch.
+#   python -m mkdocs serve       preview at http://127.0.0.1:8000
+#   python -m mkdocs gh-deploy   build and push to gh-pages
+site_name: Silverlight360
+site_description: An SDK for the Xbox 360 Silverlight platform
+site_url: https://digiex.github.io/Silverlight360/
+repo_url: https://github.com/Digiex/Silverlight360
+repo_name: Digiex/Silverlight360
+edit_uri: edit/master/docs/
+copyright: Silverlight360 is licensed under the PolyForm Noncommercial License 1.0.0 with an additional condition. Xbox, Xbox 360 and Silverlight are trademarks of Microsoft.
+
+docs_dir: docs
+site_dir: site
+exclude_docs: |
+  api/
+
+theme:
+  name: readthedocs
+  highlightjs: true
+  hljs_languages:
+    - powershell
+    - csharp
+    - xml
+  navigation_depth: 3
+  collapse_navigation: true
+
+extra_css:
+  - extra.css
+
+markdown_extensions:
+  - toc:
+      permalink: true
+  - tables
+  - fenced_code
+  - admonition
+
+hooks:
+  - tools/mkdocs_hooks.py
+
+nav:
+  - Home: README.md
+  - Getting started: getting-started.md
+  - Guides:
+      - Projects and Visual Studio: project-setup.md
+      - App model: app-model.md
+      - Input and focus: input-and-focus.md
+      - Xbox controls: controls.md
+      - Networking: networking.md
+      - Storage: storage.md
+      - Media: media.md
+      - Gamer services: gamer-services.md
+      - Native code: native-code.md
+      - Testing in xenia: testing.md
+  - Samples: samples.md
+  - Status under xenia: xenia-status.md
+  - Runtime inventory: runtime-inventory.md
+  - API reference:
+      - Overview: reference/README.md
+      - MS.Internal: reference/MS.Internal.md
+      - Microsoft.Xbox.Controls.Primitives: reference/Microsoft.Xbox.Controls.Primitives.md
+      - Microsoft.Xbox.Controls: reference/Microsoft.Xbox.Controls.md
+      - Microsoft.Xbox.Core: reference/Microsoft.Xbox.Core.md
+      - Microsoft.Xbox.Input: reference/Microsoft.Xbox.Input.md
+      - Microsoft.Xbox.Media.Mpeg: reference/Microsoft.Xbox.Media.Mpeg.md
+      - Microsoft.Xbox.Media: reference/Microsoft.Xbox.Media.md
+      - Microsoft.Xbox.Net: reference/Microsoft.Xbox.Net.md
+      - Microsoft.Xbox.Security.XAuth: reference/Microsoft.Xbox.Security.XAuth.md
+      - Microsoft.Xbox.Services: reference/Microsoft.Xbox.Services.md
+      - Microsoft.Xbox.Transitions: reference/Microsoft.Xbox.Transitions.md
+      - Microsoft.Xbox: reference/Microsoft.Xbox.md
+      - Microsoft.Xna.Framework.GamerServices.ContentRating.Level: reference/Microsoft.Xna.Framework.GamerServices.ContentRating.Level.md
+      - Microsoft.Xna.Framework.GamerServices.ContentRating.System: reference/Microsoft.Xna.Framework.GamerServices.ContentRating.System.md
+      - Microsoft.Xna.Framework.GamerServices.ContentRating: reference/Microsoft.Xna.Framework.GamerServices.ContentRating.md
+      - Microsoft.Xna.Framework.GamerServices: reference/Microsoft.Xna.Framework.GamerServices.md
+      - Microsoft.Xna.Framework.Storage: reference/Microsoft.Xna.Framework.Storage.md
+      - System.Reflection.ReflectionPermissionFrame: reference/System.Reflection.ReflectionPermissionFrame.md
+      - System.Reflection: reference/System.Reflection.md
+      - System.Windows.Controls: reference/System.Windows.Controls.md
+      - System.Windows.Input: reference/System.Windows.Input.md
+      - System.Windows.Media: reference/System.Windows.Media.md
+      - System.Windows: reference/System.Windows.md
