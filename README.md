@@ -76,7 +76,7 @@ needed (see [docs/runtime-inventory.md](docs/runtime-inventory.md)).
 | MSBuild 14 (Visual Studio 2015 or its Build Tools) | builds | Found in its default install folder; `Build-XboxApp.ps1 -MsBuildPath` points at another. |
 | Silverlight 3 tools and SDK | C# + XAML compilation | Must provide `MSBuild\Microsoft\Silverlight\v3.0\Microsoft.Silverlight.CSharp.targets` and the v3.0 reference assemblies. |
 | Windows SDK 7.0A | Silverlight build tasks | Found in its default install folder. |
-| An extracted Xbox 360 Silverlight app | runtime profile | Plex v0.0.0.7 is the default donor; see [docs/getting-started.md](docs/getting-started.md). |
+| An extracted Xbox 360 Silverlight app | runtime profile | Plex v0.0.0.7 is the default donor; see [docs/getting-started.md](docs/getting-started.md). For example, the [Plex app for Xbox 360](https://digiex.net/threads/plex-app-download-for-xbox-360.14043/) on Digiex, or other apps in its [Xbox 360 apps forum](https://digiex.net/forums/apps-xbox-360.83/). |
 | `xextool.exe` (optional) | profile metadata | On PATH or passed with `-Xextool`; only used to record build dates. |
 | 7-Zip and Python 3 | `tools\extract_god_packages.py` | Only for extracting app archives. |
 | Python 3 | `samples\TestServer\server.py` | Standard library only. |

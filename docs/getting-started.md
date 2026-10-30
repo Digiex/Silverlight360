@@ -5,7 +5,7 @@
 - Windows with **MSBuild 14** (Visual Studio 2015 or its Build Tools). Newer Visual Studio versions can open and build the projects too (see [Projects and Visual Studio](project-setup.md)).
 - The **Silverlight 3 tools and SDK**, which provide the C# and XAML build tasks and the Silverlight 3 reference assemblies.
 - **Windows SDK 7.0A**, which the Silverlight build tasks use.
-- An **extracted Xbox 360 Silverlight app**. Every app ships its own copy of the platform, and the SDK builds against it. Plex has the newest platform of the shipped apps; the default profile uses Plex v0.0.0.7, a Games on Demand package (`tools\extract_god_packages.py` extracts those).
+- An **extracted Xbox 360 Silverlight app**. Every app ships its own copy of the platform, and the SDK builds against it. Plex has the newest platform of the shipped apps; the default profile uses Plex v0.0.0.7, a Games on Demand package (`tools\extract_god_packages.py` extracts those). For example, Digiex has the [Plex app for Xbox 360](https://digiex.net/threads/plex-app-download-for-xbox-360.14043/), and other apps in its [Xbox 360 apps forum](https://digiex.net/forums/apps-xbox-360.83/).
 - **Python 3** for the test server and the extraction tools.
 - **[xenia-edge](https://github.com/has207/xenia-edge)** with the Silverlight work to run the apps (see [Status under xenia](xenia-status.md)).
 - Optional, for IntelliSense text on the standard APIs: XNA Game Studio 4. Silverlight 3 is required anyway.
