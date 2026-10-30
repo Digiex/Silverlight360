@@ -210,6 +210,23 @@ need and what works.
 - Linux and macOS hosts can build nothing (MSBuild 14 and the Silverlight 3
   tools are Windows-only) and xenia-edge's XHttp only has a Windows backend.
 
+## License
+
+Silverlight360 is licensed under the
+[PolyForm Noncommercial License 1.0.0](https://polyformproject.org/licenses/noncommercial/1.0.0)
+with one additional condition; see [LICENSE.md](LICENSE.md). In short:
+
+- Noncommercial use only: personal, hobby, research and other
+  noncommercial projects.
+- Any project made with Silverlight360, including apps built with it and
+  work based on its samples, must include a visible reference to
+  https://github.com/Digiex/Silverlight360.
+- Copies of Silverlight360 itself must keep the license and its
+  `Required Notice` line.
+
+The license covers this repository only, not the Microsoft and third-party
+binaries a runtime profile copies out of an Xbox 360 app.
+
 ## Trademarks
 
 Microsoft, Xbox, Xbox 360, Xbox LIVE, Silverlight, Windows, Visual Studio
