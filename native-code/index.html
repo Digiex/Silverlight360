@@ -71,6 +71,8 @@
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="#">Native code</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#structures-and-pointers">Structures and pointers</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#how-the-platform-reaches-native-code">How the platform reaches native code</a>
     </li>
     </ul>
@@ -188,6 +190,34 @@ static class NativeMethods
 <li><strong>Data layout:</strong> the process is big-endian PowerPC, so integers, <code>out</code>/<code>ref</code> parameters and pointers are already in the layout the kernel expects. Pointers are 32-bit.</li>
 <li><strong>A wrong entry point doesn't throw.</strong> A name instead of an ordinal, or a wrong ordinal, becomes a call through a null pointer, and XamlHost quits. Take ordinals from xenia's <code>src/xenia/kernel/xam/xam_table.inc</code> and <code>src/xenia/kernel/xboxkrnl/xboxkrnl_table.inc</code>.</li>
 </ul>
+<h2 id="structures-and-pointers">Structures and pointers<a class="headerlink" href="#structures-and-pointers" title="Permanent link">&para;</a></h2>
+<p>Many kernel and XAM calls take structures, or fill a buffer with structures that point into the same buffer (enumerators, profile settings, achievements). <code>Marshal.AllocHGlobal</code> isn't public on this runtime, but a pinned array is:</p>
+<pre><code class="language-csharp">byte[] bytes = new byte[0x28];
+GCHandle pin = GCHandle.Alloc(bytes, GCHandleType.Pinned);
+try
+{
+    uint address = (uint)pin.AddrOfPinnedObject().ToInt32();
+    // 0x227: DWORD XamUserGetSigninInfo(DWORD userIndex, DWORD flags, XUSER_SIGNIN_INFO*)
+    if (XamUserGetSigninInfo(0, 0, address) == 0)
+    {
+        ulong xuid = (ulong)BigEndian.U32(bytes, 0) &lt;&lt; 32 | BigEndian.U32(bytes, 4);
+    }
+}
+finally
+{
+    pin.Free();
+}
+</code></pre>
+<p>with the pointer parameter declared as <code>uint</code>. What the probes found:</p>
+<ul>
+<li><strong>Addresses are guest addresses.</strong> <code>AddrOfPinnedObject</code> gives the address the kernel sees, and a pointer the kernel writes into the buffer can be turned back into an offset by subtracting it.</li>
+<li><strong>Fields are big-endian</strong>, so read and write them byte by byte rather than with <code>BitConverter</code>.</li>
+<li><strong><code>unsafe</code> code works too</strong>, with <code>&lt;AllowUnsafeBlocks&gt;true&lt;/AllowUnsafeBlocks&gt;</code>: <code>fixed</code>, <code>stackalloc</code> and pointer casts to <code>uint</code> all run.</li>
+<li><strong>64-bit arguments</strong> such as XUIDs pass as <code>ulong</code>.</li>
+<li><strong>Keep arrays pinned only for the call.</strong> A pinned array stops the garbage collector from compacting around it.</li>
+<li><strong>A wrong parameter list doesn't throw.</strong> A missing parameter shifts the rest, and the native side writes through whatever lands in a pointer's place: under xenia-edge that's a host crash. <code>XamUserGetXUID</code>, for one, takes a type mask before the XUID pointer. Check signatures against xenia's <code>*_entry</code> functions.</li>
+</ul>
+<p><code>samples\Common\NativeBuffer.cs</code> wraps this pattern, with big-endian readers and writers and lookups for the strings and pointers in returned buffers.</p>
 <h2 id="how-the-platform-reaches-native-code">How the platform reaches native code<a class="headerlink" href="#how-the-platform-reaches-native-code" title="Permanent link">&para;</a></h2>
 <p>The framework itself calls native code in these ways:</p>
 <ol>

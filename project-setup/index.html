@@ -208,6 +208,15 @@
   &lt;Import Project=&quot;path\to\Silverlight360\msbuild\XboxSilverlight.targets&quot; /&gt;
 &lt;/Project&gt;
 </code></pre>
+<p>A project in a repository of its own can find the SDK through a property, so nobody's paths end up in the project file:</p>
+<pre><code class="language-xml">&lt;PropertyGroup&gt;
+  &lt;Silverlight360Dir Condition=&quot;'$(Silverlight360Dir)' == ''&quot;&gt;$(SILVERLIGHT360)&lt;/Silverlight360Dir&gt;
+  &lt;Silverlight360Dir Condition=&quot;'$(Silverlight360Dir)' == ''&quot;&gt;$(MSBuildThisFileDirectory)..\Silverlight360\&lt;/Silverlight360Dir&gt;
+  &lt;Silverlight360Dir Condition=&quot;!HasTrailingSlash('$(Silverlight360Dir)')&quot;&gt;$(Silverlight360Dir)\&lt;/Silverlight360Dir&gt;
+&lt;/PropertyGroup&gt;
+&lt;Import Project=&quot;$(Silverlight360Dir)msbuild\XboxSilverlight.targets&quot; /&gt;
+</code></pre>
+<p>That takes <code>/p:Silverlight360Dir=...</code>, else the <code>SILVERLIGHT360</code> environment variable, else a clone next to the repository. <code>tools\Build-XboxApp.ps1</code> builds such projects too.</p>
 <p>References name assemblies only. The SDK resolves them from the runtime profile's <code>reference</code> folder, never from desktop Silverlight, so the Xbox additions (<code>UIElement.GamePadButtonDown</code>, <code>Application.Shutdown</code>, ...) are there to compile against.</p>
 <p>Available assemblies:</p>
 <table>
@@ -301,6 +310,37 @@
 <p>Your assemblies stay IL; the platform's CLR compiles them when they load. Native images aren't needed.</p>
 <h2 id="language">Language<a class="headerlink" href="#language" title="Permanent link">&para;</a></h2>
 <p>C# 3 and Silverlight 3, with what the Xbox runtime adds on top. XAML can't use <code>x:String</code>; declare <code>xmlns:sys="clr-namespace:System;assembly=mscorlib"</code> and use <code>sys:String</code>. <code>Dispatcher.BeginInvoke</code> takes a <code>Delegate</code>, so anonymous methods need a cast: <code>Dispatcher.BeginInvoke((Action)delegate { ... })</code>, or reference <code>System.Core</code> and pass a lambda.</p>
+<p>The class library is Silverlight 3's, so some things desktop .NET and later Silverlight versions have are missing. The compiler reports them, but the usual replacements are:</p>
+<table>
+<thead>
+<tr>
+<th>Missing</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>HashSet&lt;T&gt;</code></td>
+<td><code>Dictionary&lt;T, bool&gt;</code>, or LINQ's <code>Distinct</code> and <code>Contains</code></td>
+</tr>
+<tr>
+<td><code>List&lt;T&gt;.FindIndex</code>, <code>Find</code>, <code>RemoveAll</code></td>
+<td>a loop, or LINQ</td>
+</tr>
+<tr>
+<td><code>TextBlock.TextTrimming</code></td>
+<td>a fixed width with <code>TextWrapping="NoWrap"</code>; the text is clipped</td>
+</tr>
+<tr>
+<td><code>Tuple</code></td>
+<td>a small class</td>
+</tr>
+<tr>
+<td><code>Marshal.AllocHGlobal</code></td>
+<td>a pinned array (see <a href="../native-code/#structures-and-pointers">Native code</a>)</td>
+</tr>
+</tbody>
+</table>
 <h2 id="visual-studio">Visual Studio<a class="headerlink" href="#visual-studio" title="Permanent link">&para;</a></h2>
 <p>The projects have no Silverlight project type GUID, so Visual Studio opens them as plain C# projects. Visual Studio 2026's MSBuild builds them unchanged, as long as the Silverlight 3 build targets and Windows SDK 7.0A are installed. Building from the IDE produces the same <code>bin\Release\xbox</code> package.</p>
 <p>The first build needs <code>TargetPlatformSdkPath</code> when Windows SDK 7.0A isn't at the default path. <code>Build-XboxApp.ps1</code> passes it; in the IDE, add it to the project or set it as an environment variable.</p>

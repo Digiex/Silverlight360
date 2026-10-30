@@ -244,6 +244,10 @@
 </table>
 <p>Apps need about 12 seconds to show their first page in xenia. Start pressing buttons after that.</p>
 <p>The script runs the <code>xenia_edge.exe</code> given with <code>-Xenia</code>, else the one in the <code>XENIA_EDGE</code> environment variable, else the one on <code>PATH</code>. <code>-ExtraArgs</code> passes more xenia options.</p>
+<p>To test an app that reads the console's content (packages, saves) against a known set, give xenia a content folder of its own rather than changing yours:</p>
+<pre><code class="language-powershell">.\tools\Test-XboxApp.ps1 -Xex $xex -Output $env:TEMP\run -ExtraArgs &quot;--content_root=$env:TEMP\testcontent&quot;
+</code></pre>
+<p>The folder has the console's layout, <code>&lt;XUID&gt;\&lt;title ID&gt;\&lt;content type&gt;\&lt;package&gt;</code>, with common content under XUID <code>0000000000000000</code>. Copy the profile's folder in too, or the app runs with nobody signed in.</p>
 <h2 id="debug-output">Debug output<a class="headerlink" href="#debug-output" title="Permanent link">&para;</a></h2>
 <p><code>System.Diagnostics.Debug.WriteLine</code>, <code>Debugger.Log</code> and <code>Console.WriteLine</code> don't throw, but their output goes nowhere: the CLR only passes debug output to an attached managed debugger. To log from C#, call the kernel's <code>DbgPrint</code> instead. <code>samples\Common\DebugLog.cs</code> wraps it:</p>
 <pre><code class="language-csharp">DebugLog.WriteLine(&quot;Loaded {0} items&quot;, items.Count);
