@@ -31,6 +31,14 @@ Apps need about 12 seconds to show their first page in xenia. Start pressing but
 
 The script runs the `xenia_edge.exe` given with `-Xenia`, else the one in the `XENIA_EDGE` environment variable, else the one on `PATH`. `-ExtraArgs` passes more xenia options.
 
+To test an app that reads the console's content (packages, saves) against a known set, give xenia a content folder of its own rather than changing yours:
+
+```powershell
+.\tools\Test-XboxApp.ps1 -Xex $xex -Output $env:TEMP\run -ExtraArgs "--content_root=$env:TEMP\testcontent"
+```
+
+The folder has the console's layout, `<XUID>\<title ID>\<content type>\<package>`, with common content under XUID `0000000000000000`. Copy the profile's folder in too, or the app runs with nobody signed in.
+
 ## Debug output
 
 `System.Diagnostics.Debug.WriteLine`, `Debugger.Log` and `Console.WriteLine` don't throw, but their output goes nowhere: the CLR only passes debug output to an attached managed debugger. To log from C#, call the kernel's `DbgPrint` instead. `samples\Common\DebugLog.cs` wraps it:

@@ -23,7 +23,7 @@ Build any sample with `tools\Build-XboxApp.ps1 -Project <csproj>` and run its `b
 | Sample | Shows |
 |---|---|
 | [HelloXbox](../samples/HelloXbox) | The smallest app: XAML, A on the controller, HTTP GET and POST to the test server, a `DebugLog` line at startup. |
-| [NativeProbe](../samples/NativeProbe) | `DllImport` into xam and the kernel by ordinal. |
+| [NativeProbe](../samples/NativeProbe) | `DllImport` into xam and the kernel by ordinal, including a structure through a pinned buffer. |
 | [PlatformCalls](../samples/PlatformCalls) | A storage container, the cache drive and `MediaTransport` commands, each reporting OK or the error. Written to test the xenia fixes for them. |
 
 ## Screenshots

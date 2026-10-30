@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using System.Windows.Threading;
 using System.Collections.Generic;
 using HelloXbox;
+using XboxSdk.Samples;
 
 namespace NativeProbe
 {
@@ -63,6 +64,16 @@ namespace NativeProbe
                 long fileTime;
                 NativeMethods.KeQuerySystemTime(out fileTime);
                 return DateTime.FromFileTimeUtc(fileTime).ToString("yyyy-MM-dd HH:mm:ss") + " UTC";
+            });
+            Add("XamUserGetSigninInfo (xam #551, pinned buffer)", delegate
+            {
+                using (NativeBuffer info = new NativeBuffer(0x28))
+                {
+                    uint result = NativeMethods.XamUserGetSigninInfo(0, 0, info.Address);
+                    return result != 0
+                        ? "error " + result
+                        : info.Ansi(0x18, 16) + ", XUID " + info.U64(0).ToString("X16");
+                }
             });
             Add("XamGetSystemVersion, [SecurityCritical]", delegate
             {

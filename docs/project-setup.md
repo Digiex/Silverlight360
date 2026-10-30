@@ -35,6 +35,19 @@ An app is a Silverlight 3 class library that imports the SDK's targets instead o
 </Project>
 ```
 
+A project in a repository of its own can find the SDK through a property, so nobody's paths end up in the project file:
+
+```xml
+<PropertyGroup>
+  <Silverlight360Dir Condition="'$(Silverlight360Dir)' == ''">$(SILVERLIGHT360)</Silverlight360Dir>
+  <Silverlight360Dir Condition="'$(Silverlight360Dir)' == ''">$(MSBuildThisFileDirectory)..\Silverlight360\</Silverlight360Dir>
+  <Silverlight360Dir Condition="!HasTrailingSlash('$(Silverlight360Dir)')">$(Silverlight360Dir)\</Silverlight360Dir>
+</PropertyGroup>
+<Import Project="$(Silverlight360Dir)msbuild\XboxSilverlight.targets" />
+```
+
+That takes `/p:Silverlight360Dir=...`, else the `SILVERLIGHT360` environment variable, else a clone next to the repository. `tools\Build-XboxApp.ps1` builds such projects too.
+
 References name assemblies only. The SDK resolves them from the runtime profile's `reference` folder, never from desktop Silverlight, so the Xbox additions (`UIElement.GamePadButtonDown`, `Application.Shutdown`, ...) are there to compile against.
 
 Available assemblies:
@@ -80,6 +93,16 @@ Your assemblies stay IL; the platform's CLR compiles them when they load. Native
 ## Language
 
 C# 3 and Silverlight 3, with what the Xbox runtime adds on top. XAML can't use `x:String`; declare `xmlns:sys="clr-namespace:System;assembly=mscorlib"` and use `sys:String`. `Dispatcher.BeginInvoke` takes a `Delegate`, so anonymous methods need a cast: `Dispatcher.BeginInvoke((Action)delegate { ... })`, or reference `System.Core` and pass a lambda.
+
+The class library is Silverlight 3's, so some things desktop .NET and later Silverlight versions have are missing. The compiler reports them, but the usual replacements are:
+
+| Missing | Use |
+|---|---|
+| `HashSet<T>` | `Dictionary<T, bool>`, or LINQ's `Distinct` and `Contains` |
+| `List<T>.FindIndex`, `Find`, `RemoveAll` | a loop, or LINQ |
+| `TextBlock.TextTrimming` | a fixed width with `TextWrapping="NoWrap"`; the text is clipped |
+| `Tuple` | a small class |
+| `Marshal.AllocHGlobal` | a pinned array (see [Native code](native-code.md#structures-and-pointers)) |
 
 ## Visual Studio
 

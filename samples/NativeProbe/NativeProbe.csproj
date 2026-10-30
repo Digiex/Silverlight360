@@ -28,6 +28,7 @@
     <Compile Include="MainPage.xaml.cs"><DependentUpon>MainPage.xaml</DependentUpon></Compile>
     <Compile Include="..\HelloXbox\ServerClient.cs"><Link>ServerClient.cs</Link></Compile>
     <Compile Include="NativeMethods.cs" />
+    <Compile Include="..\Common\NativeBuffer.cs"><Link>Common\NativeBuffer.cs</Link></Compile>
   </ItemGroup>
   <Import Project="..\..\msbuild\XboxSilverlight.targets" />
 </Project>

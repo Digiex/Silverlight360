@@ -32,6 +32,11 @@ namespace NativeProbe
         [DllImport("xboxkrnl.exe", EntryPoint = "#132")]
         public static extern void KeQuerySystemTime(out long fileTime);
 
+        // xam ordinal 0x227: DWORD XamUserGetSigninInfo(DWORD userIndex,
+        //   DWORD flags, XUSER_SIGNIN_INFO*), a 0x28-byte structure
+        [DllImport("xam.xex", EntryPoint = "#551")]
+        public static extern uint XamUserGetSigninInfo(uint userIndex, uint flags, uint info);
+
         // The same export with the module named without its extension.
         [DllImport("xam", EntryPoint = "#642")]
         public static extern uint XamGetSystemVersionShortName();
