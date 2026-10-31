@@ -20,6 +20,7 @@ Guides:
 | [Media](media.md) | `MediaElement`, `MediaTransport`, Smooth Streaming, DRM. |
 | [Gamer services](gamer-services.md) | Signed-in gamers, the Guide, presence, threading. |
 | [Native code](native-code.md) | Calling the kernel and XAM with `DllImport`. |
+| [Performance](performance.md) | Why app code is slow on the console and how to write it so it isn't. |
 | [Testing in xenia](testing.md) | Running an app with scripted controller input and screenshots. |
 | [Status under xenia](xenia-status.md) | What works in the emulator today and what doesn't. |
 

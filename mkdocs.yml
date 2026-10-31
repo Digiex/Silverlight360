@@ -50,6 +50,7 @@ nav:
       - Media: media.md
       - Gamer services: gamer-services.md
       - Native code: native-code.md
+      - Performance: performance.md
       - Testing in xenia: testing.md
   - Samples: samples.md
   - Status under xenia: xenia-status.md
