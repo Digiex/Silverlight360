@@ -87,6 +87,15 @@ protected override void OnNavigatedTo(NavigationEventArgs e)
 
 with `xmlns:transitions="clr-namespace:Microsoft.Xbox.Transitions;assembly=Microsoft.Xbox"`.
 
+A page change takes longer than its animations. `XboxApplicationFrame` shows the new page only when a 300 ms timer fires after it arrives. The exception is a page with `ItemsControl`s, which it shows once they have all loaded. The default transitions then fade the old page out over 250 ms and the new one in over 350 ms, and the page ignores input until they end. In xenia that came to about 875 ms from pressing A to the new page taking input.
+
+To make page changes quicker:
+
+- **Start at once:** put an empty `ItemsControl` in the page, for example `new ItemsControl { Width = 0, Height = 0 }` added to its root panel. The transition then starts on the page's first frame.
+- **Shorter transitions:** derive from `TransitionElement`, return `new Transition(element, storyboard)` from `GetTransition` with a short storyboard of your own, and set it with `TransitionService.SetNavigationInTransition` and `SetNavigationOutTransition`. Animate a `TranslateTransform` rather than a large area's opacity where you can: opacity redraws the whole area on every frame.
+
+Silverdash360 does both, in `Controls/Motion.cs`, and gets to about 270 ms with a 150 ms transition.
+
 ## Back and exit
 
 B is the back button by convention, and the app handles it. A frame-level handler sees B after the focused control has had its chance:
