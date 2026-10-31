@@ -9,7 +9,11 @@
 
     Properties a project can set:
       XboxRuntimeProfile  runtime profile folder (default runtime\plex-2015)
-      XboxPackageDir      package output (default $(OutDir)xbox\)
+      XboxPackageDir      package output (default $(OutDir)xbox\, or $(OutDir)app\
+                          with XboxAppOnly)
+      XboxAppOnly         true for the app's own files alone, to hand out: no
+                          default.xex, runtime or framework assemblies, which
+                          are Microsoft's and the donor app's (default false)
       XboxSplashScreen    720p splash image (default: the SDK's)
       XboxSplashScreen480 480p splash image (default: the SDK's)
   -->
@@ -40,6 +44,8 @@
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\v3.0\Microsoft.Silverlight.CSharp.targets" />
 
   <PropertyGroup>
+    <XboxAppOnly Condition="'$(XboxAppOnly)' == ''">false</XboxAppOnly>
+    <XboxPackageDir Condition="'$(XboxPackageDir)' == '' And '$(XboxAppOnly)' == 'true'">$(OutDir)app\</XboxPackageDir>
     <XboxPackageDir Condition="'$(XboxPackageDir)' == ''">$(OutDir)xbox\</XboxPackageDir>
     <BuildDependsOn>$(BuildDependsOn);XboxPackage</BuildDependsOn>
   </PropertyGroup>
@@ -69,10 +75,17 @@
   </Target>
 
   <Target Name="XboxPackage" DependsOnTargets="XboxValidateProfile">
+    <PropertyGroup>
+      <_XboxProfileUpper>$(XboxRuntimeProfile.ToUpperInvariant())</_XboxProfileUpper>
+    </PropertyGroup>
     <ItemGroup>
-      <_XboxRuntimeFile Include="$(XboxRuntimeProfile)package\**\*" />
+      <_XboxRuntimeFile Include="$(XboxRuntimeProfile)package\**\*" Condition="'$(XboxAppOnly)' != 'true'" />
       <_XboxAppFile Include="$(TargetPath)" />
-      <_XboxAppFile Include="@(ReferenceCopyLocalPaths)" Condition="'%(Extension)' == '.dll'" />
+      <!-- The app's libraries; with XboxAppOnly, only its own, not the
+           framework's from the profile's reference folder, which the
+           runtime package has. -->
+      <_XboxAppFile Include="@(ReferenceCopyLocalPaths)"
+                    Condition="'%(Extension)' == '.dll' And ('$(XboxAppOnly)' != 'true' Or !$([System.String]::Copy('%(FullPath)').ToUpperInvariant().StartsWith('$(_XboxProfileUpper)')))" />
     </ItemGroup>
     <!-- Content keeps its folder (or its Link) in the package, as in the XAP. -->
     <AssignTargetPath Files="@(Content)" RootFolder="$(MSBuildProjectDirectory)">
@@ -86,7 +99,8 @@
     <Copy SourceFiles="$(XboxSdkRoot)templates\XboxAppManifest.xml" DestinationFolder="$(XboxPackageDir)" />
     <Copy SourceFiles="$(XboxSplashScreen)" DestinationFiles="$(XboxPackageDir)SplashScreenImage.jpg" />
     <Copy SourceFiles="$(XboxSplashScreen480)" DestinationFiles="$(XboxPackageDir)SplashScreenImage480.jpg" />
-    <Message Importance="high" Text="Xbox 360 package: $(XboxPackageDir)default.xex" />
+    <Message Importance="high" Condition="'$(XboxAppOnly)' != 'true'" Text="Xbox 360 package: $(XboxPackageDir)default.xex" />
+    <Message Importance="high" Condition="'$(XboxAppOnly)' == 'true'" Text="App files, without the runtime: $(XboxPackageDir)" />
   </Target>
 
   <Target Name="XboxValidateProfile">

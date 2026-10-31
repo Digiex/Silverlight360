@@ -70,7 +70,8 @@ Available assemblies:
 | Property | Default | |
 |---|---|---|
 | `XboxRuntimeProfile` | `runtime\plex-2015` | Profile to compile against and package with; one made with `-KeepTitle` for an app that needs a title ([The app's title](title.md)). |
-| `XboxPackageDir` | `bin\<Configuration>\xbox\` | Package output. |
+| `XboxPackageDir` | `bin\<Configuration>\xbox\`, or `bin\<Configuration>\app\` with `XboxAppOnly` | Package output. |
+| `XboxAppOnly` | `false` | `true` writes the app's own files alone, without the runtime: see [Handing out an app](#handing-out-an-app). `Build-XboxApp.ps1 -AppOnly` sets it. |
 | `XboxSplashScreen`, `XboxSplashScreen480` | `templates\*.jpg` | 1280x720 and 640x480 JPEG splash screens. |
 
 ## What goes into the package
@@ -89,6 +90,24 @@ bin\Release\xbox\
 ```
 
 Your assemblies stay IL; the platform's CLR compiles them when they load. Native images aren't needed.
+
+## Handing out an app
+
+Most of a package is the runtime profile's: Microsoft's runtime and framework assemblies, and the donor app's `default.xex`. They aren't yours to hand out. Build with `XboxAppOnly` for the app's own files alone:
+
+```powershell
+.\tools\Build-XboxApp.ps1 -Project path\to\MyApp.csproj -AppOnly
+```
+
+```
+bin\Release\app\
+  AppManifest.xaml  XboxAppManifest.xml
+  SplashScreenImage.jpg  SplashScreenImage480.jpg
+  MyApp.dll                    your code, and libraries you bring
+  ...                          your content
+```
+
+The framework libraries an app copies from the profile's `reference` folder, such as `Microsoft.Xbox` and `System.Xml.Linq`, are left out too: the runtime package has the same files. Whoever installs the app makes a runtime profile from an app of their own, copies its `package` folder to the console, and copies the app's files over it.
 
 ## Language
 

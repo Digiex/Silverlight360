@@ -7,13 +7,23 @@ Runs MSBuild 14 on a project that imports msbuild\XboxSilverlight.targets.
 The package lands in the project's bin\<Configuration>\xbox folder; point an
 emulator such as xenia at its default.xex.
 
+With -AppOnly it writes the app's own files alone, to bin\<Configuration>\app,
+for handing the app out: the runtime and the framework assemblies are
+Microsoft's and the donor app's, and whoever installs the app lays its files
+over the package folder of a runtime profile of their own.
+
 .EXAMPLE
 .\Build-XboxApp.ps1 -Project ..\samples\HelloXbox\HelloXbox.csproj
+
+.EXAMPLE
+.\Build-XboxApp.ps1 -Project ..\samples\HelloXbox\HelloXbox.csproj -AppOnly
 #>
 param(
     [Parameter(Mandatory)] [string]$Project,
     [ValidateSet('Debug', 'Release')] [string]$Configuration = 'Release',
     [string]$RuntimeProfile = '',
+    # The app's own files alone, without the runtime (XboxAppOnly).
+    [switch]$AppOnly,
     [string]$MsBuildPath = "${env:ProgramFiles(x86)}\MSBuild\14.0\Bin\MSBuild.exe"
 )
 
@@ -38,6 +48,9 @@ $buildArgs = @(
     '/v:minimal',
     '/nologo'
 )
+if ($AppOnly) {
+    $buildArgs += '/p:XboxAppOnly=true'
+}
 if ($RuntimeProfile) {
     $buildArgs += "/p:XboxRuntimeProfile=$((Resolve-Path -LiteralPath $RuntimeProfile).Path)\"
 }
