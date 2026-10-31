@@ -94,7 +94,7 @@ To make page changes quicker:
 - **Start at once:** put an empty `ItemsControl` in the page, for example `new ItemsControl { Width = 0, Height = 0 }` added to its root panel. The transition then starts on the page's first frame.
 - **Shorter transitions:** derive from `TransitionElement`, return `new Transition(element, storyboard)` from `GetTransition` with a short storyboard of your own, and set it with `TransitionService.SetNavigationInTransition` and `SetNavigationOutTransition`. Animate a `TranslateTransform` rather than a large area's opacity where you can: opacity redraws the whole area on every frame.
 
-Silverdash360 does both, in `Controls/Motion.cs`, and gets to about 270 ms with a 150 ms transition.
+Doing both, with a 150 ms transition, gets it to about 270 ms.
 
 ## Back and exit
 

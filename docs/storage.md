@@ -59,4 +59,4 @@ CacheContainer.BeginOpenCacheContainer(delegate(IAsyncResult ar)
 
 ## Tested
 
-`samples\PlatformCalls` writes and reads back a file in each kind of container. `samples\apps\CatalogBrowser` keeps favourites in a storage container and posters on the cache drive. Both work under xenia-edge with the storage fixes in the `pr-silverlight-exports` pull request (see [Status under xenia](xenia-status.md)).
+`samples\PlatformCalls` writes and reads back a file in each kind of container. `samples\apps\CatalogBrowser` keeps favourites in a storage container and posters on the cache drive. Both work under a current xenia-edge (see [Status under xenia](xenia-status.md)).

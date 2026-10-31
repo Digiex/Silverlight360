@@ -11,7 +11,7 @@ The shipped apps' own assemblies have native images too (`XboxApplication.ni.dll
 
 ## What it costs
 
-Timed in xenia-edge with the Silverdash360 dashboard. A console is slower than a PC running xenia, so what matters here is the ratio between the columns; expect several times these times on hardware.
+Timed in xenia-edge with a dashboard app. A console is slower than a PC running xenia, so what matters here is the ratio between the columns; expect several times these times on hardware.
 
 | Work | Interpreted app code | Framework code |
 |---|---|---|

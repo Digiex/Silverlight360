@@ -82,7 +82,7 @@ needed (see [docs/runtime-inventory.md](docs/runtime-inventory.md)).
 | `xextool.exe` (optional) | profile metadata | On PATH or passed with `-Xextool`; only used to record build dates. |
 | 7-Zip and Python 3 | `tools\extract_god_packages.py` | Only for extracting app archives. |
 | Python 3 | `samples\TestServer\server.py` | Standard library only. |
-| [xenia-edge](https://github.com/has207/xenia-edge) with the Silverlight pull requests | running apps | See [docs/xenia-status.md](docs/xenia-status.md). |
+| [xenia-edge](https://github.com/has207/xenia-edge), a build from 31 October 2026 or later | running apps | See [docs/xenia-status.md](docs/xenia-status.md). |
 | XNA Game Studio 4 (optional) | IntelliSense | Its docs cover the XNA parts of the Xbox libraries. |
 
 The runtime profile and every package built from it contain Microsoft's and
@@ -217,8 +217,8 @@ bin\Release\xbox\
 
 ## xenia-edge support
 
-See [docs/xenia-status.md](docs/xenia-status.md) for the pull requests apps
-need and what works.
+See [docs/xenia-status.md](docs/xenia-status.md) for what apps need from
+xenia-edge and what works.
 
 ## Not done
 

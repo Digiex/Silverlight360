@@ -1,14 +1,15 @@
 # Status under xenia
 
-Silverlight apps need [xenia-edge](https://github.com/has207/xenia-edge) plus three pull requests that aren't merged yet:
+Silverlight apps run on a current build of [xenia-edge](https://github.com/has207/xenia-edge). What they need is in its `edge` branch since 31 October 2026:
 
-| Pull request | What it adds |
+| Commit | What it adds |
 |---|---|
-| [#325](https://github.com/has207/xenia-edge/pull/325) | What apps need to start: locale, guest timers and mutants, `XamContentOpenFile`. |
-| [#326](https://github.com/has207/xenia-edge/pull/326) | XHttp over the host's HTTP client: every `WebClient` and `HttpWebRequest`. |
-| [#327](https://github.com/has207/xenia-edge/pull/327) | The exports apps call once running, and a second commit that fixes XNA storage containers, the cache drive and `MediaTransport` commands. |
+| [Add what Silverlight apps need to start](https://github.com/has207/xenia-edge/commit/1a2b1654444d507a1f278ae5f22de401e6e0f639) | Locale, guest timers and mutants, `XamContentOpenFile`. |
+| [Send XHttp requests through the host's HTTP client](https://github.com/has207/xenia-edge/commit/d4d6c543b8cd800af3ea32e5b774018bd3352e97) | Every `WebClient` and `HttpWebRequest`. |
+| [Add the exports Silverlight apps call](https://github.com/has207/xenia-edge/commit/4fcace3702527afb610f53ae389f890d04992ff4) | The exports apps call once running, with XNA storage containers and the cache drive. |
+| [Load the extra AV codec modules from the sysext folder](https://github.com/has207/xenia-edge/commit/6196811b762cd7604d9ec79c003e68f63b05183a) | The console's extra AV codecs, for WMV and MP3 (see [Media](media.md)). |
 
-The samples were tested on a build of xenia-edge with all three merged.
+An older build needs those commits.
 
 ## Works
 
@@ -30,7 +31,7 @@ The samples were tested on a build of xenia-edge with all three merged.
 
 | | |
 |---|---|
-| **Media playback** | WMA plays. WMV and MP3 play with a xenia-edge build that loads the console's extra AV codec module (`dash.ExtraAVCodecs.xex` in xenia's `system\` folder); that loader is pull request [#329](https://github.com/has207/xenia-edge/pull/329), not merged yet. MP4 also needs the Optional Media Update and plays with a garbled picture (unsupported `k_32` texture format). See [Media](media.md). |
+| **Media playback** | WMA plays. WMV and MP3 play with the console's extra AV codec modules (`dash.ExtraAVCodecs.xex` and `dash.ExtraAVCodecs2.xex`) in the `sysext\` folder of xenia's storage root. MP4 also needs the Optional Media Update and plays with a garbled picture (unsupported `k_32` texture format). See [Media](media.md). |
 | **SmartGlass keyboard** | Opening a `Rune` calls `XamLrcKeyboardRegister` and related functions, which xenia doesn't have. The Rune still works with the controller. |
 | **System screens** | Most Guide screens (friends, gamer card, ...) aren't implemented in xenia. |
 | **Xbox LIVE and XAuth** | No tokens, so sign-in to partner services, Marketplace and social networks fails. |
