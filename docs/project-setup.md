@@ -107,7 +107,7 @@ bin\Release\app\
   ...                          your content
 ```
 
-The framework libraries an app copies from the profile's `reference` folder, such as `Microsoft.Xbox` and `System.Xml.Linq`, are left out too: the runtime package has the same files. Whoever installs the app makes a runtime profile from an app of their own, copies its `package` folder to the console, and copies the app's files over it.
+The framework libraries an app copies from the profile's `reference` folder, such as `Microsoft.Xbox` and `System.Xml.Linq`, are left out too: the runtime package has the same files. Whoever installs the app makes a runtime profile from an app of their own, copies its `package` folder to the console, and copies the app's files over it. [Silverdash360](https://github.com/Digiex/Silverdash360) publishes its releases this way, with `tools/Release.ps1`, and its [installation guide](https://digiex.github.io/Silverdash360/install/) takes its users through the steps.
 
 ## Language
 

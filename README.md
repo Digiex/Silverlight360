@@ -230,6 +230,13 @@ xenia-edge and what works.
 - Linux and macOS hosts can build nothing (MSBuild 14 and the Silverlight 3
   tools are Windows-only) and xenia-edge's XHttp only has a Windows backend.
 
+## Built with Silverlight360
+
+[Silverdash360](https://github.com/Digiex/Silverdash360) is a dashboard for the Xbox 360 built
+with the SDK, and runs on consoles: an example of a whole app, from calling
+XAM and the kernel to releasing it on GitHub. Its documentation is at
+[digiex.github.io/Silverdash360](https://digiex.github.io/Silverdash360/).
+
 ## License
 
 Silverlight360 is licensed under the

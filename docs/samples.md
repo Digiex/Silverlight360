@@ -26,6 +26,12 @@ Build any sample with `tools\Build-XboxApp.ps1 -Project <csproj>` and run its `b
 | [NativeProbe](../samples/NativeProbe) | `DllImport` into xam and the kernel by ordinal, including a structure through a pinned buffer. |
 | [PlatformCalls](../samples/PlatformCalls) | A storage container, the cache drive and `MediaTransport` commands, each reporting OK or the error. Written to test the xenia fixes for them. Build it on a runtime profile with the title ([The app's title](title.md)). |
 
+## Apps built with Silverlight360
+
+| App | Shows |
+|---|---|
+| [Silverdash360](https://github.com/Digiex/Silverdash360) ([documentation](https://digiex.github.io/Silverdash360/)) | A whole app that runs on consoles: a dashboard listing the console's games and apps with `DllImport` into XAM and the kernel, a virtualized grid for thousands of titles, Marketplace art over its own socket HTTP client, DLNA media servers, an FTP server, and updates from GitHub over HTTPS. Its releases are app-only builds ([Handing out an app](project-setup.md#handing-out-an-app)), and it has a debug server for testing on a console without a development kit. |
+
 ## Screenshots
 
 All taken in xenia-edge.

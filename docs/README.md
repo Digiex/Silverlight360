@@ -30,4 +30,6 @@ Reference:
 - [Samples](samples.md): what each sample shows and how it was tested.
 - [Runtime inventory](runtime-inventory.md): the platform versions found in the shipped apps.
 
+An app built with it: [Silverdash360](https://github.com/Digiex/Silverdash360), a dashboard for the Xbox 360 that runs on consoles ([its documentation](https://digiex.github.io/Silverdash360/)). See [Samples](samples.md#apps-built-with-silverlight360).
+
 Everything here comes from running apps in the [xenia-edge](https://github.com/has207/xenia-edge) emulator and from reading the platform's own assemblies. Of the samples, only PageNavigation has been run on a console so far.
