@@ -61,6 +61,8 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#what-goes-into-the-package">What goes into the package</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#handing-out-an-app">Handing out an app</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#language">Language</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#visual-studio">Visual Studio</a>
@@ -290,8 +292,13 @@
 </tr>
 <tr>
 <td><code>XboxPackageDir</code></td>
-<td><code>bin\&lt;Configuration&gt;\xbox\</code></td>
+<td><code>bin\&lt;Configuration&gt;\xbox\</code>, or <code>bin\&lt;Configuration&gt;\app\</code> with <code>XboxAppOnly</code></td>
 <td>Package output.</td>
+</tr>
+<tr>
+<td><code>XboxAppOnly</code></td>
+<td><code>false</code></td>
+<td><code>true</code> writes the app's own files alone, without the runtime: see <a href="#handing-out-an-app">Handing out an app</a>. <code>Build-XboxApp.ps1 -AppOnly</code> sets it.</td>
 </tr>
 <tr>
 <td><code>XboxSplashScreen</code>, <code>XboxSplashScreen480</code></td>
@@ -312,6 +319,17 @@
   MyApp.dll                    your code (IL)
 </code></pre>
 <p>Your assemblies stay IL; the platform's CLR compiles them when they load. Native images aren't needed.</p>
+<h2 id="handing-out-an-app">Handing out an app<a class="headerlink" href="#handing-out-an-app" title="Permanent link">&para;</a></h2>
+<p>Most of a package is the runtime profile's: Microsoft's runtime and framework assemblies, and the donor app's <code>default.xex</code>. They aren't yours to hand out. Build with <code>XboxAppOnly</code> for the app's own files alone:</p>
+<pre><code class="language-powershell">.\tools\Build-XboxApp.ps1 -Project path\to\MyApp.csproj -AppOnly
+</code></pre>
+<pre><code>bin\Release\app\
+  AppManifest.xaml  XboxAppManifest.xml
+  SplashScreenImage.jpg  SplashScreenImage480.jpg
+  MyApp.dll                    your code, and libraries you bring
+  ...                          your content
+</code></pre>
+<p>The framework libraries an app copies from the profile's <code>reference</code> folder, such as <code>Microsoft.Xbox</code> and <code>System.Xml.Linq</code>, are left out too: the runtime package has the same files. Whoever installs the app makes a runtime profile from an app of their own, copies its <code>package</code> folder to the console, and copies the app's files over it.</p>
 <h2 id="language">Language<a class="headerlink" href="#language" title="Permanent link">&para;</a></h2>
 <p>C# 3 and Silverlight 3, with what the Xbox runtime adds on top. XAML can't use <code>x:String</code>; declare <code>xmlns:sys="clr-namespace:System;assembly=mscorlib"</code> and use <code>sys:String</code>. <code>Dispatcher.BeginInvoke</code> takes a <code>Delegate</code>, so anonymous methods need a cast: <code>Dispatcher.BeginInvoke((Action)delegate { ... })</code>, or reference <code>System.Core</code> and pass a lambda.</p>
 <p>The class library is Silverlight 3's, so some things desktop .NET and later Silverlight versions have are missing. The compiler reports them, but the usual replacements are:</p>
