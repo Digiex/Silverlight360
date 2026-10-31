@@ -14,6 +14,8 @@
 
 The standard Silverlight `MediaElement`, playing WMV, WMA, MP4 (H.264/AAC) and MP3 over progressive download, plus Smooth Streaming through `SmoothStreamingMediaElement`. The Xbox version adds DRM and output-protection members (see the [reference](reference/System.Windows.Controls.md)).
 
+It plays only from a URI. `SetSource(Stream)` throws `NotImplementedException` from the runtime's native side, so a file the app reads itself (from a drive, say) can't be handed to the player as a stream. Serve it over HTTP from the app instead, on a socket of its own, and point `Source` at that URL. The URL can be `http://127.0.0.1:port/...`, or the console's own address where loopback isn't reached. Serve byte ranges so the player can seek. A `BitmapImage` loads from a URI the same way.
+
 ## MediaTransport
 
 `MediaTransport` (`Microsoft.Xbox.Controls`) is the playback chrome every video app uses. It provides:
