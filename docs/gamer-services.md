@@ -2,6 +2,8 @@
 
 `Microsoft.Xbox.Services` is the platform's build of XNA gamer services (`Microsoft.Xna.Framework.GamerServices`), with Xbox additions for Kinect versions of the system screens, social networks, presence and parental ratings.
 
+Signing in and the signed-in gamer work on any profile. Presence and anything else kept per title need a runtime profile that keeps the donor's title (`New-RuntimeProfile.ps1 -KeepTitle`, see [The app's title](title.md)).
+
 ## Starting it
 
 GamerServices has to be initialized, then pumped regularly. `XboxApplicationFrame` does both; without it, see [App model](app-model.md#xboxapplicationframe). Sign-in changes, `SignedIn` and `SignedOut`, and `Guide.IsVisible` only update while it's pumped, and presence changes are only sent then.

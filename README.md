@@ -54,7 +54,9 @@ The SDK reuses that platform:
 1. **Runtime profile.** `tools\New-RuntimeProfile.ps1` copies the platform
    out of an extracted app (the *donor*) into `runtime\<name>`: a `package`
    folder every build starts from, and a `reference` folder with the
-   framework IL assemblies.
+   framework IL assemblies. The package's `default.xex` has the donor's
+   title taken out unless `-KeepTitle` is given
+   ([docs/title.md](docs/title.md)).
 2. **Compile.** `msbuild\XboxSilverlight.targets` drives the installed
    Silverlight 3 compiler and XAML markup compiler, but resolves framework
    references from the profile instead of desktop Silverlight. Apps get the
@@ -204,7 +206,8 @@ bin\Release\xbox\
 | `tools\extract_god_packages.py <archives> <output> <staging>` | Extracts the Games on Demand packages in `.zip`/`.rar` archives into `<output>\<package title>`. Handles every SVOD layout xenia does. |
 | `tools\extract_stfs_package.py <package> <output>` | Extracts an STFS package (CON/LIVE/PIRS), such as a title update. |
 | `tools\Get-AppInventory.ps1 -OutJson <file>` | Lists runtime and framework versions of extracted apps. |
-| `tools\New-RuntimeProfile.ps1 -DonorApp <app> -Output <profile>` | Makes a runtime profile. |
+| `tools\New-RuntimeProfile.ps1 -DonorApp <app> -Output <profile> [-KeepTitle]` | Makes a runtime profile. Its `default.xex` declares no title unless `-KeepTitle` is given ([docs/title.md](docs/title.md)). |
+| `tools\strip_donor_title.py <default.xex>` | Takes the donor's title (execution info and title resource) out of an executable; `New-RuntimeProfile.ps1` runs it. |
 | `tools\Build-XboxApp.ps1 -Project <csproj> [-RuntimeProfile <profile>]` | Builds and packages a project. |
 | `tools\Test-XboxApp.ps1 -Xex <xex> -Output <dir> -Steps ...` | Runs an app in xenia with scripted controller input and screenshots ([docs/testing.md](docs/testing.md)). |
 | `tools\Install-ApiDocs.ps1 [-RuntimeProfile <profile>]` | Writes the IntelliSense files into a profile. |

@@ -69,7 +69,7 @@ Available assemblies:
 
 | Property | Default | |
 |---|---|---|
-| `XboxRuntimeProfile` | `runtime\plex-2015` | Profile to compile against and package with. |
+| `XboxRuntimeProfile` | `runtime\plex-2015` | Profile to compile against and package with; one made with `-KeepTitle` for an app that needs a title ([The app's title](title.md)). |
 | `XboxPackageDir` | `bin\<Configuration>\xbox\` | Package output. |
 | `XboxSplashScreen`, `XboxSplashScreen480` | `templates\*.jpg` | 1280x720 and 640x480 JPEG splash screens. |
 

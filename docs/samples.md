@@ -15,7 +15,7 @@ Build any sample with `tools\Build-XboxApp.ps1 -Project <csproj>` and run its `b
 
 | Sample | Shows | Tested in xenia |
 |---|---|---|
-| [apps\CatalogBrowser](../samples/apps/CatalogBrowser) | A streaming-style catalog: an XML catalog from a server, a `Pivot` per category built in code, posters cached on the cache drive, a detail page, favourites saved in a storage container (Y toggles them), the signed-in gamertag, a `Legend`. Needs the test server. | Catalog and posters loaded; gamertag shown; Y added a favourite and the detail page saw it; posters came from the cache drive on later loads; B went back; RB switched categories. |
+| [apps\CatalogBrowser](../samples/apps/CatalogBrowser) | A streaming-style catalog: an XML catalog from a server, a `Pivot` per category built in code, posters cached on the cache drive, a detail page, favourites saved in a storage container (Y toggles them), the signed-in gamertag, a `Legend`. Needs the test server, and a runtime profile with the title for the favourites ([The app's title](title.md)). | Catalog and posters loaded; gamertag shown; Y added a favourite and the detail page saw it; posters came from the cache drive on later loads; B went back; RB switched categories. |
 | [apps\MediaPlayer](../samples/apps/MediaPlayer) | A media list and a player page with `MediaTransport` around a `MediaElement`: `MediaAssetId`, focus, the `Back` event, stopping on leaving, state changes and failures logged with `DebugLog`. Lists files packaged in its `Media` folder (played from a URI relative to the XAP) and files from the test server's `samples\TestServer\media`. | List, player page, transport bar and back work; WMA plays from the package and the server. With the codec loader and the console's codec module (see [Media](media.md)), packaged WMV and MP3 play too; MP4 plays with a garbled picture. |
 
 ## Earlier samples
@@ -24,7 +24,7 @@ Build any sample with `tools\Build-XboxApp.ps1 -Project <csproj>` and run its `b
 |---|---|
 | [HelloXbox](../samples/HelloXbox) | The smallest app: XAML, A on the controller, HTTP GET and POST to the test server, a `DebugLog` line at startup. |
 | [NativeProbe](../samples/NativeProbe) | `DllImport` into xam and the kernel by ordinal, including a structure through a pinned buffer. |
-| [PlatformCalls](../samples/PlatformCalls) | A storage container, the cache drive and `MediaTransport` commands, each reporting OK or the error. Written to test the xenia fixes for them. |
+| [PlatformCalls](../samples/PlatformCalls) | A storage container, the cache drive and `MediaTransport` commands, each reporting OK or the error. Written to test the xenia fixes for them. Build it on a runtime profile with the title ([The app's title](title.md)). |
 
 ## Screenshots
 

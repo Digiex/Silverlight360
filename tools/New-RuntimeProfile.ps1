@@ -14,18 +14,31 @@ and writes:
   <Output>\reference  the framework IL assemblies apps compile against
   <Output>\profile.json  where it came from and what it contains
 
+The package's default.xex has the donor's title taken out (see
+strip_donor_title.py): apps built on the profile declare no title, so the
+console offers them none of the donor's title updates and shows none of its
+name. Without a title an app has no title storage, LIVE presence or other
+per-title services; for those, keep the donor's title with -KeepTitle
+(docs\title.md).
+
 The donor's binaries are Microsoft's and the app publisher's. A profile is
 for local development only; don't redistribute it.
 
 .EXAMPLE
 .\New-RuntimeProfile.ps1 -DonorApp '<extracted Plex v0.0.0.7>' -Output ..\runtime\plex-2015
+
+.EXAMPLE
+.\New-RuntimeProfile.ps1 -DonorApp '<extracted Plex v0.0.0.7>' -Output ..\runtime\plex-2015-title -KeepTitle
 #>
 param(
     [Parameter(Mandatory)] [string]$DonorApp,
     [Parameter(Mandatory)] [string]$Output,
     # xextool.exe, from PATH when not given. Only used to record the native
     # modules' build dates in profile.json.
-    [string]$Xextool = 'xextool.exe'
+    [string]$Xextool = 'xextool.exe',
+    # Leaves the donor's title in default.xex, for apps that use title
+    # storage or other per-title services.
+    [switch]$KeepTitle
 )
 
 $ErrorActionPreference = 'Stop'
@@ -67,6 +80,12 @@ function Copy-FromDonor([string]$name, [string]$destination) {
 foreach ($module in $nativeModules) {
     if (-not (Copy-FromDonor $module $package)) {
         throw "The donor has no $module, so it isn't a Silverlight app: $DonorApp"
+    }
+}
+if (-not $KeepTitle) {
+    python (Join-Path $PSScriptRoot 'strip_donor_title.py') (Join-Path $package 'default.xex')
+    if ($LASTEXITCODE) {
+        throw "Couldn't take the donor's title out of default.xex."
     }
 }
 
@@ -112,6 +131,8 @@ function Get-XexSummary([string]$path) {
 $profile = [ordered]@{
     Donor = Split-Path -Leaf $DonorApp
     Created = (Get-Date).ToString('s')
+    # Whether default.xex declares the donor's title.
+    DonorTitle = [bool]$KeepTitle
     Native = @($nativeModules | ForEach-Object { Get-XexSummary (Join-Path $DonorApp $_) })
     Assemblies = $assemblies
 }

@@ -14,6 +14,8 @@ The runtime host doesn't implement isolated storage (its isolated-storage callba
 
 Both need GamerServices running; `XboxApplicationFrame` starts it (see [App model](app-model.md)).
 
+Both are kept per title, so build on a runtime profile that keeps the donor's title (`New-RuntimeProfile.ps1 -KeepTitle`, see [The app's title](title.md)). A default profile declares no title, and an app built on it keeps its files in its own folder instead.
+
 ## Storage container
 
 ```csharp

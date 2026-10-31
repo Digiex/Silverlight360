@@ -18,7 +18,9 @@ A runtime profile is the platform copied out of one app: the native host and run
 .\tools\New-RuntimeProfile.ps1 -DonorApp '<extracted Plex v0.0.0.7>' -Output .\runtime\plex-2015
 ```
 
-Use Plex v0.0.0.7, the base version Plex's last title update (v0.0.1.7) applies to. A package runs as the donor's title (Plex, `574407D1`) at the donor's version. A console signed in to LIVE asks for an update when that version is older than the current one, and Plex's title update only applies to v0.0.0.7. Accept the update and the console installs Plex's title update, which then patches your package to v0.0.1.7 as it loads. The platform code is the same, and your app runs as before; xenia-edge does the same when that update is in its content folder. A profile made from the older v0.0.0.4 gets the update prompt but can't take the update.
+The script takes the donor's title out of the profile's `default.xex`, so your app declares no title and the console offers it none of Plex's title updates (see [The app's title](title.md)). Without a title there's no title storage or presence; an app that needs them is built on a profile made with `-KeepTitle`.
+
+With the title kept, use Plex v0.0.0.7, the base version Plex's last title update (v0.0.1.7) applies to. A package then runs as the donor's title (Plex, `574407D1`) at the donor's version. A console signed in to LIVE asks for an update when that version is older than the current one, and Plex's title update only applies to v0.0.0.7. Accept the update and the console installs Plex's title update, which then patches your package to v0.0.1.7 as it loads. The platform code is the same, and your app runs as before; xenia-edge does the same when that update is in its content folder. A profile made from the older v0.0.0.4 gets the update prompt but can't take the update.
 
 The script finishes by installing the IntelliSense files into `reference\` (`tools\Install-ApiDocs.ps1`; run it again after updating the SDK's docs).
 
