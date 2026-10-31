@@ -1,4 +1,6 @@
 # Documentation site, published to GitHub Pages from the gh-pages branch.
+# A push to master that changes the docs publishes them on its own
+# (.github/workflows/docs.yml); to do it by hand:
 #   python -m mkdocs serve       preview at http://127.0.0.1:8000
 #   python -m mkdocs gh-deploy   build and push to gh-pages
 site_name: Silverlight360
