@@ -75,6 +75,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../networking/">Networking</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../title/">The app's title</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../storage/">Storage</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../media/">Media</a>
@@ -190,7 +192,8 @@
 <p>A runtime profile is the platform copied out of one app: the native host and runtime (<code>package\</code>) and the framework assemblies to compile against (<code>reference\</code>). Every build starts from it.</p>
 <pre><code class="language-powershell">.\tools\New-RuntimeProfile.ps1 -DonorApp '&lt;extracted Plex v0.0.0.7&gt;' -Output .\runtime\plex-2015
 </code></pre>
-<p>Use Plex v0.0.0.7, the base version Plex's last title update (v0.0.1.7) applies to. A package runs as the donor's title (Plex, <code>574407D1</code>) at the donor's version. A console signed in to LIVE asks for an update when that version is older than the current one, and Plex's title update only applies to v0.0.0.7. Accept the update and the console installs Plex's title update, which then patches your package to v0.0.1.7 as it loads. The platform code is the same, and your app runs as before; xenia-edge does the same when that update is in its content folder. A profile made from the older v0.0.0.4 gets the update prompt but can't take the update.</p>
+<p>The script takes the donor's title out of the profile's <code>default.xex</code>, so your app declares no title and the console offers it none of Plex's title updates (see <a href="../title/">The app's title</a>). Without a title there's no title storage or presence; an app that needs them is built on a profile made with <code>-KeepTitle</code>.</p>
+<p>With the title kept, use Plex v0.0.0.7, the base version Plex's last title update (v0.0.1.7) applies to. A package then runs as the donor's title (Plex, <code>574407D1</code>) at the donor's version. A console signed in to LIVE asks for an update when that version is older than the current one, and Plex's title update only applies to v0.0.0.7. Accept the update and the console installs Plex's title update, which then patches your package to v0.0.1.7 as it loads. The platform code is the same, and your app runs as before; xenia-edge does the same when that update is in its content folder. A profile made from the older v0.0.0.4 gets the update prompt but can't take the update.</p>
 <p>The script finishes by installing the IntelliSense files into <code>reference\</code> (<code>tools\Install-ApiDocs.ps1</code>; run it again after updating the SDK's docs).</p>
 <p>The profile holds Microsoft's and the donor app's binaries. It stays on your machine; <code>runtime\</code> is ignored by git.</p>
 <h2 id="2-build-a-sample">2. Build a sample<a class="headerlink" href="#2-build-a-sample" title="Permanent link">&para;</a></h2>

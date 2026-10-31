@@ -63,6 +63,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../networking/">Networking</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../title/">The app's title</a>
+                  </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="#">Storage</a>
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#storage-container">Storage container</a>
@@ -212,6 +214,7 @@
 </table>
 <p>The runtime host doesn't implement isolated storage (its isolated-storage callbacks return "not implemented"), so use these instead of <code>IsolatedStorageFile</code>.</p>
 <p>Both need GamerServices running; <code>XboxApplicationFrame</code> starts it (see <a href="../app-model/">App model</a>).</p>
+<p>Both are kept per title, so build on a runtime profile that keeps the donor's title (<code>New-RuntimeProfile.ps1 -KeepTitle</code>, see <a href="../title/">The app's title</a>). A default profile declares no title, and an app built on it keeps its files in its own folder instead.</p>
 <h2 id="storage-container">Storage container<a class="headerlink" href="#storage-container" title="Permanent link">&para;</a></h2>
 <pre><code class="language-csharp">var device = new StorageDevice();
 device.BeginOpenContainer(&quot;My App&quot;, &quot;MyApp&quot;, delegate(IAsyncResult ar)
@@ -250,12 +253,12 @@ device.BeginOpenContainer(&quot;My App&quot;, &quot;MyApp&quot;, delegate(IAsync
 <li><strong>Unmounting:</strong> disposing the container unmounts the drive.</li>
 </ul>
 <h2 id="tested">Tested<a class="headerlink" href="#tested" title="Permanent link">&para;</a></h2>
-<p><code>samples\PlatformCalls</code> writes and reads back a file in each kind of container. <code>samples\apps\CatalogBrowser</code> keeps favourites in a storage container and posters on the cache drive. Both work under xenia-edge with the storage fixes in the <code>pr-silverlight-exports</code> pull request (see <a href="../xenia-status/">Status under xenia</a>).</p>
+<p><code>samples\PlatformCalls</code> writes and reads back a file in each kind of container. <code>samples\apps\CatalogBrowser</code> keeps favourites in a storage container and posters on the cache drive. Both work under a current xenia-edge (see <a href="../xenia-status/">Status under xenia</a>).</p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../networking/" class="btn btn-neutral float-left" title="Networking"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../title/" class="btn btn-neutral float-left" title="The app's title"><span class="icon icon-circle-arrow-left"></span> Previous</a>
         <a href="../media/" class="btn btn-neutral float-right" title="Media">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
@@ -284,7 +287,7 @@ device.BeginOpenContainer(&quot;My App&quot;, &quot;MyApp&quot;, delegate(IAsync
         </span>
     
     
-      <span><a href="../networking/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../title/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
       <span><a href="../media/" style="color: #fcfcfc">Next &raquo;</a></span>

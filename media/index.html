@@ -63,6 +63,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../networking/">Networking</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../title/">The app's title</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../storage/">Storage</a>
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="#">Media</a>
@@ -179,7 +181,7 @@
 <p>Under xenia-edge, media plays once the console's codec modules are installed. Everything around the player works: <code>MediaTransport</code>, its transport bar and its commands.</p>
 <ul>
 <li><strong>WMA</strong> plays as is: its decoder is built into the runtime.</li>
-<li><strong>WMV</strong>, <strong>MP3</strong> and <strong>MP4</strong> need the console's extra AV codecs. The runtime gets their decoders from <code>dash.ExtraAVCodecs.xex</code>, a module of the console's system software that it loads through xam (<code>XamLoadExtraAVCodecs</code>). Without it, playback fails with <code>MediaFailed</code> "4001 An error has occured" right after <code>Opening</code>. Despite that code's name (<code>AG_E_NETWORK_ERROR</code>), the network isn't involved: the real error is <code>C00DF804</code> for WMV (no video decoder) and <code>8007000E</code> for MP3. Loading the module needs a xenia-edge build with the codec loader, pull request <a href="https://github.com/has207/xenia-edge/pull/329">#329</a>, which isn't merged yet; with it, copy <code>dash.ExtraAVCodecs.xex</code> and <code>dash.ExtraAVCodecs2.xex</code> from your console's system files to xenia's <code>system\</code> folder (next to <code>content\</code>). WMV (VC-1) and MP3 then play.</li>
+<li><strong>WMV</strong>, <strong>MP3</strong> and <strong>MP4</strong> need the console's extra AV codecs. The runtime gets their decoders from <code>dash.ExtraAVCodecs.xex</code>, a module of the console's system software that it loads through xam (<code>XamLoadExtraAVCodecs</code>). Without it, playback fails with <code>MediaFailed</code> "4001 An error has occured" right after <code>Opening</code>. Despite that code's name (<code>AG_E_NETWORK_ERROR</code>), the network isn't involved: the real error is <code>C00DF804</code> for WMV (no video decoder) and <code>8007000E</code> for MP3. Under xenia-edge, copy <code>dash.ExtraAVCodecs.xex</code> and <code>dash.ExtraAVCodecs2.xex</code> from your console's system files to the <code>sysext\</code> folder of xenia's storage root (next to <code>content\</code>). WMV (VC-1) and MP3 then play.</li>
 <li><strong>MP4 (H.264/AAC)</strong> also needs the console's Optional Media Update, a content package (machine-wide content of type 2 for title FFFE07DF) that isn't part of the system update. Without it, the runtime shows the "media update required" screen when playback starts, and that can't complete without Xbox LIVE. Install it by copying the package file to xenia's <code>content\0000000000000000\FFFE07DF\00000002\</code>. With both, MP4 plays, but the picture is wrong: green blocks over the right base colour, because xenia doesn't support a texture format (<code>k_32</code>) the H.264 output uses. The first MP4 playback also waits for xenia to compile some very large shaders.</li>
 </ul>
 <p>To test without a server, put media files in <code>samples\apps\MediaPlayer\Media</code> and rebuild; the sample lists them as "(in the package)" and plays them from a URI relative to the XAP.</p>
@@ -187,6 +189,7 @@
 </blockquote>
 <h2 id="mediaelement">MediaElement<a class="headerlink" href="#mediaelement" title="Permanent link">&para;</a></h2>
 <p>The standard Silverlight <code>MediaElement</code>, playing WMV, WMA, MP4 (H.264/AAC) and MP3 over progressive download, plus Smooth Streaming through <code>SmoothStreamingMediaElement</code>. The Xbox version adds DRM and output-protection members (see the <a href="../reference/System.Windows.Controls/">reference</a>).</p>
+<p>It plays only from a URI. <code>SetSource(Stream)</code> throws <code>NotImplementedException</code> from the runtime's native side, so a file the app reads itself (from a drive, say) can't be handed to the player as a stream. Serve it over HTTP from the app instead, on a socket of its own, and point <code>Source</code> at that URL. The URL can be <code>http://127.0.0.1:port/...</code>, or the console's own address where loopback isn't reached. Serve byte ranges so the player can seek. A <code>BitmapImage</code> loads from a URI the same way.</p>
 <h2 id="mediatransport">MediaTransport<a class="headerlink" href="#mediatransport" title="Permanent link">&para;</a></h2>
 <p><code>MediaTransport</code> (<code>Microsoft.Xbox.Controls</code>) is the playback chrome every video app uses. It provides:</p>
 <ul>

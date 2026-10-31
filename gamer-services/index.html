@@ -63,6 +63,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../networking/">Networking</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../title/">The app's title</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../storage/">Storage</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../media/">Media</a>
@@ -180,6 +182,7 @@
               
                 <h1 id="gamer-services">Gamer services<a class="headerlink" href="#gamer-services" title="Permanent link">&para;</a></h1>
 <p><code>Microsoft.Xbox.Services</code> is the platform's build of XNA gamer services (<code>Microsoft.Xna.Framework.GamerServices</code>), with Xbox additions for Kinect versions of the system screens, social networks, presence and parental ratings.</p>
+<p>Signing in and the signed-in gamer work on any profile. Presence and anything else kept per title need a runtime profile that keeps the donor's title (<code>New-RuntimeProfile.ps1 -KeepTitle</code>, see <a href="../title/">The app's title</a>).</p>
 <h2 id="starting-it">Starting it<a class="headerlink" href="#starting-it" title="Permanent link">&para;</a></h2>
 <p>GamerServices has to be initialized, then pumped regularly. <code>XboxApplicationFrame</code> does both; without it, see <a href="../app-model/#xboxapplicationframe">App model</a>. Sign-in changes, <code>SignedIn</code> and <code>SignedOut</code>, and <code>Guide.IsVisible</code> only update while it's pumped, and presence changes are only sent then.</p>
 <h2 id="the-signed-in-gamer">The signed-in gamer<a class="headerlink" href="#the-signed-in-gamer" title="Permanent link">&para;</a></h2>

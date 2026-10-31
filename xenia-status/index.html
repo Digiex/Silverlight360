@@ -63,6 +63,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../networking/">Networking</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../title/">The app's title</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../storage/">Storage</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../media/">Media</a>
@@ -172,30 +174,34 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="status-under-xenia">Status under xenia<a class="headerlink" href="#status-under-xenia" title="Permanent link">&para;</a></h1>
-<p>Silverlight apps need <a href="https://github.com/has207/xenia-edge">xenia-edge</a> plus three pull requests that aren't merged yet:</p>
+<p>Silverlight apps run on a current build of <a href="https://github.com/has207/xenia-edge">xenia-edge</a>. What they need is in its <code>edge</code> branch since 31 October 2026:</p>
 <table>
 <thead>
 <tr>
-<th>Pull request</th>
+<th>Commit</th>
 <th>What it adds</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><a href="https://github.com/has207/xenia-edge/pull/325">#325</a></td>
-<td>What apps need to start: locale, guest timers and mutants, <code>XamContentOpenFile</code>.</td>
+<td><a href="https://github.com/has207/xenia-edge/commit/1a2b1654444d507a1f278ae5f22de401e6e0f639">Add what Silverlight apps need to start</a></td>
+<td>Locale, guest timers and mutants, <code>XamContentOpenFile</code>.</td>
 </tr>
 <tr>
-<td><a href="https://github.com/has207/xenia-edge/pull/326">#326</a></td>
-<td>XHttp over the host's HTTP client: every <code>WebClient</code> and <code>HttpWebRequest</code>.</td>
+<td><a href="https://github.com/has207/xenia-edge/commit/d4d6c543b8cd800af3ea32e5b774018bd3352e97">Send XHttp requests through the host's HTTP client</a></td>
+<td>Every <code>WebClient</code> and <code>HttpWebRequest</code>.</td>
 </tr>
 <tr>
-<td><a href="https://github.com/has207/xenia-edge/pull/327">#327</a></td>
-<td>The exports apps call once running, and a second commit that fixes XNA storage containers, the cache drive and <code>MediaTransport</code> commands.</td>
+<td><a href="https://github.com/has207/xenia-edge/commit/4fcace3702527afb610f53ae389f890d04992ff4">Add the exports Silverlight apps call</a></td>
+<td>The exports apps call once running, with XNA storage containers and the cache drive.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/has207/xenia-edge/commit/6196811b762cd7604d9ec79c003e68f63b05183a">Load the extra AV codec modules from the sysext folder</a></td>
+<td>The console's extra AV codecs, for WMV and MP3 (see <a href="../media/">Media</a>).</td>
 </tr>
 </tbody>
 </table>
-<p>The samples were tested on a build of xenia-edge with all three merged.</p>
+<p>An older build needs those commits.</p>
 <h2 id="works">Works<a class="headerlink" href="#works" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -262,7 +268,7 @@
 <tbody>
 <tr>
 <td><strong>Media playback</strong></td>
-<td>WMA plays. WMV and MP3 play with a xenia-edge build that loads the console's extra AV codec module (<code>dash.ExtraAVCodecs.xex</code> in xenia's <code>system\</code> folder); that loader is pull request <a href="https://github.com/has207/xenia-edge/pull/329">#329</a>, not merged yet. MP4 also needs the Optional Media Update and plays with a garbled picture (unsupported <code>k_32</code> texture format). See <a href="../media/">Media</a>.</td>
+<td>WMA plays. WMV and MP3 play with the console's extra AV codec modules (<code>dash.ExtraAVCodecs.xex</code> and <code>dash.ExtraAVCodecs2.xex</code>) in the <code>sysext\</code> folder of xenia's storage root. MP4 also needs the Optional Media Update and plays with a garbled picture (unsupported <code>k_32</code> texture format). See <a href="../media/">Media</a>.</td>
 </tr>
 <tr>
 <td><strong>SmartGlass keyboard</strong></td>

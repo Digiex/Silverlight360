@@ -81,6 +81,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../networking/">Networking</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../title/">The app's title</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../storage/">Storage</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../media/">Media</a>
@@ -254,7 +256,7 @@ protected override void OnNavigatedTo(NavigationEventArgs e)
 <li><strong>Start at once:</strong> put an empty <code>ItemsControl</code> in the page, for example <code>new ItemsControl { Width = 0, Height = 0 }</code> added to its root panel. The transition then starts on the page's first frame.</li>
 <li><strong>Shorter transitions:</strong> derive from <code>TransitionElement</code>, return <code>new Transition(element, storyboard)</code> from <code>GetTransition</code> with a short storyboard of your own, and set it with <code>TransitionService.SetNavigationInTransition</code> and <code>SetNavigationOutTransition</code>. Animate a <code>TranslateTransform</code> rather than a large area's opacity where you can: opacity redraws the whole area on every frame.</li>
 </ul>
-<p>Silverdash360 does both, in <code>Controls/Motion.cs</code>, and gets to about 270 ms with a 150 ms transition.</p>
+<p>Doing both, with a 150 ms transition, gets it to about 270 ms.</p>
 <h2 id="back-and-exit">Back and exit<a class="headerlink" href="#back-and-exit" title="Permanent link">&para;</a></h2>
 <p>B is the back button by convention, and the app handles it. A frame-level handler sees B after the focused control has had its chance:</p>
 <pre><code class="language-csharp">frame.GamePadButtonDown += delegate(object s, GamePadButtonEventArgs args)
