@@ -89,6 +89,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../native-code/">Native code</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../performance/">Performance</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../testing/">Testing in xenia</a>
                   </li>
               </ul>
@@ -246,6 +248,13 @@ protected override void OnNavigatedTo(NavigationEventArgs e)
         transitions:TransitionService.TransitionOrder=&quot;1&quot; /&gt;
 </code></pre>
 <p>with <code>xmlns:transitions="clr-namespace:Microsoft.Xbox.Transitions;assembly=Microsoft.Xbox"</code>.</p>
+<p>A page change takes longer than its animations. <code>XboxApplicationFrame</code> shows the new page only when a 300 ms timer fires after it arrives. The exception is a page with <code>ItemsControl</code>s, which it shows once they have all loaded. The default transitions then fade the old page out over 250 ms and the new one in over 350 ms, and the page ignores input until they end. In xenia that came to about 875 ms from pressing A to the new page taking input.</p>
+<p>To make page changes quicker:</p>
+<ul>
+<li><strong>Start at once:</strong> put an empty <code>ItemsControl</code> in the page, for example <code>new ItemsControl { Width = 0, Height = 0 }</code> added to its root panel. The transition then starts on the page's first frame.</li>
+<li><strong>Shorter transitions:</strong> derive from <code>TransitionElement</code>, return <code>new Transition(element, storyboard)</code> from <code>GetTransition</code> with a short storyboard of your own, and set it with <code>TransitionService.SetNavigationInTransition</code> and <code>SetNavigationOutTransition</code>. Animate a <code>TranslateTransform</code> rather than a large area's opacity where you can: opacity redraws the whole area on every frame.</li>
+</ul>
+<p>Silverdash360 does both, in <code>Controls/Motion.cs</code>, and gets to about 270 ms with a 150 ms transition.</p>
 <h2 id="back-and-exit">Back and exit<a class="headerlink" href="#back-and-exit" title="Permanent link">&para;</a></h2>
 <p>B is the back button by convention, and the app handles it. A frame-level handler sees B after the focused control has had its chance:</p>
 <pre><code class="language-csharp">frame.GamePadButtonDown += delegate(object s, GamePadButtonEventArgs args)

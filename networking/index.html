@@ -63,6 +63,8 @@
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="#">Networking</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#listening-for-connections">Listening for connections</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#xbox-live-and-xauth">Xbox LIVE and XAuth</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#the-test-server">The test server</a>
@@ -76,6 +78,8 @@
                   <li class="toctree-l1"><a class="reference internal" href="../gamer-services/">Gamer services</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../native-code/">Native code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../performance/">Performance</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../testing/">Testing in xenia</a>
                   </li>
@@ -184,6 +188,43 @@ client.DownloadStringAsync(new Uri(&quot;http://127.0.0.1:8360/api/catalog&quot;
 <li><strong>Data formats:</strong> the platform has no JSON serializer. Use XML with <code>System.Xml.Linq</code>, as the samples do, or ship a JSON library compiled for Silverlight 3.</li>
 <li><strong>Images:</strong> <code>BitmapImage</code> takes a URI or a stream; <code>WebClient.OpenReadAsync</code> gets the bytes if you want to cache them (see <code>PosterCache</code> in <code>samples\apps\CatalogBrowser</code>).</li>
 <li><strong>Xbox additions to <code>HttpWebRequest</code>:</strong> <code>IsAuthCall</code>, <code>LimitDownloadBufferSize</code> and <code>AllowLocalConnections</code> are passed to the native stack. The last two can't be set once the request has been sent.</li>
+</ul>
+<h2 id="listening-for-connections">Listening for connections<a class="headerlink" href="#listening-for-connections" title="Permanent link">&para;</a></h2>
+<p>Silverlight's <code>Socket</code> only connects out; it has no <code>Bind</code>, <code>Listen</code> or <code>Accept</code>. An app that serves something, such as a file server, calls the console's Winsock directly: xam exports it as <code>NetDll_*</code> functions, each taking the caller (1 for a title) first.</p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Ordinal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>NetDll_WSAStartup</code>, <code>NetDll_XNetStartup</code></td>
+<td>1, 0x33</td>
+</tr>
+<tr>
+<td><code>NetDll_socket</code>, <code>NetDll_closesocket</code>, <code>NetDll_shutdown</code></td>
+<td>3, 4, 5</td>
+</tr>
+<tr>
+<td><code>NetDll_setsockopt</code>, <code>NetDll_getsockname</code></td>
+<td>7, 9</td>
+</tr>
+<tr>
+<td><code>NetDll_bind</code>, <code>NetDll_listen</code>, <code>NetDll_accept</code></td>
+<td>0xB, 0xD, 0xE</td>
+</tr>
+<tr>
+<td><code>NetDll_recv</code>, <code>NetDll_send</code>, <code>NetDll_WSAGetLastError</code></td>
+<td>0x12, 0x16, 0x1B</td>
+</tr>
+</tbody>
+</table>
+<p>Declare them with <code>DllImport</code> by ordinal (see <a href="../native-code/">Native code</a>) and pass addresses as pinned buffers. They block, so run each socket on a thread of its own.</p>
+<ul>
+<li><strong>Mark every socket as plain TCP.</strong> A title's sockets use the console's encrypted protocol by default, which only other consoles speak: a PC's connections go unanswered. <code>setsockopt(socket, SOL_SOCKET, 0x5801, &amp;one, 4)</code> marks a socket as plain, which the console allows for titles with the "insecure sockets" privilege. The Plex host the default profile packages has it. Check the result; xenia-edge accepts any option, so a wrong one only shows on a console.</li>
+<li><strong>In xenia-edge,</strong> title TCP goes through its emulated System Link network unless it runs with <code>--systemlink_transport=off</code>; only then does a listening socket open on the PC. Ports below 1024 move up by 10000, so port 21 is 10021 on the PC.</li>
 </ul>
 <h2 id="xbox-live-and-xauth">Xbox LIVE and XAuth<a class="headerlink" href="#xbox-live-and-xauth" title="Permanent link">&para;</a></h2>
 <p>Requests to partner services were authenticated with XAuth tokens from Xbox LIVE (<code>Microsoft.Xbox.Security.XAuth</code>: call <code>XAuthService.Start</code>, then use <code>XAuthTokenRequest</code>; each request object can be used once). There's no Xbox LIVE to get tokens from, so anything behind XAuth fails. That includes sign-in for many of the shipped apps, Marketplace and social network tokens. Plain HTTP and HTTPS to your own servers work.</p>
