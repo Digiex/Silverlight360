@@ -1,0 +1,38 @@
+name: Feature request
+description: Something the SDK could do, a platform API that needs documenting or wrapping, or a sample that would help.
+labels: [enhancement]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please look through the [open issues](https://github.com/Digiex/Silverlight360/issues) first, in case someone has asked for it already: a 👍 on theirs helps too.
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Kind
+      options:
+        - The build or the tools
+        - A platform API: documenting it, or making it easier to use
+        - A sample or a guide
+        - Something else
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: The idea
+      description: What you'd like the SDK to do or have.
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why
+      description: What you're making, and what it would help you with or what's hard to do now.
+    validations:
+      required: true
+  - type: textarea
+    id: more
+    attributes:
+      label: Anything else
+      description: How a shipped Xbox 360 app does it, links, or other ways it could work.

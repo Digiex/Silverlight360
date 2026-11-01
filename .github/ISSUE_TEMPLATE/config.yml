@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Documentation
+    url: https://digiex.github.io/Silverlight360/
+    about: Getting started, the guides, the API reference and the samples.
+  - name: Problems in the emulator itself
+    url: https://github.com/has207/xenia-edge/issues
+    about: Crashes and missing features of xenia-edge that aren't the SDK's, as Status under xenia describes.
+  - name: Silverdash360
+    url: https://github.com/Digiex/Silverdash360/issues
+    about: Problems and ideas for the Silverdash360 dashboard go to its own repository.

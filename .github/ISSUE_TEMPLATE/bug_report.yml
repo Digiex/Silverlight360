@@ -1,0 +1,63 @@
+name: Problem
+description: Building, packaging or running an app with Silverlight360 doesn't work as it should, or the docs are wrong.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting it. Please look through the [open issues](https://github.com/Digiex/Silverlight360/issues) first, in case it's been reported already, and see [Status under xenia](https://digiex.github.io/Silverlight360/xenia-status/) for what doesn't work in the emulator yet.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Where
+      options:
+        - Making a runtime profile (New-RuntimeProfile.ps1)
+        - Building or packaging (Build-XboxApp.ps1, MSBuild, Visual Studio)
+        - An app running in xenia-edge
+        - An app running on a console
+        - A sample
+        - The docs or the API reference
+        - Something else
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What went wrong, and what you expected instead. Paste error messages as text.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: How to make it happen
+      description: The commands you ran, or the smallest app or sample that shows it. A link to a repository or a zip of the project helps most.
+    validations:
+      required: true
+  - type: input
+    id: sdk
+    attributes:
+      label: Silverlight360 version
+      description: "The commit you have (`git rev-parse --short HEAD`), or the date you downloaded it."
+    validations:
+      required: true
+  - type: input
+    id: donor
+    attributes:
+      label: Runtime profile
+      description: The app the runtime profile was made from, such as `Plex v0.0.0.7`, and whether `-KeepTitle` was given.
+  - type: input
+    id: where
+    attributes:
+      label: Running on
+      description: "The xenia-edge commit or build, or the console and its system version, such as `RGH Slim, 2.0.17559.0`."
+  - type: textarea
+    id: log
+    attributes:
+      label: Log or build output
+      description: The build output, xenia's log, or your app's debug output around the problem. Drag a file in for a long one.
+  - type: textarea
+    id: more
+    attributes:
+      label: Anything else
+      description: Screenshots, and anything else that helps.

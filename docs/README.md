@@ -32,4 +32,6 @@ Reference:
 
 An app built with it: [Silverdash360](https://github.com/Digiex/Silverdash360), a dashboard for the Xbox 360 that runs on consoles ([its documentation](https://digiex.github.io/Silverdash360/)). See [Samples](samples.md#apps-built-with-silverlight360).
 
+Problems and ideas go to [GitHub Issues](https://github.com/Digiex/Silverlight360/issues) (see [Problems and ideas](issues.md)), and contributions and pull requests are welcome: see [Contributing](contributing.md).
+
 Everything here comes from running apps in the [xenia-edge](https://github.com/has207/xenia-edge) emulator and from reading the platform's own assemblies. Of the samples, only PageNavigation has been run on a console so far.

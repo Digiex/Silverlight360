@@ -237,6 +237,17 @@ with the SDK, and runs on consoles: an example of a whole app, from calling
 XAM and the kernel to releasing it on GitHub. Its documentation is at
 [digiex.github.io/Silverdash360](https://digiex.github.io/Silverdash360/).
 
+## Problems, ideas and contributing
+
+[Report a problem](https://github.com/Digiex/Silverlight360/issues/new?template=bug_report.yml)
+or [request a feature](https://github.com/Digiex/Silverlight360/issues/new?template=feature_request.yml)
+on GitHub Issues; look through the [open issues](https://github.com/Digiex/Silverlight360/issues)
+first, and see [docs/issues.md](docs/issues.md) for what helps.
+
+Contributions and pull requests are welcome: fixes, tools, API
+documentation, guides, samples and console testing. See
+[CONTRIBUTING.md](CONTRIBUTING.md).
+
 ## License
 
 Silverlight360 is licensed under the

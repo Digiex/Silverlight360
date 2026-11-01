@@ -58,6 +58,8 @@ nav:
   - Samples: samples.md
   - Status under xenia: xenia-status.md
   - Runtime inventory: runtime-inventory.md
+  - Problems and ideas: issues.md
+  - Contributing: contributing.md
   - API reference:
       - Overview: reference/README.md
       - MS.Internal: reference/MS.Internal.md
