@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://digiex.github.io/Silverlight360/contributing/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Contributing - Silverlight360</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Contributing";
+        var mkdocs_page_input_path = "contributing.md";
+        var mkdocs_page_url = "/Silverlight360/contributing/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/powershell.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/csharp.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/xml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Silverlight360
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../getting-started/">Getting started</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../project-setup/">Projects and Visual Studio</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../app-model/">App model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../input-and-focus/">Input and focus</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../controls/">Xbox controls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../networking/">Networking</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../title/">The app's title</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../storage/">Storage</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../media/">Media</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../gamer-services/">Gamer services</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../native-code/">Native code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../performance/">Performance</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../testing/">Testing in xenia</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../samples/">Samples</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../xenia-status/">Status under xenia</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../runtime-inventory/">Runtime inventory</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../issues/">Problems and ideas</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Contributing</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#ways-to-help">Ways to help</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#before-you-start">Before you start</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#making-a-change">Making a change</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#pull-requests">Pull requests</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#what-cant-go-in">What can't go in</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#license">License</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">API reference</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/MS.Internal/">MS.Internal</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Controls.Primitives/">Microsoft.Xbox.Controls.Primitives</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Controls/">Microsoft.Xbox.Controls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Core/">Microsoft.Xbox.Core</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Input/">Microsoft.Xbox.Input</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Media.Mpeg/">Microsoft.Xbox.Media.Mpeg</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Media/">Microsoft.Xbox.Media</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Net/">Microsoft.Xbox.Net</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Security.XAuth/">Microsoft.Xbox.Security.XAuth</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Services/">Microsoft.Xbox.Services</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Transitions/">Microsoft.Xbox.Transitions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox/">Microsoft.Xbox</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xna.Framework.GamerServices.ContentRating.Level/">Microsoft.Xna.Framework.GamerServices.ContentRating.Level</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xna.Framework.GamerServices.ContentRating.System/">Microsoft.Xna.Framework.GamerServices.ContentRating.System</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xna.Framework.GamerServices.ContentRating/">Microsoft.Xna.Framework.GamerServices.ContentRating</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xna.Framework.GamerServices/">Microsoft.Xna.Framework.GamerServices</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xna.Framework.Storage/">Microsoft.Xna.Framework.Storage</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/System.Reflection.ReflectionPermissionFrame/">System.Reflection.ReflectionPermissionFrame</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/System.Reflection/">System.Reflection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/System.Windows.Controls/">System.Windows.Controls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/System.Windows.Input/">System.Windows.Input</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/System.Windows.Media/">System.Windows.Media</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/System.Windows/">System.Windows</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Silverlight360</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Contributing</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/Digiex/Silverlight360/edit/master/docs/contributing.md">Edit on Digiex/Silverlight360</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="contributing">Contributing<a class="headerlink" href="#contributing" title="Permanent link">&para;</a></h1>
+<p>Contributions are welcome: fixes to the build and the tools, documentation for the platform's APIs, guides, samples, testing apps on a console, and good bug reports. Pull requests go to <a href="https://github.com/Digiex/Silverlight360/pulls">GitHub</a>.</p>
+<h2 id="ways-to-help">Ways to help<a class="headerlink" href="#ways-to-help" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Report problems and ideas</strong> on <a href="https://github.com/Digiex/Silverlight360/issues">GitHub Issues</a>: see <a href="../issues/">Problems and ideas</a>.</li>
+<li><strong>Test on a console</strong>: little has been run on one so far, so what works and what doesn't on real hardware is worth a lot.</li>
+<li><strong>Document the platform</strong>: the API reference comes from the files in <code>docs\api</code>, and every Xbox type and member there could use better text and examples.</li>
+<li><strong>Write guides and samples</strong> for what the platform can do and isn't shown yet.</li>
+<li><strong>Fix something or add a feature</strong> with a pull request.</li>
+</ul>
+<h2 id="before-you-start">Before you start<a class="headerlink" href="#before-you-start" title="Permanent link">&para;</a></h2>
+<p>For a small fix, a pull request on its own is fine. For a new feature, a new tool or a bigger change, open an <a href="https://github.com/Digiex/Silverlight360/issues">issue</a> first, or comment on one that's there, so we can agree on how it should work before you spend time on it. Issues labelled <a href="https://github.com/Digiex/Silverlight360/labels/good%20first%20issue">good first issue</a> and <a href="https://github.com/Digiex/Silverlight360/labels/help%20wanted">help wanted</a> are a good place to start.</p>
+<h2 id="making-a-change">Making a change<a class="headerlink" href="#making-a-change" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Fork the repository and make a branch from <code>master</code>.</li>
+<li>Set up the tools and a runtime profile: see <a href="../getting-started/">Getting started</a>.</li>
+<li>Make the change, in the style of the code and the docs around it.</li>
+<li>Check it:<ul>
+<li>The samples still build with <code>tools\Build-XboxApp.ps1</code>, and the ones your change touches run in xenia-edge (<code>tools\Test-XboxApp.ps1</code>, see <a href="../testing/">Testing in xenia</a>) or on a console.</li>
+<li>After changing the API documentation in <code>docs\api</code>, <code>tools\Test-ApiDocs.ps1</code> passes and <code>python tools\new_api_reference.py</code> has regenerated the <a href="../reference/">API reference</a>; the reference pages aren't edited by hand.</li>
+<li>The docs build: <code>python -m mkdocs build --strict</code>.</li>
+</ul>
+</li>
+<li>Update the docs when you change what the SDK does or how it's used, and <a href="../xenia-status/">Status under xenia</a> when you find what works in the emulator.</li>
+<li>Open a pull request against <code>master</code>.</li>
+</ol>
+<h2 id="pull-requests">Pull requests<a class="headerlink" href="#pull-requests" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Keep each one to one change, so it's easy to review; a fix and an unrelated feature are two pull requests.</li>
+<li>Say what it changes and why, which issue it fixes (<code>Fixes #12</code>), and how you tested it: which samples or apps, in xenia-edge (which build) or on a console.</li>
+<li>Screenshots help for anything on screen: <code>tools\Test-XboxApp.ps1</code> takes them.</li>
+<li>Commit messages say what the change does, in a short first line, such as "Add an app-only build, for handing an app out".</li>
+</ul>
+<h2 id="what-cant-go-in">What can't go in<a class="headerlink" href="#what-cant-go-in" title="Permanent link">&para;</a></h2>
+<p>The SDK works from a platform that isn't ours, so a pull request can't add:</p>
+<ul>
+<li><strong>Files from an Xbox 360 app or a runtime profile</strong>: <code>default.xex</code>, <code>xcoreclr.dll</code>, <code>agcore.dll</code>, the framework assemblies, native images, or anything else in a profile's <code>package</code> or <code>reference</code> folder. Each user makes their own profile from an app they have.</li>
+<li><strong>Microsoft's documentation or SDK files</strong>, such as text copied from the Silverlight, .NET or XNA reference files <code>Install-ApiDocs.ps1</code> reads on your machine, or anything from the Xbox 360 SDK. Describe what you found in your own words.</li>
+<li><strong>Anything taken from a console's firmware</strong> or from other projects whose licenses don't allow it.</li>
+</ul>
+<h2 id="license">License<a class="headerlink" href="#license" title="Permanent link">&para;</a></h2>
+<p>Silverlight360 is licensed under the <a href="https://github.com/Digiex/Silverlight360/blob/master/LICENSE.md">PolyForm Noncommercial License 1.0.0</a> with an additional condition. By opening a pull request, you agree that your contribution is licensed under the same terms.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../issues/" class="btn btn-neutral float-left" title="Problems and ideas"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../reference/" class="btn btn-neutral float-right" title="Overview">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>Silverlight360 is licensed under the PolyForm Noncommercial License 1.0.0 with an additional condition. Xbox, Xbox 360 and Silverlight are trademarks of Microsoft.</p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/Digiex/Silverlight360" class="fa fa-code-fork" style="color: #fcfcfc"> Digiex/Silverlight360</a>
+        </span>
+    
+    
+      <span><a href="../issues/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../reference/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
