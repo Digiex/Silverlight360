@@ -10,14 +10,24 @@ namespace XboxControls
     /// </summary>
     public partial class MainPage : UserControl
     {
+        private int focusAttempts;
+
+        // Loaded can come before the first layout pass, when a control can't take focus yet (Focus returns false);
+        // then try again on a later dispatcher turn. (Retrying from LayoutUpdated recurses: Focus runs layout, which
+        // raises LayoutUpdated again.)
+        private void FocusFirstTile()
+        {
+            Button first = (Button)BrowseGrid.Children[0];
+            if (!first.Focus() && ++focusAttempts < 100)
+            {
+                Dispatcher.BeginInvoke(FocusFirstTile);
+            }
+        }
+
         public MainPage()
         {
             InitializeComponent();
-            Loaded += delegate
-            {
-                Button first = (Button)BrowseGrid.Children[0];
-                first.Focus();
-            };
+            Loaded += delegate { FocusFirstTile(); };
             foreach (UIElement child in BrowseGrid.Children)
             {
                 Button tile = (Button)child;
