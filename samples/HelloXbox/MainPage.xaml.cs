@@ -49,10 +49,17 @@ namespace HelloXbox
             CompositionTarget.Rendering += FirstFrame;
         }
 
-        // The first frame after the page loaded: the app is up and drawing. Test scripts stop on this line
-        // ("(DbgPrint) HelloXbox: ready", Run-App.ps1 -DonePattern), since the app keeps logging after it.
+        // Thirty frames after the page loaded: the app is up and drawing. Test scripts stop on this line
+        // ("(DbgPrint) HelloXbox: ready", Run-App.ps1 -DonePattern), since the app keeps logging after it; on the
+        // very first frame a screenshot could still catch the emulator's splash screen.
+        private int framesDrawn;
+
         private void FirstFrame(object sender, EventArgs e)
         {
+            if (++framesDrawn < 30)
+            {
+                return;
+            }
             CompositionTarget.Rendering -= FirstFrame;
             XboxSdk.Samples.DebugLog.WriteLine("HelloXbox: ready");
         }
