@@ -35,6 +35,19 @@ namespace PageNavigation
                 }
             };
             RootVisual = frame;
+            // Thirty frames in, the app is up and drawing: test scripts stop on this line ("(DbgPrint) PageNavigation: ready",
+            // Run-App.ps1 -DonePattern), since the app keeps running after it.
+            int framesDrawn = 0;
+            System.EventHandler ready = null;
+            ready = delegate
+            {
+                if (++framesDrawn == 30)
+                {
+                    System.Windows.Media.CompositionTarget.Rendering -= ready;
+                    XboxSdk.Samples.DebugLog.WriteLine("PageNavigation: ready");
+                }
+            };
+            System.Windows.Media.CompositionTarget.Rendering += ready;
         }
 
         /// <summary>

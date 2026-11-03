@@ -24,6 +24,7 @@
     <ApplicationDefinition Include="App.xaml"><Generator>MSBuild:Compile</Generator></ApplicationDefinition>
     <Page Include="Pages\HomePage.xaml"><Generator>MSBuild:Compile</Generator></Page>
     <Page Include="Pages\DetailPage.xaml"><Generator>MSBuild:Compile</Generator></Page>
+    <Compile Include="..\..\Common\DebugLog.cs"><Link>Common\DebugLog.cs</Link></Compile>
     <Compile Include="App.xaml.cs"><DependentUpon>App.xaml</DependentUpon></Compile>
     <Compile Include="Pages\HomePage.xaml.cs"><DependentUpon>Pages\HomePage.xaml</DependentUpon></Compile>
     <Compile Include="Pages\DetailPage.xaml.cs"><DependentUpon>Pages\DetailPage.xaml</DependentUpon></Compile>
