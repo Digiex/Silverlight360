@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 using System.Windows.Threading;
 
 namespace HelloXbox
@@ -45,6 +46,15 @@ namespace HelloXbox
             });
             RequestTime();
             timer.Start();
+            CompositionTarget.Rendering += FirstFrame;
+        }
+
+        // The first frame after the page loaded: the app is up and drawing. Test scripts stop on this line
+        // ("(DbgPrint) HelloXbox: ready", Run-App.ps1 -DonePattern), since the app keeps logging after it.
+        private void FirstFrame(object sender, EventArgs e)
+        {
+            CompositionTarget.Rendering -= FirstFrame;
+            XboxSdk.Samples.DebugLog.WriteLine("HelloXbox: ready");
         }
 
         private void RequestTime()
