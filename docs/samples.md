@@ -26,6 +26,42 @@ Build any sample with `tools\Build-XboxApp.ps1 -Project <csproj>` and run its `b
 | [NativeProbe](../samples/NativeProbe) | `DllImport` into xam and the kernel by ordinal, including a structure through a pinned buffer. |
 | [PlatformCalls](../samples/PlatformCalls) | A storage container, the cache drive and `MediaTransport` commands, each reporting OK or the error. Written to test the xenia fixes for them. Build it on a runtime profile with the title ([The app's title](title.md)). |
 
+## A native library of the app's own
+
+[NativeLibrary](../samples/NativeLibrary) calls into `testlib.xex`, a DLL in C that ships in the app's package, with
+`DllImport` by ordinal: 32- and 64-bit arguments and results, a pinned buffer the DLL reads and writes, and state the
+DLL keeps between calls. Then it asks the kernel for the same module with `XexLoadImage`, `XexGetModuleHandle` and
+`XexGetProcedureAddress`. It passes all 8 checks in xenia-edge and on a console (2.0.17559) that runs unsigned code.
+
+The DLL is built with [xsdk](https://github.com/xenosworks/xsdk), and needs its DLL support (`elf2xex.py --dll`), which
+is in the `dll-modules` branch of [jessenic/xsdk](https://github.com/jessenic/xsdk/tree/dll-modules) until
+[xenosworks/xsdk#4](https://github.com/xenosworks/xsdk/pull/4) is merged. Build xsdk's toolchain as its own docs say
+(in WSL, `~/xsdk-gcc`), then:
+
+```bash
+# In WSL: writes samples/NativeLibrary/testlib.xex, which the project packages. XSDK is the dll-modules checkout
+# (default ~/xsdk), TOOLCHAIN the toolchain's prefix (default ~/xsdk-gcc/bin/powerpc-xsdk-elf-).
+git clone -b dll-modules https://github.com/jessenic/xsdk ~/xsdk
+XSDK=~/xsdk bash samples/NativeLibrary/native/build.sh
+```
+
+```powershell
+# Then the app, as any sample.
+.\tools\Build-XboxApp.ps1 -Project .\samples\NativeLibrary\NativeLibrary.csproj
+```
+
+What a DLL of your own needs, to load on a console as well as in xenia:
+
+- **A load address that's free on the console.** `native/testlib.ld` links it at 0x8F000000 and `build.sh` gives
+  elf2xex the same `--base`. A console running a Silverlight app has 0x8A000000, 0x8C000000 and 0x8E000000 taken, and
+  there the module can't load. xenia has them free, so it doesn't show. A module that doesn't load becomes a call
+  through a null pointer at its first `DllImport`, which took the console down.
+- **Some read-only data**, such as a string, so the image starts with it after the headers: elf2xex refuses an image
+  whose first section is its code, a page later.
+- **`XexLoadImage` asked as the CLR asks:** with the path the CLR loaded it by (`GAME:\` before its name) and flags 9,
+  a DLL of the title's process. A title's request without the title bit (0x1) is refused with
+  STATUS_ACCESS_DENIED on a console; xenia lets it through.
+
 ## Apps built with Silverlight360
 
 | App | Shows |

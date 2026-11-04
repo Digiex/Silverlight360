@@ -68,3 +68,10 @@ The framework itself calls native code in these ways:
 5. **The CLR's internal calls** into `xcoreclr.dll`.
 
 App code could call the XamlHost extensions the same way, but that hasn't been tried; their signatures have to be read from the decompiled `Microsoft.Xbox.*` assemblies.
+
+## A DLL of the app's own
+
+An app can ship native code of its own in its package: a DLL in C, built with
+[xsdk](https://github.com/jessenic/xsdk/tree/dll-modules) and called with `DllImport("<name>.xex", EntryPoint = "#<ordinal>")`
+like the system's modules. `samples\NativeLibrary` does; [Samples](samples.md#a-native-library-of-the-apps-own) says
+how to build it and what such a DLL needs to load on a console as well as in xenia.

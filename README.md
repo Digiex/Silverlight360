@@ -183,7 +183,10 @@ manifest doesn't list).
 ## Calling native code
 
 App code can call the kernel and XAM with `DllImport` by ordinal; see
-[docs/native-code.md](docs/native-code.md) and [samples/NativeProbe](samples/NativeProbe).
+[docs/native-code.md](docs/native-code.md) and [samples/NativeProbe](samples/NativeProbe). It can also call a DLL of
+its own in C, built with xsdk's [dll-modules](https://github.com/jessenic/xsdk/tree/dll-modules) branch: see
+[samples/NativeLibrary](samples/NativeLibrary) and how to build it in
+[docs/samples.md](docs/samples.md#a-native-library-of-the-apps-own).
 
 ## Package layout
 

@@ -1,0 +1,37 @@
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8B1E4C27-5D3A-4E61-9F02-3A7C5D8E1F40}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>NativeLibrary</RootNamespace>
+    <AssemblyName>NativeLibrary</AssemblyName>
+    <SilverlightAppEntry>NativeLibrary.App</SilverlightAppEntry>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.Windows" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </ApplicationDefinition>
+    <Page Include="MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Compile Include="App.xaml.cs"><DependentUpon>App.xaml</DependentUpon></Compile>
+    <Compile Include="MainPage.xaml.cs"><DependentUpon>MainPage.xaml</DependentUpon></Compile>
+    <Compile Include="NativeMethods.cs" />
+    <Compile Include="..\Common\DebugLog.cs"><Link>Common\DebugLog.cs</Link></Compile>
+    <Compile Include="..\Common\NativeBuffer.cs"><Link>Common\NativeBuffer.cs</Link></Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <!-- Built by native\build.sh in WSL; the package puts it beside default.xex. -->
+    <Content Include="testlib.xex" />
+  </ItemGroup>
+  <Import Project="..\..\msbuild\XboxSilverlight.targets" />
+</Project>

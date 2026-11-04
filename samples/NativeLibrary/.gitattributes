@@ -1,0 +1,2 @@
+# native/ is built in WSL, where bash can't run a script with CRLF line endings.
+native/** text eol=lf

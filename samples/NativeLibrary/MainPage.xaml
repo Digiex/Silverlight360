@@ -1,0 +1,12 @@
+<UserControl x:Class="NativeLibrary.MainPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Width="1280" Height="720">
+  <Grid Background="#FF101820">
+    <StackPanel Margin="96,64,96,48">
+      <TextBlock Text="Native library" FontSize="48" Foreground="White" />
+      <TextBlock Text="DllImport into testlib.xex, a DLL of the app's own built with xsdk" FontSize="22" Foreground="#FF9FC5E8" />
+      <TextBlock x:Name="ResultsText" FontSize="20" Foreground="White" Margin="0,32,0,0" TextWrapping="Wrap" />
+    </StackPanel>
+  </Grid>
+</UserControl>

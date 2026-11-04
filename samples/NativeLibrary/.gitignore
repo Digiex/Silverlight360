@@ -1,0 +1,3 @@
+# Built by native/build.sh: the object files, the ELF and its map, and the DLL the project packages.
+native/build/
+testlib.xex
