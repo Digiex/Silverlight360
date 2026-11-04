@@ -68,7 +68,10 @@ The SDK reuses that platform:
 
 The app's own assemblies stay plain IL. The Xbox CLR compiles IL itself when
 an assembly has no Xenon native image, so no native-image generator is
-needed (see [docs/runtime-inventory.md](docs/runtime-inventory.md)).
+needed (see [docs/runtime-inventory.md](docs/runtime-inventory.md)). To run
+them compiled, `Build-XboxApp.ps1 -NGen` makes native images with
+[XboxNGen](https://github.com/Digiex/Silverlight360-XboxNGen)
+([docs/native-images.md](docs/native-images.md)).
 
 ## Requirements
 
@@ -212,7 +215,8 @@ bin\Release\xbox\
 | `tools\Get-DonorAssemblies.ps1 -Root <apps> -OutJson <file>` | Lists the assemblies extracted apps carry that the donor doesn't, with the apps carrying each build; `tools\donor_assemblies_md.py` renders it into [docs/donor-assemblies.md](docs/donor-assemblies.md). |
 | `tools\New-RuntimeProfile.ps1 -DonorApp <app> -Output <profile> [-KeepTitle]` | Makes a runtime profile. Its `default.xex` declares no title unless `-KeepTitle` is given ([docs/title.md](docs/title.md)). |
 | `tools\strip_donor_title.py <default.xex>` | Takes the donor's title (execution info and title resource) out of an executable; `New-RuntimeProfile.ps1` runs it. |
-| `tools\Build-XboxApp.ps1 -Project <csproj> [-RuntimeProfile <profile>]` | Builds and packages a project. |
+| `tools\Build-XboxApp.ps1 -Project <csproj> [-RuntimeProfile <profile>] [-NGen]` | Builds and packages a project; `-NGen` also makes native images. |
+| `tools\NGen-XboxApp.ps1 -Package <package> [-Platform] [-Tag <tag> \| -XboxNGen <checkout>]` | Makes native images for a built package with the latest [XboxNGen](https://github.com/Digiex/Silverlight360-XboxNGen) release (downloaded and cached) or a local checkout. Needs xenia-edge's `silverlight-build` branch. The images are unsigned: they run in xenia-edge and on consoles that run unsigned code only ([docs/native-images.md](docs/native-images.md)). |
 | `tools\Test-XboxApp.ps1 -Xex <xex> -Output <dir> -Steps ...` | Runs an app in xenia with scripted controller input and screenshots ([docs/testing.md](docs/testing.md)). |
 | `tools\Install-ApiDocs.ps1 [-RuntimeProfile <profile>]` | Writes the IntelliSense files into a profile. |
 | `tools\Test-ApiDocs.ps1` | Checks the SDK's documentation files against the API. |
@@ -228,8 +232,9 @@ xenia-edge and what works.
 
 - Little console testing: only the PageNavigation sample has been run on a
   console so far.
-- No native images for app code. They aren't required, but startup is
-  slower than with them.
+- Native images for app code are XboxNGen's and unsigned
+  ([docs/native-images.md](docs/native-images.md)), so on a stock retail
+  console app code runs interpreted.
 - The donor's title ID is kept; changing it needs XamlHost's XEX rebuilt.
 - Linux and macOS hosts can build nothing (MSBuild 14 and the Silverlight 3
   tools are Windows-only) and xenia-edge's XHttp only has a Windows backend.

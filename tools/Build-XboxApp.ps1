@@ -12,11 +12,19 @@ for handing the app out: the runtime and the framework assemblies are
 Microsoft's and the donor app's, and whoever installs the app lays its files
 over the package folder of a runtime profile of their own.
 
+With -NGen it then makes native images for the app's assemblies in the
+package with XboxNGen (NGen-XboxApp.ps1; -NGenPlatform for the platform's
+too). They are unsigned: they run in xenia-edge and on consoles that run
+unsigned code only.
+
 .EXAMPLE
 .\Build-XboxApp.ps1 -Project ..\samples\HelloXbox\HelloXbox.csproj
 
 .EXAMPLE
 .\Build-XboxApp.ps1 -Project ..\samples\HelloXbox\HelloXbox.csproj -AppOnly
+
+.EXAMPLE
+.\Build-XboxApp.ps1 -Project ..\samples\HelloXbox\HelloXbox.csproj -NGen
 #>
 param(
     [Parameter(Mandatory)] [string]$Project,
@@ -24,11 +32,20 @@ param(
     [string]$RuntimeProfile = '',
     # The app's own files alone, without the runtime (XboxAppOnly).
     [switch]$AppOnly,
+    # Then make native images with XboxNGen (NGen-XboxApp.ps1).
+    [switch]$NGen,
+    # With -NGen, the platform assemblies' too.
+    [switch]$NGenPlatform,
+    # With -NGen, a local XboxNGen checkout instead of its latest release.
+    [string]$XboxNGen = '',
     [string]$MsBuildPath = "${env:ProgramFiles(x86)}\MSBuild\14.0\Bin\MSBuild.exe"
 )
 
 $ErrorActionPreference = 'Stop'
 $sdkRoot = Split-Path -Parent $PSScriptRoot
+if ($AppOnly -and ($NGen -or $NGenPlatform)) {
+    throw '-NGen needs the whole package, not -AppOnly: native images are made by running it.'
+}
 $required = @{
     'MSBuild 14 (Visual Studio 2015 build tools)' = $MsBuildPath
     'Silverlight 3 build targets' = "${env:ProgramFiles(x86)}\MSBuild\Microsoft\Silverlight\v3.0\Microsoft.Silverlight.CSharp.targets"
@@ -57,4 +74,12 @@ if ($RuntimeProfile) {
 & $MsBuildPath @buildArgs
 if ($LASTEXITCODE -ne 0) {
     exit $LASTEXITCODE
+}
+
+if ($NGen -or $NGenPlatform) {
+    $package = Join-Path (Split-Path -Parent (Resolve-Path -LiteralPath $Project).Path) "bin\$Configuration\xbox"
+    & (Join-Path $PSScriptRoot 'NGen-XboxApp.ps1') -Package $package -Platform:$NGenPlatform -XboxNGen $XboxNGen
+    if ($LASTEXITCODE -ne 0) {
+        exit $LASTEXITCODE
+    }
 }

@@ -7,7 +7,7 @@ The platform's runtime, `xcoreclr.dll`, has no JIT compiler on a retail console.
 - **Precompiled.** The framework (`mscorlib`, `System`, `System.Core`, `System.Windows`, `System.Xml`, the `Microsoft.Xbox` libraries) ships as native images, the `.ni.dll` files next to each assembly. Their code runs as PowerPC code.
 - **Interpreted.** Everything else, your app's assembly included, goes through the runtime's IL interpreter. A method the interpreter can't handle, and that isn't in a native image, stops the app with "Xbox 360 has encountered a method that it cannot compile or interpret."
 
-The shipped apps' own assemblies have native images too (`XboxApplication.ni.dll`, `Newtonsoft.Json.ni.dll`, `Ninject.ni.dll` and others), made by Microsoft's build pipeline when the apps were published. Each is signed for its app and its load address, and no tool to make them ships with the platform, so a Silverlight360 app's code is interpreted.
+The shipped apps' own assemblies have native images too (`XboxApplication.ni.dll`, `Newtonsoft.Json.ni.dll`, `Ninject.ni.dll` and others), made by Microsoft's build pipeline when the apps were published. Each is signed for its app and its load address, and no tool to make them ships with the platform, so a Silverlight360 app's code is interpreted. [XboxNGen](https://github.com/Digiex/Silverlight360-XboxNGen) makes unsigned ones, which run in xenia-edge and on consoles that run unsigned code: see [Native images](native-images.md).
 
 ## What it costs
 

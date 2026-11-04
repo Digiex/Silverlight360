@@ -89,7 +89,7 @@ bin\Release\xbox\
   MyApp.dll                    your code (IL)
 ```
 
-Your assemblies stay IL; the platform's CLR compiles them when they load. Native images aren't needed.
+Your assemblies stay IL; the platform's CLR compiles them when they load. Native images aren't needed, but `Build-XboxApp.ps1 -NGen` makes them ([Native images](native-images.md)).
 
 ## Handing out an app
 
