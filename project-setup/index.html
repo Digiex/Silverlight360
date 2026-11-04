@@ -91,6 +91,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../performance/">Performance</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../native-images/">Native images</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../testing/">Testing in xenia</a>
                   </li>
               </ul>
@@ -104,6 +106,10 @@
               </ul>
               <ul>
                 <li class="toctree-l1"><a class="reference internal" href="../runtime-inventory/">Runtime inventory</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../donor-assemblies/">Assemblies in other donor apps</a>
                 </li>
               </ul>
               <ul>
@@ -326,7 +332,7 @@
   SplashScreenImage.jpg  SplashScreenImage480.jpg
   MyApp.dll                    your code (IL)
 </code></pre>
-<p>Your assemblies stay IL; the platform's CLR compiles them when they load. Native images aren't needed.</p>
+<p>Your assemblies stay IL; the platform's CLR compiles them when they load. Native images aren't needed, but <code>Build-XboxApp.ps1 -NGen</code> makes them (<a href="../native-images/">Native images</a>).</p>
 <h2 id="handing-out-an-app">Handing out an app<a class="headerlink" href="#handing-out-an-app" title="Permanent link">&para;</a></h2>
 <p>Most of a package is the runtime profile's: Microsoft's runtime and framework assemblies, and the donor app's <code>default.xex</code>. They aren't yours to hand out. Build with <code>XboxAppOnly</code> for the app's own files alone:</p>
 <pre><code class="language-powershell">.\tools\Build-XboxApp.ps1 -Project path\to\MyApp.csproj -AppOnly

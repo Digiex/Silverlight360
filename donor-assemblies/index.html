@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://digiex.github.io/Silverlight360/donor-assemblies/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Assemblies in other donor apps - Silverlight360</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Assemblies in other donor apps";
+        var mkdocs_page_input_path = "donor-assemblies.md";
+        var mkdocs_page_url = "/Silverlight360/donor-assemblies/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/powershell.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/csharp.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/xml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Silverlight360
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../getting-started/">Getting started</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../project-setup/">Projects and Visual Studio</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../app-model/">App model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../input-and-focus/">Input and focus</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../controls/">Xbox controls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../networking/">Networking</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../title/">The app's title</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../storage/">Storage</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../media/">Media</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../gamer-services/">Gamer services</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../native-code/">Native code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../performance/">Performance</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../native-images/">Native images</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../testing/">Testing in xenia</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../samples/">Samples</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../xenia-status/">Status under xenia</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../runtime-inventory/">Runtime inventory</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Assemblies in other donor apps</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#two-names-that-are-no-assembly-of-their-own">Two names that are no assembly of their own</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#platform-assemblies">Platform assemblies</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#microsofts-libraries">Microsoft's libraries</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#media-player-framework-mmppf-parts-plex-doesnt-have">Media player framework (MMPPF) parts Plex doesn't have</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#third-party-libraries">Third-party libraries</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#shared-by-one-publishers-apps">Shared by one publisher's apps</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#each-apps-own-assemblies">Each app's own assemblies</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../issues/">Problems and ideas</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../contributing/">Contributing</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">API reference</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/MS.Internal/">MS.Internal</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Controls.Primitives/">Microsoft.Xbox.Controls.Primitives</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Controls/">Microsoft.Xbox.Controls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Core/">Microsoft.Xbox.Core</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Input/">Microsoft.Xbox.Input</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Media.Mpeg/">Microsoft.Xbox.Media.Mpeg</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Media/">Microsoft.Xbox.Media</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Net/">Microsoft.Xbox.Net</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Security.XAuth/">Microsoft.Xbox.Security.XAuth</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Services/">Microsoft.Xbox.Services</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Transitions/">Microsoft.Xbox.Transitions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox/">Microsoft.Xbox</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xna.Framework.GamerServices.ContentRating.Level/">Microsoft.Xna.Framework.GamerServices.ContentRating.Level</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xna.Framework.GamerServices.ContentRating.System/">Microsoft.Xna.Framework.GamerServices.ContentRating.System</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xna.Framework.GamerServices.ContentRating/">Microsoft.Xna.Framework.GamerServices.ContentRating</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xna.Framework.GamerServices/">Microsoft.Xna.Framework.GamerServices</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xna.Framework.Storage/">Microsoft.Xna.Framework.Storage</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/System.Reflection.ReflectionPermissionFrame/">System.Reflection.ReflectionPermissionFrame</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/System.Reflection/">System.Reflection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/System.Windows.Controls/">System.Windows.Controls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/System.Windows.Input/">System.Windows.Input</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/System.Windows.Media/">System.Windows.Media</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/System.Windows/">System.Windows</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Silverlight360</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Assemblies in other donor apps</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/Digiex/Silverlight360/edit/master/docs/donor-assemblies.md">Edit on Digiex/Silverlight360</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="assemblies-in-other-donor-apps">Assemblies in other donor apps<a class="headerlink" href="#assemblies-in-other-donor-apps" title="Permanent link">&para;</a></h1>
+<p>The default runtime profile is made from Plex v0.0.0.7 (<a href="../runtime-inventory/">Runtime inventory</a>). This page lists every assembly the other extracted apps carry that Plex doesn't, and the apps that carry each. An app that needs one of them can take it from one of those apps. They are Microsoft's or the app publisher's files, so the same rules apply as for the donor's: keep them local.</p>
+<p>The list was made with <code>tools\Get-DonorAssemblies.ps1</code> from the 78 other app folders. The raw data is in <a href="../donor-assemblies.json">donor-assemblies.json</a>: each assembly's name, assembly and file versions, public key token, whether it is a reference assembly only, and its apps. It counts IL assemblies (a <code>.dll</code> with metadata) and native images without IL. Assemblies that Plex has a file of, in either form, are left out, even where another app has a newer build.</p>
+<h2 id="two-names-that-are-no-assembly-of-their-own">Two names that are no assembly of their own<a class="headerlink" href="#two-names-that-are-no-assembly-of-their-own" title="Permanent link">&para;</a></h2>
+<p><code>System.Xml.Serialization</code> and <code>Microsoft.Xbox.RuntimeHelpers</code> are listed in the <code>AppManifest.xaml</code> of 45 apps (IGN, Crackle, Netflix, Wall Street Journal and others), and apps' code references them: Crackle's <code>Cypress.Core.XBox</code> uses <code>XmlSerializer</code>, and IGN, Netflix and <code>Microsoft.Advertising</code> use <code>Microsoft.Xbox.RuntimeHelpers</code>. Yet no package has either file except EPIX. This is not an extraction error: a raw scan of IGN's package's directory lists the same 119 files as <code>tools\extract_god_packages.py</code> extracts.</p>
+<p>EPIX's copies are reference assemblies, with no code to run. In <code>Microsoft.Xbox.RuntimeHelpers</code> the <code>ALU</code>, <code>FPU</code> and <code>Cache</code> methods (<code>fsqrt</code>, <code>cntlzw</code>, <code>dcbt</code> and others) are InternalCall and the rest have 2-byte stub bodies. In <code>System.Xml.Serialization</code> every body is a stub too. The platform has the real types: every app's <code>mscorlib.dll</code> defines <code>Microsoft.Xbox.RuntimeHelpers</code>, <code>FPU</code>, <code>ALU</code> and <code>Cache</code>, and its <code>System.Xml.dll</code> defines <code>System.Xml.Serialization.XmlSerializer</code> and the attributes. So an app compiled against these names runs on the platform's types, and a native image compiler needs EPIX's reference assemblies (or the SDK's) only to resolve the names.</p>
+<!-- tables: tools\Get-DonorAssemblies.ps1 -->
+
+<h2 id="platform-assemblies">Platform assemblies<a class="headerlink" href="#platform-assemblies" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Assembly</th>
+<th>Version</th>
+<th>Key token</th>
+<th>Apps</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Microsoft.Xbox.Epg</code></td>
+<td>2.0.5.0 (file 4.1.21107.0)</td>
+<td><code>7cec85d7bea7798e</code></td>
+<td>Revision3, WWE PPV Wrestlemania</td>
+<td>Program guide.</td>
+</tr>
+<tr>
+<td><code>Microsoft.Xbox.Extensions</code></td>
+<td>4.0.0.0 (file 4.1.10828.0)</td>
+<td><code>842cf8be1de50553</code></td>
+<td>Netflix</td>
+<td></td>
+</tr>
+<tr>
+<td><code>Microsoft.Xbox.RuntimeHelpers</code></td>
+<td>2.0.5.0 (file 4.0.337.5374 built by: main)</td>
+<td><code>7cec85d7bea7798e</code></td>
+<td>EPIX</td>
+<td>Reference assembly only (InternalCall intrinsics and stub bodies). The types are in every app's <code>mscorlib.dll</code>.</td>
+</tr>
+<tr>
+<td><code>System.Xml.Serialization</code></td>
+<td>2.0.5.0 (file 4.0.337.5374 built by: main)</td>
+<td><code>7cec85d7bea7798e</code></td>
+<td>EPIX</td>
+<td>Reference assembly only (no code). The code is in every app's <code>System.Xml.dll</code>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="microsofts-libraries">Microsoft's libraries<a class="headerlink" href="#microsofts-libraries" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Assembly</th>
+<th>Newest build</th>
+<th>Apps</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Microsoft.Advertising</code></td>
+<td>5.2.0.0 (file 5.2.1406.0) in Amazon Instant Video, Manga Entertainment; 5 older builds</td>
+<td>Amazon Instant Video, Aol On, Blip, CNET, Crackle, Exp Sony Pictures, Fox Broadcast, GameSpot TV, GameTrailers, HBO GO, IGN, IndieFlix, Manga Entertainment, Maxim, MSN Video, MTV, MUZU.TV, Napster, Neon Alley, NOW TV, Pizza Hut, Real Sports, Revision3, Rhapsody, Screenrush, Slacker Radio, Syfy, Telemundo, The Next Level, TMZ, UVideos, Vimeo, Wall Street Journal, WWE PPV Wrestlemania, Xbox LIVE Dailymotion, Xbox Tournaments, XFINITY (37)</td>
+</tr>
+<tr>
+<td><code>Microsoft.WebAnalytics</code></td>
+<td>2.3.6.0 (file 1.0.0.0) in IGN; 1 older build</td>
+<td>IGN, XFINITY (2)</td>
+</tr>
+<tr>
+<td><code>Microsoft.WebAnalytics.Behaviors</code></td>
+<td>2.3.2.0 (file 1.0.0.0)</td>
+<td>IGN, XFINITY (2)</td>
+</tr>
+<tr>
+<td><code>Microsoft.Xbox.Sample.Common</code></td>
+<td>1.1.1206.0 (file 1.01.1206.00) in MSN Video; 2 older builds</td>
+<td>4oD, ABC iview, Absolute Radio, Amazon Instant Video, Antena 3 Modo Salón, Blip, Canal+, CinemaNow, CNET, Crackle, Crunchyroll, Disney XD, EPIX, Fox Broadcast, GameSpot TV, GameTrailers, HBO GO, IndieFlix, Maxim, MSN Video, MTV, Mustang Customizer, MUZU.TV, Neon Alley, NOW TV, Real Sports, Redbox Instant, Rogers On Demand, Slacker Radio, Syfy, The CW Network, Verizon FiOS TV, Vimeo, VUDU Movies, Wall Street Journal, Xbox Tournaments, XFINITY (37)</td>
+</tr>
+<tr>
+<td><code>Microsoft.Xbox.Sample.Controls</code></td>
+<td>1.1.1206.0 (file 1.01.1206.00) in MSN Video; 2 older builds</td>
+<td>4oD, ABC iview, Absolute Radio, Amazon Instant Video, Antena 3 Modo Salón, Blip, Canal+, CinemaNow, CNET, Crackle, Crunchyroll, Disney XD, EPIX, Fox Broadcast, GameSpot TV, GameTrailers, HBO GO, IndieFlix, Maxim, MSN Video, MTV, Mustang Customizer, MUZU.TV, Neon Alley, NOW TV, Paramount Movies, Real Sports, Redbox Instant, Rogers On Demand, Slacker Radio, Syfy, The CW Network, Verizon FiOS TV, Vimeo, VUDU Movies, Wall Street Journal, Xbox Tournaments, XFINITY (38)</td>
+</tr>
+<tr>
+<td><code>Microsoft.Xbox.Sample.Models</code></td>
+<td>1.1.1206.0 (file 1.01.1206.00) in MSN Video; 2 older builds</td>
+<td>4oD, ABC iview, Absolute Radio, Amazon Instant Video, Antena 3 Modo Salón, Blip, Canal+, CinemaNow, CNET, Crackle, Disney XD, EPIX, Fox Broadcast, GameSpot TV, GameTrailers, HBO GO, IndieFlix, Maxim, MSN Video, MTV, Mustang Customizer, MUZU.TV, Neon Alley, NOW TV, Paramount Movies, Real Sports, Redbox Instant, Rogers On Demand, Slacker Radio, Syfy, The CW Network, UVideos, Verizon FiOS TV, Vimeo, VUDU Movies, Wall Street Journal, Xbox Tournaments, XFINITY (38)</td>
+</tr>
+<tr>
+<td><code>Microsoft.Xbox.Sample.PlayerUI</code></td>
+<td>1.0.0.0</td>
+<td>Blip, GameTrailers, Maxim, MTV, Neon Alley, The CW Network (6)</td>
+</tr>
+<tr>
+<td><code>Microsoft.Xbox.Sample.UI</code></td>
+<td>1.1.0.0 (file 1.1.0) in Screenrush; 3 older builds</td>
+<td>4oD, ABC iview, Absolute Radio, Amazon Instant Video, Antena 3 Modo Salón, Blip, Canal+, CinemaNow, CNET, Crackle, Disney XD, EPIX, Fox Broadcast, GameSpot TV, GameTrailers, HBO GO, IndieFlix, Maxim, MSN Video, MTV, MUZU.TV, Neon Alley, NOW TV, Paramount Movies, Real Sports, Redbox Instant, Rogers On Demand, Screenrush, Slacker Radio, Syfy, Verizon FiOS TV, Vimeo, VUDU Movies, Wall Street Journal, Xbox Tournaments, XFINITY (36)</td>
+</tr>
+<tr>
+<td><code>Services</code></td>
+<td>1.1.1206.0 (file 1.01.1206.00) in MSN Video; 2 older builds</td>
+<td>4oD, ABC iview, Absolute Radio, Amazon Instant Video, Antena 3 Modo Salón, Blip, Canal+, CinemaNow, CNET, Crackle, Crunchyroll, Disney XD, EPIX, Fox Broadcast, GameSpot TV, GameTrailers, IndieFlix, Maxim, MSN Video, MTV, Mustang Customizer, MUZU.TV, Neon Alley, NOW TV, Paramount Movies, Real Sports, Redbox Instant, Revision3, Rogers On Demand, Slacker Radio, Syfy, The CW Network, UVideos, Verizon FiOS TV, Vimeo, VUDU Movies, Wall Street Journal, WWE PPV Wrestlemania, Xbox Tournaments, XFINITY (40)</td>
+</tr>
+<tr>
+<td><code>Video.Services.Cms</code></td>
+<td>1.0.54.8 in 4oD; 1 older build</td>
+<td>4oD, Antena 3 Modo Salón, Blip, Canal+, CinemaNow, CNET, IndieFlix, Neon Alley, Real Sports, Redbox Instant, Revision3, Slacker Radio, The CW Network, UVideos, Verizon FiOS TV, Wall Street Journal, WWE PPV Wrestlemania, Xbox Tournaments, XFINITY (19)</td>
+</tr>
+<tr>
+<td><code>Video.Services.Sample</code></td>
+<td>1.1.1206.0 (file 1.01.1206.00) in MSN Video; 2 older builds</td>
+<td>4oD, Antena 3 Modo Salón, Canal+, Crackle, GameSpot TV, MSN Video, Neon Alley, Real Sports, Redbox Instant, The CW Network, Verizon FiOS TV, Wall Street Journal (12)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="media-player-framework-mmppf-parts-plex-doesnt-have">Media player framework (MMPPF) parts Plex doesn't have<a class="headerlink" href="#media-player-framework-mmppf-parts-plex-doesnt-have" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Assembly</th>
+<th>Newest build</th>
+<th>Apps</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MMPPF.Plugins.Advertising.Xbox</code></td>
+<td>2.2012.1005.0 in GameTrailers, MTV, Revision3, Vimeo, Xbox Tournaments; 8 older builds</td>
+<td>4oD, Amazon Instant Video, Blip, CNET, Crackle, Fox Broadcast, GameSpot TV, GameTrailers, HBO GO, IGN, IndieFlix, Manga Entertainment, Maxim, MSN Video, MTV, MUZU.TV, Neon Alley, NOW TV, Real Sports, Revision3, Rogers On Demand, Screenrush, Syfy, Telemundo, UVideos, Vimeo, Wall Street Journal, Xbox LIVE Dailymotion, Xbox Tournaments, XFINITY (30)</td>
+</tr>
+<tr>
+<td><code>MMPPF.Plugins.Heuristics.Xbox</code></td>
+<td>2.2012.824.0 (file 2.2012.0824.0) in Telemundo; 3 older builds</td>
+<td>Crackle, Fox Broadcast, HBO GO, MSN Video, MUZU.TV, Telemundo (6)</td>
+</tr>
+<tr>
+<td><code>MMPPF.Plugins.Thumbnails.Xbox</code></td>
+<td>2.2012.1005.0 in Revision3, The CW Network; 4 older builds</td>
+<td>Blip, Crackle, Fox Broadcast, HBO GO, IndieFlix, MSN Video, MTV, Neon Alley, Redbox Instant, Revision3, Telemundo, The CW Network, UVideos (13)</td>
+</tr>
+<tr>
+<td><code>MMPPF.Plugins.TimedText.Xbox</code></td>
+<td>2.2012.1005.0 in Xbox Tournaments; 9 older builds</td>
+<td>Amazon Instant Video, BBC iPlayer, Disney XD, Fox Broadcast, GameSpot TV, HBO GO, IndieFlix, MSN Video, MUZU.TV, Neon Alley, NOW TV, Real Sports, Redbox Instant, Telemundo, The CW Network, UVideos, Wall Street Journal, Xbox LIVE Dailymotion, Xbox Tournaments, XFINITY (20)</td>
+</tr>
+<tr>
+<td><code>MMPPF.Plugins.TTConnector.Xbox</code></td>
+<td>2.2012.1005.0</td>
+<td>GameTrailers, MTV, Revision3 (3)</td>
+</tr>
+<tr>
+<td><code>MMPPF.Plugins.UAC.Xbox</code></td>
+<td>2.2012.1005.0 in GameTrailers, MTV, Revision3, Vimeo, Xbox Tournaments; 8 older builds</td>
+<td>Amazon Instant Video, Blip, CNET, Crackle, Fox Broadcast, GameSpot TV, GameTrailers, HBO GO, IGN, IndieFlix, Manga Entertainment, Maxim, MSN Video, MTV, MUZU.TV, Neon Alley, NOW TV, Real Sports, Revision3, Screenrush, Syfy, Telemundo, UVideos, Vimeo, Wall Street Journal, Xbox LIVE Dailymotion, Xbox Tournaments, XFINITY (28)</td>
+</tr>
+<tr>
+<td><code>MMPPF.Plugins.Vpaid.Xbox</code></td>
+<td>2.2012.1005.0 in GameTrailers, MTV, Revision3, Vimeo, Xbox Tournaments; 9 older builds</td>
+<td>4oD, Amazon Instant Video, Blip, CNET, Crackle, Fox Broadcast, GameSpot TV, GameTrailers, HBO GO, IGN, IndieFlix, Manga Entertainment, Maxim, MSN Video, MTV, MUZU.TV, Neon Alley, NOW TV, Real Sports, Revision3, Rogers On Demand, Syfy, Telemundo, UVideos, Vimeo, Wall Street Journal, Xbox LIVE Dailymotion, Xbox Tournaments, XFINITY (29)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="third-party-libraries">Third-party libraries<a class="headerlink" href="#third-party-libraries" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Assembly</th>
+<th>Newest build</th>
+<th>Apps</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AdobePass</code></td>
+<td>1.0.0.0</td>
+<td>Fox Broadcast, GameTrailers, MTV (3)</td>
+</tr>
+<tr>
+<td><code>AppMeasurement_XBOX</code></td>
+<td>1.3.9.0</td>
+<td>GameTrailers, MTV (2)</td>
+</tr>
+<tr>
+<td><code>BrightcoveSDK</code></td>
+<td>1.0.0.0</td>
+<td>GameTrailers, MTV (2)</td>
+</tr>
+<tr>
+<td><code>BrightcoveViacomSDK</code></td>
+<td>1.0.0.0</td>
+<td>GameTrailers, MTV (2)</td>
+</tr>
+<tr>
+<td><code>com.Akamai.Analytics</code></td>
+<td>2.2.0.4</td>
+<td>GameTrailers, MTV (2)</td>
+</tr>
+<tr>
+<td><code>com.Akamai.AnalyticsPluginLoader</code></td>
+<td>1.5.0.0</td>
+<td>GameTrailers, MTV (2)</td>
+</tr>
+<tr>
+<td><code>Controls.SilverlightToolkit</code></td>
+<td>1.0.0.0</td>
+<td>EPIX, Paramount Movies (2)</td>
+</tr>
+<tr>
+<td><code>Crypto</code></td>
+<td>1.1162.434.2 in Netflix; 1 older build</td>
+<td>Amazon Instant Video, Netflix (2)</td>
+</tr>
+<tr>
+<td><code>GalaSoft.MvvmLight</code></td>
+<td>3.0.0.24641 in 4oD, ABC iview, Absolute Radio, Amazon Instant Video, Antena 3 Modo Salón, blinkbox, Blip, Canal+, CNET, Crackle, Crunchyroll, Dailymotion, Demand 5, Disney XD, EPIX, Fox Broadcast, GameSpot TV, GameTrailers, HBO GO, IGN, IndieFlix, Live Event Player, Maxim, Movistar Imagenio, MSN Video, MTV, Mustang Customizer, MUZU.TV, Neon Alley, NOW TV, Paramount Movies, Premium Play, Quickflix, Real Sports, Redbox Instant, Revision3, Rogers On Demand, Screenrush, Slacker Radio, Syfy, Telemundo, The CW Network, UVideos, Verizon FiOS TV, VEVO, Vimeo, VUDU Movies, Wall Street Journal, WWE PPV Wrestlemania, Xbox LIVE Dailymotion, Xbox Tournaments, XFINITY; 1 older build</td>
+<td>4oD, ABC iview, Absolute Radio, Amazon Instant Video, Antena 3 Modo Salón, blinkbox, Blip, Canal+, CNET, Crackle, Crunchyroll, Dailymotion, Demand 5, Disney XD, EPIX, Fox Broadcast, GameSpot TV, GameTrailers, HBO GO, IGN, IndieFlix, Live Event Player, Maxim, Movistar Imagenio, MSN Video, MTV, Mustang Customizer, MUZU.TV, Neon Alley, NOW TV, Paramount Movies, Premium Play, Quickflix, Real Sports, Redbox Instant, Revision3, Rogers On Demand, Screenrush, SkyDrive, Slacker Radio, Syfy, Telemundo, The CW Network, UVideos, Verizon FiOS TV, VEVO, Vimeo, VUDU Movies, Wall Street Journal, WWE PPV Wrestlemania, Xbox LIVE Dailymotion, Xbox Tournaments, XFINITY (53)</td>
+</tr>
+<tr>
+<td><code>GalaSoft.MvvmLight.Extras</code></td>
+<td>3.0.0.24670 in blinkbox, Movistar Imagenio, Xbox LIVE Dailymotion; 1 older build</td>
+<td>blinkbox, Movistar Imagenio, SkyDrive, Xbox LIVE Dailymotion (4)</td>
+</tr>
+<tr>
+<td><code>GalaSoft.MvvmLight.Extras.ADK</code></td>
+<td>3.0.0.20427</td>
+<td>4oD, ABC iview, Absolute Radio, Amazon Instant Video, Antena 3 Modo Salón, Blip, Canal+, CNET, Crackle, Crunchyroll, Dailymotion, Demand 5, Disney XD, EPIX, Fox Broadcast, GameSpot TV, GameTrailers, HBO GO, IGN, IndieFlix, Live Event Player, Maxim, MSN Video, MTV, Mustang Customizer, MUZU.TV, Neon Alley, NOW TV, Paramount Movies, Premium Play, Quickflix, Real Sports, Redbox Instant, Revision3, Rogers On Demand, Screenrush, Slacker Radio, Syfy, Telemundo, The CW Network, UVideos, Verizon FiOS TV, VEVO, Vimeo, VUDU Movies, Wall Street Journal, WWE PPV Wrestlemania, Xbox Tournaments, XFINITY (49)</td>
+</tr>
+<tr>
+<td><code>json.net.adk</code></td>
+<td>4.0.0.0 (file 4.1.21107.0) in The CW Network; 2 older builds</td>
+<td>IndieFlix, Maxim, SkyDrive, The CW Network (4)</td>
+</tr>
+<tr>
+<td><code>MediaAnalytics</code></td>
+<td>2.2.0.12</td>
+<td>GameTrailers, MTV (2)</td>
+</tr>
+<tr>
+<td><code>Newtonsoft.Json</code></td>
+<td>4.5.0.0 (file 4.5.7.15008) in GameTrailers, Maxim, MTV, Neon Alley, Vimeo; 2 older builds</td>
+<td>Disney XD, GameTrailers, IGN, Maxim, MTV, Neon Alley, Rogers On Demand, UVideos, Vimeo (9)</td>
+</tr>
+<tr>
+<td><code>Newtonsoft.Json.WindowsPhone</code></td>
+<td>4.0.2.0 (file 4.0.2.13623)</td>
+<td>Premium Play, Redbox Instant, Verizon FiOS TV (3)</td>
+</tr>
+<tr>
+<td><code>Newtonsoft.Json.XBox</code></td>
+<td>4.5.0.0 (file 4.5.1.14720) in Wall Street Journal; 1 older build</td>
+<td>Crackle, Fox Broadcast, Wall Street Journal (3)</td>
+</tr>
+<tr>
+<td><code>Ninject</code></td>
+<td>2.2.0.0 in 4oD, ABC iview, Amazon Instant Video, Antena 3 Modo Salón, blinkbox, Canal+, Crackle, Demand 5, Disney XD, EPIX, Fox Broadcast, HBO GO, IGN, Movistar Imagenio, MSN Video, Mustang Customizer, MUZU.TV, NOW TV, Paramount Movies, Premium Play, Real Sports, Redbox Instant, Rogers On Demand, Syfy, Telemundo, The CW Network, Verizon FiOS TV, VEVO, VUDU Movies, XFINITY; 1 older build</td>
+<td>4oD, ABC iview, Amazon Instant Video, Antena 3 Modo Salón, blinkbox, Canal+, Crackle, Demand 5, Disney XD, EPIX, Fox Broadcast, HBO GO, IGN, Movistar Imagenio, MSN Video, Mustang Customizer, MUZU.TV, Netflix, NOW TV, Paramount Movies, Premium Play, Real Sports, Redbox Instant, Rogers On Demand, Syfy, Telemundo, The CW Network, Verizon FiOS TV, VEVO, VUDU Movies, XFINITY (31)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="shared-by-one-publishers-apps">Shared by one publisher's apps<a class="headerlink" href="#shared-by-one-publishers-apps" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Assembly</th>
+<th>Newest build</th>
+<th>Apps</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Cypress.Analytics.XBox</code></td>
+<td>1.1.0.0</td>
+<td>Crackle, Fox Broadcast</td>
+</tr>
+<tr>
+<td><code>Cypress.Core.XBox</code></td>
+<td>1.1.0.0</td>
+<td>Crackle, Fox Broadcast</td>
+</tr>
+<tr>
+<td><code>Cypress.Reimplemented.XBox</code></td>
+<td>1.1.0.0</td>
+<td>Crackle, Fox Broadcast</td>
+</tr>
+<tr>
+<td><code>Cypress.Rest.XBox</code></td>
+<td>1.1.0.0</td>
+<td>Crackle, Fox Broadcast</td>
+</tr>
+<tr>
+<td><code>Cypress.Storage.XBox</code></td>
+<td>1.1.0.0</td>
+<td>Crackle, Fox Broadcast</td>
+</tr>
+<tr>
+<td><code>GreenApp.Controls</code></td>
+<td>1.0.1327.0 in YouTube; 1 older build</td>
+<td>Hulu Plus, YouTube</td>
+</tr>
+<tr>
+<td><code>GreenApp.Converters</code></td>
+<td>1.0.1327.0 in YouTube; 1 older build</td>
+<td>Hulu Plus, YouTube</td>
+</tr>
+<tr>
+<td><code>IdentityMine.Merge.Client</code></td>
+<td>1.0.0.0</td>
+<td>Exp Sony Pictures, The Next Level</td>
+</tr>
+<tr>
+<td><code>LoggingLV</code></td>
+<td>1.0.1327.0 in YouTube; 1 older build</td>
+<td>Hulu Plus, YouTube</td>
+</tr>
+<tr>
+<td><code>LoggingPluginLV</code></td>
+<td>1.0.1327.0 in YouTube; 1 older build</td>
+<td>Hulu Plus, YouTube</td>
+</tr>
+<tr>
+<td><code>Microsoft.Xbox.Dailymotion.UI</code></td>
+<td>1.1.0.0 (file 1.1.0) in Dailymotion; 1 older build</td>
+<td>Dailymotion, Xbox LIVE Dailymotion</td>
+</tr>
+<tr>
+<td><code>PAMonitorLV</code></td>
+<td>1.0.1327.0 in YouTube; 1 older build</td>
+<td>Hulu Plus, YouTube</td>
+</tr>
+<tr>
+<td><code>Rhapsody.Core</code></td>
+<td>1.0.44.0 in Napster; 1 older build</td>
+<td>Napster, Rhapsody</td>
+</tr>
+<tr>
+<td><code>Rhapsody.Data</code></td>
+<td>1.0.44.0 in Napster; 1 older build</td>
+<td>Napster, Rhapsody</td>
+</tr>
+<tr>
+<td><code>Rhapsody.Logging</code></td>
+<td>1.0.44.0 in Napster; 1 older build</td>
+<td>Napster, Rhapsody</td>
+</tr>
+<tr>
+<td><code>Rhapsody.RhapsodyDirect</code></td>
+<td>1.0.44.0 in Napster; 1 older build</td>
+<td>Napster, Rhapsody</td>
+</tr>
+<tr>
+<td><code>Rhapsody.Utility</code></td>
+<td>1.0.44.0 in Napster; 1 older build</td>
+<td>Napster, Rhapsody</td>
+</tr>
+<tr>
+<td><code>Rhapsody.ViewModel</code></td>
+<td>1.0.44.0 in Napster; 1 older build</td>
+<td>Napster, Rhapsody</td>
+</tr>
+<tr>
+<td><code>RSAF.Xbox</code></td>
+<td>1.0.0.0</td>
+<td>Blip, CNET, IndieFlix</td>
+</tr>
+<tr>
+<td><code>RSCF.Xbox</code></td>
+<td>1.0.0.0</td>
+<td>Blip, CNET, IndieFlix</td>
+</tr>
+<tr>
+<td><code>RSF.Xbox</code></td>
+<td>1.0.0.0</td>
+<td>Blip, CNET, IndieFlix</td>
+</tr>
+<tr>
+<td><code>StorageLV</code></td>
+<td>1.0.1327.0 in YouTube; 1 older build</td>
+<td>Hulu Plus, YouTube</td>
+</tr>
+<tr>
+<td><code>SubtitlePluginLV</code></td>
+<td>1.0.1327.0 in YouTube; 1 older build</td>
+<td>Hulu Plus, YouTube</td>
+</tr>
+<tr>
+<td><code>UtilitiesLV</code></td>
+<td>1.0.1327.0 in YouTube; 1 older build</td>
+<td>Hulu Plus, YouTube</td>
+</tr>
+<tr>
+<td><code>Viacom.Xbox.Custom</code></td>
+<td>1.0.0.0</td>
+<td>GameTrailers, MTV</td>
+</tr>
+<tr>
+<td><code>Viacom.Xbox.Services</code></td>
+<td>1.0.0.0</td>
+<td>GameTrailers, MTV</td>
+</tr>
+<tr>
+<td><code>ViacomCommon</code></td>
+<td>1.0.0.0</td>
+<td>GameTrailers, MTV</td>
+</tr>
+<tr>
+<td><code>ViacomPlayout</code></td>
+<td>1.0.0.0</td>
+<td>GameTrailers, MTV</td>
+</tr>
+<tr>
+<td><code>Xbox.Dailymotion.Common</code></td>
+<td>1.1.0.0 (file 1.1.0) in Dailymotion; 1 older build</td>
+<td>Dailymotion, Xbox LIVE Dailymotion</td>
+</tr>
+<tr>
+<td><code>Xbox.Dailymotion.Controls</code></td>
+<td>1.1.0.0 (file 1.1.0) in Dailymotion; 1 older build</td>
+<td>Dailymotion, Xbox LIVE Dailymotion</td>
+</tr>
+<tr>
+<td><code>Xbox.Dailymotion.Models</code></td>
+<td>1.1.0.0 (file 1.1.0) in Dailymotion; 1 older build</td>
+<td>Dailymotion, Xbox LIVE Dailymotion</td>
+</tr>
+<tr>
+<td><code>Xbox.Dailymotion.Services</code></td>
+<td>1.1.0.0 (file 1.1.0) in Dailymotion; 1 older build</td>
+<td>Dailymotion, Xbox LIVE Dailymotion</td>
+</tr>
+<tr>
+<td><code>Xbox.Dailymotion.Services.DLM</code></td>
+<td>1.1.0.0 (file 1.1.0) in Dailymotion; 1 older build</td>
+<td>Dailymotion, Xbox LIVE Dailymotion</td>
+</tr>
+<tr>
+<td><code>Xbox.Transverse.Json</code></td>
+<td>1.0.0.0</td>
+<td>Dailymotion, Screenrush, Xbox LIVE Dailymotion</td>
+</tr>
+<tr>
+<td><code>XBoxLiveLV</code></td>
+<td>1.0.1327.0 in YouTube; 1 older build</td>
+<td>Hulu Plus, YouTube</td>
+</tr>
+</tbody>
+</table>
+<h2 id="each-apps-own-assemblies">Each app's own assemblies<a class="headerlink" href="#each-apps-own-assemblies" title="Permanent link">&para;</a></h2>
+<p><code>XboxApplication</code> (42 apps) and <code>Resources</code> (5 apps) are names, not shared code: each app's is its own. Every other assembly here is in one app only.</p>
+<table>
+<thead>
+<tr>
+<th>App</th>
+<th>Assemblies</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4oD</td>
+<td><code>Channel4.Xbox.UIC4</code>, <code>Common.C4</code>, <code>Controls.C4</code>, <code>HAPXbox</code>, <code>Models.C4</code>, <code>Services.Analytics</code>, <code>Services.C4</code>, <code>Services.Cms.C4</code>, <code>Services.Sample.C4</code></td>
+</tr>
+<tr>
+<td>ABC iview</td>
+<td><code>Video.Services.ABC</code></td>
+</tr>
+<tr>
+<td>Amazon Instant Video</td>
+<td><code>Pushbutton.Services.AIV</code>, <code>XboxApplication.AIV</code></td>
+</tr>
+<tr>
+<td>Antena 3 Modo Salón</td>
+<td><code>Analytics</code></td>
+</tr>
+<tr>
+<td>Aol On</td>
+<td><code>AolViewModel</code>, <code>AolXboxApplication</code></td>
+</tr>
+<tr>
+<td>BBC iPlayer</td>
+<td><code>iPlayer.Application.Xbox</code>, <code>iPlayer.Services.Xbox</code>, <code>iPlayerApplication</code></td>
+</tr>
+<tr>
+<td>blinkbox</td>
+<td><code>BlinkBox.Client</code>, <code>BlinkBox.Client.WebApi</code>, <code>BlinkBox.Client.Xbox</code>, <code>BlinkBox.Client.Xbox.Application</code>, <code>BlinkBox.Client.Xbox.Controls</code>, <code>BlinkBox.Client.Xbox.UI</code></td>
+</tr>
+<tr>
+<td>Blip</td>
+<td><code>RSPF.Xbox</code></td>
+</tr>
+<tr>
+<td>Canal+</td>
+<td><code>CanalPlusLakeviewApplication</code>, <code>Common.Prisa</code>, <code>Controls.Prisa</code>, <code>Models.Prisa</code>, <code>MyCodeContracts</code>, <code>Services.Cms.Prisa</code>, <code>Services.Prisa</code>, <code>UI.Prisa</code></td>
+</tr>
+<tr>
+<td>Crackle</td>
+<td><code>Services.Crackle</code></td>
+</tr>
+<tr>
+<td>Crunchyroll</td>
+<td><code>CrunchyLib</code></td>
+</tr>
+<tr>
+<td>Demand 5</td>
+<td><code>AuditudeXBoxSMFPlugin_1_0_0</code>, <code>Channel5.Xbox.Common</code>, <code>Channel5.Xbox.Controls</code>, <code>Channel5.Xbox.Models</code>, <code>Channel5.Xbox.Services</code>, <code>Channel5.Xbox.Services.Cms</code>, <code>Channel5.Xbox.UI</code>, <code>Channel5.XboxApplication</code></td>
+</tr>
+<tr>
+<td>EPIX</td>
+<td><code>SnocapsCommon</code>, <code>Video.Services.Epix</code></td>
+</tr>
+<tr>
+<td>Exp Sony Pictures</td>
+<td><code>SonyPicturesViewModel</code>, <code>SonyPicturesXboxApplication</code></td>
+</tr>
+<tr>
+<td>Fox Broadcast</td>
+<td><code>Cypress.Xbox.FOX.Services</code></td>
+</tr>
+<tr>
+<td>GameSpot TV</td>
+<td><code>Services.GameSpot</code></td>
+</tr>
+<tr>
+<td>HBO GO</td>
+<td><code>Video.Services</code>, <code>Video.Services.Hbo</code></td>
+</tr>
+<tr>
+<td>Hulu Plus</td>
+<td><code>ClosedCaptionsService</code>, <code>HttpLiveStreamingLV</code>, <code>HuluAppXboxApplication</code>, <code>Json.Xbox</code></td>
+</tr>
+<tr>
+<td>IGN</td>
+<td><code>Google.WebAnalytics</code>, <code>IGN.HttpLiveStreaming</code>, <code>IGN.Xbox</code>, <code>IGN.Xbox.Common</code>, <code>IGN.Xbox.Controls</code>, <code>IGN.Xbox.Data</code>, <code>IGN.Xbox.Models</code>, <code>IGN.Xbox.Services</code>, <code>IGN.Xbox.UI</code></td>
+</tr>
+<tr>
+<td>iHeartRadio</td>
+<td><code>iHeartRadioXboxApplication</code>, <code>iHRData</code>, <code>iHRViewModel</code>, <code>ShoutCastMedia</code></td>
+</tr>
+<tr>
+<td>IndieFlix</td>
+<td><code>Silverlight.Samples.HLS</code></td>
+</tr>
+<tr>
+<td>Live Event Player</td>
+<td><code>GS.ADK.Common</code>, <code>GS.ADK.Common.Auth</code>, <code>GS.ADK.Common.Telemetry</code>, <code>GS.ADK.LEP.App</code></td>
+</tr>
+<tr>
+<td>Manga Entertainment</td>
+<td><code>StarzMangaApplication</code></td>
+</tr>
+<tr>
+<td>Maxim</td>
+<td><code>Ensemble.Xbox.UI</code>, <code>Maxim.Api</code>, <code>Maxim.Xbox.Services</code>, <code>Maxim.Xbox.UI</code></td>
+</tr>
+<tr>
+<td>Movistar Imagenio</td>
+<td><code>MovistarImagenio.Controls</code>, <code>MovistarImagenio.Models</code>, <code>MovistarImagenio.Services</code>, <code>MovistarImagenio.Services.GVP</code>, <code>MovistarImagenio.Tools</code>, <code>MovistarImagenio.UI</code>, <code>MovistarImagenioApplication</code></td>
+</tr>
+<tr>
+<td>Mustang Customizer</td>
+<td><code>Microsoft.Xbox.Services.Mustang</code>, <code>Microsoft.Xbox.UI</code>, <code>SimpleSerializer</code></td>
+</tr>
+<tr>
+<td>MUZU.TV</td>
+<td><code>Services.Muzu</code></td>
+</tr>
+<tr>
+<td>Napster</td>
+<td><code>Napster</code></td>
+</tr>
+<tr>
+<td>Neon Alley</td>
+<td><code>Video.Services.Viz</code></td>
+</tr>
+<tr>
+<td>Netflix</td>
+<td><code>DataModels</code>, <code>Http</code>, <code>LitJson</code>, <code>Localization</code>, <code>Logging</code>, <code>MediaStreamSource</code>, <code>Nccp</code>, <code>NrdConf</code>, <code>Ntba</code>, <code>PiffParser</code>, <code>PlaybackHeuristics</code>, <code>PlayerDataModel</code>, <code>Serialization</code>, <code>SLControls</code>, <code>SLPlayer</code>, <code>Utilities</code>, <code>ViewModels</code>, <code>Windows</code>, <code>xboxApp</code></td>
+</tr>
+<tr>
+<td>NOW TV</td>
+<td><code>BSkyB.NowTV.UI.Common</code>, <code>BSkyB.NowTV.UI.Interfaces</code>, <code>Video.Services.Sky</code></td>
+</tr>
+<tr>
+<td>Paramount Movies</td>
+<td><code>Paramount.Xbox.Common</code>, <code>ParamountCommon</code>, <code>Video.Services.Paramount</code></td>
+</tr>
+<tr>
+<td>Pizza Hut</td>
+<td><code>PizzaHutViewModel</code>, <code>PizzaHutXboxApplication</code></td>
+</tr>
+<tr>
+<td>Premium Play</td>
+<td><code>MediasetNetTv.Core</code>, <code>MediasetNetTv.DataProviders</code>, <code>MediasetNetTv.Mocks</code>, <code>MediasetNetTv.Models</code>, <code>MediasetNetTv.ServiceContracts</code>, <code>MediasetNetTv.ServiceStub</code>, <code>MediasetNetTv.UI</code>, <code>MediasetNetTvApplication</code></td>
+</tr>
+<tr>
+<td>Quickflix</td>
+<td><code>QF.Xbox.App.Common</code>, <code>QF.Xbox.App.Controls</code>, <code>QF.Xbox.App.Models</code>, <code>QF.Xbox.App.Services</code>, <code>QF.Xbox.App.UI</code></td>
+</tr>
+<tr>
+<td>Real Sports</td>
+<td><code>Services.MyCms</code></td>
+</tr>
+<tr>
+<td>Redbox Instant</td>
+<td><code>Video.Services.Zoetrope</code></td>
+</tr>
+<tr>
+<td>Revision3</td>
+<td><code>Microsoft.Xbox.Rev3.Common</code>, <code>Microsoft.Xbox.Rev3.Controls</code>, <code>Microsoft.Xbox.Rev3.Models</code>, <code>Microsoft.Xbox.Rev3.PlayerUI</code>, <code>Microsoft.Xbox.Rev3.UI</code></td>
+</tr>
+<tr>
+<td>Rhapsody</td>
+<td><code>Rhapsody</code></td>
+</tr>
+<tr>
+<td>Rogers On Demand</td>
+<td><code>Security</code>, <code>Services.Rodo</code></td>
+</tr>
+<tr>
+<td>Screenrush</td>
+<td><code>Models.allocine</code>, <code>Services.Allocine</code>, <code>XboxAllocine.Common</code>, <code>XboxAllocine.Controls</code>, <code>XboxAllocine.Models</code>, <code>XboxAllocine.Services</code></td>
+</tr>
+<tr>
+<td>SkyDrive</td>
+<td><code>Platform</code>, <code>WinLive.XSky.Application</code></td>
+</tr>
+<tr>
+<td>Syfy</td>
+<td><code>Services.Syfy</code></td>
+</tr>
+<tr>
+<td>Telemundo</td>
+<td><code>Msn.Common</code>, <code>Msn.Configuration</code>, <code>Msn.Controls</code>, <code>Msn.Globalization</code>, <code>Msn.Pages</code>, <code>Msn.Services</code>, <code>Msn.VideoCatalog</code>, <code>Msn.XboxApplication</code>, <code>ZLib.Xbox</code></td>
+</tr>
+<tr>
+<td>The CW Network</td>
+<td><code>CW.Xbox.UI</code>, <code>DSPlugins</code>, <code>Google.InteractiveAds</code>, <code>MMPPF.Logging.Xbox</code>, <code>Newtonsoft.Json.360</code></td>
+</tr>
+<tr>
+<td>The Next Level</td>
+<td><code>LOrealViewModel</code>, <code>LOrealXboxApplication</code></td>
+</tr>
+<tr>
+<td>TMZ</td>
+<td><code>TmzData</code>, <code>TmzViewModel</code>, <code>TmzXboxApplication</code></td>
+</tr>
+<tr>
+<td>UVideos</td>
+<td><code>Univision.Xbox.Common</code>, <code>Univision.Xbox.Controls</code>, <code>Univision.Xbox.PlayerUI</code>, <code>Univision.Xbox.UI</code></td>
+</tr>
+<tr>
+<td>Verizon FiOS TV</td>
+<td><code>DH.Scrypt</code>, <code>Video.Services.Caspian</code></td>
+</tr>
+<tr>
+<td>VEVO</td>
+<td><code>Vevo.XBOX.Advertising</code>, <code>Vevo.XBOX.Common</code>, <code>Vevo.XBOX.Controls</code>, <code>Vevo.XBOX.Data</code>, <code>Vevo.XBOX.Services</code>, <code>Vevo.XBOX.UI</code>, <code>Vevo.XBOXApplication</code></td>
+</tr>
+<tr>
+<td>Vimeo</td>
+<td><code>BouncyCastleCrypto</code>, <code>EnsembleSupport</code>, <code>VimeoApi</code>, <code>VimeoXbox</code></td>
+</tr>
+<tr>
+<td>VUDU Movies</td>
+<td><code>HLSMSS_VUDU</code>, <code>MMPPF.Plugins.Vudu.Xbox</code>, <code>Services.Vudu</code>, <code>VuduDirector</code>, <code>VuduWebStream</code></td>
+</tr>
+<tr>
+<td>Wall Street Journal</td>
+<td><code>mDialog.Media.HLSMS.Xbox</code>, <code>mDialog.Media.Interfaces.Xbox</code>, <code>mDialog.Media.MMSS.Xbox</code>, <code>mDialog.Utility.Xbox</code>, <code>mDialog.Xbox.Sdk</code>, <code>MMPPF.Plugins.mDialogHLS.Xbox</code></td>
+</tr>
+<tr>
+<td>WWE PPV Wrestlemania</td>
+<td><code>Common</code>, <code>Controls</code>, <code>Models</code>, <code>WWE.SapphireFeed.XBOX360</code>, <code>WWEApplication</code></td>
+</tr>
+<tr>
+<td>YouTube</td>
+<td><code>adsapi</code>, <code>DataServiceLV</code>, <code>Google.YouTube.Ads.Xbox</code>, <code>Google.YouTube.Captions.Xbox</code>, <code>Google.YouTube.Media.Xbox</code>, <code>Google.YouTube.Util.Xbox</code>, <code>Google.YouTube.VideoStats</code>, <code>Google.YouTube.Xbox</code>, <code>SilverlightGlueLV</code>, <code>YouTubeAPISilverlightGL</code>, <code>YouTubeCaptions</code>, <code>YouTubeXBoxApplication</code></td>
+</tr>
+</tbody>
+</table>
+<!-- end of tables -->
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../runtime-inventory/" class="btn btn-neutral float-left" title="Runtime inventory"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../issues/" class="btn btn-neutral float-right" title="Problems and ideas">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>Silverlight360 is licensed under the PolyForm Noncommercial License 1.0.0 with an additional condition. Xbox, Xbox 360 and Silverlight are trademarks of Microsoft.</p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/Digiex/Silverlight360" class="fa fa-code-fork" style="color: #fcfcfc"> Digiex/Silverlight360</a>
+        </span>
+    
+    
+      <span><a href="../runtime-inventory/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../issues/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

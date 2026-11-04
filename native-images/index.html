@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://digiex.github.io/Silverlight360/native-images/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Native images - Silverlight360</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Native images";
+        var mkdocs_page_input_path = "native-images.md";
+        var mkdocs_page_url = "/Silverlight360/native-images/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/powershell.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/csharp.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/xml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Silverlight360
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../getting-started/">Getting started</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../project-setup/">Projects and Visual Studio</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../app-model/">App model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../input-and-focus/">Input and focus</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../controls/">Xbox controls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../networking/">Networking</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../title/">The app's title</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../storage/">Storage</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../media/">Media</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../gamer-services/">Gamer services</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../native-code/">Native code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../performance/">Performance</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Native images</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#what-it-needs">What it needs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#running-it">Running it</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#the-platform-too">The platform too</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#a-local-xboxngen">A local XboxNGen</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#handing-out-an-app-with-native-images">Handing out an app with native images</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../testing/">Testing in xenia</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../samples/">Samples</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../xenia-status/">Status under xenia</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../runtime-inventory/">Runtime inventory</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../donor-assemblies/">Assemblies in other donor apps</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../issues/">Problems and ideas</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../contributing/">Contributing</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">API reference</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/MS.Internal/">MS.Internal</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Controls.Primitives/">Microsoft.Xbox.Controls.Primitives</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Controls/">Microsoft.Xbox.Controls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Core/">Microsoft.Xbox.Core</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Input/">Microsoft.Xbox.Input</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Media.Mpeg/">Microsoft.Xbox.Media.Mpeg</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Media/">Microsoft.Xbox.Media</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Net/">Microsoft.Xbox.Net</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Security.XAuth/">Microsoft.Xbox.Security.XAuth</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Services/">Microsoft.Xbox.Services</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox.Transitions/">Microsoft.Xbox.Transitions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xbox/">Microsoft.Xbox</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xna.Framework.GamerServices.ContentRating.Level/">Microsoft.Xna.Framework.GamerServices.ContentRating.Level</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xna.Framework.GamerServices.ContentRating.System/">Microsoft.Xna.Framework.GamerServices.ContentRating.System</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xna.Framework.GamerServices.ContentRating/">Microsoft.Xna.Framework.GamerServices.ContentRating</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xna.Framework.GamerServices/">Microsoft.Xna.Framework.GamerServices</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/Microsoft.Xna.Framework.Storage/">Microsoft.Xna.Framework.Storage</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/System.Reflection.ReflectionPermissionFrame/">System.Reflection.ReflectionPermissionFrame</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/System.Reflection/">System.Reflection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/System.Windows.Controls/">System.Windows.Controls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/System.Windows.Input/">System.Windows.Input</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/System.Windows.Media/">System.Windows.Media</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/System.Windows/">System.Windows</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Silverlight360</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Guides</li>
+      <li class="breadcrumb-item active">Native images</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/Digiex/Silverlight360/edit/master/docs/native-images.md">Edit on Digiex/Silverlight360</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="native-images">Native images<a class="headerlink" href="#native-images" title="Permanent link">&para;</a></h1>
+<p>On a retail console, the platform's runtime has no JIT compiler, so an app's own code goes through the IL interpreter (see <a href="../performance/">Performance</a>). <a href="https://github.com/Digiex/Silverlight360-XboxNGen">XboxNGen</a> supplies a JIT for the runtime and runs the runtime's own native-image generator (the <em>zapper</em>) in xenia-edge, so an app's assemblies get <code>.ni.dll</code> native images, as Microsoft's apps have. In XboxNGen's benchmarks, compiled code runs tens to hundreds of times faster than interpreted code.</p>
+<p><code>tools\NGen-XboxApp.ps1</code> makes native images for a built package with XboxNGen's latest release, and <code>Build-XboxApp.ps1 -NGen</code> runs it after a build.</p>
+<div class="admonition warning">
+<p class="admonition-title">The images are unsigned</p>
+<p>They run in xenia-edge and on a console that runs unsigned code. They don't run on a stock retail console: an image there has to be signed for its app, as Microsoft's are. To hand out a package for retail consoles, leave the images out.</p>
+</div>
+<h2 id="what-it-needs">What it needs<a class="headerlink" href="#what-it-needs" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>xenia-edge from the <code>silverlight-build</code> branch of <a href="https://github.com/jessenic/xenia-edge/tree/silverlight-build">jessenic/xenia-edge</a></strong>, built. Upstream xenia-edge lacks fixes the zapper needs, such as devkit code buffers and code patched in place. The script uses <code>-Xenia</code>, else the <code>XENIA_EDGE</code> environment variable, else <code>xenia-edge\build\bin\Windows\Release\xenia_edge.exe</code> beside this repository or beside its parent folder (where XboxNGen's <code>Configure.ps1</code> looks), else <code>xenia_edge.exe</code> on <code>PATH</code>.</li>
+<li><strong>Python 3</strong> on <code>PATH</code> as <code>python</code>. XboxNGen's tools use it to rebase and wrap each image (the standard library only).</li>
+<li><strong>A whole package</strong>: <code>bin\&lt;Configuration&gt;\xbox</code>, or any app folder with a <code>default.xex</code>, an <code>AppManifest.xaml</code>, the runtime and its <code>mscorlib.ni.dll</code>. An <code>-AppOnly</code> build doesn't have the runtime the zapper runs in.</li>
+<li><strong>Internet access to GitHub</strong>, the first time and whenever a newer release is out. No account is needed.</li>
+</ul>
+<p>It doesn't need xsdk or WSL: the release's zip has the JIT (<code>jit\xclrjit.dll</code>), the zapper host (<code>host\ngenhost.xex</code>) and the code cache module (<code>codecache\CLRCodeCachedll_0.xex</code>) already built.</p>
+<h2 id="running-it">Running it<a class="headerlink" href="#running-it" title="Permanent link">&para;</a></h2>
+<pre><code class="language-powershell"># Build, then compile the app's own assemblies in bin\Release\xbox.
+.\tools\Build-XboxApp.ps1 -Project .\samples\HelloXbox\HelloXbox.csproj -NGen
+
+# Or on a package built earlier.
+.\tools\NGen-XboxApp.ps1 -Package .\samples\HelloXbox\bin\Release\xbox
+
+# Then run it as usual.
+.\tools\Test-XboxApp.ps1 -Xex .\samples\HelloXbox\bin\Release\xbox\default.xex -Output $env:TEMP\hello-ngen
+</code></pre>
+<p>The script:</p>
+<ol>
+<li>Gets XboxNGen. It asks GitHub for the latest release (or <code>-Tag v0.1.0</code>), downloads its <code>XboxNGen-*.zip</code> into <code>%LOCALAPPDATA%\Silverlight360\XboxNGen\&lt;tag&gt;</code> (<code>-Cache</code> changes the folder), and checks it against the SHA-256 digest GitHub records for the asset (and a <code>SHA256SUMS</code> or <code>.sha256</code> asset, if the release has one). Later runs reuse the cached release. Offline, it uses the newest cached release.</li>
+<li>Compiles the <code>AppManifest.xaml</code> assemblies that have no native image yet (or those given with <code>-Assemblies</code>), one xenia-edge run each. xenia-edge runs without a window; a small assembly such as a sample's takes a few seconds. The images go beside the assemblies in the package, from load address 0x95000000 up (<code>-BaseAddress</code>).</li>
+<li>Prints what it compiled. If an assembly got no image, it warns and exits with code 1. That assembly runs interpreted, as before.</li>
+</ol>
+<p><code>-Output &lt;folder&gt;</code> compiles in a copy of the package and leaves the package as it is.</p>
+<p>Run one xenia-edge at a time: the script won't start while one is running, since two at once can stop one with "Overflowed stackpoints!". xenia-edge sometimes stalls right after it starts. If a compile reports no image for that reason, run the script again: it compiles only what has no image yet.</p>
+<h3 id="the-platform-too">The platform too<a class="headerlink" href="#the-platform-too" title="Permanent link">&para;</a></h3>
+<pre><code class="language-powershell">.\tools\NGen-XboxApp.ps1 -Package .\samples\ui\XboxControls\bin\Release\xbox -Platform
+</code></pre>
+<p><code>-Platform</code> (<code>-NGenPlatform</code> on <code>Build-XboxApp.ps1</code>) first compiles the platform assemblies the package has (<code>System</code>, <code>System.Core</code>, <code>System.Xml</code>, <code>System.Net</code>, <code>System.Windows</code>, <code>System.Xml.Linq</code>, the <code>Microsoft.Xbox</code> libraries and others). It replaces the profile's native images of them with XboxNGen's, from 0x96200000 up, then compiles the app's assemblies again after them, against the new images. <code>mscorlib.ni.dll</code> stays the profile's. It takes one xenia-edge run per platform assembly, about a minute for the default profile's fourteen. The profile's images already run the platform compiled, so you need it only to run a package on XboxNGen's images alone, for instance to test XboxNGen.</p>
+<h3 id="a-local-xboxngen">A local XboxNGen<a class="headerlink" href="#a-local-xboxngen" title="Permanent link">&para;</a></h3>
+<pre><code class="language-powershell">.\tools\NGen-XboxApp.ps1 -Package .\samples\HelloXbox\bin\Release\xbox -XboxNGen C:\src\Silverlight360-XboxNGen
+</code></pre>
+<p><code>-XboxNGen &lt;folder&gt;</code> (also on <code>Build-XboxApp.ps1</code>) uses an XboxNGen checkout instead of a release, for working on XboxNGen itself. Its JIT, host and code cache module have to be built (<code>make</code> in WSL, as its README says). The script uses the checkout's <code>tools\</code> as they are.</p>
+<h2 id="handing-out-an-app-with-native-images">Handing out an app with native images<a class="headerlink" href="#handing-out-an-app-with-native-images" title="Permanent link">&para;</a></h2>
+<p>Images are bound to the exact IL they were compiled from, to the runtime and framework build in the profile, and to their load addresses. Compile them against the profile your users will run the app with, or leave them out and let the app run interpreted.</p>
+<p>XboxNGen's license is noncommercial, and an app shipped with native images its JIT made has to include a visible reference to https://github.com/Digiex/Silverlight360-XboxNGen (see its <code>LICENSE.md</code>).</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../performance/" class="btn btn-neutral float-left" title="Performance"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../testing/" class="btn btn-neutral float-right" title="Testing in xenia">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>Silverlight360 is licensed under the PolyForm Noncommercial License 1.0.0 with an additional condition. Xbox, Xbox 360 and Silverlight are trademarks of Microsoft.</p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/Digiex/Silverlight360" class="fa fa-code-fork" style="color: #fcfcfc"> Digiex/Silverlight360</a>
+        </span>
+    
+    
+      <span><a href="../performance/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../testing/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

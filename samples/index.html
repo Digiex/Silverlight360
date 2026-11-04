@@ -75,6 +75,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../performance/">Performance</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../native-images/">Native images</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../testing/">Testing in xenia</a>
                   </li>
               </ul>
@@ -86,6 +88,8 @@
     <li class="toctree-l2"><a class="reference internal" href="#application-samples">Application samples</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#earlier-samples">Earlier samples</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#a-native-library-of-the-apps-own">A native library of the app's own</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#apps-built-with-silverlight360">Apps built with Silverlight360</a>
     </li>
@@ -100,6 +104,10 @@
               </ul>
               <ul>
                 <li class="toctree-l1"><a class="reference internal" href="../runtime-inventory/">Runtime inventory</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../donor-assemblies/">Assemblies in other donor apps</a>
                 </li>
               </ul>
               <ul>
@@ -264,6 +272,33 @@
 </tr>
 </tbody>
 </table>
+<h2 id="a-native-library-of-the-apps-own">A native library of the app's own<a class="headerlink" href="#a-native-library-of-the-apps-own" title="Permanent link">&para;</a></h2>
+<p><a href="https://github.com/Digiex/Silverlight360/tree/master/samples/NativeLibrary">NativeLibrary</a> calls into <code>testlib.xex</code>, a DLL in C that ships in the app's package, with
+<code>DllImport</code> by ordinal: 32- and 64-bit arguments and results, a pinned buffer the DLL reads and writes, and state the
+DLL keeps between calls. Then it asks the kernel for the same module with <code>XexLoadImage</code>, <code>XexGetModuleHandle</code> and
+<code>XexGetProcedureAddress</code>. It passes all 8 checks in xenia-edge and on a console (2.0.17559) that runs unsigned code.</p>
+<p>The DLL is built with <a href="https://github.com/xenosworks/xsdk">xsdk</a>, and needs its DLL support (<code>elf2xex.py --dll</code>), which
+is in the <code>dll-modules</code> branch of <a href="https://github.com/jessenic/xsdk/tree/dll-modules">jessenic/xsdk</a> until
+<a href="https://github.com/xenosworks/xsdk/pull/4">xenosworks/xsdk#4</a> is merged. Build xsdk's toolchain as its own docs say
+(in WSL, <code>~/xsdk-gcc</code>), then:</p>
+<pre><code class="language-bash"># In WSL: writes samples/NativeLibrary/testlib.xex, which the project packages. XSDK is the dll-modules checkout
+# (default ~/xsdk), TOOLCHAIN the toolchain's prefix (default ~/xsdk-gcc/bin/powerpc-xsdk-elf-).
+git clone -b dll-modules https://github.com/jessenic/xsdk ~/xsdk
+XSDK=~/xsdk bash samples/NativeLibrary/native/build.sh
+</code></pre>
+<pre><code class="language-powershell"># Then the app, as any sample.
+.\tools\Build-XboxApp.ps1 -Project .\samples\NativeLibrary\NativeLibrary.csproj
+</code></pre>
+<p>What a DLL of your own needs, to load on a console as well as in xenia:</p>
+<ul>
+<li><strong>A load address that's free on the console.</strong> <code>native/testlib.ld</code> links it at 0x8F000000 and <code>build.sh</code> gives
+  elf2xex the same <code>--base</code>. A console running a Silverlight app has 0x8A000000, 0x8C000000 and 0x8E000000 taken, and
+  there the module can't load. xenia has them free, so it doesn't show. A module that doesn't load becomes a call
+  through a null pointer at its first <code>DllImport</code>, which took the console down.</li>
+<li><strong><code>XexLoadImage</code> asked as the CLR asks:</strong> with the path the CLR loaded it by (<code>GAME:\</code> before its name) and flags 9,
+  a DLL of the title's process. A title's request without the title bit (0x1) is refused with
+  STATUS_ACCESS_DENIED on a console; xenia lets it through.</li>
+</ul>
 <h2 id="apps-built-with-silverlight360">Apps built with Silverlight360<a class="headerlink" href="#apps-built-with-silverlight360" title="Permanent link">&para;</a></h2>
 <table>
 <thead>

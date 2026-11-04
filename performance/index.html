@@ -83,6 +83,8 @@
     </li>
     </ul>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../native-images/">Native images</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../testing/">Testing in xenia</a>
                   </li>
               </ul>
@@ -96,6 +98,10 @@
               </ul>
               <ul>
                 <li class="toctree-l1"><a class="reference internal" href="../runtime-inventory/">Runtime inventory</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../donor-assemblies/">Assemblies in other donor apps</a>
                 </li>
               </ul>
               <ul>
@@ -189,7 +195,7 @@
 <li><strong>Precompiled.</strong> The framework (<code>mscorlib</code>, <code>System</code>, <code>System.Core</code>, <code>System.Windows</code>, <code>System.Xml</code>, the <code>Microsoft.Xbox</code> libraries) ships as native images, the <code>.ni.dll</code> files next to each assembly. Their code runs as PowerPC code.</li>
 <li><strong>Interpreted.</strong> Everything else, your app's assembly included, goes through the runtime's IL interpreter. A method the interpreter can't handle, and that isn't in a native image, stops the app with "Xbox 360 has encountered a method that it cannot compile or interpret."</li>
 </ul>
-<p>The shipped apps' own assemblies have native images too (<code>XboxApplication.ni.dll</code>, <code>Newtonsoft.Json.ni.dll</code>, <code>Ninject.ni.dll</code> and others), made by Microsoft's build pipeline when the apps were published. Each is signed for its app and its load address, and no tool to make them ships with the platform, so a Silverlight360 app's code is interpreted.</p>
+<p>The shipped apps' own assemblies have native images too (<code>XboxApplication.ni.dll</code>, <code>Newtonsoft.Json.ni.dll</code>, <code>Ninject.ni.dll</code> and others), made by Microsoft's build pipeline when the apps were published. Each is signed for its app and its load address, and no tool to make them ships with the platform, so a Silverlight360 app's code is interpreted. <a href="https://github.com/Digiex/Silverlight360-XboxNGen">XboxNGen</a> makes unsigned ones, which run in xenia-edge and on consoles that run unsigned code: see <a href="../native-images/">Native images</a>.</p>
 <h2 id="what-it-costs">What it costs<a class="headerlink" href="#what-it-costs" title="Permanent link">&para;</a></h2>
 <p>Timed in xenia-edge with a dashboard app. A console is slower than a PC running xenia, so what matters here is the ratio between the columns; expect several times these times on hardware.</p>
 <table>
@@ -237,7 +243,7 @@
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
         <a href="../native-code/" class="btn btn-neutral float-left" title="Native code"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../testing/" class="btn btn-neutral float-right" title="Testing in xenia">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../native-images/" class="btn btn-neutral float-right" title="Native images">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -268,7 +274,7 @@
       <span><a href="../native-code/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../testing/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../native-images/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

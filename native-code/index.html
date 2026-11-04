@@ -77,9 +77,13 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#how-the-platform-reaches-native-code">How the platform reaches native code</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#a-dll-of-the-apps-own">A DLL of the app's own</a>
+    </li>
     </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../performance/">Performance</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../native-images/">Native images</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../testing/">Testing in xenia</a>
                   </li>
@@ -94,6 +98,10 @@
               </ul>
               <ul>
                 <li class="toctree-l1"><a class="reference internal" href="../runtime-inventory/">Runtime inventory</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../donor-assemblies/">Assemblies in other donor apps</a>
                 </li>
               </ul>
               <ul>
@@ -240,6 +248,11 @@ finally
 <li><strong>The CLR's internal calls</strong> into <code>xcoreclr.dll</code>.</li>
 </ol>
 <p>App code could call the XamlHost extensions the same way, but that hasn't been tried; their signatures have to be read from the decompiled <code>Microsoft.Xbox.*</code> assemblies.</p>
+<h2 id="a-dll-of-the-apps-own">A DLL of the app's own<a class="headerlink" href="#a-dll-of-the-apps-own" title="Permanent link">&para;</a></h2>
+<p>An app can ship native code of its own in its package: a DLL in C, built with
+<a href="https://github.com/jessenic/xsdk/tree/dll-modules">xsdk</a> and called with <code>DllImport("&lt;name&gt;.xex", EntryPoint = "#&lt;ordinal&gt;")</code>
+like the system's modules. <code>samples\NativeLibrary</code> does; <a href="../samples/#a-native-library-of-the-apps-own">Samples</a> says
+how to build it and what such a DLL needs to load on a console as well as in xenia.</p>
               
             </div>
           </div><footer>
