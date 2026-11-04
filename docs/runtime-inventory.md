@@ -57,11 +57,13 @@ used framework assemblies, so the SDK's default runtime profile
 | `Microsoft.Xbox.Sample.*` | ~38 apps | Microsoft's sample media app framework (UI, player, models). |
 | `Microsoft.Xbox.Epg` | Revision3, WWE | Program guide. |
 | `Microsoft.Xbox.Extensions` | Netflix | |
-| `System.Xml.Serialization` | EPIX | |
+| `System.Xml.Serialization` | EPIX | A reference assembly only: the code is in `System.Xml.dll`. |
 | `XBoxLiveLV` | YouTube | LIVE sign-in helpers. |
 
 These are app-level libraries, not part of the platform; a profile can carry
 them if an app needs one, but they aren't included by default.
+[Assemblies in other donor apps](donor-assemblies.md) lists all of them, with
+the apps carrying each build.
 
 ## Native images are optional
 

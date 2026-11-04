@@ -29,6 +29,7 @@ Reference:
 - [API reference](reference/README.md): the Xbox libraries and the Xbox additions to Silverlight, one page per namespace. The same text appears in Visual Studio's IntelliSense.
 - [Samples](samples.md): what each sample shows and how it was tested.
 - [Runtime inventory](runtime-inventory.md): the platform versions found in the shipped apps.
+- [Assemblies in other donor apps](donor-assemblies.md): every assembly the other shipped apps carry that Plex doesn't, and the apps to take each from.
 
 An app built with it: [Silverdash360](https://github.com/Digiex/Silverdash360), a dashboard for the Xbox 360 that runs on consoles ([its documentation](https://digiex.github.io/Silverdash360/)). See [Samples](samples.md#apps-built-with-silverlight360).
 

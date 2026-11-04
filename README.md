@@ -206,6 +206,7 @@ bin\Release\xbox\
 | `tools\extract_god_packages.py <archives> <output> <staging>` | Extracts the Games on Demand packages in `.zip`/`.rar` archives into `<output>\<package title>`. Handles every SVOD layout xenia does. |
 | `tools\extract_stfs_package.py <package> <output>` | Extracts an STFS package (CON/LIVE/PIRS), such as a title update. |
 | `tools\Get-AppInventory.ps1 -OutJson <file>` | Lists runtime and framework versions of extracted apps. |
+| `tools\Get-DonorAssemblies.ps1 -Root <apps> -OutJson <file>` | Lists the assemblies extracted apps carry that the donor doesn't, with the apps carrying each build; `tools\donor_assemblies_md.py` renders it into [docs/donor-assemblies.md](docs/donor-assemblies.md). |
 | `tools\New-RuntimeProfile.ps1 -DonorApp <app> -Output <profile> [-KeepTitle]` | Makes a runtime profile. Its `default.xex` declares no title unless `-KeepTitle` is given ([docs/title.md](docs/title.md)). |
 | `tools\strip_donor_title.py <default.xex>` | Takes the donor's title (execution info and title resource) out of an executable; `New-RuntimeProfile.ps1` runs it. |
 | `tools\Build-XboxApp.ps1 -Project <csproj> [-RuntimeProfile <profile>]` | Builds and packages a project. |

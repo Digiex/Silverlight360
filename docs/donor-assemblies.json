@@ -1,0 +1,7046 @@
+[
+  {
+    "Name": "AdobePass",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Fox Broadcast",
+          "GameTrailers",
+          "MTV"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Fox Broadcast",
+      "GameTrailers",
+      "MTV"
+    ]
+  },
+  {
+    "Name": "adsapi",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.1327.0",
+        "FileVersion": "1.0.1327.0",
+        "Apps": [
+          "YouTube"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "YouTube"
+    ]
+  },
+  {
+    "Name": "Analytics",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Antena 3 Modo Salón"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Antena 3 Modo Salón"
+    ]
+  },
+  {
+    "Name": "AolViewModel",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Aol On"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Aol On"
+    ]
+  },
+  {
+    "Name": "AolXboxApplication",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Aol On"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Aol On"
+    ]
+  },
+  {
+    "Name": "AppMeasurement_XBOX",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.3.9.0",
+        "FileVersion": "1.3.9.0",
+        "Apps": [
+          "GameTrailers",
+          "MTV"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "GameTrailers",
+      "MTV"
+    ]
+  },
+  {
+    "Name": "AuditudeXBoxSMFPlugin_1_0_0",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Demand 5"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Demand 5"
+    ]
+  },
+  {
+    "Name": "BlinkBox.Client",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.1205.0",
+        "Apps": [
+          "blinkbox"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "blinkbox"
+    ]
+  },
+  {
+    "Name": "BlinkBox.Client.WebApi",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.1205.0",
+        "Apps": [
+          "blinkbox"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "blinkbox"
+    ]
+  },
+  {
+    "Name": "BlinkBox.Client.Xbox",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.1205.0",
+        "Apps": [
+          "blinkbox"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "blinkbox"
+    ]
+  },
+  {
+    "Name": "BlinkBox.Client.Xbox.Application",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.1205.0",
+        "Apps": [
+          "blinkbox"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "blinkbox"
+    ]
+  },
+  {
+    "Name": "BlinkBox.Client.Xbox.Controls",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.1205.0",
+        "Apps": [
+          "blinkbox"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "blinkbox"
+    ]
+  },
+  {
+    "Name": "BlinkBox.Client.Xbox.UI",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.1205.0",
+        "Apps": [
+          "blinkbox"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "blinkbox"
+    ]
+  },
+  {
+    "Name": "BouncyCastleCrypto",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Vimeo"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Vimeo"
+    ]
+  },
+  {
+    "Name": "BrightcoveSDK",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "GameTrailers",
+          "MTV"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "GameTrailers",
+      "MTV"
+    ]
+  },
+  {
+    "Name": "BrightcoveViacomSDK",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "GameTrailers",
+          "MTV"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "GameTrailers",
+      "MTV"
+    ]
+  },
+  {
+    "Name": "BSkyB.NowTV.UI.Common",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "NOW TV"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "NOW TV"
+    ]
+  },
+  {
+    "Name": "BSkyB.NowTV.UI.Interfaces",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "NOW TV"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "NOW TV"
+    ]
+  },
+  {
+    "Name": "CanalPlusLakeviewApplication",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Canal+"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Canal+"
+    ]
+  },
+  {
+    "Name": "Channel4.Xbox.UIC4",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.54.8",
+        "FileVersion": "1.0.54.8",
+        "Apps": [
+          "4oD"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "4oD"
+    ]
+  },
+  {
+    "Name": "Channel5.Xbox.Common",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.90.0",
+        "FileVersion": "1.0.90.0",
+        "Apps": [
+          "Demand 5"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Demand 5"
+    ]
+  },
+  {
+    "Name": "Channel5.Xbox.Controls",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.90.0",
+        "FileVersion": "1.0.90.0",
+        "Apps": [
+          "Demand 5"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Demand 5"
+    ]
+  },
+  {
+    "Name": "Channel5.Xbox.Models",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.90.0",
+        "FileVersion": "1.0.90.0",
+        "Apps": [
+          "Demand 5"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Demand 5"
+    ]
+  },
+  {
+    "Name": "Channel5.Xbox.Services",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.90.0",
+        "FileVersion": "1.0.90.0",
+        "Apps": [
+          "Demand 5"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Demand 5"
+    ]
+  },
+  {
+    "Name": "Channel5.Xbox.Services.Cms",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.90.0",
+        "FileVersion": "1.0.90.0",
+        "Apps": [
+          "Demand 5"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Demand 5"
+    ]
+  },
+  {
+    "Name": "Channel5.Xbox.UI",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.90.0",
+        "FileVersion": "1.0.90.0",
+        "Apps": [
+          "Demand 5"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Demand 5"
+    ]
+  },
+  {
+    "Name": "Channel5.XboxApplication",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.90.0",
+        "FileVersion": "1.0.90.0",
+        "Apps": [
+          "Demand 5"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Demand 5"
+    ]
+  },
+  {
+    "Name": "ClosedCaptionsService",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.1306.0",
+        "FileVersion": "1.0.1306.0",
+        "Apps": [
+          "Hulu Plus"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Hulu Plus"
+    ]
+  },
+  {
+    "Name": "com.Akamai.Analytics",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "2.2.0.4",
+        "FileVersion": "2.2.0.4",
+        "Apps": [
+          "GameTrailers",
+          "MTV"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "GameTrailers",
+      "MTV"
+    ]
+  },
+  {
+    "Name": "com.Akamai.AnalyticsPluginLoader",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.5.0.0",
+        "FileVersion": "1.5.0.0",
+        "Apps": [
+          "GameTrailers",
+          "MTV"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "GameTrailers",
+      "MTV"
+    ]
+  },
+  {
+    "Name": "Common",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "WWE PPV Wrestlemania"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "WWE PPV Wrestlemania"
+    ]
+  },
+  {
+    "Name": "Common.C4",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.54.8",
+        "FileVersion": "1.0.54.8",
+        "Apps": [
+          "4oD"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "4oD"
+    ]
+  },
+  {
+    "Name": "Common.Prisa",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Canal+"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Canal+"
+    ]
+  },
+  {
+    "Name": "Controls",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "WWE PPV Wrestlemania"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "WWE PPV Wrestlemania"
+    ]
+  },
+  {
+    "Name": "Controls.C4",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.54.8",
+        "FileVersion": "1.0.54.8",
+        "Apps": [
+          "4oD"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "4oD"
+    ]
+  },
+  {
+    "Name": "Controls.Prisa",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Canal+"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Canal+"
+    ]
+  },
+  {
+    "Name": "Controls.SilverlightToolkit",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "EPIX",
+          "Paramount Movies"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "EPIX",
+      "Paramount Movies"
+    ]
+  },
+  {
+    "Name": "CrunchyLib",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Crunchyroll"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Crunchyroll"
+    ]
+  },
+  {
+    "Name": "Crypto",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.7.4512.26115",
+        "FileVersion": "1.7.4512.26115",
+        "Apps": [
+          "Amazon Instant Video"
+        ]
+      },
+      {
+        "Version": "1.1162.434.2",
+        "FileVersion": "1.1162.434.2",
+        "Apps": [
+          "Netflix"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Amazon Instant Video",
+      "Netflix"
+    ]
+  },
+  {
+    "Name": "CW.Xbox.UI",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "The CW Network"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "The CW Network"
+    ]
+  },
+  {
+    "Name": "Cypress.Analytics.XBox",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.1.0.0",
+        "FileVersion": "1.1.0.0",
+        "Apps": [
+          "Crackle",
+          "Fox Broadcast"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Crackle",
+      "Fox Broadcast"
+    ]
+  },
+  {
+    "Name": "Cypress.Core.XBox",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.1.0.0",
+        "FileVersion": "1.1.0.0",
+        "Apps": [
+          "Crackle",
+          "Fox Broadcast"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Crackle",
+      "Fox Broadcast"
+    ]
+  },
+  {
+    "Name": "Cypress.Reimplemented.XBox",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.1.0.0",
+        "FileVersion": "1.1.0.0",
+        "Apps": [
+          "Crackle",
+          "Fox Broadcast"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Crackle",
+      "Fox Broadcast"
+    ]
+  },
+  {
+    "Name": "Cypress.Rest.XBox",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.1.0.0",
+        "FileVersion": "1.1.0.0",
+        "Apps": [
+          "Crackle",
+          "Fox Broadcast"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Crackle",
+      "Fox Broadcast"
+    ]
+  },
+  {
+    "Name": "Cypress.Storage.XBox",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.1.0.0",
+        "FileVersion": "1.1.0.0",
+        "Apps": [
+          "Crackle",
+          "Fox Broadcast"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Crackle",
+      "Fox Broadcast"
+    ]
+  },
+  {
+    "Name": "Cypress.Xbox.FOX.Services",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Fox Broadcast"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Fox Broadcast"
+    ]
+  },
+  {
+    "Name": "DataModels",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.1162.434.2",
+        "FileVersion": "1.1162.434.2",
+        "Apps": [
+          "Netflix"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Netflix"
+    ]
+  },
+  {
+    "Name": "DataServiceLV",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.1327.0",
+        "FileVersion": "1.0.1327.0",
+        "Apps": [
+          "YouTube"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "YouTube"
+    ]
+  },
+  {
+    "Name": "DH.Scrypt",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.2.3",
+        "FileVersion": "1.0.2.3",
+        "Apps": [
+          "Verizon FiOS TV"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Verizon FiOS TV"
+    ]
+  },
+  {
+    "Name": "DSPlugins",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "The CW Network"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "The CW Network"
+    ]
+  },
+  {
+    "Name": "Ensemble.Xbox.UI",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Maxim"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Maxim"
+    ]
+  },
+  {
+    "Name": "EnsembleSupport",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Vimeo"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Vimeo"
+    ]
+  },
+  {
+    "Name": "GalaSoft.MvvmLight",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "SkyDrive"
+        ]
+      },
+      {
+        "Version": "3.0.0.24641",
+        "FileVersion": "3.0.0.24641",
+        "Apps": [
+          "4oD",
+          "ABC iview",
+          "Absolute Radio",
+          "Amazon Instant Video",
+          "Antena 3 Modo Salón",
+          "blinkbox",
+          "Blip",
+          "Canal+",
+          "CNET",
+          "Crackle",
+          "Crunchyroll",
+          "Dailymotion",
+          "Demand 5",
+          "Disney XD",
+          "EPIX",
+          "Fox Broadcast",
+          "GameSpot TV",
+          "GameTrailers",
+          "HBO GO",
+          "IGN",
+          "IndieFlix",
+          "Live Event Player",
+          "Maxim",
+          "Movistar Imagenio",
+          "MSN Video",
+          "MTV",
+          "Mustang Customizer",
+          "MUZU.TV",
+          "Neon Alley",
+          "NOW TV",
+          "Paramount Movies",
+          "Premium Play",
+          "Quickflix",
+          "Real Sports",
+          "Redbox Instant",
+          "Revision3",
+          "Rogers On Demand",
+          "Screenrush",
+          "Slacker Radio",
+          "Syfy",
+          "Telemundo",
+          "The CW Network",
+          "UVideos",
+          "Verizon FiOS TV",
+          "VEVO",
+          "Vimeo",
+          "VUDU Movies",
+          "Wall Street Journal",
+          "WWE PPV Wrestlemania",
+          "Xbox LIVE Dailymotion",
+          "Xbox Tournaments",
+          "XFINITY"
+        ]
+      }
+    ],
+    "Token": "ef0f8c0372b87f18",
+    "Stub": false,
+    "Apps": [
+      "4oD",
+      "ABC iview",
+      "Absolute Radio",
+      "Amazon Instant Video",
+      "Antena 3 Modo Salón",
+      "blinkbox",
+      "Blip",
+      "Canal+",
+      "CNET",
+      "Crackle",
+      "Crunchyroll",
+      "Dailymotion",
+      "Demand 5",
+      "Disney XD",
+      "EPIX",
+      "Fox Broadcast",
+      "GameSpot TV",
+      "GameTrailers",
+      "HBO GO",
+      "IGN",
+      "IndieFlix",
+      "Live Event Player",
+      "Maxim",
+      "Movistar Imagenio",
+      "MSN Video",
+      "MTV",
+      "Mustang Customizer",
+      "MUZU.TV",
+      "Neon Alley",
+      "NOW TV",
+      "Paramount Movies",
+      "Premium Play",
+      "Quickflix",
+      "Real Sports",
+      "Redbox Instant",
+      "Revision3",
+      "Rogers On Demand",
+      "Screenrush",
+      "SkyDrive",
+      "Slacker Radio",
+      "Syfy",
+      "Telemundo",
+      "The CW Network",
+      "UVideos",
+      "Verizon FiOS TV",
+      "VEVO",
+      "Vimeo",
+      "VUDU Movies",
+      "Wall Street Journal",
+      "WWE PPV Wrestlemania",
+      "Xbox LIVE Dailymotion",
+      "Xbox Tournaments",
+      "XFINITY"
+    ]
+  },
+  {
+    "Name": "GalaSoft.MvvmLight.Extras",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "SkyDrive"
+        ]
+      },
+      {
+        "Version": "3.0.0.24670",
+        "FileVersion": "3.0.0.24670",
+        "Apps": [
+          "blinkbox",
+          "Movistar Imagenio",
+          "Xbox LIVE Dailymotion"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "blinkbox",
+      "Movistar Imagenio",
+      "SkyDrive",
+      "Xbox LIVE Dailymotion"
+    ]
+  },
+  {
+    "Name": "GalaSoft.MvvmLight.Extras.ADK",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "3.0.0.20427",
+        "FileVersion": "3.0.0.20427",
+        "Apps": [
+          "4oD",
+          "ABC iview",
+          "Absolute Radio",
+          "Amazon Instant Video",
+          "Antena 3 Modo Salón",
+          "Blip",
+          "Canal+",
+          "CNET",
+          "Crackle",
+          "Crunchyroll",
+          "Dailymotion",
+          "Demand 5",
+          "Disney XD",
+          "EPIX",
+          "Fox Broadcast",
+          "GameSpot TV",
+          "GameTrailers",
+          "HBO GO",
+          "IGN",
+          "IndieFlix",
+          "Live Event Player",
+          "Maxim",
+          "MSN Video",
+          "MTV",
+          "Mustang Customizer",
+          "MUZU.TV",
+          "Neon Alley",
+          "NOW TV",
+          "Paramount Movies",
+          "Premium Play",
+          "Quickflix",
+          "Real Sports",
+          "Redbox Instant",
+          "Revision3",
+          "Rogers On Demand",
+          "Screenrush",
+          "Slacker Radio",
+          "Syfy",
+          "Telemundo",
+          "The CW Network",
+          "UVideos",
+          "Verizon FiOS TV",
+          "VEVO",
+          "Vimeo",
+          "VUDU Movies",
+          "Wall Street Journal",
+          "WWE PPV Wrestlemania",
+          "Xbox Tournaments",
+          "XFINITY"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "4oD",
+      "ABC iview",
+      "Absolute Radio",
+      "Amazon Instant Video",
+      "Antena 3 Modo Salón",
+      "Blip",
+      "Canal+",
+      "CNET",
+      "Crackle",
+      "Crunchyroll",
+      "Dailymotion",
+      "Demand 5",
+      "Disney XD",
+      "EPIX",
+      "Fox Broadcast",
+      "GameSpot TV",
+      "GameTrailers",
+      "HBO GO",
+      "IGN",
+      "IndieFlix",
+      "Live Event Player",
+      "Maxim",
+      "MSN Video",
+      "MTV",
+      "Mustang Customizer",
+      "MUZU.TV",
+      "Neon Alley",
+      "NOW TV",
+      "Paramount Movies",
+      "Premium Play",
+      "Quickflix",
+      "Real Sports",
+      "Redbox Instant",
+      "Revision3",
+      "Rogers On Demand",
+      "Screenrush",
+      "Slacker Radio",
+      "Syfy",
+      "Telemundo",
+      "The CW Network",
+      "UVideos",
+      "Verizon FiOS TV",
+      "VEVO",
+      "Vimeo",
+      "VUDU Movies",
+      "Wall Street Journal",
+      "WWE PPV Wrestlemania",
+      "Xbox Tournaments",
+      "XFINITY"
+    ]
+  },
+  {
+    "Name": "Google.InteractiveAds",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.2.0.29056",
+        "FileVersion": "1.2.0.29056",
+        "Apps": [
+          "The CW Network"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "The CW Network"
+    ]
+  },
+  {
+    "Name": "Google.WebAnalytics",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "2.3.6.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "IGN"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "IGN"
+    ]
+  },
+  {
+    "Name": "Google.YouTube.Ads.Xbox",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.1327.0",
+        "FileVersion": "1.0.1327.0",
+        "Apps": [
+          "YouTube"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "YouTube"
+    ]
+  },
+  {
+    "Name": "Google.YouTube.Captions.Xbox",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.1327.0",
+        "FileVersion": "1.0.1327.0",
+        "Apps": [
+          "YouTube"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "YouTube"
+    ]
+  },
+  {
+    "Name": "Google.YouTube.Media.Xbox",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.1327.0",
+        "FileVersion": "1.0.1327.0",
+        "Apps": [
+          "YouTube"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "YouTube"
+    ]
+  },
+  {
+    "Name": "Google.YouTube.Util.Xbox",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.1327.0",
+        "FileVersion": "1.0.1327.0",
+        "Apps": [
+          "YouTube"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "YouTube"
+    ]
+  },
+  {
+    "Name": "Google.YouTube.VideoStats",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.1327.0",
+        "FileVersion": "1.0.1327.0",
+        "Apps": [
+          "YouTube"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "YouTube"
+    ]
+  },
+  {
+    "Name": "Google.YouTube.Xbox",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.1327.0",
+        "FileVersion": "1.0.1327.0",
+        "Apps": [
+          "YouTube"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "YouTube"
+    ]
+  },
+  {
+    "Name": "GreenApp.Controls",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.1306.0",
+        "FileVersion": "1.0.1306.0",
+        "Apps": [
+          "Hulu Plus"
+        ]
+      },
+      {
+        "Version": "1.0.1327.0",
+        "FileVersion": "1.0.1327.0",
+        "Apps": [
+          "YouTube"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Hulu Plus",
+      "YouTube"
+    ]
+  },
+  {
+    "Name": "GreenApp.Converters",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.1306.0",
+        "FileVersion": "1.0.1306.0",
+        "Apps": [
+          "Hulu Plus"
+        ]
+      },
+      {
+        "Version": "1.0.1327.0",
+        "FileVersion": "1.0.1327.0",
+        "Apps": [
+          "YouTube"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Hulu Plus",
+      "YouTube"
+    ]
+  },
+  {
+    "Name": "GS.ADK.Common",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Live Event Player"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Live Event Player"
+    ]
+  },
+  {
+    "Name": "GS.ADK.Common.Auth",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Live Event Player"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Live Event Player"
+    ]
+  },
+  {
+    "Name": "GS.ADK.Common.Telemetry",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Live Event Player"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Live Event Player"
+    ]
+  },
+  {
+    "Name": "GS.ADK.LEP.App",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Live Event Player"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Live Event Player"
+    ]
+  },
+  {
+    "Name": "HAPXbox",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "4oD"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "4oD"
+    ]
+  },
+  {
+    "Name": "HLSMSS_VUDU",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "VUDU Movies"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "VUDU Movies"
+    ]
+  },
+  {
+    "Name": "Http",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.1162.434.2",
+        "FileVersion": "1.1162.434.2",
+        "Apps": [
+          "Netflix"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Netflix"
+    ]
+  },
+  {
+    "Name": "HttpLiveStreamingLV",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.1306.0",
+        "FileVersion": "1.0.1306.0",
+        "Apps": [
+          "Hulu Plus"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Hulu Plus"
+    ]
+  },
+  {
+    "Name": "HuluAppXboxApplication",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.1306.0",
+        "FileVersion": "1.0.1306.0",
+        "Apps": [
+          "Hulu Plus"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Hulu Plus"
+    ]
+  },
+  {
+    "Name": "IdentityMine.Merge.Client",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Exp Sony Pictures",
+          "The Next Level"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Exp Sony Pictures",
+      "The Next Level"
+    ]
+  },
+  {
+    "Name": "IGN.HttpLiveStreaming",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "IGN"
+        ]
+      }
+    ],
+    "Token": "053cb49a9af5c3f1",
+    "Stub": false,
+    "Apps": [
+      "IGN"
+    ]
+  },
+  {
+    "Name": "IGN.Xbox",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "IGN"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "IGN"
+    ]
+  },
+  {
+    "Name": "IGN.Xbox.Common",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "IGN"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "IGN"
+    ]
+  },
+  {
+    "Name": "IGN.Xbox.Controls",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "IGN"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "IGN"
+    ]
+  },
+  {
+    "Name": "IGN.Xbox.Data",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "IGN"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "IGN"
+    ]
+  },
+  {
+    "Name": "IGN.Xbox.Models",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "IGN"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "IGN"
+    ]
+  },
+  {
+    "Name": "IGN.Xbox.Services",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "IGN"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "IGN"
+    ]
+  },
+  {
+    "Name": "IGN.Xbox.UI",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "IGN"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "IGN"
+    ]
+  },
+  {
+    "Name": "iHeartRadioXboxApplication",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "iHeartRadio"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "iHeartRadio"
+    ]
+  },
+  {
+    "Name": "iHRData",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "iHeartRadio"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "iHeartRadio"
+    ]
+  },
+  {
+    "Name": "iHRViewModel",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "iHeartRadio"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "iHeartRadio"
+    ]
+  },
+  {
+    "Name": "iPlayer.Application.Xbox",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "BBC iPlayer"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "BBC iPlayer"
+    ]
+  },
+  {
+    "Name": "iPlayer.Services.Xbox",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "BBC iPlayer"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "BBC iPlayer"
+    ]
+  },
+  {
+    "Name": "iPlayerApplication",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "BBC iPlayer"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "BBC iPlayer"
+    ]
+  },
+  {
+    "Name": "json.net.adk",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "4.0.0.0",
+        "FileVersion": "4.1.21007.0",
+        "Apps": [
+          "IndieFlix",
+          "SkyDrive"
+        ]
+      },
+      {
+        "Version": "4.0.0.0",
+        "FileVersion": "4.1.21025.0",
+        "Apps": [
+          "Maxim"
+        ]
+      },
+      {
+        "Version": "4.0.0.0",
+        "FileVersion": "4.1.21107.0",
+        "Apps": [
+          "The CW Network"
+        ]
+      }
+    ],
+    "Token": "842cf8be1de50553",
+    "Stub": false,
+    "Apps": [
+      "IndieFlix",
+      "Maxim",
+      "SkyDrive",
+      "The CW Network"
+    ]
+  },
+  {
+    "Name": "Json.Xbox",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.1306.0",
+        "FileVersion": "1.0.1306.0",
+        "Apps": [
+          "Hulu Plus"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Hulu Plus"
+    ]
+  },
+  {
+    "Name": "LitJson",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.1162.434.2",
+        "FileVersion": "1.1162.434.2",
+        "Apps": [
+          "Netflix"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Netflix"
+    ]
+  },
+  {
+    "Name": "Localization",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.1162.434.2",
+        "FileVersion": "1.1162.434.2",
+        "Apps": [
+          "Netflix"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Netflix"
+    ]
+  },
+  {
+    "Name": "Logging",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.1162.434.2",
+        "FileVersion": "1.1162.434.2",
+        "Apps": [
+          "Netflix"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Netflix"
+    ]
+  },
+  {
+    "Name": "LoggingLV",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.1306.0",
+        "FileVersion": "1.0.1306.0",
+        "Apps": [
+          "Hulu Plus"
+        ]
+      },
+      {
+        "Version": "1.0.1327.0",
+        "FileVersion": "1.0.1327.0",
+        "Apps": [
+          "YouTube"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Hulu Plus",
+      "YouTube"
+    ]
+  },
+  {
+    "Name": "LoggingPluginLV",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.1306.0",
+        "FileVersion": "1.0.1306.0",
+        "Apps": [
+          "Hulu Plus"
+        ]
+      },
+      {
+        "Version": "1.0.1327.0",
+        "FileVersion": "1.0.1327.0",
+        "Apps": [
+          "YouTube"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Hulu Plus",
+      "YouTube"
+    ]
+  },
+  {
+    "Name": "LOrealViewModel",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "The Next Level"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "The Next Level"
+    ]
+  },
+  {
+    "Name": "LOrealXboxApplication",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "The Next Level"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "The Next Level"
+    ]
+  },
+  {
+    "Name": "Maxim.Api",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Maxim"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Maxim"
+    ]
+  },
+  {
+    "Name": "Maxim.Xbox.Services",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Maxim"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Maxim"
+    ]
+  },
+  {
+    "Name": "Maxim.Xbox.UI",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Maxim"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Maxim"
+    ]
+  },
+  {
+    "Name": "mDialog.Media.HLSMS.Xbox",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "2.0.4672.21629",
+        "FileVersion": "2.0",
+        "Apps": [
+          "Wall Street Journal"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Wall Street Journal"
+    ]
+  },
+  {
+    "Name": "mDialog.Media.Interfaces.Xbox",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "2.0.4672.21628",
+        "FileVersion": "2.0",
+        "Apps": [
+          "Wall Street Journal"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Wall Street Journal"
+    ]
+  },
+  {
+    "Name": "mDialog.Media.MMSS.Xbox",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "2.0.4672.21628",
+        "FileVersion": "2.0",
+        "Apps": [
+          "Wall Street Journal"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Wall Street Journal"
+    ]
+  },
+  {
+    "Name": "mDialog.Utility.Xbox",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Wall Street Journal"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Wall Street Journal"
+    ]
+  },
+  {
+    "Name": "mDialog.Xbox.Sdk",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.2012.413.0",
+        "FileVersion": "1.2012.0413.0",
+        "Apps": [
+          "Wall Street Journal"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Wall Street Journal"
+    ]
+  },
+  {
+    "Name": "MediaAnalytics",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "2.2.0.12",
+        "FileVersion": "2.2.0.12",
+        "Apps": [
+          "GameTrailers",
+          "MTV"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "GameTrailers",
+      "MTV"
+    ]
+  },
+  {
+    "Name": "MediasetNetTv.Core",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Premium Play"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Premium Play"
+    ]
+  },
+  {
+    "Name": "MediasetNetTv.DataProviders",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Premium Play"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Premium Play"
+    ]
+  },
+  {
+    "Name": "MediasetNetTv.Mocks",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Premium Play"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Premium Play"
+    ]
+  },
+  {
+    "Name": "MediasetNetTv.Models",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Premium Play"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Premium Play"
+    ]
+  },
+  {
+    "Name": "MediasetNetTv.ServiceContracts",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Premium Play"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Premium Play"
+    ]
+  },
+  {
+    "Name": "MediasetNetTv.ServiceStub",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Premium Play"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Premium Play"
+    ]
+  },
+  {
+    "Name": "MediasetNetTv.UI",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Premium Play"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Premium Play"
+    ]
+  },
+  {
+    "Name": "MediasetNetTvApplication",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Premium Play"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Premium Play"
+    ]
+  },
+  {
+    "Name": "MediaStreamSource",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.1162.434.2",
+        "FileVersion": "1.1162.434.2",
+        "Apps": [
+          "Netflix"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Netflix"
+    ]
+  },
+  {
+    "Name": "Microsoft.Advertising",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "5.2.0.0",
+        "FileVersion": "5.2.0.0",
+        "Apps": [
+          "Aol On",
+          "Blip",
+          "CNET",
+          "GameTrailers",
+          "IndieFlix",
+          "Maxim",
+          "MTV",
+          "Napster",
+          "Neon Alley",
+          "Pizza Hut",
+          "Revision3",
+          "Rhapsody",
+          "Slacker Radio",
+          "Telemundo",
+          "The Next Level",
+          "UVideos",
+          "Vimeo",
+          "WWE PPV Wrestlemania",
+          "Xbox Tournaments"
+        ]
+      },
+      {
+        "Version": "5.2.0.0",
+        "FileVersion": "5.2.420.0",
+        "Apps": [
+          "Exp Sony Pictures",
+          "Fox Broadcast",
+          "GameSpot TV",
+          "NOW TV"
+        ]
+      },
+      {
+        "Version": "5.2.0.0",
+        "FileVersion": "5.2.710.0",
+        "Apps": [
+          "Wall Street Journal"
+        ]
+      },
+      {
+        "Version": "5.2.0.0",
+        "FileVersion": "5.2.921.0",
+        "Apps": [
+          "Xbox LIVE Dailymotion"
+        ]
+      },
+      {
+        "Version": "5.2.0.0",
+        "FileVersion": "5.2.1109.2",
+        "Apps": [
+          "Crackle",
+          "HBO GO",
+          "IGN",
+          "MSN Video",
+          "MUZU.TV",
+          "Real Sports",
+          "Screenrush",
+          "Syfy",
+          "TMZ",
+          "XFINITY"
+        ]
+      },
+      {
+        "Version": "5.2.0.0",
+        "FileVersion": "5.2.1406.0",
+        "Apps": [
+          "Amazon Instant Video",
+          "Manga Entertainment"
+        ]
+      }
+    ],
+    "Token": "31bf3856ad364e35",
+    "Stub": false,
+    "Apps": [
+      "Amazon Instant Video",
+      "Aol On",
+      "Blip",
+      "CNET",
+      "Crackle",
+      "Exp Sony Pictures",
+      "Fox Broadcast",
+      "GameSpot TV",
+      "GameTrailers",
+      "HBO GO",
+      "IGN",
+      "IndieFlix",
+      "Manga Entertainment",
+      "Maxim",
+      "MSN Video",
+      "MTV",
+      "MUZU.TV",
+      "Napster",
+      "Neon Alley",
+      "NOW TV",
+      "Pizza Hut",
+      "Real Sports",
+      "Revision3",
+      "Rhapsody",
+      "Screenrush",
+      "Slacker Radio",
+      "Syfy",
+      "Telemundo",
+      "The Next Level",
+      "TMZ",
+      "UVideos",
+      "Vimeo",
+      "Wall Street Journal",
+      "WWE PPV Wrestlemania",
+      "Xbox LIVE Dailymotion",
+      "Xbox Tournaments",
+      "XFINITY"
+    ]
+  },
+  {
+    "Name": "Microsoft.WebAnalytics",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "2.3.2.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "XFINITY"
+        ]
+      },
+      {
+        "Version": "2.3.6.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "IGN"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "IGN",
+      "XFINITY"
+    ]
+  },
+  {
+    "Name": "Microsoft.WebAnalytics.Behaviors",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "2.3.2.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "IGN",
+          "XFINITY"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "IGN",
+      "XFINITY"
+    ]
+  },
+  {
+    "Name": "Microsoft.Xbox.Dailymotion.UI",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.1.0",
+        "FileVersion": "1.0.1",
+        "Apps": [
+          "Xbox LIVE Dailymotion"
+        ]
+      },
+      {
+        "Version": "1.1.0.0",
+        "FileVersion": "1.1.0",
+        "Apps": [
+          "Dailymotion"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Dailymotion",
+      "Xbox LIVE Dailymotion"
+    ]
+  },
+  {
+    "Name": "Microsoft.Xbox.Epg",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "2.0.5.0",
+        "FileVersion": "4.1.21107.0",
+        "Apps": [
+          "Revision3",
+          "WWE PPV Wrestlemania"
+        ]
+      }
+    ],
+    "Token": "7cec85d7bea7798e",
+    "Stub": false,
+    "Apps": [
+      "Revision3",
+      "WWE PPV Wrestlemania"
+    ]
+  },
+  {
+    "Name": "Microsoft.Xbox.Extensions",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "4.0.0.0",
+        "FileVersion": "4.1.10828.0",
+        "Apps": [
+          "Netflix"
+        ]
+      }
+    ],
+    "Token": "842cf8be1de50553",
+    "Stub": false,
+    "Apps": [
+      "Netflix"
+    ]
+  },
+  {
+    "Name": "Microsoft.Xbox.Rev3.Common",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Revision3"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Revision3"
+    ]
+  },
+  {
+    "Name": "Microsoft.Xbox.Rev3.Controls",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Revision3"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Revision3"
+    ]
+  },
+  {
+    "Name": "Microsoft.Xbox.Rev3.Models",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Revision3"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Revision3"
+    ]
+  },
+  {
+    "Name": "Microsoft.Xbox.Rev3.PlayerUI",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Revision3"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Revision3"
+    ]
+  },
+  {
+    "Name": "Microsoft.Xbox.Rev3.UI",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Revision3"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Revision3"
+    ]
+  },
+  {
+    "Name": "Microsoft.Xbox.RuntimeHelpers",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "2.0.5.0",
+        "FileVersion": "4.0.337.5374 built by: main",
+        "Apps": [
+          "EPIX"
+        ]
+      }
+    ],
+    "Token": "7cec85d7bea7798e",
+    "Stub": true,
+    "Apps": [
+      "EPIX"
+    ]
+  },
+  {
+    "Name": "Microsoft.Xbox.Sample.Common",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "ABC iview",
+          "Absolute Radio",
+          "Amazon Instant Video",
+          "Antena 3 Modo Salón",
+          "Blip",
+          "Canal+",
+          "CinemaNow",
+          "CNET",
+          "Crackle",
+          "Crunchyroll",
+          "Disney XD",
+          "EPIX",
+          "Fox Broadcast",
+          "GameSpot TV",
+          "GameTrailers",
+          "HBO GO",
+          "IndieFlix",
+          "Maxim",
+          "MTV",
+          "Mustang Customizer",
+          "MUZU.TV",
+          "Neon Alley",
+          "NOW TV",
+          "Real Sports",
+          "Redbox Instant",
+          "Rogers On Demand",
+          "Slacker Radio",
+          "Syfy",
+          "The CW Network",
+          "Verizon FiOS TV",
+          "Vimeo",
+          "VUDU Movies",
+          "Wall Street Journal",
+          "Xbox Tournaments",
+          "XFINITY"
+        ]
+      },
+      {
+        "Version": "1.0.54.8",
+        "FileVersion": "1.0.54.8",
+        "Apps": [
+          "4oD"
+        ]
+      },
+      {
+        "Version": "1.1.1206.0",
+        "FileVersion": "1.01.1206.00",
+        "Apps": [
+          "MSN Video"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "4oD",
+      "ABC iview",
+      "Absolute Radio",
+      "Amazon Instant Video",
+      "Antena 3 Modo Salón",
+      "Blip",
+      "Canal+",
+      "CinemaNow",
+      "CNET",
+      "Crackle",
+      "Crunchyroll",
+      "Disney XD",
+      "EPIX",
+      "Fox Broadcast",
+      "GameSpot TV",
+      "GameTrailers",
+      "HBO GO",
+      "IndieFlix",
+      "Maxim",
+      "MSN Video",
+      "MTV",
+      "Mustang Customizer",
+      "MUZU.TV",
+      "Neon Alley",
+      "NOW TV",
+      "Real Sports",
+      "Redbox Instant",
+      "Rogers On Demand",
+      "Slacker Radio",
+      "Syfy",
+      "The CW Network",
+      "Verizon FiOS TV",
+      "Vimeo",
+      "VUDU Movies",
+      "Wall Street Journal",
+      "Xbox Tournaments",
+      "XFINITY"
+    ]
+  },
+  {
+    "Name": "Microsoft.Xbox.Sample.Controls",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "ABC iview",
+          "Absolute Radio",
+          "Amazon Instant Video",
+          "Antena 3 Modo Salón",
+          "Blip",
+          "Canal+",
+          "CinemaNow",
+          "CNET",
+          "Crackle",
+          "Crunchyroll",
+          "Disney XD",
+          "EPIX",
+          "Fox Broadcast",
+          "GameSpot TV",
+          "GameTrailers",
+          "HBO GO",
+          "IndieFlix",
+          "Maxim",
+          "MTV",
+          "Mustang Customizer",
+          "MUZU.TV",
+          "Neon Alley",
+          "NOW TV",
+          "Paramount Movies",
+          "Real Sports",
+          "Redbox Instant",
+          "Rogers On Demand",
+          "Slacker Radio",
+          "Syfy",
+          "The CW Network",
+          "Verizon FiOS TV",
+          "Vimeo",
+          "VUDU Movies",
+          "Wall Street Journal",
+          "Xbox Tournaments",
+          "XFINITY"
+        ]
+      },
+      {
+        "Version": "1.0.54.8",
+        "FileVersion": "1.0.54.8",
+        "Apps": [
+          "4oD"
+        ]
+      },
+      {
+        "Version": "1.1.1206.0",
+        "FileVersion": "1.01.1206.00",
+        "Apps": [
+          "MSN Video"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "4oD",
+      "ABC iview",
+      "Absolute Radio",
+      "Amazon Instant Video",
+      "Antena 3 Modo Salón",
+      "Blip",
+      "Canal+",
+      "CinemaNow",
+      "CNET",
+      "Crackle",
+      "Crunchyroll",
+      "Disney XD",
+      "EPIX",
+      "Fox Broadcast",
+      "GameSpot TV",
+      "GameTrailers",
+      "HBO GO",
+      "IndieFlix",
+      "Maxim",
+      "MSN Video",
+      "MTV",
+      "Mustang Customizer",
+      "MUZU.TV",
+      "Neon Alley",
+      "NOW TV",
+      "Paramount Movies",
+      "Real Sports",
+      "Redbox Instant",
+      "Rogers On Demand",
+      "Slacker Radio",
+      "Syfy",
+      "The CW Network",
+      "Verizon FiOS TV",
+      "Vimeo",
+      "VUDU Movies",
+      "Wall Street Journal",
+      "Xbox Tournaments",
+      "XFINITY"
+    ]
+  },
+  {
+    "Name": "Microsoft.Xbox.Sample.Models",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "ABC iview",
+          "Absolute Radio",
+          "Amazon Instant Video",
+          "Antena 3 Modo Salón",
+          "Blip",
+          "Canal+",
+          "CinemaNow",
+          "CNET",
+          "Crackle",
+          "Disney XD",
+          "EPIX",
+          "Fox Broadcast",
+          "GameSpot TV",
+          "GameTrailers",
+          "HBO GO",
+          "IndieFlix",
+          "Maxim",
+          "MTV",
+          "Mustang Customizer",
+          "MUZU.TV",
+          "Neon Alley",
+          "NOW TV",
+          "Paramount Movies",
+          "Real Sports",
+          "Redbox Instant",
+          "Rogers On Demand",
+          "Slacker Radio",
+          "Syfy",
+          "The CW Network",
+          "UVideos",
+          "Verizon FiOS TV",
+          "Vimeo",
+          "VUDU Movies",
+          "Wall Street Journal",
+          "Xbox Tournaments",
+          "XFINITY"
+        ]
+      },
+      {
+        "Version": "1.0.54.8",
+        "FileVersion": "1.0.54.8",
+        "Apps": [
+          "4oD"
+        ]
+      },
+      {
+        "Version": "1.1.1206.0",
+        "FileVersion": "1.01.1206.00",
+        "Apps": [
+          "MSN Video"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "4oD",
+      "ABC iview",
+      "Absolute Radio",
+      "Amazon Instant Video",
+      "Antena 3 Modo Salón",
+      "Blip",
+      "Canal+",
+      "CinemaNow",
+      "CNET",
+      "Crackle",
+      "Disney XD",
+      "EPIX",
+      "Fox Broadcast",
+      "GameSpot TV",
+      "GameTrailers",
+      "HBO GO",
+      "IndieFlix",
+      "Maxim",
+      "MSN Video",
+      "MTV",
+      "Mustang Customizer",
+      "MUZU.TV",
+      "Neon Alley",
+      "NOW TV",
+      "Paramount Movies",
+      "Real Sports",
+      "Redbox Instant",
+      "Rogers On Demand",
+      "Slacker Radio",
+      "Syfy",
+      "The CW Network",
+      "UVideos",
+      "Verizon FiOS TV",
+      "Vimeo",
+      "VUDU Movies",
+      "Wall Street Journal",
+      "Xbox Tournaments",
+      "XFINITY"
+    ]
+  },
+  {
+    "Name": "Microsoft.Xbox.Sample.PlayerUI",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Blip",
+          "GameTrailers",
+          "Maxim",
+          "MTV",
+          "Neon Alley",
+          "The CW Network"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Blip",
+      "GameTrailers",
+      "Maxim",
+      "MTV",
+      "Neon Alley",
+      "The CW Network"
+    ]
+  },
+  {
+    "Name": "Microsoft.Xbox.Sample.UI",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0",
+        "Apps": [
+          "Amazon Instant Video"
+        ]
+      },
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "ABC iview",
+          "Absolute Radio",
+          "Antena 3 Modo Salón",
+          "Blip",
+          "Canal+",
+          "CinemaNow",
+          "CNET",
+          "Crackle",
+          "Disney XD",
+          "EPIX",
+          "Fox Broadcast",
+          "GameSpot TV",
+          "GameTrailers",
+          "HBO GO",
+          "IndieFlix",
+          "Maxim",
+          "MSN Video",
+          "MTV",
+          "MUZU.TV",
+          "Neon Alley",
+          "NOW TV",
+          "Paramount Movies",
+          "Real Sports",
+          "Redbox Instant",
+          "Rogers On Demand",
+          "Slacker Radio",
+          "Syfy",
+          "Verizon FiOS TV",
+          "Vimeo",
+          "VUDU Movies",
+          "Wall Street Journal",
+          "Xbox Tournaments",
+          "XFINITY"
+        ]
+      },
+      {
+        "Version": "1.0.54.8",
+        "FileVersion": "1.0.54.8",
+        "Apps": [
+          "4oD"
+        ]
+      },
+      {
+        "Version": "1.1.0.0",
+        "FileVersion": "1.1.0",
+        "Apps": [
+          "Screenrush"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "4oD",
+      "ABC iview",
+      "Absolute Radio",
+      "Amazon Instant Video",
+      "Antena 3 Modo Salón",
+      "Blip",
+      "Canal+",
+      "CinemaNow",
+      "CNET",
+      "Crackle",
+      "Disney XD",
+      "EPIX",
+      "Fox Broadcast",
+      "GameSpot TV",
+      "GameTrailers",
+      "HBO GO",
+      "IndieFlix",
+      "Maxim",
+      "MSN Video",
+      "MTV",
+      "MUZU.TV",
+      "Neon Alley",
+      "NOW TV",
+      "Paramount Movies",
+      "Real Sports",
+      "Redbox Instant",
+      "Rogers On Demand",
+      "Screenrush",
+      "Slacker Radio",
+      "Syfy",
+      "Verizon FiOS TV",
+      "Vimeo",
+      "VUDU Movies",
+      "Wall Street Journal",
+      "Xbox Tournaments",
+      "XFINITY"
+    ]
+  },
+  {
+    "Name": "Microsoft.Xbox.Services.Mustang",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Mustang Customizer"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Mustang Customizer"
+    ]
+  },
+  {
+    "Name": "Microsoft.Xbox.UI",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Mustang Customizer"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Mustang Customizer"
+    ]
+  },
+  {
+    "Name": "MMPPF.Logging.Xbox",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "2.2012.1005.0",
+        "FileVersion": "2.2012.1005.0",
+        "Apps": [
+          "The CW Network"
+        ]
+      }
+    ],
+    "Token": "47c1bfd3f360fec7",
+    "Stub": false,
+    "Apps": [
+      "The CW Network"
+    ]
+  },
+  {
+    "Name": "MMPPF.Plugins.Advertising.Xbox",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "2.2011.1007.0",
+        "FileVersion": "2.2011.1007.0",
+        "Apps": [
+          "Xbox LIVE Dailymotion"
+        ]
+      },
+      {
+        "Version": "2.2011.1113.0",
+        "FileVersion": "2.2011.1113.0",
+        "Apps": [
+          "Syfy"
+        ]
+      },
+      {
+        "Version": "2.2011.1118.1",
+        "FileVersion": "2.2011.1118.1",
+        "Apps": [
+          "Amazon Instant Video",
+          "MUZU.TV",
+          "Rogers On Demand",
+          "XFINITY"
+        ]
+      },
+      {
+        "Version": "2.2011.1129.0",
+        "FileVersion": "2.2011.1129.0",
+        "Apps": [
+          "4oD",
+          "Crackle",
+          "HBO GO",
+          "IGN",
+          "Manga Entertainment",
+          "MSN Video",
+          "Real Sports",
+          "Screenrush"
+        ]
+      },
+      {
+        "Version": "2.2012.425.0",
+        "FileVersion": "2.2012.0425.0",
+        "Apps": [
+          "Fox Broadcast",
+          "GameSpot TV",
+          "NOW TV"
+        ]
+      },
+      {
+        "Version": "2.2012.713.0",
+        "FileVersion": "2.2012.0713.0",
+        "Apps": [
+          "Blip",
+          "Maxim",
+          "Neon Alley",
+          "UVideos"
+        ]
+      },
+      {
+        "Version": "2.2012.727.0",
+        "FileVersion": "2.2012.0727.0",
+        "Apps": [
+          "CNET",
+          "IndieFlix",
+          "Wall Street Journal"
+        ]
+      },
+      {
+        "Version": "2.2012.824.0",
+        "FileVersion": "2.2012.0824.0",
+        "Apps": [
+          "Telemundo"
+        ]
+      },
+      {
+        "Version": "2.2012.1005.0",
+        "FileVersion": "2.2012.1005.0",
+        "Apps": [
+          "GameTrailers",
+          "MTV",
+          "Revision3",
+          "Vimeo",
+          "Xbox Tournaments"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "4oD",
+      "Amazon Instant Video",
+      "Blip",
+      "CNET",
+      "Crackle",
+      "Fox Broadcast",
+      "GameSpot TV",
+      "GameTrailers",
+      "HBO GO",
+      "IGN",
+      "IndieFlix",
+      "Manga Entertainment",
+      "Maxim",
+      "MSN Video",
+      "MTV",
+      "MUZU.TV",
+      "Neon Alley",
+      "NOW TV",
+      "Real Sports",
+      "Revision3",
+      "Rogers On Demand",
+      "Screenrush",
+      "Syfy",
+      "Telemundo",
+      "UVideos",
+      "Vimeo",
+      "Wall Street Journal",
+      "Xbox LIVE Dailymotion",
+      "Xbox Tournaments",
+      "XFINITY"
+    ]
+  },
+  {
+    "Name": "MMPPF.Plugins.Heuristics.Xbox",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "2.2011.1118.1",
+        "FileVersion": "2.2011.1118.1",
+        "Apps": [
+          "MUZU.TV"
+        ]
+      },
+      {
+        "Version": "2.2011.1129.0",
+        "FileVersion": "2.2011.1129.0",
+        "Apps": [
+          "Crackle",
+          "HBO GO",
+          "MSN Video"
+        ]
+      },
+      {
+        "Version": "2.2012.425.0",
+        "FileVersion": "2.2012.0425.0",
+        "Apps": [
+          "Fox Broadcast"
+        ]
+      },
+      {
+        "Version": "2.2012.824.0",
+        "FileVersion": "2.2012.0824.0",
+        "Apps": [
+          "Telemundo"
+        ]
+      }
+    ],
+    "Token": "24473241fae5094b",
+    "Stub": false,
+    "Apps": [
+      "Crackle",
+      "Fox Broadcast",
+      "HBO GO",
+      "MSN Video",
+      "MUZU.TV",
+      "Telemundo"
+    ]
+  },
+  {
+    "Name": "MMPPF.Plugins.mDialogHLS.Xbox",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "2.0.4672.21630",
+        "FileVersion": "2.0",
+        "Apps": [
+          "Wall Street Journal"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Wall Street Journal"
+    ]
+  },
+  {
+    "Name": "MMPPF.Plugins.Thumbnails.Xbox",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "2.2011.1129.0",
+        "FileVersion": "2.2011.1129.0",
+        "Apps": [
+          "Crackle",
+          "HBO GO",
+          "MSN Video"
+        ]
+      },
+      {
+        "Version": "2.2012.425.0",
+        "FileVersion": "2.2012.0425.0",
+        "Apps": [
+          "Fox Broadcast"
+        ]
+      },
+      {
+        "Version": "2.2012.713.0",
+        "FileVersion": "2.2012.0713.0",
+        "Apps": [
+          "Blip",
+          "IndieFlix",
+          "MTV",
+          "Neon Alley",
+          "UVideos"
+        ]
+      },
+      {
+        "Version": "2.2012.824.0",
+        "FileVersion": "2.2012.0824.0",
+        "Apps": [
+          "Redbox Instant",
+          "Telemundo"
+        ]
+      },
+      {
+        "Version": "2.2012.1005.0",
+        "FileVersion": "2.2012.1005.0",
+        "Apps": [
+          "Revision3",
+          "The CW Network"
+        ]
+      }
+    ],
+    "Token": "20cc184731d97a56",
+    "Stub": false,
+    "Apps": [
+      "Blip",
+      "Crackle",
+      "Fox Broadcast",
+      "HBO GO",
+      "IndieFlix",
+      "MSN Video",
+      "MTV",
+      "Neon Alley",
+      "Redbox Instant",
+      "Revision3",
+      "Telemundo",
+      "The CW Network",
+      "UVideos"
+    ]
+  },
+  {
+    "Name": "MMPPF.Plugins.TimedText.Xbox",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "2.2011.1007.0",
+        "FileVersion": "2.2011.1007.0",
+        "Apps": [
+          "Xbox LIVE Dailymotion"
+        ]
+      },
+      {
+        "Version": "2.2011.1023.0",
+        "FileVersion": "2.2011.1023.0",
+        "Apps": [
+          "Disney XD"
+        ]
+      },
+      {
+        "Version": "2.2011.1028.0",
+        "FileVersion": "2.2011.1028.0",
+        "Apps": [
+          "BBC iPlayer"
+        ]
+      },
+      {
+        "Version": "2.2011.1118.1",
+        "FileVersion": "2.2011.1118.1",
+        "Apps": [
+          "Amazon Instant Video",
+          "MUZU.TV",
+          "XFINITY"
+        ]
+      },
+      {
+        "Version": "2.2011.1129.0",
+        "FileVersion": "2.2011.1129.0",
+        "Apps": [
+          "HBO GO",
+          "MSN Video",
+          "Real Sports"
+        ]
+      },
+      {
+        "Version": "2.2012.425.0",
+        "FileVersion": "2.2012.0425.0",
+        "Apps": [
+          "Fox Broadcast",
+          "GameSpot TV",
+          "NOW TV"
+        ]
+      },
+      {
+        "Version": "2.2012.713.0",
+        "FileVersion": "2.2012.0713.0",
+        "Apps": [
+          "IndieFlix",
+          "Neon Alley",
+          "The CW Network",
+          "UVideos"
+        ]
+      },
+      {
+        "Version": "2.2012.727.0",
+        "FileVersion": "2.2012.0727.0",
+        "Apps": [
+          "Wall Street Journal"
+        ]
+      },
+      {
+        "Version": "2.2012.824.0",
+        "FileVersion": "2.2012.0824.0",
+        "Apps": [
+          "Redbox Instant",
+          "Telemundo"
+        ]
+      },
+      {
+        "Version": "2.2012.1005.0",
+        "FileVersion": "2.2012.1005.0",
+        "Apps": [
+          "Xbox Tournaments"
+        ]
+      }
+    ],
+    "Token": "5f67d0f7027ac716",
+    "Stub": false,
+    "Apps": [
+      "Amazon Instant Video",
+      "BBC iPlayer",
+      "Disney XD",
+      "Fox Broadcast",
+      "GameSpot TV",
+      "HBO GO",
+      "IndieFlix",
+      "MSN Video",
+      "MUZU.TV",
+      "Neon Alley",
+      "NOW TV",
+      "Real Sports",
+      "Redbox Instant",
+      "Telemundo",
+      "The CW Network",
+      "UVideos",
+      "Wall Street Journal",
+      "Xbox LIVE Dailymotion",
+      "Xbox Tournaments",
+      "XFINITY"
+    ]
+  },
+  {
+    "Name": "MMPPF.Plugins.TTConnector.Xbox",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "2.2012.1005.0",
+        "FileVersion": "2.2012.1005.0",
+        "Apps": [
+          "GameTrailers",
+          "MTV",
+          "Revision3"
+        ]
+      }
+    ],
+    "Token": "d102f102e20d7315",
+    "Stub": false,
+    "Apps": [
+      "GameTrailers",
+      "MTV",
+      "Revision3"
+    ]
+  },
+  {
+    "Name": "MMPPF.Plugins.UAC.Xbox",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "2.2011.1007.0",
+        "FileVersion": "2.2011.1007.0",
+        "Apps": [
+          "Xbox LIVE Dailymotion"
+        ]
+      },
+      {
+        "Version": "2.2011.1113.0",
+        "FileVersion": "2.2011.1113.0",
+        "Apps": [
+          "Syfy"
+        ]
+      },
+      {
+        "Version": "2.2011.1118.1",
+        "FileVersion": "2.2011.1118.1",
+        "Apps": [
+          "Amazon Instant Video",
+          "MUZU.TV",
+          "XFINITY"
+        ]
+      },
+      {
+        "Version": "2.2011.1129.0",
+        "FileVersion": "2.2011.1129.0",
+        "Apps": [
+          "Crackle",
+          "HBO GO",
+          "IGN",
+          "Manga Entertainment",
+          "MSN Video",
+          "Real Sports",
+          "Screenrush"
+        ]
+      },
+      {
+        "Version": "2.2012.425.0",
+        "FileVersion": "2.2012.0425.0",
+        "Apps": [
+          "Fox Broadcast",
+          "GameSpot TV",
+          "NOW TV"
+        ]
+      },
+      {
+        "Version": "2.2012.713.0",
+        "FileVersion": "2.2012.0713.0",
+        "Apps": [
+          "Blip",
+          "Maxim",
+          "Neon Alley",
+          "UVideos"
+        ]
+      },
+      {
+        "Version": "2.2012.727.0",
+        "FileVersion": "2.2012.0727.0",
+        "Apps": [
+          "CNET",
+          "IndieFlix",
+          "Wall Street Journal"
+        ]
+      },
+      {
+        "Version": "2.2012.824.0",
+        "FileVersion": "2.2012.0824.0",
+        "Apps": [
+          "Telemundo"
+        ]
+      },
+      {
+        "Version": "2.2012.1005.0",
+        "FileVersion": "2.2012.1005.0",
+        "Apps": [
+          "GameTrailers",
+          "MTV",
+          "Revision3",
+          "Vimeo",
+          "Xbox Tournaments"
+        ]
+      }
+    ],
+    "Token": "22686b44e9d4d999",
+    "Stub": false,
+    "Apps": [
+      "Amazon Instant Video",
+      "Blip",
+      "CNET",
+      "Crackle",
+      "Fox Broadcast",
+      "GameSpot TV",
+      "GameTrailers",
+      "HBO GO",
+      "IGN",
+      "IndieFlix",
+      "Manga Entertainment",
+      "Maxim",
+      "MSN Video",
+      "MTV",
+      "MUZU.TV",
+      "Neon Alley",
+      "NOW TV",
+      "Real Sports",
+      "Revision3",
+      "Screenrush",
+      "Syfy",
+      "Telemundo",
+      "UVideos",
+      "Vimeo",
+      "Wall Street Journal",
+      "Xbox LIVE Dailymotion",
+      "Xbox Tournaments",
+      "XFINITY"
+    ]
+  },
+  {
+    "Name": "MMPPF.Plugins.Vpaid.Xbox",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "2.2011.1007.0",
+        "FileVersion": "2.2011.1007.0",
+        "Apps": [
+          "Xbox LIVE Dailymotion"
+        ]
+      },
+      {
+        "Version": "2.2011.1113.0",
+        "FileVersion": "2.2011.1113.0",
+        "Apps": [
+          "Syfy"
+        ]
+      },
+      {
+        "Version": "2.2011.1118.1",
+        "FileVersion": "2.2011.1118.1",
+        "Apps": [
+          "Amazon Instant Video",
+          "MUZU.TV",
+          "Rogers On Demand",
+          "XFINITY"
+        ]
+      },
+      {
+        "Version": "2.2011.1123.2",
+        "FileVersion": "2.2011.1123.2",
+        "Apps": [
+          "4oD"
+        ]
+      },
+      {
+        "Version": "2.2011.1129.0",
+        "FileVersion": "2.2011.1129.0",
+        "Apps": [
+          "Crackle",
+          "HBO GO",
+          "IGN",
+          "Manga Entertainment",
+          "MSN Video",
+          "Real Sports"
+        ]
+      },
+      {
+        "Version": "2.2012.425.0",
+        "FileVersion": "2.2012.0425.0",
+        "Apps": [
+          "Fox Broadcast",
+          "GameSpot TV",
+          "NOW TV"
+        ]
+      },
+      {
+        "Version": "2.2012.713.0",
+        "FileVersion": "2.2012.0713.0",
+        "Apps": [
+          "Blip",
+          "Maxim",
+          "Neon Alley",
+          "UVideos"
+        ]
+      },
+      {
+        "Version": "2.2012.727.0",
+        "FileVersion": "2.2012.0727.0",
+        "Apps": [
+          "CNET",
+          "IndieFlix",
+          "Wall Street Journal"
+        ]
+      },
+      {
+        "Version": "2.2012.824.0",
+        "FileVersion": "2.2012.0824.0",
+        "Apps": [
+          "Telemundo"
+        ]
+      },
+      {
+        "Version": "2.2012.1005.0",
+        "FileVersion": "2.2012.1005.0",
+        "Apps": [
+          "GameTrailers",
+          "MTV",
+          "Revision3",
+          "Vimeo",
+          "Xbox Tournaments"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "4oD",
+      "Amazon Instant Video",
+      "Blip",
+      "CNET",
+      "Crackle",
+      "Fox Broadcast",
+      "GameSpot TV",
+      "GameTrailers",
+      "HBO GO",
+      "IGN",
+      "IndieFlix",
+      "Manga Entertainment",
+      "Maxim",
+      "MSN Video",
+      "MTV",
+      "MUZU.TV",
+      "Neon Alley",
+      "NOW TV",
+      "Real Sports",
+      "Revision3",
+      "Rogers On Demand",
+      "Syfy",
+      "Telemundo",
+      "UVideos",
+      "Vimeo",
+      "Wall Street Journal",
+      "Xbox LIVE Dailymotion",
+      "Xbox Tournaments",
+      "XFINITY"
+    ]
+  },
+  {
+    "Name": "MMPPF.Plugins.Vudu.Xbox",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "2.2011.906.0",
+        "FileVersion": "2.2011.0906.0",
+        "Apps": [
+          "VUDU Movies"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "VUDU Movies"
+    ]
+  },
+  {
+    "Name": "Models",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "WWE PPV Wrestlemania"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "WWE PPV Wrestlemania"
+    ]
+  },
+  {
+    "Name": "Models.allocine",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.1.0.0",
+        "FileVersion": "1.1.0",
+        "Apps": [
+          "Screenrush"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Screenrush"
+    ]
+  },
+  {
+    "Name": "Models.C4",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.54.8",
+        "FileVersion": "1.0.54.8",
+        "Apps": [
+          "4oD"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "4oD"
+    ]
+  },
+  {
+    "Name": "Models.Prisa",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Canal+"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Canal+"
+    ]
+  },
+  {
+    "Name": "MovistarImagenio.Controls",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Movistar Imagenio"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Movistar Imagenio"
+    ]
+  },
+  {
+    "Name": "MovistarImagenio.Models",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Movistar Imagenio"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Movistar Imagenio"
+    ]
+  },
+  {
+    "Name": "MovistarImagenio.Services",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Movistar Imagenio"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Movistar Imagenio"
+    ]
+  },
+  {
+    "Name": "MovistarImagenio.Services.GVP",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Movistar Imagenio"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Movistar Imagenio"
+    ]
+  },
+  {
+    "Name": "MovistarImagenio.Tools",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Movistar Imagenio"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Movistar Imagenio"
+    ]
+  },
+  {
+    "Name": "MovistarImagenio.UI",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Movistar Imagenio"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Movistar Imagenio"
+    ]
+  },
+  {
+    "Name": "MovistarImagenioApplication",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Movistar Imagenio"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Movistar Imagenio"
+    ]
+  },
+  {
+    "Name": "Msn.Common",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "2.0.1031.4",
+        "FileVersion": "2.0.1031.4",
+        "Apps": [
+          "Telemundo"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Telemundo"
+    ]
+  },
+  {
+    "Name": "Msn.Configuration",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "2.0.1031.4",
+        "FileVersion": "2.0.1031.4",
+        "Apps": [
+          "Telemundo"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Telemundo"
+    ]
+  },
+  {
+    "Name": "Msn.Controls",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "2.0.1031.4",
+        "FileVersion": "2.0.1031.4",
+        "Apps": [
+          "Telemundo"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Telemundo"
+    ]
+  },
+  {
+    "Name": "Msn.Globalization",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "2.0.1031.4",
+        "FileVersion": "2.0.1031.4",
+        "Apps": [
+          "Telemundo"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Telemundo"
+    ]
+  },
+  {
+    "Name": "Msn.Pages",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "2.0.1031.4",
+        "FileVersion": "2.0.1031.4",
+        "Apps": [
+          "Telemundo"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Telemundo"
+    ]
+  },
+  {
+    "Name": "Msn.Services",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "2.0.1031.4",
+        "FileVersion": "2.0.1031.4",
+        "Apps": [
+          "Telemundo"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Telemundo"
+    ]
+  },
+  {
+    "Name": "Msn.VideoCatalog",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "2.0.1031.4",
+        "FileVersion": "2.0.1031.4",
+        "Apps": [
+          "Telemundo"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Telemundo"
+    ]
+  },
+  {
+    "Name": "Msn.XboxApplication",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "2.0.1031.4",
+        "FileVersion": "2.0.1031.4",
+        "Apps": [
+          "Telemundo"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Telemundo"
+    ]
+  },
+  {
+    "Name": "MyCodeContracts",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Canal+"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Canal+"
+    ]
+  },
+  {
+    "Name": "Napster",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.44.0",
+        "FileVersion": "1.0.44.0",
+        "Apps": [
+          "Napster"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Napster"
+    ]
+  },
+  {
+    "Name": "Nccp",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.1162.434.2",
+        "FileVersion": "1.1162.434.2",
+        "Apps": [
+          "Netflix"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Netflix"
+    ]
+  },
+  {
+    "Name": "Newtonsoft.Json",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Disney XD",
+          "Rogers On Demand",
+          "UVideos"
+        ]
+      },
+      {
+        "Version": "4.0.8.0",
+        "FileVersion": "4.0.8.14612",
+        "Apps": [
+          "IGN"
+        ]
+      },
+      {
+        "Version": "4.5.0.0",
+        "FileVersion": "4.5.7.15008",
+        "Apps": [
+          "GameTrailers",
+          "Maxim",
+          "MTV",
+          "Neon Alley",
+          "Vimeo"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Disney XD",
+      "GameTrailers",
+      "IGN",
+      "Maxim",
+      "MTV",
+      "Neon Alley",
+      "Rogers On Demand",
+      "UVideos",
+      "Vimeo"
+    ]
+  },
+  {
+    "Name": "Newtonsoft.Json.360",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "The CW Network"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "The CW Network"
+    ]
+  },
+  {
+    "Name": "Newtonsoft.Json.WindowsPhone",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "4.0.2.0",
+        "FileVersion": "4.0.2.13623",
+        "Apps": [
+          "Premium Play",
+          "Redbox Instant",
+          "Verizon FiOS TV"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Premium Play",
+      "Redbox Instant",
+      "Verizon FiOS TV"
+    ]
+  },
+  {
+    "Name": "Newtonsoft.Json.XBox",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "4.0.2.0",
+        "FileVersion": "4.0.2.13623",
+        "Apps": [
+          "Crackle",
+          "Fox Broadcast"
+        ]
+      },
+      {
+        "Version": "4.5.0.0",
+        "FileVersion": "4.5.1.14720",
+        "Apps": [
+          "Wall Street Journal"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Crackle",
+      "Fox Broadcast",
+      "Wall Street Journal"
+    ]
+  },
+  {
+    "Name": "Ninject",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.1162.434.2",
+        "FileVersion": "1.1162.434.2",
+        "Apps": [
+          "Netflix"
+        ]
+      },
+      {
+        "Version": "2.2.0.0",
+        "FileVersion": "2.2.0.0",
+        "Apps": [
+          "4oD",
+          "ABC iview",
+          "Amazon Instant Video",
+          "Antena 3 Modo Salón",
+          "blinkbox",
+          "Canal+",
+          "Crackle",
+          "Demand 5",
+          "Disney XD",
+          "EPIX",
+          "Fox Broadcast",
+          "HBO GO",
+          "IGN",
+          "Movistar Imagenio",
+          "MSN Video",
+          "Mustang Customizer",
+          "MUZU.TV",
+          "NOW TV",
+          "Paramount Movies",
+          "Premium Play",
+          "Real Sports",
+          "Redbox Instant",
+          "Rogers On Demand",
+          "Syfy",
+          "Telemundo",
+          "The CW Network",
+          "Verizon FiOS TV",
+          "VEVO",
+          "VUDU Movies",
+          "XFINITY"
+        ]
+      }
+    ],
+    "Token": "c7192dc5380945e7",
+    "Stub": false,
+    "Apps": [
+      "4oD",
+      "ABC iview",
+      "Amazon Instant Video",
+      "Antena 3 Modo Salón",
+      "blinkbox",
+      "Canal+",
+      "Crackle",
+      "Demand 5",
+      "Disney XD",
+      "EPIX",
+      "Fox Broadcast",
+      "HBO GO",
+      "IGN",
+      "Movistar Imagenio",
+      "MSN Video",
+      "Mustang Customizer",
+      "MUZU.TV",
+      "Netflix",
+      "NOW TV",
+      "Paramount Movies",
+      "Premium Play",
+      "Real Sports",
+      "Redbox Instant",
+      "Rogers On Demand",
+      "Syfy",
+      "Telemundo",
+      "The CW Network",
+      "Verizon FiOS TV",
+      "VEVO",
+      "VUDU Movies",
+      "XFINITY"
+    ]
+  },
+  {
+    "Name": "NrdConf",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.1162.434.2",
+        "FileVersion": "1.1162.434.2",
+        "Apps": [
+          "Netflix"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Netflix"
+    ]
+  },
+  {
+    "Name": "Ntba",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.1162.434.2",
+        "FileVersion": "1.1162.434.2",
+        "Apps": [
+          "Netflix"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Netflix"
+    ]
+  },
+  {
+    "Name": "PAMonitorLV",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.1306.0",
+        "FileVersion": "1.0.1306.0",
+        "Apps": [
+          "Hulu Plus"
+        ]
+      },
+      {
+        "Version": "1.0.1327.0",
+        "FileVersion": "1.0.1327.0",
+        "Apps": [
+          "YouTube"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Hulu Plus",
+      "YouTube"
+    ]
+  },
+  {
+    "Name": "Paramount.Xbox.Common",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Paramount Movies"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Paramount Movies"
+    ]
+  },
+  {
+    "Name": "ParamountCommon",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Paramount Movies"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Paramount Movies"
+    ]
+  },
+  {
+    "Name": "PiffParser",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.1162.434.2",
+        "FileVersion": "1.1162.434.2",
+        "Apps": [
+          "Netflix"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Netflix"
+    ]
+  },
+  {
+    "Name": "PizzaHutViewModel",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Pizza Hut"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Pizza Hut"
+    ]
+  },
+  {
+    "Name": "PizzaHutXboxApplication",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Pizza Hut"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Pizza Hut"
+    ]
+  },
+  {
+    "Name": "Platform",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.4714.20376",
+        "FileVersion": "1.0.4714.20376",
+        "Apps": [
+          "SkyDrive"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "SkyDrive"
+    ]
+  },
+  {
+    "Name": "PlaybackHeuristics",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.1162.434.2",
+        "FileVersion": "1.1162.434.2",
+        "Apps": [
+          "Netflix"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Netflix"
+    ]
+  },
+  {
+    "Name": "PlayerDataModel",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.1162.434.2",
+        "FileVersion": "1.1162.434.2",
+        "Apps": [
+          "Netflix"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Netflix"
+    ]
+  },
+  {
+    "Name": "Pushbutton.Services.AIV",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0",
+        "Apps": [
+          "Amazon Instant Video"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Amazon Instant Video"
+    ]
+  },
+  {
+    "Name": "QF.Xbox.App.Common",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Quickflix"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Quickflix"
+    ]
+  },
+  {
+    "Name": "QF.Xbox.App.Controls",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Quickflix"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Quickflix"
+    ]
+  },
+  {
+    "Name": "QF.Xbox.App.Models",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Quickflix"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Quickflix"
+    ]
+  },
+  {
+    "Name": "QF.Xbox.App.Services",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Quickflix"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Quickflix"
+    ]
+  },
+  {
+    "Name": "QF.Xbox.App.UI",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Quickflix"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Quickflix"
+    ]
+  },
+  {
+    "Name": "Resources",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Aol On",
+          "Pizza Hut",
+          "The Next Level"
+        ]
+      },
+      {
+        "Version": "1.0.41.0",
+        "FileVersion": "1.0.41.0",
+        "Apps": [
+          "Rhapsody"
+        ]
+      },
+      {
+        "Version": "1.0.44.0",
+        "FileVersion": "1.0.44.0",
+        "Apps": [
+          "Napster"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Aol On",
+      "Napster",
+      "Pizza Hut",
+      "Rhapsody",
+      "The Next Level"
+    ]
+  },
+  {
+    "Name": "Rhapsody",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.41.0",
+        "FileVersion": "1.0.41.0",
+        "Apps": [
+          "Rhapsody"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Rhapsody"
+    ]
+  },
+  {
+    "Name": "Rhapsody.Core",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.41.0",
+        "FileVersion": "1.0.41.0",
+        "Apps": [
+          "Rhapsody"
+        ]
+      },
+      {
+        "Version": "1.0.44.0",
+        "FileVersion": "1.0.44.0",
+        "Apps": [
+          "Napster"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Napster",
+      "Rhapsody"
+    ]
+  },
+  {
+    "Name": "Rhapsody.Data",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.41.0",
+        "FileVersion": "1.0.41.0",
+        "Apps": [
+          "Rhapsody"
+        ]
+      },
+      {
+        "Version": "1.0.44.0",
+        "FileVersion": "1.0.44.0",
+        "Apps": [
+          "Napster"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Napster",
+      "Rhapsody"
+    ]
+  },
+  {
+    "Name": "Rhapsody.Logging",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.41.0",
+        "FileVersion": "1.0.41.0",
+        "Apps": [
+          "Rhapsody"
+        ]
+      },
+      {
+        "Version": "1.0.44.0",
+        "FileVersion": "1.0.44.0",
+        "Apps": [
+          "Napster"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Napster",
+      "Rhapsody"
+    ]
+  },
+  {
+    "Name": "Rhapsody.RhapsodyDirect",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.41.0",
+        "FileVersion": "1.0.41.0",
+        "Apps": [
+          "Rhapsody"
+        ]
+      },
+      {
+        "Version": "1.0.44.0",
+        "FileVersion": "1.0.44.0",
+        "Apps": [
+          "Napster"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Napster",
+      "Rhapsody"
+    ]
+  },
+  {
+    "Name": "Rhapsody.Utility",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.41.0",
+        "FileVersion": "1.0.41.0",
+        "Apps": [
+          "Rhapsody"
+        ]
+      },
+      {
+        "Version": "1.0.44.0",
+        "FileVersion": "1.0.44.0",
+        "Apps": [
+          "Napster"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Napster",
+      "Rhapsody"
+    ]
+  },
+  {
+    "Name": "Rhapsody.ViewModel",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.41.0",
+        "FileVersion": "1.0.41.0",
+        "Apps": [
+          "Rhapsody"
+        ]
+      },
+      {
+        "Version": "1.0.44.0",
+        "FileVersion": "1.0.44.0",
+        "Apps": [
+          "Napster"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Napster",
+      "Rhapsody"
+    ]
+  },
+  {
+    "Name": "RSAF.Xbox",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Blip",
+          "CNET",
+          "IndieFlix"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Blip",
+      "CNET",
+      "IndieFlix"
+    ]
+  },
+  {
+    "Name": "RSCF.Xbox",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Blip",
+          "CNET",
+          "IndieFlix"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Blip",
+      "CNET",
+      "IndieFlix"
+    ]
+  },
+  {
+    "Name": "RSF.Xbox",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Blip",
+          "CNET",
+          "IndieFlix"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Blip",
+      "CNET",
+      "IndieFlix"
+    ]
+  },
+  {
+    "Name": "RSPF.Xbox",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Blip"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Blip"
+    ]
+  },
+  {
+    "Name": "Security",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Rogers On Demand"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Rogers On Demand"
+    ]
+  },
+  {
+    "Name": "Serialization",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.1162.434.2",
+        "FileVersion": "1.1162.434.2",
+        "Apps": [
+          "Netflix"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Netflix"
+    ]
+  },
+  {
+    "Name": "Services",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "ABC iview",
+          "Absolute Radio",
+          "Amazon Instant Video",
+          "Antena 3 Modo Salón",
+          "Blip",
+          "Canal+",
+          "CinemaNow",
+          "CNET",
+          "Crackle",
+          "Crunchyroll",
+          "Disney XD",
+          "EPIX",
+          "Fox Broadcast",
+          "GameSpot TV",
+          "GameTrailers",
+          "IndieFlix",
+          "Maxim",
+          "MTV",
+          "Mustang Customizer",
+          "MUZU.TV",
+          "Neon Alley",
+          "NOW TV",
+          "Paramount Movies",
+          "Real Sports",
+          "Redbox Instant",
+          "Revision3",
+          "Rogers On Demand",
+          "Slacker Radio",
+          "Syfy",
+          "The CW Network",
+          "UVideos",
+          "Verizon FiOS TV",
+          "Vimeo",
+          "VUDU Movies",
+          "Wall Street Journal",
+          "WWE PPV Wrestlemania",
+          "Xbox Tournaments",
+          "XFINITY"
+        ]
+      },
+      {
+        "Version": "1.0.54.8",
+        "FileVersion": "1.0.54.8",
+        "Apps": [
+          "4oD"
+        ]
+      },
+      {
+        "Version": "1.1.1206.0",
+        "FileVersion": "1.01.1206.00",
+        "Apps": [
+          "MSN Video"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "4oD",
+      "ABC iview",
+      "Absolute Radio",
+      "Amazon Instant Video",
+      "Antena 3 Modo Salón",
+      "Blip",
+      "Canal+",
+      "CinemaNow",
+      "CNET",
+      "Crackle",
+      "Crunchyroll",
+      "Disney XD",
+      "EPIX",
+      "Fox Broadcast",
+      "GameSpot TV",
+      "GameTrailers",
+      "IndieFlix",
+      "Maxim",
+      "MSN Video",
+      "MTV",
+      "Mustang Customizer",
+      "MUZU.TV",
+      "Neon Alley",
+      "NOW TV",
+      "Paramount Movies",
+      "Real Sports",
+      "Redbox Instant",
+      "Revision3",
+      "Rogers On Demand",
+      "Slacker Radio",
+      "Syfy",
+      "The CW Network",
+      "UVideos",
+      "Verizon FiOS TV",
+      "Vimeo",
+      "VUDU Movies",
+      "Wall Street Journal",
+      "WWE PPV Wrestlemania",
+      "Xbox Tournaments",
+      "XFINITY"
+    ]
+  },
+  {
+    "Name": "Services.Allocine",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.1.0.0",
+        "FileVersion": "1.1.0",
+        "Apps": [
+          "Screenrush"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Screenrush"
+    ]
+  },
+  {
+    "Name": "Services.Analytics",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.54.8",
+        "FileVersion": "1.0.54.8",
+        "Apps": [
+          "4oD"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "4oD"
+    ]
+  },
+  {
+    "Name": "Services.C4",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.54.8",
+        "FileVersion": "1.0.54.8",
+        "Apps": [
+          "4oD"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "4oD"
+    ]
+  },
+  {
+    "Name": "Services.Cms.C4",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.54.8",
+        "FileVersion": "1.0.54.8",
+        "Apps": [
+          "4oD"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "4oD"
+    ]
+  },
+  {
+    "Name": "Services.Cms.Prisa",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Canal+"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Canal+"
+    ]
+  },
+  {
+    "Name": "Services.Crackle",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Crackle"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Crackle"
+    ]
+  },
+  {
+    "Name": "Services.GameSpot",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "GameSpot TV"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "GameSpot TV"
+    ]
+  },
+  {
+    "Name": "Services.Muzu",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "MUZU.TV"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "MUZU.TV"
+    ]
+  },
+  {
+    "Name": "Services.MyCms",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Real Sports"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Real Sports"
+    ]
+  },
+  {
+    "Name": "Services.Prisa",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Canal+"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Canal+"
+    ]
+  },
+  {
+    "Name": "Services.Rodo",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Rogers On Demand"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Rogers On Demand"
+    ]
+  },
+  {
+    "Name": "Services.Sample.C4",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.54.8",
+        "FileVersion": "1.0.54.8",
+        "Apps": [
+          "4oD"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "4oD"
+    ]
+  },
+  {
+    "Name": "Services.Syfy",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Syfy"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Syfy"
+    ]
+  },
+  {
+    "Name": "Services.Vudu",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "VUDU Movies"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "VUDU Movies"
+    ]
+  },
+  {
+    "Name": "ShoutCastMedia",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "iHeartRadio"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "iHeartRadio"
+    ]
+  },
+  {
+    "Name": "Silverlight.Samples.HLS",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "IndieFlix"
+        ]
+      }
+    ],
+    "Token": "a603ec4ed9e67ea5",
+    "Stub": false,
+    "Apps": [
+      "IndieFlix"
+    ]
+  },
+  {
+    "Name": "SilverlightGlueLV",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.1327.0",
+        "FileVersion": "1.0.1327.0",
+        "Apps": [
+          "YouTube"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "YouTube"
+    ]
+  },
+  {
+    "Name": "SimpleSerializer",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Mustang Customizer"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Mustang Customizer"
+    ]
+  },
+  {
+    "Name": "SLControls",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.1162.434.2",
+        "FileVersion": "1.1162.434.2",
+        "Apps": [
+          "Netflix"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Netflix"
+    ]
+  },
+  {
+    "Name": "SLPlayer",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.1162.434.2",
+        "FileVersion": "1.1162.434.2",
+        "Apps": [
+          "Netflix"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Netflix"
+    ]
+  },
+  {
+    "Name": "SnocapsCommon",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "EPIX"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "EPIX"
+    ]
+  },
+  {
+    "Name": "SonyPicturesViewModel",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Exp Sony Pictures"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Exp Sony Pictures"
+    ]
+  },
+  {
+    "Name": "SonyPicturesXboxApplication",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Exp Sony Pictures"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Exp Sony Pictures"
+    ]
+  },
+  {
+    "Name": "StarzMangaApplication",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Manga Entertainment"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Manga Entertainment"
+    ]
+  },
+  {
+    "Name": "StorageLV",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.1306.0",
+        "FileVersion": "1.0.1306.0",
+        "Apps": [
+          "Hulu Plus"
+        ]
+      },
+      {
+        "Version": "1.0.1327.0",
+        "FileVersion": "1.0.1327.0",
+        "Apps": [
+          "YouTube"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Hulu Plus",
+      "YouTube"
+    ]
+  },
+  {
+    "Name": "SubtitlePluginLV",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.1306.0",
+        "FileVersion": "1.0.1306.0",
+        "Apps": [
+          "Hulu Plus"
+        ]
+      },
+      {
+        "Version": "1.0.1327.0",
+        "FileVersion": "1.0.1327.0",
+        "Apps": [
+          "YouTube"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Hulu Plus",
+      "YouTube"
+    ]
+  },
+  {
+    "Name": "System.Xml.Serialization",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "2.0.5.0",
+        "FileVersion": "4.0.337.5374 built by: main",
+        "Apps": [
+          "EPIX"
+        ]
+      }
+    ],
+    "Token": "7cec85d7bea7798e",
+    "Stub": true,
+    "Apps": [
+      "EPIX"
+    ]
+  },
+  {
+    "Name": "TmzData",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "TMZ"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "TMZ"
+    ]
+  },
+  {
+    "Name": "TmzViewModel",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "TMZ"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "TMZ"
+    ]
+  },
+  {
+    "Name": "TmzXboxApplication",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "TMZ"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "TMZ"
+    ]
+  },
+  {
+    "Name": "UI.Prisa",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Canal+"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Canal+"
+    ]
+  },
+  {
+    "Name": "Univision.Xbox.Common",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "UVideos"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "UVideos"
+    ]
+  },
+  {
+    "Name": "Univision.Xbox.Controls",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "UVideos"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "UVideos"
+    ]
+  },
+  {
+    "Name": "Univision.Xbox.PlayerUI",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "UVideos"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "UVideos"
+    ]
+  },
+  {
+    "Name": "Univision.Xbox.UI",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "UVideos"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "UVideos"
+    ]
+  },
+  {
+    "Name": "Utilities",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.1162.434.2",
+        "FileVersion": "1.1162.434.2",
+        "Apps": [
+          "Netflix"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Netflix"
+    ]
+  },
+  {
+    "Name": "UtilitiesLV",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.1306.0",
+        "FileVersion": "1.0.1306.0",
+        "Apps": [
+          "Hulu Plus"
+        ]
+      },
+      {
+        "Version": "1.0.1327.0",
+        "FileVersion": "1.0.1327.0",
+        "Apps": [
+          "YouTube"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Hulu Plus",
+      "YouTube"
+    ]
+  },
+  {
+    "Name": "Vevo.XBOX.Advertising",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "VEVO"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "VEVO"
+    ]
+  },
+  {
+    "Name": "Vevo.XBOX.Common",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "VEVO"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "VEVO"
+    ]
+  },
+  {
+    "Name": "Vevo.XBOX.Controls",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "VEVO"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "VEVO"
+    ]
+  },
+  {
+    "Name": "Vevo.XBOX.Data",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "VEVO"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "VEVO"
+    ]
+  },
+  {
+    "Name": "Vevo.XBOX.Services",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "VEVO"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "VEVO"
+    ]
+  },
+  {
+    "Name": "Vevo.XBOX.UI",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "VEVO"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "VEVO"
+    ]
+  },
+  {
+    "Name": "Vevo.XBOXApplication",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "VEVO"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "VEVO"
+    ]
+  },
+  {
+    "Name": "Viacom.Xbox.Custom",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "GameTrailers",
+          "MTV"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "GameTrailers",
+      "MTV"
+    ]
+  },
+  {
+    "Name": "Viacom.Xbox.Services",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "GameTrailers",
+          "MTV"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "GameTrailers",
+      "MTV"
+    ]
+  },
+  {
+    "Name": "ViacomCommon",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "GameTrailers",
+          "MTV"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "GameTrailers",
+      "MTV"
+    ]
+  },
+  {
+    "Name": "ViacomPlayout",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "GameTrailers",
+          "MTV"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "GameTrailers",
+      "MTV"
+    ]
+  },
+  {
+    "Name": "Video.Services",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "HBO GO"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "HBO GO"
+    ]
+  },
+  {
+    "Name": "Video.Services.ABC",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "ABC iview"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "ABC iview"
+    ]
+  },
+  {
+    "Name": "Video.Services.Caspian",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Verizon FiOS TV"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Verizon FiOS TV"
+    ]
+  },
+  {
+    "Name": "Video.Services.Cms",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Antena 3 Modo Salón",
+          "Blip",
+          "Canal+",
+          "CinemaNow",
+          "CNET",
+          "IndieFlix",
+          "Neon Alley",
+          "Real Sports",
+          "Redbox Instant",
+          "Revision3",
+          "Slacker Radio",
+          "The CW Network",
+          "UVideos",
+          "Verizon FiOS TV",
+          "Wall Street Journal",
+          "WWE PPV Wrestlemania",
+          "Xbox Tournaments",
+          "XFINITY"
+        ]
+      },
+      {
+        "Version": "1.0.54.8",
+        "FileVersion": "1.0.54.8",
+        "Apps": [
+          "4oD"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "4oD",
+      "Antena 3 Modo Salón",
+      "Blip",
+      "Canal+",
+      "CinemaNow",
+      "CNET",
+      "IndieFlix",
+      "Neon Alley",
+      "Real Sports",
+      "Redbox Instant",
+      "Revision3",
+      "Slacker Radio",
+      "The CW Network",
+      "UVideos",
+      "Verizon FiOS TV",
+      "Wall Street Journal",
+      "WWE PPV Wrestlemania",
+      "Xbox Tournaments",
+      "XFINITY"
+    ]
+  },
+  {
+    "Name": "Video.Services.Epix",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "EPIX"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "EPIX"
+    ]
+  },
+  {
+    "Name": "Video.Services.Hbo",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "HBO GO"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "HBO GO"
+    ]
+  },
+  {
+    "Name": "Video.Services.Paramount",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Paramount Movies"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Paramount Movies"
+    ]
+  },
+  {
+    "Name": "Video.Services.Sample",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Antena 3 Modo Salón",
+          "Canal+",
+          "Crackle",
+          "GameSpot TV",
+          "Neon Alley",
+          "Real Sports",
+          "Redbox Instant",
+          "The CW Network",
+          "Verizon FiOS TV",
+          "Wall Street Journal"
+        ]
+      },
+      {
+        "Version": "1.0.54.8",
+        "FileVersion": "1.0.54.8",
+        "Apps": [
+          "4oD"
+        ]
+      },
+      {
+        "Version": "1.1.1206.0",
+        "FileVersion": "1.01.1206.00",
+        "Apps": [
+          "MSN Video"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "4oD",
+      "Antena 3 Modo Salón",
+      "Canal+",
+      "Crackle",
+      "GameSpot TV",
+      "MSN Video",
+      "Neon Alley",
+      "Real Sports",
+      "Redbox Instant",
+      "The CW Network",
+      "Verizon FiOS TV",
+      "Wall Street Journal"
+    ]
+  },
+  {
+    "Name": "Video.Services.Sky",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "NOW TV"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "NOW TV"
+    ]
+  },
+  {
+    "Name": "Video.Services.Viz",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Neon Alley"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Neon Alley"
+    ]
+  },
+  {
+    "Name": "Video.Services.Zoetrope",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Redbox Instant"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Redbox Instant"
+    ]
+  },
+  {
+    "Name": "ViewModels",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.1162.434.2",
+        "FileVersion": "1.1162.434.2",
+        "Apps": [
+          "Netflix"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Netflix"
+    ]
+  },
+  {
+    "Name": "VimeoApi",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Vimeo"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Vimeo"
+    ]
+  },
+  {
+    "Name": "VimeoXbox",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Vimeo"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Vimeo"
+    ]
+  },
+  {
+    "Name": "VuduDirector",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "VUDU Movies"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "VUDU Movies"
+    ]
+  },
+  {
+    "Name": "VuduWebStream",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "VUDU Movies"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "VUDU Movies"
+    ]
+  },
+  {
+    "Name": "Windows",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.1162.434.2",
+        "FileVersion": "1.1162.434.2",
+        "Apps": [
+          "Netflix"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Netflix"
+    ]
+  },
+  {
+    "Name": "WinLive.XSky.Application",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.4714.20377",
+        "FileVersion": "1.0.4714.20377",
+        "Apps": [
+          "SkyDrive"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "SkyDrive"
+    ]
+  },
+  {
+    "Name": "WWE.SapphireFeed.XBOX360",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "WWE PPV Wrestlemania"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "WWE PPV Wrestlemania"
+    ]
+  },
+  {
+    "Name": "WWEApplication",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "WWE PPV Wrestlemania"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "WWE PPV Wrestlemania"
+    ]
+  },
+  {
+    "Name": "Xbox.Dailymotion.Common",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.1.0",
+        "FileVersion": "1.0.1",
+        "Apps": [
+          "Xbox LIVE Dailymotion"
+        ]
+      },
+      {
+        "Version": "1.1.0.0",
+        "FileVersion": "1.1.0",
+        "Apps": [
+          "Dailymotion"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Dailymotion",
+      "Xbox LIVE Dailymotion"
+    ]
+  },
+  {
+    "Name": "Xbox.Dailymotion.Controls",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.1.0",
+        "FileVersion": "1.0.1",
+        "Apps": [
+          "Xbox LIVE Dailymotion"
+        ]
+      },
+      {
+        "Version": "1.1.0.0",
+        "FileVersion": "1.1.0",
+        "Apps": [
+          "Dailymotion"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Dailymotion",
+      "Xbox LIVE Dailymotion"
+    ]
+  },
+  {
+    "Name": "Xbox.Dailymotion.Models",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.1.0",
+        "FileVersion": "1.0.1",
+        "Apps": [
+          "Xbox LIVE Dailymotion"
+        ]
+      },
+      {
+        "Version": "1.1.0.0",
+        "FileVersion": "1.1.0",
+        "Apps": [
+          "Dailymotion"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Dailymotion",
+      "Xbox LIVE Dailymotion"
+    ]
+  },
+  {
+    "Name": "Xbox.Dailymotion.Services",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.1.0",
+        "FileVersion": "1.0.1",
+        "Apps": [
+          "Xbox LIVE Dailymotion"
+        ]
+      },
+      {
+        "Version": "1.1.0.0",
+        "FileVersion": "1.1.0",
+        "Apps": [
+          "Dailymotion"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Dailymotion",
+      "Xbox LIVE Dailymotion"
+    ]
+  },
+  {
+    "Name": "Xbox.Dailymotion.Services.DLM",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.1.0",
+        "FileVersion": "1.0.1",
+        "Apps": [
+          "Xbox LIVE Dailymotion"
+        ]
+      },
+      {
+        "Version": "1.1.0.0",
+        "FileVersion": "1.1.0",
+        "Apps": [
+          "Dailymotion"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Dailymotion",
+      "Xbox LIVE Dailymotion"
+    ]
+  },
+  {
+    "Name": "Xbox.Transverse.Json",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "Dailymotion",
+          "Screenrush",
+          "Xbox LIVE Dailymotion"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Dailymotion",
+      "Screenrush",
+      "Xbox LIVE Dailymotion"
+    ]
+  },
+  {
+    "Name": "XboxAllocine.Common",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.1.0.0",
+        "FileVersion": "1.1.0",
+        "Apps": [
+          "Screenrush"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Screenrush"
+    ]
+  },
+  {
+    "Name": "XboxAllocine.Controls",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.1.0.0",
+        "FileVersion": "1.1.0",
+        "Apps": [
+          "Screenrush"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Screenrush"
+    ]
+  },
+  {
+    "Name": "XboxAllocine.Models",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.1.0.0",
+        "FileVersion": "1.1.0",
+        "Apps": [
+          "Screenrush"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Screenrush"
+    ]
+  },
+  {
+    "Name": "XboxAllocine.Services",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.1.0.0",
+        "FileVersion": "1.1.0",
+        "Apps": [
+          "Screenrush"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Screenrush"
+    ]
+  },
+  {
+    "Name": "xboxApp",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.1162.434.2",
+        "FileVersion": "1.1162.434.2",
+        "Apps": [
+          "Netflix"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Netflix"
+    ]
+  },
+  {
+    "Name": "XboxApplication",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0.0",
+        "Apps": [
+          "ABC iview",
+          "Absolute Radio",
+          "Antena 3 Modo Salón",
+          "Blip",
+          "CinemaNow",
+          "CNET",
+          "Crackle",
+          "Crunchyroll",
+          "Disney XD",
+          "EPIX",
+          "Fox Broadcast",
+          "GameSpot TV",
+          "GameTrailers",
+          "HBO GO",
+          "IndieFlix",
+          "Maxim",
+          "MTV",
+          "Mustang Customizer",
+          "MUZU.TV",
+          "Neon Alley",
+          "NOW TV",
+          "Paramount Movies",
+          "Quickflix",
+          "Real Sports",
+          "Redbox Instant",
+          "Revision3",
+          "Rogers On Demand",
+          "Slacker Radio",
+          "Syfy",
+          "The CW Network",
+          "UVideos",
+          "Verizon FiOS TV",
+          "Vimeo",
+          "VUDU Movies",
+          "Wall Street Journal",
+          "Xbox Tournaments",
+          "XFINITY"
+        ]
+      },
+      {
+        "Version": "1.0.1.0",
+        "FileVersion": "1.0.1",
+        "Apps": [
+          "Xbox LIVE Dailymotion"
+        ]
+      },
+      {
+        "Version": "1.0.54.8",
+        "FileVersion": "1.0.54.8",
+        "Apps": [
+          "4oD"
+        ]
+      },
+      {
+        "Version": "1.1.0.0",
+        "FileVersion": "1.1.0",
+        "Apps": [
+          "Dailymotion",
+          "Screenrush"
+        ]
+      },
+      {
+        "Version": "1.1.1206.0",
+        "FileVersion": "1.01.1206.00",
+        "Apps": [
+          "MSN Video"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "4oD",
+      "ABC iview",
+      "Absolute Radio",
+      "Antena 3 Modo Salón",
+      "Blip",
+      "CinemaNow",
+      "CNET",
+      "Crackle",
+      "Crunchyroll",
+      "Dailymotion",
+      "Disney XD",
+      "EPIX",
+      "Fox Broadcast",
+      "GameSpot TV",
+      "GameTrailers",
+      "HBO GO",
+      "IndieFlix",
+      "Maxim",
+      "MSN Video",
+      "MTV",
+      "Mustang Customizer",
+      "MUZU.TV",
+      "Neon Alley",
+      "NOW TV",
+      "Paramount Movies",
+      "Quickflix",
+      "Real Sports",
+      "Redbox Instant",
+      "Revision3",
+      "Rogers On Demand",
+      "Screenrush",
+      "Slacker Radio",
+      "Syfy",
+      "The CW Network",
+      "UVideos",
+      "Verizon FiOS TV",
+      "Vimeo",
+      "VUDU Movies",
+      "Wall Street Journal",
+      "Xbox LIVE Dailymotion",
+      "Xbox Tournaments",
+      "XFINITY"
+    ]
+  },
+  {
+    "Name": "XboxApplication.AIV",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.0.0",
+        "FileVersion": "1.0.0",
+        "Apps": [
+          "Amazon Instant Video"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Amazon Instant Video"
+    ]
+  },
+  {
+    "Name": "XBoxLiveLV",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.1306.0",
+        "FileVersion": "1.0.1306.0",
+        "Apps": [
+          "Hulu Plus"
+        ]
+      },
+      {
+        "Version": "1.0.1327.0",
+        "FileVersion": "1.0.1327.0",
+        "Apps": [
+          "YouTube"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "Hulu Plus",
+      "YouTube"
+    ]
+  },
+  {
+    "Name": "YouTubeAPISilverlightGL",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.1327.0",
+        "FileVersion": "1.0.1327.0",
+        "Apps": [
+          "YouTube"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "YouTube"
+    ]
+  },
+  {
+    "Name": "YouTubeCaptions",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.1327.0",
+        "FileVersion": "1.0.1327.0",
+        "Apps": [
+          "YouTube"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "YouTube"
+    ]
+  },
+  {
+    "Name": "YouTubeXBoxApplication",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.0.1327.0",
+        "FileVersion": "1.0.1327.0",
+        "Apps": [
+          "YouTube"
+        ]
+      }
+    ],
+    "Token": "",
+    "Stub": false,
+    "Apps": [
+      "YouTube"
+    ]
+  },
+  {
+    "Name": "ZLib.Xbox",
+    "Kind": "IL",
+    "Builds": [
+      {
+        "Version": "1.8.4.30",
+        "FileVersion": "1.8.4.30",
+        "Apps": [
+          "Telemundo"
+        ]
+      }
+    ],
+    "Token": "ff1f39f121780c63",
+    "Stub": false,
+    "Apps": [
+      "Telemundo"
+    ]
+  }
+]

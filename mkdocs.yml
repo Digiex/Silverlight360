@@ -58,6 +58,7 @@ nav:
   - Samples: samples.md
   - Status under xenia: xenia-status.md
   - Runtime inventory: runtime-inventory.md
+  - Assemblies in other donor apps: donor-assemblies.md
   - Problems and ideas: issues.md
   - Contributing: contributing.md
   - API reference:
