@@ -35,15 +35,16 @@ namespace PageNavigation
                 }
             };
             RootVisual = frame;
-            // Two seconds and thirty frames after the first page arrived (navigation is asynchronous, and the
-            // page plays its transition in: sixty frames after, a screenshot still had none of it), the app is up
-            // and drawing: it saves a screenshot (game:\screenshot.argb) and logs the line test scripts stop on
-            // ("(DbgPrint) PageNavigation: ready", Run-App.ps1 -DonePattern), since the app keeps running after it.
+            // Four seconds and thirty frames after the first page arrived (navigation is asynchronous, and the
+            // page plays its transition in: sixty frames after, a screenshot had none of it, two seconds after its
+            // last item was still moving), the app is up and drawing: it saves a screenshot (game:\screenshot.argb)
+            // and logs the line test scripts stop on ("(DbgPrint) PageNavigation: ready", Run-App.ps1
+            // -DonePattern), since the app keeps running after it.
             int framesDrawn = 0, arrivedAt = 0;
             System.EventHandler ready = null;
             ready = delegate
             {
-                if (++framesDrawn >= 30 && Environment.TickCount - arrivedAt >= 2000)
+                if (++framesDrawn >= 30 && Environment.TickCount - arrivedAt >= 4000)
                 {
                     System.Windows.Media.CompositionTarget.Rendering -= ready;
                     XboxSdk.Samples.Screenshot.Save("screenshot");
