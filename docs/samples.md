@@ -56,8 +56,6 @@ What a DLL of your own needs, to load on a console as well as in xenia:
   elf2xex the same `--base`. A console running a Silverlight app has 0x8A000000, 0x8C000000 and 0x8E000000 taken, and
   there the module can't load. xenia has them free, so it doesn't show. A module that doesn't load becomes a call
   through a null pointer at its first `DllImport`, which took the console down.
-- **Some read-only data**, such as a string, so the image starts with it after the headers: elf2xex refuses an image
-  whose first section is its code, a page later.
 - **`XexLoadImage` asked as the CLR asks:** with the path the CLR loaded it by (`GAME:\` before its name) and flags 9,
   a DLL of the title's process. A title's request without the title bit (0x1) is refused with
   STATUS_ACCESS_DENIED on a console; xenia lets it through.

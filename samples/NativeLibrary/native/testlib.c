@@ -8,10 +8,6 @@
 
 #define TESTLIB_VERSION 0x7E570001u
 
-/* The library's read-only data, so the image starts with it after the headers: elf2xex takes the first section's page
-   for the base the ELF was linked at, and refuses an image whose code comes first, a page later. */
-__attribute__((used)) static const char testlib_name[] = "testlib";
-
 /* In .bss, so the library's writable page is mapped and kept between calls. */
 static uint32_t calls;
 
