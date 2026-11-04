@@ -30,6 +30,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\Common\DebugLog.cs"><Link>Common\DebugLog.cs</Link></Compile>
+    <Compile Include="..\Common\NativeBuffer.cs"><Link>Common\NativeBuffer.cs</Link></Compile>
+    <Compile Include="..\Common\Screenshot.cs"><Link>Common\Screenshot.cs</Link></Compile>
   </ItemGroup>
   <Import Project="..\..\msbuild\XboxSilverlight.targets" />
 </Project>

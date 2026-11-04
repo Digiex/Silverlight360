@@ -21,6 +21,7 @@ namespace XboxControls
                 if (++framesDrawn == 30)
                 {
                     System.Windows.Media.CompositionTarget.Rendering -= ready;
+                    XboxSdk.Samples.Screenshot.Save("screenshot");
                     XboxSdk.Samples.DebugLog.WriteLine("XboxControls: ready");
                 }
             };
