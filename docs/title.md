@@ -4,7 +4,7 @@ Every Xbox 360 executable can declare a title: a title ID, a version and a media
 
 ## Default: no title
 
-`tools\New-RuntimeProfile.ps1` takes the donor's title out of the profile's `default.xex` (`tools\strip_donor_title.py`):
+`tools\New-RuntimeProfile.ps1` takes the donor's title out of the profile's `default.xex` (`tools\Remove-DonorTitle.ps1`):
 
 - the execution info goes, so the executable declares no title, as homebrew executables don't;
 - the title's resource goes from the resource directory, and its bytes in the image are zeroed;

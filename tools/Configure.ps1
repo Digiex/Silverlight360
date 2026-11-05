@@ -19,9 +19,6 @@ missing, or to update XboxNGen. It checks:
                            Silverlight 4 and 5 SDKs don't replace it.
     Runtime profile        runtime\plex-2015, made from an extracted app with
                            New-RuntimeProfile.ps1 (-DonorApp makes it here)
-    Python 3.7 or later    python on PATH: making the profile, the native
-                           images builds make, the test server and the
-                           extraction tools
   For running apps and native images:
     XboxNGen               its latest release (or -Tag), downloaded into
                            %LOCALAPPDATA%\Silverlight360\XboxNGen and checked
@@ -32,6 +29,8 @@ missing, or to update XboxNGen. It checks:
                            repository or PATH; else it offers to download the
                            silverlight-build release xenia-edge needs
   Optional:
+    Python 3.7 or later    python on PATH: the test server
+                           (samples\TestServer) and the extraction tools
     xextool.exe            build dates in a runtime profile (-Xextool)
     7-Zip 15.06 or later   tools\extract_god_packages.py (older ones can't
                            open RAR5 archives)
@@ -220,7 +219,7 @@ $python = Get-Command python -ErrorAction SilentlyContinue
 $pythonVersion = if ($python) { [regex]::Match((& $python.Source --version 2>&1 | Out-String), 'Python (\d+)\.(\d+)') } else { $null }
 $config.Python = if ($pythonVersion -and $pythonVersion.Success -and
     [version]"$($pythonVersion.Groups[1].Value).$($pythonVersion.Groups[2].Value)" -ge [version]'3.7') { $python.Source } else { '' }
-Report 'Python 3.7+' $config.Python 'install Python 3.7 or later and put python on PATH (making the profile, native images)' -Required
+Report 'Python 3.7+' $config.Python 'optional: install Python 3.7 or later and put python on PATH, for the test server and the extraction tools'
 
 $xextool = if ($Xextool) { $Xextool } elseif ($previous.Xextool) { $previous.Xextool } else { 'xextool.exe' }
 $found = Get-Command $xextool -ErrorAction SilentlyContinue

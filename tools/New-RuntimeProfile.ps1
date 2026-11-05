@@ -15,7 +15,7 @@ and writes:
   <Output>\profile.json  where it came from and what it contains
 
 The package's default.xex has the donor's title taken out (see
-strip_donor_title.py): apps built on the profile declare no title, so the
+Remove-DonorTitle.ps1): apps built on the profile declare no title, so the
 console offers them none of the donor's title updates and shows none of its
 name. Without a title an app has no title storage, LIVE presence or other
 per-title services; for those, keep the donor's title with -KeepTitle
@@ -83,10 +83,7 @@ foreach ($module in $nativeModules) {
     }
 }
 if (-not $KeepTitle) {
-    python (Join-Path $PSScriptRoot 'strip_donor_title.py') (Join-Path $package 'default.xex')
-    if ($LASTEXITCODE) {
-        throw "Couldn't take the donor's title out of default.xex."
-    }
+    & (Join-Path $PSScriptRoot 'Remove-DonorTitle.ps1') (Join-Path $package 'default.xex')
 }
 
 $assemblies = @()
