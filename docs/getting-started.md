@@ -3,12 +3,30 @@
 ## What you need
 
 - Windows with **MSBuild 14 or later**: Visual Studio 2015 to 2026, or their Build Tools (see [Projects and Visual Studio](project-setup.md)).
-- The **Silverlight 3 SDK** (3.0.40818, the platform's version), whose build folder (`MSBuild\Microsoft\Silverlight\v3.0`) compiles the C# and XAML. Microsoft no longer offers it for download; Visual Studio 2010's install media has it, as `WCU\Silverlight\silverlight_sdk.msi`. The Silverlight 4 and 5 SDKs don't include it and can't stand in for it: their XAML compiler rejects the Xbox controls' content.
+- The **Silverlight 3 SDK** (3.0.40818, the platform's version), whose build folder (`MSBuild\Microsoft\Silverlight\v3.0`) compiles the C# and XAML. Microsoft no longer offers it; see [Getting the Silverlight 3 SDK](#getting-the-silverlight-3-sdk).
 - An **extracted Xbox 360 Silverlight app**. Every app ships its own copy of the platform, and the SDK builds against it. Plex has the newest platform of the shipped apps; the default profile uses Plex v0.0.0.7, a Games on Demand package (`tools\extract_god_packages.py` extracts those). For example, Digiex has the [Plex app for Xbox 360](https://digiex.net/threads/plex-app-download-for-xbox-360.14043/), and other apps in its [Xbox 360 apps forum](https://digiex.net/forums/apps-xbox-360.83/).
 - Optional: **Python 3.7 or later** for the test server and the extraction tools, and **7-Zip 15.06 or later** to extract app archives.
-- **[xenia-edge](https://github.com/has207/xenia-edge)** with the Silverlight work to run the apps (see [Status under xenia](xenia-status.md)). Native images need its `silverlight-build` branch, which step 1 downloads if you have no xenia-edge.
+- **xenia-edge** to run the apps: the `silverlight-build` branch of [jessenic/xenia-edge](https://github.com/jessenic/xenia-edge/tree/silverlight-build), which native images need. Its binary build is the [silverlight-build-20261105 release](https://github.com/jessenic/xenia-edge/releases/tag/silverlight-build-20261105), which step 1 downloads if you have no xenia-edge (see [Status under xenia](xenia-status.md)).
 - Optional, for more IntelliSense text: the Silverlight 4 SDK and XNA Game Studio 4.
 - Optional, for a native library (DLL) of the app's own in C: [xsdk](https://github.com/xenosworks/xsdk)'s DLL support and toolchain in WSL ([Samples](samples.md), NativeLibrary).
+
+### Getting the Silverlight 3 SDK
+
+Microsoft no longer offers the Silverlight 3 SDK for download. Visual Studio 2010's install disc has it, and the Internet Archive has a copy of the disc: from [en_visual_studio_2010_ultimate_x86_dvd_509116.iso](https://archive.org/download/65384/en_visual_studio_2010_ultimate_x86_dvd_509116.iso/), download the two files in `WCU/Silverlight`, [silverlight_sdk.msi](https://archive.org/download/65384/en_visual_studio_2010_ultimate_x86_dvd_509116.iso/WCU/Silverlight/silverlight_sdk.msi) (1,089,536 bytes) and [silverlight_sdk.cab](https://archive.org/download/65384/en_visual_studio_2010_ultimate_x86_dvd_509116.iso/WCU/Silverlight/silverlight_sdk.cab) (9,733,636 bytes), into one folder. Both are signed by Microsoft. Then either:
+
+- **Install it**: run `silverlight_sdk.msi`, with the `.cab` beside it. It needs nothing else installed, and it also gives `Install-ApiDocs.ps1` the Silverlight 3 documentation for IntelliSense.
+- **Or extract only its build folder**, which is all a build uses, with the commands below in an administrator PowerShell in that folder. `expand.exe` comes with Windows.
+
+```powershell
+$target = "${env:ProgramFiles(x86)}\MSBuild\Microsoft\Silverlight\v3.0"
+New-Item -ItemType Directory $target -Force | Out-Null
+foreach ($file in 'Microsoft.Silverlight.Build.Tasks.dll', 'Microsoft.Silverlight.Common.targets',
+    'Microsoft.Silverlight.CSharp.targets', 'Microsoft.Silverlight.VisualBasic.targets', 'XamlServices.dll', 'zlib114.dll') {
+    expand.exe silverlight_sdk.cab "-F:$file" $target
+}
+```
+
+The Silverlight 4 and 5 SDKs don't include it and can't stand in for it: their XAML compiler rejects the Xbox controls' content.
 
 ## 1. Configure
 

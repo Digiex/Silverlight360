@@ -14,8 +14,9 @@ missing, or to update XboxNGen. It checks:
     Silverlight 3 SDK      3.0.40818, the platform's version: its build
                            folder (MSBuild\Microsoft\Silverlight\v3.0)
                            compiles the C# and XAML. Microsoft no longer
-                           offers it; Visual Studio 2010's install media has
-                           it (WCU\Silverlight\silverlight_sdk.msi). The
+                           offers it: docs\getting-started.md says where to
+                           get it (Visual Studio 2010's disc) and how to
+                           install it or extract its build folder. The
                            Silverlight 4 and 5 SDKs don't replace it.
     Runtime profile        runtime\plex-2015, made from an extracted app with
                            New-RuntimeProfile.ps1 (-DonorApp makes it here)
@@ -211,8 +212,8 @@ $newest = if (Test-Path -LiteralPath $vswhere) {
 $config.MsBuild = First-Existing @($MsBuild, $previous.MsBuild, "$pf86\MSBuild\14.0\Bin\MSBuild.exe", $newest)
 Report 'MSBuild' $config.MsBuild 'install Visual Studio (2015 or later) or its Build Tools, or pass -MsBuild <MSBuild.exe>' -Required
 Report 'Silverlight 3 SDK' (First-Existing @("$pf86\MSBuild\Microsoft\Silverlight\v3.0\Microsoft.Silverlight.CSharp.targets")) `
-    ('install the Silverlight 3 SDK (3.0.40818), whose build folder MSBuild\Microsoft\Silverlight\v3.0 is what builds use. ' +
-     'Microsoft no longer offers it: Visual Studio 2010''s install media has it, WCU\Silverlight\silverlight_sdk.msi') -Required
+    ('install the Silverlight 3 SDK (3.0.40818), or extract its build folder MSBuild\Microsoft\Silverlight\v3.0. Microsoft ' +
+     'no longer offers it: docs\getting-started.md, "Getting the Silverlight 3 SDK", says where to get it and how') -Required
 
 # Python 3.7 or later: extract_god_packages.py's subprocess.run(capture_output) is 3.7's.
 $python = Get-Command python -ErrorAction SilentlyContinue
