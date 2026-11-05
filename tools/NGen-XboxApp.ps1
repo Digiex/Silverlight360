@@ -21,7 +21,7 @@ Then compiles, in the package folder (or a copy of it, -Output):
     (with -Platform: all of them again, after the platform's).
 
 xenia-edge has to be the silverlight-build branch of jessenic/xenia-edge, which
-Configure.ps1 downloads when it finds none. XboxNGen's tools also need Python 3
+Configure.ps1 downloads when it finds none. XboxNGen's tools also need Python 3.7 or later
 as python on PATH.
 
 The images are unsigned: they run in xenia-edge and on a console that runs
@@ -81,7 +81,7 @@ if (-not $Xenia) {
 }
 $Xenia = (Resolve-Path -LiteralPath $Xenia).Path
 $python = Get-Command python -ErrorAction SilentlyContinue
-if (-not $python -or -not ((& python --version 2>&1) -match '^Python 3')) { throw "XboxNGen's tools need Python 3 as python on PATH." }
+if (-not $python -or -not ((& python --version 2>&1 | Out-String) -match 'Python 3\.([7-9]|\d\d)')) { throw "XboxNGen's tools need Python 3.7 or later as python on PATH." }
 if (Get-Process xenia_edge -ErrorAction SilentlyContinue) {
     throw 'xenia-edge is already running: run one at a time (two at once can stop one with "Overflowed stackpoints!").'
 }

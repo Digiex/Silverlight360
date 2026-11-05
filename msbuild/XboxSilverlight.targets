@@ -3,7 +3,7 @@
     Builds a Silverlight 3 project for the Xbox 360 Silverlight platform.
 
     Import this instead of Microsoft.Silverlight.CSharp.targets. It compiles
-    C# and XAML with the installed Silverlight 3 tools against the framework
+    C# and XAML with the installed Silverlight 3 SDK against the framework
     assemblies of a runtime profile (see tools\New-RuntimeProfile.ps1), then
     lays out a package the Xbox XamlHost can run in $(XboxPackageDir).
 
@@ -37,8 +37,6 @@
     <!-- Resolve framework references from the profile, not desktop Silverlight. -->
     <TargetFrameworkDirectory>$(XboxRuntimeProfile)reference</TargetFrameworkDirectory>
     <TargetPlatformDisplayName>Silverlight</TargetPlatformDisplayName>
-    <TargetPlatformSdkPath Condition="'$(TargetPlatformSdkPath)' == ''">$(ProgramFiles)\Microsoft SDKs\Windows\v7.0A</TargetPlatformSdkPath>
-    <TargetPlatformSdkPath Condition="!Exists('$(TargetPlatformSdkPath)')">$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.0A</TargetPlatformSdkPath>
   </PropertyGroup>
 
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\v3.0\Microsoft.Silverlight.CSharp.targets" />

@@ -8,14 +8,15 @@ Run it once after cloning, and again after installing something it reports
 missing, or to update XboxNGen. It checks:
 
   For building (Build-XboxApp.ps1):
-    MSBuild 14             Visual Studio 2015 or its Build Tools (-MsBuild)
-    Silverlight 3          the Silverlight 3 tools and SDK: build targets and
-                           reference assemblies
-    Windows SDK 7.0A       the Silverlight build tasks use it
+    MSBuild                14 or later: Visual Studio 2015 to 2026 or their
+                           Build Tools; MSBuild 14 when it's there, else the
+                           newest Visual Studio's (-MsBuild)
+    Silverlight 3 SDK      3.0.40818, the platform's version: its build
+                           targets and tasks compile the C# and XAML
     Runtime profile        runtime\plex-2015, made from an extracted app with
                            New-RuntimeProfile.ps1 (-DonorApp makes it here)
   For running apps and native images:
-    Python 3               python on PATH: XboxNGen's tools, the test server
+    Python 3.7 or later    python on PATH: XboxNGen's tools, the test server
                            and the extraction tools
     XboxNGen               its latest release (or -Tag), downloaded into
                            %LOCALAPPDATA%\Silverlight360\XboxNGen and checked
@@ -27,7 +28,10 @@ missing, or to update XboxNGen. It checks:
                            silverlight-build release xenia-edge needs
   Optional:
     xextool.exe            build dates in a runtime profile (-Xextool)
-    7-Zip                  tools\extract_god_packages.py
+    7-Zip 15.06 or later   tools\extract_god_packages.py (older ones can't
+                           open RAR5 archives)
+    Silverlight 4 SDK,     IntelliSense text for more of the platform's API
+    XNA Game Studio 4      (Install-ApiDocs.ps1)
 
 The result goes to config.json at the repository's root (git ignores it),
 which tools\Config.ps1 reads for the other tools. -Show prints it.
@@ -41,7 +45,7 @@ which tools\Config.ps1 reads for the other tools. -Show prints it.
 Also makes the default runtime profile from an extracted Plex v0.0.0.7.
 #>
 param(
-    # MSBuild.exe, when it isn't MSBuild 14's default install folder.
+    # MSBuild.exe, when it isn't MSBuild 14's or the newest Visual Studio's.
     [string]$MsBuild = '',
     # xenia_edge.exe, when it isn't found.
     [string]$Xenia = '',
@@ -189,28 +193,45 @@ function Get-XboxNGenRelease([string]$Tag = '', [string]$Cache = $XboxNGenCache)
     return $root
 }
 
-# Building.
-$config.MsBuild = First-Existing @($MsBuild, $previous.MsBuild, "$pf86\MSBuild\14.0\Bin\MSBuild.exe")
-Report 'MSBuild 14' $config.MsBuild 'install Visual Studio 2015 or its Build Tools, or pass -MsBuild <MSBuild.exe>' -Required
-Report 'Silverlight 3' (First-Existing @("$pf86\MSBuild\Microsoft\Silverlight\v3.0\Microsoft.Silverlight.CSharp.targets")) `
-    'install the Silverlight 3 tools (Microsoft.Silverlight.CSharp.targets)' -Required
-Report 'Silverlight 3 SDK' (First-Existing @("$pf86\Reference Assemblies\Microsoft\Framework\Silverlight\v3.0\System.Windows.dll")) `
-    'install the Silverlight 3 SDK (its reference assemblies)' -Required
-$config.WindowsSdk = First-Existing @("$pf86\Microsoft SDKs\Windows\v7.0A")
-Report 'Windows SDK 7.0A' $config.WindowsSdk 'install the Windows SDK 7.0A (it comes with Visual Studio 2010 and 2012)' -Required
+# Building. Any MSBuild from 14 (Visual Studio 2015) on builds the projects; 14 first, as it's what the SDK is
+# tested with most, else the newest Visual Studio's.
+$vswhere = "$pf86\Microsoft Visual Studio\Installer\vswhere.exe"
+$newest = if (Test-Path -LiteralPath $vswhere) {
+    & $vswhere -latest -products * -requires Microsoft.Component.MSBuild -find 'MSBuild\**\Bin\MSBuild.exe' |
+        Select-Object -First 1
+}
+$config.MsBuild = First-Existing @($MsBuild, $previous.MsBuild, "$pf86\MSBuild\14.0\Bin\MSBuild.exe", $newest)
+Report 'MSBuild' $config.MsBuild 'install Visual Studio (2015 or later) or its Build Tools, or pass -MsBuild <MSBuild.exe>' -Required
+Report 'Silverlight 3 SDK' (First-Existing @("$pf86\MSBuild\Microsoft\Silverlight\v3.0\Microsoft.Silverlight.CSharp.targets")) `
+    'install the Silverlight 3 SDK (3.0.40818), which has the build targets (Microsoft.Silverlight.CSharp.targets)' -Required
 
+# Python 3.7 or later: extract_god_packages.py's subprocess.run(capture_output) is 3.7's.
 $python = Get-Command python -ErrorAction SilentlyContinue
-$config.Python = if ($python -and ((& $python.Source --version 2>&1) -match '^Python 3')) { $python.Source } else { '' }
-Report 'Python 3' $config.Python 'install Python 3 and put python on PATH'
+$pythonVersion = if ($python) { [regex]::Match((& $python.Source --version 2>&1 | Out-String), 'Python (\d+)\.(\d+)') } else { $null }
+$config.Python = if ($pythonVersion -and $pythonVersion.Success -and
+    [version]"$($pythonVersion.Groups[1].Value).$($pythonVersion.Groups[2].Value)" -ge [version]'3.7') { $python.Source } else { '' }
+Report 'Python 3.7+' $config.Python 'install Python 3.7 or later and put python on PATH'
 
 $xextool = if ($Xextool) { $Xextool } elseif ($previous.Xextool) { $previous.Xextool } else { 'xextool.exe' }
 $found = Get-Command $xextool -ErrorAction SilentlyContinue
 $config.Xextool = if ($found) { $found.Source } else { '' }
 Report 'xextool' $config.Xextool 'optional: put xextool.exe on PATH or pass -Xextool, for build dates in runtime profiles'
 
-$sevenZip = Get-Command 7z -ErrorAction SilentlyContinue
-$config.SevenZip = First-Existing @($env:SEVEN_ZIP, $(if ($sevenZip) { $sevenZip.Source }), "$env:ProgramFiles\7-Zip\7z.exe")
-Report '7-Zip' $config.SevenZip 'optional: install 7-Zip, for tools\extract_god_packages.py'
+# 7-Zip 15.06 or later, which opens RAR5 archives; other programs bundle older ones, so its own install folder first.
+$sevenZip = Get-Command 7z -All -ErrorAction SilentlyContinue | ForEach-Object Source
+$config.SevenZip = @($env:SEVEN_ZIP, "$env:ProgramFiles\7-Zip\7z.exe", "$pf86\7-Zip\7z.exe") + @($sevenZip) |
+    Where-Object { $_ -and (Test-Path -LiteralPath $_) } |
+    Where-Object {
+        $banner = [regex]::Match((& $_ i 2>&1 | Select-Object -First 3 | Out-String), '7-Zip (?:\(a\) )?(\d+)\.(\d+)')
+        $banner.Success -and [version]"$($banner.Groups[1].Value).$($banner.Groups[2].Value)" -ge [version]'15.6'
+    } | Select-Object -First 1
+Report '7-Zip 15.06+' $config.SevenZip 'optional: install 7-Zip 15.06 or later, for tools\extract_god_packages.py (RAR5 archives)'
+
+# IntelliSense text Install-ApiDocs.ps1 takes from them, beyond the Silverlight 3 SDK's.
+Report 'Silverlight 4 SDK' (First-Existing @("$pf86\Microsoft SDKs\Silverlight\v4.0\Libraries\Client", "$pf86\Reference Assemblies\Microsoft\Framework\Silverlight\v4.0")) `
+    'optional: install the Silverlight 4 SDK, for more IntelliSense text (Install-ApiDocs.ps1)'
+Report 'XNA Game Studio 4' (First-Existing @("$pf86\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86")) `
+    'optional: install XNA Game Studio 4, for IntelliSense text on the XNA parts (Install-ApiDocs.ps1)'
 
 $profileDir = Join-Path $sdkRoot 'runtime\plex-2015'
 if (-not (Test-Path -LiteralPath (Join-Path $profileDir 'package\default.xex')) -and $DonorApp) {

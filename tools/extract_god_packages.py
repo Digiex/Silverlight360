@@ -3,7 +3,8 @@
 usage: extract_god_packages.py <archive dir> <output dir> <staging dir>
 
 7-Zip is the one tools\\Configure.ps1 found (config.json), else the SEVEN_ZIP
-environment variable, PATH or its default install folder. Each archive is unpacked with it into the staging
+environment variable, its default install folder or PATH. It has to be 15.06
+or later for RAR5 archives. Each archive is unpacked with it into the staging
 dir, every GOD package
 (content type 0x7000) in it is extracted into <output>/<package title>, and
 the staging copy is removed. Other packages are skipped. The SVOD block
@@ -146,9 +147,10 @@ def find_seven_zip():
     if os.path.isfile(config):
         with open(config, encoding="utf-8-sig") as f:
             candidates.append(json.load(f).get("SevenZip"))
-    candidates += [os.environ.get("SEVEN_ZIP"), shutil.which("7z")]
+    candidates.append(os.environ.get("SEVEN_ZIP"))
     if os.environ.get("ProgramFiles"):
         candidates.append(os.path.join(os.environ["ProgramFiles"], "7-Zip", "7z.exe"))
+    candidates.append(shutil.which("7z"))
     for c in candidates:
         if c and os.path.isfile(c):
             return c

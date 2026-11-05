@@ -4,7 +4,8 @@ Builds a Silverlight project into an Xbox 360 app package, with native images
 for the app's code.
 
 .DESCRIPTION
-Runs MSBuild 14 on a project that imports msbuild\XboxSilverlight.targets.
+Runs MSBuild (the one tools\Configure.ps1 found) on a project that imports
+msbuild\XboxSilverlight.targets.
 The package lands in the project's bin\<Configuration>\xbox folder; point an
 emulator such as xenia at its default.xex.
 
@@ -66,11 +67,8 @@ $config = Join-Path $PSScriptRoot 'Config.ps1'
 if (-not $MsBuildPath) {
     $MsBuildPath = & $config MsBuild
 }
-$windowsSdk = & $config WindowsSdk
-foreach ($path in $MsBuildPath, $windowsSdk) {
-    if (-not (Test-Path -LiteralPath $path)) {
-        throw "$path isn't there any more: run .\tools\Configure.ps1 again."
-    }
+if (-not (Test-Path -LiteralPath $MsBuildPath)) {
+    throw "$MsBuildPath isn't there any more: run .\tools\Configure.ps1 again."
 }
 # What the native images need, checked before building rather than after.
 if ($ngen) {
@@ -94,7 +92,6 @@ function Invoke-Build([string]$target, [string[]]$properties) {
         $projectPath,
         "/t:$target",
         "/p:Configuration=$Configuration",
-        "/p:TargetPlatformSdkPath=$windowsSdk",
         '/v:minimal',
         '/nologo'
     ) + ($properties | ForEach-Object { "/p:$_" })

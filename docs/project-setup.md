@@ -126,9 +126,7 @@ The class library is Silverlight 3's, so some things desktop .NET and later Silv
 
 ## Visual Studio
 
-The projects have no Silverlight project type GUID, so Visual Studio opens them as plain C# projects. Visual Studio 2026's MSBuild builds them unchanged, as long as the Silverlight 3 build targets and Windows SDK 7.0A are installed. Building from the IDE produces the same `bin\Release\xbox` package.
-
-The first build needs `TargetPlatformSdkPath` when Windows SDK 7.0A isn't at the default path. `Build-XboxApp.ps1` passes it; in the IDE, add it to the project or set it as an environment variable.
+The projects have no Silverlight project type GUID, so Visual Studio opens them as plain C# projects. MSBuild 14 and the MSBuild of Visual Studio 2022 and 2026 build them unchanged, as long as the Silverlight 3 SDK is installed. Building from the IDE produces the same `bin\Release\xbox` package.
 
 ## IntelliSense
 
