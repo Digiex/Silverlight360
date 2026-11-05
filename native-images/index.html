@@ -203,12 +203,16 @@
 </div>
 <h2 id="what-it-needs">What it needs<a class="headerlink" href="#what-it-needs" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>xenia-edge from the <code>silverlight-build</code> branch of <a href="https://github.com/jessenic/xenia-edge/tree/silverlight-build">jessenic/xenia-edge</a></strong>, built. Upstream xenia-edge lacks fixes the zapper needs, such as devkit code buffers and code patched in place. The script uses <code>-Xenia</code>, else the <code>XENIA_EDGE</code> environment variable, else <code>xenia-edge\build\bin\Windows\Release\xenia_edge.exe</code> beside this repository or beside its parent folder (where XboxNGen's <code>Configure.ps1</code> looks), else <code>xenia_edge.exe</code> on <code>PATH</code>.</li>
+<li><strong>xenia-edge from the <code>silverlight-build</code> branch of <a href="https://github.com/jessenic/xenia-edge/tree/silverlight-build">jessenic/xenia-edge</a></strong>. Upstream xenia-edge lacks fixes the zapper needs, such as devkit code buffers and code patched in place. By default, use that branch's Windows build: download <code>xenia_edge_windows.zip</code> from its release <a href="https://github.com/jessenic/xenia-edge/releases/tag/silverlight-build-20261105">silverlight-build-20261105</a> and extract it to <code>xenia-edge\</code> beside this repository (below). To change xenia-edge, build the branch yourself instead. The script uses <code>-Xenia</code>, else the <code>XENIA_EDGE</code> environment variable, else <code>xenia_edge.exe</code> in <code>xenia-edge\</code> beside this repository (or one folder down), else <code>xenia-edge\build\bin\Windows\Release\xenia_edge.exe</code> beside this repository or beside its parent folder (where XboxNGen's <code>Configure.ps1</code> looks too), else <code>xenia_edge.exe</code> on <code>PATH</code>.</li>
 <li><strong>Python 3</strong> on <code>PATH</code> as <code>python</code>. XboxNGen's tools use it to rebase and wrap each image (the standard library only).</li>
 <li><strong>A whole package</strong>: <code>bin\&lt;Configuration&gt;\xbox</code>, or any app folder with a <code>default.xex</code>, an <code>AppManifest.xaml</code>, the runtime and its <code>mscorlib.ni.dll</code>. An <code>-AppOnly</code> build doesn't have the runtime the zapper runs in.</li>
 <li><strong>Internet access to GitHub</strong>, the first time and whenever a newer release is out. No account is needed.</li>
 </ul>
 <p>It doesn't need xsdk or WSL: the release's zip has the JIT (<code>jit\xclrjit.dll</code>), the zapper host (<code>host\ngenhost.xex</code>) and the code cache module (<code>codecache\CLRCodeCachedll_0.xex</code>) already built.</p>
+<p>To get xenia-edge's release, in the folder that holds this repository:</p>
+<pre><code class="language-powershell">Invoke-WebRequest https://github.com/jessenic/xenia-edge/releases/download/silverlight-build-20261105/xenia_edge_windows.zip -OutFile xenia_edge_windows.zip
+Expand-Archive xenia_edge_windows.zip xenia-edge
+</code></pre>
 <h2 id="running-it">Running it<a class="headerlink" href="#running-it" title="Permanent link">&para;</a></h2>
 <pre><code class="language-powershell"># Build, then compile the app's own assemblies in bin\Release\xbox.
 .\tools\Build-XboxApp.ps1 -Project .\samples\HelloXbox\HelloXbox.csproj -NGen
