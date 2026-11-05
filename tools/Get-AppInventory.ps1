@@ -14,12 +14,12 @@ docs\runtime-inventory.md was made with it.
 param(
     [Parameter(Mandatory)] [string]$Root,
     [Parameter(Mandatory)] [string]$OutJson,
-    # xextool.exe, from PATH when not given.
-    [string]$Xextool = 'xextool.exe'
+    # xextool.exe, when tools\Configure.ps1 found none or another is wanted.
+    [string]$Xextool = $(& (Join-Path $PSScriptRoot 'Config.ps1') Xextool -Optional)
 )
 $ErrorActionPreference = 'Continue'
-if (-not (Get-Command $Xextool -ErrorAction SilentlyContinue)) {
-    throw "xextool not found. Pass -Xextool or put xextool.exe on PATH."
+if (-not $Xextool -or -not (Get-Command $Xextool -ErrorAction SilentlyContinue)) {
+    throw "xextool not found. Pass -Xextool, or put xextool.exe on PATH and run tools\Configure.ps1 again."
 }
 
 function Get-XexInfo($path) {

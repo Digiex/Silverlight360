@@ -15,3 +15,6 @@ __pycache__/
 
 # Built documentation site
 site/
+
+# Written by tools\Configure.ps1
+config.json

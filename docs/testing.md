@@ -29,7 +29,7 @@ Buttons are sent as key messages to the xenia window only, so nothing reaches ot
 
 Apps need about 12 seconds to show their first page in xenia. Start pressing buttons after that.
 
-The script runs the `xenia_edge.exe` given with `-Xenia`, else the one in the `XENIA_EDGE` environment variable, else the one on `PATH`. `-ExtraArgs` passes more xenia options.
+The script runs the `xenia_edge.exe` `tools\Configure.ps1` set up, or the one given with `-Xenia`. `-ExtraArgs` passes more xenia options.
 
 To test an app that reads the console's content (packages, saves) against a known set, give xenia a content folder of its own rather than changing yours:
 

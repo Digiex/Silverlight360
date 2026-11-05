@@ -68,24 +68,32 @@ The SDK reuses that platform:
 
 The app's own assemblies stay plain IL. The Xbox CLR compiles IL itself when
 an assembly has no Xenon native image, so no native-image generator is
-needed (see [docs/runtime-inventory.md](docs/runtime-inventory.md)). To run
-them compiled, `Build-XboxApp.ps1 -NGen` makes native images with
-[XboxNGen](https://github.com/Digiex/Silverlight360-XboxNGen)
-([docs/native-images.md](docs/native-images.md)).
+needed (see [docs/runtime-inventory.md](docs/runtime-inventory.md)). So
+that they run compiled rather than interpreted, `Build-XboxApp.ps1` then
+makes native images for them with
+[XboxNGen](https://github.com/Digiex/Silverlight360-XboxNGen), unless given
+`-NoNGen` ([docs/native-images.md](docs/native-images.md)).
 
 ## Requirements
+
+Run `.\tools\Configure.ps1` first. It checks each of these, says how to get
+any that's missing, downloads XboxNGen and, with XboxNGen's own configure
+script, the xenia-edge build it needs, and saves where everything is in
+`config.json` (ignored by git), which the other tools read. Run it again
+after installing something it reported missing.
 
 | Dependency | Used for | Notes |
 |---|---|---|
 | Windows | everything | |
-| MSBuild 14 (Visual Studio 2015 or its Build Tools) | builds | Found in its default install folder; `Build-XboxApp.ps1 -MsBuildPath` points at another. |
+| MSBuild 14 (Visual Studio 2015 or its Build Tools) | builds | Found in its default install folder; `Configure.ps1 -MsBuild` points at another. |
 | Silverlight 3 tools and SDK | C# + XAML compilation | Must provide `MSBuild\Microsoft\Silverlight\v3.0\Microsoft.Silverlight.CSharp.targets` and the v3.0 reference assemblies. |
 | Windows SDK 7.0A | Silverlight build tasks | Found in its default install folder. |
 | An extracted Xbox 360 Silverlight app | runtime profile | Plex v0.0.0.7 is the default donor; see [docs/getting-started.md](docs/getting-started.md). For example, the [Plex app for Xbox 360](https://digiex.net/threads/plex-app-download-for-xbox-360.14043/) on Digiex, or other apps in its [Xbox 360 apps forum](https://digiex.net/forums/apps-xbox-360.83/). |
-| `xextool.exe` (optional) | profile metadata | On PATH or passed with `-Xextool`; only used to record build dates. |
+| `xextool.exe` (optional) | profile metadata | On PATH or passed to `Configure.ps1 -Xextool`; only used to record build dates. |
 | 7-Zip and Python 3 | `tools\extract_god_packages.py` | Only for extracting app archives. |
-| Python 3 | `samples\TestServer\server.py` | Standard library only. |
-| [xenia-edge](https://github.com/has207/xenia-edge), a build from 31 October 2026 or later | running apps | See [docs/xenia-status.md](docs/xenia-status.md). |
+| Python 3 | `samples\TestServer\server.py`, XboxNGen's tools | Standard library only; `python` on PATH. |
+| [xenia-edge](https://github.com/has207/xenia-edge), a build from 31 October 2026 or later | running apps | See [docs/xenia-status.md](docs/xenia-status.md). Native images need its `silverlight-build` branch, whose [release](https://github.com/jessenic/xenia-edge/releases/tag/silverlight-build-20261105) `Configure.ps1` downloads when it finds no xenia-edge. |
+| [XboxNGen](https://github.com/Digiex/Silverlight360-XboxNGen) | native images | Its latest release, which `Configure.ps1` downloads. |
 | XNA Game Studio 4 (optional) | IntelliSense | Its docs cover the XNA parts of the Xbox libraries. |
 
 The runtime profile and every package built from it contain Microsoft's and
@@ -97,21 +105,23 @@ git and nothing in this repository includes them.
 From PowerShell in this folder:
 
 ```powershell
-# 1. Once: extract the app archives, if they aren't extracted yet.
+# 1. Once: check what's installed, and get XboxNGen and xenia-edge.
+.\tools\Configure.ps1
+
+# 2. Once: extract the app archives, if they aren't extracted yet.
 python tools\extract_god_packages.py <archive folder> <apps folder> $env:TEMP\god-staging
 
-# 2. Once: make the default runtime profile from Plex.
+# 3. Once: make the default runtime profile from Plex.
 .\tools\New-RuntimeProfile.ps1 -DonorApp '<apps folder>\Plex v0.0.0.7' -Output .\runtime\plex-2015
 
-# 3. Build the sample.
+# 4. Build the sample.
 .\tools\Build-XboxApp.ps1 -Project .\samples\HelloXbox\HelloXbox.csproj
 
-# 4. Start the test server the sample talks to (separate window).
+# 5. Start the test server the sample talks to (separate window).
 python samples\TestServer\server.py
 
-# 5. Run it with your xenia-edge build.
-xenia_edge.exe `
-    samples\HelloXbox\bin\Release\xbox\default.xex
+# 6. Run it in the xenia-edge Configure.ps1 set up.
+& (.\tools\Config.ps1 Xenia) samples\HelloXbox\bin\Release\xbox\default.xex
 ```
 
 The sample shows the server's greeting, polls `/api/time` every 5 seconds,
@@ -215,8 +225,9 @@ bin\Release\xbox\
 | `tools\Get-DonorAssemblies.ps1 -Root <apps> -OutJson <file>` | Lists the assemblies extracted apps carry that the donor doesn't, with the apps carrying each build; `tools\donor_assemblies_md.py` renders it into [docs/donor-assemblies.md](docs/donor-assemblies.md). |
 | `tools\New-RuntimeProfile.ps1 -DonorApp <app> -Output <profile> [-KeepTitle]` | Makes a runtime profile. Its `default.xex` declares no title unless `-KeepTitle` is given ([docs/title.md](docs/title.md)). |
 | `tools\strip_donor_title.py <default.xex>` | Takes the donor's title (execution info and title resource) out of an executable; `New-RuntimeProfile.ps1` runs it. |
-| `tools\Build-XboxApp.ps1 -Project <csproj> [-RuntimeProfile <profile>] [-NGen]` | Builds and packages a project; `-NGen` also makes native images. |
-| `tools\NGen-XboxApp.ps1 -Package <package> [-Platform] [-Tag <tag> \| -XboxNGen <checkout>]` | Makes native images for a built package with the latest [XboxNGen](https://github.com/Digiex/Silverlight360-XboxNGen) release (downloaded and cached) or a local checkout. Needs xenia-edge's `silverlight-build` branch: its [release](https://github.com/jessenic/xenia-edge/releases/tag/silverlight-build-20261105), extracted to `xenia-edge\` beside this repository. The images are unsigned: they run in xenia-edge and on consoles that run unsigned code only ([docs/native-images.md](docs/native-images.md)). |
+| `tools\Configure.ps1 [-DonorApp <app>]` | Run first: checks what building and running apps needs, downloads XboxNGen and xenia-edge, and saves where everything is for the other tools (`config.json`; `tools\Config.ps1 <name>` reads it). |
+| `tools\Build-XboxApp.ps1 -Project <csproj> [-RuntimeProfile <profile>] [-NoNGen] [-AppOnly]` | Builds and packages a project, then makes native images for its assemblies (`NGen-XboxApp.ps1`); `-NoNGen` leaves them out. |
+| `tools\NGen-XboxApp.ps1 -Package <package> [-Platform] [-XboxNGen <checkout>]` | Makes native images for a built package with the [XboxNGen](https://github.com/Digiex/Silverlight360-XboxNGen) release and xenia-edge `Configure.ps1` downloaded, or a local XboxNGen checkout. The images are unsigned: they run in xenia-edge and on consoles that run unsigned code only ([docs/native-images.md](docs/native-images.md)). |
 | `tools\Test-XboxApp.ps1 -Xex <xex> -Output <dir> -Steps ...` | Runs an app in xenia with scripted controller input and screenshots ([docs/testing.md](docs/testing.md)). |
 | `tools\Install-ApiDocs.ps1 [-RuntimeProfile <profile>]` | Writes the IntelliSense files into a profile. |
 | `tools\Test-ApiDocs.ps1` | Checks the SDK's documentation files against the API. |

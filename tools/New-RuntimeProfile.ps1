@@ -33,18 +33,18 @@ for local development only; don't redistribute it.
 param(
     [Parameter(Mandatory)] [string]$DonorApp,
     [Parameter(Mandatory)] [string]$Output,
-    # xextool.exe, from PATH when not given. Only used to record the native
-    # modules' build dates in profile.json.
-    [string]$Xextool = 'xextool.exe',
+    # xextool.exe, when tools\Configure.ps1 found none or another is wanted.
+    # Only used to record the native modules' build dates in profile.json.
+    [string]$Xextool = $(& (Join-Path $PSScriptRoot 'Config.ps1') Xextool -Optional),
     # Leaves the donor's title in default.xex, for apps that use title
     # storage or other per-title services.
     [switch]$KeepTitle
 )
 
 $ErrorActionPreference = 'Stop'
-$hasXextool = [bool](Get-Command $Xextool -ErrorAction SilentlyContinue)
+$hasXextool = $Xextool -and [bool](Get-Command $Xextool -ErrorAction SilentlyContinue)
 if (-not $hasXextool) {
-    Write-Warning 'xextool not found, so profile.json gets no build dates. Pass -Xextool or put xextool.exe on PATH.'
+    Write-Warning 'xextool not found, so profile.json gets no build dates. Pass -Xextool, or put xextool.exe on PATH and run tools\Configure.ps1 again.'
 }
 $DonorApp = (Resolve-Path -LiteralPath $DonorApp).Path
 

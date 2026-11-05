@@ -28,18 +28,14 @@ param(
     # "<second>:<button>" presses a button, "<second>:shot" saves a screenshot.
     [string[]]$Steps = @('20:shot'),
     [int]$Seconds = 30,
-    # xenia_edge.exe: this, else the XENIA_EDGE environment variable, else PATH.
-    [string]$Xenia = $env:XENIA_EDGE,
+    # xenia_edge.exe, instead of the one tools\Configure.ps1 set up.
+    [string]$Xenia = '',
     [string[]]$ExtraArgs = @()
 )
 
 $ErrorActionPreference = 'Stop'
 if (-not $Xenia) {
-    $found = Get-Command xenia_edge.exe -ErrorAction SilentlyContinue
-    if (-not $found) {
-        throw 'xenia_edge.exe not found. Pass -Xenia, set XENIA_EDGE to its path or put it on PATH.'
-    }
-    $Xenia = $found.Source
+    $Xenia = & (Join-Path $PSScriptRoot 'Config.ps1') Xenia
 }
 Add-Type -AssemblyName System.Drawing
 if (-not ('XboxSdk.Win' -as [type])) {

@@ -2,13 +2,14 @@
 
 usage: extract_god_packages.py <archive dir> <output dir> <staging dir>
 
-7-Zip is found through the SEVEN_ZIP environment variable, PATH or its
-default install folder. Each archive is unpacked with it into the staging
+7-Zip is the one tools\\Configure.ps1 found (config.json), else the SEVEN_ZIP
+environment variable, PATH or its default install folder. Each archive is unpacked with it into the staging
 dir, every GOD package
 (content type 0x7000) in it is extracted into <output>/<package title>, and
 the staging copy is removed. Other packages are skipped. The SVOD block
 mapping follows xenia's SvodContainerDevice.
 """
+import json
 import os
 import re
 import shutil
@@ -140,13 +141,18 @@ def find_headers(root):
 
 
 def find_seven_zip():
-    candidates = [os.environ.get("SEVEN_ZIP"), shutil.which("7z")]
+    candidates = []
+    config = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "config.json")
+    if os.path.isfile(config):
+        with open(config, encoding="utf-8-sig") as f:
+            candidates.append(json.load(f).get("SevenZip"))
+    candidates += [os.environ.get("SEVEN_ZIP"), shutil.which("7z")]
     if os.environ.get("ProgramFiles"):
         candidates.append(os.path.join(os.environ["ProgramFiles"], "7-Zip", "7z.exe"))
     for c in candidates:
         if c and os.path.isfile(c):
             return c
-    sys.exit("7-Zip not found: set SEVEN_ZIP to 7z.exe or put it on PATH")
+    sys.exit("7-Zip not found: install it and run tools\\Configure.ps1 again, or set SEVEN_ZIP to 7z.exe")
 
 
 def main():

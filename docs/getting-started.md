@@ -7,10 +7,20 @@
 - **Windows SDK 7.0A**, which the Silverlight build tasks use.
 - An **extracted Xbox 360 Silverlight app**. Every app ships its own copy of the platform, and the SDK builds against it. Plex has the newest platform of the shipped apps; the default profile uses Plex v0.0.0.7, a Games on Demand package (`tools\extract_god_packages.py` extracts those). For example, Digiex has the [Plex app for Xbox 360](https://digiex.net/threads/plex-app-download-for-xbox-360.14043/), and other apps in its [Xbox 360 apps forum](https://digiex.net/forums/apps-xbox-360.83/).
 - **Python 3** for the test server and the extraction tools.
-- **[xenia-edge](https://github.com/has207/xenia-edge)** with the Silverlight work to run the apps (see [Status under xenia](xenia-status.md)).
+- **[xenia-edge](https://github.com/has207/xenia-edge)** with the Silverlight work to run the apps (see [Status under xenia](xenia-status.md)). Native images need its `silverlight-build` branch, which step 1 downloads if you have no xenia-edge.
 - Optional, for IntelliSense text on the standard APIs: XNA Game Studio 4. Silverlight 3 is required anyway.
 
-## 1. Make a runtime profile
+## 1. Configure
+
+```powershell
+.\tools\Configure.ps1
+```
+
+Run it first. It checks each of the above, says how to get any that's missing, and saves where everything is in `config.json` at the repository's root (ignored by git), which the other tools read. It also downloads [XboxNGen](https://github.com/Digiex/Silverlight360-XboxNGen), which makes the native images the builds get (see [Native images](native-images.md)), and runs XboxNGen's own configure script, which finds your xenia-edge or offers to download the build XboxNGen needs. Run it again after installing something it reported missing; `-Show` prints what it saved.
+
+The runtime profile, the next step, is reported missing until you make it. `Configure.ps1 -DonorApp '<extracted Plex v0.0.0.7>'` makes it for you.
+
+## 2. Make a runtime profile
 
 A runtime profile is the platform copied out of one app: the native host and runtime (`package\`) and the framework assemblies to compile against (`reference\`). Every build starts from it.
 
@@ -26,21 +36,21 @@ The script finishes by installing the IntelliSense files into `reference\` (`too
 
 The profile holds Microsoft's and the donor app's binaries. It stays on your machine; `runtime\` is ignored by git.
 
-## 2. Build a sample
+## 3. Build a sample
 
 ```powershell
 .\tools\Build-XboxApp.ps1 -Project .\samples\ui\FocusNavigation\FocusNavigation.csproj
 ```
 
-The package lands in `samples\ui\FocusNavigation\bin\Release\xbox\`. Its `default.xex` is the platform's host; your code is `FocusNavigation.dll`, plain IL next to it.
+The package lands in `samples\ui\FocusNavigation\bin\Release\xbox\`. Its `default.xex` is the platform's host; your code is `FocusNavigation.dll`, plain IL next to it, and `FocusNavigation.ni.dll`, its native image, which the script makes after the build by running the package in xenia-edge for a few seconds. `-NoNGen` leaves the image out and the code runs interpreted ([Native images](native-images.md)).
 
-## 3. Run it
+## 4. Run it
 
 ```powershell
-xenia_edge.exe samples\ui\FocusNavigation\bin\Release\xbox\default.xex
+& (.\tools\Config.ps1 Xenia) samples\ui\FocusNavigation\bin\Release\xbox\default.xex
 ```
 
-`xenia_edge.exe` is your xenia-edge build (`build\bin\Windows\Release` in its folder).
+`.\tools\Config.ps1 Xenia` gives the `xenia_edge.exe` step 1 set up.
 
 Use a controller, or xenia's keyboard input (`--hid=keyboard`): Shift+W/A/S/D is the D-pad, W/A/S/D the left stick, `;` is A and `'` is B (the last two depend on the keyboard layout).
 
@@ -50,7 +60,7 @@ The samples that talk to a server need the test server running in another window
 python samples\TestServer\server.py
 ```
 
-## 4. Make your own app
+## 5. Make your own app
 
 Copy a sample close to what you want; `samples\ui\PageNavigation` is a good start for a multi-page app. Then read [Projects and Visual Studio](project-setup.md) and [App model](app-model.md).
 
