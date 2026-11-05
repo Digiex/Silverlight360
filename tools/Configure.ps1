@@ -12,12 +12,17 @@ missing, or to update XboxNGen. It checks:
                            Build Tools; MSBuild 14 when it's there, else the
                            newest Visual Studio's (-MsBuild)
     Silverlight 3 SDK      3.0.40818, the platform's version: its build
-                           targets and tasks compile the C# and XAML
+                           folder (MSBuild\Microsoft\Silverlight\v3.0)
+                           compiles the C# and XAML. Microsoft no longer
+                           offers it; Visual Studio 2010's install media has
+                           it (WCU\Silverlight\silverlight_sdk.msi). The
+                           Silverlight 4 and 5 SDKs don't replace it.
     Runtime profile        runtime\plex-2015, made from an extracted app with
                            New-RuntimeProfile.ps1 (-DonorApp makes it here)
+    Python 3.7 or later    python on PATH: making the profile, the native
+                           images builds make, the test server and the
+                           extraction tools
   For running apps and native images:
-    Python 3.7 or later    python on PATH: XboxNGen's tools, the test server
-                           and the extraction tools
     XboxNGen               its latest release (or -Tag), downloaded into
                            %LOCALAPPDATA%\Silverlight360\XboxNGen and checked
                            against the SHA-256 GitHub gives for it
@@ -32,6 +37,10 @@ missing, or to update XboxNGen. It checks:
                            open RAR5 archives)
     Silverlight 4 SDK,     IntelliSense text for more of the platform's API
     XNA Game Studio 4      (Install-ApiDocs.ps1)
+    xsdk                   a native library (DLL) of the app's own in C, as
+                           samples\NativeLibrary has: xsdk's dll-modules
+                           branch in WSL, ~/xsdk with its toolchain in
+                           ~/xsdk-gcc (docs\samples.md)
 
 The result goes to config.json at the repository's root (git ignores it),
 which tools\Config.ps1 reads for the other tools. -Show prints it.
@@ -203,14 +212,15 @@ $newest = if (Test-Path -LiteralPath $vswhere) {
 $config.MsBuild = First-Existing @($MsBuild, $previous.MsBuild, "$pf86\MSBuild\14.0\Bin\MSBuild.exe", $newest)
 Report 'MSBuild' $config.MsBuild 'install Visual Studio (2015 or later) or its Build Tools, or pass -MsBuild <MSBuild.exe>' -Required
 Report 'Silverlight 3 SDK' (First-Existing @("$pf86\MSBuild\Microsoft\Silverlight\v3.0\Microsoft.Silverlight.CSharp.targets")) `
-    'install the Silverlight 3 SDK (3.0.40818), which has the build targets (Microsoft.Silverlight.CSharp.targets)' -Required
+    ('install the Silverlight 3 SDK (3.0.40818), whose build folder MSBuild\Microsoft\Silverlight\v3.0 is what builds use. ' +
+     'Microsoft no longer offers it: Visual Studio 2010''s install media has it, WCU\Silverlight\silverlight_sdk.msi') -Required
 
 # Python 3.7 or later: extract_god_packages.py's subprocess.run(capture_output) is 3.7's.
 $python = Get-Command python -ErrorAction SilentlyContinue
 $pythonVersion = if ($python) { [regex]::Match((& $python.Source --version 2>&1 | Out-String), 'Python (\d+)\.(\d+)') } else { $null }
 $config.Python = if ($pythonVersion -and $pythonVersion.Success -and
     [version]"$($pythonVersion.Groups[1].Value).$($pythonVersion.Groups[2].Value)" -ge [version]'3.7') { $python.Source } else { '' }
-Report 'Python 3.7+' $config.Python 'install Python 3.7 or later and put python on PATH'
+Report 'Python 3.7+' $config.Python 'install Python 3.7 or later and put python on PATH (making the profile, native images)' -Required
 
 $xextool = if ($Xextool) { $Xextool } elseif ($previous.Xextool) { $previous.Xextool } else { 'xextool.exe' }
 $found = Get-Command $xextool -ErrorAction SilentlyContinue
@@ -232,6 +242,22 @@ Report 'Silverlight 4 SDK' (First-Existing @("$pf86\Microsoft SDKs\Silverlight\v
     'optional: install the Silverlight 4 SDK, for more IntelliSense text (Install-ApiDocs.ps1)'
 Report 'XNA Game Studio 4' (First-Existing @("$pf86\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86")) `
     'optional: install XNA Game Studio 4, for IntelliSense text on the XNA parts (Install-ApiDocs.ps1)'
+
+# xsdk in WSL, where native libraries are built: its DLL support (elf2xex.py --dll) and its toolchain.
+$xsdk = ''
+if (Get-Command wsl.exe -ErrorAction SilentlyContinue) {
+    # Without WSL installed, wsl.exe says so on stderr, which Windows PowerShell would otherwise stop on.
+    $answer = try {
+        $ErrorActionPreference = 'Continue'
+        & wsl.exe -e bash -lc 'grep -q -- --dll ${XSDK:-~/xsdk}/tools/elf2xex.py && test -x ~/xsdk-gcc/bin/powerpc-xsdk-elf-gcc && echo ok' 2>$null
+    } catch { '' }
+    $ErrorActionPreference = 'Stop'
+    if ("$answer".Trim() -eq 'ok') {
+        $xsdk = 'in WSL (XSDK, else ~/xsdk), with its toolchain in ~/xsdk-gcc'
+    }
+}
+Report 'xsdk' $xsdk ('optional: for a native library of the app''s own (samples\NativeLibrary), xsdk''s dll-modules branch ' +
+    'and toolchain in WSL: ~/xsdk (or XSDK in WSL) and ~/xsdk-gcc (docs\samples.md)')
 
 $profileDir = Join-Path $sdkRoot 'runtime\plex-2015'
 if (-not (Test-Path -LiteralPath (Join-Path $profileDir 'package\default.xex')) -and $DonorApp) {

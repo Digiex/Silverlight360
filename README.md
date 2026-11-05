@@ -86,13 +86,14 @@ after installing something it reported missing.
 |---|---|---|
 | Windows | everything | |
 | MSBuild 14 or later (Visual Studio 2015 to 2026, or their Build Tools) | builds | MSBuild 14 if it's in its default install folder, else the newest Visual Studio's; `Configure.ps1 -MsBuild` points at another. |
-| Silverlight 3 SDK (3.0.40818) | C# + XAML compilation | Provides `MSBuild\Microsoft\Silverlight\v3.0\Microsoft.Silverlight.CSharp.targets` and its build tasks. The code compiles against the runtime profile's assemblies, not the SDK's. |
+| Silverlight 3 SDK (3.0.40818) | C# + XAML compilation | Its build folder, `MSBuild\Microsoft\Silverlight\v3.0` (the targets and build tasks), is all the build uses: the code compiles against the runtime profile's assemblies, not the SDK's. Microsoft no longer offers it; Visual Studio 2010's install media has it (`WCU\Silverlight\silverlight_sdk.msi`). The Silverlight 4 and 5 SDKs don't include it, and their build targets don't build these apps. |
 | An extracted Xbox 360 Silverlight app | runtime profile | Plex v0.0.0.7 is the default donor; see [docs/getting-started.md](docs/getting-started.md). For example, the [Plex app for Xbox 360](https://digiex.net/threads/plex-app-download-for-xbox-360.14043/) on Digiex, or other apps in its [Xbox 360 apps forum](https://digiex.net/forums/apps-xbox-360.83/). |
 | `xextool.exe` (optional) | profile metadata | On PATH or passed to `Configure.ps1 -Xextool`; only used to record build dates. |
 | 7-Zip 15.06 or later and Python 3.7 or later | `tools\extract_god_packages.py` | Only for extracting app archives. Older 7-Zips can't open RAR5 archives. |
-| Python 3.7 or later | `samples\TestServer\server.py`, XboxNGen's tools | Standard library only; `python` on PATH. |
+| Python 3.7 or later | making the runtime profile, native images (XboxNGen's tools), `samples\TestServer\server.py` | Standard library only; `python` on PATH. |
 | [xenia-edge](https://github.com/has207/xenia-edge), a build from 31 October 2026 or later | running apps | See [docs/xenia-status.md](docs/xenia-status.md). Native images need its `silverlight-build` branch, whose [release](https://github.com/jessenic/xenia-edge/releases/tag/silverlight-build-20261105) `Configure.ps1` downloads when it finds no xenia-edge. |
 | [XboxNGen](https://github.com/Digiex/Silverlight360-XboxNGen) | native images | Its latest release, which `Configure.ps1` downloads. |
+| [xsdk](https://github.com/xenosworks/xsdk) in WSL (optional) | native libraries of the app's own | Its DLL support, in the `dll-modules` branch of [jessenic/xsdk](https://github.com/jessenic/xsdk/tree/dll-modules) until [xenosworks/xsdk#4](https://github.com/xenosworks/xsdk/pull/4) is merged, and its toolchain: `~/xsdk` (or `XSDK` in WSL) and `~/xsdk-gcc` ([docs/samples.md](docs/samples.md), `samples\NativeLibrary`). |
 | Silverlight 4 SDK, XNA Game Studio 4 (optional) | IntelliSense | `Install-ApiDocs.ps1` takes more API text from their docs; XNA Game Studio's cover the XNA parts of the Xbox libraries. |
 
 The runtime profile and every package built from it contain Microsoft's and

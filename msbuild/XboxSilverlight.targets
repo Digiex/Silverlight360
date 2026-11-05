@@ -27,6 +27,9 @@
     <!-- Silverlight 3 is what the Xbox runtime reports (3.0.40818.0). -->
     <TargetFrameworkVersion>v3.0</TargetFrameworkVersion>
     <SilverlightVersion>v3.0</SilverlightVersion>
+    <!-- The AppManifest.xaml RuntimeVersion: set here rather than read from the Silverlight 3 SDK's registry entry,
+         so its build folder (MSBuild\Microsoft\Silverlight\v3.0) is all the build needs. -->
+    <SilverlightRuntimeVersion Condition="'$(SilverlightRuntimeVersion)' == ''">3.0.40818.0</SilverlightRuntimeVersion>
     <SilverlightApplication>true</SilverlightApplication>
     <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
     <SilverlightManifestTemplate Condition="'$(SilverlightManifestTemplate)' == ''">$(XboxSdkRoot)templates\AppManifest.xml</SilverlightManifestTemplate>

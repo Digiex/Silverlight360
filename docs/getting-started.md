@@ -3,11 +3,12 @@
 ## What you need
 
 - Windows with **MSBuild 14 or later**: Visual Studio 2015 to 2026, or their Build Tools (see [Projects and Visual Studio](project-setup.md)).
-- The **Silverlight 3 SDK** (3.0.40818, the platform's version), which provides the C# and XAML build targets and tasks.
+- The **Silverlight 3 SDK** (3.0.40818, the platform's version), whose build folder (`MSBuild\Microsoft\Silverlight\v3.0`) compiles the C# and XAML. Microsoft no longer offers it for download; Visual Studio 2010's install media has it, as `WCU\Silverlight\silverlight_sdk.msi`. The Silverlight 4 and 5 SDKs don't include it and can't stand in for it: their XAML compiler rejects the Xbox controls' content.
 - An **extracted Xbox 360 Silverlight app**. Every app ships its own copy of the platform, and the SDK builds against it. Plex has the newest platform of the shipped apps; the default profile uses Plex v0.0.0.7, a Games on Demand package (`tools\extract_god_packages.py` extracts those). For example, Digiex has the [Plex app for Xbox 360](https://digiex.net/threads/plex-app-download-for-xbox-360.14043/), and other apps in its [Xbox 360 apps forum](https://digiex.net/forums/apps-xbox-360.83/).
-- **Python 3.7 or later** for the test server, the extraction tools and XboxNGen's tools, and **7-Zip 15.06 or later** to extract app archives.
+- **Python 3.7 or later** for making the runtime profile, the native images builds make, the test server and the extraction tools, and **7-Zip 15.06 or later** to extract app archives.
 - **[xenia-edge](https://github.com/has207/xenia-edge)** with the Silverlight work to run the apps (see [Status under xenia](xenia-status.md)). Native images need its `silverlight-build` branch, which step 1 downloads if you have no xenia-edge.
 - Optional, for more IntelliSense text: the Silverlight 4 SDK and XNA Game Studio 4.
+- Optional, for a native library (DLL) of the app's own in C: [xsdk](https://github.com/xenosworks/xsdk)'s DLL support and toolchain in WSL ([Samples](samples.md), NativeLibrary).
 
 ## 1. Configure
 
