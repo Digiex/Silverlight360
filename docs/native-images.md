@@ -2,7 +2,7 @@
 
 On a retail console, the platform's runtime has no JIT compiler, so an app's own code goes through the IL interpreter (see [Performance](performance.md)). [XboxNGen](https://github.com/Digiex/Silverlight360-XboxNGen) supplies a JIT for the runtime and runs the runtime's own native-image generator (the *zapper*) in xenia-edge, so an app's assemblies get `.ni.dll` native images, as Microsoft's apps have. In XboxNGen's benchmarks, compiled code runs tens to hundreds of times faster than interpreted code.
 
-`Build-XboxApp.ps1` makes them for the app's assemblies after every build, with `tools\NGen-XboxApp.ps1`; `-NoNGen` leaves them out, and an `-AppOnly` build never has them. `NGen-XboxApp.ps1` also works on a package built earlier.
+`Build-XboxApp.ps1` makes them for the app's assemblies after every build, with `tools\NGen-XboxApp.ps1`; `-NoNGen` leaves them out. An `-AppOnly` build has them too: they're made in the whole package, then copied beside the app's assemblies. `NGen-XboxApp.ps1` also works on a package built earlier.
 
 !!! warning "The images are unsigned"
     They run in xenia-edge and on a console that runs unsigned code. They don't run on a stock retail console: an image there has to be signed for its app, as Microsoft's are. To hand out a package for retail consoles, build it with `-NoNGen`.
@@ -15,7 +15,7 @@ On a retail console, the platform's runtime has no JIT compiler, so an app's own
 - **xenia-edge from the `silverlight-build` branch of [jessenic/xenia-edge](https://github.com/jessenic/xenia-edge/tree/silverlight-build)**. Upstream xenia-edge lacks fixes the zapper needs, such as devkit code buffers and code patched in place. Configure runs XboxNGen's own `tools\Configure.ps1`, giving it the xenia-edge it finds (`-Xenia`, the `XENIA_EDGE` environment variable, the last configuration, `xenia-edge\` beside this repository or `PATH`). With none, it offers to download that branch's Windows build, the release [silverlight-build-20261105](https://github.com/jessenic/xenia-edge/releases/tag/silverlight-build-20261105) (`-DownloadXenia` without asking), which goes beside the XboxNGen release. To change xenia-edge, build the branch yourself and give it with `-Xenia`.
 - **Python 3** on `PATH` as `python`. XboxNGen's tools use it to rebase and wrap each image (the standard library only).
 
-And a **whole package**: `bin\<Configuration>\xbox`, or any app folder with a `default.xex`, an `AppManifest.xaml`, the runtime and its `mscorlib.ni.dll`. An `-AppOnly` build doesn't have the runtime the zapper runs in.
+And a **whole package**: `bin\<Configuration>\xbox`, or any app folder with a `default.xex`, an `AppManifest.xaml`, the runtime and its `mscorlib.ni.dll`. `NGen-XboxApp.ps1` can't work on an `-AppOnly` build, which doesn't have the runtime the zapper runs in; `Build-XboxApp.ps1 -AppOnly` builds the whole package for that first.
 
 ## Running it
 
@@ -61,6 +61,8 @@ Run one xenia-edge at a time: the script, and `Build-XboxApp.ps1` unless given `
 
 ## Handing out an app with native images
 
-Images are bound to the exact IL they were compiled from, to the runtime and framework build in the profile, and to their load addresses. Compile them against the profile your users will run the app with, or build with `-NoNGen` and let the app run interpreted. An `-AppOnly` build, for handing the app's own files out, never has them.
+Images are bound to the exact IL they were compiled from, to the runtime and framework build in the profile, and to their load addresses. Compile them against the profile your users will run the app with, or build with `-NoNGen` and let the app run interpreted.
+
+An `-AppOnly` build, for handing the app's own files out, has the images of the app's assemblies. They load only when the files go over a package made from the same donor app as the profile (Plex v0.0.0.7 for the default one), which the build says. For people who use another, build with `-NoNGen`. `-AppOnly` can't be used with `-NGenPlatform`: the app's images would then be compiled against new images of the platform, which the app files leave out.
 
 XboxNGen's license is noncommercial, and an app shipped with native images its JIT made has to include a visible reference to https://github.com/Digiex/Silverlight360-XboxNGen (see its `LICENSE.md`).

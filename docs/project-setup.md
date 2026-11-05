@@ -104,10 +104,11 @@ bin\Release\app\
   AppManifest.xaml  XboxAppManifest.xml
   SplashScreenImage.jpg  SplashScreenImage480.jpg
   MyApp.dll                    your code, and libraries you bring
+  MyApp.ni.dll                 its native image (none with -NoNGen)
   ...                          your content
 ```
 
-The framework libraries an app copies from the profile's `reference` folder, such as `Microsoft.Xbox` and `System.Xml.Linq`, are left out too: the runtime package has the same files. Whoever installs the app makes a runtime profile from an app of their own, copies its `package` folder to the console, and copies the app's files over it. [Silverdash360](https://github.com/Digiex/Silverdash360) publishes its releases this way, with `tools/Release.ps1`, and its [installation guide](https://digiex.github.io/Silverdash360/install/) takes its users through the steps.
+The framework libraries an app copies from the profile's `reference` folder, such as `Microsoft.Xbox` and `System.Xml.Linq`, are left out too: the runtime package has the same files. Whoever installs the app makes a runtime profile from an app of their own, copies its `package` folder to the console, and copies the app's files over it. The native images load only when that app is the same donor app as your profile's (the build says which); for any other, build with `-NoNGen` ([Native images](native-images.md)). [Silverdash360](https://github.com/Digiex/Silverdash360) publishes its releases this way, with `tools/Release.ps1`, and its [installation guide](https://digiex.github.io/Silverdash360/install/) takes its users through the steps.
 
 ## Language
 
