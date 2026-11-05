@@ -20,10 +20,12 @@ Then compiles, in the package folder (or a copy of it, -Output):
     image yet (or -Assemblies), one xenia-edge run each, from 0x95000000 up
     (with -Platform: all of them again, after the platform's).
 
-Needs xenia-edge from the silverlight-build branch of jessenic/xenia-edge,
-built: -Xenia, else the XENIA_EDGE environment variable, else
-xenia-edge\build\bin\Windows\Release\xenia_edge.exe beside this repository or
-beside its parent folder, else xenia_edge.exe on PATH. And Python 3, which
+Needs xenia-edge from the silverlight-build branch of jessenic/xenia-edge: by
+default its release silverlight-build-20261105 (xenia_edge_windows.zip),
+extracted to xenia-edge\ beside this repository. -Xenia, else the XENIA_EDGE
+environment variable, else xenia_edge.exe in that folder (or one folder down),
+else xenia-edge\build\bin\Windows\Release\xenia_edge.exe beside this repository
+or beside its parent folder, else xenia_edge.exe on PATH. And Python 3, which
 XboxNGen's tools run.
 
 The images are unsigned: they run in xenia-edge and on a console that runs
@@ -164,13 +166,16 @@ if ($XboxNGen) {
 if (-not $Xenia) { $Xenia = $env:XENIA_EDGE }
 if (-not $Xenia) {
     $parent = Split-Path -Parent $sdkRoot
-    $Xenia = @("$parent\xenia-edge\build\bin\Windows\Release\xenia_edge.exe", "$parent\..\xenia-edge\build\bin\Windows\Release\xenia_edge.exe") |
+    # The silverlight-build release extracted to xenia-edge\ (at its top or one folder down), else a build of the branch.
+    $released = @(Get-ChildItem -LiteralPath "$parent\xenia-edge" -Filter xenia_edge.exe -Depth 1 -ErrorAction SilentlyContinue |
+        ForEach-Object FullName)
+    $Xenia = @($released + "$parent\xenia-edge\build\bin\Windows\Release\xenia_edge.exe", "$parent\..\xenia-edge\build\bin\Windows\Release\xenia_edge.exe") |
         Where-Object { Test-Path -LiteralPath $_ } | Select-Object -First 1
 }
 if (-not $Xenia) {
     $found = Get-Command xenia_edge.exe -ErrorAction SilentlyContinue
     if (-not $found) {
-        throw 'xenia_edge.exe not found. Build xenia-edge from the silverlight-build branch of https://github.com/jessenic/xenia-edge, then pass -Xenia, set XENIA_EDGE to its path or put it on PATH.'
+        throw 'xenia_edge.exe not found. Extract xenia_edge_windows.zip from https://github.com/jessenic/xenia-edge/releases/tag/silverlight-build-20261105 to xenia-edge\ beside this repository, or pass -Xenia, set XENIA_EDGE to its path or put it on PATH.'
     }
     $Xenia = $found.Source
 }

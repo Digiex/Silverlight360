@@ -9,12 +9,19 @@ On a retail console, the platform's runtime has no JIT compiler, so an app's own
 
 ## What it needs
 
-- **xenia-edge from the `silverlight-build` branch of [jessenic/xenia-edge](https://github.com/jessenic/xenia-edge/tree/silverlight-build)**, built. Upstream xenia-edge lacks fixes the zapper needs, such as devkit code buffers and code patched in place. The script uses `-Xenia`, else the `XENIA_EDGE` environment variable, else `xenia-edge\build\bin\Windows\Release\xenia_edge.exe` beside this repository or beside its parent folder (where XboxNGen's `Configure.ps1` looks), else `xenia_edge.exe` on `PATH`.
+- **xenia-edge from the `silverlight-build` branch of [jessenic/xenia-edge](https://github.com/jessenic/xenia-edge/tree/silverlight-build)**. Upstream xenia-edge lacks fixes the zapper needs, such as devkit code buffers and code patched in place. By default, use that branch's Windows build: download `xenia_edge_windows.zip` from its release [silverlight-build-20261105](https://github.com/jessenic/xenia-edge/releases/tag/silverlight-build-20261105) and extract it to `xenia-edge\` beside this repository (below). To change xenia-edge, build the branch yourself instead. The script uses `-Xenia`, else the `XENIA_EDGE` environment variable, else `xenia_edge.exe` in `xenia-edge\` beside this repository (or one folder down), else `xenia-edge\build\bin\Windows\Release\xenia_edge.exe` beside this repository or beside its parent folder (where XboxNGen's `Configure.ps1` looks too), else `xenia_edge.exe` on `PATH`.
 - **Python 3** on `PATH` as `python`. XboxNGen's tools use it to rebase and wrap each image (the standard library only).
 - **A whole package**: `bin\<Configuration>\xbox`, or any app folder with a `default.xex`, an `AppManifest.xaml`, the runtime and its `mscorlib.ni.dll`. An `-AppOnly` build doesn't have the runtime the zapper runs in.
 - **Internet access to GitHub**, the first time and whenever a newer release is out. No account is needed.
 
 It doesn't need xsdk or WSL: the release's zip has the JIT (`jit\xclrjit.dll`), the zapper host (`host\ngenhost.xex`) and the code cache module (`codecache\CLRCodeCachedll_0.xex`) already built.
+
+To get xenia-edge's release, in the folder that holds this repository:
+
+```powershell
+Invoke-WebRequest https://github.com/jessenic/xenia-edge/releases/download/silverlight-build-20261105/xenia_edge_windows.zip -OutFile xenia_edge_windows.zip
+Expand-Archive xenia_edge_windows.zip xenia-edge
+```
 
 ## Running it
 
