@@ -12,18 +12,15 @@
 
 ### Getting the Silverlight 3 SDK
 
-Microsoft no longer offers the Silverlight 3 SDK for download. Visual Studio 2010's install disc has it, and the Internet Archive has a copy of the disc: from [en_visual_studio_2010_ultimate_x86_dvd_509116.iso](https://archive.org/download/65384/en_visual_studio_2010_ultimate_x86_dvd_509116.iso/), download the two files in `WCU/Silverlight`, [silverlight_sdk.msi](https://archive.org/download/65384/en_visual_studio_2010_ultimate_x86_dvd_509116.iso/WCU/Silverlight/silverlight_sdk.msi) (1,089,536 bytes) and [silverlight_sdk.cab](https://archive.org/download/65384/en_visual_studio_2010_ultimate_x86_dvd_509116.iso/WCU/Silverlight/silverlight_sdk.cab) (9,733,636 bytes), into one folder. Both are signed by Microsoft. Then either:
+Microsoft no longer offers the Silverlight 3 SDK for download. Download `Silverlight3_sdk.zip`, attached to the [Silverlight360 thread on Digiex](https://digiex.net/threads/silverlight360-c-xaml-sdk-for-the-xbox-360.20115/), and unzip it. It has the SDK's installer, `silverlight_sdk.msi` with its `silverlight_sdk.cab` (signed by Microsoft, as on Visual Studio 2010's install disc), and its build folder's six files in `Extracted`. Then either:
 
-- **Install it**: run `silverlight_sdk.msi`, with the `.cab` beside it. It needs nothing else installed, and it also gives `Install-ApiDocs.ps1` the Silverlight 3 documentation for IntelliSense.
-- **Or extract only its build folder**, which is all a build uses, with the commands below in an administrator PowerShell in that folder. `expand.exe` comes with Windows.
+- **Install it**: run `silverlight_sdk.msi`. It needs nothing else installed, and it also gives `Install-ApiDocs.ps1` the Silverlight 3 documentation for IntelliSense.
+- **Or copy only its build folder**, which is all a build uses, with these commands in an administrator PowerShell in the unzipped folder:
 
 ```powershell
 $target = "${env:ProgramFiles(x86)}\MSBuild\Microsoft\Silverlight\v3.0"
 New-Item -ItemType Directory $target -Force | Out-Null
-foreach ($file in 'Microsoft.Silverlight.Build.Tasks.dll', 'Microsoft.Silverlight.Common.targets',
-    'Microsoft.Silverlight.CSharp.targets', 'Microsoft.Silverlight.VisualBasic.targets', 'XamlServices.dll', 'zlib114.dll') {
-    expand.exe silverlight_sdk.cab "-F:$file" $target
-}
+Copy-Item Extracted\* $target
 ```
 
 The Silverlight 4 and 5 SDKs don't include it and can't stand in for it: their XAML compiler rejects the Xbox controls' content.
