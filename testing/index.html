@@ -261,7 +261,7 @@
 </tbody>
 </table>
 <p>Apps need about 12 seconds to show their first page in xenia. Start pressing buttons after that.</p>
-<p>The script runs the <code>xenia_edge.exe</code> given with <code>-Xenia</code>, else the one in the <code>XENIA_EDGE</code> environment variable, else the one on <code>PATH</code>. <code>-ExtraArgs</code> passes more xenia options.</p>
+<p>The script runs the <code>xenia_edge.exe</code> <code>tools\Configure.ps1</code> set up, or the one given with <code>-Xenia</code>. <code>-ExtraArgs</code> passes more xenia options.</p>
 <p>To test an app that reads the console's content (packages, saves) against a known set, give xenia a content folder of its own rather than changing yours:</p>
 <pre><code class="language-powershell">.\tools\Test-XboxApp.ps1 -Xex $xex -Output $env:TEMP\run -ExtraArgs &quot;--content_root=$env:TEMP\testcontent&quot;
 </code></pre>

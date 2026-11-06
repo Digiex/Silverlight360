@@ -189,7 +189,7 @@
                 <h1 id="the-apps-title">The app's title<a class="headerlink" href="#the-apps-title" title="Permanent link">&para;</a></h1>
 <p>Every Xbox 360 executable can declare a title: a title ID, a version and a media ID, in its header's execution info. A donor app's <code>default.xex</code> declares the donor's title (Plex, <code>574407D1</code>, v0.0.0.7) and carries the title's own resource, named after the title ID, with its name, tile and presence strings.</p>
 <h2 id="default-no-title">Default: no title<a class="headerlink" href="#default-no-title" title="Permanent link">&para;</a></h2>
-<p><code>tools\New-RuntimeProfile.ps1</code> takes the donor's title out of the profile's <code>default.xex</code> (<code>tools\strip_donor_title.py</code>):</p>
+<p><code>tools\New-RuntimeProfile.ps1</code> takes the donor's title out of the profile's <code>default.xex</code> (<code>tools\Remove-DonorTitle.ps1</code>):</p>
 <ul>
 <li>the execution info goes, so the executable declares no title, as homebrew executables don't;</li>
 <li>the title's resource goes from the resource directory, and its bytes in the image are zeroed;</li>

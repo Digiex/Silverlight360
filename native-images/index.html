@@ -196,26 +196,24 @@
               
                 <h1 id="native-images">Native images<a class="headerlink" href="#native-images" title="Permanent link">&para;</a></h1>
 <p>On a retail console, the platform's runtime has no JIT compiler, so an app's own code goes through the IL interpreter (see <a href="../performance/">Performance</a>). <a href="https://github.com/Digiex/Silverlight360-XboxNGen">XboxNGen</a> supplies a JIT for the runtime and runs the runtime's own native-image generator (the <em>zapper</em>) in xenia-edge, so an app's assemblies get <code>.ni.dll</code> native images, as Microsoft's apps have. In XboxNGen's benchmarks, compiled code runs tens to hundreds of times faster than interpreted code.</p>
-<p><code>tools\NGen-XboxApp.ps1</code> makes native images for a built package with XboxNGen's latest release, and <code>Build-XboxApp.ps1 -NGen</code> runs it after a build.</p>
+<p><code>Build-XboxApp.ps1</code> makes them for the app's assemblies after every build, with <code>tools\NGen-XboxApp.ps1</code>; <code>-NoNGen</code> leaves them out. An <code>-AppOnly</code> build has them too: they're made in the whole package, then copied beside the app's assemblies. <code>NGen-XboxApp.ps1</code> also works on a package built earlier.</p>
 <div class="admonition warning">
 <p class="admonition-title">The images are unsigned</p>
-<p>They run in xenia-edge and on a console that runs unsigned code. They don't run on a stock retail console: an image there has to be signed for its app, as Microsoft's are. To hand out a package for retail consoles, leave the images out.</p>
+<p>They run in xenia-edge and on a console that runs unsigned code. They don't run on a stock retail console: an image there has to be signed for its app, as Microsoft's are. To hand out a package for retail consoles, build it with <code>-NoNGen</code>.</p>
 </div>
 <h2 id="what-it-needs">What it needs<a class="headerlink" href="#what-it-needs" title="Permanent link">&para;</a></h2>
+<p><code>tools\Configure.ps1</code> sets it all up; run it first, and again for a newer XboxNGen:</p>
 <ul>
-<li><strong>xenia-edge from the <code>silverlight-build</code> branch of <a href="https://github.com/jessenic/xenia-edge/tree/silverlight-build">jessenic/xenia-edge</a></strong>. Upstream xenia-edge lacks fixes the zapper needs, such as devkit code buffers and code patched in place. By default, use that branch's Windows build: download <code>xenia_edge_windows.zip</code> from its release <a href="https://github.com/jessenic/xenia-edge/releases/tag/silverlight-build-20261105">silverlight-build-20261105</a> and extract it to <code>xenia-edge\</code> beside this repository (below). To change xenia-edge, build the branch yourself instead. The script uses <code>-Xenia</code>, else the <code>XENIA_EDGE</code> environment variable, else <code>xenia_edge.exe</code> in <code>xenia-edge\</code> beside this repository (or one folder down), else <code>xenia-edge\build\bin\Windows\Release\xenia_edge.exe</code> beside this repository or beside its parent folder (where XboxNGen's <code>Configure.ps1</code> looks too), else <code>xenia_edge.exe</code> on <code>PATH</code>.</li>
-<li><strong>Python 3</strong> on <code>PATH</code> as <code>python</code>. XboxNGen's tools use it to rebase and wrap each image (the standard library only).</li>
-<li><strong>A whole package</strong>: <code>bin\&lt;Configuration&gt;\xbox</code>, or any app folder with a <code>default.xex</code>, an <code>AppManifest.xaml</code>, the runtime and its <code>mscorlib.ni.dll</code>. An <code>-AppOnly</code> build doesn't have the runtime the zapper runs in.</li>
-<li><strong>Internet access to GitHub</strong>, the first time and whenever a newer release is out. No account is needed.</li>
+<li><strong>XboxNGen</strong>: Configure downloads its latest release (<code>-Tag v0.1.1</code> for another) into <code>%LOCALAPPDATA%\Silverlight360\XboxNGen\&lt;tag&gt;</code>, and checks it against the SHA-256 digest GitHub records for the asset (and a <code>SHA256SUMS</code> or <code>.sha256</code> asset, if the release has one). Offline, it uses the newest release already there. The release's zip has the JIT (<code>jit\xclrjit.dll</code>), the zapper host (<code>host\ngenhost.xex</code>) and the code cache module (<code>codecache\CLRCodeCachedll_0.xex</code>) already built, so it doesn't need xsdk or WSL.</li>
+<li><strong>xenia-edge from the <code>silverlight-build</code> branch of <a href="https://github.com/jessenic/xenia-edge/tree/silverlight-build">jessenic/xenia-edge</a></strong>. Upstream xenia-edge lacks fixes the zapper needs, such as devkit code buffers and code patched in place. Configure runs XboxNGen's own <code>tools\Configure.ps1</code>, giving it the xenia-edge it finds (<code>-Xenia</code>, the <code>XENIA_EDGE</code> environment variable, the last configuration, <code>xenia-edge\</code> beside this repository or <code>PATH</code>). With none, it offers to download that branch's Windows build, the release <a href="https://github.com/jessenic/xenia-edge/releases/tag/silverlight-build-20261105">silverlight-build-20261105</a> (<code>-DownloadXenia</code> without asking), which goes beside the XboxNGen release. To change xenia-edge, build the branch yourself and give it with <code>-Xenia</code>.</li>
 </ul>
-<p>It doesn't need xsdk or WSL: the release's zip has the JIT (<code>jit\xclrjit.dll</code>), the zapper host (<code>host\ngenhost.xex</code>) and the code cache module (<code>codecache\CLRCodeCachedll_0.xex</code>) already built.</p>
-<p>To get xenia-edge's release, in the folder that holds this repository:</p>
-<pre><code class="language-powershell">Invoke-WebRequest https://github.com/jessenic/xenia-edge/releases/download/silverlight-build-20261105/xenia_edge_windows.zip -OutFile xenia_edge_windows.zip
-Expand-Archive xenia_edge_windows.zip xenia-edge
-</code></pre>
+<p>And a <strong>whole package</strong>: <code>bin\&lt;Configuration&gt;\xbox</code>, or any app folder with a <code>default.xex</code>, an <code>AppManifest.xaml</code>, the runtime and its <code>mscorlib.ni.dll</code>. <code>NGen-XboxApp.ps1</code> can't work on an <code>-AppOnly</code> build, which doesn't have the runtime the zapper runs in; <code>Build-XboxApp.ps1 -AppOnly</code> builds the whole package for that first.</p>
 <h2 id="running-it">Running it<a class="headerlink" href="#running-it" title="Permanent link">&para;</a></h2>
 <pre><code class="language-powershell"># Build, then compile the app's own assemblies in bin\Release\xbox.
-.\tools\Build-XboxApp.ps1 -Project .\samples\HelloXbox\HelloXbox.csproj -NGen
+.\tools\Build-XboxApp.ps1 -Project .\samples\HelloXbox\HelloXbox.csproj
+
+# Without native images: the app's code runs interpreted.
+.\tools\Build-XboxApp.ps1 -Project .\samples\HelloXbox\HelloXbox.csproj -NoNGen
 
 # Or on a package built earlier.
 .\tools\NGen-XboxApp.ps1 -Package .\samples\HelloXbox\bin\Release\xbox
@@ -225,12 +223,12 @@ Expand-Archive xenia_edge_windows.zip xenia-edge
 </code></pre>
 <p>The script:</p>
 <ol>
-<li>Gets XboxNGen. It asks GitHub for the latest release (or <code>-Tag v0.1.0</code>), downloads its <code>XboxNGen-*.zip</code> into <code>%LOCALAPPDATA%\Silverlight360\XboxNGen\&lt;tag&gt;</code> (<code>-Cache</code> changes the folder), and checks it against the SHA-256 digest GitHub records for the asset (and a <code>SHA256SUMS</code> or <code>.sha256</code> asset, if the release has one). Later runs reuse the cached release. Offline, it uses the newest cached release.</li>
+<li>Takes the XboxNGen release and xenia-edge Configure set up (<code>-XboxNGen</code> and <code>-Xenia</code> give others). Without them it stops and says to run <code>Configure.ps1</code>, and so does <code>Build-XboxApp.ps1</code>, before building.</li>
 <li>Compiles the <code>AppManifest.xaml</code> assemblies that have no native image yet (or those given with <code>-Assemblies</code>), one xenia-edge run each. xenia-edge runs without a window; a small assembly such as a sample's takes a few seconds. The images go beside the assemblies in the package, from load address 0x95000000 up (<code>-BaseAddress</code>).</li>
 <li>Prints what it compiled. If an assembly got no image, it warns and exits with code 1. That assembly runs interpreted, as before.</li>
 </ol>
 <p><code>-Output &lt;folder&gt;</code> compiles in a copy of the package and leaves the package as it is.</p>
-<p>Run one xenia-edge at a time: the script won't start while one is running, since two at once can stop one with "Overflowed stackpoints!". xenia-edge sometimes stalls right after it starts. If a compile reports no image for that reason, run the script again: it compiles only what has no image yet.</p>
+<p>Run one xenia-edge at a time: the script, and <code>Build-XboxApp.ps1</code> unless given <code>-NoNGen</code>, won't start while one is running, since two at once can stop one with "Overflowed stackpoints!". xenia-edge sometimes stalls right after it starts. If a compile reports no image for that reason, run the script again: it compiles only what has no image yet.</p>
 <h3 id="the-platform-too">The platform too<a class="headerlink" href="#the-platform-too" title="Permanent link">&para;</a></h3>
 <pre><code class="language-powershell">.\tools\NGen-XboxApp.ps1 -Package .\samples\ui\XboxControls\bin\Release\xbox -Platform
 </code></pre>
@@ -240,7 +238,8 @@ Expand-Archive xenia_edge_windows.zip xenia-edge
 </code></pre>
 <p><code>-XboxNGen &lt;folder&gt;</code> (also on <code>Build-XboxApp.ps1</code>) uses an XboxNGen checkout instead of a release, for working on XboxNGen itself. Its JIT, host and code cache module have to be built (<code>make</code> in WSL, as its README says). The script uses the checkout's <code>tools\</code> as they are.</p>
 <h2 id="handing-out-an-app-with-native-images">Handing out an app with native images<a class="headerlink" href="#handing-out-an-app-with-native-images" title="Permanent link">&para;</a></h2>
-<p>Images are bound to the exact IL they were compiled from, to the runtime and framework build in the profile, and to their load addresses. Compile them against the profile your users will run the app with, or leave them out and let the app run interpreted.</p>
+<p>Images are bound to the exact IL they were compiled from, to the runtime and framework build in the profile, and to their load addresses. Compile them against the profile your users will run the app with, or build with <code>-NoNGen</code> and let the app run interpreted.</p>
+<p>An <code>-AppOnly</code> build, for handing the app's own files out, has the images of the app's assemblies. They load only when the files go over a package made from the same donor app as the profile (Plex v0.0.0.7 for the default one), which the build says. For people who use another, build with <code>-NoNGen</code>. <code>-AppOnly</code> can't be used with <code>-NGenPlatform</code>: the app's images would then be compiled against new images of the platform, which the app files leave out.</p>
 <p>XboxNGen's license is noncommercial, and an app shipped with native images its JIT made has to include a visible reference to https://github.com/Digiex/Silverlight360-XboxNGen (see its <code>LICENSE.md</code>).</p>
               
             </div>

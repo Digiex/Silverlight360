@@ -332,7 +332,7 @@
   SplashScreenImage.jpg  SplashScreenImage480.jpg
   MyApp.dll                    your code (IL)
 </code></pre>
-<p>Your assemblies stay IL; the platform's CLR compiles them when they load. Native images aren't needed, but <code>Build-XboxApp.ps1 -NGen</code> makes them (<a href="../native-images/">Native images</a>).</p>
+<p>Your assemblies stay IL; the platform's CLR compiles them when they load. Native images aren't needed, but <code>Build-XboxApp.ps1</code> makes them after the build so the code runs compiled; <code>-NoNGen</code> leaves them out (<a href="../native-images/">Native images</a>).</p>
 <h2 id="handing-out-an-app">Handing out an app<a class="headerlink" href="#handing-out-an-app" title="Permanent link">&para;</a></h2>
 <p>Most of a package is the runtime profile's: Microsoft's runtime and framework assemblies, and the donor app's <code>default.xex</code>. They aren't yours to hand out. Build with <code>XboxAppOnly</code> for the app's own files alone:</p>
 <pre><code class="language-powershell">.\tools\Build-XboxApp.ps1 -Project path\to\MyApp.csproj -AppOnly
@@ -341,9 +341,10 @@
   AppManifest.xaml  XboxAppManifest.xml
   SplashScreenImage.jpg  SplashScreenImage480.jpg
   MyApp.dll                    your code, and libraries you bring
+  MyApp.ni.dll                 its native image (none with -NoNGen)
   ...                          your content
 </code></pre>
-<p>The framework libraries an app copies from the profile's <code>reference</code> folder, such as <code>Microsoft.Xbox</code> and <code>System.Xml.Linq</code>, are left out too: the runtime package has the same files. Whoever installs the app makes a runtime profile from an app of their own, copies its <code>package</code> folder to the console, and copies the app's files over it. <a href="https://github.com/Digiex/Silverdash360">Silverdash360</a> publishes its releases this way, with <code>tools/Release.ps1</code>, and its <a href="https://digiex.github.io/Silverdash360/install/">installation guide</a> takes its users through the steps.</p>
+<p>The framework libraries an app copies from the profile's <code>reference</code> folder, such as <code>Microsoft.Xbox</code> and <code>System.Xml.Linq</code>, are left out too: the runtime package has the same files. Whoever installs the app makes a runtime profile from an app of their own, copies its <code>package</code> folder to the console, and copies the app's files over it. The native images load only when that app is the same donor app as your profile's (the build says which); for any other, build with <code>-NoNGen</code> (<a href="../native-images/">Native images</a>). <a href="https://github.com/Digiex/Silverdash360">Silverdash360</a> publishes its releases this way, with <code>tools/Release.ps1</code>, and its <a href="https://digiex.github.io/Silverdash360/install/">installation guide</a> takes its users through the steps.</p>
 <h2 id="language">Language<a class="headerlink" href="#language" title="Permanent link">&para;</a></h2>
 <p>C# 3 and Silverlight 3, with what the Xbox runtime adds on top. XAML can't use <code>x:String</code>; declare <code>xmlns:sys="clr-namespace:System;assembly=mscorlib"</code> and use <code>sys:String</code>. <code>Dispatcher.BeginInvoke</code> takes a <code>Delegate</code>, so anonymous methods need a cast: <code>Dispatcher.BeginInvoke((Action)delegate { ... })</code>, or reference <code>System.Core</code> and pass a lambda.</p>
 <p>The class library is Silverlight 3's, so some things desktop .NET and later Silverlight versions have are missing. The compiler reports them, but the usual replacements are:</p>
@@ -378,8 +379,7 @@
 </tbody>
 </table>
 <h2 id="visual-studio">Visual Studio<a class="headerlink" href="#visual-studio" title="Permanent link">&para;</a></h2>
-<p>The projects have no Silverlight project type GUID, so Visual Studio opens them as plain C# projects. Visual Studio 2026's MSBuild builds them unchanged, as long as the Silverlight 3 build targets and Windows SDK 7.0A are installed. Building from the IDE produces the same <code>bin\Release\xbox</code> package.</p>
-<p>The first build needs <code>TargetPlatformSdkPath</code> when Windows SDK 7.0A isn't at the default path. <code>Build-XboxApp.ps1</code> passes it; in the IDE, add it to the project or set it as an environment variable.</p>
+<p>The projects have no Silverlight project type GUID, so Visual Studio opens them as plain C# projects. MSBuild 14 and the MSBuild of Visual Studio 2022 and 2026 build them unchanged, as long as the Silverlight 3 SDK is installed. Building from the IDE produces the same <code>bin\Release\xbox</code> package.</p>
 <h2 id="intellisense">IntelliSense<a class="headerlink" href="#intellisense" title="Permanent link">&para;</a></h2>
 <p>Visual Studio shows IntelliSense text for a referenced assembly from an <code>&lt;Assembly&gt;.xml</code> next to it. <code>tools\Install-ApiDocs.ps1</code> writes those files into the profile's <code>reference</code> folder. Each member's text comes from the first of these that documents it:</p>
 <ol>

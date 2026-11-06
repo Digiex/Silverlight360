@@ -51,14 +51,20 @@
                 <li class="toctree-l1 current"><a class="reference internal current" href="#">Getting started</a>
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#what-you-need">What you need</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#getting-the-silverlight-3-sdk">Getting the Silverlight 3 SDK</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#1-make-a-runtime-profile">1. Make a runtime profile</a>
+        </ul>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#2-build-a-sample">2. Build a sample</a>
+    <li class="toctree-l2"><a class="reference internal" href="#1-configure">1. Configure</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#3-run-it">3. Run it</a>
+    <li class="toctree-l2"><a class="reference internal" href="#2-make-a-runtime-profile">2. Make a runtime profile</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#4-make-your-own-app">4. Make your own app</a>
+    <li class="toctree-l2"><a class="reference internal" href="#3-build-a-sample">3. Build a sample</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#4-run-it">4. Run it</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#5-make-your-own-app">5. Make your own app</a>
     </li>
     </ul>
                 </li>
@@ -194,15 +200,34 @@
                 <h1 id="getting-started">Getting started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h1>
 <h2 id="what-you-need">What you need<a class="headerlink" href="#what-you-need" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Windows with <strong>MSBuild 14</strong> (Visual Studio 2015 or its Build Tools). Newer Visual Studio versions can open and build the projects too (see <a href="../project-setup/">Projects and Visual Studio</a>).</li>
-<li>The <strong>Silverlight 3 tools and SDK</strong>, which provide the C# and XAML build tasks and the Silverlight 3 reference assemblies.</li>
-<li><strong>Windows SDK 7.0A</strong>, which the Silverlight build tasks use.</li>
-<li>An <strong>extracted Xbox 360 Silverlight app</strong>. Every app ships its own copy of the platform, and the SDK builds against it. Plex has the newest platform of the shipped apps; the default profile uses Plex v0.0.0.7, a Games on Demand package (<code>tools\extract_god_packages.py</code> extracts those). For example, Digiex has the <a href="https://digiex.net/threads/plex-app-download-for-xbox-360.14043/">Plex app for Xbox 360</a>, and other apps in its <a href="https://digiex.net/forums/apps-xbox-360.83/">Xbox 360 apps forum</a>.</li>
-<li><strong>Python 3</strong> for the test server and the extraction tools.</li>
-<li><strong><a href="https://github.com/has207/xenia-edge">xenia-edge</a></strong> with the Silverlight work to run the apps (see <a href="../xenia-status/">Status under xenia</a>).</li>
-<li>Optional, for IntelliSense text on the standard APIs: XNA Game Studio 4. Silverlight 3 is required anyway.</li>
+<li>Windows with <strong>MSBuild 14 or later</strong>: Visual Studio 2015 to 2026, or their Build Tools (see <a href="../project-setup/">Projects and Visual Studio</a>).</li>
+<li>The <strong>Silverlight 3 SDK</strong> (3.0.40818, the platform's version), whose build folder (<code>MSBuild\Microsoft\Silverlight\v3.0</code>) compiles the C# and XAML. Microsoft no longer offers it; see <a href="#getting-the-silverlight-3-sdk">Getting the Silverlight 3 SDK</a>.</li>
+<li>An <strong>extracted Xbox 360 Silverlight app</strong>. Every app ships its own copy of the platform, and the SDK builds against it. Plex has the newest platform of the shipped apps; the default profile uses Plex v0.0.0.7, a Games on Demand package. For example, Digiex has the <a href="https://digiex.net/threads/plex-app-download-for-xbox-360.14043/">Plex app for Xbox 360</a> (its <code>PlexApp_v0.0.1.7.zip</code> holds v0.0.0.7 and its title update), and other apps in its <a href="https://digiex.net/forums/apps-xbox-360.83/">Xbox 360 apps forum</a>. <code>tools\Expand-GodPackage.ps1</code> extracts the package from the download, with nothing else installed:</li>
 </ul>
-<h2 id="1-make-a-runtime-profile">1. Make a runtime profile<a class="headerlink" href="#1-make-a-runtime-profile" title="Permanent link">&para;</a></h2>
+<p><code>powershell
+  .\tools\Expand-GodPackage.ps1 $env:USERPROFILE\Downloads\PlexApp_v0.0.1.7.zip -Output ..\apps</code></p>
+<p>That gives <code>..\apps\Plex</code>, the folder to pass as <code>-DonorApp</code>.
+- Optional: <strong>Python 3.7 or later</strong> for the test server, and <strong>7-Zip 15.06 or later</strong> for a <code>.rar</code> app download Windows' <code>tar.exe</code> can't open.
+- <strong>xenia-edge</strong> to run the apps: the <code>silverlight-build</code> branch of <a href="https://github.com/jessenic/xenia-edge/tree/silverlight-build">jessenic/xenia-edge</a>, which native images need. Its binary build is the <a href="https://github.com/jessenic/xenia-edge/releases/tag/silverlight-build-20261105">silverlight-build-20261105 release</a>, which step 1 downloads if you have no xenia-edge (see <a href="../xenia-status/">Status under xenia</a>).
+- Optional, for more IntelliSense text: the Silverlight 4 SDK and XNA Game Studio 4.
+- Optional, for a native library (DLL) of the app's own in C: <a href="https://github.com/xenosworks/xsdk">xsdk</a>'s DLL support and toolchain in WSL (<a href="../samples/">Samples</a>, NativeLibrary).</p>
+<h3 id="getting-the-silverlight-3-sdk">Getting the Silverlight 3 SDK<a class="headerlink" href="#getting-the-silverlight-3-sdk" title="Permanent link">&para;</a></h3>
+<p>Microsoft no longer offers the Silverlight 3 SDK for download. Download <code>Silverlight3_sdk.zip</code>, attached to the <a href="https://digiex.net/threads/silverlight360-c-xaml-sdk-for-the-xbox-360.20115/">Silverlight360 thread on Digiex</a>, and unzip it. It has the SDK's installer, <code>silverlight_sdk.msi</code> with its <code>silverlight_sdk.cab</code> (signed by Microsoft, as on Visual Studio 2010's install disc), and its build folder's six files in <code>Extracted</code>. Then either:</p>
+<ul>
+<li><strong>Install it</strong>: run <code>silverlight_sdk.msi</code>. It needs nothing else installed, and it also gives <code>Install-ApiDocs.ps1</code> the Silverlight 3 documentation for IntelliSense.</li>
+<li><strong>Or copy only its build folder</strong>, which is all a build uses, with these commands in an administrator PowerShell in the unzipped folder:</li>
+</ul>
+<pre><code class="language-powershell">$target = &quot;${env:ProgramFiles(x86)}\MSBuild\Microsoft\Silverlight\v3.0&quot;
+New-Item -ItemType Directory $target -Force | Out-Null
+Copy-Item Extracted\* $target
+</code></pre>
+<p>The Silverlight 4 and 5 SDKs don't include it and can't stand in for it: their XAML compiler rejects the Xbox controls' content.</p>
+<h2 id="1-configure">1. Configure<a class="headerlink" href="#1-configure" title="Permanent link">&para;</a></h2>
+<pre><code class="language-powershell">.\tools\Configure.ps1
+</code></pre>
+<p>Run it first. It checks each of the above, says how to get any that's missing, and saves where everything is in <code>config.json</code> at the repository's root (ignored by git), which the other tools read. It also downloads <a href="https://github.com/Digiex/Silverlight360-XboxNGen">XboxNGen</a>, which makes the native images the builds get (see <a href="../native-images/">Native images</a>), and runs XboxNGen's own configure script, which finds your xenia-edge or offers to download the build XboxNGen needs. Run it again after installing something it reported missing; <code>-Show</code> prints what it saved.</p>
+<p>The runtime profile, the next step, is reported missing until you make it. <code>Configure.ps1 -DonorApp '&lt;extracted Plex v0.0.0.7&gt;'</code> makes it for you.</p>
+<h2 id="2-make-a-runtime-profile">2. Make a runtime profile<a class="headerlink" href="#2-make-a-runtime-profile" title="Permanent link">&para;</a></h2>
 <p>A runtime profile is the platform copied out of one app: the native host and runtime (<code>package\</code>) and the framework assemblies to compile against (<code>reference\</code>). Every build starts from it.</p>
 <pre><code class="language-powershell">.\tools\New-RuntimeProfile.ps1 -DonorApp '&lt;extracted Plex v0.0.0.7&gt;' -Output .\runtime\plex-2015
 </code></pre>
@@ -210,19 +235,19 @@
 <p>With the title kept, use Plex v0.0.0.7, the base version Plex's last title update (v0.0.1.7) applies to. A package then runs as the donor's title (Plex, <code>574407D1</code>) at the donor's version. A console signed in to LIVE asks for an update when that version is older than the current one, and Plex's title update only applies to v0.0.0.7. Accept the update and the console installs Plex's title update, which then patches your package to v0.0.1.7 as it loads. The platform code is the same, and your app runs as before; xenia-edge does the same when that update is in its content folder. A profile made from the older v0.0.0.4 gets the update prompt but can't take the update.</p>
 <p>The script finishes by installing the IntelliSense files into <code>reference\</code> (<code>tools\Install-ApiDocs.ps1</code>; run it again after updating the SDK's docs).</p>
 <p>The profile holds Microsoft's and the donor app's binaries. It stays on your machine; <code>runtime\</code> is ignored by git.</p>
-<h2 id="2-build-a-sample">2. Build a sample<a class="headerlink" href="#2-build-a-sample" title="Permanent link">&para;</a></h2>
+<h2 id="3-build-a-sample">3. Build a sample<a class="headerlink" href="#3-build-a-sample" title="Permanent link">&para;</a></h2>
 <pre><code class="language-powershell">.\tools\Build-XboxApp.ps1 -Project .\samples\ui\FocusNavigation\FocusNavigation.csproj
 </code></pre>
-<p>The package lands in <code>samples\ui\FocusNavigation\bin\Release\xbox\</code>. Its <code>default.xex</code> is the platform's host; your code is <code>FocusNavigation.dll</code>, plain IL next to it.</p>
-<h2 id="3-run-it">3. Run it<a class="headerlink" href="#3-run-it" title="Permanent link">&para;</a></h2>
-<pre><code class="language-powershell">xenia_edge.exe samples\ui\FocusNavigation\bin\Release\xbox\default.xex
+<p>The package lands in <code>samples\ui\FocusNavigation\bin\Release\xbox\</code>. Its <code>default.xex</code> is the platform's host; your code is <code>FocusNavigation.dll</code>, plain IL next to it, and <code>FocusNavigation.ni.dll</code>, its native image, which the script makes after the build by running the package in xenia-edge for a few seconds. <code>-NoNGen</code> leaves the image out and the code runs interpreted (<a href="../native-images/">Native images</a>).</p>
+<h2 id="4-run-it">4. Run it<a class="headerlink" href="#4-run-it" title="Permanent link">&para;</a></h2>
+<pre><code class="language-powershell">&amp; (.\tools\Config.ps1 Xenia) samples\ui\FocusNavigation\bin\Release\xbox\default.xex
 </code></pre>
-<p><code>xenia_edge.exe</code> is your xenia-edge build (<code>build\bin\Windows\Release</code> in its folder).</p>
+<p><code>.\tools\Config.ps1 Xenia</code> gives the <code>xenia_edge.exe</code> step 1 set up.</p>
 <p>Use a controller, or xenia's keyboard input (<code>--hid=keyboard</code>): Shift+W/A/S/D is the D-pad, W/A/S/D the left stick, <code>;</code> is A and <code>'</code> is B (the last two depend on the keyboard layout).</p>
 <p>The samples that talk to a server need the test server running in another window:</p>
 <pre><code class="language-powershell">python samples\TestServer\server.py
 </code></pre>
-<h2 id="4-make-your-own-app">4. Make your own app<a class="headerlink" href="#4-make-your-own-app" title="Permanent link">&para;</a></h2>
+<h2 id="5-make-your-own-app">5. Make your own app<a class="headerlink" href="#5-make-your-own-app" title="Permanent link">&para;</a></h2>
 <p>Copy a sample close to what you want; <code>samples\ui\PageNavigation</code> is a good start for a multi-page app. Then read <a href="../project-setup/">Projects and Visual Studio</a> and <a href="../app-model/">App model</a>.</p>
 <p>Things that trip people up:</p>
 <ul>
