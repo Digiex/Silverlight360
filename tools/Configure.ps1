@@ -31,10 +31,10 @@ missing, or to update XboxNGen. It checks:
                            silverlight-build release xenia-edge needs
   Optional:
     Python 3.7 or later    python on PATH: the test server
-                           (samples\TestServer) and the extraction tools
+                           (samples\TestServer)
     xextool.exe            build dates in a runtime profile (-Xextool)
-    7-Zip 15.06 or later   tools\extract_god_packages.py (older ones can't
-                           open RAR5 archives)
+    7-Zip 15.06 or later   tools\Expand-GodPackage.ps1, for a .rar Windows'
+                           tar.exe can't open (older 7-Zips can't open RAR5)
     Silverlight 4 SDK,     IntelliSense text for more of the platform's API
     XNA Game Studio 4      (Install-ApiDocs.ps1)
     xsdk                   a native library (DLL) of the app's own in C, as
@@ -215,12 +215,12 @@ Report 'Silverlight 3 SDK' (First-Existing @("$pf86\MSBuild\Microsoft\Silverligh
     ('install the Silverlight 3 SDK (3.0.40818), or extract its build folder MSBuild\Microsoft\Silverlight\v3.0. Microsoft ' +
      'no longer offers it: docs\getting-started.md, "Getting the Silverlight 3 SDK", says where to get it and how') -Required
 
-# Python 3.7 or later: extract_god_packages.py's subprocess.run(capture_output) is 3.7's.
+# Python 3.7 or later, for the test server.
 $python = Get-Command python -ErrorAction SilentlyContinue
 $pythonVersion = if ($python) { [regex]::Match((& $python.Source --version 2>&1 | Out-String), 'Python (\d+)\.(\d+)') } else { $null }
 $config.Python = if ($pythonVersion -and $pythonVersion.Success -and
     [version]"$($pythonVersion.Groups[1].Value).$($pythonVersion.Groups[2].Value)" -ge [version]'3.7') { $python.Source } else { '' }
-Report 'Python 3.7+' $config.Python 'optional: install Python 3.7 or later and put python on PATH, for the test server and the extraction tools'
+Report 'Python 3.7+' $config.Python 'optional: install Python 3.7 or later and put python on PATH, for the test server'
 
 $xextool = if ($Xextool) { $Xextool } elseif ($previous.Xextool) { $previous.Xextool } else { 'xextool.exe' }
 $found = Get-Command $xextool -ErrorAction SilentlyContinue
@@ -235,7 +235,7 @@ $config.SevenZip = @($env:SEVEN_ZIP, "$env:ProgramFiles\7-Zip\7z.exe", "$pf86\7-
         $banner = [regex]::Match((& $_ i 2>&1 | Select-Object -First 3 | Out-String), '7-Zip (?:\(a\) )?(\d+)\.(\d+)')
         $banner.Success -and [version]"$($banner.Groups[1].Value).$($banner.Groups[2].Value)" -ge [version]'15.6'
     } | Select-Object -First 1
-Report '7-Zip 15.06+' $config.SevenZip 'optional: install 7-Zip 15.06 or later, for tools\extract_god_packages.py (RAR5 archives)'
+Report '7-Zip 15.06+' $config.SevenZip 'optional: install 7-Zip 15.06 or later, for tools\Expand-GodPackage.ps1 when Windows'' tar.exe can''t open a .rar'
 
 # IntelliSense text Install-ApiDocs.ps1 takes from them, beyond the Silverlight 3 SDK's.
 Report 'Silverlight 4 SDK' (First-Existing @("$pf86\Microsoft SDKs\Silverlight\v4.0\Libraries\Client", "$pf86\Reference Assemblies\Microsoft\Framework\Silverlight\v4.0")) `

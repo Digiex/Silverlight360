@@ -89,7 +89,7 @@ after installing something it reported missing.
 | Silverlight 3 SDK (3.0.40818) | C# + XAML compilation | Its build folder, `MSBuild\Microsoft\Silverlight\v3.0` (the targets and build tasks), is all the build uses: the code compiles against the runtime profile's assemblies, not the SDK's. Microsoft no longer offers it: download `Silverlight3_sdk.zip` from the [Silverlight360 thread on Digiex](https://digiex.net/threads/silverlight360-c-xaml-sdk-for-the-xbox-360.20115/), then install it or copy its build folder ([docs/getting-started.md](docs/getting-started.md#getting-the-silverlight-3-sdk)). The Silverlight 4 and 5 SDKs don't include it, and their build targets don't build these apps. |
 | An extracted Xbox 360 Silverlight app | runtime profile | Plex v0.0.0.7 is the default donor; see [docs/getting-started.md](docs/getting-started.md). For example, the [Plex app for Xbox 360](https://digiex.net/threads/plex-app-download-for-xbox-360.14043/) on Digiex, or other apps in its [Xbox 360 apps forum](https://digiex.net/forums/apps-xbox-360.83/). |
 | `xextool.exe` (optional) | profile metadata | On PATH or passed to `Configure.ps1 -Xextool`; only used to record build dates. |
-| 7-Zip 15.06 or later and Python 3.7 or later | `tools\extract_god_packages.py` | Only for extracting app archives. Older 7-Zips can't open RAR5 archives. |
+| 7-Zip 15.06 or later (optional) | `tools\Expand-GodPackage.ps1` | Only for a `.rar` app download Windows' `tar.exe` can't open; `.zip` downloads need nothing. Older 7-Zips can't open RAR5 archives. |
 | Python 3.7 or later (optional) | `samples\TestServer\server.py` | Standard library only; `python` on PATH. |
 | [xenia-edge](https://github.com/has207/xenia-edge), a build from 31 October 2026 or later | running apps | See [docs/xenia-status.md](docs/xenia-status.md). Native images need its `silverlight-build` branch, whose [release](https://github.com/jessenic/xenia-edge/releases/tag/silverlight-build-20261105) `Configure.ps1` downloads when it finds no xenia-edge. |
 | [XboxNGen](https://github.com/Digiex/Silverlight360-XboxNGen) | native images | Its latest release, which `Configure.ps1` downloads. |
@@ -108,11 +108,11 @@ From PowerShell in this folder:
 # 1. Once: check what's installed, and get XboxNGen and xenia-edge.
 .\tools\Configure.ps1
 
-# 2. Once: extract the app archives, if they aren't extracted yet.
-python tools\extract_god_packages.py <archive folder> <apps folder> $env:TEMP\god-staging
+# 2. Once: extract the app downloads, if they aren't extracted yet.
+.\tools\Expand-GodPackage.ps1 <PlexApp_v0.0.1.7.zip, or a folder of downloads> -Output <apps folder>
 
 # 3. Once: make the default runtime profile from Plex.
-.\tools\New-RuntimeProfile.ps1 -DonorApp '<apps folder>\Plex v0.0.0.7' -Output .\runtime\plex-2015
+.\tools\New-RuntimeProfile.ps1 -DonorApp '<apps folder>\Plex' -Output .\runtime\plex-2015
 
 # 4. Build the sample.
 .\tools\Build-XboxApp.ps1 -Project .\samples\HelloXbox\HelloXbox.csproj
@@ -219,7 +219,7 @@ bin\Release\xbox\
 
 | Script | |
 |---|---|
-| `tools\extract_god_packages.py <archives> <output> <staging>` | Extracts the Games on Demand packages in `.zip`/`.rar` archives into `<output>\<package title>`. Handles every SVOD layout xenia does. |
+| `tools\Expand-GodPackage.ps1 <downloads> -Output <output>` | Extracts the Games on Demand packages in `.zip`/`.rar` app downloads, folders of them or unpacked ones into `<output>\<package title>`. Handles every SVOD layout xenia does. |
 | `tools\extract_stfs_package.py <package> <output>` | Extracts an STFS package (CON/LIVE/PIRS), such as a title update. |
 | `tools\Get-AppInventory.ps1 -OutJson <file>` | Lists runtime and framework versions of extracted apps. |
 | `tools\Get-DonorAssemblies.ps1 -Root <apps> -OutJson <file>` | Lists the assemblies extracted apps carry that the donor doesn't, with the apps carrying each build; `tools\donor_assemblies_md.py` renders it into [docs/donor-assemblies.md](docs/donor-assemblies.md). |

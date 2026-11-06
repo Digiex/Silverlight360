@@ -1,7 +1,7 @@
 # Xbox 360 Silverlight runtime inventory
 
 Survey of the 79 Games on Demand packages extracted with
-`tools\extract_god_packages.py`. 68 of them are Silverlight apps (they ship
+`tools\Expand-GodPackage.ps1`. 68 of them are Silverlight apps (they ship
 `agcore.dll`). The rest are native apps (Last.fm, ESPN, MLB.TV, Video Kinect
 and similar) that only use a few small XEX files. The raw data is in
 [app-inventory.json](app-inventory.json) and comes from

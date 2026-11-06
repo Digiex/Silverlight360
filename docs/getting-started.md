@@ -4,8 +4,14 @@
 
 - Windows with **MSBuild 14 or later**: Visual Studio 2015 to 2026, or their Build Tools (see [Projects and Visual Studio](project-setup.md)).
 - The **Silverlight 3 SDK** (3.0.40818, the platform's version), whose build folder (`MSBuild\Microsoft\Silverlight\v3.0`) compiles the C# and XAML. Microsoft no longer offers it; see [Getting the Silverlight 3 SDK](#getting-the-silverlight-3-sdk).
-- An **extracted Xbox 360 Silverlight app**. Every app ships its own copy of the platform, and the SDK builds against it. Plex has the newest platform of the shipped apps; the default profile uses Plex v0.0.0.7, a Games on Demand package (`tools\extract_god_packages.py` extracts those). For example, Digiex has the [Plex app for Xbox 360](https://digiex.net/threads/plex-app-download-for-xbox-360.14043/), and other apps in its [Xbox 360 apps forum](https://digiex.net/forums/apps-xbox-360.83/).
-- Optional: **Python 3.7 or later** for the test server and the extraction tools, and **7-Zip 15.06 or later** to extract app archives.
+- An **extracted Xbox 360 Silverlight app**. Every app ships its own copy of the platform, and the SDK builds against it. Plex has the newest platform of the shipped apps; the default profile uses Plex v0.0.0.7, a Games on Demand package. For example, Digiex has the [Plex app for Xbox 360](https://digiex.net/threads/plex-app-download-for-xbox-360.14043/) (its `PlexApp_v0.0.1.7.zip` holds v0.0.0.7 and its title update), and other apps in its [Xbox 360 apps forum](https://digiex.net/forums/apps-xbox-360.83/). `tools\Expand-GodPackage.ps1` extracts the package from the download, with nothing else installed:
+
+  ```powershell
+  .\tools\Expand-GodPackage.ps1 $env:USERPROFILE\Downloads\PlexApp_v0.0.1.7.zip -Output ..\apps
+  ```
+
+  That gives `..\apps\Plex`, the folder to pass as `-DonorApp`.
+- Optional: **Python 3.7 or later** for the test server, and **7-Zip 15.06 or later** for a `.rar` app download Windows' `tar.exe` can't open.
 - **xenia-edge** to run the apps: the `silverlight-build` branch of [jessenic/xenia-edge](https://github.com/jessenic/xenia-edge/tree/silverlight-build), which native images need. Its binary build is the [silverlight-build-20261105 release](https://github.com/jessenic/xenia-edge/releases/tag/silverlight-build-20261105), which step 1 downloads if you have no xenia-edge (see [Status under xenia](xenia-status.md)).
 - Optional, for more IntelliSense text: the Silverlight 4 SDK and XNA Game Studio 4.
 - Optional, for a native library (DLL) of the app's own in C: [xsdk](https://github.com/xenosworks/xsdk)'s DLL support and toolchain in WSL ([Samples](samples.md), NativeLibrary).
