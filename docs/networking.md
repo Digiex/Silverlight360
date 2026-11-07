@@ -39,6 +39,10 @@ Declare them with `DllImport` by ordinal (see [Native code](native-code.md)) and
 
 Requests to partner services were authenticated with XAuth tokens from Xbox LIVE (`Microsoft.Xbox.Security.XAuth`: call `XAuthService.Start`, then use `XAuthTokenRequest`; each request object can be used once). There's no Xbox LIVE to get tokens from, so anything behind XAuth fails. That includes sign-in for many of the shipped apps, Marketplace and social network tokens. Plain HTTP and HTTPS to your own servers work.
 
+## HTTPS and certificates
+
+The platform's HTTPS checks servers against the console's own certificate authorities, which are years old. On a console (2026-11), `HttpWebRequest` reached `api.github.com`, GitHub Pages and servers that take only TLS 1.0, 1.1 or 1.2, but failed for `example.com` and `github.com`, whose certificates come from authorities it doesn't know. Every HTTP error, a failed handshake among them, comes back as `WebException` with `NotFound`. A server you run can use a certificate the console knows; for anyone else's, [Silverlight360.Https](https://digiex.github.io/Silverlight360.Https/) does HTTPS with TLS 1.3 and Mozilla's current roots, and its drop-in sends `WebClient` and `HttpWebRequest` through it ([Libraries](libraries.md)).
+
 ## The test server
 
 `samples\TestServer\server.py` serves what the samples need:

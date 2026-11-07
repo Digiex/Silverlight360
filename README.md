@@ -250,6 +250,17 @@ xenia-edge and what works.
 - Linux and macOS hosts can build nothing (MSBuild and the Silverlight 3
   SDK are Windows-only) and xenia-edge's XHttp only has a Windows backend.
 
+## Libraries
+
+Class libraries for Silverlight360 apps ([docs/libraries.md](docs/libraries.md)):
+
+- **Silverlight360.Common** (`library\Silverlight360.Common`): `NativeBuffer`, `DebugLog`,
+  `DirectionalFocus` and `Screenshot`, which every app and library references
+  ([docs/common-library.md](docs/common-library.md)).
+- **[Silverlight360.Https](https://github.com/Digiex/Silverlight360.Https)**: HTTP and HTTPS with TLS 1.3 and Mozilla's root
+  certificates, libcurl on Mbed TLS, with a drop-in for `WebClient` and `HttpWebRequest`. Its
+  documentation is at [digiex.github.io/Silverlight360.Https](https://digiex.github.io/Silverlight360.Https/).
+
 ## Built with Silverlight360
 
 [Silverdash360](https://github.com/Digiex/Silverdash360) is a dashboard for the Xbox 360 built

@@ -58,6 +58,7 @@ nav:
       - Native images: native-images.md
       - Testing in xenia: testing.md
   - Samples: samples.md
+  - Libraries: libraries.md
   - Status under xenia: xenia-status.md
   - Runtime inventory: runtime-inventory.md
   - Assemblies in other donor apps: donor-assemblies.md

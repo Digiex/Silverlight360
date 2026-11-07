@@ -12,6 +12,7 @@ Guides:
 |---|---|
 | [Getting started](getting-started.md) | Install the tools, make a runtime profile, build and run a sample. |
 | [Projects and Visual Studio](project-setup.md) | The project file, references, build properties, packaging, IntelliSense. |
+| [The common library](common-library.md) | Silverlight360.Common, which every project references, and class libraries of your own. |
 | [App model](app-model.md) | Startup, `XboxApplicationFrame`, pages and navigation, back and exit, the TV screen. |
 | [Input and focus](input-and-focus.md) | Controller events, focus, moving focus with the D-pad, the Legend, media remotes. |
 | [Xbox controls](controls.md) | Pivot, Rune, Legend, MediaTransport, ContinuousList, transitions, speech. |
@@ -29,6 +30,7 @@ Reference:
 
 - [API reference](reference/README.md): the Xbox libraries and the Xbox additions to Silverlight, one page per namespace. The same text appears in Visual Studio's IntelliSense.
 - [Samples](samples.md): what each sample shows and how it was tested.
+- [Libraries](libraries.md): class libraries for Silverlight360 apps, such as [Silverlight360.Https](https://digiex.github.io/Silverlight360.Https/) for HTTPS with TLS 1.3.
 - [Runtime inventory](runtime-inventory.md): the platform versions found in the shipped apps.
 - [Assemblies in other donor apps](donor-assemblies.md): every assembly the other shipped apps carry that Plex doesn't, and the apps to take each from.
 
