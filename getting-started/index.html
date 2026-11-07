@@ -73,6 +73,8 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../project-setup/">Projects and Visual Studio</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../common-library/">The common library</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../app-model/">App model</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../input-and-focus/">Input and focus</a>
@@ -252,7 +254,7 @@ Copy-Item Extracted\* $target
 <p>Things that trip people up:</p>
 <ul>
 <li><strong>Nothing has focus at startup.</strong> Controller input goes to the focused element, so focus something in <code>Loaded</code> or <code>OnNavigatedTo</code>.</li>
-<li><strong>The D-pad doesn't move focus by itself</strong> outside a <code>Pivot</code>. Use the samples' <code>DirectionalFocus</code> helper or a <code>PivotItem</code> with a <code>Grid</code> (see <a href="../input-and-focus/">Input and focus</a>).</li>
+<li><strong>The D-pad doesn't move focus by itself</strong> outside a <code>Pivot</code>. Use <code>DirectionalFocus</code> from <a href="../common-library/">the common library</a> or a <code>PivotItem</code> with a <code>Grid</code> (see <a href="../input-and-focus/">Input and focus</a>).</li>
 <li><strong>Unhandled exceptions quit the app.</strong> Set <code>e.Handled = true</code> in <code>Application.UnhandledException</code> while developing.</li>
 <li><strong>Controls from <code>Microsoft.Xbox</code> need their assembly in the manifest.</strong> The SDK does this for every Xbox library you reference; don't mark those references <code>Private=false</code>.</li>
 <li><strong>The title is the donor's.</strong> The package keeps the donor app's title ID and name, and with them its saved data.</li>

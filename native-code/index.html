@@ -55,6 +55,8 @@
               <ul class="current">
                   <li class="toctree-l1"><a class="reference internal" href="../project-setup/">Projects and Visual Studio</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../common-library/">The common library</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../app-model/">App model</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../input-and-focus/">Input and focus</a>
@@ -237,7 +239,7 @@ finally
 <li><strong>Keep arrays pinned only for the call.</strong> A pinned array stops the garbage collector from compacting around it.</li>
 <li><strong>A wrong parameter list doesn't throw.</strong> A missing parameter shifts the rest, and the native side writes through whatever lands in a pointer's place: under xenia-edge that's a host crash. <code>XamUserGetXUID</code>, for one, takes a type mask before the XUID pointer. Check signatures against xenia's <code>*_entry</code> functions.</li>
 </ul>
-<p><code>samples\Common\NativeBuffer.cs</code> wraps this pattern, with big-endian readers and writers and lookups for the strings and pointers in returned buffers.</p>
+<p><code>NativeBuffer</code>, in <a href="../common-library/">the common library</a> (<code>using Silverlight360;</code>), wraps this pattern, with big-endian readers and writers and lookups for the strings and pointers in returned buffers.</p>
 <h2 id="how-the-platform-reaches-native-code">How the platform reaches native code<a class="headerlink" href="#how-the-platform-reaches-native-code" title="Permanent link">&para;</a></h2>
 <p>The framework itself calls native code in these ways:</p>
 <ol>

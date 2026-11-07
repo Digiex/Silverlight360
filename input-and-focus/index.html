@@ -55,6 +55,8 @@
               <ul class="current">
                   <li class="toctree-l1"><a class="reference internal" href="../project-setup/">Projects and Visual Studio</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../common-library/">The common library</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../app-model/">App model</a>
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="#">Input and focus</a>
@@ -253,14 +255,14 @@
 <li><strong><code>PivotItem</code> does move focus.</strong> With <code>AutoGridNav</code> (on by default), a <code>PivotItem</code> moves focus through the <code>Grid</code> it contains with the D-pad, and the <code>Pivot</code> changes items with the shoulder buttons. <code>ContinuousList</code> pages with the shoulder buttons and D-pad. See <a href="../controls/">Xbox controls</a>.</li>
 </ul>
 <h3 id="moving-focus-yourself">Moving focus yourself<a class="headerlink" href="#moving-focus-yourself" title="Permanent link">&para;</a></h3>
-<p>For layouts outside a <code>Pivot</code>, the samples include <code>samples\Common\DirectionalFocus.cs</code>. Turn it on for a panel and the D-pad and left stick move focus to the nearest focusable control in that direction:</p>
-<pre><code class="language-xml">&lt;UserControl xmlns:sdk=&quot;clr-namespace:XboxSdk.Samples&quot; ...&gt;
+<p>For layouts outside a <code>Pivot</code>, <a href="../common-library/">the common library</a> has <code>DirectionalFocus</code>. Turn it on for a panel and the D-pad and left stick move focus to the nearest focusable control in that direction:</p>
+<pre><code class="language-xml">&lt;UserControl xmlns:sdk=&quot;clr-namespace:Silverlight360;assembly=Silverlight360.Common&quot; ...&gt;
   &lt;Grid sdk:DirectionalFocus.IsEnabled=&quot;True&quot;&gt;
     ...buttons...
   &lt;/Grid&gt;
 &lt;/UserControl&gt;
 </code></pre>
-<p>It considers every visible, enabled control with <code>IsTabStop</code> set among the panel's descendants. It picks the closest one in the pressed direction, preferring ones lined up with the current control. Disabled controls and <code>IsTabStop="False"</code> ones are skipped. Add the file to your project with <code>&lt;Compile Include="...\Common\DirectionalFocus.cs" /&gt;</code>. <code>samples\ui\FocusNavigation</code> shows it on a grid with a wide tile, a disabled one and one that isn't a tab stop.</p>
+<p>It considers every visible, enabled control with <code>IsTabStop</code> set among the panel's descendants. It picks the closest one in the pressed direction, preferring ones lined up with the current control. Disabled controls and <code>IsTabStop="False"</code> ones are skipped. Every project references the library already. <code>samples\ui\FocusNavigation</code> shows it on a grid with a wide tile, a disabled one and one that isn't a tab stop.</p>
 <h3 id="showing-focus">Showing focus<a class="headerlink" href="#showing-focus" title="Permanent link">&para;</a></h3>
 <p>TV users only know where they are from the focus visual, so make it obvious: a filled background, a frame, a slight zoom. Every sample's <code>Button</code> template has a <code>FocusStates</code> group with a green fill or frame in <code>Focused</code>.</p>
 <h2 id="the-legend">The Legend<a class="headerlink" href="#the-legend" title="Permanent link">&para;</a></h2>
