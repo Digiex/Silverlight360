@@ -2,7 +2,7 @@ using System;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace XboxSdk.Samples
+namespace Silverlight360
 {
     /// <summary>
     /// A pinned block of memory for passing structures to the console's

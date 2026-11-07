@@ -73,6 +73,8 @@ Available assemblies:
 | `XboxPackageDir` | `bin\<Configuration>\xbox\`, or `bin\<Configuration>\app\` with `XboxAppOnly` | Package output. |
 | `XboxAppOnly` | `false` | `true` writes the app's own files alone, without the runtime: see [Handing out an app](#handing-out-an-app). `Build-XboxApp.ps1 -AppOnly` sets it. |
 | `XboxSplashScreen`, `XboxSplashScreen480` | `templates\*.jpg` | 1280x720 and 640x480 JPEG splash screens. |
+| `XboxLibrary` | `false` | `true` builds a class library: its assembly and XML documentation, no XAP or package ([The common library](common-library.md#class-libraries-of-your-own)). |
+| `XboxCommonLibrary` | `true` | `false` leaves out [Silverlight360.Common](common-library.md), which every project references otherwise. |
 
 ## What goes into the package
 
@@ -87,6 +89,7 @@ bin\Release\xbox\
   XboxAppManifest.xml          resolutions and splash screens
   SplashScreenImage.jpg  SplashScreenImage480.jpg
   MyApp.dll                    your code (IL)
+  Silverlight360.Common.dll    the SDK's common library (IL)
 ```
 
 Your assemblies stay IL; the platform's CLR compiles them when they load. Native images aren't needed, but `Build-XboxApp.ps1` makes them after the build so the code runs compiled; `-NoNGen` leaves them out ([Native images](native-images.md)).

@@ -16,7 +16,17 @@
                           are Microsoft's and the donor app's (default false)
       XboxSplashScreen    720p splash image (default: the SDK's)
       XboxSplashScreen480 480p splash image (default: the SDK's)
+      XboxLibrary         true for a class library: an assembly and its XML
+                          documentation, no XAP or package; an app references
+                          it with a ProjectReference (default false)
+      XboxCommonLibrary   false to leave out Silverlight360.Common
+                          (library\Silverlight360.Common), which every app and
+                          library references otherwise (default true)
   -->
+  <PropertyGroup>
+    <XboxLibrary Condition="'$(XboxLibrary)' == ''">false</XboxLibrary>
+    <XboxCommonLibrary Condition="'$(XboxCommonLibrary)' == ''">true</XboxCommonLibrary>
+  </PropertyGroup>
   <PropertyGroup>
     <XboxSdkRoot>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..'))\</XboxSdkRoot>
     <XboxRuntimeProfile Condition="'$(XboxRuntimeProfile)' == ''">$(XboxSdkRoot)runtime\plex-2015\</XboxRuntimeProfile>
@@ -30,11 +40,6 @@
     <!-- The AppManifest.xaml RuntimeVersion: set here rather than read from the Silverlight 3 SDK's registry entry,
          so its build folder (MSBuild\Microsoft\Silverlight\v3.0) is all the build needs. -->
     <SilverlightRuntimeVersion Condition="'$(SilverlightRuntimeVersion)' == ''">3.0.40818.0</SilverlightRuntimeVersion>
-    <SilverlightApplication>true</SilverlightApplication>
-    <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
-    <SilverlightManifestTemplate Condition="'$(SilverlightManifestTemplate)' == ''">$(XboxSdkRoot)templates\AppManifest.xml</SilverlightManifestTemplate>
-    <XapOutputs>true</XapOutputs>
-    <XapFilename Condition="'$(XapFilename)' == ''">$(AssemblyName).xap</XapFilename>
     <NoStdLib>true</NoStdLib>
 
     <!-- Resolve framework references from the profile, not desktop Silverlight. -->
@@ -42,13 +47,42 @@
     <TargetPlatformDisplayName>Silverlight</TargetPlatformDisplayName>
   </PropertyGroup>
 
+  <!-- An app: its manifest and XAP, and its package after the build. -->
+  <PropertyGroup Condition="'$(XboxLibrary)' != 'true'">
+    <SilverlightApplication>true</SilverlightApplication>
+    <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
+    <SilverlightManifestTemplate Condition="'$(SilverlightManifestTemplate)' == ''">$(XboxSdkRoot)templates\AppManifest.xml</SilverlightManifestTemplate>
+    <XapOutputs>true</XapOutputs>
+    <XapFilename Condition="'$(XapFilename)' == ''">$(AssemblyName).xap</XapFilename>
+  </PropertyGroup>
+  <!-- A library: its assembly, with its XML documentation for IntelliSense. -->
+  <PropertyGroup Condition="'$(XboxLibrary)' == 'true'">
+    <SilverlightApplication>false</SilverlightApplication>
+    <GenerateSilverlightManifest>false</GenerateSilverlightManifest>
+    <XapOutputs>false</XapOutputs>
+    <DocumentationFile Condition="'$(DocumentationFile)' == ''">$(OutputPath)$(AssemblyName).xml</DocumentationFile>
+    <!-- A public member without a comment isn't an error in its build. -->
+    <NoWarn>$(NoWarn);1591</NoWarn>
+  </PropertyGroup>
+
+  <!-- Silverlight360.Common, for every app and library but itself. -->
+  <PropertyGroup>
+    <XboxCommonLibraryProject>$(XboxSdkRoot)library\Silverlight360.Common\Silverlight360.Common.csproj</XboxCommonLibraryProject>
+  </PropertyGroup>
+  <ItemGroup Condition="'$(XboxCommonLibrary)' == 'true' And '$(AssemblyName)' != 'Silverlight360.Common'">
+    <ProjectReference Include="$(XboxCommonLibraryProject)">
+      <Name>Silverlight360.Common</Name>
+      <Private>true</Private>
+    </ProjectReference>
+  </ItemGroup>
+
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\v3.0\Microsoft.Silverlight.CSharp.targets" />
 
   <PropertyGroup>
     <XboxAppOnly Condition="'$(XboxAppOnly)' == ''">false</XboxAppOnly>
     <XboxPackageDir Condition="'$(XboxPackageDir)' == '' And '$(XboxAppOnly)' == 'true'">$(OutDir)app\</XboxPackageDir>
     <XboxPackageDir Condition="'$(XboxPackageDir)' == ''">$(OutDir)xbox\</XboxPackageDir>
-    <BuildDependsOn>$(BuildDependsOn);XboxPackage</BuildDependsOn>
+    <BuildDependsOn Condition="'$(XboxLibrary)' != 'true'">$(BuildDependsOn);XboxPackage</BuildDependsOn>
   </PropertyGroup>
 
   <!--

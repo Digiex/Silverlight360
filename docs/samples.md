@@ -1,6 +1,6 @@
 # Samples
 
-Build any sample with `tools\Build-XboxApp.ps1 -Project <csproj>` and run its `bin\Release\xbox\default.xex` in xenia. Code shared by several samples is in `samples\Common`: `ServerClient` (HTTP), `DirectionalFocus` (D-pad focus movement) and `DebugLog` (debug output to xenia's log; see [Testing](testing.md#debug-output)).
+Build any sample with `tools\Build-XboxApp.ps1 -Project <csproj>` and run its `bin\Release\xbox\default.xex` in xenia. They use [the common library](common-library.md), Silverlight360.Common, for `DebugLog`, `DirectionalFocus`, `NativeBuffer` and `Screenshot`, as every project does; `samples\Common\ServerClient.cs`, HTTP to the test server, is theirs alone.
 
 ## UI samples
 

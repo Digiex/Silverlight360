@@ -46,17 +46,17 @@ After a navigation, focus from `Dispatcher.BeginInvoke` so the page is in the tr
 
 ### Moving focus yourself
 
-For layouts outside a `Pivot`, the samples include `samples\Common\DirectionalFocus.cs`. Turn it on for a panel and the D-pad and left stick move focus to the nearest focusable control in that direction:
+For layouts outside a `Pivot`, [the common library](common-library.md) has `DirectionalFocus`. Turn it on for a panel and the D-pad and left stick move focus to the nearest focusable control in that direction:
 
 ```xml
-<UserControl xmlns:sdk="clr-namespace:XboxSdk.Samples" ...>
+<UserControl xmlns:sdk="clr-namespace:Silverlight360;assembly=Silverlight360.Common" ...>
   <Grid sdk:DirectionalFocus.IsEnabled="True">
     ...buttons...
   </Grid>
 </UserControl>
 ```
 
-It considers every visible, enabled control with `IsTabStop` set among the panel's descendants. It picks the closest one in the pressed direction, preferring ones lined up with the current control. Disabled controls and `IsTabStop="False"` ones are skipped. Add the file to your project with `<Compile Include="...\Common\DirectionalFocus.cs" />`. `samples\ui\FocusNavigation` shows it on a grid with a wide tile, a disabled one and one that isn't a tab stop.
+It considers every visible, enabled control with `IsTabStop` set among the panel's descendants. It picks the closest one in the pressed direction, preferring ones lined up with the current control. Disabled controls and `IsTabStop="False"` ones are skipped. Every project references the library already. `samples\ui\FocusNavigation` shows it on a grid with a wide tile, a disabled one and one that isn't a tab stop.
 
 ### Showing focus
 

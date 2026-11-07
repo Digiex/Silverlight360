@@ -1,0 +1,33 @@
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--
+    Silverlight360.Common: what apps and libraries for the Xbox 360 Silverlight
+    platform share, in namespace Silverlight360. msbuild\XboxSilverlight.targets
+    references it from every project that imports it (XboxCommonLibrary), so
+    its DLL goes in each app's XAP and package and gets a native image with
+    the app's own.
+  -->
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3F7A2C61-9B84-4D1E-A5C3-6E0B8D2F4A17}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Silverlight360</RootNamespace>
+    <AssemblyName>Silverlight360.Common</AssemblyName>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <XboxLibrary>true</XboxLibrary>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.Windows" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DebugLog.cs" />
+    <Compile Include="DirectionalFocus.cs" />
+    <Compile Include="NativeBuffer.cs" />
+    <Compile Include="Screenshot.cs" />
+  </ItemGroup>
+  <Import Project="..\..\msbuild\XboxSilverlight.targets" />
+</Project>

@@ -44,6 +44,7 @@ nav:
   - Getting started: getting-started.md
   - Guides:
       - Projects and Visual Studio: project-setup.md
+      - The common library: common-library.md
       - App model: app-model.md
       - Input and focus: input-and-focus.md
       - Xbox controls: controls.md

@@ -3,7 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Xbox.Controls;
-using XboxSdk.Samples;
+using Silverlight360;
 
 namespace MediaPlayer.Pages
 {

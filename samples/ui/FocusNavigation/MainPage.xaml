@@ -1,7 +1,7 @@
 <UserControl x:Class="FocusNavigation.MainPage"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:sdk="clr-namespace:XboxSdk.Samples"
+             xmlns:sdk="clr-namespace:Silverlight360;assembly=Silverlight360.Common"
              Width="1280" Height="720">
   <Grid Background="#FF101820">
     <Grid Margin="64,36,64,36">

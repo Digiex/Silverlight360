@@ -55,7 +55,7 @@ with the pointer parameter declared as `uint`. What the probes found:
 - **Keep arrays pinned only for the call.** A pinned array stops the garbage collector from compacting around it.
 - **A wrong parameter list doesn't throw.** A missing parameter shifts the rest, and the native side writes through whatever lands in a pointer's place: under xenia-edge that's a host crash. `XamUserGetXUID`, for one, takes a type mask before the XUID pointer. Check signatures against xenia's `*_entry` functions.
 
-`samples\Common\NativeBuffer.cs` wraps this pattern, with big-endian readers and writers and lookups for the strings and pointers in returned buffers.
+`NativeBuffer`, in [the common library](common-library.md) (`using Silverlight360;`), wraps this pattern, with big-endian readers and writers and lookups for the strings and pointers in returned buffers.
 
 ## How the platform reaches native code
 

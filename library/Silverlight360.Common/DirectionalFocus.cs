@@ -5,7 +5,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
-namespace XboxSdk.Samples
+namespace Silverlight360
 {
     /// <summary>
     /// Moves focus with the D-pad and the left thumbstick. The Xbox runtime

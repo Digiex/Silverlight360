@@ -25,6 +25,12 @@ and then copied beside the app's assemblies. They only load over a package
 of the same donor app as the profile's, which the build says; -NoNGen leaves
 them out for any other.
 
+A class library (XboxLibrary in its project) is built alone: its assembly and
+its XML documentation in bin\<Configuration>, with no package or images.
+Every app and library references Silverlight360.Common
+(library\Silverlight360.Common), which goes in the app's package and gets an
+image with the app's own assemblies (docs\common-library.md).
+
 Uses what tools\Configure.ps1 found: run it first.
 
 .EXAMPLE
@@ -102,6 +108,16 @@ function Invoke-Build([string]$target, [string[]]$properties) {
     if ($LASTEXITCODE -ne 0) {
         exit $LASTEXITCODE
     }
+}
+
+# A class library (XboxLibrary in the project) is its assembly and XML
+# documentation alone: no package, so no native images; the app that
+# references it has its image made in its own package.
+[xml]$projectXml = Get-Content -LiteralPath $projectPath
+if (@($projectXml.Project.PropertyGroup | ForEach-Object { $_.XboxLibrary }) -contains 'true') {
+    Invoke-Build 'Rebuild' @()
+    Write-Host "Library: $output"
+    return
 }
 
 # The whole package, with its native images unless -NoNGen. An -AppOnly build

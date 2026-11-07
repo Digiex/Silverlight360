@@ -32,8 +32,6 @@
     <Compile Include="Pages\ListPage.xaml.cs"><DependentUpon>Pages\ListPage.xaml</DependentUpon></Compile>
     <Compile Include="Pages\PlayerPage.xaml.cs"><DependentUpon>Pages\PlayerPage.xaml</DependentUpon></Compile>
     <Compile Include="..\..\Common\ServerClient.cs"><Link>Common\ServerClient.cs</Link></Compile>
-    <Compile Include="..\..\Common\DirectionalFocus.cs"><Link>Common\DirectionalFocus.cs</Link></Compile>
-    <Compile Include="..\..\Common\DebugLog.cs"><Link>Common\DebugLog.cs</Link></Compile>
   </ItemGroup>
   <!-- Media files put in the Media folder go into the XAP and play from the
        package. An app can't list its own XAP, so the build also writes their

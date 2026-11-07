@@ -14,7 +14,7 @@ namespace HelloXbox
         {
             RootVisual = new MainPage();
             // Shows up in xenia's log as "(DbgPrint) HelloXbox started".
-            XboxSdk.Samples.DebugLog.WriteLine("HelloXbox started");
+            Silverlight360.DebugLog.WriteLine("HelloXbox started");
         }
 
         private void Application_UnhandledException(object sender, ApplicationUnhandledExceptionEventArgs e)

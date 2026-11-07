@@ -2,6 +2,8 @@ using System;
 using System.Windows;
 using System.Windows.Input;
 using Microsoft.Xbox.Controls;
+using Silverlight360;
+using Silverlight360;
 using XboxSdk.Samples;
 
 namespace CatalogBrowser

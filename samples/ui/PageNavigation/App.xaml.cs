@@ -47,8 +47,8 @@ namespace PageNavigation
                 if (++framesDrawn >= 30 && Environment.TickCount - arrivedAt >= 4000)
                 {
                     System.Windows.Media.CompositionTarget.Rendering -= ready;
-                    XboxSdk.Samples.Screenshot.Save("screenshot");
-                    XboxSdk.Samples.DebugLog.WriteLine("PageNavigation: ready");
+                    Silverlight360.Screenshot.Save("screenshot");
+                    Silverlight360.DebugLog.WriteLine("PageNavigation: ready");
                 }
             };
             NavigatedEventHandler arrived = null;

@@ -36,7 +36,6 @@
     <Compile Include="PosterCache.cs" />
     <Compile Include="Favorites.cs" />
     <Compile Include="..\..\Common\ServerClient.cs"><Link>Common\ServerClient.cs</Link></Compile>
-    <Compile Include="..\..\Common\DirectionalFocus.cs"><Link>Common\DirectionalFocus.cs</Link></Compile>
   </ItemGroup>
   <Import Project="..\..\..\msbuild\XboxSilverlight.targets" />
 </Project>

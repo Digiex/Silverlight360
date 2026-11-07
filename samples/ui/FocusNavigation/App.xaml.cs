@@ -21,8 +21,8 @@ namespace FocusNavigation
                 if (++framesDrawn == 30)
                 {
                     System.Windows.Media.CompositionTarget.Rendering -= ready;
-                    XboxSdk.Samples.Screenshot.Save("screenshot");
-                    XboxSdk.Samples.DebugLog.WriteLine("FocusNavigation: ready");
+                    Silverlight360.Screenshot.Save("screenshot");
+                    Silverlight360.DebugLog.WriteLine("FocusNavigation: ready");
                 }
             };
             System.Windows.Media.CompositionTarget.Rendering += ready;

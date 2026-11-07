@@ -2,7 +2,7 @@ using System;
 using System.Globalization;
 using System.Runtime.InteropServices;
 
-namespace XboxSdk.Samples
+namespace Silverlight360
 {
     /// <summary>
     /// Writes debug output through the kernel's DbgPrint. Debug.WriteLine,

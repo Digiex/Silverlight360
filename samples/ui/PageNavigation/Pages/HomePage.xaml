@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:xbox="clr-namespace:Microsoft.Xbox.Controls;assembly=Microsoft.Xbox"
     xmlns:transitions="clr-namespace:Microsoft.Xbox.Transitions;assembly=Microsoft.Xbox"
-    xmlns:sdk="clr-namespace:XboxSdk.Samples"
+    xmlns:sdk="clr-namespace:Silverlight360;assembly=Silverlight360.Common"
     Title="Home">
   <Grid Background="#FF101820">
     <StackPanel Margin="64,36,64,36" sdk:DirectionalFocus.IsEnabled="True">

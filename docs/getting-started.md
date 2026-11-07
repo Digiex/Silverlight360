@@ -88,7 +88,7 @@ Copy a sample close to what you want; `samples\ui\PageNavigation` is a good star
 Things that trip people up:
 
 - **Nothing has focus at startup.** Controller input goes to the focused element, so focus something in `Loaded` or `OnNavigatedTo`.
-- **The D-pad doesn't move focus by itself** outside a `Pivot`. Use the samples' `DirectionalFocus` helper or a `PivotItem` with a `Grid` (see [Input and focus](input-and-focus.md)).
+- **The D-pad doesn't move focus by itself** outside a `Pivot`. Use `DirectionalFocus` from [the common library](common-library.md) or a `PivotItem` with a `Grid` (see [Input and focus](input-and-focus.md)).
 - **Unhandled exceptions quit the app.** Set `e.Handled = true` in `Application.UnhandledException` while developing.
 - **Controls from `Microsoft.Xbox` need their assembly in the manifest.** The SDK does this for every Xbox library you reference; don't mark those references `Private=false`.
 - **The title is the donor's.** The package keeps the donor app's title ID and name, and with them its saved data.

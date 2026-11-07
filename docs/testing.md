@@ -41,7 +41,7 @@ The folder has the console's layout, `<XUID>\<title ID>\<content type>\<package>
 
 ## Debug output
 
-`System.Diagnostics.Debug.WriteLine`, `Debugger.Log` and `Console.WriteLine` don't throw, but their output goes nowhere: the CLR only passes debug output to an attached managed debugger. To log from C#, call the kernel's `DbgPrint` instead. `samples\Common\DebugLog.cs` wraps it:
+`System.Diagnostics.Debug.WriteLine`, `Debugger.Log` and `Console.WriteLine` don't throw, but their output goes nowhere: the CLR only passes debug output to an attached managed debugger. To log from C#, call the kernel's `DbgPrint` instead. `DebugLog`, in [the common library](common-library.md) (`using Silverlight360;`), wraps it:
 
 ```csharp
 DebugLog.WriteLine("Loaded {0} items", items.Count);

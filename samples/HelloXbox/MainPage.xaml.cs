@@ -61,8 +61,8 @@ namespace HelloXbox
                 return;
             }
             CompositionTarget.Rendering -= FirstFrame;
-            XboxSdk.Samples.Screenshot.Save("screenshot");
-            XboxSdk.Samples.DebugLog.WriteLine("HelloXbox: ready");
+            Silverlight360.Screenshot.Save("screenshot");
+            Silverlight360.DebugLog.WriteLine("HelloXbox: ready");
         }
 
         private void RequestTime()

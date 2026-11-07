@@ -4,7 +4,7 @@ using System.Text;
 using System.Windows;
 using System.Windows.Media.Imaging;
 
-namespace XboxSdk.Samples
+namespace Silverlight360
 {
     /// <summary>
     /// Saves what the app shows as a file in its own folder (game:), for test

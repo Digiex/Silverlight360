@@ -4,7 +4,7 @@ using System.Windows.Controls;
 using System.Windows.Threading;
 using System.Collections.Generic;
 using HelloXbox;
-using XboxSdk.Samples;
+using Silverlight360;
 
 namespace NativeProbe
 {

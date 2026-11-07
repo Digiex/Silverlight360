@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Controls;
 using System.Windows.Threading;
-using XboxSdk.Samples;
+using Silverlight360;
 
 namespace NativeLibrary
 {
