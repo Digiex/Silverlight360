@@ -30,7 +30,7 @@ Reference:
 
 - [API reference](reference/README.md): the Xbox libraries and the Xbox additions to Silverlight, one page per namespace. The same text appears in Visual Studio's IntelliSense.
 - [Samples](samples.md): what each sample shows and how it was tested.
-- [Libraries](libraries.md): class libraries for Silverlight360 apps, such as [Silverlight360.Https](https://digiex.github.io/Silverlight360.Https/) for HTTPS with TLS 1.3.
+- [Libraries](libraries.md): class libraries for Silverlight360 apps, such as [Silverlight360.Https](https://digiex.github.io/Silverlight360.Https/) for HTTPS with TLS 1.3 and [Silverlight360.UnRAR](https://digiex.github.io/Silverlight360.UnRAR/) for RAR extraction.
 - [Runtime inventory](runtime-inventory.md): the platform versions found in the shipped apps.
 - [Assemblies in other donor apps](donor-assemblies.md): every assembly the other shipped apps carry that Plex doesn't, and the apps to take each from.
 
