@@ -91,6 +91,8 @@
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#silverlight360https">Silverlight360.Https</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#silverlight360unrar">Silverlight360.UnRAR</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#adding-one">Adding one</a>
     </li>
     </ul>
@@ -209,6 +211,10 @@
 <td><a href="https://digiex.github.io/Silverlight360.Https/">Silverlight360.Https</a></td>
 <td>HTTP and HTTPS with TLS 1.2 and 1.3 and Mozilla's current root certificates: libcurl on Mbed TLS in a native DLL, <code>https360.xex</code>, called from C# through <code>HttpsClient</code>. Its drop-in sends an app's own <code>WebClient</code> and <code>HttpWebRequest</code> calls through it, for the sites the console's own HTTPS can't reach. Runs on consoles. <a href="https://digiex.github.io/Silverlight360.Https/">Documentation</a>, <a href="https://github.com/Digiex/Silverlight360.Https">source and releases</a>.</td>
 </tr>
+<tr>
+<td><a href="https://digiex.github.io/Silverlight360.UnRAR/">Silverlight360.UnRAR</a></td>
+<td>RAR extraction on the console's drives: UnRAR's library in a native DLL, <code>unrar360.xex</code>, called from C# through <code>RarExtractor</code>. RAR5 and RAR4, solid, encrypted and split archives, of any size, decompressed natively rather than in interpreted app code. Loads on consoles; extraction tested in xenia-edge. <a href="https://digiex.github.io/Silverlight360.UnRAR/">Documentation</a>, <a href="https://github.com/Digiex/Silverlight360.UnRAR">source and releases</a>.</td>
+</tr>
 </tbody>
 </table>
 <h2 id="silverlight360https">Silverlight360.Https<a class="headerlink" href="#silverlight360https" title="Permanent link">&para;</a></h2>
@@ -221,6 +227,18 @@ web.DownloadStringCompleted += (s, e) =&gt; Show(e.Error == null ? e.Result : e.
 web.DownloadStringAsync(new Uri(&quot;https://example.com/&quot;));
 </code></pre>
 <p>An app references <code>Silverlight360.Https.dll</code> and puts <code>https360.xex</code> and <code>cacert.pem</code> beside <code>default.xex</code>; see <a href="https://digiex.github.io/Silverlight360.Https/using/">Adding it to an app</a>. Its native DLL loads at <code>0x8D000000</code>, a base free in a Silverlight app's process on the console: a native library of the app's own (<a href="../native-code/">Native code</a>) needs another.</p>
+<h2 id="silverlight360unrar">Silverlight360.UnRAR<a class="headerlink" href="#silverlight360unrar" title="Permanent link">&para;</a></h2>
+<pre><code class="language-csharp">using Silverlight360.UnRAR;
+
+using (var rar = new RarExtractor())
+{
+    // On a thread of its own: Extract returns when the archive is done.
+    int result = rar.Extract(@&quot;hdd:\Downloads\game.part1.rar&quot;, @&quot;hdd:\Games\Game&quot;, null);
+    if (result != RarExtractor.Success)
+        Show(RarExtractor.Describe(result) + &quot;: &quot; + rar.Message);
+}
+</code></pre>
+<p>An app references <code>Silverlight360.UnRAR.dll</code> and puts <code>unrar360.xex</code> beside <code>default.xex</code>; see <a href="https://digiex.github.io/Silverlight360.UnRAR/using/">Adding it to an app</a>. Its native DLL loads at <code>0x8F000000</code>, beside Silverlight360.Https's, so an app can use both. UnRAR's own license allows extracting RAR archives, not making them.</p>
 <h2 id="adding-one">Adding one<a class="headerlink" href="#adding-one" title="Permanent link">&para;</a></h2>
 <p>A library for Silverlight360 apps can be listed here: open an issue or a pull request (<a href="../contributing/">Contributing</a>) with what it does, where its documentation is, and whether it has run on a console.</p>
               
